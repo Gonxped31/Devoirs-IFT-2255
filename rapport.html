@@ -166,22 +166,23 @@
         numéros de série valides. Le client doit produire au moins un robot. <br>
         <span style="font-weight: bold;">Acteurs :</span> Client (principal). <br>
         <span style="font-weight: bold;">Scénario principal</span> <br>
-        1. Étape 1 : Le client ouvre la page web, accède au menu principal et choisi l’option de création de compte utilisateur.<br>
+        1.	Étape 1 : Le client se connecte à Robotix.<br>
 
-        2. Étape 2 : Il complète le champ “Profile” en entrant son nom, son prénom, son courriel, son numéro de téléphone ainsi que le nom de sa compagnie.<br>
-
-        3. Étape 3 : Le système valide les informations du client et affiche un message de confirmation d’inscription.<br>
+        2.	Étape 2 : Il accède au menu principal.<br>
         
-        4. Étape 4 : Le système affiche le menu d’utilisateur avec les différentes options d’utilisation de robots possibles.<br>
+        3.	Étape 3 : Il choisit l’option de création de compte utilisateur.<br>
+        
+        4.	Étape 4 : Il complète le champ “Profile” en entrant son nom, son prénom, son courriel, son numéro de téléphone et entre également le nom de sa compagnie.<br>
+        
+        5.	Étape 5 : Le système valide les informations du client et affiche un message de confirmation d’inscription.<br>
+        
+        6.	Étape 6 : Le système affiche le menu d’utilisateur avec les différentes options d’utilisation de robots possibles.<br>
+        
         <span style="font-weight: bold;">Scénarios alternatifs</span>  <br>
 
-        3a. L’utilisateur n’entre aucun nom de compagnie.<br>
-        &emsp;3a.1. Le logiciel affiche un message indiquant que l’information est manquante.<br>
-        &emsp;3a.2. Le scénario reprend à l’étape 2.<br>
-
-        3b. Le système rejette certaines informations mal entrées.<br>
-        &emsp;3b.1. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau.<br>
-        &emsp;3b.2. Le scénario reprend à l’étape 2.<br>
+        5a. Le système rejette certaines informations mal entrées.<br>
+        &emsp;5a.1. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau.<br>
+        &emsp;5a.2. Le scénario reprend à l’étape 2.<br>
 
         <span style="font-weight: bold;">Postconditions :</span> Le nouvel utilisateur est enregistré dans la base de données et a maintenant accès 
         aux différentes options d’utilisateur possible <br>
@@ -210,29 +211,35 @@
         <span style="font-weight: bold;">Acteurs :</span> Client (principal). <br>
 
         <span style="font-weight: bold;">Scénario principal</span> <br>
-        1. Étape 1 : Le client ouvre la page web, accède au menu principal et choisi l’option de création de compte fournisseur.<br>
+        1.	Étape 1 : Le client se connecte à l’outil.<br>
 
-        2. Étape 2 : Il complète le champ “Profile” en entrant le nom, le prénom, le courriel ainsi que le numéro de téléphone.<br>
-
-        3. Étape 3 : Il entre ensuite le type de robot fabriqué, le type de composantes fabriqués et la capacité de fabrication.<br>
+        2.	 Étape 2 : Il accède au menu principal.<br>
         
-        4. Étape 4 : Le système valide les informations du client et affiche un message de confirmation d’inscription.<br>
-
-        5. Étape 5 : Le système affiche le menu principal de nouveau.<br>
+        3.	Étape 3 : Il choisi l’option de création de compte fournisseur.<br>
+        
+        4.	Étape 4 : Il complète le champ “Profile” en entrant le nom, le prénom, le courriel ainsi que le numéro de téléphone.<br>
+        
+        5.	Étape 5 : Il entre ensuite le type de robot fabriqué, le type de composantes fabriqués et la capacité de fabrication.<br>
+        
+        6.	Étape 6 : Le système valide les informations du client<br>
+        &emsp;6.1 Il affiche un message de confirmation d’inscription si les informations entrées sont valides.<br>
+        
+        7.	Étape 7 : Le système affiche le menu principal de nouveau.<br>
 
         <span style="font-weight: bold;">Scénarios alternatifs</span>  <br>
 
-        4a. Le client ne possède aucun robot (mais il entre quand même 0 comme information).<br>
-        &emsp;4a.1. Le logiciel informe le client du problème.<br>
-        &emsp;4a.2. Le scénario se termine.<br>
+        6a. Le client ne possède aucun robot (mais il entre quand même 0 comme information).<br>
+        &emsp;6a.1. Le logiciel informe le client du problème.<br>
+        &emsp;6a.2. Le scénario se termine.<br>
 
-        4b. Le numéro de série entré n’est pas valide.<br>
-        &emsp;4b.1. Le logiciel informe le client du problème et demande au client d’entrer de nouvelles données.<br>
-        &emsp;4b.2. Le scénario reprend à l’étape 5.<br>
+        6b. Le numéro de série entré n’est pas valide.<br>
+        &emsp;6b.1. Le logiciel informe le client du problème et demande au client d’entrer de nouvelles données.<br>
+        &emsp;6b.2. Le scénario reprend à l’étape 4.<br>
 
-        4c. Le client ne produit aucun robot.<br>
-        &emsp;4c.1. Le logiciel informe le client du problème.<br>
-        &emsp;4c.2. Le scénario se termine.<br>
+        6c. Le client ne produit aucun robot.<br>
+        &emsp;6c.1. Le logiciel informe le client du problème.<br>
+        &emsp;6c.2. Le scénario se termine.<br>
+
 
         <span style="font-weight: bold;">Postconditions :</span> Le nouveau fournisseur sera enregistré dans la base de données.<br> 
         Il sera également mis dans la même liste de fournisseur que les autres fournisseurs ayant les mêmes caractéristiques que lui.<br>
@@ -259,8 +266,8 @@
         3. Étape 3 : Le système affiche un message de confirmation indiquant que le robot a bien été enregistré.<br>
 
         4. Étape 4 : Le système affiche de nouveau le menu avec les différentes options possibles.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
 
+        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
         3a. Le numéro de série est invalide (le numéro a été mal saisie).<br>
         &emsp;3a.1. Le système n’a pas trouvé de robot possédant ce numéro de série.<br>
         &emsp;3a.2. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau. <br>
