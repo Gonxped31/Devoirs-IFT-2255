@@ -354,62 +354,81 @@
     </p>
     <h3>Cas 10</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Créer des tâches <br>
+        <span style="font-weight: bold;">But : </span> Un client désire de créer des tâches qui seront effectués par les robots<br>
+        <span style="font-weight: bold;">Préconditions :</span> Posséder un compte à Robotix <br>
+        <span style="font-weight: bold;">Acteurs : </span> Client (principal)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. Le client se connecte à Robotix.<br>
+        2. Le système vérifie le compte du client.<br>
+        3. Le client se rend au menu principal de l'application.<br>
+        4. Le client choisit l'option de création de tâche.<br>
+        5. Le client écrit les détails de la tâche en lui donnant un titre et une description.<br>
+        6. Le système valide la tâche et affiche un message de confirmation en disant que la tâche a été créée.<br>
 
-        2. Étape 2<br>
-
-        3. Étape 3<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        2a. Le compte entré n'est pas enregistré sur l'application.<br>
+        2a.1. Le système affiche un message d'erreur en disant qu'il n'y a pas de compte enregistré sur l'application.<br>
+        2a.2. Le scénario se reprend à l'étape 1.<br><br>
+
+        6a. Le système ne valide pas la tâche. <br>
+        6a.1. Le système affiche un message d'erreur et demande au client de récrire à nouveau la tâche en respectant les conditions.<br>
+        6a.2. Le scénario reprend à l'étape 5.<br>
+        <span style="font-weight: bold;">Postconditions :</span> Le système a enregistré dans la base de données la tâche, ce qui inclut le titre et la description de cette tâche.<br>
     </p>
     <h3>Cas 11</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Participer aux activités <br>
+        <span style="font-weight: bold;">But : </span> Un client souhaite de participer à diverses activités avec leur flotte de robots<br>
+        <span style="font-weight: bold;">Préconditions :</span> Posséder un compte à Robotix ; Posséder au moins un robot <br>
+        <span style="font-weight: bold;">Acteurs : </span> Client (principal)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. Le client se connecte à Robotix.<br>
+        2. Le système vérifie le compte du client.<br>
+        3. Le client se rend au menu principal de l'application.<br>
+        4. Le client choisit l'option de participer aux activités.<br>
+        5. Le client choisit le type d'activité.<br>
+        6. Le client choisit la catégorie de l'activité.<br>
+        7. Le client choisit l'activité.<br>
+        8. Le client entre le ou les numéros des robots qu'il désigne pour l'activité.<br>
+        9. Le système valide le choix de l'activité et le numéro du robot. <br>
+        10. Le système affiche un message de confirmation en disant que le choix de l'activité a été fait.<br>
 
-        2. Étape 2<br>
-
-        3. Étape 3<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        2a. Le compte entré n'est pas enregistré sur l'application.<br>
+        2a.1. Le système affiche un message d'erreur en disant qu'il n'y a pas de compte enregistré sur l'application.<br>
+        2a.2. Le scénario se reprend à l'étape 1.<br><br>
+
+        8a. Le client entre le mauvais numéro de série d'un robot. <br>
+        8a.1. Le système ne trouve pas de robot qui possède ce numéro de série.<br>
+        8a.2. Le système affiche un message d'erreur et demande au client de récrire à nouveau le numéro de série du robot.<br>
+        8a.3. Le scénario reprend à l'étape 8.<br>
+        <span style="font-weight: bold;">Postconditions :</span> Le système a enregistré dans la base de données le choix de l'activité du client et le robot.<br>
     </p>
     <h3>Cas 12</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Trouver un fournisseur <br>
+        <span style="font-weight: bold;">But : </span> Un client désire de rechercher un fournisseur dans la liste des fournisseurs enregistrés<br>
+        <span style="font-weight: bold;">Préconditions :</span> Posséder un compte à Robotix ; Posséder au moins un fournisseur inscrit <br>
+        <span style="font-weight: bold;">Acteurs : </span> Client (principal)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. Le client se connecte à Robotix.<br>
+        2. Le système vérifie le compte du client.<br>
+        3. Le client se rend au menu principal de l'application.<br>
+        4. Le client choisit l'option de rechercher un fournisseur<br>
+        5. Le client choisit l'option de filtre facilitant la recherche d'un fournisseur (Ex: par nom, adresse, email, téléphone).<br>
 
-        2. Étape 2<br>
-
-        3. Étape 3<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        2a. Le compte entré n'est pas enregistré sur l'application.<br>
+        2a.1. Le système affiche un message d'erreur en disant qu'il n'y a pas de compte enregistré sur l'application.<br>
+        2a.2. Le scénario reprend à l'étape 1.<br><br>
+
+        <span style="font-weight: bold;">Postconditions :</span> ? <br>
     </p>
     <h2>Tâche 4 : Risques</h2>
+
+    Besoin : Trouver un fournisseur<br>
+    Risque : Le fournisseur recherché ne figure pas dans la liste.<br><br>
 
     <h2>Tâche 5 : Exigences non-fonctionnelles</h2>
 
