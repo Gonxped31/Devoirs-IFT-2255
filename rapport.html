@@ -160,93 +160,120 @@
     </h2>
     <h3>Cas 1</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d'un client en tant qu'utilisateur <br>
-        <span style="font-weight: bold;">But :</span> Un client désire créer un compte en tant que fournisseur de Robotix. <br>
-        <span style="font-weight: bold;">Préconditions :</span> Posséder au moins un robot. Tous les robots possédés doivent avoir des 
-        numéros de série valides. Le client doit produire au moins un robot. <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d’un client en tant qu' utilisateur.<br>
+        <span style="font-weight: bold;">But :</span> Un client désire créer un compte en tant qu’utilisateur de Robotix. <br>
+        <span style="font-weight: bold;">Préconditions :</span> Posséder une compagnie<br>
         <span style="font-weight: bold;">Acteurs :</span> Client (principal). <br>
         <span style="font-weight: bold;">Scénario principal</span> <br>
-        1.	Étape 1 : Le client se connecte à Robotix.<br>
+        1.  Étape 1 : Le client accède à l’interface Robotix.<br>
+        2.  Étape 2 : Le client accède au menu principal.<br>
+        3.  Étape 3 : Le client choisit l’option de création de compte utilisateur.<br>
+        4.  Étape 4 : Le client complète le champ “Profile” en entrant son nom, son prénom, son pseudo, son courriel, son numéro de téléphone et également le nom de sa compagnie.<br>
+        5.  Étape 5 : Le système valide les informations du client et affiche un message de confirmation d’inscription.<br>
+        6.  Étape 6 : Le système affiche le menu d’utilisateur avec les différentes options d’utilisation de robots possibles.<br>
 
-        2.	Étape 2 : Il accède au menu principal.<br>
-        
-        3.	Étape 3 : Il choisit l’option de création de compte utilisateur.<br>
-        
-        4.	Étape 4 : Il complète le champ “Profile” en entrant son nom, son prénom, son courriel, son numéro de téléphone et entre également le nom de sa compagnie.<br>
-        
-        5.	Étape 5 : Le système valide les informations du client et affiche un message de confirmation d’inscription.<br>
-        
-        6.	Étape 6 : Le système affiche le menu d’utilisateur avec les différentes options d’utilisation de robots possibles.<br>
-        
         <span style="font-weight: bold;">Scénarios alternatifs</span>  <br>
 
-        5a. Le système rejette certaines informations mal entrées.<br>
-        &emsp;5a.1. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau.<br>
-        &emsp;5a.2. Le scénario reprend à l’étape 2.<br>
+        5a. Le système rejette certaines informations mal entrées (erreurs de saisie par exemple).<br>
+        &emsp;5a.1. Le logiciel affiche un message d’erreur et demande au client d'entrer les données de nouveau.<br>
+        &emsp;5a.2.  Le scénario reprend à l’étape 4.<br>
 
-        <span style="font-weight: bold;">Postconditions :</span> Le nouvel utilisateur est enregistré dans la base de données et a maintenant accès 
-        aux différentes options d’utilisateur possible <br>
-        que voici : <br>
-        <ul>
-            <li>Enregistrer un robot,</li>
-            <li>Créer des tâches,</li>
-            <li>Allouer des tâches à un ou plusieurs robots,</li>
-            <li>Visualiser l'efficacité énergétique et l'utilisation de ressources des robots,</li>
-            <li>Afficher les métriques d’une flotte de robots,</li>
-            <li>Participer à divers activités (Jeux, éducation, création),</li>
-            <li>Trouver un fournisseur de composantes pour les robots.</li>
-        </ul>
+        5b. Le pseudo entré existe déjà.<br>
+        &emsp;5b.1. Le logiciel affiche un message d’erreur et demande au client d'entrer un autre pseudo.<br>
+        &emsp;5b.2.  Le scénario reprend à l’étape 4.<br>
+
+        <span style="font-weight: bold;">Postconditions :</span> Le nouvel utilisateur est enregistré dans la base de données et a maintenant accès aux différentes options d’utilisateur.<br>
     </p>
 
     <h3>Cas 2</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d’un client en tant que fournisseur. <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d’un client en tant que fournisseur.<br>
 
         <span style="font-weight: bold;">But :</span> Un client désire créer un compte en tant que fournisseur de Robotix. <br>
 
-        <span style="font-weight: bold;">Préconditions :</span> Posséder au moins un robot.<br>
-        &emsp;Tous les robots possédés doivent avoir des numéros de série valides. <br>
-        &emsp;Le client doit produire au moins un robot.<br>
+        <span style="font-weight: bold;">Préconditions :</span> Posséder une compagnie.<br>
 
         <span style="font-weight: bold;">Acteurs :</span> Client (principal). <br>
-
-        <span style="font-weight: bold;">Scénario principal</span> <br>
-        1.	Étape 1 : Le client se connecte à l’outil.<br>
-
-        2.	 Étape 2 : Il accède au menu principal.<br>
-        
-        3.	Étape 3 : Il choisi l’option de création de compte fournisseur.<br>
-        
-        4.	Étape 4 : Il complète le champ “Profile” en entrant le nom, le prénom, le courriel ainsi que le numéro de téléphone.<br>
-        
-        5.	Étape 5 : Il entre ensuite le type de robot fabriqué, le type de composantes fabriqués et la capacité de fabrication.<br>
-        
-        6.	Étape 6 : Le système valide les informations du client<br>
-        &emsp;6.1 Il affiche un message de confirmation d’inscription si les informations entrées sont valides.<br>
-        
-        7.	Étape 7 : Le système affiche le menu principal de nouveau.<br>
+        1.  Étape 1 : Le client accède à l’interface Robotix.<br>
+        2.  Étape 2 : Le client accède au menu principal.<br>
+        3.  Étape 3 : Le client choisit l’option de création de compte fournisseur.<br>
+        4.  Étape 4 : Le client complète le champ “Profile” en entrant le nom (unique), le prénom, le courriel ainsi que le numéro de téléphone et le nom de sa compagnie.<br>
+        5.  Étape 5 : Le client entre ensuite le type de robot fabriqué, le type de composantes fabriquées et leur capacité de fabrication.<br>
+        6.  Étape 6 : Le système valide les informations du client<br>
+        &emsp;6.1 Le système affiche un message de confirmation d’inscription si les informations entrées sont valides.<br>
+        7.  Étape 7 : Le système affiche le menu fournisseur.<br>
 
         <span style="font-weight: bold;">Scénarios alternatifs</span>  <br>
 
-        6a. Le client ne possède aucun robot (mais il entre quand même 0 comme information).<br>
+        6a. Les informations entrées sur le robot et les composantes sont invalides.<br>
         &emsp;6a.1. Le logiciel informe le client du problème.<br>
-        &emsp;6a.2. Le scénario se termine.<br>
+        &emsp;6a.2. Le scénario reprend à l’étape 5.<br>
 
-        6b. Le numéro de série entré n’est pas valide.<br>
-        &emsp;6b.1. Le logiciel informe le client du problème et demande au client d’entrer de nouvelles données.<br>
-        &emsp;6b.2. Le scénario reprend à l’étape 4.<br>
-
-        6c. Le client ne produit aucun robot.<br>
-        &emsp;6c.1. Le logiciel informe le client du problème.<br>
-        &emsp;6c.2. Le scénario se termine.<br>
+        6b. Le nom du fournisseur existe déjà.<br>
+        &emsp;6b.1. Le logiciel informe le client qu’il est déjà membre.<br>
+        &emsp;6b.2. Le scénario se termine.<br>
 
 
-        <span style="font-weight: bold;">Postconditions :</span> Le nouveau fournisseur sera enregistré dans la base de données.<br> 
-        Il sera également mis dans la même liste de fournisseur que les autres fournisseurs ayant les mêmes caractéristiques que lui.<br>
-        Ce dernier sera donc présent dans la liste des fournisseurs affiché lorsque l’utilisateur effectue sa recherche de fournisseur. <br>
+        <span style="font-weight: bold;">Postconditions :</span> Le nouveau fournisseur sera enregistré dans la base de données.<br>
+        Il sera mis dans la même liste de fournisseurs que les autres fournisseurs ayant les mêmes caractéristiques que lui.<br>
+        Il sera donc présent dans la liste des fournisseurs affiché lorsque l’utilisateur effectue sa recherche de fournisseur.<br>
     </p>
 
     <h3>Cas 3</h3>
+    <p>
+        <span style="font-weight: bold;">Cas d'utilisation :</span>Connexion à Robotix en tant qu’utilisateur.<br>
+
+        <span style="font-weight: bold;">But :</span>Un membre désire se connecter en tant qu’utilisateur.<br>
+
+        <span style="font-weight: bold;">Préconditions :</span>Être membre de Robotix (utilisateur).<br>
+
+        <span style="font-weight: bold;">Acteurs :</span>Membre (principal).<br>
+
+        <span style="font-weight: bold;">Scénario principal</span> <br>
+        1.Étape 1 : Le membre accède au menu principal.<br>
+        2.Étape 2 Le membre choisit l’option de connexion utilisateur.<br>
+        3.Étape 3 : Le membre entre son pseudo utilisateur.<br>
+        &emsp;3.1 Le système vérifie qu’il fait bien partie de la liste des utilisateurs.<br>
+        4. Étape 4 : Le système affiche un message de confirmation de connexion.<br>
+        5. Étape 5 : Le système affiche le menu utilisateur / fournisseur.<br>
+
+        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
+        3.1a. Les informations entrées sont invalides ou la personne n’est pas membre.<br>
+        &emsp;3.1a.1. Le système n’a pas trouvé d’utilisateur avec ces informations<br>
+        &emsp;3.1a.2. Le logiciel affiche un message d’erreur et demande au membre d’essayer de nouveau.<br>
+        &emsp;3.1a.3. Le scénario reprend à l’étape 3.<br>
+
+        <span style="font-weight: bold;">Postconditions :</span> Le membre a accès au menu utilisateur.<br>
+    </p>
+
+    <h3>Cas 4</h3>
+    <p>
+        <span style="font-weight: bold;">Cas d'utilisation :</span>Connexion à Robotix en tant que fournisseur.<br>
+
+        <span style="font-weight: bold;">But :</span>Un membre désire se connecter en tant que fournisseur.<br>
+
+        <span style="font-weight: bold;">Préconditions :</span>Être membre de Robotix (fournisseur).<br>
+
+        <span style="font-weight: bold;">Acteurs :</span>Membre (principal).<br>
+
+        <span style="font-weight: bold;">Scénario principal</span> <br>
+        1.Étape 1 : Le membre accède au menu principal.<br>
+        2.Étape 2 Le membre choisit l’option de connexion fournisseur.<br>
+        3.Étape 3 : Le membre entre son nom.<br>
+        &emsp;3.1 Le système vérifie qu’il fait bien partie de la liste des fournisseurs.<br>
+        4. Étape 4 : Le système affiche un message de confirmation de connexion.<br>
+        5. Étape 5 : Le système affiche le menu fournisseur.<br>
+
+        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+        3.1a. Les informations entrées sont invalides ou la personne n’est pas membre.<br>
+        &emsp;3.1a.1. Le système n’a pas trouvé de fournisseur avec ces informations.<br>
+        &emsp;3.1a.2. Le logiciel affiche un message d’erreur et demande au membre d’essayer de nouveau.<br>
+        &emsp;3.1a.3. Le scénario reprend à l’étape 3.<br>
+
+        <span style="font-weight: bold;">Postconditions :</span> Le membre a accès au menu utilisateur.<br>
+    </p>
+
+    <h3>Cas 5</h3>
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span> Enregistrement d’un robot. <br>
 
@@ -257,68 +284,30 @@
         <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal). <br>
 
         <span style="font-weight: bold;">Scénario principal</span> <br>
-        1. Étape 1 : L’utilisateur choisi l’option d’enregistrement de robot parmi les options disponibles.<br>
-
-        2. Étape 2 : Il entre le numéro de série du robot à enregistrer ainsi que le type de ce robot.<br>
-        &emsp;2.1. Étape 2.1 : 2.1	Le système vérifie que les informations entrées correspondent bien aux informations fournies par un fournisseur
-         présent dans la base de données des fournisseurs.<br>
+        1.  Étape 1 : L’utilisateur se connecte à Robotix.<br>
+        2.  Étape 2 : L’utilisateur choisit l’option d’enregistrement de robot.<br>
+        3.  Étape 3 : L’utilisateur entre le numéro de série du robot à enregistrer.<br>
+        4.  Étape 4 : L’utilisateur entre le type du robot à enregistrer.<br>
+        5.  Étape 5 : L’utilisateur entre le nom du robot à enregistrer.<br>
+        &emsp;5.1  Le système vérifie que les informations entrées (type et numéro de série) correspondent bien aux informations fournies par un fournisseur présent dans la base de données des fournisseurs.<br>
+        6.  Étape 6 : Le système affiche un message de confirmation indiquant que le robot a bien été enregistré.<br>
+        7.  Étape 7 : Le système affiche de nouveau le menu utilisateur.<br>
         
-        3. Étape 3 : Le système affiche un message de confirmation indiquant que le robot a bien été enregistré.<br>
-
-        4. Étape 4 : Le système affiche de nouveau le menu avec les différentes options possibles.<br>
 
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        3a. Le numéro de série est invalide (le numéro a été mal saisie).<br>
-        &emsp;3a.1. Le système n’a pas trouvé de robot possédant ce numéro de série.<br>
-        &emsp;3a.2. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau. <br>
-        &emsp;3a.3. Le scénario reprend à l’étape 2.<br>
+        5a. Le numéro de série est invalide (le numéro a été mal saisi).<br>
+        &emsp;5a.1. Le système n’a pas trouvé de robot possédant ce numéro de série.<br>
+        &emsp;5a.2. Le logiciel affiche un message d’erreur et demande au client d’entrer un numéro de nouveau.<br>
+        &emsp;5a.3. Le scénario reprend à l’étape 3.<br>
         
-        3b. Le type du robot entré n’est pas valide.<br>
-        &emsp;3b.1. Le système n’a pas trouvé de robot de ce type.<br>
-        &emsp;3b.2. Le logiciel affiche un message d’erreur et demande au client d’entrée les données de nouveau.<br>
-        &emsp;3b.3. Le scénario reprend à l’étape 2.<br>
+        5b. Le type du robot entré n’est pas valide.<br>
+        &emsp;5b.1. Le système n’a pas trouvé de robot de ce type.<br>
+        &emsp;5b.2. Le logiciel affiche un message d’erreur et demande au client d’entrer un autre type.<br>
+        &emsp;5b.3. Le scénario reprend à l’étape 4.<br>
+
         
         <span style="font-weight: bold;">Postconditions :</span> Le robot est ajouté dans la liste des robots enregistrés pouvant être suivi et 
         pouvant également être assignés à des tâches. <br>
-    </p>
-
-    <h3>Cas 4</h3>
-    <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
-        <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-
-        2. Étape 2<br>
-
-        3. Étape 3<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
-    </p>
-    <h3>Cas 5</h3>
-    <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
-        <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-
-        2. Étape 2<br>
-
-        3. Étape 3<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
     </p>
     <h3>Cas 6</h3>
     <p>
@@ -472,12 +461,12 @@
     <ol>
         <li><h3>Fiabilité :</h3></li>
         <p>
-            Possibilité de gérer la plupart des exceptions en affichant des messages d'erreur et des alertes.<br>
-            Possibilité de suggérer quelques instructions à l'utilisateur pour résoudre certains problème si l'intervention de ce dernier est nécéssaire.<br>
+            Possibilité de gérer la plupart des exceptions en affichant des messages d'erreur et des alertes. <br>
+            Possibilité de suggérer quelques instructions à l'utilisateur pour résoudre certains problèmes si l'intervention de ce dernier est nécessaire.<br>
         </p> 
         <li><h3>Utilisabilité :</h3></li>
         <p>
-            Présence d'une documentation informant l'utilisateur des différentes fonctionalitées disponibles ainsi que leurs utilités / rôle.<br>
+            Présence d'une documentation informant l'utilisateur des différentes fonctionnalités disponibles ainsi que leurs utilités / rôles.<br>
         </p>
     </ol>
 
