@@ -319,22 +319,27 @@
     </p>
     <h3>Cas 6</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Allouer des tâches à un robot.<br>
+        <span style="font-weight: bold;">But :</span> Permettre à un utilisateur d'assigner des tâches spécifiques à un robot.<br>
+        <span style="font-weight: bold;">Préconditions :</span> L'utilisateur doit être connecté au système. L'utilisateur doit avoir un ou plusieurs robots enregistrés dans le système.<br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. L'utilisateur se connecte à son compte sur la plateforme.<br>
 
-        2. Étape 2<br>
+        2. L'utilisateur navigue vers la section "ma flotte".<br>
 
-        3. Étape 3<br>
+        3. L'utilisateur sélectionne le robot auquel il souhaite assigner une tâche.<br>
+        
+        4. L'utilisateur sélectionne l'option pour ajouter une tâche.<br>
+        
+        5. Le système demande à l'utilisateur de définir la tâche.<br>
+        
+        6. L'utilisateur entre les détails de la tâche.<br>
+        
+        7. Le système renvoie le message le robot est prêt à exécuter la tâche.<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        4a. Si l'utilisateur n'entre pas suffisamment de détails pour la tâche : Le système demande à l'utilisateur d'ajouter plus de détails.<br>
+        <span style="font-weight: bold;">Postconditions :</span> La tâche est assignée au robot et le robot est prêt à l'exécuter.<br>
     </p>
     <h3>Cas 7</h3>
     <p>
@@ -376,22 +381,24 @@
     </p>
     <h3>Cas 9</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher l'état des mes robots <br>
+        <span style="font-weight: bold;">But :</span> Permettre à un utilisateur de surveiller l'utilisation de l'énergie et des ressources par un robot.<br>
+        <span style="font-weight: bold;">Préconditions :</span> L'utilisateur doit être connecté au système. L'utilisateur doit avoir un ou plusieurs robots enregistrés dans le système.<br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire).<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. L'utilisateur se connecte à son compte sur la plateforme.<br>
 
-        2. Étape 2<br>
+        2. L'utilisateur navigue vers la section "ma flotte".<br>
 
-        3. Étape 3<br>
+        3. L'utilisateur sélectionne le robot dont il souhaite surveiller l'efficacité énergétique et l'utilisation des ressources.<br>
+        
+        4. L'utilisateur sélectionne l'option pour voir l'utilisation de l'énergie et des ressources.<br>
+        
+        5. Le système affiche les données d'utilisation de l'énergie et des ressources pour le robot sélectionné.<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        3a. Si le système n'a pas de données récentes : Le système informe l'utilisateur qu'il n'y a pas de données récentes disponibles.<br>
+        
+        <span style="font-weight: bold;">Postconditions :</span> L'utilisateur a visualisé l'efficacité énergétique et l'utilisation des ressources du robot sélectionné.<br>
     </p>
     <h3>Cas 10</h3>
     <p>
@@ -466,24 +473,30 @@
 
         <span style="font-weight: bold;">Postconditions :</span> Le fournisseur fait partie de la liste des fournisseurs déjà sélectionné <br>
     </p>
-        <h3>Cas 13</h3>
+         <h3>Cas 13</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Mise à jour du catalogue de produits du fournisseur.<br>
+        <span style="font-weight: bold;">But :</span> Permettre aux fournisseurs de mettre à jour leur catalogue de produits pour refléter l'ajout ou la suppression de robots et de composants.<br>
+        <span style="font-weight: bold;">Préconditions :</span> Le fournisseur est inscrit sur la plateforme, est connecté à son compte.<br>
+        <span style="font-weight: bold;">Acteurs :</span> Fournisseur (principal), Système (secondaire).<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. Le fournisseur se connecte à son compte sur la plateforme.<br>
 
-        2. Étape 2<br>
+        2. Le fournisseur navigue vers la section "Mon catalogue".<br>
 
-        3. Étape 3<br>
+        3. Le fournisseur sélectionne l'option "Modifier le catalogue".<br>
+        
+        4. Le fournisseur ajoute un nouveau robot ou une nouvelle composante, ou retire un robot ou une composante qui n'est plus fabriquée.<br>
+        
+        5. Le fournisseur sélectionne l'option "Enregistrer les modifications".<br>
+        
+        6. Le système valide les modifications et confirme que les modifications ont été enregistrées.<br>
+        
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        4a.1. Si le fournisseur tente d'ajouter un produit déjà existant dans le catalogue, le système affiche un message d'erreur indiquant que le produit est déjà listé.<br>
+        4a.2. Si le fournisseur tente de retirer un produit qui n'est pas dans son catalogue, le système affiche un message d'erreur indiquant que le produit n'est pas trouvé dans le catalogue.<br>
+        5c.1. Si le système rencontre une erreur lors de l'enregistrement des modifications (par exemple, une défaillance du serveur), il informe le fournisseur que les modifications n'ont pas été enregistrées et lui demande de réessayer plus tard.<br>
+        <span style="font-weight: bold;">Postconditions :</span> Le catalogue de produits du fournisseur est mis à jour avec les nouvelles informations. Toutes les modifications sont visibles pour les clients et autres utilisateurs de la plateforme.<br>
     </p>
 
     <h2>Tâche 4 : Risques</h2>
