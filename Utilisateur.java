@@ -2,13 +2,17 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Utilisateur {
-    
+
     public static void main(String[] args) {
         LinkedList<String> composantes = new LinkedList<String>();
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
+        LinkedList<String> activites = new LinkedList<String>();
+        activites.add("Se deplacer et dire 'Allo'");
+        activites.add("Se deplacer et ecouter");
+        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), activites);
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in));
         creerAction(comp, r);
+        voirActivitesMaintenues(r);
     }
 
     //Scan les composantes de l'action que l'utilisateur
@@ -75,6 +79,13 @@ public class Utilisateur {
     //Prends un tableau d'actions en parametre, et output 
     public void creerTache(){
 
+    }
+
+    public static void voirActivitesMaintenues(Robot r){
+        System.out.println("\n\n Voici les activitées maintenues par " + r.nom);
+        for (String act : r.activites){
+            System.out.println("    - " + act);
+        }
     }
 
     public static void afficherEtatRobot(Robot robot){ 
