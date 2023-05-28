@@ -2,17 +2,17 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Utilisateur {
-
+    
     public static void main(String[] args) {
+        LinkedList<String> composantes = new LinkedList<String>();
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
-        LinkedList<String> comp = ajouterComposantes(new Scanner(System.in));
+        LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in));
         creerAction(comp, r);
     }
 
     //Scan les composantes de l'action que l'utilisateur
-    public static LinkedList<String> ajouterComposantes(Scanner scanner){
-        LinkedList<String> composantes = new LinkedList<String>(); 
+    public static LinkedList<String> ajouterComposantes(LinkedList<String> composantes, Scanner scanner){
         String input = "";
         while (!input.equals("None")){
             System.out.print("Ajouter composante: ");
@@ -62,12 +62,13 @@ public class Utilisateur {
             }
     
             if (missingComponentAdded) {
-                composantes = ajouterComposantes(scan);  // Pass the Scanner object
+                composantes = ajouterComposantes(composantes,scan);  // Pass the Scanner object
                 missingComponentAdded = false;
             }
         }
     
         scan.close();
+        System.out.println(robot.actions);
     }
     
 
