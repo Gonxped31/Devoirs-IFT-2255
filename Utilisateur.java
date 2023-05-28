@@ -1,15 +1,12 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Utilisateur {
 
     public static void main(String[] args) {
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>());
-        Scanner scanner = new Scanner(System.in);
+        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
-        
-        LinkedList<String> comp = ajouterComposantes(scanner);
+        LinkedList<String> comp = ajouterComposantes(new Scanner(System.in));
         creerAction(comp, r);
     }
 
@@ -25,7 +22,6 @@ public class Utilisateur {
             }
         }
 
-        scanner.close();
         System.out.println(composantes);
         return composantes;
     }
@@ -75,7 +71,7 @@ public class Utilisateur {
     }
     
 
-    //Prends un tableau d'action en parametre, et output 
+    //Prends un tableau d'actions en parametre, et output 
     public void creerTache(){
 
     }
