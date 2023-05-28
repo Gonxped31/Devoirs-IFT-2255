@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Robot {
     String nom;
     int X;
@@ -6,7 +8,8 @@ public class Robot {
     int batterie; // Pourcentage
     int cpu; // Pourcentage
     double memoire; // En GB
-    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire){
+    LinkedList<String> actions = new LinkedList<String>(); 
+    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire, LinkedList<String> action){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -14,5 +17,6 @@ public class Robot {
         this.batterie = batterie;
         this.cpu = cpu;
         this.memoire = memoire;
+        this.actions = action;
     }
 }
