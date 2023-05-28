@@ -62,11 +62,11 @@
         <span style="font-weight: bold;">temps mis: </span>***
     </p>
      <p>
-        <span style="font-weight: bold;">Nom: </span>***
+        <span style="font-weight: bold;">Nom: </span>Kamen Damov
         <br />
-        <span style="font-weight: bold;">Matricule: </span>***
+        <span style="font-weight: bold;">Matricule: </span>20102811
         <br />
-        <span style="font-weight: bold;">Courriel: </span>***
+        <span style="font-weight: bold;">Courriel: </span>kamen.damov@umontreal.ca
         <br />
         <span style="font-weight: bold;">temps mis: </span>***
     </p>
@@ -310,22 +310,22 @@
     </p>
     <h3>Cas 5</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Création d'actions <br>
+        <span style="font-weight: bold;">But :</span> Créer une action pour un robot <br>
+        <span style="font-weight: bold;">Préconditions :</span> 1. Avoir un compte Robotix. 2. Avoir les composantes nécessaires pour les actions <br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-
-        2. Étape 2<br>
-
-        3. Étape 3<br>
+        1. L'utilisateur se connecte à son compte<br>
+        2. L'utilisateur choisi l'option de créer les actions à ses robots<br>
+        3. L'utilisateur choisi le robot qu'il souhaite modifier<br>
+        4. L'utilisateur choisi le ou les fonctionalités à ajouter à son robot comme par exemple: diffuser des sons, parler, écouter et afficher du texte ou de graphiques.<br>
+        5. Le système vérifie que l'utilisateur a toutes les composantes nécéssaires.
+        6. Le système ajoute l'action puis affiche un message de succès
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        5a L'utilisateur n'a pas les composantes nécessaires pour produire les fonctionalités<br>
+        &emsp;5a.1. Le système affiche un message d'erreur<br>
+        &emsp;5a.2. On reprend à l'étape 4<br>
+        <span style="font-weight: bold;">Postconditions :</span> Système enregistre les actions du robot créées par l'utilisateur, l'inventaire de composantes<br>
     </p>
     <h3>Cas 6</h3>
     <p>
@@ -358,41 +358,37 @@
     </p>
     <h3>Cas 7</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Voir les activités maintenues<br>
+        <span style="font-weight: bold;">But :</span> Visualiser les activités qui ont été créées ou qui ont été jointes rejoindre des groupes avec des utilisateurs qui ont des tâches similaires<br>
+        <span style="font-weight: bold;">Préconditions :</span> Avoir un compte Robotix<br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateurs (principale), Système (secondaire)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-
-        2. Étape 2<br>
-
-        3. Étape 3<br>
+        1. L'utilisateur se connecte à son compte<br>
+        2. L'utilisateur choisi l'option de voir les activités<br>
+        3. Le système affiche les activités maintenues.<br>
+        4. L'utilisateur sélectionne une activité.<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        4a. L'utilisateur n'est pas inscrit dans l'activité<br>
+        &emsp;4a.1. Le système ajoute l'utilisateur à l'activité<br>
+        &emsp;4a.2. Le système envoie un message de succès d'ajout<br>
+        4b. L'utilisateur est inscrit dans l'activité<br>
+        &emsp;4b.1. Le système montre les tâches dans l'activité, ainsi que les robots présent dans l'activité<br>
+        <span style="font-weight: bold;">Postconditions :</span> L'utilisateur sauvegarde les changements, et revient à la page d'acceuil.<br>
     </p>
     <h3>Cas 8</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Afficher les métriques de la flotte<br>
+        <span style="font-weight: bold;">But :</span> Visualiser l'état général de la flotte<br>
+        <span style="font-weight: bold;">Préconditions :</span> Avoir un compte utilisateur Robotix<br>
+        <span style="font-weight: bold;">Acteurs :</span> L'utilisateur (principal), Le système(secondaire)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
+        1. L'utilisateur se connecte à son compte<br>
+        2. L'utilisateur sélectionne l'option de voir l'état de sa flotte<br>
+        3. Le système affiche les métriques dela flotte, par exemple: nombre de robots, robots à "soigner", moyenne de chaque état d'un robot soit: sa vitesse, son niveau de batterie, sa consommation CPU et mémoire.<br>
 
-        2. Étape 2<br>
-
-        3. Étape 3<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        2a. L'utilisateur n'a pas de robots<br>
+        <span style="font-weight: bold;">Postconditions :</span> L'utilisateur revient à la page d'acceuil<br>
     </p>
     <h3>Cas 9</h3>
     <p>
@@ -449,22 +445,19 @@
     </p>
     <h3>Cas 11</h3>
     <p>
-        <span style="font-weight: bold;">Cas d'utilisation :</span> <br>
-        <span style="font-weight: bold;">But :</span> <br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Gestion de problèmes <br>
+        <span style="font-weight: bold;">But :</span> Gérer des problèmes avec la flotte et/ou un robot<br>
+        <span style="font-weight: bold;">Préconditions :</span> Avoir un compte utilisateur Robotix <br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Système (secondaire)<br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. Étape 1<br>
-        &emsp;1.1. Étape 1.1<br>
-
-        2. Étape 2<br>
-
-        3. Étape 3<br>
+        1. L'utilisateur se connecte à son compte<br>
+        2. L'utilisateur choisi l'option de gérer un problème.<br>
+        3. Le système affiche la liste des problèmes et les propositions d'actions à mener pour les résoudre, et ainsi que ceux qui ont été résolus<br>
+        4. L'utilisateur confirme les actions à exécuter.<br>
+        5. Le système résout le problème<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
-        1a.1. <br>
-        1b.1. <br>
-        1b.2. <br>
-        <span style="font-weight: bold;">Postconditions :</span> <br>
+        4.a Le système affiche les actions à faire pour résoudre le problème<br>
+        <span style="font-weight: bold;">Postconditions :</span> Les modifications apportées par l'utilisateurs sont réenregistré dans la base de données<br>
     </p>
     <h3>Cas 12</h3>
     <p>
