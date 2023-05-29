@@ -6,7 +6,8 @@ public class Utilisateurs {
         LinkedList<String> composantes = new LinkedList<String>();
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
-        LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in)); 
+        LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
+        creerAction(comp, r);
         creerTache(r);
         voirActivitesMaintenues(r);
     }
@@ -80,12 +81,15 @@ public class Utilisateurs {
         String tacheVoulue = "";
     
         while (!tacheVoulue.equals("None")){
-            System.out.println("Veuillez creer une tache:");
+            System.out.print("Veuillez creer une tache:");
+            tacheVoulue = scan.nextLine();
             if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
                 r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
+                System.out.println("Voici les taches de" + r.nom + ": " + r.taches);
             }
             else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
                 r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
+                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
             } else {
                 System.out.println("Il manque des actions pour creer une tache!");
                 creerAction(r.actions, r);
