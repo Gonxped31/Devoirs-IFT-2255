@@ -77,8 +77,12 @@ public class Utilisateur {
     
 
     //Prends un tableau d'actions en parametre, et output 
-    public void creerTache(){
-
+    //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
+    public void creerTache(Robot r, LinkedList<String> actionsVoulues){
+        if (actionsVoulues.contains("Parler") && actionsVoulues.contains("Deplacer")){
+            //r.activites;
+            //TODO
+        }
     }
 
     public static void voirActivitesMaintenues(Robot r){
