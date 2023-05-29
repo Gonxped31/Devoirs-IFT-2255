@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class Utilisateurs {
     public static void main(String[] args) {
         LinkedList<String> composantes = new LinkedList<String>();
