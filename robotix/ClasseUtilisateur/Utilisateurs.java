@@ -77,10 +77,11 @@ public class Utilisateurs {
     //Prends un tableau d'actions en parametre, et output 
     //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
     public static void creerTache(Robot r){
-        Scanner scan = new Scanner(System.in); 
+        Scanner scan = new Scanner(System.in);
         String tacheVoulue = "";
+        Boolean end = true;
     
-        while (!tacheVoulue.equals("None")){
+        while (end){
             System.out.print("Veuillez creer une tache:");
             tacheVoulue = scan.nextLine();
             if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
@@ -90,13 +91,13 @@ public class Utilisateurs {
             else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
                 r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
                 System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            } 
-            if (!tacheVoulue.equals("None")) {
+            } else if (tacheVoulue.equals("None")){
+                end = false;
+            }else {
                 System.out.println("Il manque des actions pour creer une tache!");
                 creerAction(r.actions, r);
             }
         }
-        System.out.println(r.taches);
         scan.close();
         
     }
