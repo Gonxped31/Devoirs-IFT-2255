@@ -7,6 +7,7 @@ public class Utilisateurs {
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in)); 
+        creerAction(comp, r);
         creerTache(r);
         voirActivitesMaintenues(r);
     }
@@ -76,7 +77,7 @@ public class Utilisateurs {
     //Prends un tableau d'actions en parametre, et output 
     //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
     public static void creerTache(Robot r){
-        Scanner scan = new Scanner(System.in); 
+        Scanner scan = new Scanner(System.in);
         String tacheVoulue = "";
     
         while (!tacheVoulue.equals("None")){
