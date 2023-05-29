@@ -9,8 +9,8 @@ public class Robot {
     int cpu; // Pourcentage
     double memoire; // En GB
     LinkedList<String> actions = new LinkedList<String>(); 
-    LinkedList<String> activites = new LinkedList<String>(); 
-    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire, LinkedList<String> action, LinkedList<String> activites ){
+    LinkedList<String> taches = new LinkedList<String>(); 
+    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire, LinkedList<String> action, LinkedList<String> taches ){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -19,6 +19,6 @@ public class Robot {
         this.cpu = cpu;
         this.memoire = memoire;
         this.actions = action;
-        this.activites = activites;
+        this.taches = taches;
     }
 }

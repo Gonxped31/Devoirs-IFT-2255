@@ -4,13 +4,10 @@ import java.util.Scanner;
 public class Utilisateurs {
     public static void main(String[] args) {
         LinkedList<String> composantes = new LinkedList<String>();
-        LinkedList<String> activites = new LinkedList<String>();
-        activites.add("Se deplacer et dire 'Allo'");
-        activites.add("Se deplacer et ecouter");
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), activites);
+        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
-        LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in));
-        creerAction(comp, r);
+        LinkedList<String> comp = ajouterComposantes(composantes,new Scanner(System.in)); 
+        creerTache(r);
         voirActivitesMaintenues(r);
     }
 
@@ -72,23 +69,36 @@ public class Utilisateurs {
             }
         }
     
-        scan.close();
         System.out.println(robot.actions);
     }
     
 
     //Prends un tableau d'actions en parametre, et output 
     //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
-    public void creerTache(Robot r, LinkedList<String> actionsVoulues){
-        if (actionsVoulues.contains("Parler") && actionsVoulues.contains("Deplacer")){
-            //r.activites;
-            //TODO
+    public static void creerTache(Robot r){
+        Scanner scan = new Scanner(System.in); 
+        String tacheVoulue = "";
+    
+        while (!tacheVoulue.equals("None")){
+            System.out.println("Veuillez creer une tache:");
+            if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
+                r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
+            }
+            else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
+                r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
+            } else {
+                System.out.println("Il manque des actions pour creer une tache!");
+                creerAction(r.actions, r);
+            }
         }
+        System.out.println(r.taches);
+        scan.close();
+        
     }
 
     public static void voirActivitesMaintenues(Robot r){
         System.out.println("\n\n Voici les activitées maintenues par " + r.nom);
-        for (String act : r.activites){
+        for (String act : r.taches){
             System.out.println("    - " + act);
         }
     }
