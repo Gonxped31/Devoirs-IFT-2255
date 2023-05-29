@@ -71,13 +71,13 @@
         <span style="font-weight: bold;">temps mis: </span>***
     </p>
      <p>
-        <span style="font-weight: bold;">Nom:</span>Boubacar Hama Bague
+        <span style="font-weight: bold;">Nom: </span>Boubacar Hama Bague
         <br />
-        <span style="font-weight: bold;">Matricule:</span>20202834 
+        <span style="font-weight: bold;">Matricule: </span>20202834 
         <br />
-        <span style="font-weight: bold;">Courriel:</span>boubacar.hama.bague.umontreal.ca
+        <span style="font-weight: bold;">Courriel: </span>boubacar.hama.bague.umontreal.ca
         <br />
-        <span style="font-weight: bold;">temps mis: -- </span>***
+        <span style="font-weight: bold;">temps mis: </span>***
     </p>
     <h2>
         Distribution des tâches</h2>
@@ -88,26 +88,112 @@
         <thead>
             <tr>
                 <th class="first_col">
-                    Tâche
+                    Tâches
                 </th>
                 <th>
-                    ***
+                    Samir
                 </th>
                 <th>
-                    ***
+                    Brice
                 </th>
                 <th>
-                    ***
+                    Dorensky
                 </th>
                 <th>
-                    ***
+                    Kamen
+                </th>
+                <th>
+                    Boubacar
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="first_col">
+                    Glossaire
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
                     Diagramme de classe
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Cas d'utilisations
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Risques
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+                <td>
+                    ***
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Exigences
+                </td>
+                <td>
+                    ***
                 </td>
                 <td>
                     ***
@@ -125,6 +211,9 @@
             <tr>
                 <td class="first_col">
                     Implémentation
+                </td>
+                <td>
+                    ***
                 </td>
                 <td>
                     ***
@@ -185,7 +274,7 @@
             width="500px" alt="some image" />
     </p>
     <h2>
-        Tâche 3 : Cas domain'utilisation
+        Tâche 3 : Cas d'utilisations
     </h2>
     <h4>Note : Le cas d'utiisation "Gestion des tâches" a été séparé en deux cas d'utiisation à savoir : "Créer des tâches" et "Allouer des tâches à un robot".</h4>
     <h3>Cas 1</h3>
@@ -569,13 +658,21 @@
     <p>
         <span style="font-weight: bold;">Cas d'utilisation :</span>Contrôler les mouvements d'un robot<br>
         <span style="font-weight: bold;">But :</span>Donner des ordres de déplacement et de staionnement à un robot.<br>
-        <span style="font-weight: bold;">Préconditions :</span><br>
-        <span style="font-weight: bold;">Acteurs :</span> <br>
+        <span style="font-weight: bold;">Préconditions :</span>Le robot doit posséder les composantes nécessaires.<br>
+        <span style="font-weight: bold;">Acteurs :</span>Système (principal), robot (secondaire) <br>
         <span style="font-weight: bold;">Scénario principal :</span> <br>
-        1. <br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
+        1. Le système modifie l'orientation du robot. <br>
+        2. Le système augmente la vitesse du robot pour le faire avancer et diminue la vitesse pour le faire ralentir.<br>
+        3. Le système modifie l'orientation du robot pendant ce que dernier est en mouvement.<br>
+        4. Le robot suit une trajectoire donnée dirigé par les changements de vitesses et d'orientation effectué par le système. <br>
+        5. Le système modifie la vitesse du robot et la met à 0 pour stationner le robot. <br>
 
-        <span style="font-weight: bold;">Postconditions :</span><br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span>  <br>
+        2a. Le robot ne possède plus de roues / hélices (dégradation et oxydation avec le temps). <br>
+        &emsp;2a.1 Le système affiche une erreur (exceptions). <br>
+        &emsp;2a.2 Le scénario se termine. <br>
+
+        <span style="font-weight: bold;">Postconditions :</span>Le robot, contôlés par le système, effectues des mouvements.<br>
     </p>
 
     <h2>Tâche 4 : Risques</h2>
