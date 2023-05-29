@@ -50,7 +50,7 @@ public class Utilisateur {
             } else if (action.equals("Ecouter")) {
                 if (composantes.contains("Micro")) {
                     System.out.print(robot.nom + " peut ecouter! \n");
-                    robot.actions.add("Micro");
+                    robot.actions.add("Ecouter");
                 } else {
                     System.out.print("Il vous manque la composante : Micro \n");
                     missingComponentAdded = true;
@@ -58,7 +58,7 @@ public class Utilisateur {
             } else if (action.equals("Deplacer")) {
                 if (composantes.contains("Roue")) {
                     System.out.print(robot.nom + " peut se deplacer! \n");
-                    robot.actions.add("Roue");
+                    robot.actions.add("Deplacer");
                 } else {
                     System.out.print("Il vous manque la composante : Roue \n");
                     missingComponentAdded = true;
@@ -91,10 +91,10 @@ public class Utilisateur {
     public static void afficherEtatRobot(Robot robot){ 
         System.out.println("Nom: " + robot.nom);
         System.out.println("Coordonnées: " + "X: " + robot.X  + "; Y: " + robot.Y);
-        System.out.println("Vitesse: " + robot.vitesse);
-        System.out.println("Batterie: " + robot.batterie);
-        System.out.println("CPU: " + robot.cpu);
-        System.out.println("Memoire: " + robot.memoire);
+        System.out.println("Vitesse: " + robot.vitesse + "km/h");
+        System.out.println("Batterie: " + robot.batterie + "%");
+        System.out.println("CPU: " + robot.cpu + "%");
+        System.out.println("Memoire: " + robot.memoire + "%");
     }
 
 }
