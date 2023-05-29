@@ -3,6 +3,7 @@ public class Utilisateurs {
         System.out.println("Hello World");
     }
 
-    
-
+    public static void name() {
+        System.out.print("Nothing")
+    }
 }
