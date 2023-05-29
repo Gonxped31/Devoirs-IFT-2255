@@ -12,7 +12,7 @@ public class Utilisateurs {
         voirActivitesMaintenues(r);
     }
 
-    //Kamen 
+//----Kamen----------------------------------------------------------------------------------------------------------------
 
     //Scan les composantes de l'action que l'utilisateur
     public static LinkedList<String> ajouterComposantes(LinkedList<String> composantes, Scanner scanner){
@@ -76,7 +76,7 @@ public class Utilisateurs {
 
     //Prends un tableau d'actions en parametre, et output 
     //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
-    public static void creerTache(Robot r){
+    public static void allouerTachesRobot(Robot r){
         Scanner scan = new Scanner(System.in);
         String tacheVoulue = "";
         Boolean end = true;
@@ -118,9 +118,13 @@ public class Utilisateurs {
         System.out.println("Memoire: " + robot.memoire + "%");
     }
 
+    public static void creerTache() {
+        // TODO
+    }
 
 
-    // Samir
+
+//-Samir-----------------------------------------------------------------------------------------------
 
 
     public static void enregistrerRobot() {
