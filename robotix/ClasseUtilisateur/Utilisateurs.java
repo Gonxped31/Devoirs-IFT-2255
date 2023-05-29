@@ -85,12 +85,13 @@ public class Utilisateurs {
             tacheVoulue = scan.nextLine();
             if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
                 r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
-                System.out.println("Voici les taches de" + r.nom + ": " + r.taches);
+                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
             }
             else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
                 r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
                 System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            } else {
+            } 
+            if (!tacheVoulue.equals("None")) {
                 System.out.println("Il manque des actions pour creer une tache!");
                 creerAction(r.actions, r);
             }
