@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-
+// Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot {
     String nom;
     int X;
