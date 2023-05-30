@@ -7,17 +7,21 @@ import java.util.Scanner;
 import domain.logic.Fournisseur.Fournisseur;
 
 public class Utilisateurs {
+    String nom, prenom, pseudo, courriel, telephone;
     public static void main(String[] args) {
-        LinkedList<String> composantes = new LinkedList<String>();
+       /* LinkedList<String> composantes = new LinkedList<String>();
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
         creerAction(comp, r);
         allouerTachesRobot(r);
-        voirActivitesMaintenues(r);
+        voirActivitesMaintenues(r);*/
+        LinkedList<Robot> robots = enregistrerRobot();
+        afficherMetriquesFlotte(robots);
+    }
 
-        enregistrerRobot();
-        voirActivitesMaintenues(r);
+    public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
+
     }
 
 //----Kamen----------------------------------------------------------------------------------------------------------------
@@ -39,7 +43,7 @@ public class Utilisateurs {
 
     /* REMARQUE :
         Si un robot prend des actions en paramètre, pourquoi est-ce qu'on a besoin d'un robot en paramètre pour créer des action (pour créer un robot, on a besoin d'action
-        et pour creer des actions, on a besoin d'un robot...)*/
+        et pour creer des actions, on a besoin d'un robot...) */
 
     //A partir de ce qui a été scanner, on produit une tache
     public static void creerAction(LinkedList<String> composantes, Robot robot) {
@@ -136,10 +140,9 @@ public class Utilisateurs {
 
 
 
-//-Samir-----------------------------------------------------------------------------------------------
+//-Samir--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    public static void enregistrerRobot() {
+    public static LinkedList<Robot> enregistrerRobot() {
         LinkedList<Robot> robots = new LinkedList<>();
         System.out.println("************* Enrégistrer un robot *************");
         do {
@@ -147,7 +150,8 @@ public class Utilisateurs {
             // CREER DES ACTIONS.
             robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null, null));
         } while(enregistrerDeNouveau());
-        
+
+        return robots;
     }
 
     public static LinkedList<String> demanderInfosRobots() {
@@ -244,10 +248,14 @@ public class Utilisateurs {
         return result;
     }
     
+
     
 
-    public static void afficherMetriquesFlotte() {
-        // TODO
+    public static void afficherMetriquesFlotte(LinkedList<Robot> robotsEnregistres) {
+        // TODO 
+        System.out.println("************* Afficher les métriques d'une flotte *************");
+
+
     }
 
     public static void gestionDesProblèmes() {
