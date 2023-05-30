@@ -8,15 +8,16 @@ import domain.logic.Fournisseur.Fournisseur;
 
 public class Utilisateurs {
     public static void main(String[] args) {
-        /*LinkedList<String> composantes = new LinkedList<String>();
+        LinkedList<String> composantes = new LinkedList<String>();
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
         creerAction(comp, r);
         allouerTachesRobot(r);
-        voirActivitesMaintenues(r);*/
+        voirActivitesMaintenues(r);
 
         enregistrerRobot();
+        voirActivitesMaintenues(r);
     }
 
 //----Kamen----------------------------------------------------------------------------------------------------------------
