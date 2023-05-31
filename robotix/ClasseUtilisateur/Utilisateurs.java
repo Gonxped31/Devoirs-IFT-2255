@@ -1,9 +1,12 @@
 import java.io.IOException;
+import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import javax.naming.ldap.SortControl;
+import javax.print.attribute.standard.MediaSize.Other;
 import javax.swing.SingleSelectionModel;
 
 import domain.logic.Fournisseur.Fournisseur;
@@ -23,15 +26,16 @@ public class Utilisateurs {
         voirActivitesMaintenues(r);*/
         //LinkedList<Robot> robots = enregistrerRobot();
         //afficherMetriquesFlotte(robots);
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+       // Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
         //r.actions.add("Deplacer"); 
-        LinkedList<String> taches = new LinkedList<String>(); 
+        /*LinkedList<String> taches = new LinkedList<String>(); 
         LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
         composantes.add("Deplacer");  
         Scanner scanner = new Scanner(System.in);
         creerTaches(scanner, taches);
         allouerTachesRobot(r, composantes,scanner, taches);
-        scanner.close();
+        scanner.close();*/
+        trouverFournisseurs();
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
@@ -327,7 +331,144 @@ public class Utilisateurs {
     }
 
     public static void trouverFournisseurs() {
+        ArrayList<ArrayList<String>> fournisseurs = new ArrayList<>();
+        ArrayList<String> fournisCPU = new ArrayList<>();
+        ArrayList<String> fournisCPU2 = new ArrayList<>();
+        ArrayList<String> fournisRoue = new ArrayList<>();
+        ArrayList<String> fournisHp = new ArrayList<>();
+        ArrayList<String> fournisMic = new ArrayList<>();
+        ArrayList<String> fournisMic2 = new ArrayList<>();
+
+        fournisCPU2.add("Fournisseur5");
+        fournisCPU2.add("Adresse2");
+        fournisCPU2.add("Courriel3");
+        fournisCPU2.add("Numero4");
+        fournisCPU2.add("type2");
+        fournisCPU2.add("compagnie1");
+
         
+        fournisMic2.add("Fournisseur6" );
+        fournisMic2.add("Adresse1");
+        fournisMic2.add("Courriel3");
+        fournisMic2.add("Numero4");
+        fournisMic2.add("type3");
+        fournisMic2.add("compagnie2");
+
+        fournisseurs.add(fournisCPU);
+        fournisseurs.add(fournisRoue);
+        fournisseurs.add(fournisHp);
+        fournisseurs.add(fournisMic);
+
+
+        int iterateur = 1;
+        for (ArrayList<String> fournisseur : fournisseurs) {
+            fournisseur.add("Fournisseur" + iterateur);
+            fournisseur.add("Adresse" + iterateur);
+            fournisseur.add("Courriel" + iterateur);
+            fournisseur.add("Numero" + iterateur);
+            fournisseur.add("type" + iterateur);
+            fournisseur.add("compagnie" + iterateur);
+            ++iterateur;
+        }
+
+        fournisseurs.add(fournisCPU2);
+        fournisseurs.add(fournisMic2);
+
+
+        Scanner scanner = new Scanner(System.in);
+        boolean continuer = true;
+        while (continuer) {
+            System.out.println("Choisissez un filtre parmi les suivants : ");
+            System.out.println("1- Nom");
+            System.out.println("2- Adresse");
+            System.out.println("3- Courriel");
+            System.out.println("4- Telephone");
+            System.out.println("5- Type de robots fabriqués");
+            System.out.println("6- Nom de la compagnie");
+            System.out.println("7- Aucun filtre");
+            System.out.print(">>> Votre choix :");
+            String choix = scanner.nextLine();
+            switch (choix) {
+                case "1":
+                    System.out.print("Veuillez entrer le nom recherché : ");
+                    String nom = scanner.nextLine();
+                    getFournisseurs(fournisseurs, nom);
+                    continuer = false;
+                    break;
+                case "2":
+                    System.out.print("Veuillez entrer l'adresse recherchée : ");
+                    String adresse = scanner.nextLine();
+                    getFournisseurs(fournisseurs, adresse);
+                    continuer = false;
+                    break;
+                
+                case "3":
+                    System.out.print("Veuillez entrer le courriel recherché : ");
+                    String courriel = scanner.nextLine();
+                    getFournisseurs(fournisseurs, courriel);
+                    continuer = false;
+                    break;
+                
+                case "4":
+                    System.out.print("Veuillez entrer le numero recherché : ");
+                    String numero = scanner.nextLine();
+                    getFournisseurs(fournisseurs, numero);
+                    continuer = false;
+                    break;
+    
+                case "5":
+                    System.out.print("Veuillez entrer le type de robot recherché : ");
+                    String type = scanner.nextLine();
+                    getFournisseurs(fournisseurs, type);
+                    continuer = false;
+                    break;
+                
+                case "6":
+                    System.out.print("Veuillez entrer le nom de la compagnie recherché : ");
+                    String nomCompagnie = scanner.nextLine();
+                    getFournisseurs(fournisseurs, nomCompagnie);
+                    continuer = false;
+                    break;
+
+                case "7":
+                    for (ArrayList<String> element : fournisseurs) {
+                        System.out.println(element);
+                    }
+                    continuer = false;
+                    break;
+    
+                default:
+                    System.out.println("Veuillez choisir un élément dans la liste.");
+                    break;
+            }
+    
+        }
+        scanner.close();
+        
+    }
+
+    public static void getFournisseurs(ArrayList<ArrayList<String>> fournisseurs, String entree) {
+        ArrayList<ArrayList<String>> reponse = new ArrayList<>();
+        for (int i = 0; i < fournisseurs.size(); i++) {
+            ArrayList<String> fournis = fournisseurs.get(i);
+            for (int j = 0; j < fournis.size(); j++) {
+                if (entree.equals(fournis.get(j))) {
+                    reponse.add(fournis);
+                }
+            }
+        }
+
+        if (reponse.size() == 0){
+            System.out.println("Il n'y a pas de fournisseur avec cette caractéristique.");
+        } else {
+            for (ArrayList<String> element : reponse) {
+                System.out.println(element);
+            }
+        }
+    }
+
+    public static void acheterComposantes() {
+        // TODO
     }
 
 }
