@@ -16,12 +16,18 @@ public class Utilisateurs {
         creerAction(comp, r);
         allouerTachesRobot(r);
         voirActivitesMaintenues(r);*/
+        Scanner scanner = new Scanner(System.in);
         LinkedList<Robot> robots = enregistrerRobot();
-        afficherMetriquesFlotte(robots);
+        afficherMetriquesFlotte(scanner,robots);
+        //afficherEtatRobot(robots.get(0));
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
 
+    }
+
+    public static void menu() {
+        System.out.println("******************** Menu ********************");
     }
 
 //----Kamen----------------------------------------------------------------------------------------------------------------
@@ -145,16 +151,17 @@ public class Utilisateurs {
     public static LinkedList<Robot> enregistrerRobot() {
         LinkedList<Robot> robots = new LinkedList<>();
         System.out.println("************* Enrégistrer un robot *************");
+        Scanner scanner = new Scanner(System.in);
         do {
-            LinkedList<String> infosRobot = demanderInfosRobots();
-            // CREER DES ACTIONS.
+            LinkedList<String> infosRobot = demanderInfosRobots(scanner);
             robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null, null));
-        } while(enregistrerDeNouveau());
+        } while(enregistrerDeNouveau(scanner));
 
+        scanner.close();
         return robots;
     }
 
-    public static LinkedList<String> demanderInfosRobots() {
+    public static LinkedList<String> demanderInfosRobots(Scanner scanner) {
         // TODO
         // Contient dans l'ordre : Nom, composantes
         LinkedList<String> infosRobots;
@@ -162,7 +169,6 @@ public class Utilisateurs {
         int nombreCompoantes = 2;
         infosRobots = new LinkedList<>();
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println(" ");
         System.out.print("Nom du robot à ajouter : ");
         String nom = scanner.nextLine();
@@ -175,12 +181,11 @@ public class Utilisateurs {
                 System.out.print("Nombre de composantes à rajouter au robot (minimum de 2) : ");
                 nombreCompoantes = Integer.parseInt(scanner.nextLine());
                 if (nombreCompoantes >= 2) {
-                    infosRobots.clear(); // Clear the list before adding new components
+                    infosRobots.clear();
                     for (int i = 1; i <= nombreCompoantes; ++i) {
                         System.out.print("Composante " + i + " : ");
                         String choix = scanner.nextLine();
                         infosRobots.add(choix);
-                        //System.out.println();
                     }
                     verifierComposantes(infosRobots);
                     repeat = false;
@@ -195,17 +200,20 @@ public class Utilisateurs {
                 System.out.println(" ");
                 infosRobots.clear();
                 continue;
+            } catch (NumberFormatException e) {
+                System.out.println(" ");
+                System.out.print("Vous devez entrer un chiffre / nombre");
+                System.out.println(" ");
+                infosRobots.clear();
+                continue;
             }
         
         } while (repeat);
         infosRobots.addFirst(memoire);
         infosRobots.addFirst(nom);
-        System.out.println("Enregistrement réussi ! ");
-        scanner.close();
-        
+        System.out.println(" ");
+        System.out.println("Enregistrement réussi ! ");        
         return infosRobots;
-        
-
     }
 
     public static void verifierComposantes(LinkedList<String> list) throws IOException {
@@ -223,15 +231,14 @@ public class Utilisateurs {
 
     }
 
-    public static Boolean enregistrerDeNouveau() {
+    public static Boolean enregistrerDeNouveau(Scanner scanner) {
         boolean repeter = true;
         boolean result = false;
-        Scanner scanner = new Scanner(System.in);
         while (repeter) {
             System.out.println(" ");
             System.out.println("Choisissez une option (entrez simplement le chiffre) : ");
             System.out.println("1- Enregistrer un autre robot");
-            System.out.println("2- Quitter");
+            System.out.println("2- Revenir au menu");
             System.out.print(">>> Votre choix : ");
             String answer = scanner.nextLine();
             if (answer.equals("1")) {
@@ -240,22 +247,31 @@ public class Utilisateurs {
             } else if (answer.equals("2")) {
                 result = false;
                 repeter = false;
+                menu();
             } else {
                 System.out.println("Option invalide. Veuillez réessayer.");
             }
         }
-        scanner.close();
         return result;
     }
     
 
     
 
-    public static void afficherMetriquesFlotte(LinkedList<Robot> robotsEnregistres) {
+    public static void afficherMetriquesFlotte(Scanner scanner, LinkedList<Robot> robotsEnregistres) {
         // TODO 
-        System.out.println("************* Afficher les métriques d'une flotte *************");
-
-
+        System.out.println("************* Métriques de ma flotte *************");
+        System.out.println(" ");
+        System.out.println(">>> Nombre de robot dans la flotte : " + robotsEnregistres.size());
+        System.out.println(">>> Liste des robots : ");
+        for (int i = 1; i < robotsEnregistres.size() + 1; i++) {
+            Robot robot = robotsEnregistres.get(i-1);
+            System.out.println(i + "- " + robot.nom + "\n   Batterie : 100 %\n   Consommation CPU : 73 %");
+        }
+        System.out.println(">>> Batterie moyenne des robots : 100 %" );
+        System.out.println(">>> Consommation moyenne du CPU : 73 %" );
+        System.out.println(" ");
+        menu();
     }
 
     public static void gestionDesProblèmes() {
