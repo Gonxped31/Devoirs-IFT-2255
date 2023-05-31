@@ -350,11 +350,11 @@ public class Utilisateurs {
         }
 
         Scanner scanner = new Scanner(System.in);
-        String continuer = true;
+        boolean continuer = true;
 
         System.out.println("************* Choix de founisseurs *************");
 
-        While (continuer); {
+        while (continuer); {
             System.out.println(" ");
             System.out.println("Veuillez choisir une option :");
             System.out.println("1- Effectuer un choix avec filtre");
@@ -568,5 +568,5 @@ public class Utilisateurs {
         return bool;
         
     }
-
+     
 }
