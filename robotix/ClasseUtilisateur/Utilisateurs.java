@@ -22,7 +22,7 @@ public class Utilisateurs {
         //LinkedList<Robot> robots = enregistrerRobot();
         //afficherMetriquesFlotte(robots);
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
-        r.actions.add("Deplacer"); 
+        //r.actions.add("Deplacer"); 
         LinkedList<String> taches = new LinkedList<String>(); 
         LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
         composantes.add("Deplacer");  
@@ -110,14 +110,14 @@ public class Utilisateurs {
         while (end){
             System.out.println("Veuillez entrez la tache a allouer a " + r.nom + ":");
             String tache = scanner.nextLine();
-            if (tache == "Faire des zigzags" && taches.contains(tache) && r.actions.contains("Deplacer")){
+            if (tache.equals("Faire des zigzags") && taches.contains(tache) && r.actions.contains("Deplacer")){
                 r.taches.add(tache);
                 System.out.println(r.nom + " peut maintenant + " + tache +"!!!");
                 end = false;
-            } else if (tache == "Faire des zigzags" && !taches.contains(tache) && r.actions.contains("Deplacer")) {
+            } else if (tache.equals("Faire des zigzags") && !taches.contains(tache) && r.actions.contains("Deplacer")) {
                 System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
             }
-            else if (tache == "Faire des zigzags" && taches.contains(tache) && !r.actions.contains("Deplacer")){
+            else if (tache.equals("Faire des zigzags") && taches.contains(tache) && !r.actions.contains("Deplacer")){
                 System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
                 creerAction(scanner, composantes, r);
             } else {
@@ -195,10 +195,10 @@ public class Utilisateurs {
         System.out.println("************* Enrégistrer un robot *************");
         Scanner scanner = new Scanner(System.in);
         do {
-            LinkedList<String> infosRobot = demanderInfosRobots();
+            LinkedList<String> infosRobot = demanderInfosRobots(scanner);
             // CREER DES ACTIONS.
             robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null ,null, null));
-        } while(enregistrerDeNouveau());
+        } while(enregistrerDeNouveau(scanner));
         scanner.close();
         return robots;
     }
