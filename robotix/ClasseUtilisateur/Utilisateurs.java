@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import javax.swing.SingleSelectionModel;
 
+import domain.logic.Fournisseur.Fournisseur;
+
 //Faire import domain.logic.Fournisseur.Fournisseur;
 
 public class Utilisateurs {
@@ -320,7 +322,7 @@ public class Utilisateurs {
         // TODO
     }
 
-    /*public static void trouverFournisseurs() {
+    public static void trouverFournisseurs() {
         HashMap<String, String> fournisseursChoisis = new HashMap<>();
 
         String[] caracteristiques1 = {"Nom1", "Deplacement", "Roue", "3000 $", "adresse1", "514-524-5341", "10"};
@@ -330,6 +332,7 @@ public class Utilisateurs {
         String[] caracteristiques5 = {"Nom5", "Affichage", "Camera", "300'000'000 $", "adresse5", "514-524-5345", "15"};
         String[] caracteristiques = {"Nom","Type de robot","Composantes vendues", "Prix", "Adresse","Contacte","Capacité"};
 
+        Fournisseur fournisseur = new Fournisseur(null, null, null, null, null, 0);
 
         HashMap<String, ArrayList<String>> fournisseurs = new HashMap<>();
         fournisseurs.put("Nom1", new ArrayList<String>());
@@ -361,8 +364,10 @@ public class Utilisateurs {
 
             if (choix.equals("1")){
                 trouverAvecFiltre();
-            } else {
+            } else if (choix.equals("2")) {
                 trouverSansFiltre();
+            } else {
+                menu();
             }
 
         }
@@ -562,6 +567,6 @@ public class Utilisateurs {
         }
         return bool;
         
-    }*/
+    }
 
 }
