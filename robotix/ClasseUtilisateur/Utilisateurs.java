@@ -4,24 +4,36 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import domain.logic.Fournisseur.Fournisseur;
+import javax.swing.SingleSelectionModel;
+
+//Faire import domain.logic.Fournisseur.Fournisseur;
 
 public class Utilisateurs {
     String nom, prenom, pseudo, courriel, telephone;
+    //static LinkedList<String> taches = new LinkedList<String>(); 
     public static void main(String[] args) {
        /* LinkedList<String> composantes = new LinkedList<String>();
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5, new LinkedList<String>(), new LinkedList<String>());
+        
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
         creerAction(comp, r);
         allouerTachesRobot(r);
         voirActivitesMaintenues(r);*/
-        LinkedList<Robot> robots = enregistrerRobot();
-        afficherMetriquesFlotte(robots);
+        //LinkedList<Robot> robots = enregistrerRobot();
+        //afficherMetriquesFlotte(robots);
+        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        r.actions.add("Deplacer"); 
+        LinkedList<String> taches = new LinkedList<String>(); 
+        LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
+        composantes.add("Deplacer");  
+        Scanner scanner = new Scanner(System.in);
+        creerTaches(scanner, taches);
+        allouerTachesRobot(r, composantes,scanner, taches);
+        scanner.close();
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
-
+        
     }
 
 //----Kamen----------------------------------------------------------------------------------------------------------------
@@ -36,24 +48,23 @@ public class Utilisateurs {
                 composantes.add(input);
             }
         }
-
         System.out.println(composantes);
         return composantes;
     }
 
     /* REMARQUE :
         Si un robot prend des actions en paramètre, pourquoi est-ce qu'on a besoin d'un robot en paramètre pour créer des action (pour créer un robot, on a besoin d'action
-        et pour creer des actions, on a besoin d'un robot...) */
+        et pour creer des actions, on a besoin d'un robot...) 
+    */
 
     //A partir de ce qui a été scanner, on produit une tache
-    public static void creerAction(LinkedList<String> composantes, Robot robot) {
-        Scanner scan = new Scanner(System.in);
+    public static void creerAction(Scanner scanner,LinkedList<String> composantes, Robot robot) {
         String action = "";
         boolean missingComponentAdded = false;
     
         while (!action.equals("None")) {
             System.out.print("Ajouter action: ");
-            action = scan.nextLine();
+            action = scanner.nextLine();
             if (action.equals("Parler")) {
                 if (composantes.contains("Haut-parleur")) {
                     System.out.print(robot.nom + " peut parler! \n");
@@ -81,7 +92,7 @@ public class Utilisateurs {
             }
     
             if (missingComponentAdded) {
-                composantes = ajouterComposantes(composantes,scan);  // Pass the Scanner object
+                composantes = ajouterComposantes(composantes,scanner);  // Pass the Scanner object
                 missingComponentAdded = false;
             }
         }
@@ -89,17 +100,32 @@ public class Utilisateurs {
         System.out.println(robot.actions);
     }
     
-
-    //Prends un tableau d'actions en parametre, et output 
     //Prends une liste chainées des actions voulues, et ouput une liste chainées avec la tâches ajoutées
-    public static void allouerTachesRobot(Robot r){
-        Scanner scan = new Scanner(System.in);
-        String tacheVoulue = "";
-        Boolean end = true;
-    
+    public static void allouerTachesRobot(Robot r, LinkedList<String> composantes, Scanner scanner, LinkedList<String> taches){
+        boolean end = true;
         while (end){
+            System.out.println("Veuillez entrez la tache a allouer a " + r.nom + ":");
+            String tache = scanner.nextLine();
+            if (tache == "Faire des zigzags" && taches.contains(tache) && r.actions.contains("Deplacer")){
+                r.taches.add(tache);
+                System.out.println(r.nom + " peut maintenant + " + tache +"!!!");
+                end = false;
+            } else if (tache == "Faire des zigzags" && !taches.contains(tache) && r.actions.contains("Deplacer")) {
+                System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
+            }
+            else if (tache == "Faire des zigzags" && taches.contains(tache) && !r.actions.contains("Deplacer")){
+                System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
+                creerAction(scanner, composantes, r);
+            } else {
+                System.out.println("Not working");
+            }
+            
+        }
+
+        
+        /*while (end){
             System.out.print("Veuillez creer une tache:");
-            tacheVoulue = scan.nextLine();
+            tacheVoulue = scanner.nextLine();
             if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
                 r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
                 System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
@@ -113,9 +139,7 @@ public class Utilisateurs {
                 System.out.println("Il manque des actions pour creer une tache!");
                 creerAction(r.actions, r);
             }
-        }
-        scan.close();
-        
+        }*/
     }
 
     public static void voirActivitesMaintenues(Robot r){
@@ -134,8 +158,28 @@ public class Utilisateurs {
         System.out.println("Memoire: " + robot.memoire + "%");
     }
 
-    public static void creerTache() {
-        // TODO
+    public static void creerTaches(Scanner scanner, LinkedList<String> taches) {
+        
+        //LinkedList<LinkedList<String>> taches = new LinkedList<>();
+        //LinkedList<String> tache = new LinkedList<>(); 
+        //System.out.println("Quelle taches voulez vous créer (Faire un carré (Deplacer(Roue)), Récupérer un objet et le lacher en l'air (Voler (Hélice), Attraper(Bras)), Se déplacer et filmer un événement (Deplacer(roue), Filmer(Camera)))?");
+        boolean repeter = true;
+        while (repeter){
+            //Juste deux options de taches
+            System.out.println("Quelle taches voulez vous créer (Recuperer un objet et le lacher en l'air (Voler (Hélice), Attraper(Bras)), Se déplacer et filmer un événement (Deplacer(roue), Filmer(Camera)))?");
+            String tache = scanner.nextLine();
+            taches.add(tache);
+            System.out.println("Voulez-vous ajouter une autre tache:");
+            System.out.println("-1 Oui");
+            System.out.println("-2 Non");
+            String verdict = scanner.nextLine();
+            if (verdict.equals("Oui")){
+               continue;
+            } else {
+                break;
+            }
+        }
+        System.out.println(taches);
     }
 
 
@@ -148,7 +192,7 @@ public class Utilisateurs {
         do {
             LinkedList<String> infosRobot = demanderInfosRobots();
             // CREER DES ACTIONS.
-            robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null, null));
+            robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null ,null, null));
         } while(enregistrerDeNouveau());
 
         return robots;
