@@ -163,10 +163,6 @@ public class Utilisateurs {
     }
 
     public static void creerTaches(Scanner scanner, LinkedList<String> taches) {
-        
-        //LinkedList<LinkedList<String>> taches = new LinkedList<>();
-        //LinkedList<String> tache = new LinkedList<>(); 
-        //System.out.println("Quelle taches voulez vous créer (Faire un carré (Deplacer(Roue)), Récupérer un objet et le lacher en l'air (Voler (Hélice), Attraper(Bras)), Se déplacer et filmer un événement (Deplacer(roue), Filmer(Camera)))?");
         boolean repeter = true;
         while (repeter){
             //Juste deux options de taches
@@ -317,7 +313,7 @@ public class Utilisateurs {
     }
 
     public static void gestionDesProblèmes() {
-        // TODO
+        
     }
 
     public static void participerActivités() {
