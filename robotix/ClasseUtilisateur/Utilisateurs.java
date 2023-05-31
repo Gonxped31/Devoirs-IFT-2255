@@ -566,7 +566,6 @@ public class Utilisateurs {
 
                 case "3":
 
-
             }
         }
         return bool;
