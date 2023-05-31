@@ -11,7 +11,8 @@ public class Robot {
     LinkedList<String> composantes = new LinkedList<String>();
     LinkedList<String> actions = new LinkedList<String>(); 
     LinkedList<String> taches = new LinkedList<String>(); 
-    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<String> composantes, LinkedList<String> action, LinkedList<String> taches ){
+    LinkedList<String> activites = new LinkedList<String>();
+    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<String> composantes, LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -22,5 +23,6 @@ public class Robot {
         this.composantes = composantes;
         this.actions = action;
         this.taches = taches;
+        this.activites = activites;
     }
 }
