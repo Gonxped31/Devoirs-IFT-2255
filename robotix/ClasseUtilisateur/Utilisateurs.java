@@ -195,10 +195,10 @@ public class Utilisateurs {
         System.out.println("************* Enrégistrer un robot *************");
         Scanner scanner = new Scanner(System.in);
         do {
-            LinkedList<String> infosRobot = demanderInfosRobots();
+            LinkedList<String> infosRobot = demanderInfosRobots(scanner);
             // CREER DES ACTIONS.
             robots.add(new Robot(infosRobot.get(0), 0, 0, 0, 100, 20, Double.parseDouble(infosRobot.get(1)) , null ,null, null));
-        } while(enregistrerDeNouveau());
+        } while(enregistrerDeNouveau(scanner));
         scanner.close();
         return robots;
     }
