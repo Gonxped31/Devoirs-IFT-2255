@@ -30,14 +30,15 @@ public class Utilisateurs {
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
 
         //r.actions.add("Deplacer"); 
-        /*LinkedList<String> taches = new LinkedList<String>(); 
+        LinkedList<String> taches = new LinkedList<String>(); 
         LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
         composantes.add("Deplacer");  
         Scanner scanner = new Scanner(System.in);
-        creerTaches(scanner, taches);
-        allouerTachesRobot(r, composantes,scanner, taches);
-        scanner.close();*/
-        trouverFournisseurs();
+        //creerTaches(scanner, taches);
+        //allouerTachesRobot(r, composantes,scanner, taches);
+        participerActivites(r, scanner);
+        scanner.close();
+        //trouverFournisseurs();
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
@@ -54,7 +55,7 @@ public class Utilisateurs {
     public static LinkedList<String> ajouterComposantes(LinkedList<String> composantes, Scanner scanner){
         String input = "";
         while (!input.equals("None")){
-            System.out.print("Ajouter composante: ");
+            System.out.print("Ajouter composante (Bras), (Roue), (Haut-parleur), (Micro), (None):");
             input = scanner.nextLine();
             if (!input.equals("None")){
                 composantes.add(input);
@@ -101,6 +102,14 @@ public class Utilisateurs {
                     System.out.print("Il vous manque la composante : Roue \n");
                     missingComponentAdded = true;
                 }
+            } else if (action.equals("Attraper")){
+                if (composantes.contains("Bras")) {
+                    System.out.print(robot.nom + " peut se deplacer! \n");
+                    robot.actions.add("Attraper");
+                } else {
+                    System.out.print("Il vous manque la composante : Bras \n");
+                    missingComponentAdded = true;
+                }
             }
     
             if (missingComponentAdded) {
@@ -122,36 +131,33 @@ public class Utilisateurs {
                 r.taches.add(tache);
                 System.out.println(r.nom + " peut maintenant + " + tache +"!!!");
                 end = false;
-            } else if (tache.equals("Faire des zigzags") && !taches.contains(tache) && r.actions.contains("Deplacer")) {
+            } else if (tache.equals("Faire des zigzags") && !taches.contains(tache)) {
                 System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
-            }
-            else if (tache.equals("Faire des zigzags") && taches.contains(tache) && !r.actions.contains("Deplacer")){
+                creerTaches(scanner, taches);
+            } else if (tache.equals("Faire des zigzags") && taches.contains(tache) && !r.actions.contains("Deplacer")){
                 System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
                 creerAction(scanner, composantes, r);
-            } else {
-                System.out.println("Not working");
-            }
+            }        
             
-        }
-
-        
-        /*while (end){
-            System.out.print("Veuillez creer une tache:");
-            tacheVoulue = scanner.nextLine();
-            if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
-                r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
-                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            }
-            else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
-                r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
-                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            } else if (tacheVoulue.equals("None")){
+            if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && r.actions.contains("Deplacer") && r.actions.contains("Attraper")){
+                r.taches.add(tache);
+                System.out.println(r.nom + " peut maintenant " + tache +"!!!");
                 end = false;
-            }else {
-                System.out.println("Il manque des actions pour creer une tache!");
-                creerAction(r.actions, r);
+            } else if (tache.equals("Attraper et relacher un objet") && !taches.contains(tache) && r.actions.contains("Deplacer") && r.actions.contains("Attraper")) {
+                System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
+                creerTaches(scanner, taches);
             }
-        }*/
+            else if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && !r.actions.contains("Deplacer") && r.actions.contains("Attraper")){
+                System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
+                creerAction(scanner, composantes, r);
+            }else if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && r.actions.contains("Deplacer") && !r.actions.contains("Attraper")){
+                System.out.println("Il manque l'action 'Attraper', veuillez l'ajouter");
+                creerAction(scanner, composantes, r);
+            } else {
+                System.out.println("Il vous manque des actions");
+                creerAction(scanner, composantes, r);
+            } 
+        }
     }
 
     public static void voirActivitesMaintenues(Robot r){
@@ -174,7 +180,7 @@ public class Utilisateurs {
         boolean repeter = true;
         while (repeter){
             //Juste deux options de taches
-            System.out.println("Quelle taches voulez vous créer (Recuperer un objet et le lacher en l'air (Voler (Hélice), Attraper(Bras)), Se déplacer et filmer un événement (Deplacer(roue), Filmer(Camera)))?");
+            System.out.println("Quelle taches voulez vous créer 'Faire des zigzags' ou 'Attraper et relacher un objet'");
             String tache = scanner.nextLine();
             taches.add(tache);
             System.out.println("Voulez-vous ajouter une autre tache:");
@@ -337,30 +343,43 @@ public class Utilisateurs {
         }
     }
 
-    public static void participerActivités(Robot r, Scanner scanner) {
+    public static void participerActivites(Robot r, Scanner scanner) {
         boolean repeter = true;
         while (repeter){
             //Juste deux options de taches
             //Prenons l'exemple de la tag
             System.out.println("Quelle actitvite voulez-vous assigner a votre robot (Jouer a tag) ou (Faire une course)?");
             String activite = scanner.nextLine();
-            if (activite.equals("Jouer a tag") && r.taches.contains("Faire de zigzags") && r.taches.contains("Attraper un objet et le relacher")){
+            if (activite.equals("Jouer a tag") && r.taches.contains("Faire de zigzags") && r.taches.contains("Attraper et relacher un objet")){
                 System.out.println(r.nom + " peut maintenant " + activite + "!");
                 r.activites.add(activite);
                 repeter = false;
-            } else if (activite.equals("Jouer a tag") && !r.taches.contains("Faire de zigzags") && r.actions.contains("Attraper un objet et le relacher")) {
-                System.out.println("La tâche 'Faire de zigzags' n'est pas ajoutée car n'existe pas");
-                creerTaches(scanner, r.taches);
+            } else if (activite.equals("Jouer a tag") && !r.taches.contains("Faire des zigzags") && r.taches.contains("Attraper et relacher un objet")) {
+                System.out.println("L'activité 'Jouer a tag' car la tache 'Faire des zigzags' n'existe pas");
+                allouerTachesRobot(r,r.composantes, scanner, r.taches);
+            } else if (activite.equals("Jouer a tag") && r.taches.contains("Faire des zigzags") && !r.taches.contains("Attraper et relacher un objet")){
+                System.out.println("L'activité 'Jouer a tag' car la tache 'Attraper un objet et le relacher' n'existe pas");
+                allouerTachesRobot(r,r.composantes, scanner, r.taches);
+            } else if (activite.equals("Jouer a tag") && !r.taches.contains("Faire des zigzags") && !r.taches.contains("Attraper et relacher un objet")){
+                System.out.println("L'activité 'Jouer a tag' car la tache 'Faire des zigzags' et 'Attraper un objet et le relacher'");
+                allouerTachesRobot(r,r.composantes, scanner, r.taches);
             }
-            else if (activite.equals("Jouer a tag") && r.activites.contains(activite) && !r.actions.contains("Attraper un objet et le relacher")){
-                System.out.println("La tâche 'Attraper un objet et le relacher' n'est pas ajoutée car n'existe pas");
-                creerTaches(scanner, r.taches);
-            } 
+            
+            if (activite.equals("Faire une course") && r.taches.contains("Faire des zigzags")){
+                System.out.println(r.nom + " peut maintenant " + activite + "!");
+                r.activites.add(activite);
+                repeter = false;
+            } else if (activite.equals("Faire une course") && !r.taches.contains("Faire des zigzags")) {
+                System.out.println("La tâche 'Faire de zigzags' n'est pas ajoutée car n'existe pas");
+                allouerTachesRobot(r,r.composantes, scanner, r.taches);
+            }
+
             System.out.println("Voulez-vous ajouter une autre activite:");
             System.out.println("-1 Oui");
             System.out.println("-2 Non");
             String verdict = scanner.nextLine();
             if (verdict.equals("Oui")){
+                repeter = true;
                continue;
             } else {
                 break;
@@ -508,6 +527,7 @@ public class Utilisateurs {
 
     public static void acheterComposantes() {
         //TODO
+        
     }
      
 }
