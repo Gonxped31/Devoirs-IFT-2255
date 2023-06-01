@@ -8,6 +8,13 @@ import domain.logic.Robot.TypeRobot;
 public class Main {
     public static void main(String[] args) {
 
+        ArrayList<Fournisseur> listeFournisseurs = creerFournisseurs();
+
+    }
+
+    private static ArrayList<Fournisseur> creerFournisseurs() {
+        ArrayList<Fournisseur> listeFournisseurs = new ArrayList<Fournisseur>();
+        // Fournisseurs déjà inscrits dans le système
         Fournisseur roboTech = new Fournisseur("RoboTech", "123 rue des Innovations, Montréal, QC, H1A 0A1", "info@robotech.ca",
                 "4502104555", TypeRobot.A, 30);
         Fournisseur automatech = new Fournisseur("Automatech", "456 avenue des Automates, Montréal, QC, H5M 1N2", "contact@automatech.ca",
@@ -19,14 +26,13 @@ public class Main {
         Fournisseur roboPro = new Fournisseur("RoboPro", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "info@roboPro.ca",
                 "4506780000", TypeRobot.A, 22);
 
-        ArrayList<Fournisseur> listeFournisseurs = new ArrayList<Fournisseur>();
         listeFournisseurs.add(roboTech);
         listeFournisseurs.add(automatech);
         listeFournisseurs.add(innovatech);
         listeFournisseurs.add(iRobot);
         listeFournisseurs.add(roboPro);
-
+        
+        return listeFournisseurs;        
     }
-
 
 }
