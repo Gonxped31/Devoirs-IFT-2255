@@ -19,7 +19,6 @@ public class Utilisateurs {
     //static LinkedList<String> taches = new LinkedList<String>(); 
     public static void main(String[] args) {
        /* LinkedList<String> composantes = new LinkedList<String>();
-        
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
         creerAction(comp, r);
@@ -27,8 +26,7 @@ public class Utilisateurs {
         voirActivitesMaintenues(r);*/
         //LinkedList<Robot> robots = enregistrerRobot();
         //afficherMetriquesFlotte(robots);
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
-
+        //Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
         //r.actions.add("Deplacer"); 
         /*LinkedList<String> taches = new LinkedList<String>(); 
         LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
@@ -134,24 +132,6 @@ public class Utilisateurs {
             
         }
 
-        
-        /*while (end){
-            System.out.print("Veuillez creer une tache:");
-            tacheVoulue = scanner.nextLine();
-            if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && tacheVoulue.equals("Deplacer et dire allo")){
-                r.taches.add("Se deplacer et dire 'Allo!' a l'utilisateur");
-                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            }
-            else if (r.actions.contains("Parler") && r.actions.contains("Deplacer") && r.actions.contains("Ecouter")){
-                r.taches.add("Se deplacer, ecouter l'entree sonore de l'utilisateur et la répéter");
-                System.out.println("Voici les taches de " + r.nom + ": " + r.taches);
-            } else if (tacheVoulue.equals("None")){
-                end = false;
-            }else {
-                System.out.println("Il manque des actions pour creer une tache!");
-                creerAction(r.actions, r);
-            }
-        }*/
     }
 
     public static void voirActivitesMaintenues(Robot r){
@@ -337,7 +317,7 @@ public class Utilisateurs {
         }
     }
 
-    public static void participerActivités(Robot r, Scanner scanner) {
+    public static void participerActivites(Robot r, Scanner scanner) {
         boolean repeter = true;
         while (repeter){
             //Juste deux options de taches
@@ -384,7 +364,6 @@ public class Utilisateurs {
         fournisCPU2.add("Numero4");
         fournisCPU2.add("type2");
         fournisCPU2.add("compagnie1");
-
         
         fournisMic2.add("Fournisseur6" );
         fournisMic2.add("Adresse1");
@@ -397,7 +376,6 @@ public class Utilisateurs {
         fournisseurs.add(fournisRoue);
         fournisseurs.add(fournisHp);
         fournisseurs.add(fournisMic);
-
 
         int iterateur = 1;
         for (ArrayList<String> fournisseur : fournisseurs) {
@@ -412,6 +390,11 @@ public class Utilisateurs {
 
         fournisseurs.add(fournisCPU2);
         fournisseurs.add(fournisMic2);
+
+        HashMap<String, ArrayList<String>> fournisMap = new HashMap<>();
+        for (int i = 1; i < fournisseurs.size() + 1; i++) {
+            fournisMap.put("Fournisseur" + i, fournisseurs.get(i - 1));
+        }
 
 
         Scanner scanner = new Scanner(System.in);
@@ -482,8 +465,24 @@ public class Utilisateurs {
             }
     
         }
+
+        selctionnerFournisseur(scanner, fournisMap);
+        
         scanner.close();
         
+    }
+
+    public static void selctionnerFournisseur(Scanner scanner, HashMap<String, ArrayList<String>> fournisMap) {
+        System.out.println(" ");
+        System.out.print("Veuillez entrer le nom du fournisseur chez qui vous voulez acheter une composante : ");
+        String answer = scanner.nextLine();
+
+        if (fournisMap.containsKey(answer)) {
+            acheterComposantes(scanner, fournisMap.get(answer));
+        } else {
+            System.out.println("Ce fournisseur n'est pas dans la liste.");
+            menu();
+        }
     }
 
     public static void getFournisseurs(ArrayList<ArrayList<String>> fournisseurs, String entree) {
@@ -506,8 +505,43 @@ public class Utilisateurs {
         }
     }
 
-    public static void acheterComposantes() {
-        //TODO
+    public static void acheterComposantes(Scanner scanner, ArrayList<String> fournisseurChoisi) {
+
+        String fourniseurs =  fournisseurChoisi.get(0);
+        switch (fourniseurs) {
+            case "Fournisseur1":
+            case "Fournisseur3":
+                System.out.println("Composante vendu : CPU ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Composante indispensable pour tout robot.");
+                System.out.println("Prix : 1 000 000 000 $ (non négociable)");
+                break;
+
+            case "Fournisseur2":
+            case "Fournisseur4":
+                System.out.println("Composante vendu : Haut-parleur ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Indispensable pour émettre un song.");
+                System.out.println("Prix : 2 000 000 $ (non négociable)");
+                break;
+
+            default:
+                System.out.println(" ");
+                System.out.println("Composante vendu : Roue ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Indispensable pour se déplacer.");
+                System.out.println("Prix : 5 000 000 $ (non négociable)");
+                break;
+        }
+
+        System.out.print(">>> Valider l'achat ? : ");
+        String answer = scanner.nextLine();
+
+        if (answer.toUpperCase().equals("OUI")){
+            System.out.println("Validation de l'achat en cours...");
+            System.out.println("Achat Validé !");
+        } else {
+            System.out.println("Achat annulé...");
+        }
     }
-     
 }
