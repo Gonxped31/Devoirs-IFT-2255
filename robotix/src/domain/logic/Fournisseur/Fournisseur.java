@@ -6,17 +6,13 @@ import domain.logic.Robot.TypeRobot;
 import java.util.List;
 
 public class Fournisseur{
-    String nom;
-    String adresse;
-    String email;
-    String numeroTelephone;
+    String nom , adresse, email, telephone;
     TypeRobot typeRobotFabriquer;
     double capacite;
-    String nomcompagnie;
     List<Robot> inventaireDeRobot;
-
     private List<Composant> composants;
-    public Fournisseur(String nom, String adresse, String email, String numeroTelephone,TypeRobot typeDeRobotFabriquer, double capacite){
+
+    public Fournisseur(String nom, String adresse, String email, String numeroTelephone, TypeRobot typeDeRobotFabriquer, double capacite) {
         //TODO
     }
 
@@ -32,8 +28,8 @@ public class Fournisseur{
         return email;
     }
 
-    public String getNumeroTelephone() {
-        return numeroTelephone;
+    public String getTelephone() {
+        return telephone;
     }
 
     public TypeRobot getTypeRobotFabriquer() {
@@ -42,10 +38,6 @@ public class Fournisseur{
 
     public double getCapacite() {
         return capacite;
-    }
-
-    public String getNomcompagnie() {
-        return nomcompagnie;
     }
 
     public List<Robot> getInventaireDeRobot() {
@@ -68,8 +60,8 @@ public class Fournisseur{
         this.email = email;
     }
 
-    public void setNumeroTelephone(String numeroTelephone) {
-        this.numeroTelephone = numeroTelephone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public void setTypeRobotFabriquer(TypeRobot typeRobotFabriquer) {
@@ -80,16 +72,28 @@ public class Fournisseur{
         this.capacite = capacite;
     }
 
-    public void setNomcompagnie(String nomcompagnie) {
-        this.nomcompagnie = nomcompagnie;
-    }
-
     public void setInventaireDeRobot(List<Robot> inventaireDeRobot) {
         this.inventaireDeRobot = inventaireDeRobot;
     }
 
     public void setComposants(List<Composant> composants) {
         this.composants = composants;
+    }
+
+    public void ajoutRobot() {
+
+    }
+
+    public void retierRobot() {
+
+    }
+
+    public void ajoutComposante() {
+
+    }
+
+    public void retirerComposante() {
+
     }
 
     public void vendreUnComposant(){
