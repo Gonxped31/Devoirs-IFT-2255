@@ -1,19 +1,22 @@
 package domain.logic.Fournisseur;
-
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypeRobot;
-
 import java.util.List;
 
-public class Fournisseur{
+public class Fournisseur {
     String nom , adresse, email, telephone;
     TypeRobot typeRobotFabriquer;
     double capacite;
     List<Robot> inventaireDeRobot;
     private List<Composant> composants;
 
-    public Fournisseur(String nom, String adresse, String email, String numeroTelephone, TypeRobot typeDeRobotFabriquer, double capacite) {
-        //TODO
+    public Fournisseur(String nom, String adresse, String email, String telephone, TypeRobot typeRobotFabriquer, double capacite) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.email = email;
+        this.telephone = telephone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
+        this.typeRobotFabriquer = typeRobotFabriquer;
+        this.capacite = capacite;
     }
 
     public String getNom() {
@@ -48,38 +51,6 @@ public class Fournisseur{
         return composants;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public void setTypeRobotFabriquer(TypeRobot typeRobotFabriquer) {
-        this.typeRobotFabriquer = typeRobotFabriquer;
-    }
-
-    public void setCapacite(double capacite) {
-        this.capacite = capacite;
-    }
-
-    public void setInventaireDeRobot(List<Robot> inventaireDeRobot) {
-        this.inventaireDeRobot = inventaireDeRobot;
-    }
-
-    public void setComposants(List<Composant> composants) {
-        this.composants = composants;
-    }
-
     public void ajoutRobot() {
 
     }
@@ -98,5 +69,17 @@ public class Fournisseur{
 
     public void vendreUnComposant(){
         //TODO
+    }
+
+    @Override
+    public String toString() {
+        return "Fournisseur {" + '\n' +
+                "Nom = " + getNom() + '\n' +
+                "Adresse= " + getAdresse() + '\n' +
+                "Email = " + getEmail() + '\n' +
+                "Numéro de télephone = " + getTelephone() + '\n' +
+                "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
+                "Capacité de fabrication = " + getCapacite() + '\n' +
+                '}';
     }
 }
