@@ -19,7 +19,6 @@ public class Utilisateurs {
     //static LinkedList<String> taches = new LinkedList<String>(); 
     public static void main(String[] args) {
        /* LinkedList<String> composantes = new LinkedList<String>();
-        
         afficherEtatRobot(r);
         LinkedList<String> comp = ajouterComposantes(composantes, new Scanner(System.in)); 
         creerAction(comp, r);
@@ -28,7 +27,6 @@ public class Utilisateurs {
         //LinkedList<Robot> robots = enregistrerRobot();
         //afficherMetriquesFlotte(robots);
         Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
-
         //r.actions.add("Deplacer"); 
         LinkedList<String> taches = new LinkedList<String>(); 
         LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
@@ -403,7 +401,6 @@ public class Utilisateurs {
         fournisCPU2.add("Numero4");
         fournisCPU2.add("type2");
         fournisCPU2.add("compagnie1");
-
         
         fournisMic2.add("Fournisseur6" );
         fournisMic2.add("Adresse1");
@@ -416,7 +413,6 @@ public class Utilisateurs {
         fournisseurs.add(fournisRoue);
         fournisseurs.add(fournisHp);
         fournisseurs.add(fournisMic);
-
 
         int iterateur = 1;
         for (ArrayList<String> fournisseur : fournisseurs) {
@@ -431,6 +427,11 @@ public class Utilisateurs {
 
         fournisseurs.add(fournisCPU2);
         fournisseurs.add(fournisMic2);
+
+        HashMap<String, ArrayList<String>> fournisMap = new HashMap<>();
+        for (int i = 1; i < fournisseurs.size() + 1; i++) {
+            fournisMap.put("Fournisseur" + i, fournisseurs.get(i - 1));
+        }
 
 
         Scanner scanner = new Scanner(System.in);
@@ -501,8 +502,24 @@ public class Utilisateurs {
             }
     
         }
+
+        selctionnerFournisseur(scanner, fournisMap);
+        
         scanner.close();
         
+    }
+
+    public static void selctionnerFournisseur(Scanner scanner, HashMap<String, ArrayList<String>> fournisMap) {
+        System.out.println(" ");
+        System.out.print("Veuillez entrer le nom du fournisseur chez qui vous voulez acheter une composante : ");
+        String answer = scanner.nextLine();
+
+        if (fournisMap.containsKey(answer)) {
+            acheterComposantes(scanner, fournisMap.get(answer));
+        } else {
+            System.out.println("Ce fournisseur n'est pas dans la liste.");
+            menu();
+        }
     }
 
     public static void getFournisseurs(ArrayList<ArrayList<String>> fournisseurs, String entree) {
@@ -524,10 +541,43 @@ public class Utilisateurs {
             }
         }
     }
+    public static void acheterComposantes(Scanner scanner, ArrayList<String> fournisseurChoisi) {
 
-    public static void acheterComposantes() {
-        //TODO
-        
+        String fourniseurs =  fournisseurChoisi.get(0);
+        switch (fourniseurs) {
+            case "Fournisseur1":
+            case "Fournisseur3":
+                System.out.println("Composante vendu : CPU ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Composante indispensable pour tout robot.");
+                System.out.println("Prix : 1 000 000 000 $ (non négociable)");
+                break;
+
+            case "Fournisseur2":
+            case "Fournisseur4":
+                System.out.println("Composante vendu : Haut-parleur ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Indispensable pour émettre un song.");
+                System.out.println("Prix : 2 000 000 $ (non négociable)");
+                break;
+
+            default:
+                System.out.println(" ");
+                System.out.println("Composante vendu : Roue ");
+                System.out.println("Type : " + fournisseurChoisi.get(4));
+                System.out.println("Description : Indispensable pour se déplacer.");
+                System.out.println("Prix : 5 000 000 $ (non négociable)");
+                break;
+        }
+
+        System.out.print(">>> Valider l'achat ? : ");
+        String answer = scanner.nextLine();
+
+        if (answer.toUpperCase().equals("OUI")){
+            System.out.println("Validation de l'achat en cours...");
+            System.out.println("Achat Validé !");
+        } else {
+            System.out.println("Achat annulé...");
+        }
     }
-     
 }
