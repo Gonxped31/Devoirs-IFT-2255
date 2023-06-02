@@ -26,15 +26,20 @@ public class Utilisateurs {
         voirActivitesMaintenues(r);*/
         //LinkedList<Robot> robots = enregistrerRobot();
         //afficherMetriquesFlotte(robots);
-        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        //Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
         //r.actions.add("Deplacer"); 
-        LinkedList<String> taches = new LinkedList<String>(); 
-        LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
-        composantes.add("Deplacer");  
-        Scanner scanner = new Scanner(System.in);
+        //LinkedList<String> taches = new LinkedList<String>(); 
+        //LinkedList<String> composantes = new LinkedList<String>(); //Les composantes que l'utilisateur a acheté
+        //composantes.add("Deplacer");  
+        //Scanner scanner = new Scanner(System.in);
         //creerTaches(scanner, taches);
         //allouerTachesRobot(r, composantes,scanner, taches);
-        participerActivites(r, scanner);
+        //participerActivites(r, scanner);
+        //Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        //LinkedList<String> composantes = new LinkedList<String>();
+        //LinkedList<String> taches = new LinkedList<String>(); 
+        Scanner scanner = new Scanner(System.in);
+        menu(scanner);
         scanner.close();
         //trouverFournisseurs();
     }
@@ -43,21 +48,92 @@ public class Utilisateurs {
         
     }
 
-    public static void menu() {
+    public static void menu(Scanner scanner) {
+        Robot r = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        Robot k = new Robot("Bobby",100, 150, 20, 58, 20, 0.5,new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>());
+        LinkedList<String> composantes = new LinkedList<String>();
+        LinkedList<Robot> flotte = new LinkedList<Robot>();
+        flotte.add(r);
+        flotte.add(k);
+        ArrayList<String> fournisCPU = new ArrayList<>();
+        fournisCPU.add("Fournisseur6" );
+        fournisCPU.add("Adresse1");
+        fournisCPU.add("Courriel3");
+        fournisCPU.add("Numero4");
+        fournisCPU.add("type3");
+        fournisCPU.add("compagnie2");
         System.out.println("******************** Menu ********************");
+        System.out.println("Bienvenue! Veuillez choisir une option:");
+        System.out.println("1- Enregistrer un robot");
+        System.out.println("2- Afficher état d'un robot");
+        System.out.println("3- Ajouter une composante a un robot");
+        System.out.println("4- Ajouter une action a un robot");
+        System.out.println("5- Ajouter une tâche");
+        System.out.println("6- Allouer une tache a un robot");
+        System.out.println("7- Afficher métriques d'une flotte");
+        System.out.println("8- Afficher activités maintenues par un robot d'une flotte");
+        System.out.println("9- Afficher les problèmes du système");
+        System.out.println("10- Trouver un fournisseur");
+        System.out.println("11- Achter une composante");
+        String choix = scanner.nextLine();
+        switch(choix){
+            case("1"):
+                enregistrerRobot();
+                break;
+            case("2"):
+                afficherEtatRobot(r, scanner);
+                break;
+            case("3"):
+                ajouterComposantes(composantes,scanner);
+                break;
+            case("4"):
+                creerAction(scanner, composantes, r);
+                break;
+            case("5"):
+                creerTaches(scanner, composantes);
+                break;
+            case("6"):
+                allouerTachesRobot(r, composantes, scanner, composantes);
+                break;
+            case("7"):
+                afficherMetriquesFlotte(scanner, flotte);
+                break;
+            case("8"):
+                voirActivitesMaintenues(r, scanner);
+                break;
+            case("9"):
+                gestionDesProblèmes(scanner);
+                break;
+            case("10"):
+                trouverFournisseurs();
+                break;
+            case("11"):
+                acheterComposantes(scanner, fournisCPU);
+                break;
+        }
     }
 
 //----Kamen----------------------------------------------------------------------------------------------------------------
 
     //Scan les composantes de l'action que l'utilisateur
     public static LinkedList<String> ajouterComposantes(LinkedList<String> composantes, Scanner scanner){
-        String input = "";
-        while (!input.equals("None")){
+        //String input = "";
+        //while (!input.equals("None")){
             System.out.print("Ajouter composante (Bras), (Roue), (Haut-parleur), (Micro), (None):");
-            input = scanner.nextLine();
-            if (!input.equals("None")){
-                composantes.add(input);
-            }
+            String input = scanner.nextLine();
+            //if (!input.equals("None")){
+            composantes.add(input);
+            //}
+        //}
+
+        System.out.println("Voulez-vous ajouter de nouvelles composantes?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            ajouterComposantes(composantes, scanner);
+        } else{
+            menu(scanner);
         }
         System.out.println(composantes);
         return composantes;
@@ -68,11 +144,10 @@ public class Utilisateurs {
         et pour creer des actions, on a besoin d'un robot...) 
     */
 
-    //A partir de ce qui a été scanner, on produit une tache
+    //A partir de ce qui a été scanner, on produit une action
     public static void creerAction(Scanner scanner,LinkedList<String> composantes, Robot robot) {
         String action = "";
         boolean missingComponentAdded = false;
-    
         while (!action.equals("None")) {
             System.out.print("Ajouter action: ");
             action = scanner.nextLine();
@@ -109,11 +184,19 @@ public class Utilisateurs {
                     missingComponentAdded = true;
                 }
             }
-    
-            if (missingComponentAdded) {
-                composantes = ajouterComposantes(composantes,scanner);  // Pass the Scanner object
-                missingComponentAdded = false;
+            System.out.println("Voulez-vous revenir au menu principal \n");
+            System.out.println("1- Oui");
+            System.out.println("2- Non");
+            String decision = scanner.nextLine();
+            if (decision.equals("1")){
+                menu(scanner);
+            } else{
+                if (missingComponentAdded) {
+                    composantes = ajouterComposantes(composantes,scanner);  // Pass the Scanner object
+                    missingComponentAdded = false;
+                }
             }
+            
         }
     
         System.out.println(robot.actions);
@@ -131,10 +214,10 @@ public class Utilisateurs {
                 end = false;
             } else if (tache.equals("Faire des zigzags") && !taches.contains(tache)) {
                 System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
-                creerTaches(scanner, taches);
+                //creerTaches(scanner, taches);
             } else if (tache.equals("Faire des zigzags") && taches.contains(tache) && !r.actions.contains("Deplacer")){
                 System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
-                creerAction(scanner, composantes, r);
+                //creerAction(scanner, composantes, r);
             }        
             
             if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && r.actions.contains("Deplacer") && r.actions.contains("Attraper")){
@@ -143,35 +226,64 @@ public class Utilisateurs {
                 end = false;
             } else if (tache.equals("Attraper et relacher un objet") && !taches.contains(tache) && r.actions.contains("Deplacer") && r.actions.contains("Attraper")) {
                 System.out.println("Tache n'a pas ete ajoutee car elle n'existe pas");
-                creerTaches(scanner, taches);
+                //creerTaches(scanner, taches);
             }
             else if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && !r.actions.contains("Deplacer") && r.actions.contains("Attraper")){
                 System.out.println("Il manque l'action 'Deplacer', veuillez l'ajouter");
-                creerAction(scanner, composantes, r);
+                //creerAction(scanner, composantes, r);
             }else if (tache.equals("Attraper et relacher un objet") && taches.contains(tache) && r.actions.contains("Deplacer") && !r.actions.contains("Attraper")){
                 System.out.println("Il manque l'action 'Attraper', veuillez l'ajouter");
-                creerAction(scanner, composantes, r);
+                //creerAction(scanner, composantes, r);
             } else {
                 System.out.println("Il vous manque des actions");
-                creerAction(scanner, composantes, r);
+                //creerAction(scanner, composantes, r);
             } 
+            System.out.println("Voulez-vous allouer une autre tache?");
+            System.out.println("1- Oui");
+            System.out.println("2- Non");
+            String decision = scanner.nextLine();
+            if (decision.equals("1")){
+                allouerTachesRobot(r, composantes, scanner, taches);
+            } else {
+                menu(scanner);
+            }
         }
     }
 
-    public static void voirActivitesMaintenues(Robot r){
-        System.out.println("\n\n Voici les activitées maintenues par " + r.nom);
+    public static void voirActivitesMaintenues(Robot r, Scanner scanner){
+        System.out.println("Voici les activitées maintenues par " + r.nom);
         for (String act : r.taches){
             System.out.println("    - " + act);
         }
+        System.out.println("Voulez-vous revenir au menu principal?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        }
+        else {
+            menu(scanner);
+        }
     }
 
-    public static void afficherEtatRobot(Robot robot){ 
+    public static void afficherEtatRobot(Robot robot, Scanner scanner){ 
         System.out.println("Nom: " + robot.nom);
         System.out.println("Coordonnées: " + "X: " + robot.X  + "; Y: " + robot.Y);
         System.out.println("Vitesse: " + robot.vitesse + "km/h");
         System.out.println("Batterie: " + robot.batterie + "%");
         System.out.println("CPU: " + robot.cpu + "%");
         System.out.println("Memoire: " + robot.memoire + "%");
+        System.out.println("Voulez-vous revenir au menu principal?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        }
+        else {
+            menu(scanner);
+        }
     }
 
     public static void creerTaches(Scanner scanner, LinkedList<String> taches) {
@@ -185,10 +297,10 @@ public class Utilisateurs {
             System.out.println("-1 Oui");
             System.out.println("-2 Non");
             String verdict = scanner.nextLine();
-            if (verdict.equals("Oui")){
-               continue;
+            if (verdict.equals("1")){
+               creerTaches(scanner, taches);;
             } else {
-                break;
+                menu(scanner);
             }
         }
         System.out.println(taches);
@@ -297,16 +409,13 @@ public class Utilisateurs {
             } else if (answer.equals("2")) {
                 result = false;
                 repeter = false;
-                menu();
+                menu(scanner);
             } else {
                 System.out.println("Option invalide. Veuillez réessayer.");
             }
         }
         return result;
     }
-    
-
-    
 
     public static void afficherMetriquesFlotte(Scanner scanner, LinkedList<Robot> robotsEnregistres) {
         // TODO 
@@ -321,10 +430,20 @@ public class Utilisateurs {
         System.out.println(">>> Batterie moyenne des robots : 100 %" );
         System.out.println(">>> Consommation moyenne du CPU : 73 %" );
         System.out.println(" ");
-        menu();
+        System.out.println("Voulez-vous revenir au menu");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        } else {
+            System.out.println("Au revoir!");
+        }
+
+        
     }
 
-    public static void gestionDesProblèmes() {
+    public static void gestionDesProblèmes(Scanner scanner) {
         Random rand = new Random();
         int n = rand.nextInt(3);
         
@@ -338,6 +457,16 @@ public class Utilisateurs {
             case 2: 
                 System.out.println("Un robot se sent seul... :(, allez lui allouer une activites");
                 break;
+        }
+        System.out.println("Voulez-vous revenir au menu principal?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        }
+        else {
+            menu(scanner);
         }
     }
 
@@ -503,13 +632,13 @@ public class Utilisateurs {
     
         }
 
-        selctionnerFournisseur(scanner, fournisMap);
+        selectionnerFournisseur(scanner, fournisMap);
         
         scanner.close();
         
     }
 
-    public static void selctionnerFournisseur(Scanner scanner, HashMap<String, ArrayList<String>> fournisMap) {
+    public static void selectionnerFournisseur(Scanner scanner, HashMap<String, ArrayList<String>> fournisMap) {
         System.out.println(" ");
         System.out.print("Veuillez entrer le nom du fournisseur chez qui vous voulez acheter une composante : ");
         String answer = scanner.nextLine();
@@ -518,7 +647,18 @@ public class Utilisateurs {
             acheterComposantes(scanner, fournisMap.get(answer));
         } else {
             System.out.println("Ce fournisseur n'est pas dans la liste.");
-            menu();
+            menu(scanner);
+        }
+
+        System.out.println("Voulez-vous revenir au menu principal?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        }
+        else {
+            trouverFournisseurs();
         }
     }
 
@@ -579,5 +719,12 @@ public class Utilisateurs {
         } else {
             System.out.println("Achat annulé...");
         }
+        System.out.println("Voulez-vous revenir au menu principal?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        if (decision.equals("1")){
+            menu(scanner);
+        } 
     }
 }
