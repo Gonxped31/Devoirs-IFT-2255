@@ -11,8 +11,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Fournisseur> listeFournisseurs = creerFournisseurs();
 
-        trouverFournisseur(scanner, listeFournisseurs);
+        //trouverFournisseur(scanner, listeFournisseurs);
+        inscrireFournisseur(listeFournisseurs);
     }
+
+
 
     /*
         Création de fournisseurs déjà inscrits dans le système
@@ -37,6 +40,47 @@ public class Main {
         listeFournisseurs.add(roboPro);
 
         return listeFournisseurs;        
+    }
+
+    private static void inscrireFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
+        Scanner scanner = new Scanner(System.in);
+        String inputNom, inputCourriel, inputTelephone, inputTypeRobot, inputComposante, inputCapacite;
+
+        System.out.println("Complétez les informations suivantes afin de vous inscrire comme fournisseur:");
+        System.out.print("Nom:");
+        inputNom = scanner.nextLine();
+        System.out.print("Courriel:");
+        inputCourriel = scanner.nextLine();
+        System.out.print("Numéro de téléphone:");
+        inputTelephone = scanner.nextLine();
+        System.out.print("Type de robot fabriqué:");
+        inputTypeRobot = scanner.nextLine();
+        System.out.print("Type de composantes fabriquées:");
+        inputComposante = scanner.nextLine();
+        System.out.print("Capacité de fabrication:");
+        inputCapacite = scanner.nextLine();
+
+        verifierFournisseur(inputNom, inputCourriel, inputTelephone, inputTypeRobot, inputComposante, inputCapacite, listeFournisseurs);
+    }
+
+    private static void verifierFournisseur(String inputNom, String inputCourriel, String inputTelephone, String inputTypeRobot,
+                                            String inputComposante, String inputCapacite, ArrayList<Fournisseur> listeFournisseurs) {
+        Fournisseur fournisseur = new Fournisseur();
+
+        for (Fournisseur listeFournisseur : listeFournisseurs) {
+            if (listeFournisseur.getNom().equals(inputNom)) {
+                System.err.println("Ce nom de fournisseur existe déjà");
+            }
+            else {
+                fournisseur.setNom(inputNom);
+                fournisseur.setEmail(inputCourriel);
+                fournisseur.setTelephone(inputTelephone);
+                /*fournisseur.setTypeRobotFabriquer();
+                fournisseur.setComposants();
+                fournisseur.setCapacite();*/
+                listeFournisseurs.add(fournisseur);
+            }
+        }
     }
 
     /*
@@ -107,25 +151,32 @@ public class Main {
     private static void rechercherSansFiltre(Scanner scanner, ArrayList<Fournisseur> listeFournisseurs) {
         String nomFournisseur;
 
-        System.out.println("Entrez le nom du fournisseur recherché:");
+        System.out.println("Voici la liste des fournisseurs inscrits:\n");
+        for (Fournisseur listeFournisseur : listeFournisseurs) {
+            System.out.println(listeFournisseur);
+        }
+
+        System.out.println("Veuillez saisir le nom du fournisseur recherché:");
         nomFournisseur = scanner.nextLine();
 
-        verifierRechercheParNom(scanner, nomFournisseur, listeFournisseurs);
+        verifierRechercheSansFiltre(scanner, nomFournisseur, listeFournisseurs);
     }
 
     private static ArrayList<String> verifierRechercheParNom(Scanner scanner, String nom, ArrayList<Fournisseur> listeFournisseurs) {
         ArrayList<String> fournisseursSelectionnes = new ArrayList<>();
 
         for (int i = 0; i < listeFournisseurs.size(); i++) {
-            if (!listeFournisseurs.get(i).getNom().equals(nom)) {
-                System.err.println("Aucun fournisseur possédant ce nom a été trouvé");
-                trouverFournisseur(scanner, listeFournisseurs);
-            }
-            else {
-                System.out.println("Fournisseur trouvé!");
-                fournisseursSelectionnes.add(nom);
-                break;
-            }
+                if (listeFournisseurs.get(i).getNom().contains(nom)) {
+                    System.out.println("Fournisseur trouvé!");
+                    fournisseursSelectionnes.add(listeFournisseurs.get(i).getNom());
+                }
+                /*else if (listeFournisseurs.get(i).getNom().contains(nom)) {
+                    System.err.println("Aucun fournisseur possédant ce nom a été trouvé");
+                    trouverFournisseur(scanner, listeFournisseurs);
+                }*/
+
+                ///fournisseursSelectionnes.add(nom);
+                System.out.println(fournisseursSelectionnes);
         }
         return fournisseursSelectionnes;
     }
@@ -177,6 +228,23 @@ public class Main {
 //                fournisseursSelectionnes.add(telephone);
 //            }
 //        }
+        return fournisseursSelectionnes;
+    }
+
+    private static ArrayList<String> verifierRechercheSansFiltre(Scanner scanner, String nom, ArrayList<Fournisseur> listeFournisseurs) {
+        ArrayList<String> fournisseursSelectionnes = new ArrayList<>();
+
+        for (int i = 0; i < listeFournisseurs.size(); i++) {
+            if (listeFournisseurs.get(i).getNom().equals(nom)) {
+                System.out.println("Vous avez sélectionné le fournisseur " + listeFournisseurs.get(i).getNom());
+                fournisseursSelectionnes.add(nom);
+                break;
+            }
+            /*else {
+                System.err.println("Aucun fournisseur possédant ce nom a été trouvé");
+                //trouverFournisseur(scanner, listeFournisseurs);
+            }*/
+        }
         return fournisseursSelectionnes;
     }
 

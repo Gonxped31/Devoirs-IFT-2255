@@ -10,6 +10,9 @@ public class Fournisseur {
     List<Robot> inventaireDeRobot;
     private List<Composant> composants;
 
+    public Fournisseur () {
+
+    }
     public Fournisseur(String nom, String adresse, String email, String telephone, TypeRobot typeRobotFabriquer, double capacite) {
         this.nom = nom;
         this.adresse = adresse;
@@ -51,6 +54,38 @@ public class Fournisseur {
         return composants;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setTypeRobotFabriquer(TypeRobot typeRobotFabriquer) {
+        this.typeRobotFabriquer = typeRobotFabriquer;
+    }
+
+    public void setCapacite(double capacite) {
+        this.capacite = capacite;
+    }
+
+    public void setInventaireDeRobot(List<Robot> inventaireDeRobot) {
+        this.inventaireDeRobot = inventaireDeRobot;
+    }
+
+    public void setComposants(List<Composant> composants) {
+        this.composants = composants;
+    }
+
     public void ajoutRobot() {
 
     }
@@ -73,13 +108,11 @@ public class Fournisseur {
 
     @Override
     public String toString() {
-        return "Fournisseur {" + '\n' +
-                "Nom = " + getNom() + '\n' +
+        return  "Nom = " + getNom() + '\n' +
                 "Adresse= " + getAdresse() + '\n' +
                 "Email = " + getEmail() + '\n' +
                 "Numéro de télephone = " + getTelephone() + '\n' +
                 "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
-                "Capacité de fabrication = " + getCapacite() + '\n' +
-                '}';
+                "Capacité de fabrication = " + getCapacite() + '\n';
     }
 }
