@@ -59,7 +59,7 @@ public class Fournisseur {
 
     }
 
-    public void ajoutComposante() {
+    public void ajouterComposante() {
 
     }
 
