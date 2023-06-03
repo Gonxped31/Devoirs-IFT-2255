@@ -136,10 +136,7 @@ public class Main {
         System.out.println(listeFournisseurs);
     }
 
-    private static void connecterFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
-        System.out.println("Veuillez entrez votre nom de fournisseur:");
 
-    }
 
     private static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs, boolean NomUnique) {
         for (Fournisseur fournisseur : listeFournisseurs) {
@@ -224,4 +221,22 @@ public class Main {
                 Double.parseDouble(inputCapacite), inputCompagnie);
         listeFournisseurs.add(nouveauFournisseur);
         }
+
+        /*
+
+         */
+    private static void connecterFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez entrez votre nom de fournisseur:");
+        scanner.nextLine();
+// ---------------------------- AJOUTER UN BOOL POUR VALIDER QUE JE SUIS CONNECTER COMME FOURNISSEUR POUR UTILISER LES OPTIONS DU MENU ------------------------
+        for (int i = 0; i < listeFournisseurs.size() ; i++) {
+            if (listeFournisseurs.get(0).getNom().equals(scanner.nextLine())) {
+                System.out.println("Vous êtes connecté en tant que fournissseur");
+                break;
+            }
+            else
+                System.out.println("Ce nom n'existe pas");
+        }
     }
+}
