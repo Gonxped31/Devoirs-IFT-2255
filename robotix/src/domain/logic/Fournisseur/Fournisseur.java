@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fournisseur {
-    String nom , adresse, email, telephone;
+    String nom , adresse, email, numeroTelephone;
     TypeRobot typeRobotFabriquer;
+    Type typeComposantesFabriquer;
     double capacite;
     String nomCompagnie;
     String pseudo;
@@ -15,16 +16,94 @@ public class Fournisseur {
     List<Composant> inventaireComposant= new ArrayList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
-                       TypeRobot typeDeRobotFabriquer, double capacite ,String nomcompagnie){
+                       TypeRobot typeDeRobotFabriquer, Type typeComposantesFabriquer, double capacite ,String nomcompagnie){
         this.nom=nom;
         this.adresse=adresse;
         this.pseudo=pseudo;
         this.email=email;
         this.numeroTelephone=numeroTelephone;
         this.typeRobotFabriquer=typeDeRobotFabriquer;
+        this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capacite=capacite;
         this.nomCompagnie=nomcompagnie;
     }
+
+    public Fournisseur(){
+
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelephone() {
+        return numeroTelephone;
+    }
+
+    public TypeRobot getTypeRobotFabriquer() {
+        return typeRobotFabriquer;
+    }
+
+    public Type getTypeComposantesFabriquer() {
+        return typeComposantesFabriquer;
+    }
+
+    public double getCapacite() {
+        return capacite;
+    }
+
+    public String getNomCompagnie() {
+        return nomCompagnie;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(String numeroTelephone) {
+        this.numeroTelephone = numeroTelephone;
+    }
+
+    public void setTypeRobotFabriquer(TypeRobot typeRobotFabriquer) {
+        this.typeRobotFabriquer = typeRobotFabriquer;
+    }
+
+    public void setTypeComposantesFabriquer(Type typeComposantesFabriquer) {
+        this.typeComposantesFabriquer = typeComposantesFabriquer;
+    }
+
+    public void setCapacite(double capacite) {
+        this.capacite = capacite;
+    }
+
+    public void setNomCompagnie(String nomCompagnie) {
+        this.nomCompagnie = nomCompagnie;
+    }
+
     public void vendreUnComposant(Composant composant){
       inventaireComposant.remove(composant);
     }
@@ -46,11 +125,13 @@ public class Fournisseur {
 
     @Override
     public String toString() {
-        return  "Nom = " + getNom() + '\n' +
+        return  "Fournisseur { " + '\n' +
+                "Nom = " + getNom() + '\n' +
                 "Adresse= " + getAdresse() + '\n' +
                 "Email = " + getEmail() + '\n' +
                 "Numéro de télephone = " + getTelephone() + '\n' +
                 "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
-                "Capacité de fabrication = " + getCapacite() + '\n';
+                "Capacité de fabrication = " + getCapacite() + '\n' +
+                "}";
     }
 }
