@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f11f56de-1fea-4d2c-95e5-9ca505c9af3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rapport.html" beforeDir="false" afterPath="$PROJECT_DIR$/rapport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Composant.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Fournisseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Fournisseur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Type.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +31,11 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Kamen/ML/Devoirs-IFT-2255&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/robotix/src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

@@ -16,7 +16,7 @@ public class Fournisseur{
     String nomCompagnie;
     String pseudo;
     List<Robot> inventaireDeRobot=new ArrayList<>();
-    List<Composant> inventaireComposant= new ArrayList<>();
+    List<String> inventaireComposant= new ArrayList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
                        TypeRobot typeDeRobotFabriquer, double capacite ,String nomcompagnie){
@@ -29,7 +29,7 @@ public class Fournisseur{
         this.capacite=capacite;
         this.nomCompagnie=nomcompagnie;
     }
-    public void vendreUnComposant(Composant composant){
+    public void vendreUnComposant(String composant){
       inventaireComposant.remove(composant);
     }
     public void mettreInventaireRobotAjour(Robot robot, boolean modeAjout){
@@ -40,7 +40,7 @@ public class Fournisseur{
         }
     }
 
-    public void mettreInventaireComposantAjour( Composant composant, boolean modeAjout){
+    public void mettreInventaireComposantAjour( String composant, boolean modeAjout){
         if (modeAjout) {
             inventaireComposant.add(composant);
         } else {
