@@ -14,7 +14,6 @@ public class Robot {
     LinkedList<String> taches = new LinkedList<String>(); 
     LinkedList<String> activites = new LinkedList<String>();
     String numeroSerie;
-
     public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<String> composantes, LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie){
         this.nom = nom;
         this.X = X;
