@@ -43,7 +43,7 @@ public class Main {
 
         System.out.println("Bienvenue chez Robotix! Voici le menu principal:");
         System.out.println("1. S'inscrire comme fournisseur");
-        System.out.println("2. Trouver un fournisseur");
+        System.out.println("2. Connexion en tant que fournisseur");
 
         do {
             System.out.println("Entrez votre choix:");
@@ -51,11 +51,13 @@ public class Main {
 
             switch (choix) {
                 case 1 -> creerFournisseur(listeFournisseurs);
-                case 2 -> trouverFournisseur(listeFournisseurs);
+                case 2 -> connecter(listeFournisseurs);
                 default -> System.err.println("Choix invalide. Veuillez réessayez.");
             }
         } while (choix != 1 && choix != 2);
     }
+
+
 
     private static void creerFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
         Scanner scanner = new Scanner(System.in);
@@ -72,6 +74,9 @@ public class Main {
         inputCapacite = scanner.nextLine();
 
         verifierFournisseur(inputNom, inputCourriel, inputTelephone, inputCapacite, listeFournisseurs);
+    }
+
+    private static void connecter(ArrayList<Fournisseur> listeFournisseurs) {
     }
 
     /*
@@ -95,183 +100,5 @@ public class Main {
         }
     }
 
-    /*
-        Trouver un fournisseur dans la liste des fournisseurs inscrits
-     */
-    private static void trouverFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
-        Scanner scanner = new Scanner(System.in);
-        String choixUsager;
-        System.out.println("Voulez-vous rechercher un fournisseur avec filtre? (Y/N):");
 
-        do {
-            choixUsager = scanner.nextLine();
-
-            switch (choixUsager) {
-                case "Y", "y" -> rechercherAvecFiltre(listeFournisseurs);
-                case "N", "n" -> rechercherSansFiltre(scanner, listeFournisseurs);
-                default -> System.err.println("Choix invalide! Réessayez de nouveau.");
-            }
-        } while (!choixUsager.equals("Y") && !choixUsager.equals("y") && !choixUsager.equals("N") && !choixUsager.equals("n"));
-    }
-
-    /*
-        Recherche d'un fournisseur inscrit avec un filtre de recherche
-     */
-    private static void rechercherAvecFiltre(ArrayList<Fournisseur> listeFournisseurs) {
-        String caractere;
-        Scanner scannerCaractere = new Scanner(System.in);
-        Scanner scannerChoix = new Scanner(System.in);
-        int choixUsager = 0;
-
-        System.out.println("Choisissez votre option de filtre:");
-        System.out.println(1 + ". Par nom");
-        System.out.println(2 + ". Par adresse");
-        System.out.println(3 + ". Par email");
-        System.out.println(4 + ". Par téléphone");
-
-        do {
-            choixUsager = scannerChoix.nextInt();
-
-            switch (choixUsager) {
-                case 1 -> {
-                    System.out.println("Entrez au moins un caractère du nom du fournisseur recherché:");
-
-                    caractere = scannerCaractere.nextLine();
-                    verifierRechercheParNom(caractere, listeFournisseurs);
-                }
-                case 2 -> {
-                    System.out.println("Entrez au moins un caractère de l'adresse du fournisseur recherché:");
-                    caractere = scannerCaractere.nextLine();
-                    verifierRechercheParAdresse(caractere, listeFournisseurs);
-                }
-                case 3 -> {
-                    System.out.println("Entrez au moins un caractère du courriel du fournisseur recherché:");
-                    caractere = scannerCaractere.nextLine();
-                    verifierRechercheParEmail(caractere, listeFournisseurs);
-                }
-                case 4 -> {
-                    System.out.println("Entrez au moins un caractère du numéro de téléphone du fournisseur recherché:");
-                    caractere = scannerCaractere.nextLine();
-                    verifierRechercheParTelephone(caractere, listeFournisseurs);
-                }
-                default -> System.err.println("Choix invalide! Réessayez de nouveau.");
-            }
-        } while (choixUsager < 1 || choixUsager > 4);
-    }
-
-    /*
-        Rechercher un fournisseur inscrit sans l'option de filtre.
-     */
-    private static void rechercherSansFiltre(Scanner scanner, ArrayList<Fournisseur> listeFournisseurs) {
-        String nomFournisseur;
-
-        System.out.println("Voici la liste des fournisseurs inscrits:\n");
-        for (Fournisseur listeFournisseur : listeFournisseurs) {
-            System.out.println(listeFournisseur);
-        }
-
-        System.out.println("Veuillez saisir le nom du fournisseur recherché:");
-        nomFournisseur = scanner.nextLine();
-
-        verifierRechercheSansFiltre(nomFournisseur, listeFournisseurs);
-    }
-
-    /*
-        Vérifier la recherche de filtre d'un fournisseur par son nom
-     */
-    private static void verifierRechercheParNom(String nom, ArrayList<Fournisseur> listeFournisseurs) {
-        ArrayList<String> fournisseursTrouves = new ArrayList<>();
-
-        for (Fournisseur fournisseurRecherche : listeFournisseurs) {
-            if (fournisseurRecherche.getNom().contains(nom.toUpperCase()) || fournisseurRecherche.getNom().contains(nom.toLowerCase())) {
-                fournisseursTrouves.add(fournisseurRecherche.getNom());
-            }
-        }
-
-        if (fournisseursTrouves.size() == 0)
-            System.err.println("Aucun fournisseur(s) trouvé(s)");
-        else {
-            System.out.println(fournisseursTrouves.size() + " fournisseur(s) trouvé(s):");
-            System.out.println(fournisseursTrouves);
-        }
-    }
-
-    /*
-        Vérifier la recherche de filtre d'un fournisseur par son adresse
-     */
-    private static void verifierRechercheParAdresse(String adresse, ArrayList<Fournisseur> listeFournisseurs) {
-        ArrayList<String> fournisseursTrouves = new ArrayList<>();
-
-        for (Fournisseur fournisseurRecherche : listeFournisseurs) {
-            if (fournisseurRecherche.getAdresse().contains(adresse.toUpperCase()) || fournisseurRecherche.getAdresse().contains(adresse.toLowerCase())) {
-                fournisseursTrouves.add(fournisseurRecherche.getNom());
-            }
-        }
-
-        if (fournisseursTrouves.size() == 0)
-            System.err.println("Aucun fournisseur(s) trouvé(s)");
-        else {
-            System.out.println(fournisseursTrouves.size() + " fournisseur(s) trouvé(s):");
-            System.out.println(fournisseursTrouves);
-        }
-    }
-
-    /*
-        Vérifier la recherche de filtre d'un fournisseur par son courriel
-     */
-    private static void verifierRechercheParEmail(String email, ArrayList<Fournisseur> listeFournisseurs) {
-        ArrayList<String> fournisseursTrouves = new ArrayList<>();
-
-        for (Fournisseur fournisseurRecherche : listeFournisseurs) {
-            if (fournisseurRecherche.getEmail().contains(email.toUpperCase()) || fournisseurRecherche.getEmail().contains(email.toLowerCase())) {
-                fournisseursTrouves.add(fournisseurRecherche.getNom());
-            }
-        }
-
-        if (fournisseursTrouves.size() == 0)
-            System.err.println("Aucun fournisseur(s) trouvé(s)");
-        else {
-            System.out.println(fournisseursTrouves.size() + " fournisseur(s) trouvé(s):");
-            System.out.println(fournisseursTrouves);
-        }
-    }
-
-    /*
-        Vérifier la recherche de filtre d'un fournisseur par son téléphone
-     */
-    private static void verifierRechercheParTelephone(String telephone, ArrayList<Fournisseur> listeFournisseurs) {
-        ArrayList<String> fournisseursTrouves = new ArrayList<>();
-
-        for (Fournisseur fournisseurRecherche : listeFournisseurs) {
-            if (fournisseurRecherche.getTelephone().contains(telephone)) {
-                fournisseursTrouves.add(fournisseurRecherche.getNom());
-            }
-        }
-
-        if (fournisseursTrouves.size() == 0)
-            System.err.println("Aucun fournisseur(s) trouvé(s)");
-        else {
-            System.out.println(fournisseursTrouves.size() + " fournisseur(s) trouvé(s):");
-            System.out.println(fournisseursTrouves);
-        }
-    }
-
-    /*
-        Vérifier la recherche sans filtre d'un fournisseur
-     */
-    private static ArrayList<String> verifierRechercheSansFiltre(String nom, ArrayList<Fournisseur> listeFournisseurs) {
-        ArrayList<String> fournisseursSelectionnes = new ArrayList<>();
-
-        for (Fournisseur fournisseurRecherche : listeFournisseurs) {
-            if (fournisseurRecherche.getNom().equals(nom.toUpperCase()) || fournisseurRecherche.getNom().equals(nom.toLowerCase()))
-                fournisseursSelectionnes.add(fournisseurRecherche.getNom());
-        }
-
-        if (fournisseursSelectionnes.size() == 0)
-            System.err.println("Aucun fournisseur(s) trouvé(s)");
-        else {
-            System.out.println("Vous avez sélectionné le fournisseur " + fournisseursSelectionnes);
-        }
-        return fournisseursSelectionnes;
-    }
 }
