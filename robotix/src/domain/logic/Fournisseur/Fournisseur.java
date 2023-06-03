@@ -1,109 +1,47 @@
 package domain.logic.Fournisseur;
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypeRobot;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fournisseur {
     String nom , adresse, email, telephone;
     TypeRobot typeRobotFabriquer;
     double capacite;
-    List<Robot> inventaireDeRobot;
-    private List<Composant> composants;
+    String nomCompagnie;
+    String pseudo;
+    List<Robot> inventaireDeRobot=new ArrayList<>();
+    List<Composant> inventaireComposant= new ArrayList<>();
 
-    public Fournisseur () {
-
+    public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
+                       TypeRobot typeDeRobotFabriquer, double capacite ,String nomcompagnie){
+        this.nom=nom;
+        this.adresse=adresse;
+        this.pseudo=pseudo;
+        this.email=email;
+        this.numeroTelephone=numeroTelephone;
+        this.typeRobotFabriquer=typeDeRobotFabriquer;
+        this.capacite=capacite;
+        this.nomCompagnie=nomcompagnie;
     }
-    public Fournisseur(String nom, String adresse, String email, String telephone, TypeRobot typeRobotFabriquer, double capacite) {
-        this.nom = nom;
-        this.adresse = adresse;
-        this.email = email;
-        this.telephone = telephone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
-        this.typeRobotFabriquer = typeRobotFabriquer;
-        this.capacite = capacite;
+    public void vendreUnComposant(Composant composant){
+      inventaireComposant.remove(composant);
     }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getTelephone() {
-        return telephone;
+    public void mettreInventaireRobotAjour(Robot robot, boolean modeAjout){
+        if (modeAjout) {
+            inventaireDeRobot.add(robot);
+        } else {
+            inventaireDeRobot.remove(robot);
+        }
     }
 
-    public TypeRobot getTypeRobotFabriquer() {
-        return typeRobotFabriquer;
-    }
-
-    public double getCapacite() {
-        return capacite;
-    }
-
-    public List<Robot> getInventaireDeRobot() {
-        return inventaireDeRobot;
-    }
-
-    public List<Composant> getComposants() {
-        return composants;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public void setTypeRobotFabriquer(TypeRobot typeRobotFabriquer) {
-        this.typeRobotFabriquer = typeRobotFabriquer;
-    }
-
-    public void setCapacite(double capacite) {
-        this.capacite = capacite;
-    }
-
-    public void setInventaireDeRobot(List<Robot> inventaireDeRobot) {
-        this.inventaireDeRobot = inventaireDeRobot;
-    }
-
-    public void setComposants(List<Composant> composants) {
-        this.composants = composants;
-    }
-
-    public void ajoutRobot() {
-
-    }
-
-    public void retierRobot() {
-
-    }
-
-    public void ajouterComposante() {
-
-    }
-
-    public void retirerComposante() {
-
-    }
-
-    public void vendreUnComposant(){
-        //TODO
+    public void mettreInventaireComposantAjour( Composant composant, boolean modeAjout){
+        if (modeAjout) {
+            inventaireComposant.add(composant);
+        } else {
+            inventaireComposant.remove(composant);
+        }
     }
 
     @Override
