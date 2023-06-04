@@ -1,9 +1,7 @@
 import java.util.*;
-
 import domain.logic.Fournisseur.Fournisseur;
 import java.util.Scanner;
 import domain.logic.Utilisateurs.Utilisateurs;
-import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -130,28 +128,25 @@ public class Main {
         System.out.print("Adresse de la compaganie: ");
         inputAdresse = scanner.nextLine();
 
-        while (!PseudoUnique)
-        {
+        while (!PseudoUnique) {
             System.out.print("Pseudo: ");
             inputPseudo = scanner.nextLine();
             PseudoUnique = verifierPseudoFournisseur(inputPseudo, listeFournisseurs, false);
         }
 
-        while (!EmailValide)
-        {
+        while (!EmailValide) {
             System.out.print("Adresse courriel: ");
             inputEmail = scanner.nextLine();
             EmailValide = verifierEmailFournisseur(inputEmail);
         }
 
-        while (!TelephoneValide)
-        {
+        while (!TelephoneValide) {
             System.out.print("Numéro de téléphone: ");
             inputTelephone = scanner.nextLine();
             TelephoneValide = verifierTelephoneFournisseur(inputTelephone);
         }
 
-        System.out.print("Type de robots fabriqués:");
+        System.out.print("Type de robots fabriqués: ");
         inputTypeRobot = scanner.nextLine();
         System.out.print("Type de composantes fabriquées: ");
         inputTypeComposantes = scanner.nextLine();
@@ -188,7 +183,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean EstConnecte = false;
 
-        System.out.println("Veuillez entrez votre nom de fournisseur:");
+        System.out.println("Veuillez entrez votre nom de fournisseur: ");
         String nomFounisseur = scanner.nextLine();
 
         for (Fournisseur listeFournisseur : listeFournisseurs) {
@@ -212,7 +207,7 @@ public class Main {
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getNom().equals(inputNom)) {
                 NomUnique = false;
-                System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom");
+                System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
                 break;
             } else
                 NomUnique = true;
@@ -227,7 +222,7 @@ public class Main {
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getPseudo().equals(inputPseudo)) {
                 PseudoUnique = false;
-                System.out.println("Ce pseduo existe déjà. Veuillez en saisir un autre.");
+                System.out.println("Ce pseduo existe déjà. Veuillez en saisir un autre: ");
                 break;
             }
             else
@@ -241,10 +236,9 @@ public class Main {
      */
     private static boolean verifierEmailFournisseur(String inputEmail) {
         boolean EmailValide;
-        if (!inputEmail.contains("@"))
-        {
+        if (!inputEmail.contains("@")) {
             EmailValide = false;
-            System.out.println("L'adresse courriel est invalide. Veuillez en saisir un autre.");
+            System.out.println("L'adresse courriel est invalide. Veuillez en saisir un autre: ");
         }
         else
             EmailValide = true;
@@ -258,10 +252,9 @@ public class Main {
      */
     private static boolean verifierTelephoneFournisseur(String inputTelephone) {
         boolean TelephoneValide;
-        if (inputTelephone.length() != 10)
-        {
+        if (inputTelephone.length() != 10) {
             TelephoneValide = false;
-            System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez.");
+            System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
         }
         else
             TelephoneValide = true;
@@ -278,13 +271,14 @@ public class Main {
                                            ArrayList<Fournisseur> listeFournisseurs) {
         Scanner scanner = new Scanner(System.in);
         String choixUsager;
+        ArrayList<String> options = new ArrayList<>(Arrays.asList("Y", "y", "N", "n")) ;
 
         Fournisseur nouveauFournisseur = new Fournisseur(inputNom, inputAdresse, inputPseudo, inputCourriel,
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
         listeFournisseurs.add(nouveauFournisseur);
 
         System.out.println("\nBienvenue " + nouveauFournisseur.getNom() + ". Vous êtes enregistré comme étant fournisseur!");
-        System.out.println("Voulez vous continuer? (Y/N)");
+        System.out.println("Voulez vous continuer? (Y/N): ");
 
         do {
             choixUsager = scanner.nextLine();
@@ -292,8 +286,8 @@ public class Main {
             switch (choixUsager) {
                 case "Y", "y" -> nouveauFournisseur.menuFournisseur(nouveauFournisseur);
                 case "N", "n" -> System.out.println("Au revoir");
-                default -> System.out.println("Choix invalide! Réessayez de nouveau.");
+                default -> System.out.println("Choix invalide! Réessayez de nouveau: ");
             }
-        } while (!choixUsager.equals("Y") && !choixUsager.equals("y") && !choixUsager.equals("N") && !choixUsager.equals("n"));
+        } while (!options.contains(choixUsager));
     }
 }
