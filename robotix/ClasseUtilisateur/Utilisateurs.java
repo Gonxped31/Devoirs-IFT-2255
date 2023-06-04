@@ -20,14 +20,18 @@ public class Utilisateurs {
     protected static LinkedList<String> taches = new LinkedList<>();
     protected static LinkedList<String> composantes = new LinkedList<>();
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(Scanner scanner) {
+        //Scanner scanner = new Scanner(System.in);
         menu(scanner);
-        scanner.close();
+        //scanner.close();
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
-        
+        this.nom = nom;
+        this.prenom = prenom;
+        this.pseudo = pseudo;
+        this.courriel = courriel;
+        this.telephone = telephone;
     }
 
     public static void menu(Scanner scanner) {
