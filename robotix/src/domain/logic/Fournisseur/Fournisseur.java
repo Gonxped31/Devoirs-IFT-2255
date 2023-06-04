@@ -1,6 +1,6 @@
 package domain.logic.Fournisseur;
 
-import domain.logic.Robot.Robot;
+import ClasseUtilisateur.Robot;
 import domain.logic.Robot.TypeRobot;
 
 import java.util.ArrayList;
@@ -29,9 +29,26 @@ public class Fournisseur{
         this.capacite=capacite;
         this.nomCompagnie=nomcompagnie;
     }
+
+    public void menu(scanner){
+        System.out.println("1- Mettre a jour son profil");
+        System.out.println("1- Ajouter un robot");
+        System.out.println("2- Ajouter une composante");
+        System.out.println("3- Retirer un robot");
+        System.out.println("4- Retirer une composante");
+        String decision = scanner.nextLine(); 
+        switch (decision){
+            case ("1"):
+                Robot r = new Robot();
+                mettreInventaireRobotAjour();
+            }
+
+    }
+
     public void vendreUnComposant(String composant){
       inventaireComposant.remove(composant);
     }
+
     public void mettreInventaireRobotAjour(Robot robot, boolean modeAjout){
         if (modeAjout) {
             inventaireDeRobot.add(robot);
