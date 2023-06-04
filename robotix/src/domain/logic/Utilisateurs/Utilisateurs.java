@@ -124,7 +124,6 @@ public class Utilisateurs {
             menu(scanner);
         } else{
             String action = "";
-            boolean missingComponentAdded = false;
             while (!action.equals("None")) {
                 System.out.print("Ajouter action: ");
                 action = scanner.nextLine();
@@ -136,7 +135,6 @@ public class Utilisateurs {
                             robot.actions.add("Parler");
                         } else {
                             System.out.print("Il vous manque la composante : Haut-parleur \n");
-                            missingComponentAdded = true;
                         }
                         break;
     
@@ -146,7 +144,6 @@ public class Utilisateurs {
                             robot.actions.add("Ecouter");
                         } else {
                             System.out.print("Il vous manque la composante : Micro \n");
-                            missingComponentAdded = true;
                         }
                         break;
     
@@ -156,7 +153,6 @@ public class Utilisateurs {
                             robot.actions.add("Deplacer");
                         } else {
                             System.out.print("Il vous manque la composante : Roue \n");
-                            missingComponentAdded = true;
                         }
                         break;
     
@@ -166,7 +162,6 @@ public class Utilisateurs {
                             robot.actions.add("Attraper");
                         } else {
                             System.out.print("Il vous manque la composante : Bras \n");
-                            missingComponentAdded = true;
                         }
                         break;
     
