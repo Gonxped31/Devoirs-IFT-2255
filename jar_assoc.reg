@@ -1,4 +1,4 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\jarfile\shell\open\command]
-@="\"C:\Java\jdk-18.0.2.1\bin\java.exe" -jar \"%1\" %*"
+@="\".\java.exe" -jar \"%1\" %*"
