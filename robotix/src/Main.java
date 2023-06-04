@@ -55,7 +55,7 @@ public class Main {
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4)) ;
 
         System.out.println("********Binevenue chez Robotix!********\"");
-        System.out.println("euillez choisir l'une des options suivantes:");
+        System.out.println("Veuillez choisir l'une des options suivantes:");
         System.out.println(options.get(0) + "- S'inscrire en tant qu'utilisateur");
         System.out.println(options.get(1) + "- S'inscrire en tant que fournisseur");
         System.out.println(options.get(2) + "- Se connecter en tant qu'utilisateur");
