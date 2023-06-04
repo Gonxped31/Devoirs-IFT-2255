@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fournisseur{
-    String nom;
-    String adresse;
-    String email;
-    String numeroTelephone;
-    TypeRobot typeRobotFabriquer;
-    double capacite;
-    String nomCompagnie;
-    String pseudo;
-    List<Robot> inventaireDeRobot=new ArrayList<>();
-    List<String> inventaireComposant= new ArrayList<>();
+    public String nom;
+    public String adresse;
+    public String email;
+    public String numeroTelephone;
+    public String typeRobotFabriquer;
+    public String capacite;
+    public String nomCompagnie;
+    public String pseudo;
+    public List<Robot> inventaireDeRobot=new ArrayList<>();
+    public List<String> inventaireComposant= new ArrayList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
-                       TypeRobot typeDeRobotFabriquer, double capacite ,String nomcompagnie){
+                       String typeDeRobotFabriquer, String capacite ,String nomcompagnie){
         this.nom=nom;
         this.adresse=adresse;
         this.pseudo=pseudo;
