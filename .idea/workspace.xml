@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="IFT-2255:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f11f56de-1fea-4d2c-95e5-9ca505c9af3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/robotix/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Composant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/domain/logic/Fournisseur/Fournisseur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/domain/logic/Fournisseur/Fournisseur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/src/domain/logic/Robot/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/src/domain/logic/Robot/Robot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robotix/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/robotix/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Fournisseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Fournisseur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robotix/src/domain/logic/Fournisseur/Type.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,20 +34,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Kamen/ML/Devoirs-IFT-2255&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Samir/Documents/GitHub/IFT-2255/robotix",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/robotix/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.IFT-2255.jar">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="src" />
@@ -44,8 +64,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IFT-2255.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/IFT_2255_jar/IFT-2255.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/Main.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.IFT-2255.jar" />
+        <item itemvalue="JAR Application.Main.jar" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -59,6 +89,8 @@
       <option name="presentableId" value="Default" />
       <updated>1685098132888</updated>
       <workItem from="1685098135863" duration="59000" />
+      <workItem from="1685862807357" duration="1280000" />
+      <workItem from="1685864317132" duration="325000" />
     </task>
     <servers />
   </component>
