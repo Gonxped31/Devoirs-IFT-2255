@@ -6,10 +6,6 @@ import domain.logic.Utilisateurs.Utilisateurs;
 import java.util.LinkedList;
 
 public class Main {
-    //Liste d'utilisateurs
-    static LinkedList<Utilisateurs> utilisateurs = new LinkedList<>();
-    static LinkedList<Fournisseur> fournisseurs= new LinkedList<>();
-    //Liste de fournisseurs 
     public static void main(String[] args) {
         ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
         ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
