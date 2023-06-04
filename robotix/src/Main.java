@@ -68,7 +68,17 @@ public class Main {
                 System.out.println(connexion + " n'existe pas...");
                 break;
             case("4"):
-                
+                System.out.println("Veuillez entrer votre pseudo: ");
+                String connexionFour = scanner.nextLine();
+                for (int i = 0; i < fournisseurs.size(); i++) {
+                    if (fournisseurs.get(i).pseudo.equals(connexionFour)){
+                        System.out.println("Bienvenue " + fournisseurs.get(i).pseudo);
+                        Utilisateurs.main(scanner);
+                        break;
+                    }
+                }
+                System.out.println(connexionFour + " n'existe pas...");
+                break;
         }   
         String[] arr0=new String[]{""};
         main(arr0);
