@@ -1,9 +1,6 @@
 import java.util.*;
 
 import domain.logic.Fournisseur.Fournisseur;
-import domain.logic.Fournisseur.Type;
-import domain.logic.Robot.Robot;
-import domain.logic.Robot.TypeRobot;
 import java.util.Scanner;
 import domain.logic.Fournisseur.Fournisseur;
 import domain.logic.Utilisateurs.Utilisateurs;
