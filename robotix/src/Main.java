@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import domain.logic.Fournisseur.Fournisseur;
+import domain.logic.Utilisateurs.Utilisateurs;
+
 import java.util.LinkedList;
 
 public class Main {
@@ -18,15 +20,15 @@ public class Main {
         switch (decision){
             case("1"):
                 System.out.println("********Nouvel utilisateur********");
-                System.out.println("Prenom :");
+                System.out.print("Prenom : ");
                 String prenom = scanner.nextLine();
-                System.out.println("Nom :");
+                System.out.print("Nom :");
                 String nom = scanner.nextLine();
-                System.out.println("Pseudo :");
+                System.out.print("Pseudo : ");
                 String pseudo = scanner.nextLine();
-                System.out.println("Adresse courriel :");
+                System.out.print("Adresse courriel : ");
                 String courriel = scanner.nextLine();
-                System.out.println("Telephone :");
+                System.out.print("Telephone : ");
                 String telephone = scanner.nextLine();
                 Utilisateurs util = new Utilisateurs(nom, prenom, pseudo, courriel, telephone);
                 utilisateurs.add(util);
@@ -68,7 +70,7 @@ public class Main {
                 System.out.println(connexion + " n'existe pas...");
                 break;
             case("4"):
-                System.out.println("Veuillez entrer votre pseudo: ");
+                System.out.print("Veuillez entrer votre pseudo: ");
                 String connexionFour = scanner.nextLine();
                 for (int i = 0; i < fournisseurs.size(); i++) {
                     if (fournisseurs.get(i).pseudo.equals(connexionFour)){
@@ -81,6 +83,7 @@ public class Main {
                 break;
         }   
         String[] arr0=new String[]{""};
+        scanner.close();
         main(arr0);
     }
 }
