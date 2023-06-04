@@ -1,2 +1,3 @@
 $ touch .gitignore
 /.metadata/
+.DS_Store
