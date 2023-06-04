@@ -21,9 +21,7 @@ public class Utilisateurs {
     protected static LinkedList<String> composantes = new LinkedList<>();
 
     public static void main(Scanner scanner) {
-        //Scanner scanner = new Scanner(System.in);
         menu(scanner);
-        //scanner.close();
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
