@@ -67,7 +67,7 @@ public class Fournisseur {
         return nomCompagnie;
     }
 
-    public void vendreUnComposant(Composant composant){
+    public void vendreUnComposant(String composant){
       inventaireComposant.remove(composant);
     }
 
@@ -140,7 +140,7 @@ public class Fournisseur {
         menuFournisseur(fournisseur);
     }
 
-    private static void retirerRobot(String nom, Fournisseur fournisseur) {
+    private static void retirerRobot(String nomRobot, Fournisseur fournisseur) {
         int nbRobot = 0;
         for (Robot robot : inventaireDeRobot) {
             if (robot.nom == nomRobot) {
