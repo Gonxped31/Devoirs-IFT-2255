@@ -1,9 +1,7 @@
 package domain.logic.Fournisseur;
 import domain.logic.Robot.Robot;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.*;
 
 public class Fournisseur {
     public String nom;
@@ -15,8 +13,8 @@ public class Fournisseur {
     public String capacite;
     public String nomCompagnie;
     public String pseudo;
-    public static List<Robot> inventaireDeRobot=new ArrayList<>();
-    public static List<String> inventaireComposant= new ArrayList<>();
+    public static LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
+    public static LinkedList<String> inventaireComposant= new LinkedList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
@@ -100,7 +98,7 @@ public class Fournisseur {
         String choixUsager = scanner.nextLine();
 
         switch (choixUsager) {
-            case "1" -> {
+            case "1" : 
                 System.out.println("Veuillez entrer les infos du robot : ");
                 System.out.print("Nom : ");
                 String nomRobot = scanner.nextLine();
@@ -112,23 +110,24 @@ public class Fournisseur {
                 String numeroSerie = scanner.nextLine();
                 Robot robot = new Robot(nomRobot, 0, 0, 0, 0, Integer.parseInt(cpu), Integer.parseInt(memoire), null, null, null, null, numeroSerie);
                 ajouterRobot(robot, fournisseur);
-            }
-            case "2" -> {
+                menuFournisseur(fournisseur);
+            
+            case "2" :
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String nom = scanner.nextLine();
                 retirerRobot(nom, fournisseur);
-            }
-            case "3" -> {
+            
+            case "3" :
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String composante = scanner.nextLine();
                 ajouterComposante(composante, fournisseur);
-            }
-            case "4" -> {
+            
+            case "4" :
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String composante2 = scanner.nextLine();
                 retirerComopsante(composante2, fournisseur);
-            }
-            case "5" -> System.out.println("Au revoir !");
+            
+            case "5" : System.out.println("Au revoir !");
         }
     }
 
@@ -143,9 +142,9 @@ public class Fournisseur {
     private static void retirerRobot(String nomRobot, Fournisseur fournisseur) {
         int nbRobot = 0;
         for (Robot robot : inventaireDeRobot) {
-            if (robot.nom == nomRobot) {
+            if (robot.nom.equals(nomRobot)) {
                 inventaireDeRobot.remove(robot);
-                ++nbRobot;
+                nbRobot++;
             } else {
                 continue;
             }
@@ -170,7 +169,7 @@ public class Fournisseur {
     private static void retirerComopsante(String composante2, Fournisseur fournisseur) {
         int nbComposantes = 0;
         for (String string : inventaireComposant) {
-            if (string == composante2) {
+            if (string.equals(composante2)) {
                 inventaireComposant.remove(string);
                 ++nbComposantes;
             } else {

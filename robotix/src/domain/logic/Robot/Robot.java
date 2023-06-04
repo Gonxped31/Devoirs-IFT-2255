@@ -1,6 +1,5 @@
 package domain.logic.Robot;
 import java.util.LinkedList;
-import java.util.UUID;
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot {
     public String nom;

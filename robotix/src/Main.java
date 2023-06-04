@@ -64,11 +64,21 @@ public class Main {
             choixUsager = scanner.nextInt();
 
             switch (choixUsager) {
-                case 1 -> inscrireUtilisateur(listeUtilisateurs);
-                case 2 -> inscrireFournisseur(listeFournisseurs);
-                case 3 -> connecterUtilisateur(listeUtilisateurs);
-                case 4 -> connecterFournisseur(listeFournisseurs);
-                default -> System.out.println("Choix invalide. Veuillez réessayez.");
+                case 1 : 
+                    inscrireUtilisateur(listeUtilisateurs);
+                    break;
+                case 2 : 
+                    inscrireFournisseur(listeFournisseurs);
+                    break;
+                case 3 : 
+                    connecterUtilisateur(listeUtilisateurs);
+                    break;
+                case 4 : 
+                    connecterFournisseur(listeFournisseurs);
+                    break;
+                default : 
+                    System.out.println("Choix invalide. Veuillez réessayez.");
+                    break;
             }
         } while (!options.contains(choixUsager));
     }
@@ -93,8 +103,8 @@ public class Main {
 
         Utilisateurs util = new Utilisateurs(nom, prenom, pseudo, courriel, telephone);
         listeUtilisateurs.add(util);
-        System.out.println(listeUtilisateurs.get(0));
         System.out.println("Have fun " + pseudo);
+        Utilisateurs.menu(scanner);
     }
 
     /*
@@ -169,7 +179,7 @@ public class Main {
         for (int i = 0; i < listeUtilisateurs.size(); i++) {
             if (listeUtilisateurs.get(i).pseudo.equals(connexion)){
                 System.out.println("Bienvenue " + listeUtilisateurs.get(i).pseudo);
-                //Utilisateurs.menu(scanner);
+                Utilisateurs.menu(scanner);
                 break;
             }
         }
@@ -284,9 +294,17 @@ public class Main {
             choixUsager = scanner.nextLine();
 
             switch (choixUsager) {
-                case "Y", "y" -> nouveauFournisseur.menuFournisseur(nouveauFournisseur);
-                case "N", "n" -> System.out.println("Au revoir");
-                default -> System.out.println("Choix invalide! Réessayez de nouveau: ");
+                case "Y" :
+                case "y" :  
+                    nouveauFournisseur.menuFournisseur(nouveauFournisseur);
+                    break;
+                case "N" :
+                case "n":
+                    System.out.println("Au revoir");
+                    break;
+                default :
+                    System.out.println("Choix invalide! Réessayez de nouveau: ");
+                    break;
             }
         } while (!options.contains(choixUsager));
     }
