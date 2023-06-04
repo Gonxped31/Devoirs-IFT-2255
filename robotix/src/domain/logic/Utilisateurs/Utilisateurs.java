@@ -83,7 +83,7 @@ public class Utilisateurs {
                 voirActivitesMaintenues(scanner);
                 break;
             case("10"):
-                gestionDesProblèmes(scanner);
+                gestionDesProblemes(scanner);
                 break;
             case("11"):
                 trouverFournisseurs();
@@ -466,7 +466,7 @@ public class Utilisateurs {
         
     }
 
-    public static void gestionDesProblèmes(Scanner scanner) {
+    public static void gestionDesProblemes(Scanner scanner) {
         Random rand = new Random();
         int n = rand.nextInt(3);
 
