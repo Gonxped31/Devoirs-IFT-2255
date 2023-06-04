@@ -83,7 +83,7 @@ public class Main {
                 break;
         }   
         String[] arr0=new String[]{""};
-        scanner.close();
         main(arr0);
+        scanner.close();
     }
 }

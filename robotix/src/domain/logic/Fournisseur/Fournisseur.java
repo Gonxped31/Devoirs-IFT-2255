@@ -28,6 +28,7 @@ public class Fournisseur{
         this.capacite=capacite;
         this.nomCompagnie=nomcompagnie;
     }
+
     public void vendreUnComposant(String composant){
       inventaireComposant.remove(composant);
     }
