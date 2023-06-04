@@ -19,7 +19,7 @@ public class Fournisseur {
     public static List<String> inventaireComposant= new ArrayList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
-                       String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
+                       String typeDeRobotFabriquer, String capacite ,String nomcompagnie){
         this.nom=nom;
         this.adresse=adresse;
         this.pseudo=pseudo;
