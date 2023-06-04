@@ -121,12 +121,12 @@ public class Fournisseur {
             case "3" -> {
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String composante = scanner.nextLine();
-                ajouterComposante(composante);
+                ajouterComposante(composante, fournisseur);
             }
             case "4" -> {
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String composante2 = scanner.nextLine();
-                retirerComopsante(composante2);
+                retirerComopsante(composante2, fournisseur);
             }
             case "5" -> System.out.println("Au revoir !");
         }
