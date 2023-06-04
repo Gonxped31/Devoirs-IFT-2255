@@ -1,7 +1,5 @@
 package domain.logic.Fournisseur;
-
-import ClasseUtilisateur.Robot;
-import domain.logic.Robot.TypeRobot;
+import domain.logic.Robot.Robot;
 
 import java.util.ArrayList;
 import java.util.List;
