@@ -53,7 +53,7 @@ public class Main {
                 String capacite = scanner.nextLine();
                 System.out.print("Nom de la compagnie :");
                 String compagnie = scanner.nextLine();
-                Fournisseur fournisseur = new Fournisseur(nomFour,adresseFour, courrielFour, pseudoFour, typeRobot, telephoneFour, capacite, compagnie);
+                Fournisseur fournisseur = new Fournisseur(nomFour,adresseFour, pseudoFour ,courrielFour , typeRobot, telephoneFour, capacite, compagnie);
                 fournisseurs.add(fournisseur);
                 System.out.println("Go sell some products " + fournisseur.nom);
                 break;
@@ -63,7 +63,7 @@ public class Main {
                 for (int i = 0; i < utilisateurs.size(); i++) {
                     if (utilisateurs.get(i).pseudo.equals(connexion)){
                         System.out.println("Bienvenue " + utilisateurs.get(i).pseudo);
-                        Utilisateurs.main(scanner);
+                        Utilisateurs.menu(scanner);
                         break;
                     }
                 }
@@ -75,13 +75,13 @@ public class Main {
                 for (int i = 0; i < fournisseurs.size(); i++) {
                     if (fournisseurs.get(i).pseudo.equals(connexionFour)){
                         System.out.println("Bienvenue " + fournisseurs.get(i).pseudo);
-                        Utilisateurs.main(scanner);
+                        Fournisseur.menu(scanner);
                         break;
                     }
                 }
                 System.out.println(connexionFour + " n'existe pas...");
                 break;
-        }   
+        }
         String[] arr0=new String[]{""};
         main(arr0);
         scanner.close();
