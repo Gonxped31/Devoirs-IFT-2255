@@ -3,6 +3,7 @@ import domain.logic.Fournisseur.Fournisseur;
 import java.util.Scanner;
 import domain.logic.Utilisateurs.Utilisateurs;
 
+
 public class Main {
     public static void main(String[] args) {
         ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
@@ -11,7 +12,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet la création d'utilisateurs déjà inscrits dans le système
+        M�thode qui permet la cr�ation d'utilisateurs d�j� inscrits dans le syst�me
     */
     private static ArrayList<Utilisateurs> genererUtilisateurs() {
         ArrayList<Utilisateurs> listeUtilisateurs = new ArrayList<>();
@@ -20,15 +21,15 @@ public class Main {
     }
 
     /*
-        Méthode qui permet la création de fournisseurs déjà inscrits dans le système
+        M�thode qui permet la cr�ation de fournisseurs d�j� inscrits dans le syst�me
     */
     private static ArrayList<Fournisseur> genererFournisseurs() {
         ArrayList<Fournisseur> listeFournisseurs = new ArrayList<>();
-        Fournisseur founisseur1 = new Fournisseur("Roy", "123 rue des Innovations, Montréal, QC, H1A 0A1", "roy1",
+        Fournisseur founisseur1 = new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "roy1",
                 "nom1@robotech.ca", "5142104555", "RobotA", "CPU", "30", "RoboTechnologies");
-        Fournisseur founisseur2 = new Fournisseur("Bouchard", "456 avenue des Automates, Montréal, QC, H5M 1N2", "bouchard2",
+        Fournisseur founisseur2 = new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
                 "contact@automatech.ca", "4503335432", "RobotB", "BRAS", "25", "Automatech");
-        Fournisseur founisseur3 = new Fournisseur("Adams", "2376 boulevard des Génies, Québec, QC, G1W 2W5", "adams3",
+        Fournisseur founisseur3 = new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
                 "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech");
         Fournisseur founisseur4 = new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",
                 "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA","35", "iRobot");
@@ -45,7 +46,7 @@ public class Main {
     }
 
     /*
-        Méthode qui sert du menu principal de Robotix
+        M�thode qui sert du menu principal de Robotix
      */
     private static void choisirOptionMenu(ArrayList<Fournisseur> listeFournisseurs, ArrayList<Utilisateurs> listeUtilisateurs) {
         Scanner scanner = new Scanner(System.in);
@@ -84,7 +85,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet de s'inscrire en tant que nouvel utilisateur
+        M�thode qui permet de s'inscrire en tant que nouvel utilisateur
      */
     private static void inscrireUtilisateur(ArrayList<Utilisateurs> listeUtilisateurs) {
         Scanner scanner = new Scanner(System.in);
@@ -108,7 +109,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet de s'inscrire en tant que nouveau fournisseur
+        M�thode qui permet de s'inscrire en tant que nouveau fournisseur
      */
     private static void inscrireFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
         Scanner scanner = new Scanner(System.in);
@@ -151,16 +152,16 @@ public class Main {
         }
 
         while (!TelephoneValide) {
-            System.out.print("Numéro de téléphone: ");
+            System.out.print("Num�ro de t�l�phone: ");
             inputTelephone = scanner.nextLine();
             TelephoneValide = verifierTelephoneFournisseur(inputTelephone);
         }
 
-        System.out.print("Type de robots fabriqués: ");
+        System.out.print("Type de robots fabriqu�s: ");
         inputTypeRobot = scanner.nextLine();
-        System.out.print("Type de composantes fabriquées: ");
+        System.out.print("Type de composantes fabriqu�es: ");
         inputTypeComposantes = scanner.nextLine();
-        System.out.print("Capacité de fabrication: ");
+        System.out.print("Capacit� de fabrication: ");
         inputCapacite = scanner.nextLine();
         System.out.print("Nom de compagnie: ");
         inputCompagnie = scanner.nextLine();
@@ -170,7 +171,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet de se connecter en tant qu'utilisateur
+        M�thode qui permet de se connecter en tant qu'utilisateur
      */
     private static void connecterUtilisateur(ArrayList<Utilisateurs> listeUtilisateurs) {
         Scanner scanner = new Scanner(System.in);
@@ -187,7 +188,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet de se connecter en tant que fournisseur
+        M�thode qui permet de se connecter en tant que fournisseur
      */
     private static void connecterFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
         Scanner scanner = new Scanner(System.in);
@@ -211,13 +212,13 @@ public class Main {
     }
 
     /*
-        Méthode qui permet de vérifier si le nom entré est valide, c-à-d s'il est unique
+        M�thode qui permet de v�rifier si le nom entr� est valide, c-�-d s'il est unique
      */
     private static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs, boolean NomUnique) {
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getNom().equals(inputNom)) {
                 NomUnique = false;
-                System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
+                System.out.println("Ce nom de fournisseur existe d�j�. Veuillez saisir un autre nom: ");
                 break;
             } else
                 NomUnique = true;
@@ -226,13 +227,13 @@ public class Main {
     }
 
     /*
-        Méthode qui permet vérifier si le pseudo entré est valide, c-à-d s'il est unique
+        M�thode qui permet v�rifier si le pseudo entr� est valide, c-�-d s'il est unique
      */
     private static boolean verifierPseudoFournisseur(String inputPseudo, ArrayList<Fournisseur> listeFournisseurs, boolean PseudoUnique) {
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getPseudo().equals(inputPseudo)) {
                 PseudoUnique = false;
-                System.out.println("Ce pseduo existe déjà. Veuillez en saisir un autre: ");
+                System.out.println("Ce pseduo existe d�j�. Veuillez en saisir un autre: ");
                 break;
             }
             else
@@ -242,7 +243,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet vérifier si l'adresse courriel entré est valide, c-à-d s'il contient le caractère '@'
+        M�thode qui permet v�rifier si l'adresse courriel entr� est valide, c-�-d s'il contient le caract�re '@'
      */
     private static boolean verifierEmailFournisseur(String inputEmail) {
         boolean EmailValide;
@@ -257,14 +258,14 @@ public class Main {
     }
 
     /*
-        Méthode qui permet vérifier si le numéro de téléphone entré est valide, c-à-d s'il contient les 10 caractères
-        qui composent un numéro
+        M�thode qui permet v�rifier si le num�ro de t�l�phone entr� est valide, c-�-d s'il contient les 10 caract�res
+        qui composent un num�ro
      */
     private static boolean verifierTelephoneFournisseur(String inputTelephone) {
         boolean TelephoneValide;
         if (inputTelephone.length() != 10) {
             TelephoneValide = false;
-            System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
+            System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
         }
         else
             TelephoneValide = true;
@@ -273,7 +274,7 @@ public class Main {
     }
 
     /*
-        Méthode qui permet d'ajouter un nouveau fournisseur dans la liste des fournisseurs inscrits du système
+        M�thode qui permet d'ajouter un nouveau fournisseur dans la liste des fournisseurs inscrits du syst�me
      */
     private static void ajouterFournisseur(String inputNom, String inputAdresse, String inputPseudo,
                                            String inputCourriel, String inputTelephone, String inputTypeRobot,
@@ -287,7 +288,7 @@ public class Main {
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
         listeFournisseurs.add(nouveauFournisseur);
 
-        System.out.println("\nBienvenue " + nouveauFournisseur.getNom() + ". Vous êtes enregistré comme étant fournisseur!");
+        System.out.println("\nBienvenue " + nouveauFournisseur.getNom() + ". Vous �tes enregistr� comme �tant fournisseur!");
         System.out.println("Voulez vous continuer? (Y/N): ");
 
         do {
