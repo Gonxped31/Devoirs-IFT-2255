@@ -1,4 +1,5 @@
 package domain.logic.Fournisseur;
+import domain.logic.Main;
 import domain.logic.Robot.Robot;
 import java.util.Scanner;
 import java.util.*;
@@ -127,7 +128,11 @@ public class Fournisseur {
                 String composante2 = scanner.nextLine();
                 retirerComopsante(composante2, fournisseur);
             
-            case "5" : System.out.println("Au revoir !");
+            case "5" : 
+                System.out.println("Au revoir !");
+                Main.choisirOptionMenu(Main.listeFournisseurs, Main.listeUtilisateurs);
+                break;
+
         }
     }
 

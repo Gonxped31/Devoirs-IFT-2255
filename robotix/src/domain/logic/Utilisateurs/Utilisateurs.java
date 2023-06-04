@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Random;
 import domain.logic.Fournisseur.Fournisseur;
 import domain.logic.Robot.Robot;
+import domain.logic.Main;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
 import java.util.UUID;
@@ -89,6 +90,7 @@ public class Utilisateurs {
                 trouverFournisseurs();
                 break;
             case("12"):
+                Main.choisirOptionMenu(Main.listeFournisseurs, Main.listeUtilisateurs);
                 break;
         }
     }
