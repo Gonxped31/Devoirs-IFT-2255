@@ -2,7 +2,7 @@
 
 Corrigé par An Li
 
-Total: 98%
+Total: 99%
 
 ## Glossaire [9/10]
 
@@ -38,7 +38,7 @@ Total: 98%
 - Les exigences 2 et 5 sont de la même catégorie et très intimement reliées
   - Indiquez une autre exigence d'une catégorie que vous n'avez pas encore mentionnée
 
-## Bonne utilisation de GitHub et statistiques [4/5]
+## Bonne utilisation de GitHub et statistiques [5/5]
 
 - Bonne utilisation des Issues et des Pull requests
 - Déséquilibre dans le nombre de commits
