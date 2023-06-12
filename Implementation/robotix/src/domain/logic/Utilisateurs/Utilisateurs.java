@@ -178,12 +178,9 @@ public class Utilisateurs {
                     ajouterAction(scanner);
                 } else{
                     menu(scanner);
-                }
-                
+                }                
             }
-        }
-        
-    
+        }    
     }
 
     public static void creerTaches(Scanner scanner) {
