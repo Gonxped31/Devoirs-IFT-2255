@@ -1,5 +1,8 @@
 package domain.logic;
+import java.io.FileNotFoundException;
 import java.util.*;
+
+import domain.logic.Controller.Controller;
 import domain.logic.Fournisseur.Fournisseur;
 import java.util.Scanner;
 import domain.logic.Utilisateurs.Utilisateurs;
@@ -9,8 +12,15 @@ public class Main {
     public static ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
     public static ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
     public static void main(String[] args) {
-
-        choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
+        Controller c = new Controller();
+        try {
+            c.read("test", "hey", "Col2");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Not working");
+            e.printStackTrace();
+        }
+        //choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
     }
 
     /*
