@@ -1,5 +1,6 @@
 package domain.logic;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 import domain.logic.Controller.Controller;
@@ -11,7 +12,7 @@ import domain.logic.Utilisateurs.Utilisateurs;
 public class Main {
     public static ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
     public static ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Controller c = new Controller();
         try {
             c.read("test", "hey", "Col2");
