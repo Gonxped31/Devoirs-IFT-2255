@@ -2,7 +2,7 @@
 
 Corrigé par An Li
 
-Total: 99%
+Total: 101%
 
 ## Glossaire [9/10]
 
@@ -44,15 +44,12 @@ Total: 99%
 - Déséquilibre dans le nombre de commits
   - Deux membres sur 5 ont peu contribué
 
-## Bonus: Application Java [7/10]
+## Bonus: Application Java [9/10]
 
 - Fonctionnels
   - Connexion
   - Inscription
   - Menu principal
   - Recherche de fournisseurs
-  - Ajouter un robot
-  - Retirer un robot
 - Manquantes
   - Mot de passe requis à l'inscription et à la connexion
-  - On ne peut pas acheter un robot, donc on ne peut pas tester l'enregistrement et les autres fonctionnalités
