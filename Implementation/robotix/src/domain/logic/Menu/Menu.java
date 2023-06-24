@@ -1,32 +1,22 @@
-package domain.logic;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.*;
+package domain.logic.Membre;
+import domain.logic.Membre;
 
-import domain.logic.Controller.Controller;
-import domain.logic.Fournisseur.Fournisseur;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
-import domain.logic.Utilisateurs.Utilisateurs;
 
+import domain.logic.Fournisseur;
+import domain.logic.Main;
+import domain.logic.Utilisateurs;
 
-public class Main {
+public class Menu {
     public static ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
     public static ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
-    public static void main(String[] args) throws IOException {
-        Controller c = new Controller();
-        try {
-            c.read("test", "hey", "Col2");
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            System.out.println("Not working");
-            e.printStackTrace();
-        }
-        //choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
+
+    public static void main() {
+        menuPrincipale();
     }
 
-    /*
-        M�thode qui permet la cr�ation d'utilisateurs d�j� inscrits dans le syst�me
-    */
     private static ArrayList<Utilisateurs> genererUtilisateurs() {
         ArrayList<Utilisateurs> listeUtilisateurs = new ArrayList<>();
 
@@ -34,7 +24,7 @@ public class Main {
     }
 
     /*
-        M�thode qui permet la cr�ation de fournisseurs d�j� inscrits dans le syst�me
+        M�thode qui permet la creation de fournisseurs deja inscrits dans le systeme
     */
     private static ArrayList<Fournisseur> genererFournisseurs() {
         ArrayList<Fournisseur> listeFournisseurs = new ArrayList<>();
@@ -58,11 +48,8 @@ public class Main {
         return listeFournisseurs;
     }
 
-    /*
-        M�thode qui sert du menu principal de Robotix
-     */
-    public static void choisirOptionMenu(ArrayList<Fournisseur> listeFournisseurs, ArrayList<Utilisateurs> listeUtilisateurs) {
-        Scanner scanner = new Scanner(System.in);
+    public static void menuPrincipale() {
+                Scanner scanner = new Scanner(System.in);
         int choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
 
@@ -80,16 +67,16 @@ public class Main {
 
             switch (choixUsager) {
                 case 1 : 
-                    inscrireUtilisateur(listeUtilisateurs);
+                    menuInscriptionUtilisateur();
                     break;
                 case 2 : 
-                    inscrireFournisseur(listeFournisseurs);
+                    menuInscriptionFournisseur();
                     break;
                 case 3 : 
-                    connecterUtilisateur(listeUtilisateurs);
+                    menuConnexionUtilisateur();
                     break;
                 case 4 : 
-                    connecterFournisseur(listeFournisseurs);
+                    menuConnexionFournisseur();
                     break;
                 case 5:
                     System.out.println("Au revoir !");
@@ -101,12 +88,9 @@ public class Main {
         } while (!options.contains(choixUsager));
     }
 
-    /*
-        M�thode qui permet de s'inscrire en tant que nouvel utilisateur
-     */
-    private static void inscrireUtilisateur(ArrayList<Utilisateurs> listeUtilisateurs) {
+    public static void menuInscriptionUtilisateur() {
+        // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("********Nouvel utilisateur********");
         System.out.print("Prenom : ");
         String prenom = scanner.nextLine();
@@ -121,14 +105,11 @@ public class Main {
 
         Utilisateurs util = new Utilisateurs(nom, prenom, pseudo, courriel, telephone);
         listeUtilisateurs.add(util);
-        System.out.println("Have fun " + pseudo);
-        choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
+        System.out.println("Have fun " + pseudo + " !");
+        menuPrincipale();
     }
 
-    /*
-        M�thode qui permet de s'inscrire en tant que nouveau fournisseur
-     */
-    private static void inscrireFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
+    public static void menuInscriptionFournisseur() {
         Scanner scanner = new Scanner(System.in);
         boolean NomUnique = false;
         boolean PseudoUnique = false;
@@ -187,10 +168,7 @@ public class Main {
                 inputTypeComposantes, inputCapacite, inputCompagnie, listeFournisseurs);
     }
 
-    /*
-        M�thode qui permet de se connecter en tant qu'utilisateur
-     */
-    private static void connecterUtilisateur(ArrayList<Utilisateurs> listeUtilisateurs) {
+    public static void menuConnexionUtilisateur() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
@@ -204,10 +182,7 @@ public class Main {
         System.out.println(connexion + " n'existe pas...");
     }
 
-    /*
-        M�thode qui permet de se connecter en tant que fournisseur
-     */
-    private static void connecterFournisseur(ArrayList<Fournisseur> listeFournisseurs) {
+    public static void menuConnexionFournisseur() {
         Scanner scanner = new Scanner(System.in);
         boolean EstConnecte = false;
 
@@ -228,102 +203,117 @@ public class Main {
             System.out.println("Ce nom n'existe pas. Au revoir!");
     }
 
-    /*
-        M�thode qui permet de v�rifier si le nom entr� est valide, c-�-d s'il est unique
-     */
-    private static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs, boolean NomUnique) {
-        for (Fournisseur fournisseur : listeFournisseurs) {
-            if (fournisseur.getNom().equals(inputNom)) {
-                NomUnique = false;
-                System.out.println("Ce nom de fournisseur existe d�j�. Veuillez saisir un autre nom: ");
+    public static void menuUtilisateur() {
+        ArrayList<String> fournisCPU = new ArrayList<>();
+        fournisCPU.add("Fournisseur6" );
+        fournisCPU.add("Adresse1");
+        fournisCPU.add("Courriel3");
+        fournisCPU.add("Numero4");
+        fournisCPU.add("type3");
+        fournisCPU.add("compagnie2");
+        System.out.println("******************** Menu ********************");
+        System.out.println("Bienvenue! Veuillez choisir une option:");
+        System.out.println("1- Enregistrer un robot");
+        System.out.println("2- Afficher état d'un robot");
+        System.out.println("3- Ajouter une composante a un robot");
+        System.out.println("4- Ajouter une action a un robot");
+        System.out.println("5- Ajouter une tâche");
+        System.out.println("6- Allouer une tache a un robot");
+        System.out.println("7- Afficher métriques d'une flotte");
+        System.out.println("8- Participer à une activité");
+        System.out.println("9- Afficher activités maintenues par un robot d'une flotte");
+        System.out.println("10- Afficher les problèmes du système");
+        System.out.println("11- Trouver un fournisseur");
+        System.out.println("12- Quitter");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch(choix){
+            case("1"):
+                enregistrerRobot();
                 break;
-            } else
-                NomUnique = true;
-        }
-        return NomUnique;
-    }
-
-    /*
-        M�thode qui permet v�rifier si le pseudo entr� est valide, c-�-d s'il est unique
-     */
-    private static boolean verifierPseudoFournisseur(String inputPseudo, ArrayList<Fournisseur> listeFournisseurs, boolean PseudoUnique) {
-        for (Fournisseur fournisseur : listeFournisseurs) {
-            if (fournisseur.getPseudo().equals(inputPseudo)) {
-                PseudoUnique = false;
-                System.out.println("Ce pseduo existe d�j�. Veuillez en saisir un autre: ");
+            case("2"):
+                afficherEtatRobot(scanner);
                 break;
-            }
-            else
-                PseudoUnique = true;
+            case("3"):
+                ajouterComposantes(scanner);
+                break;
+            case("4"):
+                ajouterAction(scanner);
+                break;
+            case("5"):
+                creerTaches(scanner);
+                break;
+            case("6"):
+                allouerTachesRobot(scanner);
+                break;
+            case("7"):
+                afficherMetriquesFlotte(scanner);
+                break;
+            case("8"):
+                participerActivites(scanner);
+                break;
+            case("9"):
+                voirActivitesMaintenues(scanner);
+                break;
+            case("10"):
+                gestionDesProblemes(scanner);
+                break;
+            case("11"):
+                trouverFournisseurs();
+                break;
+            case("12"):
+                Main.choisirOptionMenu(Main.listeFournisseurs, Main.listeUtilisateurs);
+                break;
         }
-        return PseudoUnique;
     }
 
-    /*
-        M�thode qui permet v�rifier si l'adresse courriel entr� est valide, c-�-d s'il contient le caract�re '@'
-     */
-    private static boolean verifierEmailFournisseur(String inputEmail) {
-        boolean EmailValide;
-        if (!inputEmail.contains("@")) {
-            EmailValide = false;
-            System.out.println("L'adresse courriel est invalide. Veuillez en saisir un autre: ");
-        }
-        else
-            EmailValide = true;
-
-        return EmailValide;
-    }
-
-    /*
-        M�thode qui permet v�rifier si le num�ro de t�l�phone entr� est valide, c-�-d s'il contient les 10 caract�res
-        qui composent un num�ro
-     */
-    private static boolean verifierTelephoneFournisseur(String inputTelephone) {
-        boolean TelephoneValide;
-        if (inputTelephone.length() != 10) {
-            TelephoneValide = false;
-            System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
-        }
-        else
-            TelephoneValide = true;
-
-        return TelephoneValide;
-    }
-
-    /*
-        M�thode qui permet d'ajouter un nouveau fournisseur dans la liste des fournisseurs inscrits du syst�me
-     */
-    private static void ajouterFournisseur(String inputNom, String inputAdresse, String inputPseudo,
-                                           String inputCourriel, String inputTelephone, String inputTypeRobot,
-                                           String inputTypeComposantes, String inputCapacite, String inputCompagnie,
-                                           ArrayList<Fournisseur> listeFournisseurs) {
+    public static void menuFournisseur() {
         Scanner scanner = new Scanner(System.in);
-        String choixUsager;
-        ArrayList<String> options = new ArrayList<>(Arrays.asList("Y", "y", "N", "n")) ;
+        System.out.println("******************** Menu Fournisseur ********************");
+        System.out.println("Bienvenue " + fournisseur.getNom() + "! Veuillez choisir une option:");
+        System.out.println("1- Ajouter un nouveau robot");
+        System.out.println("2- Retirer un robot");
+        System.out.println("3- Ajouter une composante");
+        System.out.println("4- Retirer une composante");
+        System.out.println("5- Quitter");
+        System.out.print(">>> Votre choix : ");
+        String choixUsager = scanner.nextLine();
 
-        Fournisseur nouveauFournisseur = new Fournisseur(inputNom, inputAdresse, inputPseudo, inputCourriel,
-                inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
-        listeFournisseurs.add(nouveauFournisseur);
+        switch (choixUsager) {
+            case "1" : 
+                System.out.println("Veuillez entrer les infos du robot : ");
+                System.out.print("Nom : ");
+                String nomRobot = scanner.nextLine();
+                System.out.print("CPU : ");
+                String cpu = scanner.nextLine();
+                System.out.print("Mémoire : ");
+                String memoire = scanner.nextLine();
+                System.out.print("Numéro de série : ");
+                String numeroSerie = scanner.nextLine();
+                Robot robot = new Robot(nomRobot, 0, 0, 0, 0, Integer.parseInt(cpu), Integer.parseInt(memoire), null, null, null, null, numeroSerie);
+                ajouterRobot(robot, fournisseur);
+                menuFournisseur(fournisseur);
+            
+            case "2" :
+                System.out.print("Veuillez entrer le nom du robot à retirer : ");
+                String nom = scanner.nextLine();
+                retirerRobot(nom, fournisseur);
+            
+            case "3" :
+                System.out.print("Veuillez entrer le nom du robot à retirer : ");
+                String composante = scanner.nextLine();
+                ajouterComposante(composante, fournisseur);
+            
+            case "4" :
+                System.out.print("Veuillez entrer le nom du robot à retirer : ");
+                String composante2 = scanner.nextLine();
+                retirerComopsante(composante2, fournisseur);
+            
+            case "5" : 
+                System.out.println("Au revoir !");
+                Main.choisirOptionMenu(Main.listeFournisseurs, Main.listeUtilisateurs);
+                break;
 
-        System.out.println("\nBienvenue " + nouveauFournisseur.getNom() + ". Vous �tes enregistr� comme �tant fournisseur!");
-        System.out.println("Voulez vous continuer? (Y/N): ");
-
-        do {
-            choixUsager = scanner.nextLine();
-
-            switch (choixUsager) {
-                case "Y" :
-                case "y" :  
-                    nouveauFournisseur.menuFournisseur(nouveauFournisseur);
-                    break;
-                case "N" :
-                case "n":
-                    choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
-                    break;
-                default :       
-                    System.out.println("Choix invalide! Réessayez de nouveau: ");
-                    break;
-            }
-        } while (!options.contains(choixUsager));
+        }
     }
 }

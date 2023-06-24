@@ -8,12 +8,12 @@ import java.util.Random;
 import domain.logic.Fournisseur.Fournisseur;
 import domain.logic.Robot.Robot;
 import domain.logic.Main;
+import domain.logic.Membre;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
 import java.util.UUID;
 
-public class Utilisateurs {
-    public String nom, prenom, pseudo, courriel, telephone;
+public class Utilisateurs extends Membre{
     protected static LinkedList<Robot> robots = new LinkedList<>();
     protected static LinkedList<String> uuids = new LinkedList<>();
     protected static LinkedList<String> taches = new LinkedList<>();
@@ -24,11 +24,7 @@ public class Utilisateurs {
     }
 
     public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
-        this.nom = nom;
-        this.prenom = prenom;
-        this.pseudo = pseudo;
-        this.courriel = courriel;
-        this.telephone = telephone;
+        super(prenom, pseudo, courriel, telephone, nom);
     }
 
     public static void menu(Scanner scanner) {

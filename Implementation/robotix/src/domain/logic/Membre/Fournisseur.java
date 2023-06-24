@@ -1,69 +1,25 @@
 package domain.logic.Fournisseur;
 import domain.logic.Main;
 import domain.logic.Robot.Robot;
+import domain.logic.Membre;
 import java.util.Scanner;
 import java.util.*;
 
-public class Fournisseur {
-    public String nom;
-    public String adresse;
-    public String email;
-    public String numeroTelephone;
+public class Fournisseur extends Membre {
     public String typeRobotFabriquer;
     public String typeComposantesFabriquer;
     public String capacite;
-    public String nomCompagnie;
     public String pseudo;
     public static LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     public static LinkedList<String> inventaireComposant= new LinkedList<>();
 
     public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
-        this.nom=nom;
-        this.adresse=adresse;
+        super(nom, adresse, email, numeroTelephone, nomcompagnie);
         this.pseudo=pseudo;
-        this.email=email;
-        this.numeroTelephone=numeroTelephone;
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capacite=capacite;
-        this.nomCompagnie=nomcompagnie;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public String getPseudo() {
-        return pseudo;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getTelephone() {
-        return numeroTelephone;
-    }
-
-    public String getTypeRobotFabriquer() {
-        return typeRobotFabriquer;
-    }
-
-    public String getTypeComposantesFabriquer() {
-        return typeComposantesFabriquer;
-    }
-
-    public String getCapacite() {
-        return capacite;
-    }
-
-    public String getNomCompagnie() {
-        return nomCompagnie;
     }
 
     public void vendreUnComposant(String composant){
