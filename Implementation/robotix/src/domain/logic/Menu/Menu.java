@@ -17,7 +17,7 @@ public class Menu {
         int choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
 
-        System.out.println("********Binevenue chez Robotix!********\"");
+        System.out.println("********Binevenue chez Robotix!********");
         System.out.println("Veuillez choisir l'une des options suivantes:");
         System.out.println(options.get(0) + "- S'inscrire en tant qu'utilisateur");
         System.out.println(options.get(1) + "- S'inscrire en tant que fournisseur");
@@ -46,93 +46,57 @@ public class Menu {
         } while (!options.contains(choixUsager));
     }
 
+    /*Section Utilisateur */
     public void inscrireUtilisateur(Scanner scanner) {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
+        boolean PseudoUnique = false;
+        boolean EmailValide = false;
+        boolean TelephoneValide = false;
+        String pseudo = "";
+        String courriel = "";
+        String telephone = "";
+
         System.out.println("********Nouvel utilisateur********");
         System.out.print("Prenom : ");
         String prenom = scanner.nextLine();
         System.out.print("Nom :");
         String nom = scanner.nextLine();
-        System.out.println("Adresse : ");
-        String adresse = scanner.nextLine();
-        System.out.print("Pseudo : ");
-        String pseudo = scanner.nextLine();
-        System.out.print("Adresse courriel : ");
-        String courriel = scanner.nextLine();
-        System.out.print("Telephone : ");
-        String telephone = scanner.nextLine();
-        System.out.println("Nom de la compagnie : ");
-        String nomCompagnie = scanner.nextLine();
 
-        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie);
-        System.out.println("Have fun " + pseudo + " !");
-        menuPrincipale(scanner);
-    }
-
-    /*
-        M�thode qui permet de s'inscrire en tant que nouveau fournisseur
-     */
-    private void inscrireFournisseur(Scanner scanner) {
-        boolean NomUnique = false;
-        boolean EmailValide = false;
-        boolean TelephoneValide = false;
-
-        String inputNom = "";
-        String inputPseudo = "";
-        String inputEmail = "";
-        String inputTelephone = "";
-        String inputAdresse;
-        String inputTypeRobot;
-        String inputTypeComposantes;
-        String inputCapacite;
-        String inputCompagnie;
-
-        System.out.println("********Nouveau fournisseur********");
-
-        while (!NomUnique) {
-            System.out.print("Nom: ");
-            inputNom = scanner.nextLine();
-            String resultats = controlleurFournisseurs.verifierNom(inputNom);
-            if (resultats.equals("")){
-                NomUnique = true;
-            } else{
-                System.out.println(resultats);
-                NomUnique = false;
+        while (!PseudoUnique) {
+            System.out.print("Pseudo: ");
+            pseudo = scanner.nextLine();
+            PseudoUnique = controlleurUtilisateurs.verifierPseudo(pseudo);
+            if (!PseudoUnique) {
+                System.out.print("Ce pseudo existe déjà, veuillez entrer un autre : ");
             }
         }
 
-        System.out.print("Adresse de la compaganie: ");
-        inputAdresse = scanner.nextLine();
-
         while (!EmailValide) {
             System.out.print("Adresse courriel: ");
-            inputEmail = scanner.nextLine();
-            EmailValide = controlleurFournisseurs.verifierEmail(inputEmail);
+            courriel = scanner.nextLine();
+            EmailValide = controlleurUtilisateurs.verifierEmail(courriel);
             if (!EmailValide) {
                 System.out.println("Email invalide, veuillez reessayer.");
             }
         }
 
         while (!TelephoneValide) {
-            System.out.print("Num�ro de t�l�phone: ");
-            inputTelephone = scanner.nextLine();
-            TelephoneValide = controlleurFournisseurs.verifierTelephone(inputTelephone);
+            System.out.print("Numéro de téléphone: ");
+            telephone = scanner.nextLine();
+            TelephoneValide = controlleurUtilisateurs.verifierTelephone(telephone);
             if (!TelephoneValide) {
-                System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
+                System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
             }
         }
 
-        System.out.print("Type de robots fabriqu�s: ");
-        inputTypeRobot = scanner.nextLine();
-        System.out.print("Type de composantes fabriqu�es: ");
-        inputTypeComposantes = scanner.nextLine();
-        System.out.print("Capacit� de fabrication: ");
-        inputCapacite = scanner.nextLine();
-        System.out.print("Nom de compagnie: ");
-        inputCompagnie = scanner.nextLine();
+        System.out.println("Adresse : ");
+        String adresse = scanner.nextLine();
+        System.out.println("Nom de la compagnie : ");
+        String nomCompagnie = scanner.nextLine();
 
-        controlleurFournisseurs.inscriptionFournisseur(inputNom, inputAdresse, inputEmail,
-                inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
+        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie);
+        System.out.println("Have fun " + pseudo + " !");
+        menuPrincipale(scanner);
     }
 
     public void connecterUtilisateur(Scanner scanner) {
@@ -147,21 +111,6 @@ public class Menu {
         }
     }
 
-    /*
-         M�thode qui permet de se connecter en tant que fournisseur
-      */
-    private void connecterFournisseur(Scanner scanner) {
-        System.out.println("Veuillez entrez votre nom de fournisseur: ");
-        String nomFounisseur = scanner.nextLine();
-        if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
-            System.out.println("Bienvenue " + nomFounisseur + "!");
-            menuFournisseur(scanner, controlleurFournisseurs.trouverFournisseur(nomFounisseur).get(0));
-        } else {
-            System.out.println(nomFounisseur + " n'existe pas.");
-            menuPrincipale(scanner);
-        }
-    }
-
     public void menuUtilisateur(Scanner scanner, String pseudo) {
         ArrayList<String> fournisCPU = new ArrayList<>();
         fournisCPU.add("Fournisseur6" );
@@ -172,15 +121,19 @@ public class Menu {
         fournisCPU.add("compagnie2");
         System.out.println("******************** Menu: " + pseudo + " ********************");
         System.out.println("Bienvenue! Veuillez choisir une option:");
+        System.out.println("1- Modifier mon profile");
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");
         System.out.println("3- Ajouter une composante a un robot");
         System.out.println("4- Ajouter une action a un robot");
         System.out.println("5- Ajouter une tâche");
         System.out.println("6- Allouer une tache a un robot");
-        System.out.println("7- Afficher métriques d'une flotte");
+
+        System.out.println("7- Gérer ma flotte");
+
         System.out.println("8- Participer à une activité");
-        System.out.println("9- Afficher activités maintenues par un robot d'une flotte");
+        System.out.println("Creer une activité");
+
         System.out.println("10- Afficher les problèmes du système");
         System.out.println("11- Trouver un fournisseur");
         System.out.println("12- Quitter");
@@ -221,10 +174,8 @@ public class Menu {
             System.out.println("Choisissez un filtre parmi les suivants : ");
             System.out.println("1- Nom");
             System.out.println("2- Adresse");
-            System.out.println("3- Courriel");
-            System.out.println("4 Type de robots fabriqués");
-            System.out.println("5 Nom de la compagnie");
-            System.out.println("6 Aucun filtre");
+            System.out.println("3- Type de composantes");
+            System.out.println("4- Aucun filtre");
             System.out.print(">>> Votre choix :");
             String choix = scanner.nextLine();
             switch (choix) {
@@ -246,7 +197,7 @@ public class Menu {
                     break;
 
                 case "3":
-                    System.out.print("Veuillez entrer le courriel recherché : ");
+                    System.out.print("Veuillez entrer le Type de composante recherché : ");
                     String courriel = scanner.nextLine();
                     printFournisseurs(controlleurFournisseurs.trouverFournisseur(courriel));
                     System.out.println("Entrez le nom du fournisseur choisi : ");
@@ -255,24 +206,6 @@ public class Menu {
                     break;
 
                 case "4" :
-                    System.out.print("Veuillez entrer le type de robot recherché : ");
-                    String type = scanner.nextLine();
-                    printFournisseurs(controlleurFournisseurs.trouverFournisseur(type));
-                    System.out.println("Entrez le nom du fournisseur choisi : ");
-                    String fournisChoisi4 = scanner.nextLine();
-                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur(fournisChoisi4).get(0));
-                    break;
-
-                case "5":
-                    System.out.print("Veuillez entrer le nom de la compagnie recherché : ");
-                    String nomCompagnie = scanner.nextLine();
-                    printFournisseurs(controlleurFournisseurs.trouverFournisseur(nomCompagnie));
-                    System.out.println("Entrez le nom du fournisseur choisi : ");
-                    String fournisChoisi5 = scanner.nextLine();
-                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur(fournisChoisi5).get(0));
-                    break;
-
-                case "6" :
                     printFournisseurs(controlleurFournisseurs.trouverFournisseur("6"));
                     System.out.println("Entrez le nom du fournisseur choisi : ");
                     String fournisChoisi6 = scanner.nextLine();
@@ -297,9 +230,6 @@ public class Menu {
     public void menuAchatRobot(Scanner scanner, Fournisseur fournisseur){
 
     }
-
-
-
 
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
         System.out.print("Nom de la composante : ");
@@ -334,6 +264,82 @@ public class Menu {
         }
     }
 
+
+
+    /* Section Fournisseur */
+    private void inscrireFournisseur(Scanner scanner) {
+        boolean NomUnique = false;
+        boolean EmailValide = false;
+        boolean TelephoneValide = false;
+
+        String inputNom = "";
+        String inputEmail = "";
+        String inputTelephone = "";
+        String inputAdresse;
+        String inputTypeRobot;
+        String inputTypeComposantes;
+        String inputCapacite;
+        String inputCompagnie;
+
+        System.out.println("********Nouveau fournisseur********");
+
+        while (!NomUnique) {
+            System.out.print("Nom: ");
+            inputNom = scanner.nextLine();
+            if (controlleurFournisseurs.verifierNom(inputNom)){
+                NomUnique = true;
+            } else{
+                System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
+                NomUnique = false;
+            }
+        }
+
+        System.out.print("Adresse de la compaganie: ");
+        inputAdresse = scanner.nextLine();
+
+        while (!EmailValide) {
+            System.out.print("Adresse courriel: ");
+            inputEmail = scanner.nextLine();
+            EmailValide = controlleurFournisseurs.verifierEmail(inputEmail);
+            if (!EmailValide) {
+                System.out.println("Email invalide, veuillez reessayer.");
+            }
+        }
+
+        while (!TelephoneValide) {
+            System.out.print("Num�ro de t�l�phone: ");
+            inputTelephone = scanner.nextLine();
+            TelephoneValide = controlleurFournisseurs.verifierTelephone(inputTelephone);
+            if (!TelephoneValide) {
+                System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
+            }
+        }
+
+        System.out.print("Type de robots fabriqu�s: ");
+        inputTypeRobot = scanner.nextLine();
+        System.out.print("Type de composantes fabriqu�es: ");
+        inputTypeComposantes = scanner.nextLine();
+        System.out.print("Capacit� de fabrication: ");
+        inputCapacite = scanner.nextLine();
+        System.out.print("Nom de compagnie: ");
+        inputCompagnie = scanner.nextLine();
+
+        controlleurFournisseurs.inscriptionFournisseur(inputNom, inputAdresse, inputEmail,
+                inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
+    }
+
+    private void connecterFournisseur(Scanner scanner) {
+        System.out.println("Veuillez entrez votre nom de fournisseur: ");
+        String nomFounisseur = scanner.nextLine();
+        if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
+            System.out.println("Bienvenue " + nomFounisseur + "!");
+            menuFournisseur(scanner, controlleurFournisseurs.trouverFournisseur(nomFounisseur).get(0));
+        } else {
+            System.out.println(nomFounisseur + " n'existe pas.");
+            menuPrincipale(scanner);
+        }
+    }
+
     public void menuFournisseur(Scanner scanner, Fournisseur fournisseur) {
         System.out.println("******************** Menu Fournisseur ********************");
         System.out.println("Bienvenue ! Veuillez choisir une option:");
@@ -357,12 +363,20 @@ public class Menu {
                 System.out.print("Numéro de série : ");
                 String numeroSerie = scanner.nextLine();
                 controlleurFournisseurs.ajouterRobot(fournisseur, nomRobot,0, 0, 0, 0, Integer.parseInt(cpu), Integer.parseInt(memoire), null, null, null, null, numeroSerie);
+                System.out.println(" ");
+                System.out.println("Le robot a été rajouté avec succès !");
+                System.out.println(" ");
                 menuFournisseur(scanner, fournisseur);
 
             case "2" :
                 System.out.print("Veuillez entrer le nom du robot à retirer : ");
                 String nomRobot2 = scanner.nextLine();
-                controlleurFournisseurs.retirerRobot(nomRobot2, fournisseur);
+                if(controlleurFournisseurs.retirerRobot(nomRobot2, fournisseur)){
+                    System.out.println("Le robot a été retiré avec succès !");
+
+                } else {
+                    System.out.println("Vous ne possédez ce robot.");
+                }
                 menuFournisseur(scanner, fournisseur);
 
             
@@ -384,14 +398,16 @@ public class Menu {
             case "4" :
                 System.out.print("Composant : ");
                 String composante2 = scanner.nextLine();
-                controlleurFournisseurs.retirerComposante(composante2, fournisseur);
+                if(controlleurFournisseurs.retirerComposante(composante2, fournisseur)){
+                    System.out.println("La composante a été retirée avec succès !");
+                } else {
+                    System.out.println("Vous ne possédez cette composante.");
+                }
                 menuFournisseur(scanner, fournisseur);
 
-            
             case "5" :
                 System.out.println("Au revoir !");
                 menuPrincipale(scanner);
         }
     }
-
 }

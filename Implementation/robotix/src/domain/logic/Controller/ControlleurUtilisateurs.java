@@ -1,8 +1,5 @@
 package domain.logic.Controller;
-import domain.logic.Membre.Fournisseur;
-import domain.logic.Membre.Utilisateurs;
-import domain.logic.Menu.Menu;
-import jdk.jshell.execution.Util;
+import domain.logic.Membre.Utilisateur;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,44 +7,32 @@ import java.util.Scanner;
 public class ControlleurUtilisateurs {
 
     private DataBaseController dataBaseController = new DataBaseController();
-    private ArrayList<Utilisateurs> listeUtilisateurs = dataBaseController.getListeUtilisateurs();
-    private final Utilisateurs util = new Utilisateurs(null, null, null, null, null, null, null);
+    private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.getListeUtilisateurs();
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie){
-        dataBaseController.getListeUtilisateurs().add(new Utilisateurs(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie));
+        dataBaseController.getListeUtilisateurs().add(new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie));
     }
 
     public boolean authentification(String connexion, String membre){
-        return util.authentification(connexion, listeUtilisateurs);
+        return Utilisateur.authentification(connexion, listeUtilisateurs);
     }
 
     /* Code pour les vérifications */
-    public String verifierNom(String inputNom) {
-        return util.verifierPseudoUtilisateur(inputNom, listeUtilisateurs);
+    public boolean verifierPseudo(String pseudo) {
+        return Utilisateur.verifierPseudoUtilisateur(pseudo, listeUtilisateurs);
     }
 
     public boolean verifierEmail(String inputEmail) {
-        return util.verifierEmailUtilisateur(inputEmail);
+        return Utilisateur.verifierEmailUtilisateur(inputEmail);
     }
 
     public boolean verifierTelephone(String inputTelephone) {
-        return util.verifierTelephoneUtilisateur(inputTelephone);
-    }
-
-    public Utilisateurs trouverUtilisateur(String pseudo){
-        Utilisateurs utilisateur = new Utilisateurs(null, null, null, null, null, null, null);
-        for (Utilisateurs utilisateurs : dataBaseController.getListeUtilisateurs()) {
-            if (utilisateurs.getPseudo().equals(pseudo)) {
-                utilisateur = utilisateurs;
-                break;
-            }
-        }
-        return utilisateur;
+        return Utilisateur.verifierTelephoneUtilisateur(inputTelephone);
     }
 
     public void actionsUtilisateurs(Scanner scanner, int action, String pseudo){
         // TROUVER UN MOYEN DE TROUVER UN UTILISATEUR JSUTE UNE FOIS.
-        Utilisateurs utilisateur = trouverUtilisateur(pseudo);
+        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
 
         switch (action) {
             case 1 :

@@ -58,9 +58,7 @@ public class Fournisseur extends Membre {
         return this.nom;
     }
 
-
-
-    public boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
+    public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getNom().equals(nom)) {
@@ -71,74 +69,68 @@ public class Fournisseur extends Membre {
         return authentification;
     }
 
-    public String verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs) {
-        String message = "";
+    public static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs) {
+        boolean bool = false;
         for (Fournisseur fournisseur : listeFournisseurs) {
             if (fournisseur.getNom().equals(inputNom)) {
-                message = "Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ";
+                bool = true;
                 break;
             }
         }
-        return message;
+        return bool;
     }
 
-    public boolean verifierEmailFournisseur(String inputEmail) {
+    public static boolean verifierEmailFournisseur(String inputEmail) {
         return inputEmail.contains("@");
     }
 
-    public boolean verifierTelephoneFournisseur(String inputTelephone) {
+    public static boolean verifierTelephoneFournisseur(String inputTelephone) {
         return inputTelephone.length() == 10;
     }
 
-    public void vendreUnComposant(String composant){
-      inventaireComposant.remove(composant);
+    public void ajouterRobot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
+                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie) {
+        inventaireDeRobot.add(new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, numeroSerie));
     }
 
-    public void ajouterRobot(Robot robot, Fournisseur fournisseur) {
-        inventaireDeRobot.add(robot);
-        System.out.println(" ");
-        System.out.println("Le robot a été rajouté avec succès !");
-        System.out.println(" ");
-    }
-
-    public void retirerRobot(String nomRobot, Fournisseur fournisseur) {
+    public boolean retirerRobot(String nomRobot) {
+        boolean bool = false;
         int nbRobot = 0;
         for (Robot robot : inventaireDeRobot) {
             if (robot.getNom().equals(nomRobot)) {
                 inventaireDeRobot.remove(robot);
                 nbRobot++;
+                break;
             }
         }
-        if (nbRobot == 0) {
-            System.out.println("Vous ne possédez ce robot.");
-
-        } else {
-            System.out.println("Le robot a été retiré avec succès !");
+        if (nbRobot != 0) {
+            bool = true;
         }
+
+        return bool;
     }
 
     public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
         inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
-    public void retirerComopsante(String composante2, Fournisseur fournisseur) {
+    public boolean retirerComopsante(String nom) {
+        boolean bool = false;
         int nbComposantes = 0;
         for (Composant composant : inventaireComposant) {
-            if (composant.getNom().equals(composante2)) {
+            if (composant.getNom().equals(nom)) {
                 inventaireComposant.remove(composant);
                 ++nbComposantes;
-            } else {
-                continue;
+                break;
             }
         }
-        if (nbComposantes == 0) {
-            System.out.println("Vous ne possédez cette composante.");
-        } else {
-            System.out.println("La composante a été retirée avec succès !");
+        if (nbComposantes != 0) {
+            bool = true;
         }
+        return bool;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return  "Fournisseur { " + '\n' +
                 "Nom = " + getNom() + '\n' +
@@ -150,9 +142,9 @@ public class Fournisseur extends Membre {
                 "Capacité de fabrication = " + getCapaciteProductionComposantes() + '\n' +
                 "Nom de compagnie = " + getNomCompagnie() + '\n' +
                 "}\n";
-    }
+    }*/
 
-    public ArrayList<Fournisseur> trouverFournisseur(String info, ArrayList<Fournisseur> listeFournisseurs){
+    public static ArrayList<Fournisseur> trouverFournisseur(String info, ArrayList<Fournisseur> listeFournisseurs){
         ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
         switch (info) {
             case "1" :

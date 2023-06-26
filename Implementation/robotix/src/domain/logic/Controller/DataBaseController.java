@@ -1,25 +1,23 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
-import domain.logic.Membre.Utilisateurs;
-import domain.logic.Robot.Robot;
+import domain.logic.Membre.Utilisateur;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class DataBaseController {
     private ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
-    private ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
+    private ArrayList<Utilisateur> listeUtilisateurs = genererUtilisateurs();
 
     public ArrayList<Fournisseur> getListeFournisseurs() {
         return this.listeFournisseurs;
     }
 
-    public ArrayList<Utilisateurs> getListeUtilisateurs() {
+    public ArrayList<Utilisateur> getListeUtilisateurs() {
         return this.listeUtilisateurs;
     }
 
-    public void ajouterUtilisateur(Utilisateurs utilisateur){
+    public void ajouterUtilisateur(Utilisateur utilisateur){
         listeUtilisateurs.add(utilisateur);
     }
 
@@ -27,8 +25,8 @@ public class DataBaseController {
         listeFournisseurs.add(fournisseur);
     }
 
-    private ArrayList<Utilisateurs> genererUtilisateurs() {
-        ArrayList<Utilisateurs> listeUtilisateurs = new ArrayList<>();
+    private ArrayList<Utilisateur> genererUtilisateurs() {
+        ArrayList<Utilisateur> listeUtilisateurs = new ArrayList<>();
         return listeUtilisateurs;
     }
 
@@ -36,6 +34,7 @@ public class DataBaseController {
             M�thode qui permet la creation de fournisseurs deja inscrits dans le systeme
         */
     private ArrayList<Fournisseur> genererFournisseurs() {
+        ArrayList<Fournisseur> listeFournisseur = new ArrayList<>();
         Fournisseur founisseur1 = new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "roy1",
                 "nom1@robotech.ca", "5142104555", "RobotA", "CPU", "RoboTechnologies");
         Fournisseur founisseur2 = new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
@@ -47,13 +46,13 @@ public class DataBaseController {
         Fournisseur founisseur5 = new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "thompson5",
                 "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR", "RoboPro");
 
-        listeFournisseurs.add(founisseur1);
-        listeFournisseurs.add(founisseur2);
-        listeFournisseurs.add(founisseur3);
-        listeFournisseurs.add(founisseur4);
-        listeFournisseurs.add(founisseur5);
+        listeFournisseur.add(founisseur1);
+        listeFournisseur.add(founisseur2);
+        listeFournisseur.add(founisseur3);
+        listeFournisseur.add(founisseur4);
+        listeFournisseur.add(founisseur5);
 
-        return listeFournisseurs;
+        return listeFournisseur;
     }
 
 }
