@@ -1,5 +1,5 @@
 package domain.logic.Membre;
-public class Membre {
+public abstract class Membre {
     protected String nom;
     protected String adresse;
     protected String email;
@@ -13,9 +13,6 @@ public class Membre {
         this.numeroTelephone = numeroTelephone;
         this.nomCompagnie = nomCompagnie;
     }
-    
-    public static void name() {
-        
-    }
+
 
 }

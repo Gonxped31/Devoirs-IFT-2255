@@ -1,149 +1,137 @@
 package domain.logic.Membre;
-import domain.logic.Main;
+import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import java.util.Scanner;
+import java.util.UUID;
+
 import java.util.*;
 
 public class Fournisseur extends Membre {
-    public String typeRobotFabriquer;
-    public String typeComposantesFabriquer;
-    public String capacite;
-    public static LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
-    public static LinkedList<String> inventaireComposant= new LinkedList<>();
-
+    private String typeRobotFabriquer;
+    private String typeComposantesFabriquer;
+    private String capaciteProductionComposantes;
+    private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
+    private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
-        this.capacite=capacite;
+        this.capaciteProductionComposantes =capacite;
     }
 
-    public void vendreUnComposant(String composant){
-      inventaireComposant.remove(composant);
+    public String getNomCompagnie() {
+        return this.nomCompagnie;
     }
 
-    public void mettreInventaireRobotAjour(Robot robot, boolean modeAjout){
-        if (modeAjout) {
-            inventaireDeRobot.add(robot);
-        } else {
-            inventaireDeRobot.remove(robot);
-        }
+    public LinkedList<Robot> getInventaireDeRobot() {
+        return inventaireDeRobot;
     }
 
-    public void mettreInventaireComposantAjour( String composant, boolean modeAjout){
-        if (modeAjout) {
-            inventaireComposant.add(composant);
-        } else {
-            inventaireComposant.remove(composant);
-        }
+    public LinkedList<Composant> getInventaireComposant() {
+        return inventaireComposant;
     }
 
-    public static void menuFournisseur(Fournisseur fournisseur) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("******************** Menu Fournisseur ********************");
-        System.out.println("Bienvenue " + fournisseur.getNom() + "! Veuillez choisir une option:");
-        System.out.println("1- Ajouter un nouveau robot");
-        System.out.println("2- Retirer un robot");
-        System.out.println("3- Ajouter une composante");
-        System.out.println("4- Retirer une composante");
-        System.out.println("5- Quitter");
-        System.out.print(">>> Votre choix : ");
-        String choixUsager = scanner.nextLine();
+    public String getCapaciteProductionComposantes() {
+        return this.capaciteProductionComposantes;
+    }
 
-        switch (choixUsager) {
-            case "1" : 
-                System.out.println("Veuillez entrer les infos du robot : ");
-                System.out.print("Nom : ");
-                String nomRobot = scanner.nextLine();
-                System.out.print("CPU : ");
-                String cpu = scanner.nextLine();
-                System.out.print("Mémoire : ");
-                String memoire = scanner.nextLine();
-                System.out.print("Numéro de série : ");
-                String numeroSerie = scanner.nextLine();
-                Robot robot = new Robot(nomRobot, 0, 0, 0, 0, Integer.parseInt(cpu), Integer.parseInt(memoire), null, null, null, null, numeroSerie);
-                ajouterRobot(robot, fournisseur);
-                menuFournisseur(fournisseur);
-            
-            case "2" :
-                System.out.print("Veuillez entrer le nom du robot à retirer : ");
-                String nom = scanner.nextLine();
-                retirerRobot(nom, fournisseur);
-            
-            case "3" :
-                System.out.print("Veuillez entrer le nom du robot à retirer : ");
-                String composante = scanner.nextLine();
-                ajouterComposante(composante, fournisseur);
-            
-            case "4" :
-                System.out.print("Veuillez entrer le nom du robot à retirer : ");
-                String composante2 = scanner.nextLine();
-                retirerComopsante(composante2, fournisseur);
-            
-            case "5" : 
-                System.out.println("Au revoir !");
-                Main.choisirOptionMenu(Main.listeFournisseurs, Main.listeUtilisateurs);
+    public String getTypeComposantesFabriquer() {
+        return this.typeComposantesFabriquer;
+    }
+
+    public String getTypeRobotFabriquer() {
+        return this.typeRobotFabriquer;
+    }
+
+    public String getTelephone() {
+        return this.numeroTelephone;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
+        boolean authentification = false;
+        for (Fournisseur fournisseur : listeFournisseurs) {
+            if (fournisseur.getNom().equals(nom)) {
+                authentification = true;
                 break;
-
+            }
         }
+        return authentification;
     }
 
-    private static void ajouterRobot(Robot robot, Fournisseur fournisseur) {
-        inventaireDeRobot.add(robot);
-        System.out.println(" ");
-        System.out.println("Le robot a été rajouté avec succès !");
-        System.out.println(" ");
-        menuFournisseur(fournisseur);
+    public static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs) {
+        boolean bool = false;
+        for (Fournisseur fournisseur : listeFournisseurs) {
+            if (!fournisseur.getNom().equals(inputNom)) {
+                bool = true;
+                break;
+            }
+        }
+        return bool;
     }
 
-    private static void retirerRobot(String nomRobot, Fournisseur fournisseur) {
+    public static boolean verifierEmailFournisseur(String inputEmail) {
+        return inputEmail.contains("@");
+    }
+
+    public static boolean verifierTelephoneFournisseur(String inputTelephone) {
+        return inputTelephone.length() == 10;
+    }
+
+    public void ajouterRobot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
+                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites) {
+        inventaireDeRobot.add(new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, UUID.randomUUID()));
+    }
+
+    public boolean retirerRobot(String nomRobot) {
+        boolean bool = false;
         int nbRobot = 0;
         for (Robot robot : inventaireDeRobot) {
-            if (robot.nom.equals(nomRobot)) {
+            if (robot.getNom().equals(nomRobot)) {
                 inventaireDeRobot.remove(robot);
                 nbRobot++;
-            } else {
-                continue;
+                break;
             }
         }
-        if (nbRobot == 0) {
-            System.out.println("Vous ne possédez ce robot.");
-        } else {
-            System.out.println("Le robot a été retiré avec succès !");
+        if (nbRobot != 0) {
+            bool = true;
         }
 
-        menuFournisseur(fournisseur);
+        return bool;
     }
 
-    private static void ajouterComposante(String composante, Fournisseur fournisseur) {
-        inventaireComposant.add(composante);
-        System.out.println(" ");
-        System.out.println("La composante a été rajoutée avec succès !");
-        System.out.println(" ");
-        menuFournisseur(fournisseur);
+    public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
+        inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
-    private static void retirerComopsante(String composante2, Fournisseur fournisseur) {
+    public boolean retirerComopsante(String nom) {
+        boolean bool = false;
         int nbComposantes = 0;
-        for (String string : inventaireComposant) {
-            if (string.equals(composante2)) {
-                inventaireComposant.remove(string);
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(nom)) {
+                inventaireComposant.remove(composant);
                 ++nbComposantes;
-            } else {
-                continue;
+                break;
             }
         }
-        if (nbComposantes == 0) {
-            System.out.println("Vous ne possédez cette composante.");
-        } else {
-            System.out.println("La composante a été retirée avec succès !");
+        if (nbComposantes != 0) {
+            bool = true;
         }
-
-        menuFournisseur(fournisseur);
+        return bool;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return  "Fournisseur { " + '\n' +
                 "Nom = " + getNom() + '\n' +
@@ -152,41 +140,42 @@ public class Fournisseur extends Membre {
                 "Numéro de télephone = " + getTelephone() + '\n' +
                 "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
                 "Type de composantes fabriquées = " + getTypeComposantesFabriquer() + '\n' +
-                "Capacité de fabrication = " + getCapacite() + '\n' +
+                "Capacité de fabrication = " + getCapaciteProductionComposantes() + '\n' +
                 "Nom de compagnie = " + getNomCompagnie() + '\n' +
                 "}\n";
+    }*/
+
+    public static ArrayList<Fournisseur> trouverFournisseur(String choix, String info, ArrayList<Fournisseur> listeFournisseurs){
+        ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
+        switch (choix) {
+            case "1" :
+                for (Fournisseur fournisseur :  listeFournisseurs) {
+                    if (fournisseur.getNom().equals(info)) {
+                        fournisseurs.add(fournisseur);
+                    }
+                }
+
+            case "2" :
+                for (Fournisseur fournisseur :  listeFournisseurs) {
+                    if (fournisseur.getAdresse().equals(info)) {
+                        fournisseurs.add(fournisseur);
+                    }
+                }
+
+            case "3" :
+                for (Fournisseur fournisseur :  listeFournisseurs) {
+                    if (fournisseur.getTypeComposantesFabriquer().equals(info)) {
+                        fournisseurs.add(fournisseur);
+
+                    }
+                }
+
+            case "4" :
+                fournisseurs = listeFournisseurs;
+        }
+
+        return fournisseurs;
     }
 
-    private String getNomCompagnie() {
-        return this.nomCompagnie;
-    }
-
-    private String getCapacite() {
-        return this.capacite;
-    }
-
-    private String getTypeComposantesFabriquer() {
-        return this.typeComposantesFabriquer;
-    }
-
-    private String getTypeRobotFabriquer() {
-        return this.typeRobotFabriquer;
-    }
-
-    private String getTelephone() {
-        return this.numeroTelephone;
-    }
-
-    private String getEmail() {
-        return this.email;
-    }
-
-    private String getAdresse() {
-        return this.adresse;
-    }
-
-    public String getNom() {
-        return this.nom;
-    }
 }
 
