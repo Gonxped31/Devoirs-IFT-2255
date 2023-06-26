@@ -1,7 +1,6 @@
-package domain.logic.Fournisseur;
+package domain.logic.Membre;
 import domain.logic.Main;
 import domain.logic.Robot.Robot;
-import domain.logic.Membre;
 import java.util.Scanner;
 import java.util.*;
 
@@ -9,14 +8,12 @@ public class Fournisseur extends Membre {
     public String typeRobotFabriquer;
     public String typeComposantesFabriquer;
     public String capacite;
-    public String pseudo;
     public static LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     public static LinkedList<String> inventaireComposant= new LinkedList<>();
 
-    public Fournisseur(String nom, String adresse, String pseudo, String email, String numeroTelephone,
+    public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
-        this.pseudo=pseudo;
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capacite=capacite;
@@ -158,6 +155,38 @@ public class Fournisseur extends Membre {
                 "Capacité de fabrication = " + getCapacite() + '\n' +
                 "Nom de compagnie = " + getNomCompagnie() + '\n' +
                 "}\n";
+    }
+
+    private String getNomCompagnie() {
+        return this.nomCompagnie;
+    }
+
+    private String getCapacite() {
+        return this.capacite;
+    }
+
+    private String getTypeComposantesFabriquer() {
+        return this.typeComposantesFabriquer;
+    }
+
+    private String getTypeRobotFabriquer() {
+        return this.typeRobotFabriquer;
+    }
+
+    private String getTelephone() {
+        return this.numeroTelephone;
+    }
+
+    private String getEmail() {
+        return this.email;
+    }
+
+    private String getAdresse() {
+        return this.adresse;
+    }
+
+    public String getNom() {
+        return this.nom;
     }
 }
 

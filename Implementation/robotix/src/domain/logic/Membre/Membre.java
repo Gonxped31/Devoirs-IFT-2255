@@ -1,10 +1,10 @@
-package domain.logic;
+package domain.logic.Membre;
 public class Membre {
-    public String nom;
-    public String adresse;
-    public String email;
-    public String numeroTelephone;
-    public String nomCompagnie;
+    protected String nom;
+    protected String adresse;
+    protected String email;
+    protected String numeroTelephone;
+    protected String nomCompagnie;
 
     public Membre(String nom, String adresse, String email, String numeroTelephone, String nomCompagnie) {
         this.nom = nom;

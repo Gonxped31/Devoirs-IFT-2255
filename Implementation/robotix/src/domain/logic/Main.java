@@ -4,24 +4,26 @@ import java.io.IOException;
 import java.util.*;
 
 import domain.logic.Controller.Controller;
-import domain.logic.Fournisseur.Fournisseur;
+import domain.logic.Membre.Fournisseur;
 import java.util.Scanner;
-import domain.logic.Utilisateurs.Utilisateurs;
+import domain.logic.Membre.Utilisateurs;
 
 
 public class Main {
     public static ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
     public static ArrayList<Utilisateurs> listeUtilisateurs = genererUtilisateurs();
     public static void main(String[] args) throws IOException {
-        Controller c = new Controller();
+        /*Controller c = new Controller();
         try {
             c.read("test", "hey", "Col2");
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             System.out.println("Not working");
             e.printStackTrace();
-        }
+        }*/
         //choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
+        choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
+
     }
 
     /*
@@ -39,15 +41,15 @@ public class Main {
     private static ArrayList<Fournisseur> genererFournisseurs() {
         ArrayList<Fournisseur> listeFournisseurs = new ArrayList<>();
         Fournisseur founisseur1 = new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "roy1",
-                "nom1@robotech.ca", "5142104555", "RobotA", "CPU", "30", "RoboTechnologies");
+                "nom1@robotech.ca", "5142104555", "RobotA", "CPU","RoboTechnologies");
         Fournisseur founisseur2 = new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
-                "contact@automatech.ca", "4503335432", "RobotB", "BRAS", "25", "Automatech");
+                "contact@automatech.ca", "4503335432", "RobotB", "BRAS", "Automatech");
         Fournisseur founisseur3 = new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
-                "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech");
+                "service@innovatech.ca", "4509998888", "RobotC", "ECRAN", "Innovatech");
         Fournisseur founisseur4 = new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",
-                "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA","35", "iRobot");
-        Fournisseur founisseur5 = new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "thompson5",
-                "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro");
+                "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA", "iRobot");
+        Fournisseur founisseur5 = new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1","thompson5",
+                "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR", "RoboPro");
 
         listeFournisseurs.add(founisseur1);
         listeFournisseurs.add(founisseur2);
@@ -112,14 +114,18 @@ public class Main {
         String prenom = scanner.nextLine();
         System.out.print("Nom :");
         String nom = scanner.nextLine();
+        System.out.println("Adresse : ");
+        String adresse = scanner.nextLine();
         System.out.print("Pseudo : ");
         String pseudo = scanner.nextLine();
         System.out.print("Adresse courriel : ");
         String courriel = scanner.nextLine();
         System.out.print("Telephone : ");
         String telephone = scanner.nextLine();
+        System.out.println("Nom de la compagnie : ");
+        String nomCompagnie = scanner.nextLine();
 
-        Utilisateurs util = new Utilisateurs(nom, prenom, pseudo, courriel, telephone);
+        Utilisateurs util = new Utilisateurs(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie);
         listeUtilisateurs.add(util);
         System.out.println("Have fun " + pseudo);
         choisirOptionMenu(listeFournisseurs, listeUtilisateurs);
@@ -156,12 +162,6 @@ public class Main {
         System.out.print("Adresse de la compaganie: ");
         inputAdresse = scanner.nextLine();
 
-        while (!PseudoUnique) {
-            System.out.print("Pseudo: ");
-            inputPseudo = scanner.nextLine();
-            PseudoUnique = verifierPseudoFournisseur(inputPseudo, listeFournisseurs, false);
-        }
-
         while (!EmailValide) {
             System.out.print("Adresse courriel: ");
             inputEmail = scanner.nextLine();
@@ -192,16 +192,23 @@ public class Main {
      */
     private static void connecterUtilisateur(ArrayList<Utilisateurs> listeUtilisateurs) {
         Scanner scanner = new Scanner(System.in);
+        listeUtilisateurs.add(new Utilisateurs("nom", "prenom", "adresse", "Samir", "mail@email", "1234567894", "compagnie"));
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
+        boolean bool = false;
         for (int i = 0; i < listeUtilisateurs.size(); i++) {
             if (listeUtilisateurs.get(i).pseudo.equals(connexion)){
                 System.out.println("Bienvenue " + listeUtilisateurs.get(i).pseudo);
                 Utilisateurs.menu(scanner);
+                bool = true;
                 break;
             }
         }
-        System.out.println(connexion + " n'existe pas...");
+
+        if (bool == false) {
+            System.out.println(connexion + " n'existe pas...");
+        }
+    scanner.close();
     }
 
     /*
@@ -241,22 +248,6 @@ public class Main {
                 NomUnique = true;
         }
         return NomUnique;
-    }
-
-    /*
-        M�thode qui permet v�rifier si le pseudo entr� est valide, c-�-d s'il est unique
-     */
-    private static boolean verifierPseudoFournisseur(String inputPseudo, ArrayList<Fournisseur> listeFournisseurs, boolean PseudoUnique) {
-        for (Fournisseur fournisseur : listeFournisseurs) {
-            if (fournisseur.getPseudo().equals(inputPseudo)) {
-                PseudoUnique = false;
-                System.out.println("Ce pseduo existe d�j�. Veuillez en saisir un autre: ");
-                break;
-            }
-            else
-                PseudoUnique = true;
-        }
-        return PseudoUnique;
     }
 
     /*
@@ -301,7 +292,7 @@ public class Main {
         String choixUsager;
         ArrayList<String> options = new ArrayList<>(Arrays.asList("Y", "y", "N", "n")) ;
 
-        Fournisseur nouveauFournisseur = new Fournisseur(inputNom, inputAdresse, inputPseudo, inputCourriel,
+        Fournisseur nouveauFournisseur = new Fournisseur(inputNom, inputAdresse, inputCourriel,
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
         listeFournisseurs.add(nouveauFournisseur);
 
@@ -310,7 +301,6 @@ public class Main {
 
         do {
             choixUsager = scanner.nextLine();
-
             switch (choixUsager) {
                 case "Y" :
                 case "y" :  
