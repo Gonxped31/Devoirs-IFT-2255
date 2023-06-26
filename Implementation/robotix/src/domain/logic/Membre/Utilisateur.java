@@ -72,7 +72,4 @@ public class Utilisateur extends Membre{
         }
         return utilisateur;
     }
-
-    
-    
 }

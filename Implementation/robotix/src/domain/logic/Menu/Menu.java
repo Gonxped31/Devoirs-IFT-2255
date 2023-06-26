@@ -145,6 +145,7 @@ public class Menu {
             case("2") :
                 gererMaFlotte(scanner, pseudo, controlleurUtilisateurs);
             case("3") :
+                gererMesTaches()
                 controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
             case("4") :
                 controlleurUtilisateurs.actionsUtilisateurs(scanner, 4, pseudo);
@@ -167,7 +168,7 @@ public class Menu {
         }
     }
 
-    public void modifierProfile(Scanner scanner, String info, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
+    public void modifierProfile(Scanner scanner, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");
         System.out.println("2- Prenom");
@@ -235,10 +236,11 @@ public class Menu {
         String choix = scanner.nextLine();
         switch (choix){ 
             case "1": 
-                controlleurUtilisateurs.enregistrerRobot(pseudo);
+                menuEnregistrerRobot(scanner, pseudo, controlleurUtilisateurs);
+                //controlleurUtilisateurs.enregistrerRobot(pseudo);
                 break;
             case "2": 
-                controlleurUtilisateurs.actionsUtilisateurs(pseudo);
+                controlleurUtilisateurs.afficherEtatRobot(pseudo);
                 break;
             case "3": 
                 controlleurUtilisateurs.ajouterComposanteRobot(pseudo);
@@ -255,31 +257,61 @@ public class Menu {
         }
     }
 
-    public void gererTaches(Scanner scanner, String pseudo){
+    public void menuEnregistrerRobot(Scanner scanner,String pseudo, ControlleurUtilisateurs controlleurUtilisateurs){
+        System.out.println("Nom: ");
+        String nomRobot = scanner.nextLine();
+        System.out.println("Numero de serie: ");
+        String numeroDeSerie = scanner.nextLine();
+        controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, numeroDeSerie);
+    }
 
+    public void gererTaches(Scanner scanner, String pseudo){
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix){ 
             case "1": 
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 2, pseudo);
+                controlleurUtilisateurs.creerTache(scanner, 2, pseudo);
                 break;
             case "2": 
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
+                controlleurUtilisateurs.allouerTacheRobot(scanner, 3, pseudo);
                 break;
         }
     }
 
-    public void gererActivites(){
+    public void gererActivites(Scanner scanner, String pseudo){
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch (choix){ 
+            case "1": 
+                controlleurUtilisateurs.creerActivites(pseudo);
+                break;
+            case "2": 
+                controlleurUtilisateurs.rejoindreActivite(pseudo);
+                break;
+        }
     }
 
-    public void gererReseauSocial(){
+    public void gererReseauSocial(Scanner scanner, String pseudo){
         System.out.println("1- Suivre un utilisateur");
         System.out.println("2- Gerer mes suiveurs");
         System.out.println("3- Gerer mes interets");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch (choix){ 
+            case "1": 
+                controlleurUtilisateurs.suivreUtilisateur(pseudo);
+                break;
+            case "2": 
+                controlleurUtilisateurs.gererSuiveurs(pseudo);
+                break;
+            case "3": 
+                controlleurUtilisateurs.gererInterets(pseudo);
+                break;
+        }
     }
 
     public void voirNotification(){
