@@ -510,14 +510,9 @@ public class Menu {
 
         switch (choixUsager) {
             case "1" :
-                System.out.println("Veuillez entrer les infos du robot : ");
-                System.out.print("Nom : ");
-                String nomRobot = scanner.nextLine();
-                System.out.print("CPU : ");
-                String cpu = scanner.nextLine();
-                System.out.print("Mémoire : ");
-                String memoire = scanner.nextLine();
-                controlleurFournisseurs.ajouterRobot(fournisseur, nomRobot,0, 0, 0, 0, Integer.parseInt(cpu), Integer.parseInt(memoire), null, null, null, null);
+                System.out.print("Type de robot fabriqué : ");
+                String type = scanner.nextLine();
+                controlleurFournisseurs.ajouterRobot(fournisseur);
                 System.out.println(" ");
                 System.out.println("Le robot a été rajouté avec succès !");
                 System.out.println(" ");

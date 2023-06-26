@@ -8,11 +8,12 @@ public class Robot {
     private int X, Y, vitesse, batterie, cpu;
     private double memoire; // En GB
     private LinkedList<Composant> composantes;
+    private String type;
     private LinkedList<String> actions;
     private LinkedList<String> taches;
     private LinkedList<String> activites;
     private UUID numeroSerie;
-    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
+    public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes, String type,
                  LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, UUID numeroSerie){
         this.nom = nom;
         this.X = X;
@@ -30,6 +31,10 @@ public class Robot {
 
     public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getX() {
