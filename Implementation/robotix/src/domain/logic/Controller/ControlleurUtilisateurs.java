@@ -30,7 +30,7 @@ public class ControlleurUtilisateurs {
         return Utilisateur.verifierTelephoneUtilisateur(inputTelephone);
     }
 
-    public void actionsUtilisateurs(Scanner scanner, int action, String pseudo){
+    public void actionsUtilisateurs(int action, String pseudo){
         // TROUVER UN MOYEN DE TROUVER UN UTILISATEUR JSUTE UNE FOIS.
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
 

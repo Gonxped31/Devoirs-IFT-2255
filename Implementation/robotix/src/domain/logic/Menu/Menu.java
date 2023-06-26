@@ -119,6 +119,7 @@ public class Menu {
     }
 
     public void menuUtilisateur(Scanner scanner, String pseudo) {
+        ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
         ArrayList<String> fournisCPU = new ArrayList<>();
         fournisCPU.add("Fournisseur6" );
         fournisCPU.add("Adresse1");
@@ -139,10 +140,10 @@ public class Menu {
         String choix = scanner.nextLine();
         switch(choix){
             case("1") :
-                modifierProfile();
+                modifierProfile(scanner, pseudo, controlleurUtilisateurs);
                 //controlleurUtilisateurs.actionsUtilisateurs(scanner, 1, pseudo);
             case("2") :
-                gererMaFlotte(scanner);
+                gererMaFlotte(scanner, pseudo, controlleurUtilisateurs);
             case("3") :
                 controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
             case("4") :
@@ -166,11 +167,62 @@ public class Menu {
         }
     }
 
-    public void modifierProfile() {
-
+    public void modifierProfile(Scanner scanner, String info, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
+        System.out.println("Que voulez-vous modifier");
+        System.out.println("1- Nom");
+        System.out.println("2- Prenom");
+        System.out.println("3- Adresse");
+        System.out.println("4- Pseudo");
+        System.out.println("5- Email");
+        System.out.println("6- Numero de telephone");
+        System.out.println("7- Nom de la compagnie");
+        System.out.println("8- Mot de passe");
+        String choix = scanner.nextLine();
+        switch(choix){
+            case "1":
+                System.out.println("Entrez votre nouveau nom: ");
+                String nom = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "nom", nom);
+                break;
+            case "2":
+                System.out.println("Entrez votre nouveau prenom: ");
+                String prenom = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "prenom", prenom);
+                break;
+            case "3":
+                System.out.println("Entrez votre nouvelle adresse: ");
+                String adresse = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "adresse", adresse);
+                break;
+            case "4":
+                System.out.println("Entrez votre nouveau pseudo: ");
+                String newPseudo = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "pseudo", newPseudo);
+                break;
+            case "5": 
+                System.out.println("Entrez votre nouveau email : ");
+                String email = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "email", email);
+                break;
+            case "6":
+                System.out.println("Entrez votre nouveau numero de telephone : ");
+                String numTele = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "numerotelephone", numTele);
+                break;
+            case "7": 
+                System.out.println("Entrez votre nouvelle compagnie : ");
+                String compagnie = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "nomcompagnie", compagnie);
+                break;
+            case "8": 
+                System.out.println("Entrez votre nouveau mot de passe : ");
+                String mdp= scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile(pseudo, "mdp", mdp);
+                break;
+        }        
     }
 
-    public void gererMaFlotte(Scanner scanner) {
+    public void gererMaFlotte(Scanner scanner, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
         //FAIRE APPEL AU CONRTOLLEUR
         //Autre switch case
         System.out.println("1- Enregistrer un robot");
@@ -183,29 +235,40 @@ public class Menu {
         String choix = scanner.nextLine();
         switch (choix){ 
             case "1": 
-                controlleurUtilisateurs.enregistrerRobot();
+                controlleurUtilisateurs.enregistrerRobot(pseudo);
                 break;
             case "2": 
-                controlleurUtilisateurs.afficherEtatRobot();
+                controlleurUtilisateurs.actionsUtilisateurs(pseudo);
                 break;
             case "3": 
-                controlleurUtilisateurs.ajouterComposanteRobot();
+                controlleurUtilisateurs.ajouterComposanteRobot(pseudo);
                 break;
             case "4": 
-                controlleurUtilisateurs.ajouterAction();
+                controlleurUtilisateurs.ajouterAction(pseudo);
                 break;
             case "5": 
-                controlleurUtilisateurs.afficherMetriquesFlotte();
+                controlleurUtilisateurs.afficherMetriquesFlotte(pseudo);
                 break;
             case "6": 
-                controlleurUtilisateurs.creerActions();
+                controlleurUtilisateurs.creerActions(pseudo);
                 break;
         }
     }
 
-    public void gererTaches(){
+    public void gererTaches(Scanner scanner, String pseudo){
+
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch (choix){ 
+            case "1": 
+                controlleurUtilisateurs.actionsUtilisateurs(scanner, 2, pseudo);
+                break;
+            case "2": 
+                controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
+                break;
+        }
     }
 
     public void gererActivites(){
