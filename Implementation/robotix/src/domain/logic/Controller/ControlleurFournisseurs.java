@@ -56,7 +56,7 @@ public class ControlleurFournisseurs {
         return robots;
     }
 
-    public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<String> composantes,
+    public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
                              LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie){
         Robot robot = new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, numeroSerie);
         fournisseur.ajouterRobot(robot, fournisseur);
