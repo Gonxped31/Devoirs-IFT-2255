@@ -2,7 +2,9 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateurs;
+import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import domain.logic.Robot.TypesComposants;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -56,7 +58,7 @@ public class ControlleurFournisseurs {
         return robots;
     }
 
-    public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<String> composantes,
+    public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
                              LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie){
         Robot robot = new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, numeroSerie);
         fournisseur.ajouterRobot(robot, fournisseur);
@@ -66,8 +68,8 @@ public class ControlleurFournisseurs {
         fournisseur.retirerRobot(nomRobot, fournisseur);
     }
 
-    public void ajouterComposante(String composante, Fournisseur fournisseur){
-        fournisseur.ajouterComposante(composante, fournisseur);
+    public void ajouterComposante(String composante, double prix, String description, String typesComposants, Fournisseur fournisseur){
+        fournisseur.ajouterComposante(composante, prix, description, typesComposants);
     }
 
     public void retirerComposante(String composante, Fournisseur fournisseur){

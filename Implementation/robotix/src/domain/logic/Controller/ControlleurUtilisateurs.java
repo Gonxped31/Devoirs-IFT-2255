@@ -51,37 +51,37 @@ public class ControlleurUtilisateurs {
 
         switch (action) {
             case 1 :
-                utilisateur.enregistrerRobot(scanner);
+                // utilisateur.enregistrerRobot(scanner);
                 break;
             case 2 :
-                utilisateur.afficherEtatRobot(scanner);
+                // utilisateur.afficherEtatRobot(scanner);
                 break;
             case 3 :
-                utilisateur.ajouterComposantes(scanner);
+                // utilisateur.ajouterComposantes(scanner);
                 break;
             case 4 :
-                utilisateur.ajouterAction(scanner);
+                // utilisateur.ajouterAction(scanner);
                 break;
             case 5 :
-                utilisateur.creerTaches(scanner);
+                // utilisateur.creerTaches(scanner);
                 break;
             case 6 :
-                utilisateur.allouerTachesRobot(scanner);
+                // utilisateur.allouerTachesRobot(scanner);
                 break;
             case 7 :
-                utilisateur.afficherMetriquesFlotte(scanner);
+                // utilisateur.afficherMetriquesFlotte(scanner);
                 break;
             case 8 :
-                utilisateur.participerActivites(scanner);
+                // utilisateur.participerActivites(scanner);
                 break;
             case 9 :
-                utilisateur.voirActivitesMaintenues(scanner);
+                // utilisateur.voirActivitesMaintenues(scanner);
                 break;
             case 10 :
-                utilisateur.gestionDesProblemes(scanner);
+                // utilisateur.gestionDesProblemes(scanner);
                 break;
             case 11 :
-                utilisateur.trouverFournisseurs(scanner);
+                // utilisateur.trouverFournisseurs(scanner);
                 break;
         }
     }

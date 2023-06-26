@@ -4,9 +4,9 @@ public class Composant {
     private String nom;
     private Double prix;
     private String description;
-    private TypesComposants typeComposant;
+    private String typeComposant;
 
-    public Composant(String nom, Double prix, String description, TypesComposants typeComposant){
+    public Composant(String nom, Double prix, String description, String typeComposant){
         this.nom = nom;
         this.prix = prix;
         this.description = description;
@@ -25,7 +25,7 @@ public class Composant {
         return description;
     }
 
-    public TypesComposants getTypeComposant() {
+    public String getTypeComposant() {
         return typeComposant;
     }
 }

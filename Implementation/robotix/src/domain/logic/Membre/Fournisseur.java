@@ -1,4 +1,5 @@
 package domain.logic.Membre;
+import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 
 import java.util.*;
@@ -8,7 +9,7 @@ public class Fournisseur extends Membre {
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
-    private LinkedList<String> inventaireComposant= new LinkedList<>();
+    private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
@@ -23,6 +24,10 @@ public class Fournisseur extends Membre {
 
     public LinkedList<Robot> getInventaireDeRobot() {
         return inventaireDeRobot;
+    }
+
+    public LinkedList<Composant> getInventaireComposant() {
+        return inventaireComposant;
     }
 
     public String getCapaciteProductionComposantes() {
@@ -52,6 +57,8 @@ public class Fournisseur extends Membre {
     public String getNom() {
         return this.nom;
     }
+
+
 
     public boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -110,18 +117,15 @@ public class Fournisseur extends Membre {
         }
     }
 
-    public void ajouterComposante(String composante, Fournisseur fournisseur) {
-        inventaireComposant.add(composante);
-        System.out.println(" ");
-        System.out.println("La composante a été rajoutée avec succès !");
-        System.out.println(" ");
+    public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
+        inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
     public void retirerComopsante(String composante2, Fournisseur fournisseur) {
         int nbComposantes = 0;
-        for (String string : inventaireComposant) {
-            if (string.equals(composante2)) {
-                inventaireComposant.remove(string);
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante2)) {
+                inventaireComposant.remove(composant);
                 ++nbComposantes;
             } else {
                 continue;

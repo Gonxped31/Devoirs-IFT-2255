@@ -64,5 +64,9 @@ public class Utilisateurs extends Membre{
     public boolean verifierTelephoneUtilisateur(String inputTelephone) {
         return  inputTelephone.length() == 10;
     }
+
+    public void trouverFournisseur() {
+
+    }
     
 }

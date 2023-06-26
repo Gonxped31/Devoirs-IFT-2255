@@ -2,6 +2,8 @@ package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Robot.Composant;
+import domain.logic.Robot.TypesComposants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.Scanner;
 public class Menu {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private TypesComposants typesComposants;
     public void menuPrincipale(Scanner scanner) {
         int choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
@@ -304,6 +307,12 @@ public class Menu {
         controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
     }
 
+    public void printComposantes(Fournisseur fournisseur){
+        for (Composant composant: fournisseur.getInventaireComposant()) {
+
+        }
+    }
+
     public void printFournisseurs(ArrayList<Fournisseur> fournisseurs) {
         for (Fournisseur fournisseur : fournisseurs) {
             System.out.print(fournisseur.getNom());
@@ -360,7 +369,16 @@ public class Menu {
             case "3" :
                 System.out.print("Composant : ");
                 String composante = scanner.nextLine();
-                controlleurFournisseurs.ajouterComposante(composante, fournisseur);
+                System.out.print("Prix : ");
+                String prix = scanner.nextLine();
+                System.out.print("Description : ");
+                String description = scanner.nextLine();
+                System.out.print("Type de la composante : ");
+                String type = scanner.nextLine();
+                controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type, fournisseur);
+                System.out.println(" ");
+                System.out.println("La composante a été rajoutée avec succès");
+                System.out.println(" ");
                 menuFournisseur(scanner, fournisseur);
             
             case "4" :
