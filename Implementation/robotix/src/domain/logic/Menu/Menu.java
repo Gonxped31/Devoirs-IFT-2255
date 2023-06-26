@@ -1,11 +1,12 @@
-package domain.logic.Membre;
+package domain.logic.Menu;
+
 import domain.logic.Membre;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import domain.logic.Fournisseur;
+import domain.logic.Founisseur.Fourniseur;
 import domain.logic.Main;
 import domain.logic.Utilisateurs;
 

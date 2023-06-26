@@ -1,4 +1,5 @@
-package domain.logic;
+package domain.logic.Membre;
+
 public class Membre {
     public String nom;
     public String adresse;
@@ -16,6 +17,10 @@ public class Membre {
     
     public static void name() {
         
+    }
+
+    public String getNom(){
+        return this.nom;
     }
 
 }

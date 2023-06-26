@@ -1,17 +1,14 @@
 package domain.logic.Utilisateurs;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
+
 import domain.logic.Fournisseur.Fournisseur;
 import domain.logic.Robot.Robot;
 import domain.logic.Main;
 import domain.logic.Membre;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
-import java.util.UUID;
+
 
 public class Utilisateurs extends Membre{
     protected static LinkedList<Robot> robots = new LinkedList<>();
@@ -842,5 +839,14 @@ public class Utilisateurs extends Membre{
             acheterComposantes(scanner, fournisseurChoisi);
         }
     }
-    
+
+    public List<Robot> getListRobot()
+    {
+        return null;
+    }
+    public List<String> getListComposant()
+    {
+        return null;
+    }
+
 }

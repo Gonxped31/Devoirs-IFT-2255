@@ -159,5 +159,15 @@ public class Fournisseur extends Membre {
                 "Nom de compagnie = " + getNomCompagnie() + '\n' +
                 "}\n";
     }
+
+    public LinkedList<String> getListComposant(){
+        return this.inventaireComposant;
+    }
+
+    public LinkedList<Robot> getListRobot(){
+        return this.inventaireDeRobot;
+    }
+
+
 }
 
