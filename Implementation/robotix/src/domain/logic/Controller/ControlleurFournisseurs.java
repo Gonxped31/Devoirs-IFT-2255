@@ -38,13 +38,13 @@ public class ControlleurFournisseurs {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
 
-    public ArrayList<Fournisseur> trouverFournisseur(String info){
-        return Fournisseur.trouverFournisseur(info, listeFournisseurs);
+    public ArrayList<Fournisseur> trouverFournisseur(String choix, String info){
+        return Fournisseur.trouverFournisseur(choix, info, listeFournisseurs);
     }
 
     public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
-                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie){
-        fournisseur.ajouterRobot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, numeroSerie);
+                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites){
+        fournisseur.ajouterRobot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites);
     }
 
     public boolean retirerRobot(String nomRobot, Fournisseur fournisseur) {

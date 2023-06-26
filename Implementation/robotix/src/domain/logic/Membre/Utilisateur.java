@@ -56,7 +56,6 @@ public class Utilisateur extends Membre{
 
     public static boolean verifierEmailUtilisateur(String inputEmail) {
         return inputEmail.contains("@");
-
     }
 
     public static boolean verifierTelephoneUtilisateur(String inputTelephone) {

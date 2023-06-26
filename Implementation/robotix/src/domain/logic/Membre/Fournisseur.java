@@ -1,6 +1,7 @@
 package domain.logic.Membre;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import java.util.UUID;
 
 import java.util.*;
 
@@ -72,7 +73,7 @@ public class Fournisseur extends Membre {
     public static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean bool = false;
         for (Fournisseur fournisseur : listeFournisseurs) {
-            if (fournisseur.getNom().equals(inputNom)) {
+            if (!fournisseur.getNom().equals(inputNom)) {
                 bool = true;
                 break;
             }
@@ -89,8 +90,8 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterRobot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
-                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie) {
-        inventaireDeRobot.add(new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, numeroSerie));
+                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites) {
+        inventaireDeRobot.add(new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, UUID.randomUUID()));
     }
 
     public boolean retirerRobot(String nomRobot) {
@@ -144,9 +145,9 @@ public class Fournisseur extends Membre {
                 "}\n";
     }*/
 
-    public static ArrayList<Fournisseur> trouverFournisseur(String info, ArrayList<Fournisseur> listeFournisseurs){
+    public static ArrayList<Fournisseur> trouverFournisseur(String choix, String info, ArrayList<Fournisseur> listeFournisseurs){
         ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
-        switch (info) {
+        switch (choix) {
             case "1" :
                 for (Fournisseur fournisseur :  listeFournisseurs) {
                     if (fournisseur.getNom().equals(info)) {
@@ -163,29 +164,13 @@ public class Fournisseur extends Membre {
 
             case "3" :
                 for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
+                    if (fournisseur.getTypeComposantesFabriquer().equals(info)) {
                         fournisseurs.add(fournisseur);
 
                     }
                 }
 
             case "4" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
-                        fournisseurs.add(fournisseur);
-
-                    }
-                }
-
-            case "5" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
-                        fournisseurs.add(fournisseur);
-
-                    }
-                }
-
-            case "6" :
                 fournisseurs = listeFournisseurs;
         }
 

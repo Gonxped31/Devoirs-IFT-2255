@@ -1,5 +1,7 @@
 package domain.logic.Robot;
 import java.util.LinkedList;
+import java.util.UUID;
+
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot {
     private String nom;
@@ -9,9 +11,9 @@ public class Robot {
     private LinkedList<String> actions;
     private LinkedList<String> taches;
     private LinkedList<String> activites;
-    private String numeroSerie;
+    private UUID numeroSerie;
     public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
-                 LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, String numeroSerie){
+                 LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, UUID numeroSerie){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -70,7 +72,7 @@ public class Robot {
         return activites;
     }
 
-    public String getNumeroSerie() {
+    public UUID getNumeroSerie() {
         return numeroSerie;
     }
 }
