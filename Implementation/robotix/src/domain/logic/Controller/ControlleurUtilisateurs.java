@@ -36,39 +36,51 @@ public class ControlleurUtilisateurs {
 
         switch (action) {
             case 1 :
-                // utilisateur.enregistrerRobot(scanner);
+                utilisateur.modifierProfile();
                 break;
             case 2 :
-                // utilisateur.afficherEtatRobot(scanner);
+                utilisateur.enregistrerRobot();
                 break;
             case 3 :
-                // utilisateur.ajouterComposantes(scanner);
+                utilisateur.afficherEtatRobot();
                 break;
             case 4 :
-                // utilisateur.ajouterAction(scanner);
+                utilisateur.ajouterComposanteRobot();
                 break;
             case 5 :
-                // utilisateur.creerTaches(scanner);
+                utilisateur.creerAction();
                 break;
             case 6 :
-                // utilisateur.allouerTachesRobot(scanner);
+                utilisateur.ajouterActionRobot();
                 break;
             case 7 :
-                // utilisateur.afficherMetriquesFlotte(scanner);
+                utilisateur.afficherMetriquesFlotte();
                 break;
             case 8 :
-                // utilisateur.participerActivites(scanner);
+                utilisateur.creerTache();
                 break;
             case 9 :
-                // utilisateur.voirActivitesMaintenues(scanner);
+                utilisateur.allouerTacheRobot();
                 break;
             case 10 :
-                // utilisateur.gestionDesProblemes(scanner);
+                utilisateur.creerActivites();
                 break;
             case 11 :
-                // utilisateur.trouverFournisseurs(scanner);
+                utilisateur.rejoindreActivite();
                 break;
-        }
+            case 12 :
+                utilisateur.suivreUtilisateur();
+                break;
+            case 13 :
+                utilisateur.gereSuiveurs();
+                break;
+            case 14 :
+                utilisateur.gererInteret();
+                break;
+            case 15 :
+                utilisateur.notifications();
     }
+
+}
 
 }

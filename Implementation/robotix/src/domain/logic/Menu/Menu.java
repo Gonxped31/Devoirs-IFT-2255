@@ -178,16 +178,28 @@ public class Menu {
         System.out.println("3- Ajouter une composante a un robot");
         System.out.println("4- Ajouter une action a un robot");
         System.out.println("5- Afficher les metriques de ma flotte");
+        System.out.println("6- Creer action");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix){ 
             case "1": 
                 controlleurUtilisateurs.enregistrerRobot();
+                break;
             case "2": 
                 controlleurUtilisateurs.afficherEtatRobot();
+                break;
             case "3": 
-                controlleurUtilisateurs.ajouterComposante();
+                controlleurUtilisateurs.ajouterComposanteRobot();
+                break;
             case "4": 
+                controlleurUtilisateurs.ajouterAction();
+                break;
+            case "5": 
+                controlleurUtilisateurs.afficherMetriquesFlotte();
+                break;
+            case "6": 
+                controlleurUtilisateurs.creerActions();
+                break;
         }
     }
 
