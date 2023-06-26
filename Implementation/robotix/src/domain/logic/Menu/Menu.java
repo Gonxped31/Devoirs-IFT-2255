@@ -129,22 +129,20 @@ public class Menu {
         System.out.println("******************** Menu: " + pseudo + " ********************");
         System.out.println("Bienvenue! Veuillez choisir une option:");
         System.out.println("1- Modifier mon profile");
-        System.out.println("");
-        System.out.println("Gérer mes follower");
-        System.out.println("7- Gérer ma flotte");
-        System.out.println("8- Participer à une activité");
-        System.out.println("9- Créer une activité");
-
-        System.out.println("10- Afficher les problèmes du système");
-        System.out.println("11- Trouver un fournisseur");
-        System.out.println("12- Quitter");
+        System.out.println("2- Gérer ma flotte");  
+        System.out.println("3- Gérer mes taches");
+        System.out.println("4- Gérer mes activites");
+        System.out.println("5- Gerer mon reseau social");
+        System.out.println("6- Achats");
+        System.out.println("7- Voir mes notifications");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch(choix){
             case("1") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 1, pseudo);
+                modifierProfile();
+                //controlleurUtilisateurs.actionsUtilisateurs(scanner, 1, pseudo);
             case("2") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 2, pseudo);
+                gererMaFlotte(scanner);
             case("3") :
                 controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
             case("4") :
@@ -172,14 +170,51 @@ public class Menu {
 
     }
 
-    public void gereMaFlotte() {
-        System.out.println("2- Enregistrer un robot");
-        System.out.println("3- Afficher état d'un robot");
-        System.out.println("4- Ajouter une composante a un robot");
-        System.out.println("5- Ajouter une action a un robot");
-        System.out.println("5- Créer une tâche");
-        System.out.println("6- Allouer une tache a un robot");
+    public void gererMaFlotte(Scanner scanner) {
+        //FAIRE APPEL AU CONRTOLLEUR
+        //Autre switch case
+        System.out.println("1- Enregistrer un robot");
+        System.out.println("2- Afficher état d'un robot");
+        System.out.println("3- Ajouter une composante a un robot");
+        System.out.println("4- Ajouter une action a un robot");
+        System.out.println("5- Afficher les metriques de ma flotte");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch (choix){ 
+            case "1": 
+                controlleurUtilisateurs.enregistrerRobot();
+            case "2": 
+                controlleurUtilisateurs.afficherEtatRobot();
+            case "3": 
+                controlleurUtilisateurs.ajouterComposante();
+            case "4": 
+        }
     }
+
+    public void gererTaches(){
+        System.out.println("1- Créer une tâche");
+        System.out.println("2- Allouer une tache a un robot");
+    }
+
+    public void gererActivites(){
+        System.out.println("1- Créer une activites");
+        System.out.println("2- Rejoindre une activite");
+    }
+
+    public void gererReseauSocial(){
+        System.out.println("1- Suivre un utilisateur");
+        System.out.println("2- Gerer mes suiveurs");
+        System.out.println("3- Gerer mes interets");
+    }
+
+    public void voirNotification(){
+        //TODO
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("");
+        }
+        
+    }
+
 
 
 
