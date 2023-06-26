@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.*;
 
 import domain.logic.Controller.Controller;
-import domain.logic.Fournisseur.Fournisseur;
+import domain.logic.Membre.Fournisseur;
 import java.util.Scanner;
-import domain.logic.Utilisateurs.Utilisateurs;
+import domain.logic.Membre.Utilisateurs;
 
 
 public class Main {
