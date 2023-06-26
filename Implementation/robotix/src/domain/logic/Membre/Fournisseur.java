@@ -89,9 +89,8 @@ public class Fournisseur extends Membre {
         return inputTelephone.length() == 10;
     }
 
-    public void ajouterRobot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
-                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites) {
-        inventaireDeRobot.add(new Robot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites, UUID.randomUUID()));
+    public void ajouterRobot() {
+        inventaireDeRobot.add(new Robot(null,0, 0, 0, 0, 0, 0, null, null, null, null, null, UUID.randomUUID()));
     }
 
     public boolean retirerRobot(String nomRobot) {
