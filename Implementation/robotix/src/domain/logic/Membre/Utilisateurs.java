@@ -1,30 +1,30 @@
-package domain.logic.Membre;
+package domain.logic.Utilisateurs;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Random;
+import domain.logic.Fournisseur.Fournisseur;
 import domain.logic.Robot.Robot;
 import domain.logic.Main;
+import domain.logic.Membre;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
 import java.util.UUID;
 
 public class Utilisateurs extends Membre{
-    private static LinkedList<Robot> robots = new LinkedList<>();
-    private static LinkedList<String> uuids = new LinkedList<>();
-    private static LinkedList<String> taches = new LinkedList<>();
-    private static LinkedList<String> composantes = new LinkedList<>();
-    public String pseudo;
+    protected static LinkedList<Robot> robots = new LinkedList<>();
+    protected static LinkedList<String> uuids = new LinkedList<>();
+    protected static LinkedList<String> taches = new LinkedList<>();
+    protected static LinkedList<String> composantes = new LinkedList<>();
 
     public static void main(Scanner scanner) {
         menu(scanner);
     }
 
-    public Utilisateurs(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie){
-        super(nom, adresse, email, numeroTelephone, nomCompagnie);
-        this.pseudo = pseudo;
+    public Utilisateurs(String nom, String prenom, String pseudo, String courriel, String telephone){
+        super(prenom, pseudo, courriel, telephone, nom);
     }
 
     public static void menu(Scanner scanner) {
@@ -277,7 +277,7 @@ public class Utilisateurs extends Membre{
         
     }
 
-    public static void afficherEtatRobot(Scanner scanner){
+    public static void afficherEtatRobot(Scanner scanner){ 
         Robot robot = demanderRobot(scanner);
         if (robot != null){
             System.out.println("Voici les informations de votre robot : ");
