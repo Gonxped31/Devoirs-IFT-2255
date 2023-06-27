@@ -45,12 +45,12 @@ public class ControlleurUtilisateurs {
 
     public boolean enregistrerRobot(String pseudo, String nomRobot, String numeroSerie) {
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.enregistrerRobot(nomRobot, numeroSerie, listeFournisseurs);
+        return utilisateur.enregistrerRobot(nomRobot, numeroSerie, utilisateur, listeFournisseurs);
     }
 
-    public void afficherEtatRobot(){
+    public ArrayList<Robot> afficherEtatRobot(String pseudo) {
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.afficherEtatRobot();
+        return utilisateur.afficherEtatRobot(utilisateur);
     }
 
     public void ajouterComposanteRobot(){

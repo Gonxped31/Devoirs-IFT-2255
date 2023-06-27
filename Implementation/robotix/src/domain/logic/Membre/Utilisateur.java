@@ -1,18 +1,19 @@
 package domain.logic.Membre;
 import java.util.*;
 
+import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
 
 
 public class Utilisateur extends Membre{
-    private LinkedList<String> uuids = new LinkedList<>();
+    private ArrayList<String> uuids = new ArrayList<>();
     private ArrayList<Robot> listeRobot = new ArrayList<>();
-    private LinkedList<String> taches = new LinkedList<>();
-    private LinkedList<String> composantesAchetes = new LinkedList<>();
+    private ArrayList<String> taches = new ArrayList<>();
+    private ArrayList<String> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
-    private List<Interet> listeInteret = new ArrayList<>();
+    private ArrayList<Interet> listeInteret = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
@@ -123,12 +124,12 @@ public class Utilisateur extends Membre{
 
     }
 
-    public boolean enregistrerRobot(String nomRobot,String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+    public boolean enregistrerRobot(String nomRobot,String numeroSerie, Utilisateur utilisateur, ArrayList<Fournisseur> listeFournisseur){
         boolean bool = false;
         Robot robot = verifierRobot(numeroSerie, listeFournisseur);
         if (robot != null){
             robot.setNom(nomRobot);
-            listeRobot.add(robot);
+            utilisateur.listeRobot.add(robot);
             bool = true;
         }
         return bool;
@@ -153,5 +154,30 @@ public class Utilisateur extends Membre{
         return robot;
     }
 
-    
+    public ArrayList<Robot> afficherEtatRobot(Utilisateur utilisateur){
+        return utilisateur.listeRobot;
+    }
+
+    public void ajouterComposante(String composant, String nomRobot, Utilisateur utilisateur) {
+
+    }
+
+    public Robot verifierComposant(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+        Robot robot = null;
+        int nbRobot = 0;
+        for (Fournisseur fournisseur: listeFournisseur) {
+            for (Robot robot1 :  fournisseur.getInventaireDeRobot()) {
+                if (robot1.getNumeroSerie().toString().equals(numeroSerie)){
+                    robot = robot1;
+                    fournisseur.getInventaireDeRobot().remove(robot1);
+                    break;
+                }
+                nbRobot++;
+            }
+            if (nbRobot < fournisseur.getInventaireDeRobot().size()){
+                break;
+            }
+        }
+        return robot;
+    }
 }

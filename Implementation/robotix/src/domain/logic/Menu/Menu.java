@@ -290,9 +290,6 @@ public class Menu {
         
     }
 
-
-
-
     public void menuTrouverFournisseur(Scanner scanner){
         boolean continuer = true;
         Boolean bool = false;
