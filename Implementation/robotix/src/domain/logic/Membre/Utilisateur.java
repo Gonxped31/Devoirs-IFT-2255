@@ -43,6 +43,10 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
+    public ArrayList<String> getNotifs(){
+        return notifs;
+    }
+ 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
@@ -107,7 +111,7 @@ public class Utilisateur extends Membre{
     }
 
     public static Utilisateur trouverUtilisateur(String pseudo, ArrayList<Utilisateur> listeUtilisateurs){
-        Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, null);
+        Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, null, null);
         for (Utilisateur utilisateurs : listeUtilisateurs) {
             if (utilisateurs.getPseudo().equals(pseudo)) {
                 utilisateur = utilisateurs;

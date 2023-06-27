@@ -96,6 +96,7 @@ public class ControlleurUtilisateurs {
             return false;
         }else{
             utilisateur.suivreUtilisateur(suivi);
+            suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
             return true;
         }
     }
