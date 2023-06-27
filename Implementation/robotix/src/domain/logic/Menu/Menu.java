@@ -62,6 +62,7 @@ public class Menu {
         String pseudo = "";
         String courriel = "";
         String telephone = "";
+        ArrayList<String> listeInteret = new ArrayList<>();
 
         System.out.println("********Nouvel utilisateur********");
         System.out.print("Prenom : ");
@@ -101,12 +102,13 @@ public class Menu {
         System.out.println("Nom de la compagnie : ");
         String nomCompagnie = scanner.nextLine();
         System.out.println("Ajouter 10 interets: ");
-        for (int i = 9; i >= 1; i--) {
-            System.out.println("Veuillez ");
-            System.out.println("Il vous reste " + i  + "interets a choisir");
-
+        for (int i = 9; i >= 0; i--) {
+            System.out.println("Veuillez entrer un interet: ");
+            String interet = scanner.nextLine();
+            listeInteret.add(interet);
+            System.out.println("Il vous reste " + i + "interets a choisir");
         }
-        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie);
+        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
         menuPrincipale(scanner);
     }

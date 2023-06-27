@@ -15,8 +15,8 @@ public class ControlleurUtilisateurs {
     private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.getListeUtilisateurs();
     private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
 
-    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie) {
-        dataBaseController.getListeUtilisateurs().add(new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie));
+    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
+        dataBaseController.getListeUtilisateurs().add(new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret));
     }
 
     public boolean authentification(String connexion, String membre) {
@@ -96,6 +96,7 @@ public class ControlleurUtilisateurs {
             return false;
         }else{
             utilisateur.suivreUtilisateur(suivi);
+            suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
             return true;
         }
     }

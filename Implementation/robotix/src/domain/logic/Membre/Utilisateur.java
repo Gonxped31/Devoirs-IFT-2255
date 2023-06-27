@@ -14,7 +14,7 @@ public class Utilisateur extends Membre{
     private ArrayList<Action> actions = new ArrayList<Action>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
-    private ArrayList<Interet> listeInteret = new ArrayList<>();
+    private ArrayList<String> listeInteret = new ArrayList<>();
     private ArrayList<String> notifs = new ArrayList<>();
     private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
 
@@ -25,10 +25,11 @@ public class Utilisateur extends Membre{
 
 
 
-    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie){
+    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
         this.prenom = prenom;
+        this.listeInteret = listeInteret;
     }
 
     public String getPseudo(){
@@ -42,6 +43,10 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
+    public ArrayList<String> getNotifs(){
+        return notifs;
+    }
+ 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
@@ -106,7 +111,7 @@ public class Utilisateur extends Membre{
     }
 
     public static Utilisateur trouverUtilisateur(String pseudo, ArrayList<Utilisateur> listeUtilisateurs){
-        Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, null);
+        Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, null, null);
         for (Utilisateur utilisateurs : listeUtilisateurs) {
             if (utilisateurs.getPseudo().equals(pseudo)) {
                 utilisateur = utilisateurs;
