@@ -3,6 +3,7 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import domain.logic.Robot.Action;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -58,9 +59,9 @@ public class ControlleurUtilisateurs {
         return utilisateur.ajouterComposanteRobot(nomComposante, nomRobot);
     }
 
-    public void creerAction(String pseudo){
+    public void creerAction(String pseudo, String nomAction, ArrayList<Composant> composantes){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerAction();
+        utilisateur.creerAction(nomAction, composantes);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
@@ -68,14 +69,14 @@ public class ControlleurUtilisateurs {
         return utilisateur.nombreDeRobot();
     }
 
-    public void creerTache(){
+    public void creerTache(String pseudo, String nomTache, ArrayList<Action> actions){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerTache();
+        utilisateur.creerTache(nomTache, actions);
     }
 
-    public void allouerTacheRobot(){
+    public boolean allouerTacheRobot(String pseudo, String robot, String tache){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.allouerTacheRobot();
+        return utilisateur.allouerTache(robot, tache);
     }
 
     public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
@@ -88,9 +89,15 @@ public class ControlleurUtilisateurs {
         utilisateur.rejoindreActivite();
     }
 
-    public void suivreUtilisateur(){
+    public boolean suivreUtilisateur(String pseudo,String nom){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.suivreUtilisateur();
+        Utilisateur suivi = Utilisateur.trouverUtilisateur(nom, listeUtilisateurs);
+        if (utilisateur.getPseudo() == null || suivi.getPseudo() == null){
+            return false;
+        }else{
+            utilisateur.suivreUtilisateur(suivi);
+            return true;
+        }
     }
 
     public void gereSuiveurs(){
@@ -103,8 +110,8 @@ public class ControlleurUtilisateurs {
         utilisateur.gererInteret();
     }
 
-    public void notifications(){
+    public ArrayList<String> voirNotifications(){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.notifications();
+        return utilisateur.voirNotifications();
     }
 }

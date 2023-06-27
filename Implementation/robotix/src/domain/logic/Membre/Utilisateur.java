@@ -116,6 +116,14 @@ public class Utilisateur extends Membre{
         return utilisateur;
     }
 
+    public void suivreUtilisateur(Utilisateur suivi){
+        listeUtilisateursSuivi.add(suivi);
+    }
+
+    public ArrayList<String> voirNotifications(){
+        return notifs;
+    }
+
     public void modifierProfile(String choix, String nouvelInfo, Utilisateur utilisateur){
         switch (choix.toLowerCase()) {
             case "nom" :
@@ -168,6 +176,53 @@ public class Utilisateur extends Membre{
 
     public ArrayList<Robot> afficherEtatRobot(Utilisateur utilisateur){
         return utilisateur.listeRobot;
+    }
+
+    public void creerAction(String nomAction, ArrayList<Composant> composantes){
+        Action action = new Action(nomAction, composantes);
+        actions.add(action);
+    }
+
+    public void creerTache(String nomTache, ArrayList<Action> actions){
+        Tache tache = new Tache(nomTache, actions);
+        taches.add(tache);
+    }
+
+    public boolean allouerTache(String robot, String tache){
+        Robot rob = trouverRobot(robot);
+        Tache tac = trouverTache(tache);
+        if (rob.getNom().equals(null) || tac.getNom().equals(null)){
+            return false;
+        }
+        else {
+            rob.getTaches().add(tac);
+            return true;
+        }
+    }
+
+    private Tache trouverTache(String nom) {
+        Tache resultat = null;
+        for (Tache tache : taches) {
+            if (tache.getNom().equals(nom)) {
+                resultat = tache;
+                break;
+            }
+        }
+        return resultat;
+    }
+
+    public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<Activite> listActivites) {
+        int compteur = 0;
+        for (Activite activite : listActivites) {
+            if (nomActivite.equals(activite.getNom())){
+                break;
+            }
+            compteur++;
+        }
+
+        if(compteur == listActivites.size()){
+            Activite activite = new Activite(nomActivite, dateDebut, dateFin, listeTache, null, null);
+        }
     }
 
     public boolean ajouterComposanteRobot(String nomComposant, String nomRobot) {
