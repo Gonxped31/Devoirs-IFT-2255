@@ -62,6 +62,7 @@ public class Menu {
         String pseudo = "";
         String courriel = "";
         String telephone = "";
+        ArrayList<String> listeInteret;
 
         System.out.println("********Nouvel utilisateur********");
         System.out.print("Prenom : ");
@@ -103,7 +104,7 @@ public class Menu {
         System.out.println("Ajouter 10 interets: ");
         for (int i = 9; i >= 1; i--) {
             System.out.println("Veuillez ");
-            System.out.println("Il vous reste " + i  + "interets a choisir");
+            System.out.println("Il vous reste " + i + "interets a choisir");
 
         }
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie);

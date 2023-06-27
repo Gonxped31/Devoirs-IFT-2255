@@ -14,7 +14,7 @@ public class Utilisateur extends Membre{
     private ArrayList<Action> actions = new ArrayList<Action>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
-    private ArrayList<Interet> listeInteret = new ArrayList<>();
+    private ArrayList<String> listeInteret = new ArrayList<>();
     private ArrayList<String> notifs = new ArrayList<>();
     private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
 
@@ -25,10 +25,11 @@ public class Utilisateur extends Membre{
 
 
 
-    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie){
+    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
         this.prenom = prenom;
+        this.listeInteret = listeInteret;
     }
 
     public String getPseudo(){
