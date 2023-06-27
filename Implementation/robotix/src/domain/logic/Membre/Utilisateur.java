@@ -1,8 +1,8 @@
 package domain.logic.Membre;
 import java.util.*;
 
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.Robot;
+import domain.logic.Robot.*;
+
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
 
@@ -10,10 +10,14 @@ import domain.logic.Robot.Robot;
 public class Utilisateur extends Membre{
     private ArrayList<String> uuids = new ArrayList<>();
     private ArrayList<Robot> listeRobot = new ArrayList<>();
-    private ArrayList<String> taches = new ArrayList<>();
-    private ArrayList<String> composantesAchetes = new ArrayList<>();
+    private ArrayList<Tache> taches = new ArrayList<>();
+    private ArrayList<Action> actions = new ArrayList<Action>();
+    private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<Interet> listeInteret = new ArrayList<>();
+    private ArrayList<String> notifs = new ArrayList<>();
+    private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
+
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
@@ -31,7 +35,11 @@ public class Utilisateur extends Membre{
         return pseudo;
     }
     public int getPoint() {
-        return point;
+        return this.point;
+    }
+
+    public ArrayList<Robot> getListeRobot() {
+        return this.listeRobot;
     }
 
     public void setPseudo(String pseudo) {
@@ -60,6 +68,10 @@ public class Utilisateur extends Membre{
 
     public void setNomCompagnie(String nomCompagnie){
         this.nomCompagnie = nomCompagnie;
+    }
+
+    public void setComposantesAchetes(ArrayList<Composant> composantesAchetes) {
+        this.composantesAchetes = composantesAchetes;
     }
 
     public static boolean authentification(String connexion, ArrayList<Utilisateur> listeUtilisateurs) {
@@ -158,26 +170,41 @@ public class Utilisateur extends Membre{
         return utilisateur.listeRobot;
     }
 
-    public void ajouterComposante(String composant, String nomRobot, Utilisateur utilisateur) {
-
+    public boolean ajouterComposanteRobot(String nomComposant, String nomRobot) {
+        boolean bool = false;
+        Robot robot = trouverRobot(nomRobot);
+        Composant composante = trouverComposante(nomComposant);
+        if (robot != null && composante != null){
+            robot.ajouterComposante(composante);
+            bool = true;
+        }
+        return bool;
     }
 
-    public Robot verifierComposant(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
-        Robot robot = null;
-        int nbRobot = 0;
-        for (Fournisseur fournisseur: listeFournisseur) {
-            for (Robot robot1 :  fournisseur.getInventaireDeRobot()) {
-                if (robot1.getNumeroSerie().toString().equals(numeroSerie)){
-                    robot = robot1;
-                    fournisseur.getInventaireDeRobot().remove(robot1);
-                    break;
-                }
-                nbRobot++;
-            }
-            if (nbRobot < fournisseur.getInventaireDeRobot().size()){
+    public Robot trouverRobot(String nom){
+        Robot resultat = null;
+        for (Robot robot : listeRobot) {
+            if (robot.getNom().equals(nom)) {
+                resultat = robot;
                 break;
             }
         }
-        return robot;
+        return resultat;
     }
+
+    public Composant trouverComposante(String composante){
+        Composant composant = null;
+        for (Composant composant1 : composantesAchetes) {
+            if(composant1.getNom().equals(composante)){
+                composant = composant1;
+                break;
+            }
+        }
+        return composant;
+    }
+
+    public int nombreDeRobot(){
+        return listeRobot.size();
+    }
+
 }

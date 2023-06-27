@@ -53,9 +53,9 @@ public class ControlleurUtilisateurs {
         return utilisateur.afficherEtatRobot(utilisateur);
     }
 
-    public void ajouterComposanteRobot(){
+    public boolean ajouterComposanteRobot(String nomComposante, String nomRobot, String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.ajouterComposanteRobot();
+        return utilisateur.ajouterComposanteRobot(nomComposante, nomRobot);
     }
 
     public void creerAction(String pseudo){
@@ -63,14 +63,9 @@ public class ControlleurUtilisateurs {
         utilisateur.creerAction();
     }
 
-    public void ajouterActionRobot(){
+    public int afficherMetriquesFlotte(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.ajouterActionRobot();
-    }
-
-    public void afficherMetriquesFlotte(){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.afficherMetriquesFlotte();
+        return utilisateur.nombreDeRobot();
     }
 
     public void creerTache(){
@@ -83,9 +78,9 @@ public class ControlleurUtilisateurs {
         utilisateur.allouerTacheRobot();
     }
 
-    public void creerActivites(){
+    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerActivites();
+        return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
     }
 
     public void rejoindreActivite(){

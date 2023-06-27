@@ -9,12 +9,12 @@ public class Robot {
     private double memoire; // En GB
     private LinkedList<Composant> composantes;
     private String type;
-    private LinkedList<String> actions;
-    private LinkedList<String> taches;
-    private LinkedList<String> activites;
+    private LinkedList<Action> actions;
+    private LinkedList<Tache> taches;
+    private LinkedList<Activite> activites;
     private UUID numeroSerie;
     public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes, String type,
-                 LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites, UUID numeroSerie){
+                 LinkedList<Action> action, LinkedList<Tache> taches, LinkedList<Activite> activites, UUID numeroSerie){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -23,6 +23,7 @@ public class Robot {
         this.cpu = cpu;
         this.memoire = memoire;
         this.composantes = composantes;
+        this.type = type;
         this.actions = action;
         this.taches = taches;
         this.activites = activites;
@@ -61,23 +62,30 @@ public class Robot {
         return memoire;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public LinkedList<Composant> getComposantes() {
         return composantes;
     }
 
-    public LinkedList<String> getActions() {
+    public LinkedList<Action> getActions() {
         return actions;
     }
 
-    public LinkedList<String> getTaches() {
+    public LinkedList<Tache> getTaches() {
         return taches;
     }
 
-    public LinkedList<String> getActivites() {
+    public LinkedList<Activite> getActivites() {
         return activites;
     }
 
     public UUID getNumeroSerie() {
         return numeroSerie;
+    }
+    public void ajouterComposante(Composant composant){
+        composantes.add(composant);
     }
 }

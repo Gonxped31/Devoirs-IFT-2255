@@ -2,8 +2,8 @@ package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Membre.Fournisseur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.TypesComposants;
+import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.*;
 
 import javax.xml.transform.sax.SAXSource;
 import java.util.ArrayList;
@@ -136,39 +136,30 @@ public class Menu {
         System.out.println("5- Gerer mon reseau social");
         System.out.println("6- Achats");
         System.out.println("7- Voir mes notifications");
+        System.out.println("8- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch(choix){
             case("1") :
-                modifierProfile(scanner, pseudo, controlleurUtilisateurs);
-                //controlleurUtilisateurs.actionsUtilisateurs(scanner, 1, pseudo);
+                modifierProfile(scanner, pseudo);
             case("2") :
-                gererMaFlotte(scanner, pseudo, controlleurUtilisateurs);
+                gererMaFlotte(scanner, pseudo);
             case("3") :
-                gererMesTaches()
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
+                gererMesTaches();
             case("4") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 4, pseudo);
+
             case("5") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 5, pseudo);
+                gererReseauSocial(scanner, pseudo);
             case("6") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 6, pseudo);
+
             case("7") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 7, pseudo);
+                voirNotification();
             case("8") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 8, pseudo);
-            case("9") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 9, pseudo);
-            case("10") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 10, pseudo);
-            case("11") :
-                controlleurUtilisateurs.actionsUtilisateurs(scanner, 11, pseudo);
-            case("12") :
                 menuPrincipale(scanner);
         }
     }
 
-    public void modifierProfile(Scanner scanner, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
+    public void modifierProfile(Scanner scanner, String pseudo) {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");
         System.out.println("2- Prenom");
@@ -223,9 +214,7 @@ public class Menu {
         }        
     }
 
-    public void gererMaFlotte(Scanner scanner, String pseudo, ControlleurUtilisateurs controlleurUtilisateurs) {
-        //FAIRE APPEL AU CONRTOLLEUR
-        //Autre switch case
+    public void gererMaFlotte(Scanner scanner, String pseudo) {
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");
         System.out.println("3- Ajouter une composante a un robot");
@@ -234,38 +223,41 @@ public class Menu {
         System.out.println("6- Creer action");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch (choix){ 
-            case "1": 
-                menuEnregistrerRobot(scanner, pseudo, controlleurUtilisateurs);
-                //controlleurUtilisateurs.enregistrerRobot(pseudo);
-                break;
-            case "2": 
-                controlleurUtilisateurs.afficherEtatRobot(pseudo);
-                break;
-            case "3": 
-                controlleurUtilisateurs.ajouterComposanteRobot(pseudo);
-                break;
-            case "4": 
-                controlleurUtilisateurs.ajouterAction(pseudo);
-                break;
-            case "5": 
-                controlleurUtilisateurs.afficherMetriquesFlotte(pseudo);
-                break;
-            case "6": 
-                controlleurUtilisateurs.creerActions(pseudo);
-                break;
+        switch (choix) {
+            case "1" -> menuEnregistrerRobot(scanner, pseudo);
+            case "2" -> printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
+            case "3" -> menuAjouterComposante(scanner, pseudo);
+            case "4" -> menuAfficherMetriquesFlotte(pseudo);
+            case "5" -> menuCreerActions(scanner, pseudo);
         }
     }
 
-    public void menuEnregistrerRobot(Scanner scanner,String pseudo, ControlleurUtilisateurs controlleurUtilisateurs){
-        System.out.println("Nom: ");
-        String nomRobot = scanner.nextLine();
-        System.out.println("Numero de serie: ");
-        String numeroDeSerie = scanner.nextLine();
-        controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, numeroDeSerie);
+    public void menuEnregistrerRobot(Scanner scanner,String pseudo){
+        boolean reessayer = true;
+        while (reessayer) {
+            System.out.println("Nom du robot : ");
+            String nomRobot = scanner.nextLine();
+            System.out.println("Numero de serie: ");
+            String numeroDeSerie = scanner.nextLine();
+            if(controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, numeroDeSerie)) {
+                System.out.println("Le robot a été bien enrégistré !");
+                reessayer = false;
+            } else {
+                System.out.println("Aucun robot vendu par nos founisseurs ne possède ce numéro de série. Voulez vous rééssayer ?");
+                System.out.println("1- Oui");
+                System.out.println("2- Non");
+                System.out.print(">> Votre choix : ");
+                if (scanner.nextLine().equalsIgnoreCase("non")){
+                    break;
+                }
+            }
+        }
+        System.out.println(" ");
+        menuUtilisateur(scanner, pseudo);
+
     }
 
-    public void gererTaches(Scanner scanner, String pseudo){
+    public void gererMesTaches(Scanner scanner, String pseudo){
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
         System.out.print(">>> Votre choix : ");
@@ -280,25 +272,71 @@ public class Menu {
         }
     }
 
-    public void gererActivites(Scanner scanner, String pseudo){
+    public void gererMesActivites(Scanner scanner, String pseudo){
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
+        System.out.println("3- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix){ 
             case "1": 
-                controlleurUtilisateurs.creerActivites(pseudo);
+                menuCreerActivite(scanner);
                 break;
-            case "2": 
-                controlleurUtilisateurs.rejoindreActivite(pseudo);
+            case "2":
+                menuRejoindreActivite();
                 break;
+            case "3":
+                menuUtilisateur(scanner, pseudo);
         }
+    }
+
+    public void menuCreerActivite(Scanner scanner, String pseudo){
+        boolean continuer = false;
+        ArrayList<String> listeTache = new ArrayList<>();
+        System.out.println(" ");
+        System.out.print("Nom de l'activité : ");
+        String nomActivite = scanner.nextLine();
+        System.out.println("Date de debut : ");
+        String dateDebut = scanner.nextLine();
+        System.out.println("Date de fin : ");
+        String dateFin = scanner.nextLine();
+        do {
+            System.out.print("Veuillez entrer une tache : ");
+            listeTache.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            String reponse = scanner.nextLine();
+            if (reponse.equalsIgnoreCase("oui")){
+                continuer = true;
+            }
+        } while (continuer);
+
+        do {
+            System.out.print("Veuillez entrer un interêt : ");
+            listeTache.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            String reponse = scanner.nextLine();
+            if (reponse.equalsIgnoreCase("oui")){
+                continuer = true;
+            }
+        } while (continuer);
+
+        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache)) {
+            System.out.println("L'activitée a été bien créée (:");
+        } else {
+            System.out.println("Cette activitée existe déjà...");
+        }
+        menuUtilisateur(scanner, pseudo);
+    }
+
+    public void menuRejoindreActivite(){
+
     }
 
     public void gererReseauSocial(Scanner scanner, String pseudo){
         System.out.println("1- Suivre un utilisateur");
         System.out.println("2- Gerer mes suiveurs");
         System.out.println("3- Gerer mes interets");
+        System.out.println("4- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix){ 
@@ -311,6 +349,8 @@ public class Menu {
             case "3": 
                 controlleurUtilisateurs.gererInterets(pseudo);
                 break;
+            case "3":
+                menuUtilisateur(scanner, pseudo);
         }
     }
 
@@ -387,9 +427,18 @@ public class Menu {
     }
 
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
-        System.out.print("Nom de la composante : ");
-        String nom = scanner.nextLine();
-        controlleurUtilisateurs.actionsUtilisateurs(scanner, 3, pseudo);
+        System.out.print("Nom de la composante à ajouter : ");
+        String nomComposante = scanner.nextLine();
+        System.out.print("Nom du robot : ");
+        String nomRobot = scanner.nextLine();
+        if (controlleurUtilisateurs.ajouterComposanteRobot(nomComposante, nomRobot, pseudo)){
+            System.out.println(" ");
+            System.out.println("La composante a bien été ajoutée.");
+            System.out.println(" ");
+        } else {
+            System.out.println("La composante ou le robot entrée n'existe pas ):");
+        }
+        menuUtilisateur(scanner, pseudo);
     }
 
     public void printComposantes(Fournisseur fournisseur){
@@ -415,6 +464,18 @@ public class Menu {
             System.out.print(fournisseur.getTypeComposantesFabriquer());
             System.out.print(" ,");
             System.out.print(fournisseur.getCapaciteProductionComposantes());
+            System.out.println(" ");
+        }
+    }
+
+    public void printRobots(ArrayList<Robot> robots) {
+        for (Robot robot : robots) {
+            System.out.println(">>" + robot.getNom());
+            System.out.println("Position : (" + robot.getX() + ", " + robot.getY() + ")");
+            System.out.println("Vitesse : " + robot.getVitesse());
+            System.out.println("Niveau de batterie : " + robot.getBatterie());
+            System.out.println("CPU : " + robot.getCpu());
+            System.out.println("Memoire" + robot.getMemoire());
             System.out.println(" ");
         }
     }
