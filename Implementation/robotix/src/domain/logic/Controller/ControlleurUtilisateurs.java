@@ -58,7 +58,7 @@ public class ControlleurUtilisateurs {
         utilisateur.ajouterComposanteRobot();
     }
 
-    public void creerAction(){
+    public void creerAction(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.creerAction();
     }
@@ -112,5 +112,4 @@ public class ControlleurUtilisateurs {
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.notifications();
     }
-
 }
