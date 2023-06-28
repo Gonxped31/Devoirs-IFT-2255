@@ -52,6 +52,11 @@ public class ControlleurFournisseurs {
     public boolean retirerComposante(String composante, Fournisseur fournisseur){
         return fournisseur.retirerComopsante(composante);
     }
+
+    public void notifier(Fournisseur fournisseur) {
+        fournisseur.notifier();
+    }
+
     public void voirProfilFournisseur()
     {
         System.out.println(this.fournisseurCourant.getProfilFournisseur());

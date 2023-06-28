@@ -1,6 +1,8 @@
 package domain.logic.Membre;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import java.util.*;
 
@@ -10,6 +12,8 @@ public class Fournisseur extends Membre {
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
+    private Notification notification = new Notification();
+    private LinkedList<Notification> listeNotifications = new LinkedList<>();
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
@@ -57,6 +61,9 @@ public class Fournisseur extends Membre {
     public String getNom() {
         return super.getNom();
     }
+
+    public Notification getNotification() { return this.notification; }
+    public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -174,6 +181,26 @@ public class Fournisseur extends Membre {
         return fournisseurs;
     }
 
+    public void notifier() {
+        boolean EstNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
+            if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
+                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+            }
+            if (robot.getBatterie() >= 20) {
+                notification.setTitre("BATTERIE FAIBLE");
+                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+            }
+            if (robot.getCpu() >= 100) {
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+            }
+        }
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
