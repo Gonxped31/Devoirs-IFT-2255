@@ -10,19 +10,19 @@ import domain.logic.Robot.*;
 public class Utilisateur extends Membre{
     private ArrayList<String> uuids = new ArrayList<>();
     private ArrayList<Robot> listeRobot = new ArrayList<>();
-    private ArrayList<Tache> taches = new ArrayList<>();
-    private ArrayList<Action> actions = new ArrayList<Action>();
+    private ArrayList<Tache> listeTaches = new ArrayList<>();
+    private ArrayList<Action> listeActions = new ArrayList<>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<String> listeInteret = new ArrayList<>();
-    private ArrayList<String> notifs = new ArrayList<>();
+    private ArrayList<String> listeNotifications = new ArrayList<>();
     private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
 
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
     private int point;
-
+    private Tache tache;
 
 
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
@@ -44,7 +44,7 @@ public class Utilisateur extends Membre{
     }
 
     public ArrayList<String> getNotifs(){
-        return notifs;
+        return listeNotifications;
     }
  
     public void setPseudo(String pseudo) {
@@ -126,7 +126,11 @@ public class Utilisateur extends Membre{
     }
 
     public ArrayList<String> voirNotifications(){
-        return notifs;
+        return listeNotifications;
+    }
+
+    public void notifier(){
+        //Va faire appel a diff methodes de problemes
     }
 
     public void modifierProfile(String choix, String nouvelInfo, Utilisateur utilisateur){
@@ -151,7 +155,7 @@ public class Utilisateur extends Membre{
 
     public boolean enregistrerRobot(String nomRobot,String numeroSerie, Utilisateur utilisateur, ArrayList<Fournisseur> listeFournisseur){
         boolean bool = false;
-        Robot robot = verifierRobot(numeroSerie, listeFournisseur);
+        Robot robot = verifierNumeroSerieRobot(numeroSerie, listeFournisseur);
         if (robot != null){
             robot.setNom(nomRobot);
             utilisateur.listeRobot.add(robot);
@@ -160,7 +164,7 @@ public class Utilisateur extends Membre{
         return bool;
     }
 
-    public Robot verifierRobot(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+    public Robot verifierNumeroSerieRobot(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
         Robot robot = null;
         int nbRobot = 0;
         for (Fournisseur fournisseur: listeFournisseur) {

@@ -92,6 +92,7 @@ public class ControlleurUtilisateurs {
     public boolean suivreUtilisateur(String pseudo,String nom){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         Utilisateur suivi = Utilisateur.trouverUtilisateur(nom, listeUtilisateurs);
+        //FIX move to utilsateur 
         if (utilisateur.getPseudo() == null || suivi.getPseudo() == null){
             return false;
         }else{

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Tache {
     private String nom;
-    private ArrayList<Action> taches;
+    private ArrayList<Action> actions;
 
-    public Tache(String nom, ArrayList<Action> taches){
+    public Tache(String nom, ArrayList<Action> actions){
         this.nom = nom;
-        this.taches = taches;
+        this.actions = actions;
     }
 
     public String getNom() {
@@ -16,6 +16,6 @@ public class Tache {
     }
 
     public ArrayList<Action> getTaches() {
-        return taches;
+        return actions;
     }
 }
