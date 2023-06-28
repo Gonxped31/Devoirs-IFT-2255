@@ -1,7 +1,6 @@
 package domain.logic.Membre;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -60,7 +59,7 @@ public class Fournisseur extends Membre {
     }
 
     public String getNom() {
-        return this.nom;
+        return super.getNom();
     }
 
     public Notification getNotification() { return this.notification; }
@@ -202,6 +201,13 @@ public class Fournisseur extends Membre {
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
             }
         }
+    public String getProfilFournisseur(){
+        return "Nom :" + super.getNom() + "\n adresse courriel : " +
+                this.email + "\nTelephone : " + this.numeroTelephone +
+                "Type de robot fabriquer :" + this.typeRobotFabriquer +
+                "Type de composant fabriquer :" + this.typeComposantesFabriquer +
+                "Nombre de robot disponible :" + this.getInventaireComposant().size() +
+                "Nombre de robot disponible : " + this.getInventaireComposant().size();
     }
 
 }

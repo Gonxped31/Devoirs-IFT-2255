@@ -1,6 +1,7 @@
 package domain.logic.Robot;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Action {
     private String nomAction;
@@ -24,4 +25,13 @@ public class Action {
     public String getDuree(){
         return duree;
     }
+
+    public String getInfoActionFormater(){
+        return "Nom :" + this.nomAction +
+                "\nType de composant nécessaire :" + composantes.stream()
+                .map(TypesComposants::name)
+                .collect(Collectors.joining("\n")) +
+                "Duree : " + this.duree  ;
+    }
+
 }

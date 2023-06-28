@@ -13,7 +13,7 @@ public class ControlleurFournisseurs {
     private ArrayList<Fournisseur> getListeFournisseurs() {
         return listeFournisseurs;
     }
-
+    private Fournisseur fournisseurCourant;
     public boolean authentificationFournisseur(String connexion, String membre){
         return Fournisseur.authentification(connexion, listeFournisseurs);
     }
@@ -63,4 +63,8 @@ public class ControlleurFournisseurs {
         fournisseur.notifier();
     }
 
+    public void voirProfilFournisseur()
+    {
+        System.out.println(this.fournisseurCourant.getProfilFournisseur());
+    }
 }
