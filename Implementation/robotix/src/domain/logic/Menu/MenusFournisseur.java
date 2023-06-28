@@ -173,26 +173,4 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void printFournisseurs(ArrayList<Fournisseur> fournisseurs) {
-		for (Fournisseur fournisseur : fournisseurs) {
-			System.out.print(fournisseur.getNom());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getAdresse());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getEmail());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getTelephone());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getNomCompagnie());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getTypeRobotFabriquer());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getTypeComposantesFabriquer());
-			System.out.print(" ,");
-			System.out.print(fournisseur.getCapaciteProductionComposantes());
-			System.out.println(" ");
-		}
-	}
-
-
 }
