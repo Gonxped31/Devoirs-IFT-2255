@@ -8,6 +8,7 @@ import domain.logic.Robot.*;
 import javax.xml.transform.sax.SAXSource;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.Scanner;
 
 public class Menu {
@@ -54,6 +55,8 @@ public class Menu {
     }
 
     /*Section Utilisateur */
+
+    //MOVED TO MenuUtilisateur
     public void inscrireUtilisateur(Scanner scanner) {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
@@ -113,6 +116,7 @@ public class Menu {
         menuPrincipale(scanner);
     }
 
+    //MOVED TO MenuUtilisateur
     public void connecterUtilisateur(Scanner scanner) {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
@@ -125,6 +129,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuUtilisateur
     public void menuUtilisateur(Scanner scanner, String pseudo) {
         ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
         ArrayList<String> fournisCPU = new ArrayList<>();
@@ -166,6 +171,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuUtilisateur
     public void modifierProfile(Scanner scanner, String pseudo) {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");
@@ -221,6 +227,7 @@ public class Menu {
         }        
     }
 
+    //MOVED TO MenuGestionFlotte
     public void gererMaFlotte(Scanner scanner, String pseudo) {
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");
@@ -238,6 +245,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuGestionFlotte
     public void menuAfficherMetriquesFlotte(String pseudo) {
         System.out.println("********** Métriques de ma flotte **********");
         System.out.println("Nombre de robot : " + controlleurUtilisateurs.afficherMetriquesFlotte(pseudo));
@@ -247,16 +255,29 @@ public class Menu {
 
     }
 
+    //MOVED TO MenuGestionFlotte
     public void menuCreerActions(Scanner scanner, String pseudo) {
-        ArrayList<Composant> composantes = new ArrayList<>();
+        final String cpu = TypesComposants.CPU.name();
+        final String camera = TypesComposants.CAMERA.name();
+        final String ecran = TypesComposants.ECRAN.name();
+        final String roue = TypesComposants.ROUE.name();
+        final String helice = TypesComposants.HELICE.name();
+        final String hautParleur = TypesComposants.HAUTPARLEUR.name();
+        final String bras = TypesComposants.BRAS.name();
+        final String micro = TypesComposants.MICRO.name();
+
+        ArrayList<TypesComposants> composantes = new ArrayList<>();
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.println("Nom: ");
         String nomAction = scanner.nextLine();
         System.out.println("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
         String decision = "Y";
         while (decision.toUpperCase().equals("Y")) {
-            System.out.println("Entrez une composante:");
+            System.out.println("Entrez une composante parmi celles-ci:");
             String comp = scanner.nextLine();
+            if (TypesComposants.BRAS.equals(Enum.parse)){
+
+            }
             Composant compo = new Composant(comp, null, null, null);
             composantes.add(compo);
             System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
@@ -265,6 +286,7 @@ public class Menu {
         controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes);
     }
 
+    //MOVED TO MenuGestionFlotte
     public void menuEnregistrerRobot(Scanner scanner,String pseudo){
         boolean reessayer = true;
         while (reessayer) {
@@ -290,6 +312,7 @@ public class Menu {
 
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void gererMesTaches(Scanner scanner, String pseudo){
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
@@ -309,6 +332,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void creerTache(Scanner scanner, String pseudo){
         ArrayList<Action> actions = new ArrayList<Action>();
         System.out.println("Quelles actions voulez-vous creer?");
@@ -327,6 +351,7 @@ public class Menu {
         controlleurUtilisateurs.creerTache(pseudo, nomAction, actions);
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void allouerTacheRobot(Scanner scanner, String pseudo){
         System.out.println("A quel robot voulez-vous allouer une tache");
         String robot = scanner.nextLine();
@@ -340,6 +365,7 @@ public class Menu {
         menuUtilisateur(scanner, pseudo);
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void gererMesActivites(Scanner scanner, String pseudo){
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
@@ -358,7 +384,8 @@ public class Menu {
         }
     }
 
-    public void menuCreerActivite(Scanner scanner, String pseudo){
+    //MOVED TO MenuGererTacheActivite
+    public void menuCreerActivite(Scanner scanner){
         boolean continuer = false;
         ArrayList<String> listeTache = new ArrayList<>();
         System.out.println(" ");
@@ -396,11 +423,12 @@ public class Menu {
         menuUtilisateur(scanner, pseudo);
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void menuRejoindreActivite(){
 
     }
 
-
+    //MOVED TO MenuGererReseau
     public void gererReseauSocial(Scanner scanner, String pseudo){
         System.out.println("1- Suivre un utilisateur");
         System.out.println("2- Gerer mes suiveurs");
@@ -424,11 +452,13 @@ public class Menu {
             case "3": 
                 controlleurUtilisateurs.gererInterets(pseudo);
                 break;
-            case "3":
+            case "4":
                 menuUtilisateur(scanner, pseudo);
         }
     }
 
+
+    //MOVED TO MenuUtilisateur
     public void voirNotification(){
         for (String notif : controlleurUtilisateurs.voirNotifications()) {
             System.out.println(notif);
@@ -437,7 +467,7 @@ public class Menu {
 
     public void menuTrouverFournisseur(Scanner scanner){
         boolean continuer = true;
-        Boolean bool = false;
+        boolean bool = false;
         while (continuer) {
             System.out.println("Choisissez un filtre parmi les suivants : ");
             System.out.println("1- Nom");
@@ -499,6 +529,7 @@ public class Menu {
 
     }
 
+    //MOVED TO MenuGestionFlotte
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
@@ -541,6 +572,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuGestionFlotte
     public void printRobots(ArrayList<Robot> robots) {
         for (Robot robot : robots) {
             System.out.println(">>" + robot.getNom());

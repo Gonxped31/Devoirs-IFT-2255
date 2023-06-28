@@ -14,7 +14,7 @@ public class Robot {
     private LinkedList<Activite> activites;
     private UUID numeroSerie;
     public Robot(String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes, String type,
-                 LinkedList<Action> action, LinkedList<Tache> taches, LinkedList<Activite> activites, UUID numeroSerie){
+                 LinkedList<Action> action, LinkedList<Tache> taches, LinkedList<Activite> activites){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -27,7 +27,7 @@ public class Robot {
         this.actions = action;
         this.taches = taches;
         this.activites = activites;
-        this.numeroSerie = numeroSerie;
+        this.numeroSerie = UUID.randomUUID();
     }
 
     public String getNom() {

@@ -3,6 +3,7 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import domain.logic.Robot.TypesComposants;
 import domain.logic.Robot.Action;
 
 import java.util.ArrayList;
@@ -14,18 +15,20 @@ public class ControlleurUtilisateurs {
     private DataBaseController dataBaseController = new DataBaseController();
     private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.getListeUtilisateurs();
     private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
+    private Utilisateur utilisateurCourant;
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        dataBaseController.getListeUtilisateurs().add(new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret));
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret)
+        dataBaseController.getListeUtilisateurs().add(utilisateurCourant);
     }
 
-    public boolean authentification(String connexion, String membre) {
-        return Utilisateur.authentification(connexion, listeUtilisateurs);
+    public boolean authentification(String nom, String mdp, String type) {
+        return dataBaseController.authentification(nom, mdp, type);
     }
 
     /* Code pour les vérifications */
     public boolean verifierPseudo(String pseudo) {
-        return Utilisateur.verifierPseudoUtilisateur(pseudo, listeUtilisateurs);
+        return dataBaseController.verifierPseudoUtilisateur(pseudo);
     }
 
     public boolean verifierEmail(String inputEmail) {
@@ -40,33 +43,30 @@ public class ControlleurUtilisateurs {
     /* Actions utilisateur */
 
     public void modifierProfile(String pseudo, String choix, String info) {
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.modifierProfile(choix, info, utilisateur);
+        this.utilisateurCourant.modifierProfile(choix, info);
+        dataBaseController.modifierProfile(pseudo);
     }
 
-    public boolean enregistrerRobot(String pseudo, String nomRobot, String numeroSerie) {
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.enregistrerRobot(nomRobot, numeroSerie, utilisateur, listeFournisseurs);
+    public boolean enregistrerRobot(String pseudo, String nomRobot, String type, String numeroSerie) {
+        return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.afficherEtatRobot(utilisateur);
+        return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public boolean ajouterComposanteRobot(String nomComposante, String nomRobot, String pseudo){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.ajouterComposanteRobot(nomComposante, nomRobot);
+    public boolean ajouterComposanteRobot(Composant composante, String numeroSerie, String pseudo){
+        return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
-    public void creerAction(String pseudo, String nomAction, ArrayList<Composant> composantes){
+    public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes){
+        this.utilisateurCourant.creerAction(nomAction, composantes);
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.creerAction(nomAction, composantes);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.nombreDeRobot();
+        return this.utilisateurCourant.nombreDeRobot();
     }
 
     public void creerTache(String pseudo, String nomTache, ArrayList<Action> actions){
@@ -92,6 +92,7 @@ public class ControlleurUtilisateurs {
     public boolean suivreUtilisateur(String pseudo,String nom){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         Utilisateur suivi = Utilisateur.trouverUtilisateur(nom, listeUtilisateurs);
+        //FIX move to utilsateur 
         if (utilisateur.getPseudo() == null || suivi.getPseudo() == null){
             return false;
         }else{
@@ -101,18 +102,21 @@ public class ControlleurUtilisateurs {
         }
     }
 
-    public void gereSuiveurs(){
+    public void gererSuiveurs(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.gereSuiveurs();
+        utilisateur.gererSuiveurs();
     }
 
-    public void gererInteret(){
+    public void gererInteret(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.gererInteret();
     }
 
-    public ArrayList<String> voirNotifications(){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.voirNotifications();
+    public ArrayList<String> voirNotifications(String pseudo){
+        return this.utilisateurCourant.voirNotifications();
+    }
+
+    public void supprimerNotifs(String pseudo) {
+        this.utilisateurCourant.getNotifs().clear();
     }
 }

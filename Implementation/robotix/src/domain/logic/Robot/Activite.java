@@ -14,7 +14,7 @@ public class Activite {
     private ArrayList<Utilisateur> listeUtilisateurInsccrit = new ArrayList<>();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
 
-    public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache){
+    public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
