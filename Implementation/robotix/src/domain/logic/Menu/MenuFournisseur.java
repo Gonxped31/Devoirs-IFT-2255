@@ -2,11 +2,11 @@ package domain.logic.Menu;
 
 public class MenuFournisseur {
 
-    public void menuInscriptionFournisseur() {
+    public void inscrireFournisseur() {
 
     }
 
-    public void menuConnexionFournisseur() {
+    public void connecterFournisseur() {
 
     }
 
@@ -14,15 +14,15 @@ public class MenuFournisseur {
 
     }
 
-    public void menuModifierProfileFournisseur() {
+    public void modifierProfileFournisseur() {
 
     }
 
-    public void menuGererComposantes() {
+    public void gererComposantes() {
 
     }
 
-    public void menuEneregistrerComposante() {
+    public void eneregistrerComposante() {
 
     }
 
@@ -30,7 +30,7 @@ public class MenuFournisseur {
 
     }
 
-    public void menuVoirProfileFournisseur() {
+    public void voirProfileFournisseur() {
 
     }
 
