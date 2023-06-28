@@ -29,4 +29,11 @@ public class Composant {
     public String getTypeComposant() {
         return typeComposant;
     }
+
+    public String getInfoComposantFormater(){
+        return "Nom :" + this.nom +
+                "\nprix :" + this.prix +
+                "\n description : " + this.description +
+                "Type :" + this.typeComposant;
+    }
 }

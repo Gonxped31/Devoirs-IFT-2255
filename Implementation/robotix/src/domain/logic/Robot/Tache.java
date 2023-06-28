@@ -1,6 +1,7 @@
 package domain.logic.Robot;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Tache {
     private String nom;
@@ -17,5 +18,12 @@ public class Tache {
 
     public ArrayList<Action> getTaches() {
         return actions;
+    }
+
+    public String getInfoTacheFormater(){
+        return  "Nom : " + this.nom +
+                "Liste d'action : " + actions.stream()
+                .map(action -> action.getInfoActionFormater())
+                .collect(Collectors.joining("\n"));
     }
 }

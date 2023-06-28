@@ -119,4 +119,9 @@ public class ControlleurUtilisateurs {
     public void supprimerNotifs(String pseudo) {
         this.utilisateurCourant.getNotifs().clear();
     }
+
+    public void voirProfilUtilisateurCourant()
+    {
+       System.out.println(this.utilisateurCourant.getProfilUtilisateur());
+    }
 }

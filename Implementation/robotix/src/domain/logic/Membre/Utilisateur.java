@@ -279,9 +279,6 @@ public class Utilisateur extends Membre{
                 "\nNombre de point :" + this.point +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
-  public void voirProfil(){
-        System.out.println(getProfilUtilisateur());
-  }
 
     public String getPrenom() {
         return prenom;

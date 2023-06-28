@@ -1,25 +1,38 @@
 package service;
 
+import com.google.gson.reflect.TypeToken;
+import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Activite;
 import service.BaseDeDonnee;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class BaseDeDonneeActivite extends BaseDeDonnee {
 private static final String FILE_NAME= "activite.json";
 
 public BaseDeDonneeActivite() throws IOException {
-    super(this.FILE_NAME);
+    super(FILE_NAME);
 }
 
 
     @Override
     protected Type getType() {
-        return null;
+        return new TypeToken<ArrayList<Activite>>(){}.getType();
     }
 
     @Override
     protected void init() {
+     //Todo
+    }
 
+    public String recupererLalisteDesActivite()
+    {
+        return (String) this.getListObjet().stream()
+                .map(activite->((Activite) activite).getInfoActiviteFormater())
+                .collect(Collectors.joining("\n"));
     }
 }

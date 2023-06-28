@@ -26,6 +26,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     @Override
     protected void init() {
+         //Todo
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
           //
          //new Utilisateurs (),
@@ -85,5 +86,15 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
 
    }
+
+    public String filtrerListSuiveurParPseudo(String nomUtilisateur, String pseudoSuiveur){
+        return (String) this.getListObjet().stream()
+                .filter(u -> ((Utilisateur) u).getNom().equals(nomUtilisateur))
+                .flatMap(u -> ((Utilisateur)u).getListSuiveur().stream())
+                .filter(s -> ((Utilisateur) s).getPseudo().equals(pseudoSuiveur))
+                .map(suiveur -> ((Utilisateur) suiveur).getProfilUtilisateur())
+                .collect(Collectors.joining("\n"));
+    }
+
 
 }

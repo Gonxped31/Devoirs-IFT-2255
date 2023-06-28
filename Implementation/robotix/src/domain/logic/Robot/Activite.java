@@ -5,6 +5,7 @@ import domain.logic.Membre.Utilisateur;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class Activite {
     private String nom;
@@ -45,4 +46,13 @@ public class Activite {
         return listeUtilisateurInsccrit;
     }
 
+    public String getInfoActiviteFormater(){
+        return "Nom : " + this.nom +
+                "\nDate de debut :" + this.dateDebut.toString() +
+                "\nDate de fin : " + this.dateFin.toString() +
+                "Liste de tache : " + listeDeTache.stream()
+                .map(tache -> tache.getInfoTacheFormater())
+                .collect(Collectors.joining("\n"));
+
+    }
 }

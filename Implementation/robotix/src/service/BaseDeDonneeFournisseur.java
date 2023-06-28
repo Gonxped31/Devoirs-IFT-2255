@@ -16,10 +16,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
      private List<Map<String, List<Composant>>> listComposant;
     
      public BaseDeDonneeFournisseur() throws IOException {
-        super(this.FILE_NAME);
-        listComposant= new ArrayList<>();
-         listRobot=new ArrayList<>();
-        initListeRobotEtComposant();
+        super(FILE_NAME);
          
      }
 
@@ -39,6 +36,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
 
     @Override
     protected void init() {
+         //Todo
         List<Fournisseur> tempList= new ArrayList<>(Arrays.asList(
        /* new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "roy1", "nom1@robotech.ca",
                         "5142104555", "RobotA", "CPU", "30", "RoboTechnologies"),
@@ -101,4 +99,66 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .map(fournisseur ->((Fournisseur)fournisseur).getProfilFournisseur())
                 .collect(Collectors.joining("\n"));
     }
+
+    public String rechercherComposantParNomOuTroisSouschaine(String nomOuTroisPremierSousChaine){
+        String composants= this.listComposant.stream()
+                .flatMap(map -> map.values().stream())
+                .flatMap(List::stream)
+                .filter(composant -> composant.getNom().equals(nomOuTroisPremierSousChaine) ||
+                        composant.getNom().substring(0, 3).equals(nomOuTroisPremierSousChaine))
+                .map(composant -> composant.getInfoComposantFormater())
+                .collect(Collectors.joining("\n"));
+        return  composants.isEmpty() ? "Composant non trouver, veuillez verifier le nom ou les trois premier caractère" :composants;
+    }
+
+    public String rechercherComposantParType(String typeComposant){
+        String composants =this.listComposant.stream()
+                .flatMap(map -> map.values().stream())
+                .flatMap(List::stream)
+                .filter(composant -> composant.getTypeComposant().equals(typeComposant))
+                .map(composant -> composant.getInfoComposantFormater())
+                .collect(Collectors.joining("\n"));
+
+        return composants.isEmpty() ? "Composant non trouver, veuillez verifier le type" : composants;
+    }
+
+    public String rechercherComposantParNomFournisseur(String nomFournisseur){
+        String composants= this.listComposant.stream()
+                .filter(map -> map.containsKey(nomFournisseur))
+                .flatMap(map -> map.get(nomFournisseur).stream())
+                .map(composant -> composant.getInfoComposantFormater())
+                .collect(Collectors.joining("\n"));
+        return composants.isEmpty() ? "Composant non trouver, veuillez verifier le nom du fourniseur": composants;
+    }
+
+    public String rechercherFournisseurParNom(String nom){
+        return (String) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getNom().equals(nom))
+                .map(f-> {
+                    return ((Fournisseur) f).getProfilFournisseur();
+                })
+                .findFirst()
+                .orElse("Fournisseur non trouver, veuillez verifier le nom");
+    }
+
+    public String rechercherFournisseurParAdresse(String adresse){
+        String founisseurs= (String) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getAdresse().equals(adresse))
+                .map(f-> {
+                    return ((Fournisseur) f).getProfilFournisseur();
+                })
+                .collect(Collectors.joining("\n"));
+             return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier l'adresse" : founisseurs;
+    }
+
+    public String rechercherFournisseurParTypeDeComposant(String typeDeComposant){
+        String founisseurs= (String) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getTypeRobotFabriquer().equals(typeDeComposant))
+                .map(f-> {
+                    return ((Fournisseur) f).getProfilFournisseur();
+                })
+                .collect(Collectors.joining("\n"));
+        return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier le type" : founisseurs;
+    }
+
 }
