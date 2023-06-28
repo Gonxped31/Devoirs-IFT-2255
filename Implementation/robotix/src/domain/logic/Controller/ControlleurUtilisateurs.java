@@ -18,7 +18,7 @@ public class ControlleurUtilisateurs {
     private Utilisateur utilisateurCourant;
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret)
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
         dataBaseController.getListeUtilisateurs().add(utilisateurCourant);
     }
 
@@ -119,5 +119,10 @@ public class ControlleurUtilisateurs {
 
     public void supprimerNotifs(String pseudo) {
         this.utilisateurCourant.getNotifs().clear();
+    }
+
+    public void voirProfilUtilisateurCourant()
+    {
+       System.out.println(this.utilisateurCourant.getProfilUtilisateur());
     }
 }
