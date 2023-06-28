@@ -113,13 +113,13 @@ public class MenuUtilisateur {
             case("3") :
                 menuGererTacheActivite.gererMesTaches(scanner, pseudo);
             case("4") :
-                menuGererTacheActivite.gererMes
+                menuGererTacheActivite.gererMesActivites(scanner, pseudo);
             case("5") :
                 gererReseauSocial(scanner, pseudo);
             case("6") :
 
             case("7") :
-                voirNotification();
+                menuNotification();
             case("8") :
                 menu.menuPrincipale(scanner);
         }
@@ -177,5 +177,20 @@ public class MenuUtilisateur {
                 controlleurUtilisateurs.modifierProfile(pseudo, "mdp", mdp);
                 break;
         }        
+    }
+
+    public void menuNotification(Scanner scanner, String pseudo){
+        for (String notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+            System.out.println("- " + notif);
+        }
+        System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
+        String decision = scanner.nextLine();
+        switch (decision.toUpperCase()){
+            case "Y":
+                controlleurUtilisateurs.supprimerNotifs(pseudo);
+            case "N": 
+                menuUtilisateur(scanner, pseudo);
+                break;
+        }
     }
 }

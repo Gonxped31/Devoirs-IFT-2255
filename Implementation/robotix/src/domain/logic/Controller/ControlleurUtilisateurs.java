@@ -101,18 +101,23 @@ public class ControlleurUtilisateurs {
         }
     }
 
-    public void gereSuiveurs(){
+    public void gererSuiveurs(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.gereSuiveurs();
+        utilisateur.gererSuiveurs();
     }
 
-    public void gererInteret(){
+    public void gererInteret(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.gererInteret();
     }
 
-    public ArrayList<String> voirNotifications(){
+    public ArrayList<String> voirNotifications(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         return utilisateur.voirNotifications();
+    }
+
+    public void supprimerNotifs(String pseudo) {
+        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
+        utilisateur.getNotifs().clear();
     }
 }

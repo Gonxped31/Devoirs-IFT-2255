@@ -352,6 +352,7 @@ public class Menu {
         menuUtilisateur(scanner, pseudo);
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void gererMesActivites(Scanner scanner, String pseudo){
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
@@ -370,6 +371,7 @@ public class Menu {
         }
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void menuCreerActivite(Scanner scanner){
         boolean continuer = false;
         ArrayList<String> listeTache = new ArrayList<>();
@@ -408,11 +410,12 @@ public class Menu {
         menuUtilisateur(scanner, pseudo);
     }
 
+    //MOVED TO MenuGererTacheActivite
     public void menuRejoindreActivite(){
 
     }
 
-
+    //MOVED TO MenuGererReseau
     public void gererReseauSocial(Scanner scanner, String pseudo){
         System.out.println("1- Suivre un utilisateur");
         System.out.println("2- Gerer mes suiveurs");
@@ -441,6 +444,8 @@ public class Menu {
         }
     }
 
+    
+    //MOVED TO MenuUtilisateur
     public void voirNotification(){
         for (String notif : controlleurUtilisateurs.voirNotifications()) {
             System.out.println(notif);

@@ -10,6 +10,7 @@ public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
 
+    //Tache
     public void gererMesTaches(Scanner scanner, String pseudo){
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
@@ -60,4 +61,65 @@ public class MenuGererTacheActivite {
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
+
+    //Activite
+    public void gererMesActivites(Scanner scanner, String pseudo){
+        System.out.println("1- Créer une activites");
+        System.out.println("2- Rejoindre une activite");
+        System.out.println("3- Revenir au menu principale");
+        System.out.print(">>> Votre choix : ");
+        String choix = scanner.nextLine();
+        switch (choix){ 
+            case "1": 
+                menuCreerActivite(scanner, pseudo);
+                break;
+            case "2":
+                menuRejoindreActivite();
+                break;
+            case "3":
+                menuUtil.menuUtilisateur(scanner, pseudo);
+        }
+    }
+
+    public void menuCreerActivite(Scanner scanner, String pseudo){
+        boolean continuer = false;
+        ArrayList<String> listeTache = new ArrayList<>();
+        System.out.println(" ");
+        System.out.print("Nom de l'activité : ");
+        String nomActivite = scanner.nextLine();
+        System.out.println("Date de debut : ");
+        String dateDebut = scanner.nextLine();
+        System.out.println("Date de fin : ");
+        String dateFin = scanner.nextLine();
+        do {
+            System.out.print("Veuillez entrer une tache : ");
+            listeTache.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            String reponse = scanner.nextLine();
+            if (reponse.equalsIgnoreCase("oui")){
+                continuer = true;
+            }
+        } while (continuer);
+
+        do {
+            System.out.print("Veuillez entrer un interêt : ");
+            listeTache.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            String reponse = scanner.nextLine();
+            if (reponse.equalsIgnoreCase("oui")){
+                continuer = true;
+            }
+        } while (continuer);
+
+        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache)) {
+            System.out.println("L'activitée a été bien créée (:");
+        } else {
+            System.out.println("Cette activitée existe déjà...");
+        }
+        menuUtil.menuUtilisateur(scanner, pseudo);
+    }
+
+    public void menuRejoindreActivite(){
+
+    }
 }
