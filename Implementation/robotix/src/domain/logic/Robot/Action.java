@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Action {
     private String nomAction;
     private ArrayList<TypesComposants> composantes;
-    private int duree;
+    private String duree;
 
-    public Action(String nomAction, ArrayList<TypesComposants> composantes, int duree){
+    public Action(String nomAction, ArrayList<TypesComposants> composantes, String duree){
         this.nomAction = nomAction;
         this.composantes = composantes;
         this.duree = duree;
@@ -21,7 +21,7 @@ public class Action {
         return composantes;
     }
 
-    public int getDuree(){
+    public String getDuree(){
         return duree;
     }
 }

@@ -59,8 +59,9 @@ public class ControlleurUtilisateurs {
         return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
-    public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes){
-        this.utilisateurCourant.creerAction(nomAction, composantes);
+    public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes, String duree){
+        dataBaseController.creerAction(nomAction, composantes);
+        this.utilisateurCourant.creerAction(nomAction, composantes, duree);
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.creerAction(nomAction, composantes);
     }

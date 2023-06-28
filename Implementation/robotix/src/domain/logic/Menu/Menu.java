@@ -6,6 +6,7 @@ import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
 import javax.xml.transform.sax.SAXSource;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -263,18 +264,29 @@ public class Menu {
         String nomAction = scanner.nextLine();
         System.out.println("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
         String decision = "Y";
+        String duree = "0";
         while (decision.toUpperCase().equals("Y")) {
-            System.out.println("Entrez une composante parmi celles-ci:");
+            System.out.println("Entrez une composante parmi celles-ci (CPU, Camera, Ecran, Roue, He:");
             String comp = scanner.nextLine();
-            if (TypesComposants.BRAS.equals(Enum.parse)){
 
+            switch (comp.toUpperCase()){
+                case "CPU" -> composantes.add(TypesComposants.CPU);
+                case "CAMERA" -> composantes.add(TypesComposants.CAMERA);
+                case "ECRAN" -> composantes.add(TypesComposants.ECRAN);
+                case "ROUE" -> composantes.add(TypesComposants.ROUE);
+                case "HELICE" ->composantes.add(TypesComposants.HELICE);
+                case "HAUTPARLEUR" -> composantes.add(TypesComposants.HAUTPARLEUR);
+                case "BRAS" -> composantes.add(TypesComposants.BRAS);
+                case "MICRO" -> composantes.add(TypesComposants.MICRO);
+                default -> System.out.println(comp + " n'est pas une composante valide");
             }
-            Composant compo = new Composant(comp, null, null, null);
-            composantes.add(compo);
-            System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
+
+            System.out.println("Voulez-vous rajouter une autre composante a cette action (Y/N)?");
             decision = scanner.nextLine();
+            System.out.println("Quelle est la durée de l'action?");
+            duree = scanner.nextLine();
         }
-        controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes);
+        controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes, duree);
     }
 
     //MOVED TO MenuGestionFlotte

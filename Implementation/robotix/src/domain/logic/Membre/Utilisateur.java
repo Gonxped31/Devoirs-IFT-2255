@@ -25,6 +25,7 @@ public class Utilisateur extends Membre{
     private Tache tache;
 
 
+
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
@@ -185,14 +186,14 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public void creerAction(String nomAction, ArrayList<Composant> composantes){
-        Action action = new Action(nomAction, composantes);
-        actions.add(action);
+    public void creerAction(String nomAction, ArrayList<TypesComposants> composantes, String duree){
+        Action action = new Action(nomAction, composantes, duree);
+        listeActions.add(action);
     }
 
     public void creerTache(String nomTache, ArrayList<Action> actions){
         Tache tache = new Tache(nomTache, actions);
-        taches.add(tache);
+        listeTaches.add(tache);
     }
 
     public boolean allouerTache(String robot, String tache){
@@ -209,7 +210,7 @@ public class Utilisateur extends Membre{
 
     private Tache trouverTache(String nom) {
         Tache resultat = null;
-        for (Tache tache : taches) {
+        for (Tache tache : listeTaches) {
             if (tache.getNom().equals(nom)) {
                 resultat = tache;
                 break;
