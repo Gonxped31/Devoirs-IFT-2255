@@ -60,7 +60,7 @@ public class Fournisseur extends Membre {
         return this.nom;
     }
 
-    public LinkedList<String> getListeNotifications() {return this.listeNotifications;}
+    public LinkedList<String> getListeNotifications() { return this.listeNotifications; }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -177,6 +177,16 @@ public class Fournisseur extends Membre {
         }
 
         return fournisseurs;
+    }
+
+    public void notifier() {
+        for (Robot robot : inventaireDeRobot) {
+            if (robot.getBatterie() >= 20) {
+
+
+            }
+        }
+
     }
 
 }
