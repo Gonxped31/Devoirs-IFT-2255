@@ -257,15 +257,6 @@ public class Menu {
 
     //MOVED TO MenuGestionFlotte
     public void menuCreerActions(Scanner scanner, String pseudo) {
-        final String cpu = TypesComposants.CPU.name();
-        final String camera = TypesComposants.CAMERA.name();
-        final String ecran = TypesComposants.ECRAN.name();
-        final String roue = TypesComposants.ROUE.name();
-        final String helice = TypesComposants.HELICE.name();
-        final String hautParleur = TypesComposants.HAUTPARLEUR.name();
-        final String bras = TypesComposants.BRAS.name();
-        final String micro = TypesComposants.MICRO.name();
-
         ArrayList<TypesComposants> composantes = new ArrayList<>();
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.println("Nom: ");
