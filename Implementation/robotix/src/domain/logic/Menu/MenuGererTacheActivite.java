@@ -40,7 +40,7 @@ public class MenuGererTacheActivite {
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une action:");
             String a = scanner.nextLine();
-            Action act = new Action(a, null);
+            Action act = new Action(a, null, 0);
             actions.add(act);
             System.out.println("Voulez-vous rajouter une action a cette tache?(Y/N)");
             decision = scanner.nextLine();

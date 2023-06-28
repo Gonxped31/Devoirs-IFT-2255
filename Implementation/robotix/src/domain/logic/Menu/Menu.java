@@ -256,15 +256,18 @@ public class Menu {
 
     //MOVED TO MenuGestionFlotte
     public void menuCreerActions(Scanner scanner, String pseudo) {
-        ArrayList<Composant> composantes = new ArrayList<>();
+        ArrayList<TypesComposants> composantes = new ArrayList<>();
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.println("Nom: ");
         String nomAction = scanner.nextLine();
         System.out.println("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
         String decision = "Y";
         while (decision.toUpperCase().equals("Y")) {
-            System.out.println("Entrez une composante:");
+            System.out.println("Entrez une composante parmi celles-ci:");
             String comp = scanner.nextLine();
+            if (TypesComposants.BRAS.equals(Enum.parse)){
+
+            }
             Composant compo = new Composant(comp, null, null, null);
             composantes.add(compo);
             System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
@@ -444,7 +447,7 @@ public class Menu {
         }
     }
 
-    
+
     //MOVED TO MenuUtilisateur
     public void voirNotification(){
         for (String notif : controlleurUtilisateurs.voirNotifications()) {

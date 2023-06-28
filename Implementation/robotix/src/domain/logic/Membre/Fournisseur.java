@@ -90,7 +90,7 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterRobot() {
-        inventaireDeRobot.add(new Robot(null,0, 0, 0, 0, 0, 0, null, null, null, null, null, UUID.randomUUID()));
+        inventaireDeRobot.add(new Robot(null,0, 0, 0, 0, 0, 0, null, null, null, null, null));
     }
 
     public boolean retirerRobot(String nomRobot) {
@@ -106,7 +106,6 @@ public class Fournisseur extends Membre {
         if (nbRobot != 0) {
             bool = true;
         }
-
         return bool;
     }
 
