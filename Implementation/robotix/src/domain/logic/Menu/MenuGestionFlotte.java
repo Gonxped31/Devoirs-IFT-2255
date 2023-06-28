@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.Fournisseur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 
@@ -62,6 +63,62 @@ public class MenuGestionFlotte {
         }
     }
 
+    public void menuTrouverFournisseur(Scanner scanner){
+        boolean continuer = true;
+        boolean bool = false;
+        while (continuer) {
+            System.out.println("Choisissez un filtre parmi les suivants : ");
+            System.out.println("1- Nom");
+            System.out.println("2- Adresse");
+            System.out.println("3- Type de composantes");
+            System.out.println("4- Aucun filtre");
+            System.out.print(">>> Votre choix :");
+            String choix = scanner.nextLine();
+            switch (choix) {
+                case "1":
+                    System.out.print("Veuillez entrer le nom recherché : ");
+                    String nom = scanner.nextLine();
+                    printFournisseurs(controlleurFournisseurs.trouverFournisseur(choix,nom));
+                    System.out.println("Entrez le nom du fournisseur choisi : ");
+                    String fournisChoisi = scanner.nextLine();
+                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur("1" ,fournisChoisi).get(0));
+                    break;
+                case "2":
+                    System.out.print("Veuillez entrer l'adresse recherchée : ");
+                    String adresse = scanner.nextLine();
+                    printFournisseurs(controlleurFournisseurs.trouverFournisseur(choix, adresse));
+                    System.out.println("Entrez le nom du fournisseur choisi : ");
+                    String fournisChoisi2 = scanner.nextLine();
+                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur("1", fournisChoisi2).get(0));
+                    break;
+
+                case "3":
+                    System.out.print("Veuillez entrer le Type de composante recherché : ");
+                    String courriel = scanner.nextLine();
+                    printFournisseurs(controlleurFournisseurs.trouverFournisseur(choix, courriel));
+                    System.out.println("Entrez le nom du fournisseur choisi : ");
+                    String fournisChoisi3 = scanner.nextLine();
+                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur("1", fournisChoisi3).get(0));
+                    break;
+
+                case "4" :
+                    printFournisseurs(controlleurFournisseurs.trouverFournisseur("4", null));
+                    System.out.println("Entrez le nom du fournisseur choisi : ");
+                    String fournisChoisi6 = scanner.nextLine();
+                    menuAchat(scanner, controlleurFournisseurs.trouverFournisseur("1", fournisChoisi6).get(0));
+                    break;
+
+                default:
+                    System.out.println("Veuillez choisir un élément dans la liste.");
+                    break;
+            }
+        }
+    }
+
+    public void menuAchat(Scanner scanner) {
+
+    }
+
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
@@ -102,7 +159,26 @@ public class MenuGestionFlotte {
         }
         controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes);
     }
+    public void printFournisseurs(ArrayList<Fournisseur> fournisseurs) {
+        for (Fournisseur fournisseur : fournisseurs) {
+            System.out.print(fournisseur.getNom());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getAdresse());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getEmail());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getTelephone());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getNomCompagnie());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getTypeRobotFabriquer());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getTypeComposantesFabriquer());
+            System.out.print(" ,");
+            System.out.print(fournisseur.getCapaciteProductionComposantes());
+            System.out.println(" ");
+        }
+    }
 
-    
 
 }

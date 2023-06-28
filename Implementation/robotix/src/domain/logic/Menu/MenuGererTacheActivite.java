@@ -10,7 +10,9 @@ public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
 
-    //Tache
+    /*
+    * Tâches
+    * */
     public void gererMesTaches(Scanner scanner, String pseudo){
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
@@ -62,7 +64,9 @@ public class MenuGererTacheActivite {
     }
 
 
-    //Activite
+    /*
+    * Activités
+    * */
     public void gererMesActivites(Scanner scanner, String pseudo){
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
