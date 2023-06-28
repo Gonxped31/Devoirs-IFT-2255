@@ -2,6 +2,7 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Activite;
 
 import java.util.ArrayList;
 
@@ -9,12 +10,18 @@ public class DataBaseController {
     private ArrayList<Fournisseur> listeFournisseurs = genererFournisseurs();
     private ArrayList<Utilisateur> listeUtilisateurs = genererUtilisateurs();
 
+    private ArrayList<Activite> listeActivites = new ArrayList<>();
+
     public ArrayList<Fournisseur> getListeFournisseurs() {
         return this.listeFournisseurs;
     }
 
     public ArrayList<Utilisateur> getListeUtilisateurs() {
         return this.listeUtilisateurs;
+    }
+
+    public ArrayList<Activite> getListeActivites() {
+        return this.listeActivites;
     }
 
     public void ajouterUtilisateur(Utilisateur utilisateur){

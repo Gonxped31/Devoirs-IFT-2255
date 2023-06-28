@@ -13,6 +13,7 @@ public class Composant {
         this.typeComposant = typeComposant;
     }
 
+
     public String getNom() {
         return nom;
     }

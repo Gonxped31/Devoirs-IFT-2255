@@ -42,9 +42,8 @@ public class ControlleurFournisseurs {
         return Fournisseur.trouverFournisseur(choix, info, listeFournisseurs);
     }
 
-    public void ajouterRobot(Fournisseur fournisseur, String nom,int X, int Y, int vitesse, int batterie, int cpu, double memoire,LinkedList<Composant> composantes,
-                             LinkedList<String> action, LinkedList<String> taches, LinkedList<String> activites){
-        fournisseur.ajouterRobot(nom, X, Y, vitesse, batterie, cpu, memoire, composantes, action, taches, activites);
+    public void ajouterRobot(Fournisseur fournisseur){
+        fournisseur.ajouterRobot();
     }
 
     public boolean retirerRobot(String nomRobot, Fournisseur fournisseur) {
