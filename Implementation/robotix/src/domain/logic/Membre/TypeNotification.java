@@ -1,10 +1,10 @@
 package domain.logic.Membre;
 
 public enum TypeNotification {
-    ROBOT,
-    INTERETS,
-    ABONNEMENT,
-    JOINDRE,
+    PROBLEME_ROBOT,
+    ACTIVITES_INTERESSE,
+    NOUVEAU_ABONNE,
+    NOUVEAU_PARTICIPANT,
     SENSIBILISATION,
-    ACHAT;
+    ACHAT_COMPOSANTS;
 }
