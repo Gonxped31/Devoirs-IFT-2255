@@ -10,7 +10,8 @@ public class Notification {
     private TypeNotification typeNotification;
 
     public Notification() {
-
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        date = LocalDateTime.parse(date.format(formatDate));
     }
 
     public String getTitre() {
@@ -21,9 +22,7 @@ public class Notification {
         return messsage;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+    public LocalDateTime getDate() { return date; }
 
     public TypeNotification getTypeNotification() {
         return typeNotification;
@@ -37,19 +36,14 @@ public class Notification {
         this.messsage = messsage;
     }
 
-    public void setDate(LocalDateTime date) {
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        this.date = LocalDateTime.parse(date.format(formatDate));
-    }
-
     public void setTypeNotification(TypeNotification typeNotification) {
         this.typeNotification = typeNotification;
     }
 
     @Override
     public String toString() {
-        return  titre.toUpperCase() + '\'' +
-                messsage + '\'' +
-                "Date:" + date;
+        return  getTitre().toUpperCase() + '\'' +
+                getMesssage() + '\'' +
+                "Date:" + getDate();
     }
 }

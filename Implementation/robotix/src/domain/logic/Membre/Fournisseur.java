@@ -1,6 +1,8 @@
 package domain.logic.Membre;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import java.util.*;
@@ -182,11 +184,17 @@ public class Fournisseur extends Membre {
 
     public Notification notifier() {
         for (Robot robot : inventaireDeRobot) {
+            if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
+                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+            }
             if (robot.getBatterie() >= 20) {
                 notification.setTitre("BATTERIE FAIBLE");
                 notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-            } else if (robot.getCpu() >= 100) {
+            }
+            if (robot.getCpu() >= 100) {
                 notification.setTitre("SURCHARGE CPU");
                 notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
