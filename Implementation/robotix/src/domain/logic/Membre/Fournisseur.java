@@ -182,7 +182,7 @@ public class Fournisseur extends Membre {
         return fournisseurs;
     }
 
-    public boolean notifier() {
+    public void notifier() {
         boolean EstNotifie = false;
 
         for (Robot robot : inventaireDeRobot) {
@@ -202,7 +202,6 @@ public class Fournisseur extends Membre {
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
             }
         }
-        return EstNotifie;
     }
 
 }

@@ -661,10 +661,6 @@ public class Menu {
     }
 
     public void menuFournisseur(Scanner scanner, Fournisseur fournisseur) {
-        if (!fournisseur.notifier()) {
-            System.out.println(fournisseur.getNotification());
-        }
-
         System.out.println("******************** Menu Fournisseur ********************");
         System.out.println("Bienvenue ! Veuillez choisir une option:");
         System.out.println("1- Ajouter un nouveau robot");

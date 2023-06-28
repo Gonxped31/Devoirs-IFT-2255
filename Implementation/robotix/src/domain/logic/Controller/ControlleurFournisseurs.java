@@ -59,4 +59,8 @@ public class ControlleurFournisseurs {
         return fournisseur.retirerComopsante(composante);
     }
 
+    public void notifier(Fournisseur fournisseur) {
+        fournisseur.notifier();
+    }
+
 }
