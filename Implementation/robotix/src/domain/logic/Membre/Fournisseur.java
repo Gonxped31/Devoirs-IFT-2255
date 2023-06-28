@@ -63,7 +63,8 @@ public class Fournisseur extends Membre {
         return this.nom;
     }
 
-    public LinkedList<String> getListeNotifications() { return this.listeNotifications; }
+    public Notification getNotification() { return this.notification; }
+    public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
