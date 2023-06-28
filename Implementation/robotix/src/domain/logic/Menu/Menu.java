@@ -695,7 +695,7 @@ public class Menu {
                 }
                 menuFournisseur(scanner, fournisseur);
 
-            
+
             case "3" :
                 System.out.print("Composant : ");
                 String composante = scanner.nextLine();
@@ -710,7 +710,7 @@ public class Menu {
                 System.out.println("La composante a été rajoutée avec succès");
                 System.out.println(" ");
                 menuFournisseur(scanner, fournisseur);
-            
+
             case "4" :
                 System.out.print("Composant : ");
                 String composante2 = scanner.nextLine();
