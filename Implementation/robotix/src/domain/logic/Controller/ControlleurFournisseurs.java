@@ -45,11 +45,12 @@ public class ControlleurFournisseurs {
         return fournisseur.retirerRobot(nomRobot);
     }
 
-    public void ajouterComposante(String composante, double prix, String description, String typesComposants, Fournisseur fournisseur){
-        fournisseur.ajouterComposante(composante, prix, description, typesComposants);
+    public void ajouterComposante(String composante, double prix, String description, String typesComposants, String nomFournisseur){
+        fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
+        dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
-    public boolean retirerComposante(String composante, Fournisseur fournisseur){
+    public boolean retirerComposante(String composante, String nomFournisseur){
         return fournisseur.retirerComopsante(composante);
     }
 
