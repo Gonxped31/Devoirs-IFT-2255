@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
-    private DataBaseController dataBaseController = new DataBaseController();
-    private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
-    private ArrayList<Fournisseur> getListeFournisseurs() {
-        return listeFournisseurs;
-    }
+    private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
     public boolean authentificationFournisseur(String connexion, String membre){
         return Fournisseur.authentification(connexion, listeFournisseurs);
@@ -38,13 +34,11 @@ public class ControlleurFournisseurs {
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-
-    public ArrayList<Fournisseur> trouverFournisseur(String choix, String info){
-        return Fournisseur.trouverFournisseur(choix, info, listeFournisseurs);
-    }
+    /*        */
 
     public void ajouterRobot(Fournisseur fournisseur){
-        fournisseur.ajouterRobot();
+        this.fournisseurCourant.ajouterRobot();
+        dataBaseController.ajouterRobot();
     }
 
     public boolean retirerRobot(String nomRobot, Fournisseur fournisseur) {

@@ -187,27 +187,15 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-<<<<<<< HEAD
     public void creerAction(String nomAction, ArrayList<TypesComposants> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
         listeActions.add(action);
-=======
-    /*public void creerAction(String nomAction, ArrayList<Composant> composantes){
-        Action action = new Action(nomAction, composantes);
-        actions.add(action);
->>>>>>> db
-    }
-*/
    /* public void creerTache(String nomTache, ArrayList<Action> actions){
         Tache tache = new Tache(nomTache, actions);
-<<<<<<< HEAD
         listeTaches.add(tache);
     }
-=======
         taches.add(tache);
     }*/
->>>>>>> db
-
     /*public boolean allouerTache(String robot, String tache){
         Robot rob = trouverRobot(robot);
         Tache tac = trouverTache(tache);

@@ -95,16 +95,25 @@ public class MenusFournisseur {
 		String choixUsager = scanner.nextLine();
 
 		switch (choixUsager) {
-			case "1" :
-				System.out.print("Type de robot fabriqué : ");
-				String type = scanner.nextLine();
+			case "1" -> {
+				String composante;
+				boolean continuer;
+				do {
+					System.out.print("Entrez une composante que possède le robot à rajouter : ");
+					composante = scanner.nextLine();
+					System.out.println("Voulez-vous rajouter une autre composante ? (repondre par oui ou non)");
+					String reponse = scanner.nextLine();
+					continuer = demander(reponse, scanner);
+				} while(continuer);
+
 				controlleurFournisseurs.ajouterRobot(fournisseur);
 				System.out.println(" ");
 				System.out.println("Le robot a été rajouté avec succès !");
 				System.out.println(" ");
 				menuFournisseur(scanner, fournisseur);
+			}
 
-			case "2" :
+			case "2" -> {
 				System.out.print("Veuillez entrer le nom du robot à retirer : ");
 				String nomRobot2 = scanner.nextLine();
 				if(controlleurFournisseurs.retirerRobot(nomRobot2, fournisseur)){
@@ -114,9 +123,9 @@ public class MenusFournisseur {
 					System.out.println("Vous ne possédez ce robot.");
 				}
 				menuFournisseur(scanner, fournisseur);
+			}
 
-
-			case "3" :
+			case "3" -> {
 				System.out.print("Composant : ");
 				String composante = scanner.nextLine();
 				System.out.print("Prix : ");
@@ -130,8 +139,9 @@ public class MenusFournisseur {
 				System.out.println("La composante a été rajoutée avec succès");
 				System.out.println(" ");
 				menuFournisseur(scanner, fournisseur);
+			}
 
-			case "4" :
+			case "4" -> {
 				System.out.print("Composant : ");
 				String composante2 = scanner.nextLine();
 				if(controlleurFournisseurs.retirerComposante(composante2, fournisseur)){
@@ -140,11 +150,31 @@ public class MenusFournisseur {
 					System.out.println("Vous ne possédez cette composante.");
 				}
 				menuFournisseur(scanner, fournisseur);
+			}
 
-			case "5" :
+			case "5" -> {
 				System.out.println("Au revoir !");
 				menuPrincipale(scanner);
+			}
 		}
+	}
+
+	private boolean demander(String reponse, Scanner scanner){
+		boolean continuer = false;
+		boolean choix = false;
+		do {
+			if (reponse.equalsIgnoreCase("oui")) {
+				choix = true;
+				continuer = false;
+			} else if (!reponse.equalsIgnoreCase("non")) {
+				System.out.println("Choisissez entre 'oui' et 'non' svp.");
+				reponse = scanner.nextLine();
+				continuer = true;
+			} else {
+				continuer = false;
+			}
+		} while (continuer);
+		return choix;
 	}
 
 

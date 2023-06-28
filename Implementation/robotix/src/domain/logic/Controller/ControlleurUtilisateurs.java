@@ -12,8 +12,8 @@ import java.util.Scanner;
 
 public class ControlleurUtilisateurs {
 
-    private DataBaseController dataBaseController = new DataBaseController();
-    private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.getListeUtilisateurs();
+    private DbControleur dataBaseController = new DbControleur();
+    private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
     private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
 

@@ -89,7 +89,7 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterRobot() {
-        inventaireDeRobot.add(new Robot(null,0, 0, 0, 0, 0, 0, null, null, null, null, null));
+        inventaireDeRobot.add();
     }
 
     public boolean retirerRobot(String nomRobot) {
@@ -117,7 +117,7 @@ public class Fournisseur extends Membre {
         int nbComposantes = 0;
         for (Composant composant : inventaireComposant) {
             if (composant.getNom().equals(nom)) {
-                inventaireComposant.remove(composant);
+                this.inventaireComposant.remove(composant);
                 ++nbComposantes;
                 break;
             }
