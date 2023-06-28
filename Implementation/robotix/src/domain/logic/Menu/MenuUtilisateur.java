@@ -12,7 +12,7 @@ public class MenuUtilisateur {
     private Menu menu;
     private MenuGestionFlotte menuGestionFlotte;
     private MenuGererTacheActivite menuGererTacheActivite;
-
+    private MenuGestionReseau menuReseau;
     public void inscrireUtilisateur(Scanner scanner) {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
@@ -115,11 +115,11 @@ public class MenuUtilisateur {
             case("4") :
                 menuGererTacheActivite.gererMesActivites(scanner, pseudo);
             case("5") :
-                gererReseauSocial(scanner, pseudo);
+                menuReseau.gererReseauSocial(scanner, pseudo);
             case("6") :
 
             case("7") :
-                menuNotification();
+                menuNotification(scanner, pseudo);
             case("8") :
                 menu.menuPrincipale(scanner);
         }
