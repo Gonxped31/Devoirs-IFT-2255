@@ -1,5 +1,6 @@
 package domain.logic.Membre;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import domain.logic.Robot.*;
 
@@ -28,7 +29,7 @@ public class Utilisateur extends Membre{
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
-        this.prenom = prenom;
+        this.setPrenom(prenom);
         this.listeInteret = listeInteret;
     }
 
@@ -52,7 +53,7 @@ public class Utilisateur extends Membre{
     }
 
     public void setNom(String nom){
-        this.nom = nom;
+        super.setNom(nom);
     }
 
     public void setPrenom(String prenom){
@@ -185,17 +186,17 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public void creerAction(String nomAction, ArrayList<Composant> composantes){
+    /*public void creerAction(String nomAction, ArrayList<Composant> composantes){
         Action action = new Action(nomAction, composantes);
         actions.add(action);
     }
-
-    public void creerTache(String nomTache, ArrayList<Action> actions){
+*/
+   /* public void creerTache(String nomTache, ArrayList<Action> actions){
         Tache tache = new Tache(nomTache, actions);
         taches.add(tache);
-    }
+    }*/
 
-    public boolean allouerTache(String robot, String tache){
+    /*public boolean allouerTache(String robot, String tache){
         Robot rob = trouverRobot(robot);
         Tache tac = trouverTache(tache);
         if (rob.getNom().equals(null) || tac.getNom().equals(null)){
@@ -205,9 +206,9 @@ public class Utilisateur extends Membre{
             rob.getTaches().add(tac);
             return true;
         }
-    }
+    }*/
 
-    private Tache trouverTache(String nom) {
+    /*private Tache trouverTache(String nom) {
         Tache resultat = null;
         for (Tache tache : taches) {
             if (tache.getNom().equals(nom)) {
@@ -216,9 +217,9 @@ public class Utilisateur extends Membre{
             }
         }
         return resultat;
-    }
+    }*/
 
-    public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<Activite> listActivites) {
+    /*public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<Activite> listActivites) {
         int compteur = 0;
         for (Activite activite : listActivites) {
             if (nomActivite.equals(activite.getNom())){
@@ -230,7 +231,7 @@ public class Utilisateur extends Membre{
         if(compteur == listActivites.size()){
             Activite activite = new Activite(nomActivite, dateDebut, dateFin, listeTache, null, null);
         }
-    }
+    }*/
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
         for (int i = 0; i < listeRobot.size(); i++) {
@@ -253,7 +254,7 @@ public class Utilisateur extends Membre{
 
     public Composant trouverComposante(String composante){
         Composant composant = null;
-        for (Composant composant1 : composantesAchetes) {
+        for (Composant composant1 : getComposantesAchetes()) {
             if(composant1.getNom().equals(composante)){
                 composant = composant1;
                 break;
@@ -266,4 +267,31 @@ public class Utilisateur extends Membre{
         return listeRobot.size();
     }
 
+    public ArrayList<Composant> getComposantesAchetes() {
+        return composantesAchetes;
+    }
+
+    public String getProfilUtilisateur(){
+        return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
+                "\n pseudo :" + pseudo + "\n adresse courriel : " +
+                this.email + "\nTelephone : " + this.numeroTelephone +
+                "\nInteret : " + this.listeInteret.stream().collect(Collectors.joining(","))+
+                "\nNombre de point :" + this.point +
+                "\nNombre de suiveur : " + this.getListSuiveur().size();
+    }
+  public void voirProfil(){
+        System.out.println(getProfilUtilisateur());
+  }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public Set<Utilisateur> getListSuiveur() {
+        return listSuiveur;
+    }
+
+    public void setListSuiveur(Set<Utilisateur> listSuiveur) {
+        this.listSuiveur = listSuiveur;
+    }
 }

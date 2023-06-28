@@ -1,7 +1,6 @@
 package domain.logic.Membre;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import java.util.UUID;
 
 import java.util.*;
 
@@ -56,7 +55,7 @@ public class Fournisseur extends Membre {
     }
 
     public String getNom() {
-        return this.nom;
+        return super.getNom();
     }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
@@ -173,6 +172,15 @@ public class Fournisseur extends Membre {
         }
 
         return fournisseurs;
+    }
+
+    public String getProfilFournisseur(){
+        return "Nom :" + super.getNom() + "\n adresse courriel : " +
+                this.email + "\nTelephone : " + this.numeroTelephone +
+                "Type de robot fabriquer :" + this.typeRobotFabriquer +
+                "Type de composant fabriquer :" + this.typeComposantesFabriquer +
+                "Nombre de robot disponible :" + this.getInventaireComposant().size() +
+                "Nombre de robot disponible : " + this.getInventaireComposant().size();
     }
 
 }
