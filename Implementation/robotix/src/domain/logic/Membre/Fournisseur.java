@@ -8,6 +8,7 @@ import java.util.UUID;
 import java.util.*;
 
 public class Fournisseur extends Membre {
+    private boolean EstNotifie = false;
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
@@ -182,7 +183,7 @@ public class Fournisseur extends Membre {
         return fournisseurs;
     }
 
-    public Notification notifier() {
+    public boolean notifier() {
         for (Robot robot : inventaireDeRobot) {
             if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
                 notification.setTitre("MAUVAIS FONCTIONNEMENT");
