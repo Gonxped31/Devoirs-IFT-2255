@@ -11,6 +11,7 @@ public class Fournisseur extends Membre {
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
+    private LinkedList<String> listeNotifications = new LinkedList<>();
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
@@ -58,6 +59,8 @@ public class Fournisseur extends Membre {
     public String getNom() {
         return this.nom;
     }
+
+    public LinkedList<String> getListeNotifications() {return this.listeNotifications;}
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
