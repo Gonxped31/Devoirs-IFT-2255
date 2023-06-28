@@ -11,7 +11,8 @@ public class Fournisseur extends Membre {
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
-    private LinkedList<String> listeNotifications = new LinkedList<>();
+    private Notification notification = new Notification();
+    private LinkedList<Notification> listeNotifications = new LinkedList<>();
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
@@ -179,14 +180,19 @@ public class Fournisseur extends Membre {
         return fournisseurs;
     }
 
-    public void notifier() {
+    public Notification notifier() {
         for (Robot robot : inventaireDeRobot) {
             if (robot.getBatterie() >= 20) {
-
-
+                notification.setTitre("BATTERIE FAIBLE");
+                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+            } else if (robot.getCpu() >= 100) {
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
             }
         }
-
+        return notification;
     }
 
 }
