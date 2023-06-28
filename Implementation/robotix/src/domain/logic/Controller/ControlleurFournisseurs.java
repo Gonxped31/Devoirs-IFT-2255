@@ -2,6 +2,7 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Robot.Composant;
+import domain.logic.Robot.TypesComposants;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 public class ControlleurFournisseurs {
     private DataBaseController dataBaseController = new DataBaseController();
     private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
-    public ArrayList<Fournisseur> getListeFournisseurs() {
+    private ArrayList<Fournisseur> getListeFournisseurs() {
         return listeFournisseurs;
     }
 
