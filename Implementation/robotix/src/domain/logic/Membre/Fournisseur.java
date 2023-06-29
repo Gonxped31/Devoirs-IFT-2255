@@ -96,7 +96,7 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterRobot() {
-        inventaireDeRobot.add();
+        inventaireDeRobot.add(new Robot());
     }
 
     public boolean retirerRobot(String nomRobot) {

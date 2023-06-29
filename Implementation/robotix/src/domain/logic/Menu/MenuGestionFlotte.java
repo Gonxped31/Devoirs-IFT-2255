@@ -1,5 +1,6 @@
 package domain.logic.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,10 @@ import domain.logic.Robot.TypesComposants;
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil = new MenuUtilisateur();
+
+    public MenuGestionFlotte() throws IOException {
+    }
+
     public void gererMaFlotte(Scanner scanner, String pseudo) {
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");

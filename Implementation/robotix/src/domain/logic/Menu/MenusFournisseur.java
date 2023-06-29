@@ -110,7 +110,7 @@ public class MenusFournisseur {
 					continuer = demander(reponse, scanner);
 				} while(continuer);
 
-				controlleurFournisseurs.ajouterRobot(nomFournisseur);
+				controlleurFournisseurs.ajouterRobot();
 				System.out.println(" ");
 				System.out.println("Le robot a été rajouté avec succès !");
 				System.out.println(" ");

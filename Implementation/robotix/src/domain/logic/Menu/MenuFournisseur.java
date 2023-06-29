@@ -97,7 +97,7 @@ public class MenuFournisseur {
             case "1" :
                 System.out.print("Type de robot fabriqué : ");
                 String type = scanner.nextLine();
-                controlleurFournisseurs.ajouterRobot(fournisseur);
+                controlleurFournisseurs.ajouterRobot();
                 System.out.println(" ");
                 System.out.println("Le robot a été rajouté avec succès !");
                 System.out.println(" ");

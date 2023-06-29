@@ -35,9 +35,9 @@ public class ControlleurFournisseurs {
     }
     /*        */
 
-    public void ajouterRobot(Fournisseur fournisseur){
+    public void ajouterRobot(){
         this.fournisseurCourant.ajouterRobot();
-        dataBaseController.ajouterRobot();
+        //dataBaseController.ajouterRobot();
     }
 
     public boolean retirerRobot(String nomRobot, Fournisseur fournisseur) {

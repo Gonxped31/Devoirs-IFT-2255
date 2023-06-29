@@ -1,7 +1,10 @@
 package domain.logic.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import domain.logic.Controller.DbControleur;
 import domain.logic.Menu.Menu;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -9,10 +12,15 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = new DbControleur();
     private Menu menu;
     private MenuGestionFlotte menuGestionFlotte;
     private MenuGererTacheActivite menuGererTacheActivite;
     private MenuGestionReseau menuReseau;
+
+    public MenuUtilisateur() throws IOException {
+    }
+
     public void inscrireUtilisateur(Scanner scanner) {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
@@ -104,7 +112,8 @@ public class MenuUtilisateur {
         System.out.println("5- Gerer mon reseau social");
         System.out.println("6- Achats");
         System.out.println("7- Voir mes notifications");
-        System.out.println("8- Revenir au menu principale");
+        System.out.println("8- Faire une requete publique");
+        System.out.println("9- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch(choix){
@@ -123,9 +132,184 @@ public class MenuUtilisateur {
             case("7") :
                 menuNotification(scanner, pseudo);
             case("8") :
+                menuRequetesPubliques(scanner, pseudo);
+            case("9") :
                 menu.menuPrincipale(scanner);
         }
     }
+
+    public void menuRequetesPubliques(Scanner scanner,String pseudo) {
+        System.out.println("Veuillez faire une requete publique : ");
+        System.out.println("1- Voir la liste d'utilisateurs");
+        System.out.println("2- Voir la liste des fournisseurs");
+        System.out.println("3- Voir mon profil");
+        System.out.println("4- Chercher utilisateur par: ");//TODO
+        System.out.println("5- Recuperer la liste des activites");
+        System.out.println("6- Recuperer la liste des interets");
+        System.out.println("7- Rechercher fournisseur par nom");//TODO
+        System.out.println("8- Rechercher une composante par nom");//TODO
+        String choix = scanner.nextLine();
+        switch (choix){
+            case "1" -> {
+                System.out.println(dbControlleur.recupererListeUtilisateur());
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "2" -> {
+                System.out.println(dbControlleur.recupererListFournisseur());
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "3" -> {
+                controlleurUtilisateurs.voirProfilUtilisateurCourant();
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "4" -> {
+                menuChercherUtilisateur(scanner, pseudo);
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "5" -> {
+                System.out.println(dbControlleur.recupererListeActivite());
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "6" -> {
+                menuRechercheInterets(scanner, pseudo);
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "7" -> {
+                menuChercherFournisseur(scanner, pseudo);
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "8" -> {
+                menuRechercheComposante(scanner, pseudo);
+                menuUtilisateur(scanner, pseudo);
+            }
+        }
+    }
+
+
+    public void menuRechercheComposante(Scanner scanner, String nomFournisseur){
+        System.out.println("Filtrer par: ");
+        System.out.println("1- Type de la composante");
+        System.out.println("2- Nom de fournisseur");
+        String decision = scanner.nextLine();
+        switch (decision){
+            case "1" -> {
+                System.out.println("Entrez le type : ");
+                String nom = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherComposantParType(nom));
+            }
+            case "2" -> {
+                System.out.println("Entrez le nom de fournisseur : ");
+                String nomFour = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherComposantParNomFournisseur(nomFour));
+            }
+        }
+    }
+
+    public void menuRechercheInterets(Scanner scanner, String nomFournisseur){
+        System.out.println("Voulez vous appliquer un filtre?");
+        System.out.println("1- Oui");
+        System.out.println("2- Non");
+        String decision = scanner.nextLine();
+        switch (decision){
+            case "1" -> {
+                System.out.println("Par quel filtre voulez vous filtrer?");
+                System.out.println("1- Filtrer par trois premieres lettres");
+                System.out.println("2- Filtrer par pseudo utilisateur");
+                System.out.println("3- Filtrer par pseudo utilisateur et trois premieres lettres d'interets");
+                String decisionFiltre = scanner.nextLine();
+                switch(decisionFiltre.toUpperCase()){
+                    case "1" -> {
+                        System.out.println("Entrez vos 3 characteres");
+                        String troislettre = scanner.nextLine();
+                        System.out.println(dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
+                    }
+                    case "2" -> {
+                        System.out.println("Entrez le pseudo de l'utilisateur");
+                        String pseudo = scanner.nextLine();
+                        System.out.println(dbControlleur.recupererListeInteretUtilisateur(pseudo));
+
+                    }
+                    case "3" -> {
+                        System.out.println("Entrez le pseudo de l'utilisateur: ");
+                        String pseudo = scanner.nextLine();
+                        System.out.println("Entrez les 3 characteres de l'interet");
+                        String troislettre = scanner.nextLine();
+                        System.out.println(dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo, troislettre));
+                    }
+                }
+            }
+            case "2" -> {
+                System.out.println(dbControlleur.recupererListeInteret());
+            }
+        }
+    }
+
+    public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
+        System.out.println("Filtrer par:");
+        System.out.println("1- Nom");
+        System.out.println("2- Email");
+        System.out.println("3- Adresse");
+        System.out.println("4- Type de composantes");
+        String decision = scanner.nextLine();
+        switch (decision) {
+            case "1" -> {
+                System.out.println("Entrez le nom du fournisseur : ");
+                String nom = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherFournisseurParNom(nom));
+            }
+            case "2" -> {
+                System.out.println("Entrez l'email du fournisseur : ");
+                String email = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherFournisseurParEmail(email));
+            }
+            case "3" -> {
+                System.out.println("Entrez l'adresse du fournisseur : ");
+                String adresse = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherFournisseurParAdresse(adresse));
+            }
+            case "4" -> {
+                System.out.println("Entrez le type de composantes : ");
+                String type = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherFournisseurParTypeDeComposant(type));
+            }
+        }
+    }
+
+    public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+        System.out.println("Filtrer par:");
+        System.out.println("1- Pseudo");
+        System.out.println("2- Nom");
+        System.out.println("3- Prenom");
+        System.out.println("4- Obtenir liste des suiveurs de? (pseudo voulu)");
+        String decision = scanner.nextLine();
+        switch (decision){
+            case "1" -> {
+                System.out.println("Entrez le pseudo");
+                String decisionPseudo = scanner.nextLine();
+                System.out.println((dbControlleur.rechercherUtilisateurParPseudo(decisionPseudo)));
+
+            }
+            case "2" -> {
+                System.out.println("Entrez le nom");
+                String decisionNom = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherUtilisateurParNom(decisionNom));
+
+            }
+            case "3" -> {
+                System.out.println("Entrez le prenom");
+                String decisionPrenom = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherUtilisateurParPrenom(decisionPrenom));
+
+            }
+            case "4" -> {
+                System.out.println("Entrez le pseudo");
+                String pseudoUtilisateur = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherUtilisateurParSuiveur(pseudoUtilisateur));
+
+            }
+        }
+    }
+
     public void modifierProfile(Scanner scanner, String pseudo) {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");

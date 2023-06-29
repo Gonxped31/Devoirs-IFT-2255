@@ -30,6 +30,9 @@ public class Robot {
         this.numeroSerie = UUID.randomUUID();
     }
 
+    public Robot(){
+
+    }
     public String getNom() {
         return nom;
     }
