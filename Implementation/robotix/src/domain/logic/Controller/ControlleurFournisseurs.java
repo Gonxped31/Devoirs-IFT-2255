@@ -53,8 +53,8 @@ public class ControlleurFournisseurs {
         return fournisseur.retirerComopsante(composante);
     }
 
-    public boolean[] notifier(Fournisseur fournisseur) {
-        return fournisseur.notifier();
+    public boolean[] notifier() {
+        return fournisseurCourant.notifier();
     }
 
     public void voirProfilFournisseur()

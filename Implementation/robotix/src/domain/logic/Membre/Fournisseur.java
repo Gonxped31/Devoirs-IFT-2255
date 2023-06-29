@@ -259,8 +259,8 @@ public class Fournisseur extends Membre {
         /*for (Composant composant : inventaireComposant) {
             if () {
                 DoitEtreNotifie = true;
-                notification.setTitre("ACHAT DE VOS COMPOSANTS");
-                notification.setMesssage("");
+                notification.setTitre("ACHAT DE VOS COMPOSANTES");
+                notification.setMesssage("Un utilisateur achète une de vos composantes");
                 notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
                 listeNotifications.add(notification);
             }

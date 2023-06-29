@@ -2,10 +2,7 @@ package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.Robot;
-import domain.logic.Robot.TypesComposants;
-import domain.logic.Robot.Action;
+import domain.logic.Robot.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -97,7 +94,7 @@ public class ControlleurUtilisateurs {
             return false;
         }else{
             utilisateur.suivreUtilisateur(suivi);
-            suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
+            //suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
             return true;
         }
     }
@@ -123,5 +120,9 @@ public class ControlleurUtilisateurs {
     public void voirProfilUtilisateurCourant()
     {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
+    }
+
+    public boolean[] notifier() {
+        return this.utilisateurCourant.notifier();
     }
 }
