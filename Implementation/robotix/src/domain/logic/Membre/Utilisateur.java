@@ -135,6 +135,10 @@ public class Utilisateur extends Membre{
         listeUtilisateursSuivi.add(suivi);
     }
 
+    public void etreSuivi(Utilisateur suiveur){
+        listSuiveur.add(suiveur);
+    }
+
     public ArrayList<Notification> voirNotifications(){
         return listeNotifications;
     }

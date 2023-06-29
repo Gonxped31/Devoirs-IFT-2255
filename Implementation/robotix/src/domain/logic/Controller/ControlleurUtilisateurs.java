@@ -120,17 +120,14 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean suivreUtilisateur(String pseudo,String nom){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        Utilisateur suivi = Utilisateur.trouverUtilisateur(nom, listeUtilisateurs);
-        //FIX move to utilsateur 
-        if (utilisateur.getPseudo() == null || suivi.getPseudo() == null){
-            return false;
-        }else{
-            utilisateur.suivreUtilisateur(suivi);
-            //suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
-            return true;
-        }
+    public void suivreUtilisateur(String pseudoUtilisateurASuivre){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Utilisateur aSuivre = this.dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+        this.dataBaseController.supprimerUtilisateur(aSuivre);
+        aSuivre.etreSuivi(utilisateurCourant);
+        this.utilisateurCourant.suivreUtilisateur(aSuivre);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        this.dataBaseController.ajouterUtilisateur(aSuivre);
     }
 
     public void gererSuiveurs(String pseudo){

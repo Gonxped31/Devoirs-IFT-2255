@@ -3,6 +3,7 @@ package service;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Robot;
 import service.BaseDeDonneeFournisseur;
 
 import java.io.IOException;
@@ -134,5 +135,12 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     public boolean verifierPseudo(String pseudo){
         return this.getListObjet().stream()
                 .anyMatch(u-> ((Utilisateur) u).getPseudo().equals(pseudo));
+    }
+
+    public Utilisateur retournerUtilisateur(String pseudo){
+        return (Utilisateur) this.getListObjet().stream()
+                .filter( utilisateur ->( (Utilisateur) utilisateur).getPseudo().equals(pseudo))
+                .findFirst()
+                .orElse(null);
     }
 }
