@@ -116,8 +116,10 @@ public class Fournisseur extends Membre {
         return bool;
     }
 
-    public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
-        inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
+    public void ajouterComposante(/*String composante, double prix, String description, String typeComposant*/) {
+        inventaireComposant.add(new Composant());
+        //TODO
+        //inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
     public boolean retirerComopsante(String nom) {

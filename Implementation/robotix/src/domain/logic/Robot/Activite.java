@@ -59,4 +59,7 @@ public class Activite {
                 .map(tache -> tache.getInfoTacheFormater())
                 .collect(Collectors.joining("\n"));
     }
+    public void rejoindreActivvite(Utilisateur u){
+
+    }
 }

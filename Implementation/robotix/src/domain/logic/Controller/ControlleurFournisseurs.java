@@ -4,14 +4,21 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.TypesComposants;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
+
+    public ControlleurFournisseurs() throws IOException {
+    }
+
     public boolean authentificationFournisseur(String connexion, String membre){
-        return Fournisseur.authentification(connexion, listeFournisseurs);
+        //TODO
+        return true;
+        //return Fournisseur.authentification(connexion, listeFournisseurs);
     }
 
     public void inscriptionFournisseur(String inputNom, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
@@ -23,8 +30,7 @@ public class ControlleurFournisseurs {
 
     /* Code pour les vérifications */
     public boolean verifierNom(String inputNom) {
-        dataBaseController.v
-        return Fournisseur.verifierNomFournisseur(inputNom, listeFournisseurs);
+        return dataBaseController.verifierNomFournissuer(inputNom);
     }
 
     public boolean verifierEmail(String inputEmail) {
@@ -46,12 +52,19 @@ public class ControlleurFournisseurs {
     }
 
     public void ajouterComposante(String composante, double prix, String description, String typesComposants, String nomFournisseur){
-        fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
-        dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
+        //fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        this.fournisseurCourant.ajouterComposante();
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+
+        //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
-    public boolean retirerComposante(String composante, String nomFournisseur){
-        return fournisseur.retirerComopsante(composante);
+    public void retirerComposante(String composante, String nomFournisseur){
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        this.fournisseurCourant.retirerComopsante(composante);
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+        //return fournisseur.retirerComopsante(composante);
     }
 
     public boolean[] notifier(Fournisseur fournisseur) {

@@ -3,11 +3,14 @@ package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
 
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Composant;
+import domain.logic.Robot.Robot;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class DbControleur {
@@ -73,6 +76,21 @@ public class DbControleur {
     }
     public String recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();
+    }
+    public boolean verifierNomFournissuer(String nomFourniseur){
+        return this.baseDeDonneeFournisseur.verifierNomFounissseur(nomFourniseur);
+    }
+
+    public boolean verifierPseudo(String pseudo){
+        return this.baseDeDonneeUtilisateur.verifierPseudo(pseudo);
+    }
+
+    public Robot retournerRobot(String numeroSerie){
+        return baseDeDonneeFournisseur.retournerRobot(numeroSerie);
+    }
+
+    public Composant retournerComposante(String nom){
+        return baseDeDonneeFournisseur.retournerComposante(nom);
     }
 
     public void supprimerFournisseur(Fournisseur f) {

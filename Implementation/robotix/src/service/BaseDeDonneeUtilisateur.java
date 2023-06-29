@@ -1,6 +1,7 @@
 package service;
 
 import com.google.gson.reflect.TypeToken;
+import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import service.BaseDeDonneeFournisseur;
 
@@ -108,6 +109,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
         return (String) this.getListObjet().stream()
                 .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
                 .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .distinct()
                 .collect(Collectors.joining(", "));
     }
     public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
@@ -129,5 +131,8 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .collect(Collectors.joining(", "));
     }
 
-
+    public boolean verifierPseudo(String pseudo){
+        return this.getListObjet().stream()
+                .anyMatch(u-> ((Utilisateur) u).getPseudo().equals(pseudo));
+    }
 }

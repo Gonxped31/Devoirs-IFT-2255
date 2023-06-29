@@ -23,7 +23,7 @@ public class Robot {
         this.cpu = cpu;
         this.memoire = memoire;
         this.composantes = composantes;
-        this.type = type;
+        this.setType(type);
         this.actions = action;
         this.taches = taches;
         this.activites = activites;
@@ -90,5 +90,9 @@ public class Robot {
     }
     public void ajouterComposante(Composant composant){
         composantes.add(composant);
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
