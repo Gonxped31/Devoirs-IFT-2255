@@ -1,10 +1,12 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -104,13 +106,18 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
+    public void creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
+        ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
+        this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean rejoindreActivite(String pseudo, Activite activite){
-        return !(dataBaseController.rejoindreActivite(pseudo, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
+    public void rejoindreActivite(String pseudo, Activite activite){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.rejoindreActivite(activite);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public boolean suivreUtilisateur(String pseudo,String nom){

@@ -1,4 +1,6 @@
 package domain.logic.Membre;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
@@ -18,9 +20,10 @@ public class Utilisateur extends Membre{
     private ArrayList<Action> listeActions = new ArrayList<>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
-    private ArrayList<String> listeInteret = new ArrayList<>();
+    private ArrayList<Interet> listeInteret = new ArrayList<>();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
+    private ArrayList<Activite> listeActivitesCreer = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
@@ -31,7 +34,7 @@ public class Utilisateur extends Membre{
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
 
-    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
+    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<Interet> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
         this.setPrenom(prenom);
@@ -341,6 +344,10 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
+    public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
+        listeActivitesCreer.add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut), new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
+    }
+
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
         listeActions.add(action);
@@ -430,7 +437,8 @@ public class Utilisateur extends Membre{
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
                 "\n pseudo :" + pseudo + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
-                "\nInteret : " + this.getListeInteret().stream().collect(Collectors.joining(","))+
+                "\nInteret : " + this.getListeInteret().stream()
+                .map(i -> i.getNom()).collect(Collectors.joining(","))+
                 "\nNombre de point :" + this.point +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
@@ -449,13 +457,33 @@ public class Utilisateur extends Membre{
 
 
     public void rejoindreActivite(Activite activite) {
-        this.listeActivitesRejoint.add(activite);
+        listeActivitesRejoint.add(activite);
     }
-    public ArrayList<String> getListeInteret() {
+    public ArrayList<Interet> getListeInteret() {
         return listeInteret;
     }
 
-    public void setListeInteret(ArrayList<String> listeInteret) {
+    public void setListeInteret(ArrayList<Interet> listeInteret) {
         this.listeInteret = listeInteret;
     }
+
+    public ArrayList<Tache> getTacheEnListe(ArrayList<String> listeTache) {
+         ArrayList<Tache> listeDeTaches = new ArrayList<Tache>();
+         for(String tac : listeTache){
+             listeDeTaches.add(listeTaches.stream()
+                     .filter(t -> t.getNom().equals(tac))
+                     .findFirst()
+                     .orElse(null));
+         }
+         return listeDeTaches;
+    }
+
+    public ArrayList<Interet> produireListeInteret(ArrayList<String> listeInteret){
+        ArrayList<Interet> listeInter = new ArrayList<>();
+        for(String inter :listeInteret){
+            listeInter.add(new Interet(inter));
+        }
+        return listeInter;
+    }
+
 }
