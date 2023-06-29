@@ -57,7 +57,7 @@ public class MenuGestionFlotte {
             }
         }
         System.out.println(" ");
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        //menuUtilisateur(scanner, pseudo);
     }
     public void printRobots(ArrayList<Robot> robots) {
         for (Robot robot : robots) {
@@ -83,7 +83,7 @@ public class MenuGestionFlotte {
         } else {
             System.out.println("La composante ou le robot entrée n'existe pas ):");
         }
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        //menuUtilisateur(scanner, pseudo);
     }
 
     public void menuAfficherMetriquesFlotte(String pseudo) {

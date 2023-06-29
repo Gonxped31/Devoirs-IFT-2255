@@ -82,7 +82,7 @@ public class MenusFournisseur {
 		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
 
-		menu.menuPrincipale(scanner);
+		//menuPrincipale(scanner);
 	}
 
 	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {

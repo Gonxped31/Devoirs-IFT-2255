@@ -1,6 +1,7 @@
 package domain.logic.Menu;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -133,13 +134,30 @@ public class MenuUtilisateur {
             case("5") :
                 menuReseau.gererReseauSocial(scanner, pseudo);
             case("6") :
-
+                menuAchat(scanner, pseudo);
             case("7") :
                 menuNotification(scanner, pseudo);
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
             case("9") :
                 //menu.menuPrincipale(scanner);
+        }
+    }
+
+
+    public void menuAchat(Scanner scanner, String pseudo){
+        System.out.println("Voulez-vous acheter un robot ou une composante?");
+        System.out.println("1- Robot");
+        System.out.println("2- Composante");
+        String decision = scanner.nextLine();
+        switch(decision){
+            case "1" -> {
+
+            }
+            case "2" -> {
+
+            }
+
         }
     }
 

@@ -36,7 +36,7 @@ public class MenuGererTacheActivite {
                 allouerTacheRobot(scanner, pseudo);
                 break;
             case "3":
-                //menuUtil.menuUtilisateur(scanner, pseudo);
+                //menuUtilisateur(scanner, pseudo);
                 break;
         }
     }
@@ -88,7 +88,8 @@ public class MenuGererTacheActivite {
                 menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
-                //menuUtil.menuUtilisateur(scanner, pseudo);
+                //menuUtilisateur(scanner, pseudo);
+                break;
         }
     }
 
