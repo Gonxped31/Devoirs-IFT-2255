@@ -1,4 +1,5 @@
 package domain.logic.Controller;
+import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
@@ -69,10 +70,14 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public void ajouterComposantesAInventaire(Composant composant){
+    public void ajouterComposantesAInventaire(String nomFour,Composant composant){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Fournisseur f = this.dataBaseController.retournerFournisseurParNom(nomFour);
+        this.dataBaseController.supprimerFournisseur(f);
         this.utilisateurCourant.ajouterComposantesAInventaire(composant);
+        f.retirerComopsante(composant);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        this.dataBaseController.ajouterFournisseur(f);
     }
 
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){

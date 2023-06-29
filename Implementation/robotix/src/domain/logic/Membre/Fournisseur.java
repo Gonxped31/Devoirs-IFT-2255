@@ -125,20 +125,13 @@ public class Fournisseur extends Membre {
         //inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
-    public boolean retirerComopsante(String nom) {
-        boolean bool = false;
-        int nbComposantes = 0;
-        for (Composant composant : inventaireComposant) {
-            if (composant.getNom().equals(nom)) {
-                this.inventaireComposant.remove(composant);
-                ++nbComposantes;
-                break;
-            }
+    public boolean retirerComopsante(Composant composant) {
+        boolean check = inventaireComposant.stream()
+                .anyMatch(c -> c.equals(composant));
+        if (check){
+            this.inventaireComposant.remove(composant);
         }
-        if (nbComposantes != 0) {
-            bool = true;
-        }
-        return bool;
+        return check;
     }
 
     /*@Override

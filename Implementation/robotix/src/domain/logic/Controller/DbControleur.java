@@ -100,6 +100,11 @@ public class DbControleur {
     public void supprimerFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.supprimerObjet(f);
     }
+
+    public Fournisseur retournerFournisseurParNom(String nom){
+        return this.baseDeDonneeFournisseur.retournerFournisseur(nom);
+    }
+
     public void ajouterFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.ajouterObjet(f);
     }

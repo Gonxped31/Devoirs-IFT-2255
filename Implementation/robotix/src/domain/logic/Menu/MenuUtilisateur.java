@@ -116,7 +116,7 @@ public class MenuUtilisateur {
         System.out.println("3- Gérer mes taches");
         System.out.println("4- Gérer mes activites");
         System.out.println("5- Gerer mon reseau social");
-        System.out.println("6- Achats");
+        System.out.println("6- Achats (Robots ou composantes)");
         System.out.println("7- Voir mes notifications");
         System.out.println("8- Faire une requete publique");
         System.out.println("9- Revenir au menu principale");
@@ -155,10 +155,14 @@ public class MenuUtilisateur {
 
             }
             case "2" -> {
-                menuRechercheComposante(scanner, pseudo);
+                System.out.print("Choisissez un fournisseur : ");
+                System.out.println(dbControlleur.recupererListFournisseur());
+                System.out.print("Votre choix: ");
+                String nomFour = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherComposantParNomFournisseur(nomFour));
                 System.out.println("Quelles composantes voulez-vous acheter?");
                 String choix = scanner.nextLine();
-                controlleurUtilisateurs.ajouterComposantesAInventaire(dbControlleur.retournerComposante(choix));
+                controlleurUtilisateurs.ajouterComposantesAInventaire(nomFour ,dbControlleur.retournerComposante(choix));
             }
         }
     }
