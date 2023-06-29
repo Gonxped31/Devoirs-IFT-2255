@@ -89,8 +89,9 @@ public class MenusFournisseur {
 	public void menuFournisseur(Scanner scanner, String nomFournisseur) {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
 
-		if (controlleurFournisseurs.notifier())
-		System.out.println("Vous avez");
+		if (controlleurFournisseurs.notifier().size() > 0) {
+			System.out.println("Vous avez " + controlleurFournisseurs.notifier().size() + "notifications");
+		}
 
 		System.out.println("Bienvenue ! Veuillez choisir une option:");
 		System.out.println("1- Ajouter un nouveau robot");
@@ -99,6 +100,7 @@ public class MenusFournisseur {
 		System.out.println("4- Retirer une composante");
 		System.out.println("5- Revenir au menu robotix");
 		System.out.println("6- Faire une requete publique");
+		System.out.println("7- Voir mes notifications");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -151,6 +153,7 @@ public class MenusFournisseur {
 				menu.menuPrincipale(scanner);
 			}
 			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
+			case "7" -> menuNotifications();
 		}
 	}
 
@@ -372,10 +375,8 @@ public class MenusFournisseur {
 		menuFournisseur(scanner, nomFournisseur);
 	}
 
-	public void menuNotifications(Scanner scanner) {
-
-		// TODO - implement MenusFournisseur.menuNotifications
-		throw new UnsupportedOperationException();
+	public void menuNotifications() {
+		System.out.println(controlleurFournisseurs.notifier() + "\n");
 	}
 
 	public void menuVoirProfileFournisseur(Scanner scanner) {
