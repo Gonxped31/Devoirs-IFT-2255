@@ -2,6 +2,7 @@ package service;
 
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeFournisseur;
@@ -28,16 +29,33 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     @Override
     protected void init() {
-         //Todo
+        //Todo
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
-          //
-         //new Utilisateurs (),
+                new Utilisateur("Boubacar", "Kelly", "adresse1", "KellyB",
+                        "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Damov", "Kamen", "adresse2", "KD",
+                        "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Bio", "Samir", "adresse3", "SB",
+                        "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Doren", "Sky", "adresse4", "SD",
+                        "DoRen", "emaildorensky@gmail.com", "5144444444", "Dorensky Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Brice", "Mb", "adresse5", "Brice",
+                        "BrIce", "emailbrice@gmail.com", "51455555555", "Brice Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Francois", "Paris", "adresse6", "FP",
+                        "FrancOis", "emailfrancois@gmail.com", "5146666666", "Francois Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Mehdi", "Til", "adresse7", "MT",
+                        "MeHdi", "emailmehdi@gmail.com", "5147777777", "Mehdi Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Monica", "G", "adresse8", "MG",
+                        "MonIca", "emailmonica@gmail.com", "5148888888", "Monica Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Stefano", "DiGir", "adresse9", "SDi",
+                        "StefAno", "emailstefano@gmail.com", "5149999999", "Stefano Inc.", new ArrayList<Interet>()),
+                new Utilisateur("James", "Greg", "adresse10", "JG",
+                        "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
         ));
-
-        tempList.stream().forEach(utilisateur-> {
-         this.ajouterObjet(utilisateur);
+        tempList.stream().forEach(fournisseur -> {
+            this.ajouterObjet(fournisseur);
         });
-     }
+    }
     public String recupererLalisteDesUtilisateur()
     {
         return (String) this.getListObjet().stream()
@@ -133,8 +151,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
     public boolean verifierPseudo(String pseudo){
-        return this.getListObjet().stream()
-                .anyMatch(u-> ((Utilisateur) u).getPseudo().equals(pseudo));
+         if(this.getListObjet().size()!=0) {
+             return this.getListObjet().stream()
+                     .anyMatch(u -> ((Utilisateur) u).getPseudo().equals(pseudo));
+         }
+         return true;
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){

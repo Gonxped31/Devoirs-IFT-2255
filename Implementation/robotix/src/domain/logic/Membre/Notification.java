@@ -24,6 +24,11 @@ public class Notification {
 
     }
 
+    /*public String formatDateToString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return date.format(formatter);
+    }*/
+
     public String getTitre() {
         return titre;
     }

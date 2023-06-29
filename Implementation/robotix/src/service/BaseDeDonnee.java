@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,25 +28,30 @@ public BaseDeDonnee(String fileName) throws IOException {
 
 
 protected abstract Type getType();
-public List<T> lireFichier() throws IOException {
-   
-         if(!database.exists())
-         {
-            database.createNewFile();
+    public List<T> lireFichier() {
+        List<T> objets = new ArrayList<>();
 
-         }
-         init();
-
-
-        try {
-            String contenu = new String(Files.readAllBytes(Paths.get(database.getPath())));
-            List<T> objets = gson.fromJson(contenu, getType());
-            return objets;
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!database.exists()) {
+            try {
+                database.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return new ArrayList<>();
- }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Vérifier si le fichier est vide
+        if(database.length() != 0) {
+            try {
+                objets = objectMapper.readValue(database, new TypeReference<List<T>>() {});
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return objets;
+    }
 
     protected void sauvegarder() {
         ObjectMapper mapper = new ObjectMapper();

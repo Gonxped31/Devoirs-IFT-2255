@@ -20,7 +20,9 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
             super(fileName);
             listComposant = new ArrayList<>();
             listRobot = new ArrayList<>();
-            initListeRobotEtComposant();
+            if(!listRobot.equals(null) && !listComposant.equals(null)) {
+                initListeRobotEtComposant();
+            }
         }
 
 
@@ -37,26 +39,12 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         }
 
-        private void initListeRobotEtComposant() {
-
-            this.getListObjet().stream().forEach(objet -> {
-                listRobot.add(new HashMap<String, List<Robot>>() {{
-                    put(
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getInventaireDeRobot() : ((Utilisateur) objet).getListeRobot())
-                    );
-                }});
-
-                listComposant.add(new HashMap<String, List<Composant>>() {{
-                    put(
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getInventaireComposant() : ((Utilisateur) objet).getComposantesAchetes())
-                    );
-                }});
-            });
-
+   protected void initListeRobotEtComposant() {
 
         }
+
+
+
 
         public List<Map<String, List<Composant>>> getListComposant() {
             return listComposant;
