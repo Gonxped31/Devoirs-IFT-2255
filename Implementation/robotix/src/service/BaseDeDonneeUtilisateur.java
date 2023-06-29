@@ -73,10 +73,10 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .orElse("Utilisateur non trouver, veuillez verifier le prenom");
     }
 
-    public String rechercherUtilisateurParSuiveur(String nomUtilisateur){
+    public String rechercherUtilisateurParSuiveur(String pseudoUtilisateur){
 
          return (String) this.getListObjet().stream()
-                 .filter(u ->( (Utilisateur) u).getNom().equals(nomUtilisateur))
+                 .filter(u ->( (Utilisateur) u).getPseudo().equals(pseudoUtilisateur))
                  .map(u-> { return ((Utilisateur)u)
                          .getListSuiveur()
                          .stream()

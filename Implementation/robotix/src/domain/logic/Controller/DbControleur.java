@@ -39,8 +39,8 @@ public class DbControleur {
         return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParPrenom(prenom);
     }
 
-    public String rechercherUtilisateurParSuiveur(String nomUtilisateur){
-        return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParSuiveur(nomUtilisateur);
+    public String rechercherUtilisateurParSuiveur(String pseudoUtilisateur){
+        return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParSuiveur(pseudoUtilisateur);
     }
 
     public String filtrerListeSuiveurParPseudo(String nomUtilisateur, String pseudoSuiveur)

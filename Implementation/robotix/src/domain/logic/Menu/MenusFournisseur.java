@@ -1,6 +1,7 @@
 package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public class MenusFournisseur {
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs;
+	private DbControleur dbControlleur;
 
 	public void menuInscriptionFournisseur(Scanner scanner) {
 		boolean NomUnique = false;
@@ -91,6 +93,7 @@ public class MenusFournisseur {
 		System.out.println("3- Enregistrer une composante");
 		System.out.println("4- Retirer une composante");
 		System.out.println("5- Revenir au menu robotix");
+		System.out.println("6- Faire une requete publique");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -141,6 +144,75 @@ public class MenusFournisseur {
 			case "5" -> {
 				System.out.println("Au revoir !");
 				menu.menuPrincipale(scanner);
+			}
+			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
+		}
+	}
+
+	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) {
+		System.out.println("Veuillez faire une requete publique : ");
+		System.out.println("1- Voir la liste d'utilisateurs");
+		System.out.println("2- Voir la liste des fournisseurs");
+		System.out.println("3- Voir mon profil");
+		System.out.println("4- Chercher utilisateur par: ");//TODO
+		System.out.println("5- Recuperer la liste des activites");
+		System.out.println("6- Recuperer la liste des interets");
+		System.out.println("7- Rechercher fournisseur par nom");//TODO
+		System.out.println("8- Rechercher une composante par nom");//TODO
+		String choix = scanner.nextLine();
+		switch (choix){
+			case "1" -> {
+				System.out.println(dbControlleur.recupererListeUtilisateur());
+			}
+			case "2" -> {
+				System.out.println(dbControlleur.recupererListFournisseur());
+			}
+			case "3" -> {
+				System.out.println(controlleurFournisseurs.voirProfil());
+			}
+			case "4" -> {
+				menuChercherUtilisateur(scanner, nomFournisseur);
+			}
+			case "5" -> {
+				System.out.println(dbControlleur.recupererListeActivite());
+			}
+			case "6" -> {
+				System.out.println(dbControlleur.recupererListeActivite);
+			}
+		}
+	}
+
+	public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+		System.out.println("Filtrer par:");
+		System.out.println("1- Pseudo");
+		System.out.println("2- Nom");
+		System.out.println("3- Prenom");
+		System.out.println("4- Obtenir liste des suiveurs de? (pseudo voulu)");
+		String decision = scanner.nextLine();
+		switch (decision){
+			case "1" -> {
+				System.out.println("Entrez le pseudo");
+				String decisionPseudo = scanner.nextLine();
+				System.out.println((dbControlleur.rechercherUtilisateurParPseudo(decisionPseudo)));
+				menuFournisseur(scanner, nomFournisseur);
+			}
+			case "2" -> {
+				System.out.println("Entrez le nom");
+				String decisionNom = scanner.nextLine();
+				System.out.println(dbControlleur.rechercherUtilisateurParNom(decisionNom));
+				menuFournisseur(scanner, nomFournisseur);
+			}
+			case "3" -> {
+				System.out.println("Entrez le prenom");
+				String decisionPrenom = scanner.nextLine();
+				System.out.println(dbControlleur.rechercherUtilisateurParPrenom(decisionPrenom));
+				menuFournisseur(scanner, nomFournisseur);
+			}
+			case "4" -> {
+				System.out.println("Entrez le pseudo");
+				String pseudoUtilisateur = scanner.nextLine();
+				System.out.println(dbControlleur.rechercherUtilisateurParSuiveur(pseudoUtilisateur));
+				menuFournisseur(scanner, nomFournisseur);
 			}
 		}
 	}

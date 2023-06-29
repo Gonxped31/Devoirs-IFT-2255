@@ -21,7 +21,6 @@ public class ControlleurFournisseurs {
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie));
     }
 
-
     /* Code pour les vérifications */
     public boolean verifierNom(String inputNom) {
         return Fournisseur.verifierNomFournisseur(inputNom, listeFournisseurs);
@@ -61,5 +60,9 @@ public class ControlleurFournisseurs {
     public void voirProfilFournisseur()
     {
         System.out.println(this.fournisseurCourant.getProfilFournisseur());
+    }
+
+    public String voirProfil() {
+        return fournisseurCourant.getProfilFournisseur();
     }
 }
