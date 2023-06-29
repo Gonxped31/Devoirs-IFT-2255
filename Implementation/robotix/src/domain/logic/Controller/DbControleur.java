@@ -1,12 +1,14 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
+
 import domain.logic.Membre.Utilisateur;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class DbControleur {
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
@@ -84,5 +86,27 @@ public class DbControleur {
     }
     public void ajouterUtilisateur(Utilisateur u){
         this.baseDeDonneeUtilisateur.ajouterObjet(u);
+    }
+
+
+    public String recupererListeInteret(){
+       return this.baseDeDonneeUtilisateur.recupererListeInteret();
+    }
+
+    public String recupererListeInteretUtilisateur(String pseudo){
+         return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateur(pseudo);
+    }
+    public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
+    {
+        return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo,troislettre);
+    }
+
+    public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
+    {
+        return this.baseDeDonneeUtilisateur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre);
+    }
+
+    public String rechercherFournisseurParEmail(String email) {
+        return this.baseDeDonneeFournisseur.rechercherFournisseurParEmail(email);
     }
 }

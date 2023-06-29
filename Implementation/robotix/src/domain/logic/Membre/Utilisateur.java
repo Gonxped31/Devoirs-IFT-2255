@@ -31,7 +31,7 @@ public class Utilisateur extends Membre{
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
         this.setPrenom(prenom);
-        this.listeInteret = listeInteret;
+        this.setListeInteret(listeInteret);
     }
 
     public String getPseudo(){
@@ -276,7 +276,7 @@ public class Utilisateur extends Membre{
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
                 "\n pseudo :" + pseudo + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
-                "\nInteret : " + this.listeInteret.stream().collect(Collectors.joining(","))+
+                "\nInteret : " + this.getListeInteret().stream().collect(Collectors.joining(","))+
                 "\nNombre de point :" + this.point +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
@@ -293,7 +293,15 @@ public class Utilisateur extends Membre{
         this.listSuiveur = listSuiveur;
     }
 
+
     public void rejoindreActivite(String activite) {
         this.listeActivitesRejoint.add(activite);
+    }
+    public ArrayList<String> getListeInteret() {
+        return listeInteret;
+    }
+
+    public void setListeInteret(ArrayList<String> listeInteret) {
+        this.listeInteret = listeInteret;
     }
 }

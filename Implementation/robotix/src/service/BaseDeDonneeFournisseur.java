@@ -161,4 +161,14 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier le type" : founisseurs;
     }
 
+    public String rechercherFournisseurParEmail(String email) {
+        String founisseurs= (String) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getEmail().equals(email))
+                .map(f-> {
+                    return ((Fournisseur) f).getProfilFournisseur();
+                })
+                .collect(Collectors.joining("\n"));
+        return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier l'email" : founisseurs;
+    }
+
 }
