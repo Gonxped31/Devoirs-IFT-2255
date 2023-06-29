@@ -138,82 +138,82 @@ public class Utilisateur extends Membre{
 
 
 
-    public boolean[] notifier(){
-        boolean[] tabBoolean = new boolean[7];
+    public LinkedList<Notification> notifier(){
+        /*boolean[] tabBoolean = new boolean[7];
         boolean NotifierEtatRobot;
         boolean NotifierBatterieRobot;
         boolean NotifiercCPURobot;
         boolean NotifierNouvelleActivite;
         boolean NotifierNouveauAbonne;
         boolean NotifierNouveauParticipant;
-        boolean NotifierSensibilisation;
+        boolean NotifierSensibilisation;*/
 
-        NotifierEtatRobot = verifierEtatRobot();
-        NotifierBatterieRobot = verifierBatterieRobot();
-        NotifiercCPURobot = verifierCPURobot();
-        NotifierNouvelleActivite = verifierNouvelleActivite();
-        NotifierNouveauAbonne = verifierNouveauAbonne();
-        NotifierNouveauParticipant = verifierNouveauParticipant();
-        NotifierSensibilisation = verifierDateLimiteActivite();
+        /*NotifierEtatRobot = */verifierEtatRobot();
+        /*NotifierBatterieRobot = */verifierBatterieRobot();
+        /*NotifiercCPURobot = */verifierCPURobot();
+        /*NotifierNouvelleActivite = */verifierNouvelleActivite();
+        /*NotifierNouveauAbonne = */verifierNouveauAbonne();
+        /*NotifierNouveauParticipant = */verifierNouveauParticipant();
+        /*NotifierSensibilisation = */verifierDateLimiteActivite();
 
-        tabBoolean[0] = NotifierEtatRobot;
+        /*tabBoolean[0] = NotifierEtatRobot;
         tabBoolean[1] = NotifierBatterieRobot;
         tabBoolean[2] = NotifiercCPURobot;
         tabBoolean[3] = NotifierNouvelleActivite;
         tabBoolean[4] = NotifierNouveauAbonne;
         tabBoolean[5] = NotifierNouveauParticipant;
-        tabBoolean[6] = NotifierSensibilisation;
+        tabBoolean[6] = NotifierSensibilisation;*/
 
-        return tabBoolean;
+        return listeNotifications;
     }
 
-    private boolean verifierEtatRobot() {
-        boolean DoitEtreNotifie = false;
+    private void verifierEtatRobot() {
+        //boolean DoitEtreNotifie = false;
 
         for (Robot robot : listeRobot) {
             if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
-                DoitEtreNotifie = true;
+                //DoitEtreNotifie = true;
                 notification.setTitre("MAUVAIS FONCTIONNEMENT");
                 notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(notification);
             }
         }
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierBatterieRobot() {
-        boolean DoitEtreNotifie = false;
+    private void verifierBatterieRobot() {
+        //boolean DoitEtreNotifie = false;
 
         for (Robot robot : listeRobot) {
             if (robot.getBatterie() >= 20) {
-                DoitEtreNotifie = true;
+                //DoitEtreNotifie = true;
                 notification.setTitre("BATTERIE FAIBLE");
                 notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(notification);
             }
         }
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierCPURobot() {
-        boolean DoitEtreNotifie = false;
+    private void verifierCPURobot() {
+        //boolean DoitEtreNotifie = false;
 
         for (Robot robot : listeRobot) {
             if (robot.getCpu() >= 100) {
-                DoitEtreNotifie = true;
+                //DoitEtreNotifie = true;
                 notification.setTitre("SURCHARGE CPU");
                 notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(notification);
             }
         }
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierNouvelleActivite() {
-        boolean DoitEtreNotifie = false;
+    private void verifierNouvelleActivite() {
+        //boolean DoitEtreNotifie = false;
 
         /*for (Activite activite : listeInteret) {
             if (robot.getCpu() >= 100) {
@@ -224,24 +224,24 @@ public class Utilisateur extends Membre{
                 listeNotifications.add(notification);
             }
         }*/
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierNouveauAbonne() {
-        boolean DoitEtreNotifie = false;
+    private void verifierNouveauAbonne() {
+        //boolean DoitEtreNotifie = false;
 
         if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
-            DoitEtreNotifie = true;
+            //DoitEtreNotifie = true;
             notification.setTitre("NOUVEAU ABONNÉ");
             notification.setMesssage("Un nouvel utilisateur suit votre profil");
             notification.setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
             listeNotifications.add(notification);
         }
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierNouveauParticipant() {
-        boolean DoitEtreNotifie = false;
+    private void verifierNouveauParticipant() {
+        //boolean DoitEtreNotifie = false;
 
         /*if (listeActivitesRejoint.size() > taillePrecedenteListeSuiveur) {
             DoitEtreNotifie = true;
@@ -250,25 +250,25 @@ public class Utilisateur extends Membre{
             notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
             listeNotifications.add(notification);
         }*/
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
-    private boolean verifierDateLimiteActivite() {
-        boolean DoitEtreNotifie = false;
+    private void verifierDateLimiteActivite() {
+        //boolean DoitEtreNotifie = false;
 
         for (Activite activite : listeActivitesRejoint) {
             joursRestants = ChronoUnit.DAYS.between(dateActuelle, (Temporal) activite.getDateDebut());
 
             // Vérifiez si la date de l'activité est dans les trois jours à venir
             if (joursRestants >=0 && joursRestants <=3) {
-                DoitEtreNotifie = true;
+                //DoitEtreNotifie = true;
                 notification.setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
                 notification.setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
                 notification.setTypeNotification(TypeNotification.SENSIBILISATION);
                 listeNotifications.add(notification);
             }
         }
-        return DoitEtreNotifie;
+        //return DoitEtreNotifie;
     }
 
     public void modifierProfile(String choix, String nouvelInfo){

@@ -2,6 +2,7 @@ package domain.logic.Menu;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
@@ -102,6 +103,10 @@ public class MenusUtilisateur {
         fournisCPU.add("type3");
         fournisCPU.add("compagnie2");
         System.out.println("******************** Menu: " + pseudo + " ********************");
+        LinkedList<Notification> notifications = controlleurUtilisateurs.notifier();
+        if (notifications.size() > 0) {
+            System.out.println(">>> Vous avez " + notifications.size() + "notifications <<<");
+        }
         System.out.println("Bienvenue! Veuillez choisir une option:");
         System.out.println("1- Modifier mon profile");
         System.out.println("2- Gérer ma flotte");  
@@ -128,7 +133,7 @@ public class MenusUtilisateur {
             case("6") :
 
             case("7") :
-                menuNotification(scanner, pseudo);
+                menuNotifications(notifications);
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
             case("9") :
@@ -370,8 +375,10 @@ public class MenusUtilisateur {
             }
         }
     }
-    public void menuNotification(Scanner scanner, String pseudo){
-        for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+    public void menuNotifications(LinkedList<Notification> notifications){
+        System.out.println(notifications + "\n");
+
+        /*for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);
         }
         System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
@@ -382,6 +389,6 @@ public class MenusUtilisateur {
             case "N": 
                 menuUtilisateur(scanner, pseudo);
                 break;
-        }
+        }*/
     }
 }
