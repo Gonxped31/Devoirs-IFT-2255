@@ -98,13 +98,14 @@ public class Fournisseur extends Membre {
         return inputTelephone.length() == 10;
     }
 
-    public void ajouterRobot(ArrayList<Composant> composants) {
+    public UUID ajouterRobot(ArrayList<Composant> composants) {
         Robot r= new Robot();
         for( Composant c :composants){
             r.ajouterComposante(c);
         }
 
         inventaireDeRobot.add(r);
+      return   r.getNumeroSerie();
     }
 
     public boolean retirerRobot(String numeroSerie) {

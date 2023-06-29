@@ -9,17 +9,18 @@ import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class MenusFournisseur {
 
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
 
 	public MenusFournisseur() throws IOException {
 	}
 
-	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException {
+	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
 		boolean NomUnique = false;
 		boolean EmailValide = false;
 		boolean TelephoneValide = false;
@@ -78,13 +79,14 @@ public class MenusFournisseur {
 		inputCapacite = scanner.nextLine();
 		System.out.print("Nom de compagnie: ");
 		inputCompagnie = scanner.nextLine();
-
+       this.controlleurFournisseurs= new ControlleurFournisseurs(inputNom,mdp,inputAdresse,inputEmail,
+			   inputTelephone,inputTypeRobot,inputTypeComposantes,inputCapacite,inputCompagnie);
 		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
         menuFournisseur(scanner, inputNom);//menu.menuPrincipale(scanner);
 	}
 
-	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {
+	public void menuConnexionFournisseur(Scanner scanner) throws ParseException, IOException {
 		System.out.println("Veuillez entrez votre nom de fournisseur: ");
 		String nomFounisseur = scanner.nextLine();
 		if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
@@ -96,7 +98,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException {
+	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
 		System.out.println("Bienvenue ! Veuillez choisir une option:");
 		System.out.println("1- Ajouter un nouveau robot");
@@ -123,8 +125,9 @@ public class MenusFournisseur {
 					continuer = demander(reponse, scanner);
 				} while(continuer);
 
-				controlleurFournisseurs.ajouterRobot(nomsComposantAajouter);
+				UUID uuid= controlleurFournisseurs.ajouterRobot(nomsComposantAajouter);
 				System.out.println(" ");
+				System.out.println( String.format("Voici le numero de seri du robot : %s",uuid ) );
 				System.out.println("Le robot a été rajouté avec succès !");
 				System.out.println(" ");
 				menuFournisseur(scanner, nomFournisseur);
@@ -162,7 +165,7 @@ public class MenusFournisseur {
 			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
-	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException {
+	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.print("Nom de la composante : ");
 		String composante = scanner.nextLine();
 		System.out.print("Prix : ");
@@ -179,7 +182,7 @@ public class MenusFournisseur {
 	}
 
 
-	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) throws ParseException {
+	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) throws ParseException, IOException {
 		System.out.println("Veuillez faire une requete publique : ");
 		System.out.println("1- Voir la liste d'utilisateurs");
 		System.out.println("2- Voir la liste des fournisseurs");
@@ -204,7 +207,7 @@ public class MenusFournisseur {
 				menuFournisseur(scanner, nomFournisseur);
 			}
 			case "4" -> {
-				menuChercherUtilisateur(scanner, nomFournisseur);
+				menuChercherUtilisateur(scanner);
 				menuFournisseur(scanner, nomFournisseur);
 			}
 			case "5" -> {
@@ -317,7 +320,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+	public void menuChercherUtilisateur(Scanner scanner){
 		System.out.println("Filtrer par:");
 		System.out.println("1- Pseudo");
 		System.out.println("2- Nom");

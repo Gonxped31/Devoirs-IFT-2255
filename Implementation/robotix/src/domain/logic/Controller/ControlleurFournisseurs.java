@@ -5,14 +5,17 @@ import domain.logic.Robot.Composant;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
 
-    public ControlleurFournisseurs() throws IOException {
-
+    public ControlleurFournisseurs(String nom, String mdp,  String adresse, String email, String numeroTelephone,
+                                   String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie) throws IOException {
+      this.fournisseurCourant= new Fournisseur(nom, mdp, adresse, email, numeroTelephone,typeDeRobotFabriquer,typeComposantesFabriquer,capacite,nomcompagnie);
     }
+    public ControlleurFournisseurs() throws IOException {}
 
     public boolean authentificationFournisseur(String connexion, String membre){
         //TODO
@@ -39,12 +42,13 @@ public class ControlleurFournisseurs {
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-    public void ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
+    public UUID ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         ArrayList<Composant> composants =this.fournisseurCourant.produireComposant(nomsCoposantAajouter);
-        this.fournisseurCourant.ajouterRobot(composants);
+       UUID uuid= this.fournisseurCourant.ajouterRobot(composants);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
         //dataBaseController.ajouterRobot();
+        return uuid;
     }
 
     public boolean retirerRobot(String numeroSerie) {
@@ -83,4 +87,6 @@ public class ControlleurFournisseurs {
     public String voirProfil() {
         return fournisseurCourant.getProfilFournisseur();
     }
+
+
 }
