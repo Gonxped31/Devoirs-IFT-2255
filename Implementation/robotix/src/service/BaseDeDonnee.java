@@ -22,9 +22,6 @@ public BaseDeDonnee(String fileName) throws IOException {
     this.listObjet = lireFichier();
 }
 
-
-
-
 protected abstract Type getType();
 public List<T> lireFichier() throws IOException {
    
@@ -34,7 +31,6 @@ public List<T> lireFichier() throws IOException {
 
          }
          init();
-
 
         try {
             String contenu = new String(Files.readAllBytes(Paths.get(database.getPath())));

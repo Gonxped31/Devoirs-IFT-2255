@@ -489,4 +489,8 @@ public class Utilisateur extends Membre{
         }
         return listeInter;
     }
+
+    public void ajouterComposantesAInventaire(Composant composant) {
+        composantesAchetes.add(composant);
+    }
 }

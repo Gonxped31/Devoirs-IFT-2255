@@ -69,6 +69,12 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
+    public void ajouterComposantesAInventaire(Composant composant){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.ajouterComposantesAInventaire(composant);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+    }
+
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);

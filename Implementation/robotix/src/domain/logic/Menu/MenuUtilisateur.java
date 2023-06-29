@@ -155,9 +155,11 @@ public class MenuUtilisateur {
 
             }
             case "2" -> {
-
+                menuRechercheComposante(scanner, pseudo);
+                System.out.println("Quelles composantes voulez-vous acheter?");
+                String choix = scanner.nextLine();
+                controlleurUtilisateurs.ajouterComposantesAInventaire(dbControlleur.retournerComposante(choix));
             }
-
         }
     }
 
