@@ -51,12 +51,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                         "StefAno", "emailstefano@gmail.com", "5149999999", "Stefano Inc.", new ArrayList<Interet>()),
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
-                /*new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
-                        "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech"),
-                new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",
-                        "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA","35", "iRobot"),
-                new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "thompson5",
-                        "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro")*/
         ));
         tempList.stream().forEach(fournisseur -> {
             this.ajouterObjet(fournisseur);
