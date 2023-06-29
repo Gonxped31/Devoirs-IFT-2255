@@ -2,6 +2,8 @@ package domain.logic.Menu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import domain.logic.Membre.Notification;
 import domain.logic.Menu.Menu;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -182,7 +184,7 @@ public class MenuUtilisateur {
     }
 
     public void menuNotification(Scanner scanner, String pseudo){
-        for (String notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+        for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);
         }
         System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
