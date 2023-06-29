@@ -95,4 +95,9 @@ public class Robot {
     public void setType(String type) {
         this.type = type;
     }
+
+    public void allouerTache(Tache tache){
+        taches.add(tache);
+    }
+
 }

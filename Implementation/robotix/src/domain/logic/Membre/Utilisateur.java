@@ -134,6 +134,8 @@ public class Utilisateur extends Membre{
         return listeNotifications;
     }
 
+
+
     public boolean[] notifier(){
         boolean[] tabBoolean = new boolean[7];
         boolean NotifierEtatRobot;
@@ -293,6 +295,24 @@ public class Utilisateur extends Membre{
             bool = true;
         }
         return bool;
+    }
+
+    public void creerTache(String nom, ArrayList<Action> actions){
+        listeTaches.add(new Tache(nom, actions));
+    }
+
+    public Robot getRobot(String numeroDeSerie){
+        return listeRobot.stream()
+                .filter(r -> r.getNumeroSerie().equals(numeroDeSerie))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Tache getTache(String nom){
+        return listeTaches.stream()
+                .filter(t -> t.getNom().equals(nom))
+                .findFirst()
+                .orElse(null);
     }
 
     public Robot verifierNumeroSerieRobot(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){

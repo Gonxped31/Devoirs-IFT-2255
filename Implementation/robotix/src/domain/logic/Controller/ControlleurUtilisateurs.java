@@ -88,14 +88,20 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.nombreDeRobot();
     }
 
-    public void creerTache(String pseudo, String nomTache, ArrayList<Action> actions){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerTache(nomTache, actions);
+    public void creerTache(String nomTache, ArrayList<Action> actions){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.creerTache(nomTache, actions);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean allouerTacheRobot(String pseudo, String robot, String tache){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.allouerTache(robot, tache);
+    public void allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Robot robot = this.utilisateurCourant.getRobot(numeroDeSerie);
+        Tache tac = this.utilisateurCourant.getTache(tache);
+        if ((robot != null) && (tac != null)){
+            robot.allouerTache(tac);
+        }
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
