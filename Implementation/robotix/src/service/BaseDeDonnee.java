@@ -56,9 +56,6 @@ public void ajouterObjet(T objet)
 {   if (this.listObjet==null){
     this.listObjet=new ArrayList<>();
 }
-
-
-
     this.listObjet.add(objet);
     this.sauvegarder();
 }
@@ -72,7 +69,6 @@ protected abstract void init();
     public List<T> getListObjet()
     {
         return this.listObjet==null ? new ArrayList<>() : listObjet;
-
     }
  
 }

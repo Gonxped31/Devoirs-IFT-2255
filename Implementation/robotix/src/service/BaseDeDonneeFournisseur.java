@@ -37,11 +37,12 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
          //Todo
         List<Fournisseur> tempList= new ArrayList<>(Arrays.asList(
         new Fournisseur("Roy", "Roy","123 rue des Innovations, Montr�al, QC, H1A 0A1", "nom1@robotech.ca",
-                        "5142104555", "RobotA", "CPU", "30", "RoboTechnologies")
-        /*new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1",  "nom1@robotech.ca",
-                        "5142104555", "RobotA", "CPU", "30", "RoboTechnologies")
-        new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
-                        "contact@automatech.ca", "4503335432", "RobotB", "BRAS", "25", "Automatech"),
+                        "5142104555", "RobotA", "CPU", "30", "RoboTechnologies"),
+        new Fournisseur("Bouchard","Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "contact@automatech.ca",
+                        "4503335432", "RobotB", "BRAS", "25", "Automatech"),
+        new Fournisseur("Adams","Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "service@innovatech.ca",
+                        "4509998888", "RobotC", "ECRAN", "27","Innovatech")
+        /*
         new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
                         "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech"),
         new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",

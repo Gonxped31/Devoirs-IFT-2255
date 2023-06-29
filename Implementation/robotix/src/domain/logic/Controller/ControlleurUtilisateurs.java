@@ -70,7 +70,8 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public void ajouterComposantesAInventaire(String nomFour,Composant composant){
+    public void ajouterComposantesAInventaire(String nomFour,String nomComposant){
+        Composant composant = this.dataBaseController.retournerComposante(nomComposant);
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Fournisseur f = this.dataBaseController.retournerFournisseurParNom(nomFour);
         this.dataBaseController.supprimerFournisseur(f);

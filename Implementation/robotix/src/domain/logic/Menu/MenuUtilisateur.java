@@ -162,7 +162,7 @@ public class MenuUtilisateur {
                 System.out.println(dbControlleur.rechercherComposantParNomFournisseur(nomFour));
                 System.out.println("Quelles composantes voulez-vous acheter?");
                 String choix = scanner.nextLine();
-                controlleurUtilisateurs.ajouterComposantesAInventaire(nomFour ,dbControlleur.retournerComposante(choix));
+                controlleurUtilisateurs.ajouterComposantesAInventaire(nomFour, choix);
             }
         }
     }

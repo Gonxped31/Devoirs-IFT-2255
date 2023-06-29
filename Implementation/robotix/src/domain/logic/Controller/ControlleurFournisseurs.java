@@ -1,6 +1,7 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Robot.Composant;
 
 import java.io.IOException;
 
@@ -58,9 +59,10 @@ public class ControlleurFournisseurs {
         //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
-    public boolean retirerComposante(String composante){
+    public boolean retirerComposante(String nomComposante){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean c = this.fournisseurCourant.retirerComopsante(composante);
+        Composant composant = this.dataBaseController.retournerComposante(nomComposante);
+        boolean c = this.fournisseurCourant.retirerComopsante(composant);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
         return c;
         //return fournisseur.retirerComopsante(composante);
