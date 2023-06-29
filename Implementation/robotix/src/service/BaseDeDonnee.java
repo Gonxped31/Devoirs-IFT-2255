@@ -9,16 +9,21 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class BaseDeDonnee<T>{
 
 private List<T> listObjet;
 private File database;
-private Gson gson = new Gson();
+
+private Gson gson= new Gson();
 public BaseDeDonnee(String fileName) throws IOException {
-    this.database= new File(fileName);
-    this.listObjet=lireFichier();
+    this.database = new File(fileName);
+    this.listObjet = lireFichier();
 }
+
+
+
 
 protected abstract Type getType();
 public List<T> lireFichier() throws IOException {
@@ -26,8 +31,10 @@ public List<T> lireFichier() throws IOException {
          if(!database.exists())
          {
             database.createNewFile();
-            init();
+
          }
+         init();
+
 
         try {
             String contenu = new String(Files.readAllBytes(Paths.get(database.getPath())));
@@ -38,22 +45,23 @@ public List<T> lireFichier() throws IOException {
         }
         return new ArrayList<>();
  }
-    
-protected void sauvegarder()
-{
-   try {
-            FileWriter writer = new FileWriter(this.database);
-            gson.toJson(listObjet, writer);
-            writer.close();
+
+    protected void sauvegarder() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File(this.database.toURI()), listObjet);
         } catch (IOException e) {
             e.printStackTrace();
         }
-}
-public void ajouterObjet(T objet)
-{
-    if (this.listObjet == null){
-        this.listObjet =  new ArrayList<>();
     }
+public void ajouterObjet(T objet)
+
+{   if (this.listObjet==null){
+    this.listObjet=new ArrayList<>();
+}
+
+
+
     this.listObjet.add(objet);
     this.sauvegarder();
 }
@@ -64,9 +72,10 @@ public void supprimerObjet(T objet){
  
 protected abstract void init();
 
-public List<T> getListObjet()
-{
-    return this.listObjet!=null? this.listObjet:new ArrayList<>();
-}
+    public List<T> getListObjet()
+    {
+        return this.listObjet==null ? new ArrayList<>() : listObjet;
+
+    }
  
 }
