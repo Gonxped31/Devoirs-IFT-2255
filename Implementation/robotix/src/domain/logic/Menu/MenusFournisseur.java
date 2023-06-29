@@ -4,6 +4,7 @@ import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,8 +13,11 @@ import java.util.Scanner;
 public class MenusFournisseur {
 
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs;
-	private DbControleur dbControlleur;
+	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+	private DbControleur dbControlleur = new DbControleur();
+
+	public MenusFournisseur() throws IOException {
+	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException {
 		boolean NomUnique = false;

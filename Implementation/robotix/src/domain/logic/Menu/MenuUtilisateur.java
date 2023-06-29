@@ -14,7 +14,7 @@ public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    private Menu menu = new Menu();
+    //private Menu menu = new Menu();
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
@@ -42,8 +42,10 @@ public class MenuUtilisateur {
             System.out.print("Pseudo: ");
             pseudo = scanner.nextLine();
             PseudoUnique = controlleurUtilisateurs.verifierPseudo(pseudo);
-            if (!PseudoUnique) {
+            if (PseudoUnique) {
                 System.out.print("Ce pseudo existe déjà, veuillez entrer un autre : ");
+            } else {
+                break;
             }
         }
 
@@ -74,11 +76,11 @@ public class MenuUtilisateur {
             System.out.println("Veuillez entrer un interet: ");
             String interet = scanner.nextLine();
             listeInteret.add(interet);
-            System.out.println("Il vous reste " + i + "interets a choisir");
+            System.out.println("Il vous reste " + i + " interets a choisir");
         }
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-        menu.menuPrincipale(scanner);
+        //menu.menuPrincipale(scanner);
     }
 
     public void connecterUtilisateur(Scanner scanner) throws ParseException {
@@ -91,7 +93,7 @@ public class MenuUtilisateur {
             menuUtilisateur(scanner, connexion);
         } else {
             System.out.println(connexion + " n'existe pas.");
-            menu.menuPrincipale(scanner);
+            //menu.menuPrincipale(scanner);
         }
     }
 
@@ -134,7 +136,7 @@ public class MenuUtilisateur {
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
             case("9") :
-                menu.menuPrincipale(scanner);
+                //menu.menuPrincipale(scanner);
         }
     }
 

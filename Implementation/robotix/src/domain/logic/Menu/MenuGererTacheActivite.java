@@ -15,7 +15,7 @@ import domain.logic.Robot.Activite;
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    private MenuUtilisateur menuUtil;
+    //private MenuUtilisateur menuUtil;
     private Activite activite = new Activite();
 
     public MenuGererTacheActivite() throws IOException {
@@ -36,7 +36,7 @@ public class MenuGererTacheActivite {
                 allouerTacheRobot(scanner, pseudo);
                 break;
             case "3":
-                menuUtil.menuUtilisateur(scanner, pseudo);
+                //menuUtil.menuUtilisateur(scanner, pseudo);
                 break;
         }
     }
@@ -69,7 +69,7 @@ public class MenuGererTacheActivite {
         else{
             System.out.println("La tache n'a pas pu être allouée car vous ne possédez pas le robot ou la tache indiqué");
         }
-        menuUtil.menuUtilisateur(scanner, pseudo);
+        //menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
 
@@ -88,7 +88,7 @@ public class MenuGererTacheActivite {
                 menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
-                menuUtil.menuUtilisateur(scanner, pseudo);
+                //menuUtil.menuUtilisateur(scanner, pseudo);
         }
     }
 
@@ -128,7 +128,7 @@ public class MenuGererTacheActivite {
         } else {
             System.out.println("Cette activitée existe déjà...");
         }
-        menuUtil.menuUtilisateur(scanner, pseudo);
+        //menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
     public void menuRejoindreActivite(String pseudo, Scanner scanner){

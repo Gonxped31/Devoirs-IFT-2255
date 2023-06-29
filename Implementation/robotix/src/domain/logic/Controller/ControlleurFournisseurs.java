@@ -1,18 +1,15 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.TypesComposants;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
 
     public ControlleurFournisseurs() throws IOException {
+
     }
 
     public boolean authentificationFournisseur(String connexion, String membre){

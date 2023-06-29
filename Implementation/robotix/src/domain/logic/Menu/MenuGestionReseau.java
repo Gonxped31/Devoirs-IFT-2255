@@ -8,7 +8,7 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 
 public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private MenuUtilisateur menuUtil = new MenuUtilisateur();
+    //private MenuUtilisateur menuUtil = new MenuUtilisateur();
 
     public MenuGestionReseau() throws IOException {
     }
@@ -39,7 +39,7 @@ public class MenuGestionReseau {
                 //controlleurUtilisateurs.gererInteret(pseudo);
                 break;
             case "4":
-                menuUtil.menuUtilisateur(scanner, pseudo);
+                //menuUtil.menuUtilisateur(scanner, pseudo);
         }
     }
 }
