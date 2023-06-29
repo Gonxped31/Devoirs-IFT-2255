@@ -1,6 +1,7 @@
 package domain.logic.Menu;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -80,7 +81,7 @@ public class MenuUtilisateur {
         menu.menuPrincipale(scanner);
     }
 
-    public void connecterUtilisateur(Scanner scanner) {
+    public void connecterUtilisateur(Scanner scanner) throws ParseException {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
         System.out.println("Veuillez entrer votre mot de passe: ");
@@ -94,8 +95,7 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuUtilisateur(Scanner scanner, String pseudo) {
-        ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException {
         ArrayList<String> fournisCPU = new ArrayList<>();
         fournisCPU.add("Fournisseur6" );
         fournisCPU.add("Adresse1");
@@ -138,7 +138,7 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuRequetesPubliques(Scanner scanner,String pseudo) {
+    public void menuRequetesPubliques(Scanner scanner,String pseudo) throws ParseException {
         System.out.println("Veuillez faire une requete publique : ");
         System.out.println("1- Voir la liste d'utilisateurs");
         System.out.println("2- Voir la liste des fournisseurs");
@@ -365,7 +365,7 @@ public class MenuUtilisateur {
         }        
     }
 
-    public void menuNotification(Scanner scanner, String pseudo){
+    public void menuNotification(Scanner scanner, String pseudo) throws ParseException {
         for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);
         }

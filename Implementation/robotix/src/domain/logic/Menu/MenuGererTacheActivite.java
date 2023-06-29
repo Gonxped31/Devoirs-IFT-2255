@@ -22,7 +22,7 @@ public class MenuGererTacheActivite {
     }
 
     //Tache
-    public void gererMesTaches(Scanner scanner, String pseudo){
+    public void gererMesTaches(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
         System.out.println("3- Revenir au menu principal");
@@ -56,10 +56,10 @@ public class MenuGererTacheActivite {
             System.out.println("Voulez-vous rajouter une action a cette tache?(Y/N)");
             decision = scanner.nextLine();
         }
-        controlleurUtilisateurs.creerTache(pseudo, nomAction, actions);
+        controlleurUtilisateurs.creerTache(nomAction, actions);
     }
 
-    public void allouerTacheRobot(Scanner scanner, String pseudo){
+    public void allouerTacheRobot(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("A quel robot voulez-vous allouer une tache");
         String robot = scanner.nextLine();
         System.out.println("Quel est le nom de la tache a allouer?");
@@ -74,7 +74,7 @@ public class MenuGererTacheActivite {
 
 
     //Activite
-    public void gererMesActivites(Scanner scanner, String pseudo){
+    public void gererMesActivites(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
         System.out.println("3- Revenir au menu principale");
@@ -92,9 +92,10 @@ public class MenuGererTacheActivite {
         }
     }
 
-    public void menuCreerActivite(Scanner scanner, String pseudo){
+    public void menuCreerActivite(Scanner scanner, String pseudo) throws ParseException {
         boolean continuer = false;
         ArrayList<String> listeTache = new ArrayList<>();
+        ArrayList<String> listeInteret = new ArrayList<>();
         System.out.println(" ");
         System.out.print("Nom de l'activité : ");
         String nomActivite = scanner.nextLine();
@@ -114,15 +115,15 @@ public class MenuGererTacheActivite {
 
         do {
             System.out.print("Veuillez entrer un interêt : ");
-            listeTache.add(scanner.nextLine());
-            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            listeInteret.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter une autre interet ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
                 continuer = true;
             }
         } while (continuer);
 
-        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache)) {
+        if (controlleurUtilisateurs.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInteret)) {
             System.out.println("L'activitée a été bien créée (:");
         } else {
             System.out.println("Cette activitée existe déjà...");

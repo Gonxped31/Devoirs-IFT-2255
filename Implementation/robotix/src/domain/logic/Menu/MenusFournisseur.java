@@ -118,9 +118,9 @@ public class MenusFournisseur {
 			}
 
 			case "2" -> {
-				System.out.print("Veuillez entrer le nom du robot à retirer : ");
-				String nomRobot2 = scanner.nextLine();
-				if(controlleurFournisseurs.retirerRobot(nomRobot2, nomFournisseur)){
+				System.out.print("Veuillez entrer le numero de serie du robot à retirer : ");
+				String numeroSerie = scanner.nextLine();
+				if(controlleurFournisseurs.retirerRobot(numeroSerie)){
 					System.out.println("Le robot a été retiré avec succès !");
 
 				} else {
@@ -134,7 +134,7 @@ public class MenusFournisseur {
 			case "4" -> {
 				System.out.print("Nom de la composante : ");
 				String composante2 = scanner.nextLine();
-				if(controlleurFournisseurs.retirerComposante(composante2, nomFournisseur)){
+				if(controlleurFournisseurs.retirerComposante(composante2)){
 					System.out.println("La composante a été retirée avec succès !");
 				} else {
 					System.out.println("Vous ne possédez cette composante.");

@@ -22,7 +22,7 @@ public class ControlleurUtilisateurs {
     }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie,this.utilisateurCourant.produireListeInteret(listeInteret));
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
@@ -96,22 +96,26 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public void allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
+    public boolean allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
+        boolean b = false;
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.utilisateurCourant.getRobot(numeroDeSerie);
         Tache tac = this.utilisateurCourant.getTache(tache);
         if ((robot != null) && (tac != null)){
             robot.allouerTache(tac);
+            b = true;
         }
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return b;
     }
 
-    public void creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
+    public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
         ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
         this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return true;
     }
 
     public void rejoindreActivite(String pseudo, Activite activite){
@@ -130,6 +134,8 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(aSuivre);
     }
 
+    //TODO
+    /*
     public void gererSuiveurs(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.gererSuiveurs();
@@ -138,9 +144,9 @@ public class ControlleurUtilisateurs {
     public void gererInteret(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.gererInteret();
-    }
+    }*/
 
-        public ArrayList<Notification> voirNotifications(String pseudo){
+    public ArrayList<Notification> voirNotifications(String pseudo){
         return this.utilisateurCourant.voirNotifications();
     }
 

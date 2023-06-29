@@ -102,11 +102,11 @@ public class Fournisseur extends Membre {
         inventaireDeRobot.add(new Robot());
     }
 
-    public boolean retirerRobot(String nomRobot) {
+    public boolean retirerRobot(String numeroSerie) {
         boolean bool = false;
         int nbRobot = 0;
         for (Robot robot : inventaireDeRobot) {
-            if (robot.getNom().equals(nomRobot)) {
+            if (robot.getNumeroSerie().equals(numeroSerie)) {
                 inventaireDeRobot.remove(robot);
                 nbRobot++;
                 break;
