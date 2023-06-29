@@ -103,7 +103,7 @@ public class ControlleurUtilisateurs {
         return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
     }
 
-    public boolean rejoindreActivite(String pseudo, String activite){
+    public boolean rejoindreActivite(String pseudo, Activite activite){
         return !(dataBaseController.rejoindreActivite(pseudo, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
     }
 
