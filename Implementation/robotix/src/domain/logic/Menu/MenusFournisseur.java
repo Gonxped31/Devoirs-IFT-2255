@@ -5,6 +5,7 @@ import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 
 import java.sql.SQLOutput;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class MenusFournisseur {
 	private ControlleurFournisseurs controlleurFournisseurs;
 	private DbControleur dbControlleur;
 
-	public void menuInscriptionFournisseur(Scanner scanner) {
+	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException {
 		boolean NomUnique = false;
 		boolean EmailValide = false;
 		boolean TelephoneValide = false;
@@ -74,7 +75,7 @@ public class MenusFournisseur {
 		menu.menuPrincipale(scanner);
 	}
 
-	public void menuConnexionFournisseur(Scanner scanner) {
+	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {
 		System.out.println("Veuillez entrez votre nom de fournisseur: ");
 		String nomFounisseur = scanner.nextLine();
 		if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
@@ -86,7 +87,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuFournisseur(Scanner scanner, String nomFournisseur) {
+	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
 		System.out.println("Bienvenue ! Veuillez choisir une option:");
 		System.out.println("1- Ajouter un nouveau robot");
@@ -150,7 +151,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) {
+	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) throws ParseException {
 		System.out.println("Veuillez faire une requete publique : ");
 		System.out.println("1- Voir la liste d'utilisateurs");
 		System.out.println("2- Voir la liste des fournisseurs");
@@ -352,7 +353,7 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuEnregistrerComposante(Scanner scanner, String nomFournisseur) {
+	public void menuEnregistrerComposante(Scanner scanner, String nomFournisseur) throws ParseException {
 		System.out.print("Nom de la composante : ");
 		String composante = scanner.nextLine();
 		System.out.print("Prix : ");

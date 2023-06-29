@@ -14,15 +14,15 @@ public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    private Menu menu;
-    private MenuGestionFlotte menuGestionFlotte;
-    private MenuGererTacheActivite menuGererTacheActivite;
-    private MenuGestionReseau menuReseau;
+    private Menu menu = new Menu();
+    private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
+    private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
+    private MenuGestionReseau menuReseau = new MenuGestionReseau();
 
     public MenuUtilisateur() throws IOException {
     }
 
-    public void inscrireUtilisateur(Scanner scanner) {
+    public void inscrireUtilisateur(Scanner scanner) throws ParseException {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
         boolean EmailValide = false;
