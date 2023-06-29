@@ -72,6 +72,9 @@ public class DbControleur {
     public String recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();
     }
+    public boolean verifierNomFournissuer(String nomFourniseur){
+        return this.baseDeDonneeFournisseur.verifierNomFounissseur(nomFourniseur);
+    }
 
 
     public String recupererListeInteret(){

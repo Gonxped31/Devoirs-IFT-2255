@@ -161,4 +161,9 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier le type" : founisseurs;
     }
 
+    public boolean verifierNomFounissseur(String nomFourniseur){
+         return this.getListObjet().stream()
+                 .anyMatch(f-> ((Fournisseur) f).getNom().equals(nomFourniseur));
+    }
+
 }

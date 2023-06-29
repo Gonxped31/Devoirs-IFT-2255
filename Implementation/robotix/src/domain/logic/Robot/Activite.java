@@ -55,4 +55,7 @@ public class Activite {
                 .collect(Collectors.joining("\n"));
 
     }
+    public void rejoindreActivvite(Utilisateur u){
+
+    }
 }

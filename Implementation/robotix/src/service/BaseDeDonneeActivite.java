@@ -35,4 +35,5 @@ public BaseDeDonneeActivite() throws IOException {
                 .map(activite->((Activite) activite).getInfoActiviteFormater())
                 .collect(Collectors.joining("\n"));
     }
+
 }

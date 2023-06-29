@@ -108,6 +108,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
         return (String) this.getListObjet().stream()
                 .filter(u -> ((Utilisateur) u).getNom().equals(nom))
                 .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .distinct()
                 .collect(Collectors.joining(", "));
     }
     public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String nomUtilisateur, String troislettre)
