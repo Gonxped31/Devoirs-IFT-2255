@@ -1,5 +1,4 @@
 package domain.logic.Controller;
-import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
@@ -8,8 +7,6 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
 
 public class ControlleurUtilisateurs {
 
@@ -53,7 +50,7 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public void enregistrerRobot(String nomRobot, String type, String numeroSerie) {
+    public void enregistrerRobot(String nomRobot, String type, String numeroSerie, String numeroDeSerie) {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         if (!(robot == null)){
