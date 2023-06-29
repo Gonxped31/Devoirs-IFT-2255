@@ -14,11 +14,10 @@ public abstract class BaseDeDonnee<T>{
 
 private List<T> listObjet;
 private File database;
-private Gson gson;
+private Gson gson = new Gson();
 public BaseDeDonnee(String fileName) throws IOException {
     this.database= new File(fileName);
     this.listObjet=lireFichier();
-    this.gson= new Gson();
 }
 
 protected abstract Type getType();
@@ -64,7 +63,7 @@ protected abstract void init();
 
 public List<T> getListObjet()
 {
-    return this.listObjet;
+    return this.listObjet!=null? this.listObjet:new ArrayList<>();
 }
  
 }
