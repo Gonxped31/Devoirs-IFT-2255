@@ -1,12 +1,8 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.TypesComposants;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
@@ -67,8 +63,13 @@ public class ControlleurFournisseurs {
         //return fournisseur.retirerComopsante(composante);
     }
 
-    public boolean[] notifier() {
-        return fournisseurCourant.notifier();
+    public boolean notifier() {
+        int nbNotifications = 0;
+        for (int i = 0; i < fournisseurCourant.notifier().length; i++) {
+            if (fournisseurCourant.notifier(i) == true)
+                nbNotifications += 1;
+        }
+        fournisseurCourant.notifier();
     }
 
     public void voirProfilFournisseur()

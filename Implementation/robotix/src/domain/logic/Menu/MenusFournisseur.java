@@ -88,6 +88,10 @@ public class MenusFournisseur {
 
 	public void menuFournisseur(Scanner scanner, String nomFournisseur) {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
+
+		if (controlleurFournisseurs.notifier())
+		System.out.println("Vous avez");
+
 		System.out.println("Bienvenue ! Veuillez choisir une option:");
 		System.out.println("1- Ajouter un nouveau robot");
 		System.out.println("2- Retirer un robot");
@@ -369,6 +373,7 @@ public class MenusFournisseur {
 	}
 
 	public void menuNotifications(Scanner scanner) {
+
 		// TODO - implement MenusFournisseur.menuNotifications
 		throw new UnsupportedOperationException();
 	}
