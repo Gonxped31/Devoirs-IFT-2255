@@ -14,6 +14,7 @@ public class Fournisseur extends Membre {
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     private Notification notification = new Notification();
     private LinkedList<Notification> listeNotifications = new LinkedList<>();
+    private int taillePrecedenteInventaireComposantes;
 
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
@@ -32,6 +33,7 @@ public class Fournisseur extends Membre {
     }
 
     public LinkedList<Composant> getInventaireComposant() {
+
         return inventaireComposant;
     }
 
@@ -117,6 +119,7 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterComposante(/*String composante, double prix, String description, String typeComposant*/) {
+        taillePrecedenteInventaireComposantes = inventaireComposant.size();
         inventaireComposant.add(new Composant());
         //TODO
         //inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
@@ -258,15 +261,13 @@ public class Fournisseur extends Membre {
     public boolean verifierInventaireComposants() {
         boolean DoitEtreNotifie = false;
 
-        /*for (Composant composant : inventaireComposant) {
-            if () {
-                DoitEtreNotifie = true;
-                notification.setTitre("ACHAT DE VOS COMPOSANTES");
-                notification.setMesssage("Un utilisateur achète une de vos composantes");
-                notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
-                listeNotifications.add(notification);
-            }
-        }*/
+        if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
+            DoitEtreNotifie = true;
+            notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
+            notification.setMesssage("Un utilisateur a acheté une de vos composantes");
+            notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
+            listeNotifications.add(notification);
+        }
         return DoitEtreNotifie;
     }
 }

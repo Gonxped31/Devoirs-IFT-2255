@@ -1,5 +1,7 @@
 package domain.logic.Membre;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,7 +20,7 @@ public class Utilisateur extends Membre{
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<String> listeInteret = new ArrayList<>();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
-    private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
+    private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
@@ -241,30 +243,31 @@ public class Utilisateur extends Membre{
     private boolean verifierNouveauParticipant() {
         boolean DoitEtreNotifie = false;
 
-        if (lis.size() > taillePrecedenteListeSuiveur) {
+        /*if (listeActivitesRejoint.size() > taillePrecedenteListeSuiveur) {
             DoitEtreNotifie = true;
             notification.setTitre("NOUVEAU PARTICIPANT");
             notification.setMesssage("Un nouvel utilisateur joint une de vos activités");
             notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
             listeNotifications.add(notification);
-        }
+        }*/
         return DoitEtreNotifie;
     }
 
     private boolean verifierDateLimiteActivite() {
         boolean DoitEtreNotifie = false;
-//        joursRestants;
 
-        /*for (String activite : listeActivitesRejoint) {
-            if (robot.getCpu() >= 100) {
+        for (Activite activite : listeActivitesRejoint) {
+            joursRestants = ChronoUnit.DAYS.between(dateActuelle, (Temporal) activite.getDateDebut());
+
+            // Vérifiez si la date de l'activité est dans les trois jours à venir
+            if (joursRestants >=0 && joursRestants <=3) {
                 DoitEtreNotifie = true;
-                notification.setTitre("SURCHARGE CPU");
-                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                notification.setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
+                notification.setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
+                notification.setTypeNotification(TypeNotification.SENSIBILISATION);
                 listeNotifications.add(notification);
             }
-        }*/
-
+        }
         return DoitEtreNotifie;
     }
 
@@ -445,7 +448,7 @@ public class Utilisateur extends Membre{
     }
 
 
-    public void rejoindreActivite(String activite) {
+    public void rejoindreActivite(Activite activite) {
         this.listeActivitesRejoint.add(activite);
     }
     public ArrayList<String> getListeInteret() {
