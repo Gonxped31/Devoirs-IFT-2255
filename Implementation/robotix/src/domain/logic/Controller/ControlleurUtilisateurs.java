@@ -51,6 +51,9 @@ public class ControlleurUtilisateurs {
     }
 
     public void enregistrerRobot(String nomRobot, String type, String numeroSerie, String numeroDeSerie) {
+
+    public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
+
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         if (!(robot == null)){
@@ -58,6 +61,7 @@ public class ControlleurUtilisateurs {
             robot.setType(type);
             this.utilisateurCourant.enregistrerRobot(robot);
         }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return true;
         //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
@@ -65,7 +69,7 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public void ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
+    public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         Composant comp = this.dataBaseController.retournerComposante(composante);
@@ -73,7 +77,7 @@ public class ControlleurUtilisateurs {
             robot.ajouterComposante(comp);
         }
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-
+        return true;
         //return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
@@ -121,7 +125,7 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public void suivreUtilisateur(String pseudoUtilisateurASuivre){
+    public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Utilisateur aSuivre = this.dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
         this.dataBaseController.supprimerUtilisateur(aSuivre);
@@ -129,6 +133,7 @@ public class ControlleurUtilisateurs {
         this.utilisateurCourant.suivreUtilisateur(aSuivre);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         this.dataBaseController.ajouterUtilisateur(aSuivre);
+        return true;
     }
 
     //TODO

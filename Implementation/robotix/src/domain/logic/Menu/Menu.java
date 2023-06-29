@@ -6,19 +6,25 @@ import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
 import javax.xml.transform.sax.SAXSource;
+import java.io.IOException;
 import java.sql.SQLOutput;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Scanner;
 
 public class Menu {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    //private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    //private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private TypesComposants typesComposants;
-    private MenuUtilisateur menuUtilisateur;
-    private MenusFournisseur menusFournisseur;
-    public void menuPrincipale(Scanner scanner) {
+    private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
+    private MenusFournisseur menusFournisseur = new MenusFournisseur();
+
+    public Menu() throws IOException {
+    }
+
+    public void menuPrincipale(Scanner scanner) throws ParseException {
         String choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
         System.out.println("********Binevenue chez Robotix!********");
