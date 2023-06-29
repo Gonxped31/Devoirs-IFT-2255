@@ -2,11 +2,11 @@ package domain.logic.Robot;
 
 public class Composant {
     private String nom;
-    private Double prix;
+    private String prix;
     private String description;
     private String typeComposant;
 
-    public Composant(String nom, Double prix, String description, String typeComposant){
+    public Composant(String nom, String prix, String description, String typeComposant){
         this.nom = nom;
         this.prix = prix;
         this.description = description;
@@ -22,7 +22,7 @@ public class Composant {
         return nom;
     }
 
-    public Double getPrix() {
+    public String getPrix() {
         return prix;
     }
 

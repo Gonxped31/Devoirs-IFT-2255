@@ -1,8 +1,10 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Robot.Composant;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
@@ -37,8 +39,11 @@ public class ControlleurFournisseurs {
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-    public void ajouterRobot(){
-        this.fournisseurCourant.ajouterRobot();
+    public void ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        ArrayList<Composant> composants =this.fournisseurCourant.produireComposant(nomsCoposantAajouter);
+        this.fournisseurCourant.ajouterRobot(composants);
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
         //dataBaseController.ajouterRobot();
     }
 

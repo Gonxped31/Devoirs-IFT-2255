@@ -81,8 +81,7 @@ public class MenusFournisseur {
 
 		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
-
-		menu.menuPrincipale(scanner);
+        menuFournisseur(scanner, inputNom);//menu.menuPrincipale(scanner);
 	}
 
 	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {
@@ -111,17 +110,20 @@ public class MenusFournisseur {
 
 		switch (choixUsager) {
 			case "1" -> {
-				String composante;
+
+				ArrayList<ArrayList<String>> nomsComposantAajouter=new ArrayList<>();
+
 				boolean continuer;
 				do {
-					System.out.print("Entrez une composante que possède le robot à rajouter : ");
-					composante = scanner.nextLine();
+					System.out.print("Veuillez entrez les information du composant : ");
+					nomsComposantAajouter.add(menuEnregistrerComposante(scanner));
+					//TODO
 					System.out.println("Voulez-vous rajouter une autre composante ? (repondre par oui ou non)");
 					String reponse = scanner.nextLine();
 					continuer = demander(reponse, scanner);
 				} while(continuer);
 
-				controlleurFournisseurs.ajouterRobot();
+				controlleurFournisseurs.ajouterRobot(nomsComposantAajouter);
 				System.out.println(" ");
 				System.out.println("Le robot a été rajouté avec succès !");
 				System.out.println(" ");
@@ -140,7 +142,7 @@ public class MenusFournisseur {
 				menuFournisseur(scanner, nomFournisseur);
 			}
 
-			case "3" -> menuEnregistrerComposante(scanner, nomFournisseur);
+			case "3" -> menuEnregistrerUnComposante(scanner, nomFournisseur);
 
 			case "4" -> {
 				System.out.print("Nom de la composante : ");
@@ -160,6 +162,22 @@ public class MenusFournisseur {
 			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
+	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException {
+		System.out.print("Nom de la composante : ");
+		String composante = scanner.nextLine();
+		System.out.print("Prix : ");
+		String prix = scanner.nextLine();
+		System.out.print("Description : ");
+		String description = scanner.nextLine();
+		System.out.print("Type de la composante : ");
+		String type = scanner.nextLine();
+		controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type, nomFournisseur);
+		System.out.println(" ");
+		System.out.println("La composante a été rajoutée avec succès");
+		System.out.println(" ");
+		menuFournisseur(scanner, nomFournisseur);
+	}
+
 
 	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) throws ParseException {
 		System.out.println("Veuillez faire une requete publique : ");
@@ -338,10 +356,10 @@ public class MenusFournisseur {
 		boolean continuer = false;
 		boolean choix = false;
 		do {
-			if (reponse.equalsIgnoreCase("oui")) {
+			if (reponse.toLowerCase().trim().equals("oui")) {
 				choix = true;
 				continuer = false;
-			} else if (!reponse.equalsIgnoreCase("non")) {
+			} else if (!reponse.toLowerCase().trim().equals("non")) {
 				System.out.println("Choisissez entre 'oui' et 'non' svp.");
 				reponse = scanner.nextLine();
 				continuer = true;
@@ -363,7 +381,8 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuEnregistrerComposante(Scanner scanner, String nomFournisseur) throws ParseException {
+	public ArrayList<String> menuEnregistrerComposante(Scanner scanner) throws ParseException {
+		ArrayList<String> paramettreCoposants = new ArrayList<>();
 		System.out.print("Nom de la composante : ");
 		String composante = scanner.nextLine();
 		System.out.print("Prix : ");
@@ -372,11 +391,15 @@ public class MenusFournisseur {
 		String description = scanner.nextLine();
 		System.out.print("Type de la composante : ");
 		String type = scanner.nextLine();
-		controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type, nomFournisseur);
+	//	controlleurFournisseurs.ajouterComposante(composante, prix, description, type, nomFournisseur);
 		System.out.println(" ");
 		System.out.println("La composante a été rajoutée avec succès");
 		System.out.println(" ");
-		menuFournisseur(scanner, nomFournisseur);
+		paramettreCoposants.add(composante);
+		paramettreCoposants.add(prix);
+		paramettreCoposants.add(description);
+		paramettreCoposants.add(type);
+		return paramettreCoposants;
 	}
 
 	public void menuNotifications(Scanner scanner) {

@@ -98,8 +98,13 @@ public class Fournisseur extends Membre {
         return inputTelephone.length() == 10;
     }
 
-    public void ajouterRobot() {
-        inventaireDeRobot.add(new Robot());
+    public void ajouterRobot(ArrayList<Composant> composants) {
+        Robot r= new Robot();
+        for( Composant c :composants){
+            r.ajouterComposante(c);
+        }
+
+        inventaireDeRobot.add(r);
     }
 
     public boolean retirerRobot(String numeroSerie) {
@@ -269,6 +274,18 @@ public class Fournisseur extends Membre {
             listeNotifications.add(notification);
         }
         return DoitEtreNotifie;
+    }
+
+    public  ArrayList<Composant> produireComposant(ArrayList<ArrayList<String>> nomsComposant) {
+        ArrayList<Composant> comps = new ArrayList<>();
+        for (ArrayList<String> a : nomsComposant) {
+
+            comps.add(new Composant(
+                    a.get(0), a.get(1), a.get(2), a.get(3)
+            ));
+
+        }
+        return comps;
     }
 }
 
