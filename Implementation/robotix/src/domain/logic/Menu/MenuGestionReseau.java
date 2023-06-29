@@ -6,7 +6,7 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 
 public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private MenuUtilisateur menuUtil;
+    private MenusUtilisateur menuUtil;
     public void gererReseauSocial(Scanner scanner, String pseudo){
         System.out.println("1- Suivre un utilisateur");
         System.out.println("2- Gerer mes suiveurs");

@@ -25,6 +25,8 @@ public class Fournisseur extends Membre {
         this.capaciteProductionComposantes =capacite;
     }
 
+    /* Getters */
+
     public String getNomCompagnie() {
         return this.nomCompagnie;
     }
@@ -72,6 +74,14 @@ public class Fournisseur extends Membre {
     }
 
     public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
+
+
+    /* Setters */
+    public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
+        this.capaciteProductionComposantes = capaciteProductionComposantes;
+    }
+
+
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -146,6 +156,41 @@ public class Fournisseur extends Membre {
         return bool;
     }
 
+    public boolean modifierPrixComposante(String composante, Double nouveauPrix){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setPrix(nouveauPrix);
+                bool = true;
+                break;
+            }
+        }
+        return bool;
+    }
+
+    public boolean modifierDescriptionComposante(String composante, String nouvelleDescription){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setDescription(nouvelleDescription);
+                bool = true;
+                break;
+            }
+        }
+        return bool;
+    }
+
+    public void modifierProfile(String choix, String info){
+        switch (choix.toLowerCase()) {
+            case "nom" -> this.setNom(info);
+            case "addresse" -> this.setAdresse(info);
+            case "emain" -> this.setEmail(info);
+            case "numerotelephone" -> this.setNumeroTelephone(info);
+            case "nomcompagnie" -> this.setNomCompagnie(info);
+            case "capaciteproduction" -> this.setCapaciteProductionComposantes(info);
+        }
+    }
+
     /*@Override
     public String toString() {
         return  "Fournisseur { " + '\n' +
@@ -159,38 +204,6 @@ public class Fournisseur extends Membre {
                 "Nom de compagnie = " + getNomCompagnie() + '\n' +
                 "}\n";
     }*/
-
-    public static ArrayList<Fournisseur> trouverFournisseur(String choix, String info, ArrayList<Fournisseur> listeFournisseurs){
-        ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
-        switch (choix) {
-            case "1" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getNom().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "2" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "3" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getTypeComposantesFabriquer().equals(info)) {
-                        fournisseurs.add(fournisseur);
-
-                    }
-                }
-
-            case "4" :
-                fournisseurs = listeFournisseurs;
-        }
-
-        return fournisseurs;
-    }
 
     public LinkedList<Notification> notifier() {
         /*boolean NotifierEtatRobot;

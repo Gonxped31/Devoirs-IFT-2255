@@ -9,7 +9,7 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
-public class MenuUtilisateur {
+public class MenusUtilisateur {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private Menu menu;
@@ -17,7 +17,8 @@ public class MenuUtilisateur {
     private MenuGererTacheActivite menuGererTacheActivite;
     private MenuGestionReseau menuReseau;
 
-    public MenuUtilisateur() throws IOException {
+    public MenusUtilisateur() throws IOException {
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) {
@@ -134,7 +135,6 @@ public class MenuUtilisateur {
                 menu.menuPrincipale(scanner);
         }
     }
-
     public void menuRequetesPubliques(Scanner scanner,String pseudo) {
         System.out.println("Veuillez faire une requete publique : ");
         System.out.println("1- Voir la liste d'utilisateurs");
@@ -181,8 +181,6 @@ public class MenuUtilisateur {
             }
         }
     }
-
-
     public void menuRechercheComposante(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par: ");
         System.out.println("1- Type de la composante");
@@ -201,7 +199,6 @@ public class MenuUtilisateur {
             }
         }
     }
-
     public void menuRechercheInterets(Scanner scanner, String nomFournisseur){
         System.out.println("Voulez vous appliquer un filtre?");
         System.out.println("1- Oui");
@@ -240,7 +237,6 @@ public class MenuUtilisateur {
             }
         }
     }
-
     public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par:");
         System.out.println("1- Nom");
@@ -271,7 +267,6 @@ public class MenuUtilisateur {
             }
         }
     }
-
     public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par:");
         System.out.println("1- Pseudo");
@@ -306,7 +301,6 @@ public class MenuUtilisateur {
             }
         }
     }
-
     public void modifierProfile(Scanner scanner, String pseudo) {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");
@@ -318,48 +312,63 @@ public class MenuUtilisateur {
         System.out.println("7- Nom de la compagnie");
         System.out.println("8- Mot de passe");
         String choix = scanner.nextLine();
-        switch(choix){
-            case "1":
+        switch (choix) {
+            case "1" -> {
                 System.out.println("Entrez votre nouveau nom: ");
                 String nom = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "nom", nom);
-                break;
-            case "2":
+            }
+            case "2" -> {
                 System.out.println("Entrez votre nouveau prenom: ");
                 String prenom = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "prenom", prenom);
-                break;
-            case "3":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "3" -> {
                 System.out.println("Entrez votre nouvelle adresse: ");
                 String adresse = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "adresse", adresse);
-                break;
-            case "4":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "4" -> {
                 System.out.println("Entrez votre nouveau pseudo: ");
                 String newPseudo = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "pseudo", newPseudo);
-                break;
-            case "5": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "5" -> {
                 System.out.println("Entrez votre nouveau email : ");
                 String email = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "email", email);
-                break;
-            case "6":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "6" -> {
                 System.out.println("Entrez votre nouveau numero de telephone : ");
                 String numTele = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "numerotelephone", numTele);
-                break;
-            case "7": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "7" -> {
                 System.out.println("Entrez votre nouvelle compagnie : ");
                 String compagnie = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "nomcompagnie", compagnie);
-                break;
-            case "8": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "8" -> {
                 System.out.println("Entrez votre nouveau mot de passe : ");
-                String mdp= scanner.nextLine();
+                String mdp = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "mdp", mdp);
-                break;
-        }        
+                System.out.println("Modification terminée avec succès !");
+            }
+        }
     }
     public void menuNotification(Scanner scanner, String pseudo){
         for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {

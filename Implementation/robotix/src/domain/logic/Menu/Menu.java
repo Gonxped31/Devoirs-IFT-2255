@@ -1,22 +1,17 @@
 package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Membre.Fournisseur;
-import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
-import javax.xml.transform.sax.SAXSource;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.Scanner;
 
 public class Menu {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private ControlleurUtilisateurs controlleurUtilisateurs;
+    private ControlleurFournisseurs controlleurFournisseurs;
     private TypesComposants typesComposants;
-    private MenuUtilisateur menuUtilisateur;
+    private MenusUtilisateur menuUtilisateur;
     private MenusFournisseur menusFournisseur;
     public void menuPrincipale(Scanner scanner) {
         String choixUsager;
@@ -34,24 +29,12 @@ public class Menu {
             choixUsager = scanner.nextLine();
 
             switch (choixUsager) {
-                case "1" :
-                    menuUtilisateur.inscrireUtilisateur(scanner);
-                    break;
-                case "2" :
-                    menusFournisseur.menuInscriptionFournisseur(scanner);
-                    break;
-                case "3" :
-                    menuUtilisateur.connecterUtilisateur(scanner);
-                    break;
-                case "4" :
-                    menusFournisseur.menuConnexionFournisseur(scanner);
-                    break;
-                case "5" :
-                    System.out.println("Au revoir !");
-                    break;
-                default :
-                    System.out.println("Choix invalide. Veuillez réessayez.");
-                    break;
+                case "1" -> menuUtilisateur.inscrireUtilisateur(scanner);
+                case "2" -> menusFournisseur.menuInscriptionFournisseur(scanner);
+                case "3" -> menuUtilisateur.connecterUtilisateur(scanner);
+                case "4" -> menusFournisseur.menuConnexionFournisseur(scanner);
+                case "5" -> System.out.println("Au revoir !");
+                default -> System.out.println("Choix invalide. Veuillez réessayez.");
             }
         } while (!options.contains(Integer.parseInt(choixUsager)));
     }

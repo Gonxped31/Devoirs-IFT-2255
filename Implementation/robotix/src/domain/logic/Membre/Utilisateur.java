@@ -273,18 +273,12 @@ public class Utilisateur extends Membre{
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
-            case "nom" :
-                this.setNom(nouvelInfo);
-            case "prenom" :
-                this.setPrenom(nouvelInfo);
-            case "adresse" :
-                this.setAdresse(nouvelInfo);
-            case "email" :
-                this.setEmail(nouvelInfo);
-            case "numerotelephone" :
-                this.setNumeroTelephone(nouvelInfo);
-            case "nomcompagnie" :
-                this.setNomCompagnie(nouvelInfo);
+            case "nom" -> this.setNom(nouvelInfo);
+            case "prenom" -> this.setPrenom(nouvelInfo);
+            case "adresse" -> this.setAdresse(nouvelInfo);
+            case "email" -> this.setEmail(nouvelInfo);
+            case "numerotelephone" -> this.setNumeroTelephone(nouvelInfo);
+            case "nomcompagnie" -> this.setNomCompagnie(nouvelInfo);
         }
 
     }

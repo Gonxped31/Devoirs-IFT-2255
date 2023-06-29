@@ -15,7 +15,7 @@ import domain.logic.Robot.Activite;
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    private MenuUtilisateur menuUtil;
+    private MenusUtilisateur menuUtil;
     private Activite activite = new Activite();
 
     public MenuGererTacheActivite() throws IOException {

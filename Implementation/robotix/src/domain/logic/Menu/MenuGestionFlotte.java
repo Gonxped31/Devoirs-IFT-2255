@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
 
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private MenuUtilisateur menuUtil = new MenuUtilisateur();
+    private MenusUtilisateur menuUtil = new MenusUtilisateur();
 
     public MenuGestionFlotte() throws IOException {
     }
