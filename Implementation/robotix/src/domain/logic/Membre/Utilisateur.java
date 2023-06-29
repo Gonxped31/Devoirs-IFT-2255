@@ -187,7 +187,7 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public void creerAction(String nomAction, ArrayList<TypesComposants> composantes, String duree){
+    public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
         listeActions.add(action);
    /* public void creerTache(String nomTache, ArrayList<Action> actions){

@@ -11,6 +11,7 @@ public class Activite {
     private String nom;
     private Date dateDebut;
     private Date dateFin;
+    private static int numeroActivite = 0;
     private ArrayList<Tache> listeDeTache = new ArrayList<>();
     private ArrayList<Utilisateur> listeUtilisateurInsccrit = new ArrayList<>();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
@@ -21,6 +22,8 @@ public class Activite {
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
     }
+
+
 
     public String getNom() {
         return nom;
@@ -46,13 +49,14 @@ public class Activite {
         return listeUtilisateurInsccrit;
     }
 
+
     public String getInfoActiviteFormater(){
-        return "Nom : " + this.nom +
+        numeroActivite++;
+        return numeroActivite+"-"+" Nom : " + this.nom +
                 "\nDate de debut :" + this.dateDebut.toString() +
                 "\nDate de fin : " + this.dateFin.toString() +
                 "Liste de tache : " + listeDeTache.stream()
                 .map(tache -> tache.getInfoTacheFormater())
                 .collect(Collectors.joining("\n"));
-
     }
 }

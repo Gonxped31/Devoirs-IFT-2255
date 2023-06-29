@@ -59,11 +59,10 @@ public class ControlleurUtilisateurs {
         return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
-    public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes, String duree){
-        dataBaseController.creerAction(nomAction, composantes);
+    public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-        //Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        //utilisateur.creerAction(nomAction, composantes);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
@@ -85,11 +84,8 @@ public class ControlleurUtilisateurs {
         return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
     }
 
-    public boolean rejoindreActivite(String pseudo, String nomRobot, String activite){
-        return !(dataBaseController.rejoindreActivite(pseudo, nomRobot, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
-        
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.rejoindreActivite();
+    public boolean rejoindreActivite(String pseudo, String activite){
+        return !(dataBaseController.rejoindreActivite(pseudo, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
     }
 
     public boolean suivreUtilisateur(String pseudo,String nom){

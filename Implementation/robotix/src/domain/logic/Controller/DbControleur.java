@@ -1,5 +1,7 @@
 package domain.logic.Controller;
 
+import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Utilisateur;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
 import service.BaseDeDonneeUtilisateur;
@@ -71,5 +73,16 @@ public class DbControleur {
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();
     }
 
-
+    public void supprimerFournisseur(Fournisseur f) {
+        this.baseDeDonneeFournisseur.supprimerObjet(f);
+    }
+    public void ajouterFournisseur(Fournisseur f) {
+        this.baseDeDonneeFournisseur.ajouterObjet(f);
+    }
+    public void supprimerUtilisateur(Utilisateur u){
+        this.baseDeDonneeUtilisateur.supprimerObjet(u);
+    }
+    public void ajouterUtilisateur(Utilisateur u){
+        this.baseDeDonneeUtilisateur.ajouterObjet(u);
+    }
 }

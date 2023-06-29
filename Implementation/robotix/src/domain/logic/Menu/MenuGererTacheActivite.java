@@ -1,5 +1,6 @@
 package domain.logic.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,9 @@ public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
+
+    public MenuGererTacheActivite() throws IOException {
+    }
 
     //Tache
     public void gererMesTaches(Scanner scanner, String pseudo){
@@ -123,23 +127,7 @@ public class MenuGererTacheActivite {
 
     public void menuRejoindreActivite(String pseudo, Scanner scanner){
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
-        //Besoin de get une liste des activites a choisir
-        //Devrais aller dans DB
-        ArrayList<String> activites = controlleurUtilisateurs.getActivites();
-        for (int i = 0; i < activites.size(); i++) {
-            Integer id = i+1;
-            System.out.println(id.toString() + activites.get(i));
-        }     
-        String decisionActivite = scanner.nextLine(); 
-        String nomActivite = activites.get(Integer.parseInt(decisionActivite));  
-        System.out.println("A quelle robot voulez-vous affecter cette activité");
-        ArrayList<String> robots = controlleurUtilisateurs.getRobots(pseudo);
-        for (int i = 0; i < robots.size(); i++) {
-            Integer id = i+1;
-            System.out.println(id.toString() + robots.get(i));
-        }
-        String decisionRobot = scanner.nextLine();
-        String nomRobot = robots.get(Integer.parseInt(decisionRobot));
-        controlleurUtilisateurs.rejoindreActivite(pseudo, nomRobot, nomActivite);
+        String nomActivite = scanner.nextLine();
+        controlleurUtilisateurs.rejoindreActivite(pseudo, nomActivite);
     }
 }

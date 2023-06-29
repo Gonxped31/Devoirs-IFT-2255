@@ -185,7 +185,7 @@ public class Fournisseur extends Membre {
         boolean EstNotifie = false;
 
         for (Robot robot : inventaireDeRobot) {
-            if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
+            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
                 notification.setTitre("MAUVAIS FONCTIONNEMENT");
                 notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
@@ -201,6 +201,7 @@ public class Fournisseur extends Membre {
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
             }
         }
+    }
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
