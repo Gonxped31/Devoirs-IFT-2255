@@ -16,13 +16,15 @@ public class Activite {
     private ArrayList<Utilisateur> listeUtilisateurInsccrit = new ArrayList<>();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
 
+    public Activite () {
+
+    }
     public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
     }
-
 
 
     public String getNom() {
@@ -49,6 +51,33 @@ public class Activite {
         return listeUtilisateurInsccrit;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public static void setNumeroActivite(int numeroActivite) {
+        Activite.numeroActivite = numeroActivite;
+    }
+
+    public void setListeDeTache(ArrayList<Tache> listeDeTache) {
+        this.listeDeTache = listeDeTache;
+    }
+
+    public void setListeUtilisateurInsccrit(ArrayList<Utilisateur> listeUtilisateurInsccrit) {
+        this.listeUtilisateurInsccrit = listeUtilisateurInsccrit;
+    }
+
+    public void setListeInteretAssocie(ArrayList<Interet> listeInteretAssocie) {
+        this.listeInteretAssocie = listeInteretAssocie;
+    }
 
     public String getInfoActiviteFormater(){
         numeroActivite++;

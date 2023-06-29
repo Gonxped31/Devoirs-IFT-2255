@@ -7,11 +7,13 @@ import java.util.Scanner;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Robot.Action;
+import domain.logic.Robot.Activite;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
+    private Activite activite = new Activite();
 
     public MenuGererTacheActivite() throws IOException {
     }
@@ -128,6 +130,7 @@ public class MenuGererTacheActivite {
     public void menuRejoindreActivite(String pseudo, Scanner scanner){
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
         String nomActivite = scanner.nextLine();
+
         controlleurUtilisateurs.rejoindreActivite(pseudo, nomActivite);
     }
 }

@@ -1,4 +1,5 @@
 package domain.logic.Membre;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,9 @@ public class Utilisateur extends Membre{
     private int point;
     private Tache tache;
     private Notification notification = new Notification();
+    private int taillePrecedenteListeSuiveur;
+    private LocalDate dateActuelle = LocalDate.now();
+    private long joursRestants;
 
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
@@ -122,6 +126,7 @@ public class Utilisateur extends Membre{
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
+        taillePrecedenteListeSuiveur = listeUtilisateursSuivi.size();
         listeUtilisateursSuivi.add(suivi);
     }
 
@@ -129,9 +134,8 @@ public class Utilisateur extends Membre{
         return listeNotifications;
     }
 
-    public void notifier(){
-        //Va faire appel a diff methodes de problemes
-        boolean[] tabBoolean = new boolean[4];
+    public boolean[] notifier(){
+        boolean[] tabBoolean = new boolean[7];
         boolean NotifierEtatRobot;
         boolean NotifierBatterieRobot;
         boolean NotifiercCPURobot;
@@ -152,6 +156,11 @@ public class Utilisateur extends Membre{
         tabBoolean[1] = NotifierBatterieRobot;
         tabBoolean[2] = NotifiercCPURobot;
         tabBoolean[3] = NotifierNouvelleActivite;
+        tabBoolean[4] = NotifierNouveauAbonne;
+        tabBoolean[5] = NotifierNouveauParticipant;
+        tabBoolean[6] = NotifierSensibilisation;
+
+        return tabBoolean;
     }
 
     private boolean verifierEtatRobot() {
@@ -217,21 +226,45 @@ public class Utilisateur extends Membre{
     private boolean verifierNouveauAbonne() {
         boolean DoitEtreNotifie = false;
 
+        if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
+            DoitEtreNotifie = true;
+            notification.setTitre("NOUVEAU ABONNÉ");
+            notification.setMesssage("Un nouvel utilisateur suit votre profil");
+            notification.setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
+            listeNotifications.add(notification);
+        }
         return DoitEtreNotifie;
     }
 
     private boolean verifierNouveauParticipant() {
         boolean DoitEtreNotifie = false;
 
+        if (lis.size() > taillePrecedenteListeSuiveur) {
+            DoitEtreNotifie = true;
+            notification.setTitre("NOUVEAU PARTICIPANT");
+            notification.setMesssage("Un nouvel utilisateur joint une de vos activités");
+            notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
+            listeNotifications.add(notification);
+        }
         return DoitEtreNotifie;
     }
 
     private boolean verifierDateLimiteActivite() {
         boolean DoitEtreNotifie = false;
+//        joursRestants;
+
+        /*for (String activite : listeActivitesRejoint) {
+            if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }*/
 
         return DoitEtreNotifie;
     }
-
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
