@@ -232,6 +232,7 @@ public class Utilisateur extends Membre{
             Activite activite = new Activite(nomActivite, dateDebut, dateFin, listeTache, null, null);
         }
     }*/
+}
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
         for (int i = 0; i < listeRobot.size(); i++) {

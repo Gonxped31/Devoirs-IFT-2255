@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Robot.Action;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
 
     //Tache
@@ -122,6 +124,7 @@ public class MenuGererTacheActivite {
     public void menuRejoindreActivite(String pseudo, Scanner scanner){
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
         //Besoin de get une liste des activites a choisir
+        //Devrais aller dans DB
         ArrayList<String> activites = controlleurUtilisateurs.getActivites();
         for (int i = 0; i < activites.size(); i++) {
             Integer id = i+1;

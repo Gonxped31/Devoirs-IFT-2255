@@ -67,9 +67,9 @@ public class MenuGestionFlotte {
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
-        System.out.print("Nom du robot : ");
-        String nomRobot = scanner.nextLine();
-        if (controlleurUtilisateurs.ajouterComposanteRobot(nomComposante, nomRobot, pseudo)){
+        System.out.println("Veuillez entrer le numero de serie du robot");
+        String numeroDeSerie = scanner.nextLine();
+        if (controlleurUtilisateurs.ajouterComposanteRobot(nomComposante, numeroDeSerie, pseudo)){
             System.out.println(" ");
             System.out.println("La composante a bien été ajoutée.");
             System.out.println(" ");

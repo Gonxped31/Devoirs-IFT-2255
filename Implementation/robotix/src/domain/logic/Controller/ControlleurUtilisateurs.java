@@ -55,15 +55,15 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public boolean ajouterComposanteRobot(Composant composante, String numeroSerie, String pseudo){
+    public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
         return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
     public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes, String duree){
         dataBaseController.creerAction(nomAction, composantes);
         this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerAction(nomAction, composantes);
+        //Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
+        //utilisateur.creerAction(nomAction, composantes);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
