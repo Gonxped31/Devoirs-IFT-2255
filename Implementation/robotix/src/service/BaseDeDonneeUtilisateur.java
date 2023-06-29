@@ -97,4 +97,37 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
+    public String recupererListeInteret(){
+        return (String) this.getListObjet().stream()
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+    public String recupererListeInteretUtilisateur(String pseudo){
+        return (String) this.getListObjet().stream()
+                .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .collect(Collectors.joining(", "));
+    }
+    public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
+    {
+        return (String) this.getListObjet().stream()
+                .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudo))
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .filter(interet-> ((String) interet).substring(0,3).equals(troislettre))
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+    public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
+    {
+        return (String) this.getListObjet().stream()
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .filter(interet-> ((String) interet).substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+
 }
