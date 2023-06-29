@@ -32,9 +32,11 @@ public class MenuGestionFlotte {
         while (reessayer) {
             System.out.println("Nom du robot : ");
             String nomRobot = scanner.nextLine();
+            System.out.println("Veuillez entrer le type du robot : ");
+            String type = scanner.nextLine();
             System.out.println("Numero de serie: ");
             String numeroDeSerie = scanner.nextLine();
-            if(controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, numeroDeSerie)) {
+            if(controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, type, numeroDeSerie)) {
                 System.out.println("Le robot a été bien enrégistré !");
                 reessayer = false;
             } else {
@@ -102,7 +104,4 @@ public class MenuGestionFlotte {
         }
         controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes);
     }
-
-    
-
 }
