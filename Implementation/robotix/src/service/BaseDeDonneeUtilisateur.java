@@ -2,6 +2,7 @@ package service;
 
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeFournisseur;
@@ -28,16 +29,25 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     @Override
     protected void init() {
-         //Todo
+        //Todo
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
-          //
-         //new Utilisateurs (),
+                new Utilisateur("Boubacar", "Kelly", "adresse1", "KellyB",
+                        "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Damov", "Kamen", "adresse2", "KD",
+                        "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new ArrayList<Interet>()),
+                new Utilisateur("Bio", "Samir", "adresse3", "SB",
+                        "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new ArrayList<Interet>())
+                /*new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
+                        "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech"),
+                new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",
+                        "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA","35", "iRobot"),
+                new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "thompson5",
+                        "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro")*/
         ));
-
-        tempList.stream().forEach(utilisateur-> {
-         this.ajouterObjet(utilisateur);
+        tempList.stream().forEach(fournisseur -> {
+            this.ajouterObjet(fournisseur);
         });
-     }
+    }
     public String recupererLalisteDesUtilisateur()
     {
         return (String) this.getListObjet().stream()
