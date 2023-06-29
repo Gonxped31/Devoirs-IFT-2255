@@ -18,8 +18,8 @@ public class ControlleurUtilisateurs {
     public ControlleurUtilisateurs() throws IOException {
     }
 
-    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie,this.utilisateurCourant.produireListeInteret(listeInteret));
+    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie,this.utilisateurCourant.produireListeInteret(listeInteret));
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 

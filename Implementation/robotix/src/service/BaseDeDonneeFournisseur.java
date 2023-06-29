@@ -38,9 +38,9 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
     protected void init() {
          //Todo
         List<Fournisseur> tempList= new ArrayList<>(Arrays.asList(
-       new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1",  "nom1@robotech.ca",
+       /*new Fournisseur("Roy", "123 rue des Innovations, Montr�al, QC, H1A 0A1",  "nom1@robotech.ca",
                         "5142104555", "RobotA", "CPU", "30", "RoboTechnologies")
-        /*new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
+        new Fournisseur("Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "bouchard2",
                         "contact@automatech.ca", "4503335432", "RobotB", "BRAS", "25", "Automatech"),
         new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
                         "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech"),

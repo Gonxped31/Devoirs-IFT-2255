@@ -4,6 +4,7 @@ import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,8 +13,11 @@ import java.util.Scanner;
 public class MenusFournisseur {
 
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs;
-	private DbControleur dbControlleur;
+	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+	private DbControleur dbControlleur = new DbControleur();
+
+	public MenusFournisseur() throws IOException {
+	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException {
 		boolean NomUnique = false;
@@ -35,10 +39,16 @@ public class MenusFournisseur {
 			System.out.print("Nom: ");
 			inputNom = scanner.nextLine();
 			NomUnique = controlleurFournisseurs.verifierNom(inputNom);
-			if (!NomUnique){
+			if (NomUnique){
 				System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
 			}
+			else {
+				break;
+			}
 		}
+
+		System.out.println("Mot de passe: ");
+		String mdp = scanner.nextLine();
 
 		while (!EmailValide) {
 			System.out.print("Adresse courriel: ");
@@ -69,7 +79,7 @@ public class MenusFournisseur {
 		System.out.print("Nom de compagnie: ");
 		inputCompagnie = scanner.nextLine();
 
-		controlleurFournisseurs.inscriptionFournisseur(inputNom, inputAdresse, inputEmail,
+		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
 
 		menu.menuPrincipale(scanner);

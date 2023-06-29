@@ -1,18 +1,15 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.TypesComposants;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
 
     public ControlleurFournisseurs() throws IOException {
+
     }
 
     public boolean authentificationFournisseur(String connexion, String membre){
@@ -21,10 +18,10 @@ public class ControlleurFournisseurs {
         //return Fournisseur.authentification(connexion, listeFournisseurs);
     }
 
-    public void inscriptionFournisseur(String inputNom, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
+    public void inscriptionFournisseur(String inputNom, String mdp, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
                                        String inputTypeComposantes, String inputCapacite, String inputCompagnie){
 
-        dataBaseController.ajouterFournisseur(new Fournisseur(inputNom, inputAdresse, inputCourriel,
+        dataBaseController.ajouterFournisseur(new Fournisseur(inputNom,mdp, inputAdresse, inputCourriel,
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie));
     }
 
@@ -40,8 +37,6 @@ public class ControlleurFournisseurs {
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-    /*        */
-
     public void ajouterRobot(){
         this.fournisseurCourant.ajouterRobot();
         //dataBaseController.ajouterRobot();

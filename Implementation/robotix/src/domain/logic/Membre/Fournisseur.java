@@ -16,9 +16,9 @@ public class Fournisseur extends Membre {
     private LinkedList<Notification> listeNotifications = new LinkedList<>();
     private int taillePrecedenteInventaireComposantes;
 
-    public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
+    public Fournisseur(String nom, String mdp,  String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
-        super(nom, adresse, email, numeroTelephone, nomcompagnie);
+        super(nom, adresse, email, numeroTelephone, nomcompagnie, mdp);
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capaciteProductionComposantes =capacite;
