@@ -7,7 +7,6 @@ import domain.logic.Menu.Menu;
 import domain.logic.Controller.ControlleurUtilisateurs;
 
 public class MenuUtilisateur {
-    /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private Menu menu;
     private MenuGestionFlotte menuGestionFlotte;
@@ -71,7 +70,6 @@ public class MenuUtilisateur {
         System.out.println("Have fun " + pseudo + " !");
         menu.menuPrincipale(scanner);
     }
-
     public void connecterUtilisateur(Scanner scanner) {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
@@ -83,7 +81,6 @@ public class MenuUtilisateur {
             menu.menuPrincipale(scanner);
         }
     }
-
     public void menuUtilisateur(Scanner scanner, String pseudo) {
         ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
         ArrayList<String> fournisCPU = new ArrayList<>();
@@ -178,7 +175,6 @@ public class MenuUtilisateur {
                 break;
         }        
     }
-
     public void menuNotification(Scanner scanner, String pseudo){
         for (String notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);

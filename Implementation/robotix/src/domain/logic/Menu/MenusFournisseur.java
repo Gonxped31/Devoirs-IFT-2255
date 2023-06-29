@@ -90,7 +90,8 @@ public class MenusFournisseur {
 		System.out.println("2- Retirer un robot");
 		System.out.println("3- Enregistrer une composante");
 		System.out.println("4- Retirer une composante");
-		System.out.println("5- Revenir au menu robotix");
+		System.out.println("5- Modifier mon profile fournisseur");
+		System.out.println("6- Revenir au menu robotix");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -138,7 +139,9 @@ public class MenusFournisseur {
 				menuFournisseur(scanner, nomFournisseur);
 			}
 
-			case "5" -> {
+			case "5" -> menuModifierProfileFournisseur(scanner);
+
+			case "6" -> {
 				System.out.println("Au revoir !");
 				menu.menuPrincipale(scanner);
 			}
