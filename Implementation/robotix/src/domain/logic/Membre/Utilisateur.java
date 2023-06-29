@@ -19,7 +19,7 @@ public class Utilisateur extends Membre{
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<String> listeInteret = new ArrayList<>();
-    private ArrayList<Notification> listeNotifications = new ArrayList<>();
+    private LinkedList<Notification> listeNotifications = new LinkedList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
@@ -49,7 +49,7 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public ArrayList<Notification> getNotifs(){
+    public LinkedList<Notification> getNotifs(){
         return listeNotifications;
     }
  
@@ -132,11 +132,9 @@ public class Utilisateur extends Membre{
         listeUtilisateursSuivi.add(suivi);
     }
 
-    public ArrayList<Notification> voirNotifications(){
+    public LinkedList<Notification> voirNotifications(){
         return listeNotifications;
     }
-
-
 
     public LinkedList<Notification> notifier(){
         /*boolean[] tabBoolean = new boolean[7];

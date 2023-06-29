@@ -136,7 +136,7 @@ public class ControlleurUtilisateurs {
         utilisateur.gererInteret();
     }
 
-    public ArrayList<Notification> voirNotifications(String pseudo){
+    public LinkedList<Notification> voirNotifications(String pseudo){
         return this.utilisateurCourant.voirNotifications();
     }
 
