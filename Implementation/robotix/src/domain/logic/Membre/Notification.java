@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatter;
 public class Notification {
     private String titre;
     private String messsage;
-    private LocalDateTime date = LocalDateTime.now();
+    private LocalDateTime date  ;
     private TypeNotification typeNotification;
 
     public Notification() {
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        date = LocalDateTime.parse(date.format(formatDate));
+
+        date = date = LocalDateTime.now();
     }
 
     public String getTitre() {

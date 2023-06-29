@@ -14,11 +14,11 @@ public abstract class BaseDeDonnee<T>{
 
 private List<T> listObjet;
 private File database;
-private Gson gson;
+private Gson gson= new Gson();;
 public BaseDeDonnee(String fileName) throws IOException {
     this.database= new File(fileName);
     this.listObjet=lireFichier();
-    this.gson= new Gson();
+
 }
 
 protected abstract Type getType();
@@ -27,8 +27,9 @@ public List<T> lireFichier() throws IOException {
          if(!database.exists())
          {
             database.createNewFile();
-            init();
-         }
+
+         }init();
+
 
         try {
             String contenu = new String(Files.readAllBytes(Paths.get(database.getPath())));
@@ -51,7 +52,9 @@ protected void sauvegarder()
         }
 }
 public void ajouterObjet(T objet)
-{
+{   if (this.listObjet==null){
+    this.listObjet=new ArrayList<>();
+}
     this.listObjet.add(objet);
     this.sauvegarder();
 }
@@ -64,7 +67,7 @@ protected abstract void init();
 
 public List<T> getListObjet()
 {
-    return this.listObjet;
+    return this.listObjet==null ? new ArrayList<>() : listObjet;
 }
  
 }

@@ -2,6 +2,7 @@ package service;
 
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Membre;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
@@ -27,7 +28,7 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         @Override
         protected Type getType() {
-           return null;
+            return new TypeToken<ArrayList<Membre>>(){}.getType();
         }
 
 

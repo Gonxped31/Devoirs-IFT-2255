@@ -50,7 +50,7 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public void enregistrerRobot(String nomRobot, String type, String numeroSerie, String numeroDeSerie) {
+
 
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
 
