@@ -16,16 +16,14 @@ public class Utilisateur extends Membre{
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<String> listeInteret = new ArrayList<>();
-    private ArrayList<String> listeNotifications = new ArrayList<>();
+    private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
-
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
     private int point;
     private Tache tache;
-
-
+    private Notification notification = new Notification();
 
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
@@ -45,7 +43,7 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public ArrayList<String> getNotifs(){
+    public ArrayList<Notification> getNotifs(){
         return listeNotifications;
     }
  
@@ -127,13 +125,113 @@ public class Utilisateur extends Membre{
         listeUtilisateursSuivi.add(suivi);
     }
 
-    public ArrayList<String> voirNotifications(){
+    public ArrayList<Notification> voirNotifications(){
         return listeNotifications;
     }
 
     public void notifier(){
         //Va faire appel a diff methodes de problemes
+        boolean[] tabBoolean = new boolean[4];
+        boolean NotifierEtatRobot;
+        boolean NotifierBatterieRobot;
+        boolean NotifiercCPURobot;
+        boolean NotifierNouvelleActivite;
+        boolean NotifierNouveauAbonne;
+        boolean NotifierNouveauParticipant;
+        boolean NotifierSensibilisation;
+
+        NotifierEtatRobot = verifierEtatRobot();
+        NotifierBatterieRobot = verifierBatterieRobot();
+        NotifiercCPURobot = verifierCPURobot();
+        NotifierNouvelleActivite = verifierNouvelleActivite();
+        NotifierNouveauAbonne = verifierNouveauAbonne();
+        NotifierNouveauParticipant = verifierNouveauParticipant();
+        NotifierSensibilisation = verifierDateLimiteActivite();
+
+        tabBoolean[0] = NotifierEtatRobot;
+        tabBoolean[1] = NotifierBatterieRobot;
+        tabBoolean[2] = NotifiercCPURobot;
+        tabBoolean[3] = NotifierNouvelleActivite;
     }
+
+    private boolean verifierEtatRobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
+                DoitEtreNotifie = true;
+                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierBatterieRobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getBatterie() >= 20) {
+                DoitEtreNotifie = true;
+                notification.setTitre("BATTERIE FAIBLE");
+                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierCPURobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouvelleActivite() {
+        boolean DoitEtreNotifie = false;
+
+        /*for (Activite activite : listeInteret) {
+            if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }*/
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouveauAbonne() {
+        boolean DoitEtreNotifie = false;
+
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouveauParticipant() {
+        boolean DoitEtreNotifie = false;
+
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierDateLimiteActivite() {
+        boolean DoitEtreNotifie = false;
+
+        return DoitEtreNotifie;
+    }
+
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {

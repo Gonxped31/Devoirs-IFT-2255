@@ -1,5 +1,6 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
@@ -111,7 +112,7 @@ public class ControlleurUtilisateurs {
         utilisateur.gererInteret();
     }
 
-    public ArrayList<String> voirNotifications(String pseudo){
+        public ArrayList<Notification> voirNotifications(String pseudo){
         return this.utilisateurCourant.voirNotifications();
     }
 

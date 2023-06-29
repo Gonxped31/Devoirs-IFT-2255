@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+<<<<<<< HEAD
 import domain.logic.Controller.DbControleur;
+=======
+import domain.logic.Membre.Notification;
+>>>>>>> dddebf2ee7cca1d5bee82e4e7f853ff7d6356646
 import domain.logic.Menu.Menu;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -366,7 +370,7 @@ public class MenuUtilisateur {
     }
 
     public void menuNotification(Scanner scanner, String pseudo){
-        for (String notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+        for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);
         }
         System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
