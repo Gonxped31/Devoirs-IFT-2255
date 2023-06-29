@@ -291,4 +291,8 @@ public class Utilisateur extends Membre{
     public void setListSuiveur(Set<Utilisateur> listSuiveur) {
         this.listSuiveur = listSuiveur;
     }
+
+    public void rejoindreActivite(String activite) {
+        this.listeActivitesRejoint.add(activite);
+    }
 }

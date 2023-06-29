@@ -75,7 +75,9 @@ public class MenuUtilisateur {
     public void connecterUtilisateur(Scanner scanner) {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
-        if (controlleurUtilisateurs.authentification(connexion, "Utilisateur")) {
+        System.out.println("Veuillez entrer votre mot de passe: ");
+        String mdp = scanner.nextLine();
+        if (controlleurUtilisateurs.authentification(connexion, mdp, "Utilisateur")) {
             System.out.println("Bienvenue " + connexion + "!");
             menuUtilisateur(scanner, connexion);
         } else {

@@ -85,7 +85,9 @@ public class ControlleurUtilisateurs {
         return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
     }
 
-    public void rejoindreActivite(){
+    public boolean rejoindreActivite(String pseudo, String nomRobot, String activite){
+        return !(dataBaseController.rejoindreActivite(pseudo, nomRobot, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
+        
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         utilisateur.rejoindreActivite();
     }

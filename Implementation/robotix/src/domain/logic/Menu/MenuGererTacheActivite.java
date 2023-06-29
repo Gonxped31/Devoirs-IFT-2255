@@ -40,7 +40,7 @@ public class MenuGererTacheActivite {
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une action:");
             String a = scanner.nextLine();
-            Action act = new Action(a, null, 0);
+            Action act = new Action(a, null, "0");
             actions.add(act);
             System.out.println("Voulez-vous rajouter une action a cette tache?(Y/N)");
             decision = scanner.nextLine();
@@ -74,7 +74,7 @@ public class MenuGererTacheActivite {
                 menuCreerActivite(scanner, pseudo);
                 break;
             case "2":
-                menuRejoindreActivite();
+                menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
                 menuUtil.menuUtilisateur(scanner, pseudo);
@@ -119,7 +119,24 @@ public class MenuGererTacheActivite {
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-    public void menuRejoindreActivite(){
-
+    public void menuRejoindreActivite(String pseudo, Scanner scanner){
+        System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
+        //Besoin de get une liste des activites a choisir
+        ArrayList<String> activites = controlleurUtilisateurs.getActivites();
+        for (int i = 0; i < activites.size(); i++) {
+            Integer id = i+1;
+            System.out.println(id.toString() + activites.get(i));
+        }     
+        String decisionActivite = scanner.nextLine(); 
+        String nomActivite = activites.get(Integer.parseInt(decisionActivite));  
+        System.out.println("A quelle robot voulez-vous affecter cette activité");
+        ArrayList<String> robots = controlleurUtilisateurs.getRobots(pseudo);
+        for (int i = 0; i < robots.size(); i++) {
+            Integer id = i+1;
+            System.out.println(id.toString() + robots.get(i));
+        }
+        String decisionRobot = scanner.nextLine();
+        String nomRobot = robots.get(Integer.parseInt(decisionRobot));
+        controlleurUtilisateurs.rejoindreActivite(pseudo, nomRobot, nomActivite);
     }
 }
