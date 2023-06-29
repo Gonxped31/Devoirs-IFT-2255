@@ -183,6 +183,4 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                  .anyMatch(f-> ((Fournisseur) f).getNom().equals(nomFourniseur));
 
     }
-
-
 }
