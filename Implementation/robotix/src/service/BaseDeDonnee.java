@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class BaseDeDonnee<T>{
 
-private List<T> listObjet;
+private ArrayList<T> listObjet;
 private File database;
 
 private Gson gson= new Gson();
@@ -28,8 +28,8 @@ public BaseDeDonnee(String fileName) throws IOException {
 
 
 protected abstract Type getType();
-    public List<T> lireFichier() {
-        List<T> objets = new ArrayList<>();
+    public ArrayList<T> lireFichier() {
+        ArrayList<T> objets = new ArrayList<>();
 
         if(!database.exists()) {
             try {
@@ -44,7 +44,7 @@ protected abstract Type getType();
         // Vérifier si le fichier est vide
         if(database.length() != 0) {
             try {
-                objets = objectMapper.readValue(database, new TypeReference<List<T>>() {});
+                objets = objectMapper.readValue(database, new TypeReference<ArrayList<T>>() {});
             } catch (IOException e) {
                 e.printStackTrace();
             }

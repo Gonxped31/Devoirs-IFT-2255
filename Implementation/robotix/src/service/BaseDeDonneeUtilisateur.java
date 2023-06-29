@@ -52,8 +52,9 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
         ));
-        tempList.stream().forEach(fournisseur -> {
-            this.ajouterObjet(fournisseur);
+        tempList.stream().forEach(utilisateur -> {
+            this.ajouterObjet(utilisateur);
+
         });
     }
     public String recupererLalisteDesUtilisateur()
@@ -151,11 +152,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
     public boolean verifierPseudo(String pseudo){
-         if(this.getListObjet().size()!=0) {
-             return this.getListObjet().stream()
+
+             /*return  this.getListObjet().stream()
                      .anyMatch(u -> ((Utilisateur) u).getPseudo().equals(pseudo));
-         }
-         return true;
+
+*/
+        for (int i=0; i<this.getListObjet().size(); ++i)
+        {
+            if (((Utilisateur) this.getListObjet().get(i)).getPseudo().equals(pseudo))
+                return true;
+        }
+        return false;
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){
