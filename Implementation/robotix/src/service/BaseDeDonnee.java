@@ -51,6 +51,9 @@ protected void sauvegarder()
 }
 public void ajouterObjet(T objet)
 {
+    if (this.listObjet == null){
+        this.listObjet =  new ArrayList<>();
+    }
     this.listObjet.add(objet);
     this.sauvegarder();
 }

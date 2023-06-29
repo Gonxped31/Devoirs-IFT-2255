@@ -49,6 +49,9 @@ public class MenuUtilisateur {
             }
         }
 
+        System.out.println("Mot de passe: ");
+        String mdp = scanner.nextLine();
+
         while (!EmailValide) {
             System.out.print("Adresse courriel: ");
             courriel = scanner.nextLine();
@@ -78,7 +81,7 @@ public class MenuUtilisateur {
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
         }
-        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
+        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
         //menu.menuPrincipale(scanner);
     }

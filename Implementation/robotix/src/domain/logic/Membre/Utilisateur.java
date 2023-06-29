@@ -34,8 +34,8 @@ public class Utilisateur extends Membre{
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
 
-    public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<Interet> listeInteret){
-        super(nom, adresse, email, numeroTelephone, nomCompagnie);
+    public Utilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<Interet> listeInteret){
+        super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
         this.pseudo = pseudo;
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
@@ -120,7 +120,7 @@ public class Utilisateur extends Membre{
     }
 
     public static Utilisateur trouverUtilisateur(String pseudo, ArrayList<Utilisateur> listeUtilisateurs){
-        Utilisateur utilisateur = new Utilisateur(null, null, null, null, null, null, null, null);
+        Utilisateur utilisateur = new Utilisateur(null, null, null, null,null, null, null, null, null);
         for (Utilisateur utilisateurs : listeUtilisateurs) {
             if (utilisateurs.getPseudo().equals(pseudo)) {
                 utilisateur = utilisateurs;
@@ -482,12 +482,11 @@ public class Utilisateur extends Membre{
          return listeDeTaches;
     }
 
-    public ArrayList<Interet> produireListeInteret(ArrayList<String> listeInteret){
+    public static ArrayList<Interet> produireListeInteret(ArrayList<String> listeInteret){
         ArrayList<Interet> listeInter = new ArrayList<>();
         for(String inter :listeInteret){
             listeInter.add(new Interet(inter));
         }
         return listeInter;
     }
-
 }
