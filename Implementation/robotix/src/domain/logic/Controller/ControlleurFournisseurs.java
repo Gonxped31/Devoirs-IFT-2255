@@ -23,6 +23,7 @@ public class ControlleurFournisseurs {
 
     /* Code pour les vérifications */
     public boolean verifierNom(String inputNom) {
+        dataBaseController.v
         return Fournisseur.verifierNomFournisseur(inputNom, listeFournisseurs);
     }
 
