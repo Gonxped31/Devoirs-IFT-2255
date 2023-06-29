@@ -93,6 +93,15 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                        .orElse(null);
      }
 
+    public Composant retournerComposante(String nom){
+        return listComposant.stream()
+                .flatMap(map -> map.values().stream())
+                .flatMap(List::stream)
+                .filter(composant -> composant.getNom().equals(nom))
+                .findFirst()
+                .orElse(null);
+    }
+
     public String recupererLalisteDesFournisseur()
     {
         return (String) this.getListObjet().stream()
@@ -160,5 +169,22 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .collect(Collectors.joining("\n"));
         return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier le type" : founisseurs;
     }
+
+
+    public String rechercherFournisseurParEmail(String email) {
+        String founisseurs = (String) this.getListObjet().stream()
+                .filter(fournisseur -> ((Fournisseur) fournisseur).getEmail().equals(email))
+                .map(f -> {
+                    return ((Fournisseur) f).getProfilFournisseur();
+                })
+                .collect(Collectors.joining("\n"));
+        return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier l'email" : founisseurs;
+    }
+    public boolean verifierNomFounissseur(String nomFourniseur){
+         return this.getListObjet().stream()
+                 .anyMatch(f-> ((Fournisseur) f).getNom().equals(nomFourniseur));
+
+    }
+
 
 }

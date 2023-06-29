@@ -1,4 +1,7 @@
 package domain.logic.Membre;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,22 +19,23 @@ public class Utilisateur extends Membre{
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
     private ArrayList<String> listeInteret = new ArrayList<>();
-    private ArrayList<String> listeNotifications = new ArrayList<>();
-    private ArrayList<String> listeActivitesRejoint = new ArrayList<>();
-
+    private ArrayList<Notification> listeNotifications = new ArrayList<>();
+    private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
     private int point;
     private Tache tache;
-
-
+    private Notification notification = new Notification();
+    private int taillePrecedenteListeSuiveur;
+    private LocalDate dateActuelle = LocalDate.now();
+    private long joursRestants;
 
     public Utilisateur(String nom, String prenom, String adresse, String pseudo, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret){
         super(nom, adresse, email, numeroTelephone, nomCompagnie);
         this.pseudo = pseudo;
         this.setPrenom(prenom);
-        this.listeInteret = listeInteret;
+        this.setListeInteret(listeInteret);
     }
 
     public String getPseudo(){
@@ -45,7 +49,7 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public ArrayList<String> getNotifs(){
+    public ArrayList<Notification> getNotifs(){
         return listeNotifications;
     }
  
@@ -124,15 +128,147 @@ public class Utilisateur extends Membre{
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
+        taillePrecedenteListeSuiveur = listeUtilisateursSuivi.size();
         listeUtilisateursSuivi.add(suivi);
     }
 
-    public ArrayList<String> voirNotifications(){
+    public ArrayList<Notification> voirNotifications(){
         return listeNotifications;
     }
 
-    public void notifier(){
-        //Va faire appel a diff methodes de problemes
+
+
+    public boolean[] notifier(){
+        boolean[] tabBoolean = new boolean[7];
+        boolean NotifierEtatRobot;
+        boolean NotifierBatterieRobot;
+        boolean NotifiercCPURobot;
+        boolean NotifierNouvelleActivite;
+        boolean NotifierNouveauAbonne;
+        boolean NotifierNouveauParticipant;
+        boolean NotifierSensibilisation;
+
+        NotifierEtatRobot = verifierEtatRobot();
+        NotifierBatterieRobot = verifierBatterieRobot();
+        NotifiercCPURobot = verifierCPURobot();
+        NotifierNouvelleActivite = verifierNouvelleActivite();
+        NotifierNouveauAbonne = verifierNouveauAbonne();
+        NotifierNouveauParticipant = verifierNouveauParticipant();
+        NotifierSensibilisation = verifierDateLimiteActivite();
+
+        tabBoolean[0] = NotifierEtatRobot;
+        tabBoolean[1] = NotifierBatterieRobot;
+        tabBoolean[2] = NotifiercCPURobot;
+        tabBoolean[3] = NotifierNouvelleActivite;
+        tabBoolean[4] = NotifierNouveauAbonne;
+        tabBoolean[5] = NotifierNouveauParticipant;
+        tabBoolean[6] = NotifierSensibilisation;
+
+        return tabBoolean;
+    }
+
+    private boolean verifierEtatRobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
+                DoitEtreNotifie = true;
+                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierBatterieRobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getBatterie() >= 20) {
+                DoitEtreNotifie = true;
+                notification.setTitre("BATTERIE FAIBLE");
+                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierCPURobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : listeRobot) {
+            if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouvelleActivite() {
+        boolean DoitEtreNotifie = false;
+
+        /*for (Activite activite : listeInteret) {
+            if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }*/
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouveauAbonne() {
+        boolean DoitEtreNotifie = false;
+
+        if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
+            DoitEtreNotifie = true;
+            notification.setTitre("NOUVEAU ABONNÉ");
+            notification.setMesssage("Un nouvel utilisateur suit votre profil");
+            notification.setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
+            listeNotifications.add(notification);
+        }
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierNouveauParticipant() {
+        boolean DoitEtreNotifie = false;
+
+        /*if (listeActivitesRejoint.size() > taillePrecedenteListeSuiveur) {
+            DoitEtreNotifie = true;
+            notification.setTitre("NOUVEAU PARTICIPANT");
+            notification.setMesssage("Un nouvel utilisateur joint une de vos activités");
+            notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
+            listeNotifications.add(notification);
+        }*/
+        return DoitEtreNotifie;
+    }
+
+    private boolean verifierDateLimiteActivite() {
+        boolean DoitEtreNotifie = false;
+
+        for (Activite activite : listeActivitesRejoint) {
+            joursRestants = ChronoUnit.DAYS.between(dateActuelle, (Temporal) activite.getDateDebut());
+
+            // Vérifiez si la date de l'activité est dans les trois jours à venir
+            if (joursRestants >=0 && joursRestants <=3) {
+                DoitEtreNotifie = true;
+                notification.setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
+                notification.setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
+                notification.setTypeNotification(TypeNotification.SENSIBILISATION);
+                listeNotifications.add(notification);
+            }
+        }
+        return DoitEtreNotifie;
     }
 
     public void modifierProfile(String choix, String nouvelInfo){
@@ -164,6 +300,24 @@ public class Utilisateur extends Membre{
         return bool;
     }
 
+    public void creerTache(String nom, ArrayList<Action> actions){
+        listeTaches.add(new Tache(nom, actions));
+    }
+
+    public Robot getRobot(String numeroDeSerie){
+        return listeRobot.stream()
+                .filter(r -> r.getNumeroSerie().equals(numeroDeSerie))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Tache getTache(String nom){
+        return listeTaches.stream()
+                .filter(t -> t.getNom().equals(nom))
+                .findFirst()
+                .orElse(null);
+    }
+
     public Robot verifierNumeroSerieRobot(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
         Robot robot = null;
         int nbRobot = 0;
@@ -187,7 +341,7 @@ public class Utilisateur extends Membre{
         return this.listeRobot;
     }
 
-    public void creerAction(String nomAction, ArrayList<TypesComposants> composantes, String duree){
+    public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
         listeActions.add(action);
    /* public void creerTache(String nomTache, ArrayList<Action> actions){
@@ -232,6 +386,7 @@ public class Utilisateur extends Membre{
             Activite activite = new Activite(nomActivite, dateDebut, dateFin, listeTache, null, null);
         }
     }*/
+}
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
         for (int i = 0; i < listeRobot.size(); i++) {
@@ -275,7 +430,7 @@ public class Utilisateur extends Membre{
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
                 "\n pseudo :" + pseudo + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
-                "\nInteret : " + this.listeInteret.stream().collect(Collectors.joining(","))+
+                "\nInteret : " + this.getListeInteret().stream().collect(Collectors.joining(","))+
                 "\nNombre de point :" + this.point +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
@@ -290,5 +445,17 @@ public class Utilisateur extends Membre{
 
     public void setListSuiveur(Set<Utilisateur> listSuiveur) {
         this.listSuiveur = listSuiveur;
+    }
+
+
+    public void rejoindreActivite(Activite activite) {
+        this.listeActivitesRejoint.add(activite);
+    }
+    public ArrayList<String> getListeInteret() {
+        return listeInteret;
+    }
+
+    public void setListeInteret(ArrayList<String> listeInteret) {
+        this.listeInteret = listeInteret;
     }
 }

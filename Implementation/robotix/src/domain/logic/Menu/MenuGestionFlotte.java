@@ -1,15 +1,21 @@
 package domain.logic.Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
+import domain.logic.Robot.TypesComposants;
 
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil = new MenuUtilisateur();
+
+    public MenuGestionFlotte() throws IOException {
+    }
+
     public void gererMaFlotte(Scanner scanner, String pseudo) {
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");
@@ -32,9 +38,11 @@ public class MenuGestionFlotte {
         while (reessayer) {
             System.out.println("Nom du robot : ");
             String nomRobot = scanner.nextLine();
+            System.out.println("Veuillez entrer le type du robot : ");
+            String type = scanner.nextLine();
             System.out.println("Numero de serie: ");
             String numeroDeSerie = scanner.nextLine();
-            if(controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, numeroDeSerie)) {
+            if(controlleurUtilisateurs.enregistrerRobot(pseudo, nomRobot, type, numeroDeSerie)) {
                 System.out.println("Le robot a été bien enrégistré !");
                 reessayer = false;
             } else {
@@ -65,9 +73,9 @@ public class MenuGestionFlotte {
     public void menuAjouterComposante(Scanner scanner, String pseudo) {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
-        System.out.print("Nom du robot : ");
-        String nomRobot = scanner.nextLine();
-        if (controlleurUtilisateurs.ajouterComposanteRobot(nomComposante, nomRobot, pseudo)){
+        System.out.println("Veuillez entrer le numero de serie du robot");
+        String numeroDeSerie = scanner.nextLine();
+        if (controlleurUtilisateurs.ajouterComposanteRobot(nomComposante, numeroDeSerie, pseudo)){
             System.out.println(" ");
             System.out.println("La composante a bien été ajoutée.");
             System.out.println(" ");
@@ -86,7 +94,7 @@ public class MenuGestionFlotte {
     }
 
     public void menuCreerActions(Scanner scanner, String pseudo) {
-        ArrayList<Composant> composantes = new ArrayList<>();
+        ArrayList<String> composantes = new ArrayList<>();
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.println("Nom: ");
         String nomAction = scanner.nextLine();
@@ -95,14 +103,21 @@ public class MenuGestionFlotte {
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une composante:");
             String comp = scanner.nextLine();
-            Composant compo = new Composant(comp, null, null, null);
-            composantes.add(compo);
+            switch (comp.toUpperCase()){
+                case "CPU" -> composantes.add(TypesComposants.CPU.name());
+                case "ROUE"-> composantes.add(TypesComposants.ROUE.name());
+                case "HELICE" -> composantes.add(TypesComposants.HELICE.name());
+                case "HAUTPARLEUR" -> composantes.add(TypesComposants.HAUTPARLEUR.name());
+                case "BRAS" -> composantes.add(TypesComposants.BRAS.name());
+                case "ECRAN" -> composantes.add(TypesComposants.ECRAN.name());
+                case "MICRO" -> composantes.add(TypesComposants.MICRO.name());
+                case "CAMERA" -> composantes.add(TypesComposants.CAMERA.name());
+            }
             System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
             decision = scanner.nextLine();
         }
-        controlleurUtilisateurs.creerAction(pseudo, nomAction, composantes);
+        System.out.println("Veuillez entrer le duree : ");
+        String duree = scanner.nextLine();
+        controlleurUtilisateurs.creerAction(nomAction, composantes, duree);
     }
-
-    
-
 }

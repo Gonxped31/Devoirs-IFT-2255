@@ -14,6 +14,9 @@ public class Fournisseur extends Membre {
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     private Notification notification = new Notification();
     private LinkedList<Notification> listeNotifications = new LinkedList<>();
+    private boolean[] tabBoolNotification = new boolean[4];
+    private int taillePrecedenteInventaireComposantes;
+
     public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
                        String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
         super(nom, adresse, email, numeroTelephone, nomcompagnie);
@@ -31,6 +34,7 @@ public class Fournisseur extends Membre {
     }
 
     public LinkedList<Composant> getInventaireComposant() {
+
         return inventaireComposant;
     }
 
@@ -61,8 +65,12 @@ public class Fournisseur extends Membre {
     public String getNom() {
         return super.getNom();
     }
-
     public Notification getNotification() { return this.notification; }
+
+    public boolean[] getTabBoolNotification() {
+        return tabBoolNotification;
+    }
+
     public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
@@ -96,7 +104,7 @@ public class Fournisseur extends Membre {
     }
 
     public void ajouterRobot() {
-        inventaireDeRobot.add();
+        inventaireDeRobot.add(new Robot());
     }
 
     public boolean retirerRobot(String nomRobot) {
@@ -115,8 +123,11 @@ public class Fournisseur extends Membre {
         return bool;
     }
 
-    public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
-        inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
+    public void ajouterComposante(/*String composante, double prix, String description, String typeComposant*/) {
+        taillePrecedenteInventaireComposantes = inventaireComposant.size();
+        inventaireComposant.add(new Composant());
+        //TODO
+        //inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
     }
 
     public boolean retirerComopsante(String nom) {
@@ -181,26 +192,24 @@ public class Fournisseur extends Membre {
         return fournisseurs;
     }
 
-    public void notifier() {
-        boolean EstNotifie = false;
+    public LinkedList<Notification> notifier() {
+        /*boolean NotifierEtatRobot;
+        boolean NotifierBatterieRobot;
+        boolean NotifiercCPURobot;
+        boolean NotifierAchatComposants;*/
 
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
-                notification.setTitre("MAUVAIS FONCTIONNEMENT");
-                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-            }
-            if (robot.getBatterie() >= 20) {
-                notification.setTitre("BATTERIE FAIBLE");
-                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-            }
-            if (robot.getCpu() >= 100) {
-                notification.setTitre("SURCHARGE CPU");
-                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-            }
-        }
+        /*NotifierEtatRobot = */verifierEtatRobot();
+        /*NotifierBatterieRobot = */verifierBatterieRobot();
+        /*NotifiercCPURobot = */verifierCPURobot();
+        /*NotifierAchatComposants = */verifierInventaireComposants();
+
+        /*tabBoolNotification[0] = NotifierEtatRobot;
+        tabBoolNotification[1] = NotifierAchatComposants;
+        tabBoolNotification[2] = NotifierBatterieRobot;
+        tabBoolNotification[3] = NotifiercCPURobot;*/
+
+        return listeNotifications;
+    }
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
@@ -210,5 +219,60 @@ public class Fournisseur extends Membre {
                 "Nombre de robot disponible : " + this.getInventaireComposant().size();
     }
 
+    public void verifierEtatRobot() {
+        //boolean DoitEtreNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
+            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
+                //DoitEtreNotifie = true;
+                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        //return DoitEtreNotifie;
+    }
+    public void verifierBatterieRobot() {
+        //boolean DoitEtreNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
+            if (robot.getBatterie() >= 20) {
+                //DoitEtreNotifie = true;
+                notification.setTitre("BATTERIE FAIBLE");
+                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        //return DoitEtreNotifie;
+    }
+    public void verifierCPURobot() {
+        //boolean DoitEtreNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
+            if (robot.getCpu() >= 100) {
+                //DoitEtreNotifie = true;
+                notification.setTitre("SURCHARGE CPU");
+                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
+            }
+        }
+        //return DoitEtreNotifie;
+    }
+
+    public void verifierInventaireComposants() {
+        //boolean DoitEtreNotifie = false;
+
+        if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
+            //DoitEtreNotifie = true;
+            notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
+            notification.setMesssage("Un utilisateur a acheté une de vos composantes");
+            notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
+            listeNotifications.add(notification);
+        }
+        //return DoitEtreNotifie;
+    }
 }
 

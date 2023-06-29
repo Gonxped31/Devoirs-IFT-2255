@@ -1,14 +1,25 @@
 package domain.logic.Menu;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Robot.Action;
+import domain.logic.Robot.Activite;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
+    private Activite activite = new Activite();
+
+    public MenuGererTacheActivite() throws IOException {
+    }
 
     //Tache
     public void gererMesTaches(Scanner scanner, String pseudo){
@@ -40,7 +51,7 @@ public class MenuGererTacheActivite {
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une action:");
             String a = scanner.nextLine();
-            Action act = new Action(a, null, 0);
+            Action act = new Action(a, null, "0");
             actions.add(act);
             System.out.println("Voulez-vous rajouter une action a cette tache?(Y/N)");
             decision = scanner.nextLine();
@@ -74,7 +85,7 @@ public class MenuGererTacheActivite {
                 menuCreerActivite(scanner, pseudo);
                 break;
             case "2":
-                menuRejoindreActivite();
+                menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
                 menuUtil.menuUtilisateur(scanner, pseudo);
@@ -119,7 +130,23 @@ public class MenuGererTacheActivite {
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-    public void menuRejoindreActivite(){
+    public void menuRejoindreActivite(String pseudo, Scanner scanner){
+        Date date = new Date();
+        System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
+        String nomActivite = scanner.nextLine();
 
+        System.out.println ("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
+        String dateDebut = scanner.nextLine();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            date = dateFormat.parse(dateDebut);
+        } catch (ParseException e) {
+            System.out.println("Format de date invalide !");
+        }
+        activite.setNom(nomActivite);
+        activite.setDateDebut(date);
+
+        controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
     }
 }

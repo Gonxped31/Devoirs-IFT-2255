@@ -1,11 +1,10 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.Robot;
-import domain.logic.Robot.TypesComposants;
-import domain.logic.Robot.Action;
+import domain.logic.Robot.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,22 +12,26 @@ import java.util.Scanner;
 public class ControlleurUtilisateurs {
 
     private DbControleur dataBaseController = new DbControleur();
-    private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
-    private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
+    //private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
+    //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
+
+    public ControlleurUtilisateurs() throws IOException {
+    }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
         this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, courriel, telephone, nomCompagnie, listeInteret);
-        dataBaseController.getListeUtilisateurs().add(utilisateurCourant);
+        dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public boolean authentification(String nom, String mdp, String type) {
-        return dataBaseController.authentification(nom, mdp, type);
+        return true;
+        //return dataBaseController.authentification(nom, mdp, type);
     }
 
     /* Code pour les vérifications */
     public boolean verifierPseudo(String pseudo) {
-        return dataBaseController.verifierPseudoUtilisateur(pseudo);
+        return dataBaseController.verifierPseudo(pseudo);
     }
 
     public boolean verifierEmail(String inputEmail) {
@@ -43,41 +46,62 @@ public class ControlleurUtilisateurs {
     /* Actions utilisateur */
 
     public void modifierProfile(String pseudo, String choix, String info) {
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         this.utilisateurCourant.modifierProfile(choix, info);
-        dataBaseController.modifierProfile(pseudo);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean enregistrerRobot(String pseudo, String nomRobot, String type, String numeroSerie) {
-        return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
+    public void enregistrerRobot(String nomRobot, String type, String numeroSerie) {
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
+        if (!(robot == null)){
+            robot.setNom(nomRobot);
+            robot.setType(type);
+            this.utilisateurCourant.enregistrerRobot(robot);
+        }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
         return this.utilisateurCourant.afficherEtatRobot();
     }
 
-    public boolean ajouterComposanteRobot(Composant composante, String numeroSerie, String pseudo){
-        return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
+    public void ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
+        Composant comp = this.dataBaseController.retournerComposante(composante);
+        if (!(robot == null) && !(comp == null)){
+            robot.ajouterComposante(comp);
+        }
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+
+        //return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
-    public void creerAction(String pseudo, String nomAction, ArrayList<TypesComposants> composantes, String duree){
-        dataBaseController.creerAction(nomAction, composantes);
+    public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerAction(nomAction, composantes);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
         return this.utilisateurCourant.nombreDeRobot();
     }
 
-    public void creerTache(String pseudo, String nomTache, ArrayList<Action> actions){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.creerTache(nomTache, actions);
+    public void creerTache(String nomTache, ArrayList<Action> actions){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.creerTache(nomTache, actions);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean allouerTacheRobot(String pseudo, String robot, String tache){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.allouerTache(robot, tache);
+    public void allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Robot robot = this.utilisateurCourant.getRobot(numeroDeSerie);
+        Tache tac = this.utilisateurCourant.getTache(tache);
+        if ((robot != null) && (tac != null)){
+            robot.allouerTache(tac);
+        }
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
@@ -85,9 +109,8 @@ public class ControlleurUtilisateurs {
         return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
     }
 
-    public void rejoindreActivite(){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        utilisateur.rejoindreActivite();
+    public boolean rejoindreActivite(String pseudo, Activite activite){
+        return !(dataBaseController.rejoindreActivite(pseudo, activite) == null) ? this.utilisateurCourant.rejoindreActivite(activite) : false;
     }
 
     public boolean suivreUtilisateur(String pseudo,String nom){
@@ -98,7 +121,7 @@ public class ControlleurUtilisateurs {
             return false;
         }else{
             utilisateur.suivreUtilisateur(suivi);
-            suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
+            //suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
             return true;
         }
     }
@@ -113,7 +136,7 @@ public class ControlleurUtilisateurs {
         utilisateur.gererInteret();
     }
 
-    public ArrayList<String> voirNotifications(String pseudo){
+        public ArrayList<Notification> voirNotifications(String pseudo){
         return this.utilisateurCourant.voirNotifications();
     }
 
@@ -124,5 +147,9 @@ public class ControlleurUtilisateurs {
     public void voirProfilUtilisateurCourant()
     {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
+    }
+
+    public boolean[] notifier() {
+        return this.utilisateurCourant.notifier();
     }
 }

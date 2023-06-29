@@ -1,10 +1,17 @@
 package domain.logic.Controller;
 
+import domain.logic.Membre.Fournisseur;
+
+import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Composant;
+import domain.logic.Robot.Robot;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DbControleur {
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
@@ -37,8 +44,8 @@ public class DbControleur {
         return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParPrenom(prenom);
     }
 
-    public String rechercherUtilisateurParSuiveur(String nomUtilisateur){
-        return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParSuiveur(nomUtilisateur);
+    public String rechercherUtilisateurParSuiveur(String pseudoUtilisateur){
+        return  this.baseDeDonneeUtilisateur.rechercherUtilisateurParSuiveur(pseudoUtilisateur);
     }
 
     public String filtrerListeSuiveurParPseudo(String nomUtilisateur, String pseudoSuiveur)
@@ -70,6 +77,54 @@ public class DbControleur {
     public String recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();
     }
+    public boolean verifierNomFournissuer(String nomFourniseur){
+        return this.baseDeDonneeFournisseur.verifierNomFounissseur(nomFourniseur);
+    }
+
+    public boolean verifierPseudo(String pseudo){
+        return this.baseDeDonneeUtilisateur.verifierPseudo(pseudo);
+    }
+
+    public Robot retournerRobot(String numeroSerie){
+        return baseDeDonneeFournisseur.retournerRobot(numeroSerie);
+    }
+
+    public Composant retournerComposante(String nom){
+        return baseDeDonneeFournisseur.retournerComposante(nom);
+    }
+
+    public void supprimerFournisseur(Fournisseur f) {
+        this.baseDeDonneeFournisseur.supprimerObjet(f);
+    }
+    public void ajouterFournisseur(Fournisseur f) {
+        this.baseDeDonneeFournisseur.ajouterObjet(f);
+    }
+    public void supprimerUtilisateur(Utilisateur u){
+        this.baseDeDonneeUtilisateur.supprimerObjet(u);
+    }
+    public void ajouterUtilisateur(Utilisateur u){
+        this.baseDeDonneeUtilisateur.ajouterObjet(u);
+    }
 
 
+    public String recupererListeInteret(){
+       return this.baseDeDonneeUtilisateur.recupererListeInteret();
+    }
+
+    public String recupererListeInteretUtilisateur(String pseudo){
+         return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateur(pseudo);
+    }
+    public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
+    {
+        return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo,troislettre);
+    }
+
+    public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
+    {
+        return this.baseDeDonneeUtilisateur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre);
+    }
+
+    public String rechercherFournisseurParEmail(String email) {
+        return this.baseDeDonneeFournisseur.rechercherFournisseurParEmail(email);
+    }
 }

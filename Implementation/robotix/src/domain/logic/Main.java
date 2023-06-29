@@ -1,9 +1,9 @@
 package domain.logic;
-import java.io.IOException;
-
-import java.util.Scanner;
 
 import domain.logic.Menu.Menu;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Main {

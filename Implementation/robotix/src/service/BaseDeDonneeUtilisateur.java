@@ -1,6 +1,7 @@
 package service;
 
 import com.google.gson.reflect.TypeToken;
+import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import service.BaseDeDonneeFournisseur;
 
@@ -73,10 +74,10 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .orElse("Utilisateur non trouver, veuillez verifier le prenom");
     }
 
-    public String rechercherUtilisateurParSuiveur(String nomUtilisateur){
+    public String rechercherUtilisateurParSuiveur(String pseudoUtilisateur){
 
          return (String) this.getListObjet().stream()
-                 .filter(u ->( (Utilisateur) u).getNom().equals(nomUtilisateur))
+                 .filter(u ->( (Utilisateur) u).getPseudo().equals(pseudoUtilisateur))
                  .map(u-> { return ((Utilisateur)u)
                          .getListSuiveur()
                          .stream()
@@ -97,4 +98,41 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
+    public String recupererListeInteret(){
+        return (String) this.getListObjet().stream()
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+    public String recupererListeInteretUtilisateur(String pseudo){
+        return (String) this.getListObjet().stream()
+                .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+    public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
+    {
+        return (String) this.getListObjet().stream()
+                .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudo))
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .filter(interet-> ((String) interet).substring(0,3).equals(troislettre))
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+    public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
+    {
+        return (String) this.getListObjet().stream()
+                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .filter(interet-> ((String) interet).substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
+                .distinct()
+                .collect(Collectors.joining(", "));
+    }
+
+    public boolean verifierPseudo(String pseudo){
+        return this.getListObjet().stream()
+                .anyMatch(u-> ((Utilisateur) u).getPseudo().equals(pseudo));
+    }
 }
