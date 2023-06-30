@@ -83,6 +83,7 @@ public class MenuUtilisateur {
         }
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
+        menuUtilisateur(scanner, pseudo);
         //menu.menuPrincipale(scanner);
     }
 
