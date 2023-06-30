@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
+import domain.logic.Membre.Interet;
 import domain.logic.Robot.Action;
 import domain.logic.Robot.Activite;
+import domain.logic.Robot.Tache;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -94,17 +96,38 @@ public class MenuGererTacheActivite {
 
     public void menuCreerActivite(Scanner scanner, String pseudo){
         boolean continuer = false;
-        ArrayList<String> listeTache = new ArrayList<>();
+        ArrayList<Tache> listeTache = new ArrayList<>();
+        ArrayList<Interet> listeInterets = new ArrayList<>();
+        Date dateDebut = new Date();
+        Date dateFin = new Date();
+
+
         System.out.println(" ");
         System.out.print("Nom de l'activité : ");
         String nomActivite = scanner.nextLine();
-        System.out.println("Date de debut : ");
-        String dateDebut = scanner.nextLine();
-        System.out.println("Date de fin : ");
-        String dateFin = scanner.nextLine();
+
+        System.out.println("Date de debut (format dd/MM/yyyy) : ");
+        String lireDateDebut = scanner.nextLine();
+        SimpleDateFormat dateDebutFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateDebut = dateDebutFormat.parse(lireDateDebut);
+        } catch (ParseException e) {
+            System.out.println("Format de date invalide !");
+        }
+
+        System.out.println("Date de fin (format dd/MM/yyyy) : ");
+        String lireDateFin = scanner.nextLine();
+        SimpleDateFormat dateFinFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateFin = dateDebutFormat.parse(lireDateFin);
+        } catch (ParseException e) {
+            System.out.println("Format de date invalide !");
+        }
+
         do {
             System.out.print("Veuillez entrer une tache : ");
-            listeTache.add(scanner.nextLine());
+            String lireTache = scanner.nextLine();
+            listeTache.add(lireTache.);
             System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
@@ -114,18 +137,18 @@ public class MenuGererTacheActivite {
 
         do {
             System.out.print("Veuillez entrer un interêt : ");
-            listeTache.add(scanner.nextLine());
-            System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
+            listeInterets.add(scanner.nextLine());
+            System.out.print("Voulez-vous ajouter un autre intérêt ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
                 continuer = true;
             }
         } while (continuer);
 
-        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache)) {
+        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets)) {
             System.out.println("L'activitée a été bien créée (:");
         } else {
-            System.out.println("Cette activitée existe déjà...");
+            System.out.println("Cette activité existe déjà...");
         }
         menuUtil.menuUtilisateur(scanner, pseudo);
     }

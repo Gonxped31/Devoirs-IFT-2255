@@ -11,6 +11,10 @@ public class Tache {
         this.nom = nom;
         this.actions = actions;
     }
+    
+    public Tache(String nom) {
+        this.nom = nom;
+    }
 
     public String getNom() {
         return nom;
@@ -18,6 +22,14 @@ public class Tache {
 
     public ArrayList<Action> getTaches() {
         return actions;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setActions(ArrayList<Action> actions) {
+        this.actions = actions;
     }
 
     public String getInfoTacheFormater(){

@@ -6,6 +6,7 @@ import domain.logic.Robot.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -104,9 +105,9 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache){
+    public boolean creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<String> listeTache, ArrayList<String> listeInterets){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache);
+        return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
     }
 
     public boolean rejoindreActivite(String pseudo, Activite activite){

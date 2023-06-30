@@ -209,9 +209,8 @@ public class Utilisateur extends Membre{
 
     private void verifierNouveauParticipant() {
         /*if (listeActivitesRejoint.size() > ) {
-            DoitEtreNotifie = true;
             notification.setTitre("NOUVEAU PARTICIPANT");
-            notification.setMesssage("Un nouvel utilisateur joint une de vos activités");
+            notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
             notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
             listeNotifications.add(notification);
         }*/
@@ -411,5 +410,12 @@ public class Utilisateur extends Membre{
 
     public void setListeInteret(ArrayList<String> listeInteret) {
         this.listeInteret = listeInteret;
+    }
+
+    public boolean creerActivites(String nomActivite, Date dateDebut, Date dateFin, ArrayList<String> listeTache, ArrayList<String> listeInterets) {
+        Activite activiteCree = new Activite(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+
+        return activiteCree;
+
     }
 }

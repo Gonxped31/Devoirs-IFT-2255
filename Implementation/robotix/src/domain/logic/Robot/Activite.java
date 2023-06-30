@@ -25,6 +25,7 @@ public class Activite {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
+        this.listeInteretAssocie = listeInteretAssocie;
     }
 
 
