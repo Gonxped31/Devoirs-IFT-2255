@@ -1,13 +1,10 @@
 package domain.logic.Membre;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import domain.logic.Robot.*;
 
 //Faire import domain.logic.Fournisseur.Fournisseur;
@@ -146,8 +143,6 @@ public class Utilisateur extends Membre {
         return listSuiveur;
     }
 
-    s
-
     public ArrayList<Notification> voirNotifications() {
         return listeNotifications;
     }
@@ -199,7 +194,7 @@ public class Utilisateur extends Membre {
     }
 
     private void verifierNouvelleActivite() {
-        for (Activite activiteCree : listeActiviteCrees) {
+        for (Activite activiteCree : listeActivitesCreer) {
             if (activiteCree.getListeInteretAssocie().contains(listeInteret)) {
                 notification.setTitre("NOUVELLE ACTIVITÉ");
                 notification.setMesssage("Une nouvelle activité correspondant à vos intérêts est créée");
@@ -221,7 +216,7 @@ public class Utilisateur extends Membre {
     private void verifierNouveauParticipant() {
         int tailleUtilisateurInscrits = 0;
 
-        for (Activite activite : listeActiviteCrees) {
+        for (Activite activite : listeActivitesCreer) {
             tailleUtilisateurInscrits += activite.getListeUtilisateurInscrit().size();
         }
 
@@ -311,12 +306,6 @@ public class Utilisateur extends Membre {
 
     public ArrayList<Robot> afficherEtatRobot() {
         return this.listeRobot;
-    }
-
-    public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache,
-            ArrayList<Interet> listeInterets) throws ParseException {
-        listeActivitesCreer.add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut),
-                new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
     }
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree) {
@@ -470,19 +459,21 @@ public class Utilisateur extends Membre {
 
     public void ajouterComposantesAInventaire(Composant composant) {
         composantesAchetes.add(composant);
+    }
 
-    public boolean creerActivites(Activite activite) {
+    public boolean creerActivites(String pseudoCreateur, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInteret) {
         boolean EstValide = false;
+        Activite activite = new Activite(pseudoCreateur, nomActivite, dateDebut, dateFin, listeTache, listeInteret);
 
         // Avoir la taille précédente total du nombre d'utilisateur rejoint dans les
         // activités crées de l'utilisateur
-        for (Activite mesActivites : listeActiviteCrees) {
+        for (Activite mesActivites : listeActivitesCreer) {
             taillePrecedenteUtilisateursInscrits += mesActivites.getListeUtilisateurInscrit().size();
         }
 
-        if (!listeActiviteCrees.contains(activite)) {
+        if (!listeActivitesCreer.contains(activite)) {
             EstValide = true;
-            listeActiviteCrees.add(activite);
+            listeActivitesCreer.add(activite);
         }
         return EstValide;
     }

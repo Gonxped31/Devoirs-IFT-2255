@@ -125,11 +125,11 @@ public class ControlleurUtilisateurs {
         return b;
     }
 
-    public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
+    public boolean creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
         ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
-        this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
+        this.utilisateurCourant.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return true;
     }
@@ -163,7 +163,7 @@ public class ControlleurUtilisateurs {
         utilisateur.gererInteret();
     }*/
 
-    public ArrayList<Notification> voirNotifications(String pseudo){
+    public ArrayList<Notification> voirNotifications(){
         return this.utilisateurCourant.voirNotifications();
     }
 
@@ -176,7 +176,7 @@ public class ControlleurUtilisateurs {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
     }
 
-    public LinkedList<Notification> notifier() {
+    public ArrayList<Notification> notifier() {
         return this.utilisateurCourant.notifier();
     }
 }

@@ -114,7 +114,7 @@ public class MenusUtilisateur {
         fournisCPU.add("type3");
         fournisCPU.add("compagnie2");
         System.out.println("******************** Menu: " + pseudo + " ********************");
-        LinkedList<Notification> notifications = controlleurUtilisateurs.notifier();
+        ArrayList<Notification> notifications = controlleurUtilisateurs.notifier();
         if (notifications.size() > 0) {
             System.out.println(">>> Vous avez " + notifications.size() + "notifications <<<");
         }
@@ -418,11 +418,12 @@ public class MenusUtilisateur {
         }
     }
 
-    public void menuNotifications(LinkedList<Notification> notifications){
+    public void menuNotifications(ArrayList<Notification> notifications) {
         System.out.println(notifications + "\n");
+    }
 
     public void menuNotification(Scanner scanner, String pseudo) throws ParseException {
-        for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+        for (Notification notif : controlleurUtilisateurs.voirNotifications()) {
             System.out.println("- " + notif);
         }
         System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
@@ -433,6 +434,6 @@ public class MenusUtilisateur {
             case "N": 
                 menuUtilisateur(scanner, pseudo);
                 break;
-        }*/
+        }
     }
 }

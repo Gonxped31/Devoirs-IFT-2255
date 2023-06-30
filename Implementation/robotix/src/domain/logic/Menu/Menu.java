@@ -18,7 +18,7 @@ public class Menu {
     // private ControlleurFournisseurs controlleurFournisseurs = new
     // ControlleurFournisseurs();
     private TypesComposants typesComposants;
-    private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
+    private MenusUtilisateur menuUtilisateur = new MenusUtilisateur();
     private MenusFournisseur menusFournisseur = new MenusFournisseur();
 
     public Menu() throws IOException {
