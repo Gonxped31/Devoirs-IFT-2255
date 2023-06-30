@@ -13,7 +13,7 @@ public abstract class Membre implements java.io.Serializable {
         this.email = email;
         this.setTelephone(numeroTelephone);
         this.nomCompagnie = nomCompagnie;
-        this.motDePasse = mdp;
+        this.setMotDePasse(mdp);
     }
 
 
@@ -31,5 +31,13 @@ public abstract class Membre implements java.io.Serializable {
 
     public void setTelephone(String telephone) {
         Telephone = telephone;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 }

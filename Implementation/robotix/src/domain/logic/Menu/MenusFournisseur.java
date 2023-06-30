@@ -89,7 +89,9 @@ public class MenusFournisseur {
 	public void menuConnexionFournisseur(Scanner scanner) throws ParseException, IOException {
 		System.out.println("Veuillez entrez votre nom de fournisseur: ");
 		String nomFounisseur = scanner.nextLine();
-		if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
+		System.out.println("Veuillez entrez le mdp: ");
+		String mdp = scanner.nextLine();
+		if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, mdp)) {
 			System.out.println("Bienvenue " + nomFounisseur + "!");
 			menuFournisseur(scanner, nomFounisseur);
 		} else {

@@ -195,6 +195,7 @@ public class MenuUtilisateur {
         System.out.println("Filtrer par: ");
         System.out.println("1- Type de la composante");
         System.out.println("2- Nom de fournisseur");
+        System.out.println("3- Nom de la composante");
         String decision = scanner.nextLine();
         switch (decision){
             case "1" -> {
@@ -206,6 +207,11 @@ public class MenuUtilisateur {
                 System.out.println("Entrez le nom de fournisseur : ");
                 String nomFour = scanner.nextLine();
                 System.out.println(dbControlleur.rechercherComposantParNomFournisseur(nomFour));
+            }
+            case "3" -> {
+                System.out.println("Entrez le nom de la composante : ");
+                String nomComposante = scanner.nextLine();
+                System.out.println(dbControlleur.rechercherComposantParNom(nomComposante));
             }
         }
     }

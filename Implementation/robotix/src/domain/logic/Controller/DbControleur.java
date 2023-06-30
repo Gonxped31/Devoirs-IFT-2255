@@ -131,4 +131,11 @@ public class DbControleur {
     public String rechercherFournisseurParEmail(String email) {
         return this.baseDeDonneeFournisseur.rechercherFournisseurParEmail(email);
     }
+
+    public String rechercherComposantParNom( String nom){
+        return this.baseDeDonneeFournisseur.rehercherComposantParNom(nom);
+    }
+    public Fournisseur authentificatiFournisseur(String nomFournisseur, String mdp){
+       return this.baseDeDonneeFournisseur.authentificatiFournisseur(nomFournisseur, mdp);
+    }
 }

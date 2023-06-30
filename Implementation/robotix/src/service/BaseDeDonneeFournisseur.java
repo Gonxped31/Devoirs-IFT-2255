@@ -184,5 +184,22 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
 
     }
 
+    public String rehercherComposantParNom(String nom){
+        String composants =this.listComposant.stream()
+                .flatMap(map -> map.values().stream())
+                .flatMap(List::stream)
+                .filter(composant -> composant.getNom().equals(nom))
+                .map(composant -> composant.getInfoComposantFormater())
+                .collect(Collectors.joining("\n"));
 
+        return composants.isEmpty() ? "Composant non trouver, veuillez verifier le nom" : composants;
+    }
+
+    public  Fournisseur authentificatiFournisseur(String nomFournisseur, String mdp){
+         return (Fournisseur) this.getListObjet().stream()
+                 .filter(f-> ((Fournisseur) f).getNom().equals(nomFournisseur) &&
+                         ((Fournisseur) f).getMotDePasse().equals(mdp))
+                 .findFirst()
+                 .orElse(null);
+    }
 }
