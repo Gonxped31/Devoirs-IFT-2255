@@ -1,8 +1,20 @@
+L'écosystème intercatif et dynamique de Robotix comprends des membres qui se doivent d'être en constante collaboration. 
+En effet, le bon fonctionnement d'un tel projet se doit d'avoir des solutions mis en place pour s'assurer du fonctionnement des processus.
+À la lumière de ces faits, les processus qui seront informatisés est le profil du membre (soit utilisateur ou fournisseur), 
+l'achat de matériel (robots ou composantes), la gestion de sa flotte de robots allant de la personalisation des robots, à la participation collaborative à des activités, 
+et la gestion de réseau social. Cette énumération sommaire sera 
+  
+est clé lorsqu'on a une flotte de robot grandissante, une accumulation d'activité de plus en plus complexe, et évidemment, une 
+
+
 Les parties informatisées seront tout ce qui à trait à:
 - La création de profil d'utilisateur ou fournisseur
 - L'achat de robot ou de composantes.
 - Gérer les robots de la flotte, comme par exemple: l'assignation de tâches à un robot, l'ajout de composantes à un robot.
-- 
+- La participation à des activités interactives avec d'autres utilisateurs. 
+- Système de réseau social pour suivre d'autres utilisateurs et recevoir des notifications. 
+
+ 
 
 Les données seront stockés en format JSON. 
 
