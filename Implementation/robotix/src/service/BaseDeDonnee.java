@@ -40,8 +40,7 @@ public List<T> lireFichier() throws IOException {
             e.printStackTrace();
         }
         return new ArrayList<>();
- }
-
+    }
 
     protected void sauvegarder() {
         ObjectMapper mapper = new ObjectMapper();
