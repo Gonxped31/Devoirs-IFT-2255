@@ -1,5 +1,6 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
@@ -17,15 +18,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
 
      public BaseDeDonneeUtilisateur() throws IOException {
-        super(FILE_NAME);
+        super(FILE_NAME,new TypeReference<ArrayList<Utilisateur>>() {});
       
      }
 
 
-    @Override
-    protected Type getType() {
-        return new TypeToken<ArrayList<Utilisateur>>(){}.getType();
-    }
 
     @Override
     protected void init() {

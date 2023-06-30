@@ -13,7 +13,7 @@ import domain.logic.Robot.*;
 //Faire import domain.logic.Fournisseur.Fournisseur;
 
 
-public class Utilisateur extends Membre{
+public class Utilisateur extends Membre implements java.io.Serializable{
     private ArrayList<String> uuids = new ArrayList<>();
     private ArrayList<Robot> listeRobot = new ArrayList<>();
     private ArrayList<Tache> listeTaches = new ArrayList<>();

@@ -1,9 +1,11 @@
 package domain.logic.Robot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Action {
+public class Action implements java.io.Serializable{
     private String nomAction;
     private ArrayList<String> composantes;
     private String duree;
@@ -25,7 +27,7 @@ public class Action {
     public String getDuree(){
         return duree;
     }
-
+    @JsonIgnore
     public String getInfoActionFormater(){
         return "Nom :" + this.nomAction +
                 "\nType de composant nécessaire :" + composantes.stream()

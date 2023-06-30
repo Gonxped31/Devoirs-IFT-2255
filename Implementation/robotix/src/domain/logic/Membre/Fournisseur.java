@@ -1,19 +1,20 @@
 package domain.logic.Membre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import java.time.LocalDateTime;
+
 import java.util.UUID;
 
 import java.util.*;
 
-public class Fournisseur extends Membre {
+public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
-    private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
-    private LinkedList<Composant> inventaireComposant= new LinkedList<>();
+    private ArrayList<Robot> inventaireDeRobot=new ArrayList<>();
+    private ArrayList<Composant> inventaireComposant= new ArrayList<>();
     private Notification notification = new Notification();
-    private LinkedList<Notification> listeNotifications = new LinkedList<>();
+    private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
 
     public Fournisseur(String nom, String mdp,  String adresse, String email, String numeroTelephone,
@@ -28,11 +29,11 @@ public class Fournisseur extends Membre {
         return this.nomCompagnie;
     }
 
-    public LinkedList<Robot> getInventaireDeRobot() {
+    public ArrayList<Robot> getInventaireDeRobot() {
         return inventaireDeRobot;
     }
 
-    public LinkedList<Composant> getInventaireComposant() {
+    public ArrayList<Composant> getInventaireComposant() {
 
         return inventaireComposant;
     }
@@ -66,7 +67,7 @@ public class Fournisseur extends Membre {
     }
 
     public Notification getNotification() { return this.notification; }
-    public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
+    public ArrayList<Notification> getListeNotifications() { return this.listeNotifications; }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -210,13 +211,14 @@ public class Fournisseur extends Membre {
 
         return tabBoolean;
     }
+    @JsonIgnore
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
-                "Type de robot fabriquer :" + this.typeRobotFabriquer +
-                "Type de composant fabriquer :" + this.typeComposantesFabriquer +
-                "Nombre de robot disponible :" + this.getInventaireComposant().size() +
-                "Nombre de robot disponible : " + this.getInventaireComposant().size();
+                "\nType de robot fabriquer :" + this.typeRobotFabriquer +
+                "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
+                "\nNombre de robot disponible :" + this.getInventaireComposant().size() +
+                "\nNombre de robot disponible : " + this.getInventaireComposant().size();
     }
 
     public boolean verifierEtatRobot() {

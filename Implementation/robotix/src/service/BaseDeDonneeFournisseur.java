@@ -1,5 +1,6 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
@@ -16,21 +17,14 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
      private List<Map<String, List<Composant>>> listComposant;
     
      public BaseDeDonneeFournisseur() throws IOException {
-        super(FILE_NAME);
-         
+        super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
+         listComposant= new ArrayList<>();
+         listRobot=new ArrayList<>();
+         initListeRobotEtComposant();
      }
 
-      public BaseDeDonneeFournisseur(String fileName) throws IOException {
-        super(fileName);
-        listComposant= new ArrayList<>();
-        listRobot=new ArrayList<>();
-        initListeRobotEtComposant();
-     }
 
-    @Override
-    protected Type getType() {
-        return new TypeToken<ArrayList<Fournisseur>>(){}.getType();
-    }
+
 
     @Override
     protected void init() {
@@ -61,6 +55,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         protected void initListeRobotEtComposant(){
 
             this.getListObjet().stream().forEach(objet -> {
+                System.out.println( objet.toString());
                 listRobot.add(new HashMap<String, List<Robot>>() {{
                     put(
                             (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
@@ -91,7 +86,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
        return listRobot.stream()
                        .flatMap(map -> map.values().stream())
                        .flatMap(List::stream)
-                       .filter(robot -> robot.getNumeroSerie().equals(numeroSerie))
+                       .filter(robot -> robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
                        .findFirst()
                        .orElse(null);
      }

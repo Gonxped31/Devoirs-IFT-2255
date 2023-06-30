@@ -3,7 +3,7 @@ package domain.logic.Membre;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Notification {
+public class Notification implements java.io.Serializable{
     private String titre;
     private String messsage;
 

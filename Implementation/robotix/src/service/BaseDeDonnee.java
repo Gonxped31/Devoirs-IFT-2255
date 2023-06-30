@@ -19,17 +19,17 @@ public abstract class BaseDeDonnee<T>{
 private ArrayList<T> listObjet;
 private File database;
 
-private Gson gson= new Gson();
-public BaseDeDonnee(String fileName) throws IOException {
+
+public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
     this.database = new File(fileName);
-    this.listObjet = lireFichier();
+    this.listObjet = lireFichier(type);
 }
 
 
 
 
-protected abstract Type getType();
-    public ArrayList<T> lireFichier() {
+
+    public ArrayList<T> lireFichier(TypeReference<ArrayList<T>> type) {
         ArrayList<T> objets = new ArrayList<>();
 
         if(!database.exists()) {
@@ -45,7 +45,7 @@ protected abstract Type getType();
         // Vérifier si le fichier est vide
         if(database.length() != 0) {
             try {
-                objets = objectMapper.readValue(database, new TypeReference<ArrayList<T>>() {});
+                objets = objectMapper.readValue(database, type);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,7 +95,7 @@ public void ajouterObjet(T objet)
  
 protected abstract void init();
 
-    public List<T> getListObjet()
+    public ArrayList<T> getListObjet()
     {
         return this.listObjet==null ? new ArrayList<>() : listObjet;
 

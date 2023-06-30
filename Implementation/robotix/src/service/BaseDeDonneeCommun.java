@@ -1,5 +1,6 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Membre;
@@ -16,22 +17,13 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         private List<Map<String, List<Robot>>> listRobot;
         private List<Map<String, List<Composant>>> listComposant;
-        public BaseDeDonneeCommun(String fileName) throws IOException {
-            super(fileName);
+        public <T> BaseDeDonneeCommun(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
+            super(fileName,type );
             listComposant = new ArrayList<>();
             listRobot = new ArrayList<>();
-            if(!listRobot.equals(null) && !listComposant.equals(null)) {
-                initListeRobotEtComposant();
-            }
+
         }
 
-
-
-
-        @Override
-        protected Type getType() {
-            return new TypeToken<ArrayList<Membre>>(){}.getType();
-        }
 
 
         @Override

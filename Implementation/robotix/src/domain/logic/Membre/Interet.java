@@ -1,5 +1,5 @@
 package domain.logic.Membre;
-public class Interet {
+public class Interet implements java.io.Serializable{
     private String nom;
 
     public Interet(String nom){

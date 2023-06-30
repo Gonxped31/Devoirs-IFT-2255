@@ -1,5 +1,6 @@
 package domain.logic.Robot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-public class Activite {
+public class Activite implements java.io.Serializable{
     private String nom;
     private Date dateDebut;
     private Date dateFin;
@@ -79,7 +80,7 @@ public class Activite {
     public void setListeInteretAssocie(ArrayList<Interet> listeInteretAssocie) {
         this.listeInteretAssocie = listeInteretAssocie;
     }
-
+    @JsonIgnore
     public String getInfoActiviteFormater(){
         numeroActivite++;
         return numeroActivite+"-"+" Nom : " + this.nom +

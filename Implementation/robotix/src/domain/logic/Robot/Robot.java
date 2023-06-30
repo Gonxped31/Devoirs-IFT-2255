@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.UUID;
 
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
-public class Robot {
+public class Robot implements java.io.Serializable{
     private String nom;
     private int X, Y, vitesse, batterie, cpu;
     private double memoire; // En GB
