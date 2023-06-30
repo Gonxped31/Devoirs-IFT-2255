@@ -41,14 +41,23 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         new Fournisseur("Bouchard","Bouchard", "456 avenue des Automates, Montr�al, QC, H5M 1N2", "contact@automatech.ca",
                         "4503335432", "RobotB", "BRAS", "25", "Automatech"),
         new Fournisseur("Adams","Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "service@innovatech.ca",
-                        "4509998888", "RobotC", "ECRAN", "27","Innovatech")
+                        "4509998888", "RobotC", "ECRAN", "27","Innovatech"),
+        new Fournisseur("Wilson", "Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "assistance@iRobot.ca",
+                "4509998888", "RobotC", "ECRAN", "27","Innovatech"),
+
+        new Fournisseur("Thompson", "Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "info@roboPro.ca",
+                        "4506780000", "RobotE", "HAUTPARLEUR", "22","RoboPro"),
+        new Fournisseur("Kamen", "Kamen", "2000 avenue Cremazie", "kamen@gmail.com","5141111111", "RobotF",
+                "HELICE","20", "Kamen inc.")
+
         /*
         new Fournisseur("Adams", "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5", "adams3",
                         "service@innovatech.ca", "4509998888", "RobotC", "ECRAN","27", "Innovatech"),
         new Fournisseur("Wilson", "89 boulevard de la Technologie, Laval, QC, H7M 7B7", "wilson4",
                         "assistance@iRobot.ca", "4502109876", "RobotD", "CAMERA","35", "iRobot"),
         new Fournisseur("Thompson", "10 Place de la Robotique, Longueuil, QC, J4H 1A1", "thompson5",
-                        "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro")*/
+                        "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro")
+        */
         ));
 
         tempList.stream().forEach(fournisseur -> {
@@ -141,7 +150,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
     }
 
     public String rechercherComposantParNomFournisseur(String nomFournisseur){
-        String composants= this.listComposant.stream()
+        String composants = this.listComposant.stream()
                 .filter(map -> map.containsKey(nomFournisseur))
                 .flatMap(map -> map.get(nomFournisseur).stream())
                 .map(composant -> composant.getInfoComposantFormater())
