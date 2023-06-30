@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class MenusFournisseur {
-
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs;
 	//private DbControleur dbControlleur;
@@ -174,7 +173,6 @@ public class MenusFournisseur {
 		menuFournisseur(scanner, nomFournisseur);
 	}
 
-
 	/* Gestion de composantes */
 	public void menuGererComposantes(Scanner scanner, String nomFournisseur){
 		System.out.println(" ");
@@ -236,7 +234,6 @@ public class MenusFournisseur {
 		System.out.println(" ");
 		menuGererComposantes(scanner, nomFournisseur);
 	}
-
 
 	/* Modification du profile */
 	public void menuMotifierProfileFournisseur(Scanner scanner, String nomFournisseur) {
@@ -455,25 +452,21 @@ public class MenusFournisseur {
 				System.out.println("Entrez le pseudo");
 				String decisionPseudo = scanner.nextLine();
 				System.out.println((dbControlleur.rechercherUtilisateurParPseudo(decisionPseudo)));
-
 			}
 			case "2" -> {
 				System.out.println("Entrez le nom");
 				String decisionNom = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParNom(decisionNom));
-
 			}
 			case "3" -> {
 				System.out.println("Entrez le prenom");
 				String decisionPrenom = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParPrenom(decisionPrenom));
-
 			}
 			case "4" -> {
 				System.out.println("Entrez le pseudo");
 				String pseudoUtilisateur = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParSuiveur(pseudoUtilisateur));
-
 			}
 		}
 	}
@@ -495,6 +488,4 @@ public class MenusFournisseur {
 		} while (continuer);
 		return choix;
 	}
-
-
 }

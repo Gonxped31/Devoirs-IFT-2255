@@ -72,16 +72,12 @@ public class Fournisseur extends Membre {
     public boolean[] getTabBoolNotification() {
         return tabBoolNotification;
     }
-
     public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
-
 
     /* Setters */
     public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
         this.capaciteProductionComposantes = capaciteProductionComposantes;
     }
-
-
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -206,14 +202,10 @@ public class Fournisseur extends Membre {
     }*/
 
     public LinkedList<Notification> notifier() {
-        //boolean NotifierAchatComposants;
-
-        /*NotifierAchatComposants = */verifierInventaireComposants();
-
-        //tabBoolNotification[1] = NotifierAchatComposants;
-
+        verifierInventaireComposants();
         return listeNotifications;
     }
+
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.numeroTelephone +
@@ -224,16 +216,12 @@ public class Fournisseur extends Membre {
     }
 
     public void verifierInventaireComposants() {
-        //boolean DoitEtreNotifie = false;
-
         if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
-            //DoitEtreNotifie = true;
             notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
             notification.setMesssage("Un utilisateur a acheté une de vos composantes");
             notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
             listeNotifications.add(notification);
         }
-        //return DoitEtreNotifie;
     }
 }
 

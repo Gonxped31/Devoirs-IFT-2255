@@ -10,7 +10,6 @@ import java.util.LinkedList;
 public class ControlleurFournisseurs {
     private DbControleur dataBaseController = new DbControleur();
     private Fournisseur fournisseurCourant;
-
     public ControlleurFournisseurs() throws IOException {
     }
 
@@ -31,15 +30,12 @@ public class ControlleurFournisseurs {
     public boolean verifierNom(String inputNom) {
         return dataBaseController.verifierNomFournissuer(inputNom);
     }
-
     public boolean verifierEmail(String inputEmail) {
         return Fournisseur.verifierEmailFournisseur(inputEmail);
     }
-
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-    /*        */
 
     public void ajouterRobot(){
         //this.dataBaseController.supprimerFournisseur(fournisseurCourant);
@@ -96,8 +92,7 @@ public class ControlleurFournisseurs {
         return this.fournisseurCourant.notifier();
     }
 
-    public void voirProfilFournisseur(String nomFournisseur)
-    {
+    public void voirProfilFournisseur(String nomFournisseur) {
         System.out.println(this.fournisseurCourant.getProfilFournisseur());
     }
 
