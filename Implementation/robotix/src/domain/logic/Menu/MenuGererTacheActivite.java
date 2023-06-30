@@ -9,39 +9,42 @@ import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
+import domain.logic.Membre.Interet;
+import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Action;
 import domain.logic.Robot.Activite;
+import domain.logic.Robot.Tache;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    //private MenuUtilisateur menuUtil;
+    // private MenuUtilisateur menuUtil;
     private Activite activite = new Activite();
 
     public MenuGererTacheActivite() throws IOException {
     }
 
-    //Tache
+    // Tache
     public void gererMesTaches(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
         System.out.println("3- Revenir au menu principal");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch (choix){ 
-            case "1": 
+        switch (choix) {
+            case "1":
                 creerTache(scanner, pseudo);
                 break;
-            case "2": 
+            case "2":
                 allouerTacheRobot(scanner, pseudo);
                 break;
             case "3":
-                //menuUtilisateur(scanner, pseudo);
+                // menuUtilisateur(scanner, pseudo);
                 break;
         }
     }
 
-    public void creerTache(Scanner scanner, String pseudo){
+    public void creerTache(Scanner scanner, String pseudo) {
         ArrayList<Action> actions = new ArrayList<Action>();
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.println("Nom: ");
@@ -66,29 +69,29 @@ public class MenuGererTacheActivite {
         String tache = scanner.nextLine();
         if (controlleurUtilisateurs.allouerTacheRobot(pseudo, robot, tache))
             System.out.println("La tache a ete allouée avec succès");
-        else{
-            System.out.println("La tache n'a pas pu être allouée car vous ne possédez pas le robot ou la tache indiqué");
+        else {
+            System.out
+                    .println("La tache n'a pas pu être allouée car vous ne possédez pas le robot ou la tache indiqué");
         }
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        // menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-
-    //Activite
+    // Activite
     public void gererMesActivites(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
         System.out.println("3- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch (choix){ 
-            case "1": 
+        switch (choix) {
+            case "1":
                 menuCreerActivite(scanner, pseudo);
                 break;
             case "2":
                 menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
-                //menuUtilisateur(scanner, pseudo);
+                // menuUtilisateur(scanner, pseudo);
                 break;
         }
     }
@@ -96,48 +99,70 @@ public class MenuGererTacheActivite {
     public void menuCreerActivite(Scanner scanner, String pseudo) throws ParseException {
         boolean continuer = false;
         ArrayList<String> listeTache = new ArrayList<>();
-        ArrayList<String> listeInteret = new ArrayList<>();
+        ArrayList<String> listeInterets = new ArrayList<>();
+        Date dateDebut = new Date();
+        Date dateFin = new Date();
+
         System.out.println(" ");
         System.out.print("Nom de l'activité : ");
         String nomActivite = scanner.nextLine();
-        System.out.println("Date de debut : ");
-        String dateDebut = scanner.nextLine();
-        System.out.println("Date de fin : ");
-        String dateFin = scanner.nextLine();
+
+        System.out.println("Date de debut (format dd/MM/yyyy) : ");
+        String lireDateDebut = scanner.nextLine();
+        SimpleDateFormat dateDebutFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateDebut = dateDebutFormat.parse(lireDateDebut);
+        } catch (ParseException e) {
+            System.out.println("Format de date invalide !");
+        }
+
+        System.out.println("Date de fin (format dd/MM/yyyy) : ");
+        String lireDateFin = scanner.nextLine();
+        SimpleDateFormat dateFinFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateFin = dateDebutFormat.parse(lireDateFin);
+        } catch (ParseException e) {
+            System.out.println("Format de date invalide !");
+        }
+
         do {
             System.out.print("Veuillez entrer une tache : ");
-            listeTache.add(scanner.nextLine());
+            String nomTache = scanner.nextLine();
+            listeTache.add(nomTache);
             System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
-            if (reponse.equalsIgnoreCase("oui")){
+            if (reponse.equalsIgnoreCase("oui")) {
                 continuer = true;
             }
         } while (continuer);
 
         do {
             System.out.print("Veuillez entrer un interêt : ");
-            listeInteret.add(scanner.nextLine());
-            System.out.print("Voulez-vous ajouter une autre interet ? (répondez par oui ou non): ");
+            String nomInteret = scanner.nextLine();
+            listeInterets.add(nomInteret);
+            System.out.print("Voulez-vous ajouter un autre intérêt ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
-            if (reponse.equalsIgnoreCase("oui")){
+            if (reponse.equalsIgnoreCase("oui")) {
                 continuer = true;
             }
         } while (continuer);
 
-        if (controlleurUtilisateurs.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInteret)) {
-            System.out.println("L'activitée a été bien créée (:");
+        boolean activiteValide = controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+
+        if (activiteValide == true) {
+            System.out.println("L'activité a été bien créée (:");
         } else {
-            System.out.println("Cette activitée existe déjà...");
+            System.out.println("Cette activité existe déjà...");
         }
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        // menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-    public void menuRejoindreActivite(String pseudo, Scanner scanner){
+    public void menuRejoindreActivite(String pseudo, Scanner scanner) {
         Date date = new Date();
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
         String nomActivite = scanner.nextLine();
 
-        System.out.println ("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
+        System.out.println("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
         String dateDebut = scanner.nextLine();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

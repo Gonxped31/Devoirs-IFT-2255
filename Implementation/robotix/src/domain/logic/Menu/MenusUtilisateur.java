@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
@@ -11,16 +12,16 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
-public class MenuUtilisateur {
-    /*Section Utilisateur */
+public class MenusUtilisateur {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    //private Menu menu = new Menu();
+    // private Menu menu = new Menu();
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
 
-    public MenuUtilisateur() throws IOException {
+    public MenusUtilisateur() throws IOException {
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException {
@@ -67,7 +68,8 @@ public class MenuUtilisateur {
             telephone = scanner.nextLine();
             TelephoneValide = controlleurUtilisateurs.verifierTelephone(telephone);
             if (!TelephoneValide) {
-                System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
+                System.out
+                        .println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
             }
         }
 
@@ -82,12 +84,13 @@ public class MenuUtilisateur {
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
         }
-        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
+        controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, courriel, telephone,
+                nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-        //menu.menuPrincipale(scanner);
+        // menu.menuPrincipale(scanner);
     }
 
-    public void connecterUtilisateur(Scanner scanner) throws ParseException {
+    public void connecterUtilisateur(Scanner scanner) {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
         System.out.println("Veuillez entrer votre mot de passe: ");
@@ -97,22 +100,27 @@ public class MenuUtilisateur {
             menuUtilisateur(scanner, connexion);
         } else {
             System.out.println(connexion + " n'existe pas.");
-            //menu.menuPrincipale(scanner);
+            // menu.menuPrincipale(scanner);
         }
     }
 
-    public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException {
+    public void menuUtilisateur(Scanner scanner, String pseudo) {
+        ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
         ArrayList<String> fournisCPU = new ArrayList<>();
-        fournisCPU.add("Fournisseur6" );
+        fournisCPU.add("Fournisseur6");
         fournisCPU.add("Adresse1");
         fournisCPU.add("Courriel3");
         fournisCPU.add("Numero4");
         fournisCPU.add("type3");
         fournisCPU.add("compagnie2");
         System.out.println("******************** Menu: " + pseudo + " ********************");
+        ArrayList<Notification> notifications = controlleurUtilisateurs.notifier();
+        if (notifications.size() > 0) {
+            System.out.println(">>> Vous avez " + notifications.size() + "notifications <<<");
+        }
         System.out.println("Bienvenue! Veuillez choisir une option:");
         System.out.println("1- Modifier mon profile");
-        System.out.println("2- Gérer ma flotte");  
+        System.out.println("2- Gérer ma flotte");
         System.out.println("3- Gérer mes taches");
         System.out.println("4- Gérer mes activites");
         System.out.println("5- Gerer mon reseau social");
@@ -122,35 +130,34 @@ public class MenuUtilisateur {
         System.out.println("9- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch(choix){
-            case("1") :
+        switch (choix) {
+            case ("1"):
                 modifierProfile(scanner, pseudo);
-            case("2") :
+            case ("2"):
                 menuGestionFlotte.gererMaFlotte(scanner, pseudo);
-            case("3") :
+            case ("3"):
                 menuGererTacheActivite.gererMesTaches(scanner, pseudo);
-            case("4") :
+            case ("4"):
                 menuGererTacheActivite.gererMesActivites(scanner, pseudo);
-            case("5") :
+            case ("5"):
                 menuReseau.gererReseauSocial(scanner, pseudo);
-            case("6") :
+            case ("6"):
                 menuAchat(scanner, pseudo);
-            case("7") :
-                menuNotification(scanner, pseudo);
-            case("8") :
+            case ("7"):
+                menuNotifications(notifications);
+            case ("8"):
                 menuRequetesPubliques(scanner, pseudo);
-            case("9") :
-                //menu.menuPrincipale(scanner);
+            case ("9"):
+                // menu.menuPrincipale(scanner);
         }
     }
 
-
-    public void menuAchat(Scanner scanner, String pseudo){
+    public void menuAchat(Scanner scanner, String pseudo) {
         System.out.println("Voulez-vous acheter un robot ou une composante?");
         System.out.println("1- Robot");
         System.out.println("2- Composante");
         String decision = scanner.nextLine();
-        switch(decision){
+        switch (decision) {
             case "1" -> {
 
             }
@@ -167,18 +174,18 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuRequetesPubliques(Scanner scanner,String pseudo) throws ParseException {
+    public void menuRequetesPubliques(Scanner scanner, String pseudo) throws ParseException {
         System.out.println("Veuillez faire une requete publique : ");
         System.out.println("1- Voir la liste d'utilisateurs");
         System.out.println("2- Voir la liste des fournisseurs");
         System.out.println("3- Voir mon profil");
-        System.out.println("4- Chercher utilisateur par: ");//TODO
+        System.out.println("4- Chercher utilisateur par: ");// TODO
         System.out.println("5- Recuperer la liste des activites");
         System.out.println("6- Recuperer la liste des interets");
-        System.out.println("7- Rechercher fournisseur par nom");//TODO
-        System.out.println("8- Rechercher une composante par nom");//TODO
+        System.out.println("7- Rechercher fournisseur par nom");// TODO
+        System.out.println("8- Rechercher une composante par nom");// TODO
         String choix = scanner.nextLine();
-        switch (choix){
+        switch (choix) {
             case "1" -> {
                 System.out.println(dbControlleur.recupererListeUtilisateur());
                 menuUtilisateur(scanner, pseudo);
@@ -214,13 +221,12 @@ public class MenuUtilisateur {
         }
     }
 
-
-    public void menuRechercheComposante(Scanner scanner, String nomFournisseur){
+    public void menuRechercheComposante(Scanner scanner, String nomFournisseur) {
         System.out.println("Filtrer par: ");
         System.out.println("1- Type de la composante");
         System.out.println("2- Nom de fournisseur");
         String decision = scanner.nextLine();
-        switch (decision){
+        switch (decision) {
             case "1" -> {
                 System.out.println("Entrez le type : ");
                 String nom = scanner.nextLine();
@@ -234,23 +240,24 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuRechercheInterets(Scanner scanner, String nomFournisseur){
+    public void menuRechercheInterets(Scanner scanner, String nomFournisseur) {
         System.out.println("Voulez vous appliquer un filtre?");
         System.out.println("1- Oui");
         System.out.println("2- Non");
         String decision = scanner.nextLine();
-        switch (decision){
+        switch (decision) {
             case "1" -> {
                 System.out.println("Par quel filtre voulez vous filtrer?");
                 System.out.println("1- Filtrer par trois premieres lettres");
                 System.out.println("2- Filtrer par pseudo utilisateur");
                 System.out.println("3- Filtrer par pseudo utilisateur et trois premieres lettres d'interets");
                 String decisionFiltre = scanner.nextLine();
-                switch(decisionFiltre.toUpperCase()){
+                switch (decisionFiltre.toUpperCase()) {
                     case "1" -> {
                         System.out.println("Entrez vos 3 characteres");
                         String troislettre = scanner.nextLine();
-                        System.out.println(dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
+                        System.out.println(
+                                dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
                     }
                     case "2" -> {
                         System.out.println("Entrez le pseudo de l'utilisateur");
@@ -263,7 +270,9 @@ public class MenuUtilisateur {
                         String pseudo = scanner.nextLine();
                         System.out.println("Entrez les 3 characteres de l'interet");
                         String troislettre = scanner.nextLine();
-                        System.out.println(dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo, troislettre));
+                        System.out.println(
+                                dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(
+                                        pseudo, troislettre));
                     }
                 }
             }
@@ -273,7 +282,7 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
+    public void menuChercherFournisseur(Scanner scanner, String nomFournisseur) {
         System.out.println("Filtrer par:");
         System.out.println("1- Nom");
         System.out.println("2- Email");
@@ -304,14 +313,14 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+    public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur) {
         System.out.println("Filtrer par:");
         System.out.println("1- Pseudo");
         System.out.println("2- Nom");
         System.out.println("3- Prenom");
         System.out.println("4- Obtenir liste des suiveurs de? (pseudo voulu)");
         String decision = scanner.nextLine();
-        switch (decision){
+        switch (decision) {
             case "1" -> {
                 System.out.println("Entrez le pseudo");
                 String decisionPseudo = scanner.nextLine();
@@ -350,52 +359,71 @@ public class MenuUtilisateur {
         System.out.println("7- Nom de la compagnie");
         System.out.println("8- Mot de passe");
         String choix = scanner.nextLine();
-        switch(choix){
-            case "1":
+        switch (choix) {
+            case "1" -> {
                 System.out.println("Entrez votre nouveau nom: ");
                 String nom = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "nom", nom);
-                break;
-            case "2":
+            }
+            case "2" -> {
                 System.out.println("Entrez votre nouveau prenom: ");
                 String prenom = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "prenom", prenom);
-                break;
-            case "3":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "3" -> {
                 System.out.println("Entrez votre nouvelle adresse: ");
                 String adresse = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "adresse", adresse);
-                break;
-            case "4":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "4" -> {
                 System.out.println("Entrez votre nouveau pseudo: ");
                 String newPseudo = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "pseudo", newPseudo);
-                break;
-            case "5": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "5" -> {
                 System.out.println("Entrez votre nouveau email : ");
                 String email = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "email", email);
-                break;
-            case "6":
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "6" -> {
                 System.out.println("Entrez votre nouveau numero de telephone : ");
                 String numTele = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "numerotelephone", numTele);
-                break;
-            case "7": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "7" -> {
                 System.out.println("Entrez votre nouvelle compagnie : ");
                 String compagnie = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "nomcompagnie", compagnie);
-                break;
-            case "8": 
+                System.out.println("Modification terminée avec succès !");
+            }
+            case "8" -> {
                 System.out.println("Entrez votre nouveau mot de passe : ");
-                String mdp= scanner.nextLine();
+                String mdp = scanner.nextLine();
+                System.out.println("Modification en cours...");
                 controlleurUtilisateurs.modifierProfile(pseudo, "mdp", mdp);
-                break;
-        }        
+                System.out.println("Modification terminée avec succès !");
+            }
+        }
+    }
+
+    public void menuNotifications(ArrayList<Notification> notifications) {
+        System.out.println(notifications + "\n");
     }
 
     public void menuNotification(Scanner scanner, String pseudo) throws ParseException {
-        for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
+        for (Notification notif : controlleurUtilisateurs.voirNotifications()) {
             System.out.println("- " + notif);
         }
         System.out.println("Voulez-vous supprimer les notifs (Y/N)?");

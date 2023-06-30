@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
 

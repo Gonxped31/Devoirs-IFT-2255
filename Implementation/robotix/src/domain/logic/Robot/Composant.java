@@ -40,4 +40,12 @@ public class Composant {
                 "\n description : " + this.description +
                 "Type :" + this.typeComposant;
     }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

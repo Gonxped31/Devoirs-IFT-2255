@@ -1,6 +1,7 @@
 package domain.logic.Robot;
 
 import domain.logic.Membre.Interet;
+import domain.logic.Membre.Membre;
 import domain.logic.Membre.Utilisateur;
 
 import java.time.temporal.Temporal;
@@ -9,24 +10,30 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 public class Activite {
+    private String pseudoCreateur;
     private String nom;
     private Date dateDebut;
     private Date dateFin;
     private static int numeroActivite = 0;
     private ArrayList<Tache> listeDeTache = new ArrayList<>();
-    private ArrayList<Utilisateur> listeUtilisateurInsccrit = new ArrayList<>();
+    private ArrayList<Utilisateur> listeUtilisateurInscrit = new ArrayList<>();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
 
     public Activite () {
 
     }
-    public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
+    public Activite(String pesudoCreateur, String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
+        this.pseudoCreateur = pesudoCreateur;
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
+        this.listeInteretAssocie = listeInteretAssocie;
     }
 
+    public String getPseudoCreateur() {
+        return pseudoCreateur;
+    }
 
     public String getNom() {
         return nom;
@@ -48,8 +55,12 @@ public class Activite {
         return listeInteretAssocie;
     }
 
-    public ArrayList<Utilisateur> getListeUtilisateurInsccrit() {
-        return listeUtilisateurInsccrit;
+    public ArrayList<Utilisateur> getListeUtilisateurInscrit() {
+        return listeUtilisateurInscrit;
+    }
+
+    public void setPseudoCreateur(String pseudoCreateur) {
+        this.pseudoCreateur = pseudoCreateur;
     }
 
     public void setNom(String nom) {
@@ -73,7 +84,7 @@ public class Activite {
     }
 
     public void setListeUtilisateurInsccrit(ArrayList<Utilisateur> listeUtilisateurInsccrit) {
-        this.listeUtilisateurInsccrit = listeUtilisateurInsccrit;
+        this.listeUtilisateurInscrit = listeUtilisateurInsccrit;
     }
 
     public void setListeInteretAssocie(ArrayList<Interet> listeInteretAssocie) {

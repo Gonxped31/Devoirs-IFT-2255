@@ -3,15 +3,16 @@ package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Notification;
 
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class MenusFournisseur {
-
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
@@ -39,10 +40,9 @@ public class MenusFournisseur {
 			System.out.print("Nom: ");
 			inputNom = scanner.nextLine();
 			NomUnique = controlleurFournisseurs.verifierNom(inputNom);
-			if (NomUnique){
+			if (NomUnique) {
 				System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
-			}
-			else {
+			} else {
 				break;
 			}
 		}
@@ -60,11 +60,12 @@ public class MenusFournisseur {
 		}
 
 		while (!TelephoneValide) {
-			System.out.print("Num�ro de t�l�phone: ");
+			System.out.print("Numéro de téléphone: ");
 			inputTelephone = scanner.nextLine();
 			TelephoneValide = controlleurFournisseurs.verifierTelephone(inputTelephone);
 			if (!TelephoneValide) {
-				System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
+				System.out
+						.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
 			}
 		}
 
@@ -82,30 +83,38 @@ public class MenusFournisseur {
 		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
 
-		//menuPrincipale(scanner);
+		// menuPrincipale(scanner);
 	}
 
 	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {
 		System.out.println("Veuillez entrez votre nom de fournisseur: ");
-		String nomFounisseur = scanner.nextLine();
-		if (controlleurFournisseurs.authentificationFournisseur(nomFounisseur, "Fournisseur")) {
-			System.out.println("Bienvenue " + nomFounisseur + "!");
-			menuFournisseur(scanner, nomFounisseur);
+		String nomFournisseur = scanner.nextLine();
+		if (controlleurFournisseurs.authentificationFournisseur(nomFournisseur, "Fournisseur")) {
+			System.out.println("Bienvenue " + nomFournisseur + "!");
+			menuFournisseur(scanner, nomFournisseur);
 		} else {
-			System.out.println(nomFounisseur + " n'existe pas.");
+			System.out.println(nomFournisseur + " n'existe pas.");
 			menu.menuPrincipale(scanner);
 		}
 	}
 
 	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
+		System.out.println(" ");
+		LinkedList<Notification> notifications = controlleurFournisseurs.notifier();
+		if (notifications.size() > 0) {
+			System.out.println(">>> Vous avez " + notifications.size() + "notifications <<<");
+		}
+		System.out.println(" ");
 		System.out.println("Bienvenue ! Veuillez choisir une option:");
 		System.out.println("1- Ajouter un nouveau robot");
 		System.out.println("2- Retirer un robot");
 		System.out.println("3- Enregistrer une composante");
-		System.out.println("4- Retirer une composante");
-		System.out.println("5- Revenir au menu robotix");
-		System.out.println("6- Faire une requete publique");
+		System.out.println("4- Gérer mes composantes");
+		System.out.println("5- Voir mes notifications");
+		System.out.println("6- Modifier mon profile");
+		System.out.println("7- Faire une requete publique");
+		System.out.println("8- Revenir au menu robotix");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -119,7 +128,7 @@ public class MenusFournisseur {
 					System.out.println("Voulez-vous rajouter une autre composante ? (repondre par oui ou non)");
 					String reponse = scanner.nextLine();
 					continuer = demander(reponse, scanner);
-				} while(continuer);
+				} while (continuer);
 
 				controlleurFournisseurs.ajouterRobot();
 				System.out.println(" ");
@@ -131,7 +140,7 @@ public class MenusFournisseur {
 			case "2" -> {
 				System.out.print("Veuillez entrer le numero de serie du robot à retirer : ");
 				String numeroSerie = scanner.nextLine();
-				if(controlleurFournisseurs.retirerRobot(numeroSerie)){
+				if (controlleurFournisseurs.retirerRobot(numeroSerie)) {
 					System.out.println("Le robot a été retiré avec succès !");
 
 				} else {
@@ -145,7 +154,7 @@ public class MenusFournisseur {
 			case "4" -> {
 				System.out.print("Nom de la composante : ");
 				String composante2 = scanner.nextLine();
-				if(controlleurFournisseurs.retirerComposante(composante2)){
+				if (controlleurFournisseurs.retirerComposante(composante2)) {
 					System.out.println("La composante a été retirée avec succès !");
 				} else {
 					System.out.println("Vous ne possédez cette composante.");
@@ -157,22 +166,21 @@ public class MenusFournisseur {
 				System.out.println("Au revoir !");
 				menu.menuPrincipale(scanner);
 			}
-			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
 
-	public void menuRequetesPubliques(Scanner scanner,String nomFournisseur) throws ParseException {
+	public void menuRequetesPubliques(Scanner scanner, String nomFournisseur) throws ParseException {
 		System.out.println("Veuillez faire une requete publique : ");
 		System.out.println("1- Voir la liste d'utilisateurs");
 		System.out.println("2- Voir la liste des fournisseurs");
 		System.out.println("3- Voir mon profil");
-		System.out.println("4- Chercher utilisateur par: ");//TODO
+		System.out.println("4- Chercher utilisateur par: ");// TODO
 		System.out.println("5- Recuperer la liste des activites");
 		System.out.println("6- Recuperer la liste des interets");
-		System.out.println("7- Rechercher fournisseur par nom");//TODO
-		System.out.println("8- Rechercher une composante par nom");//TODO
+		System.out.println("7- Rechercher fournisseur par nom");// TODO
+		System.out.println("8- Rechercher une composante par nom");// TODO
 		String choix = scanner.nextLine();
-		switch (choix){
+		switch (choix) {
 			case "1" -> {
 				System.out.println(dbControlleur.recupererListeUtilisateur());
 				menuFournisseur(scanner, nomFournisseur);
@@ -208,13 +216,12 @@ public class MenusFournisseur {
 		}
 	}
 
-
-	public void menuRechercheComposante(Scanner scanner, String nomFournisseur){
+	public void menuRechercheComposante(Scanner scanner, String nomFournisseur) {
 		System.out.println("Filtrer par: ");
 		System.out.println("1- Type de la composante");
 		System.out.println("2- Nom de fournisseur");
 		String decision = scanner.nextLine();
-		switch (decision){
+		switch (decision) {
 			case "1" -> {
 				System.out.println("Entrez le type : ");
 				String nom = scanner.nextLine();
@@ -228,24 +235,24 @@ public class MenusFournisseur {
 		}
 	}
 
-
-	public void menuRechercheInterets(Scanner scanner, String nomFournisseur){
+	public void menuRechercheInterets(Scanner scanner, String nomFournisseur) {
 		System.out.println("Voulez vous appliquer un filtre?");
 		System.out.println("1- Oui");
 		System.out.println("2- Non");
 		String decision = scanner.nextLine();
-		switch (decision){
+		switch (decision) {
 			case "1" -> {
 				System.out.println("Par quel filtre voulez vous filtrer?");
 				System.out.println("1- Filtrer par trois premieres lettres");
 				System.out.println("2- Filtrer par pseudo utilisateur");
 				System.out.println("3- Filtrer par pseudo utilisateur et trois premieres lettres d'interets");
 				String decisionFiltre = scanner.nextLine();
-				switch(decisionFiltre.toUpperCase()){
+				switch (decisionFiltre.toUpperCase()) {
 					case "1" -> {
 						System.out.println("Entrez vos 3 characteres");
 						String troislettre = scanner.nextLine();
-						System.out.println(dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
+						System.out.println(
+								dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
 					}
 					case "2" -> {
 						System.out.println("Entrez le pseudo de l'utilisateur");
@@ -258,7 +265,9 @@ public class MenusFournisseur {
 						String pseudo = scanner.nextLine();
 						System.out.println("Entrez les 3 characteres de l'interet");
 						String troislettre = scanner.nextLine();
-						System.out.println(dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo, troislettre));
+						System.out.println(
+								dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(
+										pseudo, troislettre));
 					}
 				}
 			}
@@ -268,7 +277,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
+	public void menuChercherFournisseur(Scanner scanner, String nomFournisseur) {
 		System.out.println("Filtrer par:");
 		System.out.println("1- Nom");
 		System.out.println("2- Email");
@@ -299,42 +308,38 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+	public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur) {
 		System.out.println("Filtrer par:");
 		System.out.println("1- Pseudo");
 		System.out.println("2- Nom");
 		System.out.println("3- Prenom");
 		System.out.println("4- Obtenir liste des suiveurs de? (pseudo voulu)");
 		String decision = scanner.nextLine();
-		switch (decision){
+		switch (decision) {
 			case "1" -> {
 				System.out.println("Entrez le pseudo");
 				String decisionPseudo = scanner.nextLine();
 				System.out.println((dbControlleur.rechercherUtilisateurParPseudo(decisionPseudo)));
-
 			}
 			case "2" -> {
 				System.out.println("Entrez le nom");
 				String decisionNom = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParNom(decisionNom));
-
 			}
 			case "3" -> {
 				System.out.println("Entrez le prenom");
 				String decisionPrenom = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParPrenom(decisionPrenom));
-
 			}
 			case "4" -> {
 				System.out.println("Entrez le pseudo");
 				String pseudoUtilisateur = scanner.nextLine();
 				System.out.println(dbControlleur.rechercherUtilisateurParSuiveur(pseudoUtilisateur));
-
 			}
 		}
 	}
 
-	private boolean demander(String reponse, Scanner scanner){
+	private boolean demander(String reponse, Scanner scanner) {
 		boolean continuer = false;
 		boolean choix = false;
 		do {
@@ -351,7 +356,6 @@ public class MenusFournisseur {
 		} while (continuer);
 		return choix;
 	}
-
 
 	public void menuModifierProfileFournisseur(Scanner scanner) {
 		// TODO - implement MenusFournisseur.menuModifierProfileFournisseur
@@ -372,7 +376,8 @@ public class MenusFournisseur {
 		String description = scanner.nextLine();
 		System.out.print("Type de la composante : ");
 		String type = scanner.nextLine();
-		controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type, nomFournisseur);
+		controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type,
+				nomFournisseur);
 		System.out.println(" ");
 		System.out.println("La composante a été rajoutée avec succès");
 		System.out.println(" ");

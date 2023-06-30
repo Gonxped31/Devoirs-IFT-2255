@@ -16,6 +16,9 @@ public abstract class Membre {
         this.motDePasse = mdp;
     }
 
+    public Membre() {
+
+    }
 
     public String getNom() {
         return nom;
@@ -23,5 +26,21 @@ public abstract class Membre {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNomCompagnie(String nomCompagnie) {
+        this.nomCompagnie = nomCompagnie;
+    }
+
+    public void setNumeroTelephone(String numeroTelephone) {
+        this.numeroTelephone = numeroTelephone;
     }
 }
