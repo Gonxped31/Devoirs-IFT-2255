@@ -17,20 +17,18 @@ public class Activite {
     private static int numeroActivite = 0;
     private ArrayList<Tache> listeDeTache = new ArrayList<>();
     private ArrayList<Utilisateur> listeUtilisateurInscrit = new ArrayList<>();
-    //private Utilisateur createurActivite = new Utilisateur();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
 
     public Activite () {
 
     }
     public Activite(String pesudoCreateur, String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
-        this.pseudoCreateur = pesudoCreateur
+        this.pseudoCreateur = pesudoCreateur;
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
         this.listeInteretAssocie = listeInteretAssocie;
-        //this.createurActivite = createurActivite;
     }
 
     public String getPseudoCreateur() {

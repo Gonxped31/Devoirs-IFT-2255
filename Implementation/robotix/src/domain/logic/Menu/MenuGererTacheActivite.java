@@ -99,20 +99,21 @@ public class MenuGererTacheActivite {
         boolean continuer = false;
         ArrayList<Tache> listeTache = new ArrayList<>();
         ArrayList<Interet> listeInterets = new ArrayList<>();
-        ArrayList<Utilisateur> listeCreateursActivite = new ArrayList<>();
-        Date dateDebut = new Date();
-        Date dateFin = new Date();
-
+        Date dateDebut;
+        Date dateFin;
+        Activite activite = new Activite();
 
         System.out.println(" ");
         System.out.print("Nom de l'activité : ");
         String nomActivite = scanner.nextLine();
+        activite.setNom(nomActivite);
 
         System.out.println("Date de debut (format dd/MM/yyyy) : ");
         String lireDateDebut = scanner.nextLine();
         SimpleDateFormat dateDebutFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
             dateDebut = dateDebutFormat.parse(lireDateDebut);
+            activite.setDateDebut(dateDebut);
         } catch (ParseException e) {
             System.out.println("Format de date invalide !");
         }
@@ -122,6 +123,7 @@ public class MenuGererTacheActivite {
         SimpleDateFormat dateFinFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
             dateFin = dateDebutFormat.parse(lireDateFin);
+            activite.setDateFin(dateFin);
         } catch (ParseException e) {
             System.out.println("Format de date invalide !");
         }
@@ -131,6 +133,7 @@ public class MenuGererTacheActivite {
             String nomTache = scanner.nextLine(); // Lecture de l'entrée de la tâche
             Tache tache = new Tache(nomTache); // Instanciation d'une nouvelle tâche ayant uniquement son nom
             listeTache.add(tache);
+            activite.setListeDeTache(listeTache);
             System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
@@ -143,6 +146,7 @@ public class MenuGererTacheActivite {
             String nomInteret = scanner.nextLine(); // Lecture de l'entrée de l'intérêt
             Interet interet = new Interet(nomInteret);
             listeInterets.add(interet); // Instanciation d'un nouveau intérêt
+            activite.setListeInteretAssocie(listeInterets);
             System.out.print("Voulez-vous ajouter un autre intérêt ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
@@ -150,16 +154,16 @@ public class MenuGererTacheActivite {
             }
         } while (continuer);
 
-        ArrayList<Activite> activitesCrees = controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+        activite.setPseudoCreateur(pseudo);
 
-        for (Activite activite: activitesCrees) {
-            if (activitesCrees.contains(activite)) {
-                System.out.println("Cette activité existe déjà...");
-                break;
-            }
+        boolean activiteValide = controlleurUtilisateurs.creerActivites(activite);
+
+        if (activiteValide == true) {
+            System.out.println("L'activité a été bien créée (:");
+            System.out.println("Cette activité existe déjà...");
+        } else {
+            System.out.println("Cette activité existe déjà...");
         }
-        System.out.println("L'activité a été bien créée (:");
-
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
 

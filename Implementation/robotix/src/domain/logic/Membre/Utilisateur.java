@@ -29,7 +29,7 @@ public class Utilisateur extends Membre{
     private Tache tache;
     private Notification notification = new Notification();
     private int taillePrecedenteListeSuiveur;
-    private int taillePrecedenteListeUtilisateursInscrits;
+    private int taillePrecedenteUtilisateursInscrits;
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
 
@@ -137,9 +137,11 @@ public class Utilisateur extends Membre{
         listeUtilisateursSuivi.add(suivi);
     }
 
-    /*public void accepterNouvelUtilisateur(Utilisateur nouvelUtilisateur){
-        listSuiveur.add(nouvelUtilisateur);
-    }*/
+    public Set<Utilisateur> ajouterSuiveur(Utilisateur utilisateur) {
+        taillePrecedenteListeSuiveur = listSuiveur.size();
+        listSuiveur.add(utilisateur);
+        return listSuiveur;
+    }
 
     public LinkedList<Notification> voirNotifications(){
         return listeNotifications;
@@ -211,13 +213,17 @@ public class Utilisateur extends Membre{
     }
 
     private void verifierNouveauParticipant() {
+        int tailleUtilisateurInscrits = 0;
+
         for (Activite activite: listeActiviteCrees) {
-            if (activite.getListeUtilisateurInscrit().size() > taillePrecedenteListeUtilisateursInscrits) {
-                notification.setTitre("NOUVEAU PARTICIPANT");
-                notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
-                notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
-                listeNotifications.add(notification);
-            }
+            tailleUtilisateurInscrits += activite.getListeUtilisateurInscrit().size();
+        }
+
+        if (tailleUtilisateurInscrits > taillePrecedenteUtilisateursInscrits) {
+            notification.setTitre("NOUVEAU PARTICIPANT");
+            notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
+            notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
+            listeNotifications.add(notification);
         }
     }
 
@@ -417,15 +423,18 @@ public class Utilisateur extends Membre{
         this.listeInteret = listeInteret;
     }
 
-    public ArrayList<Activite> creerActivites(String pseudoCreateur, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache,
-                                              ArrayList<Interet> listeInterets) {
-        Activite activiteCree = new Activite(pseudoCreateur, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+    public boolean creerActivites(Activite activite) {
+        boolean EstValide = false;
 
-        for (Activite activite: listeActiviteCrees) {
-            taillePrecedenteListeUtilisateursInscrits += activite.getListeUtilisateurInscrit().size();
+        // Avoir la taille précédente total du nombre d'utilisateur rejoint dans les activités crées de l'utilisateur
+        for (Activite mesActivites: listeActiviteCrees) {
+            taillePrecedenteUtilisateursInscrits += mesActivites.getListeUtilisateurInscrit().size();
         }
-        listeActiviteCrees.add(activiteCree);
 
-        return listeActiviteCrees;
+        if (!listeActiviteCrees.contains(activite)) {
+            EstValide = true;
+            listeActiviteCrees.add(activite);
+        }
+        return EstValide;
     }
 }

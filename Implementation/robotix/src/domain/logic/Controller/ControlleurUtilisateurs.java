@@ -106,10 +106,9 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public ArrayList<Activite> creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache,
-                                              ArrayList<Interet> listeInterets){
-        Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+    public boolean creerActivites(Activite activite){
+        //Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
+        return this.utilisateurCourant.creerActivites(activite);
     }
 
     public boolean rejoindreActivite(String pseudo, Activite activite){
@@ -127,6 +126,10 @@ public class ControlleurUtilisateurs {
             //suivi.getNotifs().add(utilisateur.getPseudo() + " vous a suivi!");
             return true;
         }
+    }
+
+    public void ajouterSuiveur(Utilisateur utilisateur) {
+        this.utilisateurCourant.ajouterSuiveur(utilisateur);
     }
 
     public void gererSuiveurs(String pseudo){
