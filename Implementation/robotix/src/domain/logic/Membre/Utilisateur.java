@@ -7,6 +7,9 @@ import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.*;
 
 
@@ -34,12 +37,23 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
 
-    public Utilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<Interet> listeInteret){
+    @JsonCreator
+    public Utilisateur(@JsonProperty("nom") String nom,
+                       @JsonProperty("prenom") String prenom,
+                       @JsonProperty("adresse") String adresse,
+                       @JsonProperty("pseudo") String pseudo,
+                       @JsonProperty("mdp") String mdp,
+                       @JsonProperty("email") String email,
+                       @JsonProperty("numeroTelephone") String numeroTelephone,
+                       @JsonProperty("nomCompagnie") String nomCompagnie,
+                       @JsonProperty("listeInteret") ArrayList<Interet> listeInteret) {
+
         super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
         this.pseudo = pseudo;
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
     }
+
 
     public String getPseudo(){
         return pseudo;
@@ -76,8 +90,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.email = email;
     }
 
-    public void setNumeroTelephone(String numeroTelephone){
-        this.numeroTelephone = numeroTelephone;
+    public void setTelephone(String numeroTelephone){
+        super.setTelephone(numeroTelephone);
     }
 
     public void setNomCompagnie(String nomCompagnie){
@@ -289,7 +303,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             case "email" :
                 this.setEmail(nouvelInfo);
             case "numerotelephone" :
-                this.setNumeroTelephone(nouvelInfo);
+                this.setTelephone(nouvelInfo);
             case "nomcompagnie" :
                 this.setNomCompagnie(nouvelInfo);
         }
@@ -436,11 +450,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Composant> getComposantesAchetes() {
         return composantesAchetes;
     }
-
+    @JsonIgnore
     public String getProfilUtilisateur(){
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
                 "\n pseudo :" + pseudo + "\n adresse courriel : " +
-                this.email + "\nTelephone : " + this.numeroTelephone +
+                this.email + "\nTelephone : " + this.getTelephone() +
                 "\nInteret : " + this.getListeInteret().stream()
                 .map(i -> i.getNom()).collect(Collectors.joining(","))+
                 "\nNombre de point :" + this.point +

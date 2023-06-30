@@ -190,8 +190,8 @@ public class MenusFournisseur {
 		System.out.println("4- Chercher utilisateur par: ");//TODO
 		System.out.println("5- Recuperer la liste des activites");
 		System.out.println("6- Recuperer la liste des interets");
-		System.out.println("7- Rechercher fournisseur par nom");//TODO
-		System.out.println("8- Rechercher une composante par nom");//TODO
+		System.out.println("7- Rechercher fournisseur ");//TODO
+		System.out.println("8- Rechercher une composante");//TODO
 		String choix = scanner.nextLine();
 		switch (choix){
 			case "1" -> {

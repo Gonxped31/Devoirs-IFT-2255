@@ -1,5 +1,7 @@
 package domain.logic.Membre;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 
@@ -17,13 +19,21 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
 
-    public Fournisseur(String nom, String mdp,  String adresse, String email, String numeroTelephone,
-                       String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
+    @JsonCreator
+    public Fournisseur(@JsonProperty("nom") String nom, @JsonProperty("mdp") String mdp,
+                       @JsonProperty("adresse") String adresse, @JsonProperty("email") String email,
+                       @JsonProperty("numeroTelephone") String numeroTelephone,
+                       @JsonProperty("typeDeRobotFabriquer") String typeDeRobotFabriquer,
+                       @JsonProperty("typeComposantesFabriquer") String typeComposantesFabriquer,
+                       @JsonProperty("capacite") String capacite,
+                       @JsonProperty("nomcompagnie") String nomcompagnie) {
+
         super(nom, adresse, email, numeroTelephone, nomcompagnie, mdp);
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capaciteProductionComposantes =capacite;
     }
+
 
     public String getNomCompagnie() {
         return this.nomCompagnie;
@@ -50,9 +60,6 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return this.typeRobotFabriquer;
     }
 
-    public String getTelephone() {
-        return this.numeroTelephone;
-    }
 
     public String getEmail() {
         return this.email;
@@ -213,14 +220,13 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     }
     @JsonIgnore
     public String getProfilFournisseur(){
-        return "Nom :" + super.getNom() + "\n adresse courriel : " +
-                this.email + "\nTelephone : " + this.numeroTelephone +
+        return "Nom :" + super.getNom() + "\nAdresse courriel : " +
+                this.email + "\nTelephone : " + this.getTelephone() +
                 "\nType de robot fabriquer :" + this.typeRobotFabriquer +
                 "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
-                "\nNombre de robot disponible :" + this.getInventaireComposant().size() +
-                "\nNombre de robot disponible : " + this.getInventaireComposant().size();
+                "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
+                "\nNombre de robot disponible : " + this.getInventaireComposant().size() + "\n";
     }
-
     public boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;
 
@@ -288,5 +294,10 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         }
         return comps;
     }
+    @JsonProperty("telephone")
+    public String getNumeroTelephone() {
+        return this.getTelephone();
+    }
+
 }
 

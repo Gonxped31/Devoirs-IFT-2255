@@ -55,7 +55,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         protected void initListeRobotEtComposant(){
 
             this.getListObjet().stream().forEach(objet -> {
-                System.out.println( objet.toString());
+
                 listRobot.add(new HashMap<String, List<Robot>>() {{
                     put(
                             (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
