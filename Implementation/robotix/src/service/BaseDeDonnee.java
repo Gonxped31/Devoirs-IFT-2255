@@ -26,9 +26,6 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
 }
 
 
-
-
-
     public ArrayList<T> lireFichier(TypeReference<ArrayList<T>> type) {
         ArrayList<T> objets = new ArrayList<>();
 
