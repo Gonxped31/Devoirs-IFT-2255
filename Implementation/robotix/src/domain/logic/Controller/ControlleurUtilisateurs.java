@@ -8,6 +8,9 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class ControlleurUtilisateurs {
 
@@ -173,7 +176,7 @@ public class ControlleurUtilisateurs {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
     }
 
-    public boolean[] notifier() {
+    public LinkedList<Notification> notifier() {
         return this.utilisateurCourant.notifier();
     }
 }
