@@ -130,6 +130,7 @@ public class Utilisateur extends Membre{
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
+        taillePrecedenteListeSuiveur = listeUtilisateursSuivi.size();
         listeUtilisateursSuivi.add(suivi);
     }
 
@@ -198,17 +199,15 @@ public class Utilisateur extends Membre{
     }
 
     private void verifierNouveauAbonne() {
-       /* if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
-            //DoitEtreNotifie = true;
+       if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
             notification.setTitre("NOUVEAU ABONNÉ");
             notification.setMesssage("Un nouvel utilisateur suit votre profil");
             notification.setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
             listeNotifications.add(notification);
-        }*/
+        }
     }
 
     private void verifierNouveauParticipant() {
-
         /*if (listeActivitesRejoint.size() > ) {
             DoitEtreNotifie = true;
             notification.setTitre("NOUVEAU PARTICIPANT");
