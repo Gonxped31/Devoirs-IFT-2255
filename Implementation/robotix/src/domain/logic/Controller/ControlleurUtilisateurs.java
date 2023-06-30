@@ -106,9 +106,10 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public ArrayList<Activite> creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets){
+    public ArrayList<Activite> creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache,
+                                              ArrayList<Interet> listeInterets){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
-        return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+        return utilisateur.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
     }
 
     public boolean rejoindreActivite(String pseudo, Activite activite){

@@ -40,6 +40,10 @@ public class Utilisateur extends Membre{
         this.setListeInteret(listeInteret);
     }
 
+    public Utilisateur(){
+
+    }
+
     public String getPseudo(){
         return pseudo;
     }
@@ -130,7 +134,6 @@ public class Utilisateur extends Membre{
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
-        taillePrecedenteListeSuiveur = listeUtilisateursSuivi.size();
         listeUtilisateursSuivi.add(suivi);
     }
 
@@ -208,12 +211,14 @@ public class Utilisateur extends Membre{
     }
 
     private void verifierNouveauParticipant() {
-        /*if (listeActiviteCrees.size() > ) {
-            notification.setTitre("NOUVEAU PARTICIPANT");
-            notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
-            notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
-            listeNotifications.add(notification);
-        }*/
+        for (Activite activite: listeActiviteCrees) {
+            if (activite.getListeUtilisateurInscrit().size() > taillePrecedenteListeUtilisateursInscrits) {
+                notification.setTitre("NOUVEAU PARTICIPANT");
+                notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
+                notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
+                listeNotifications.add(notification);
+            }
+        }
     }
 
     private void verifierDateLimiteActivite() {
@@ -412,8 +417,13 @@ public class Utilisateur extends Membre{
         this.listeInteret = listeInteret;
     }
 
-    public ArrayList<Activite> creerActivites(String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) {
-        Activite activiteCree = new Activite(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+    public ArrayList<Activite> creerActivites(String pseudoCreateur, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache,
+                                              ArrayList<Interet> listeInterets) {
+        Activite activiteCree = new Activite(pseudoCreateur, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+
+        for (Activite activite: listeActiviteCrees) {
+            taillePrecedenteListeUtilisateursInscrits += activite.getListeUtilisateurInscrit().size();
+        }
         listeActiviteCrees.add(activiteCree);
 
         return listeActiviteCrees;

@@ -14,6 +14,9 @@ public abstract class Membre {
         this.nomCompagnie = nomCompagnie;
     }
 
+    public Membre() {
+
+    }
 
     public String getNom() {
         return nom;

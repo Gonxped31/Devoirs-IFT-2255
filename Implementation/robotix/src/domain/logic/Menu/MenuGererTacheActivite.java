@@ -10,6 +10,7 @@ import java.util.Scanner;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Interet;
+import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Action;
 import domain.logic.Robot.Activite;
 import domain.logic.Robot.Tache;
@@ -98,6 +99,7 @@ public class MenuGererTacheActivite {
         boolean continuer = false;
         ArrayList<Tache> listeTache = new ArrayList<>();
         ArrayList<Interet> listeInterets = new ArrayList<>();
+        ArrayList<Utilisateur> listeCreateursActivite = new ArrayList<>();
         Date dateDebut = new Date();
         Date dateFin = new Date();
 
