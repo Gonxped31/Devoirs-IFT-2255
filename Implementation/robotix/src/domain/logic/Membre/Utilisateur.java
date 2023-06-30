@@ -311,14 +311,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
-        boolean bool = false;
-        //Robot robot = verifierNumeroSerieRobot(numeroSerie, listeFournisseur);
-        if (robot != null){
-            robot.setNom(robot.getNom());
-            this.getListeRobot().add(robot);
-            bool = true;
-        }
-        return bool;
+
+       boolean robotExiste= this.listeRobot.stream()
+               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
+       if (!robotExiste ) {
+           listeRobot.add(robot);
+       }
+        return  robotExiste;
     }
 
     public void creerTache(String nom, ArrayList<Action> actions){

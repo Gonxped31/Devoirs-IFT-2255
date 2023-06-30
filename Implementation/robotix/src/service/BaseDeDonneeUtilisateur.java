@@ -116,12 +116,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
-    public String recupererListeInteret(){
-        return   this.listInteret.stream()
-                .map( i-> i.getNom())
-                .distinct()
-                .collect(Collectors.joining(", "));
-    }
 
     public String recupererListeInteretUtilisateur(String pseudo){
         return (String) this.getListObjet().stream()
