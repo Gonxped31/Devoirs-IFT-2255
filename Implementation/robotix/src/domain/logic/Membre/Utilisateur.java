@@ -21,7 +21,7 @@ public class Utilisateur extends Membre{
     private ArrayList<String> listeInteret = new ArrayList<>();
     private LinkedList<Notification> listeNotifications = new LinkedList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
-    private ArrayList<Activite> listeNouvelleActivite = new ArrayList<>();
+    private ArrayList<Activite> listeActiviteCrees = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
@@ -188,8 +188,8 @@ public class Utilisateur extends Membre{
     }
 
     private void verifierNouvelleActivite() {
-        for (Activite activite: listeActivitesRejoint) {
-            if (activite.getListeInteretAssocie().contains(listeInteret)) {
+        for (Activite activiteCree: listeActiviteCrees) {
+            if (activiteCree.getListeInteretAssocie().contains(listeInteret)) {
                 notification.setTitre("NOUVELLE ACTIVITÉ");
                 notification.setMesssage("Une nouvelle activité correspondant à vos intérêts est créée");
                 notification.setTypeNotification(TypeNotification.ACTIVITES_INTERESSE);
@@ -208,7 +208,7 @@ public class Utilisateur extends Membre{
     }
 
     private void verifierNouveauParticipant() {
-        /*if (listeActivitesRejoint.size() > ) {
+        /*if (listeActiviteCrees.size() > ) {
             notification.setTitre("NOUVEAU PARTICIPANT");
             notification.setMesssage("Un nouvel utilisateur a rejoint une de vos activités");
             notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
@@ -412,10 +412,10 @@ public class Utilisateur extends Membre{
         this.listeInteret = listeInteret;
     }
 
-    public boolean creerActivites(String nomActivite, Date dateDebut, Date dateFin, ArrayList<String> listeTache, ArrayList<String> listeInterets) {
+    public ArrayList<Activite> creerActivites(String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) {
         Activite activiteCree = new Activite(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+        listeActiviteCrees.add(activiteCree);
 
-        return activiteCree;
-
+        return listeActiviteCrees;
     }
 }

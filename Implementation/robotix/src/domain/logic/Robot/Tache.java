@@ -11,7 +11,7 @@ public class Tache {
         this.nom = nom;
         this.actions = actions;
     }
-    
+
     public Tache(String nom) {
         this.nom = nom;
     }

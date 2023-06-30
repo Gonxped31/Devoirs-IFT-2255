@@ -1,5 +1,6 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
@@ -105,7 +106,7 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<String> listeTache, ArrayList<String> listeInterets){
+    public ArrayList<Activite> creerActivites(String pseudo, String nomActivite, Date dateDebut, Date dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
         return utilisateur.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
     }

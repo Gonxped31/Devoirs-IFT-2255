@@ -126,8 +126,9 @@ public class MenuGererTacheActivite {
 
         do {
             System.out.print("Veuillez entrer une tache : ");
-            String lireTache = scanner.nextLine();
-            listeTache.add(lireTache.);
+            String nomTache = scanner.nextLine(); // Lecture de l'entrée de la tâche
+            Tache tache = new Tache(nomTache); // Instanciation d'une nouvelle tâche ayant uniquement son nom
+            listeTache.add(tache);
             System.out.print("Voulez-vous ajouter une autre tache ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
@@ -137,7 +138,9 @@ public class MenuGererTacheActivite {
 
         do {
             System.out.print("Veuillez entrer un interêt : ");
-            listeInterets.add(scanner.nextLine());
+            String nomInteret = scanner.nextLine(); // Lecture de l'entrée de l'intérêt
+            Interet interet = new Interet(nomInteret);
+            listeInterets.add(interet); // Instanciation d'un nouveau intérêt
             System.out.print("Voulez-vous ajouter un autre intérêt ? (répondez par oui ou non): ");
             String reponse = scanner.nextLine();
             if (reponse.equalsIgnoreCase("oui")){
@@ -145,11 +148,16 @@ public class MenuGererTacheActivite {
             }
         } while (continuer);
 
-        if (controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets)) {
-            System.out.println("L'activitée a été bien créée (:");
-        } else {
-            System.out.println("Cette activité existe déjà...");
+        ArrayList<Activite> activitesCrees = controlleurUtilisateurs.creerActivites(pseudo, nomActivite, dateDebut, dateFin, listeTache, listeInterets);
+
+        for (Activite activite: activitesCrees) {
+            if (activitesCrees.contains(activite)) {
+                System.out.println("Cette activité existe déjà...");
+                break;
+            }
         }
+        System.out.println("L'activité a été bien créée (:");
+
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
