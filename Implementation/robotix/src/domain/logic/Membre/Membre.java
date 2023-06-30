@@ -1,21 +1,43 @@
 package domain.logic.Membre;
-public class Membre {
-    protected String nom;
+public abstract class Membre implements java.io.Serializable {
+    private String motDePasse;
+    private String nom;
     protected String adresse;
     protected String email;
-    protected String numeroTelephone;
+    private String Telephone;
     protected String nomCompagnie;
 
-    public Membre(String nom, String adresse, String email, String numeroTelephone, String nomCompagnie) {
-        this.nom = nom;
+    public Membre(String nom, String adresse, String email, String numeroTelephone, String nomCompagnie, String mdp) {
+        this.setNom(nom);
         this.adresse = adresse;
         this.email = email;
-        this.numeroTelephone = numeroTelephone;
+        this.setTelephone(numeroTelephone);
         this.nomCompagnie = nomCompagnie;
-    }
-    
-    public static void name() {
-        
+        this.setMotDePasse(mdp);
     }
 
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getTelephone() {
+        return Telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        Telephone = telephone;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
 }
