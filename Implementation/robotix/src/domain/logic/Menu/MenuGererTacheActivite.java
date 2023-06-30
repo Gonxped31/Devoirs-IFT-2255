@@ -100,8 +100,8 @@ public class MenuGererTacheActivite {
         boolean continuer = false;
         ArrayList<Tache> listeTache = new ArrayList<>();
         ArrayList<Interet> listeInterets = new ArrayList<>();
-        Date dateDebut;
-        Date dateFin;
+        Date dateDebut = new Date();
+        Date dateFin = new Date();
         Activite activite = new Activite();
 
         System.out.println(" ");
@@ -157,7 +157,7 @@ public class MenuGererTacheActivite {
 
         activite.setPseudoCreateur(pseudo);
 
-        boolean activiteValide = controlleurUtilisateurs.creerActivites(activite);
+        boolean activiteValide = controlleurUtilisateurs.creerActivites(nomActivite, dateDebut, dateFin, listeTache, listeInterets);
 
         if (activiteValide == true) {
             System.out.println("L'activité a été bien créée (:");

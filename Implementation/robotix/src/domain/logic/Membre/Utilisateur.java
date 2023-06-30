@@ -58,7 +58,7 @@ public class Utilisateur extends Membre {
         return this.listeRobot;
     }
 
-    public LinkedList<Notification> getNotifs() {
+    public ArrayList<Notification> getNotifs() {
         return listeNotifications;
     }
 
@@ -152,7 +152,7 @@ public class Utilisateur extends Membre {
         return listeNotifications;
     }
 
-    public LinkedList<Notification> notifier() {
+    public ArrayList<Notification> notifier() {
         verifierEtatRobot();
         verifierBatterieRobot();
         verifierCPURobot();
