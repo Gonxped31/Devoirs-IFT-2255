@@ -2,20 +2,11 @@ L'écosystème intercatif et dynamique de Robotix comprends des membres qui se d
 En effet, le bon fonctionnement d'un tel projet se doit d'avoir des solutions mis en place pour s'assurer du fonctionnement des processus.
 À la lumière de ces faits, les processus qui seront informatisés est le profil du membre (soit utilisateur ou fournisseur), 
 l'achat de matériel (robots ou composantes), la gestion de sa flotte de robots allant de la personalisation des robots, à la participation collaborative à des activités, 
-et la gestion de réseau social. Cette énumération sommaire sera 
-  
-est clé lorsqu'on a une flotte de robot grandissante, une accumulation d'activité de plus en plus complexe, et évidemment, une 
-
-
-Les parties informatisées seront tout ce qui à trait à:
-- La création de profil d'utilisateur ou fournisseur
-- L'achat de robot ou de composantes.
-- Gérer les robots de la flotte, comme par exemple: l'assignation de tâches à un robot, l'ajout de composantes à un robot.
-- La participation à des activités interactives avec d'autres utilisateurs. 
-- Système de réseau social pour suivre d'autres utilisateurs et recevoir des notifications. 
-
- 
-
-Les données seront stockés en format JSON. 
-
-L'application peut être roulée sur un téléphone portable ou bien un PC.
+et la gestion de réseau social. Cette énumération sommaire de fonctionnalités sera informatisé par le biais d'un programme dévelopé en Java. 
+L'architecture de notre programme est en couches. 
+Nous avons trois couches: La première est l'interface avec le client qui inclut des menus, et la présentation des données demandées par l'utilisateur. La deuxième sera la couche
+avec les controleurs qui achemeninent les données et requêtes vers la base de données, et les objets instanciés du programme.Finalement, nous auront la base de données qui exécutera 
+les requêtes des utilisateurs, et se chargera de stocker les données. La base de données sera en format JSON. Les utilisateurs et fournisseurs vont se connecter à l'application
+Robotix par le biais d'un telephone cellulaire tactile, ou bien d'un ordinateur PC. 
+De plus, un système paralèlle qui pourrait interagir l'application Robotix pourra intéragir avec un système bancaire pour se charger
+de toutes transactions (achats ou ventes) des utilisateurs. 
