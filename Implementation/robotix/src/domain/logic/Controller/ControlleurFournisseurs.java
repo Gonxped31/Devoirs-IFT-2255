@@ -58,10 +58,10 @@ public class ControlleurFournisseurs {
         return b;
     }
 
-    public void ajouterComposante(String composante, double prix, String description, String typesComposants, String nomFournisseur){
+    public void ajouterComposante(String nom, String prix, String description, String typesComposants){
         //fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        this.fournisseurCourant.ajouterComposante();
+        this.fournisseurCourant.ajouterComposante(nom, prix,description,typesComposants);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
 
         //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);

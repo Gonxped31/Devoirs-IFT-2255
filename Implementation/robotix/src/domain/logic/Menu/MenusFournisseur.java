@@ -174,7 +174,7 @@ public class MenusFournisseur {
 		String description = scanner.nextLine();
 		System.out.print("Type de la composante : ");
 		String type = scanner.nextLine();
-		controlleurFournisseurs.ajouterComposante(composante, Double.parseDouble(prix), description, type, nomFournisseur);
+		controlleurFournisseurs.ajouterComposante(composante,  prix, description, type);
 		System.out.println(" ");
 		System.out.println("La composante a été rajoutée avec succès");
 		System.out.println(" ");
@@ -361,12 +361,11 @@ public class MenusFournisseur {
 		do {
 			if (reponse.toLowerCase().trim().equals("oui")) {
 				choix = true;
-				continuer = false;
 			} else if (!reponse.toLowerCase().trim().equals("non")) {
 				System.out.println("Choisissez entre 'oui' et 'non' svp.");
 				reponse = scanner.nextLine();
 				continuer = true;
-			} else {
+			} else if(reponse.toLowerCase().trim().equals("non")){
 				continuer = false;
 			}
 		} while (continuer);

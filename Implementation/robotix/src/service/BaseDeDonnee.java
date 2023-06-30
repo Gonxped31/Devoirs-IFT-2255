@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Utilisateur;
 
 public abstract class BaseDeDonnee<T>{
 
@@ -72,10 +73,25 @@ public void ajouterObjet(T objet)
     this.listObjet.add(objet);
     this.sauvegarder();
 }
-public void supprimerObjet(T objet){
-    listObjet.remove(objet);
-    sauvegarder();
-}
+    public void supprimerObjet(T objet) {
+        Iterator<Object> iterator = (Iterator<Object>) listObjet.iterator();
+        while(iterator.hasNext()) {
+            Object o = iterator.next();
+
+            if( objet instanceof Utilisateur ) {
+                if(((Utilisateur) objet).getPseudo().equals(((Utilisateur) o).getPseudo())){
+                    iterator.remove();
+                }
+            }
+            else if ( objet instanceof Fournisseur) {
+                if(((Fournisseur) o).getNom().equals(((Fournisseur) objet).getNom())){
+                    iterator.remove();
+                }
+            }
+        }
+        sauvegarder();
+    }
+
  
 protected abstract void init();
 

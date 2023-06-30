@@ -109,26 +109,24 @@ public class Fournisseur extends Membre {
     }
 
     public boolean retirerRobot(String numeroSerie) {
-        boolean bool = false;
-        int nbRobot = 0;
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getNumeroSerie().equals(numeroSerie)) {
-                inventaireDeRobot.remove(robot);
-                nbRobot++;
-                break;
-            }
+        Robot robot = inventaireDeRobot.stream()
+                .filter(r -> r.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
+                .findFirst()
+                .orElse(null);
+
+        boolean robotExiste = robot != null;
+
+        if (robotExiste) {
+            inventaireDeRobot.remove(robot);
         }
-        if (nbRobot != 0) {
-            bool = true;
-        }
-        return bool;
+
+        return robotExiste;
     }
 
-    public void ajouterComposante(/*String composante, double prix, String description, String typeComposant*/) {
+
+    public void ajouterComposante(String nom, String prix, String description, String typeComposant) {
         taillePrecedenteInventaireComposantes = inventaireComposant.size();
-        inventaireComposant.add(new Composant());
-        //TODO
-        //inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
+        inventaireComposant.add(new Composant(nom,prix,description,typeComposant));
     }
 
     public boolean retirerComopsante(String nom) {
