@@ -6,10 +6,6 @@
       <root url="jar://$PROJECT_DIR$/jackson-databind-2.15.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/src" />
-      <root url="file://$PROJECT_DIR$" />
-    </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$" recursive="false" type="SOURCES" />
+    <SOURCES />
   </library>
 </component>

@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gson-2.8.9" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.15.21" level="project" />
     <orderEntry type="library" name="jackson-annotations-2.15.2" level="project" />
   </component>
 </module>
