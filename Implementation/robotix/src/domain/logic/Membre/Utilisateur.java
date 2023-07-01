@@ -13,11 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.*;
 
 
-//Faire import domain.logic.Fournisseur.Fournisseur;
+
 
 
 public class Utilisateur extends Membre implements java.io.Serializable{
-    private ArrayList<String> uuids = new ArrayList<>();
+
     private ArrayList<Robot> listeRobot = new ArrayList<>();
     private ArrayList<Tache> listeTaches = new ArrayList<>();
     private ArrayList<Action> listeActions = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                        @JsonProperty("listeInteret") ArrayList<Interet> listeInteret) {
 
         super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
-        this.pseudo = pseudo;
+        this.setPseudo(pseudo);
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
     }
@@ -67,7 +67,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public ArrayList<Notification> getNotifs(){
-        return listeNotifications;
+        return getListeNotifications();
     }
  
     public void setPseudo(String pseudo) {
@@ -145,16 +145,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
-        taillePrecedenteListeSuiveur = listeUtilisateursSuivi.size();
-        listeUtilisateursSuivi.add(suivi);
+        taillePrecedenteListeSuiveur = getListeUtilisateursSuivi().size();
+        getListeUtilisateursSuivi().add(suivi);
     }
 
     public void etreSuivi(Utilisateur suiveur){
-        listSuiveur.add(suiveur);
+        getListSuiveur().add(suiveur);
     }
 
     public ArrayList<Notification> voirNotifications(){
-        return listeNotifications;
+        return getListeNotifications();
     }
 
 
@@ -191,13 +191,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;
 
-        for (Robot robot : listeRobot) {
+        for (Robot robot : getListeRobot()) {
             if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
                 DoitEtreNotifie = true;
-                notification.setTitre("MAUVAIS FONCTIONNEMENT");
-                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                getNotification().setTitre("MAUVAIS FONCTIONNEMENT");
+                getNotification().setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                getListeNotifications().add(getNotification());
             }
         }
         return DoitEtreNotifie;
@@ -206,13 +206,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private boolean verifierBatterieRobot() {
         boolean DoitEtreNotifie = false;
 
-        for (Robot robot : listeRobot) {
+        for (Robot robot : getListeRobot()) {
             if (robot.getBatterie() >= 20) {
                 DoitEtreNotifie = true;
-                notification.setTitre("BATTERIE FAIBLE");
-                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                getNotification().setTitre("BATTERIE FAIBLE");
+                getNotification().setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                getListeNotifications().add(getNotification());
             }
         }
         return DoitEtreNotifie;
@@ -221,13 +221,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private boolean verifierCPURobot() {
         boolean DoitEtreNotifie = false;
 
-        for (Robot robot : listeRobot) {
+        for (Robot robot : getListeRobot()) {
             if (robot.getCpu() >= 100) {
                 DoitEtreNotifie = true;
-                notification.setTitre("SURCHARGE CPU");
-                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                getNotification().setTitre("SURCHARGE CPU");
+                getNotification().setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                getListeNotifications().add(getNotification());
             }
         }
         return DoitEtreNotifie;
@@ -251,12 +251,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private boolean verifierNouveauAbonne() {
         boolean DoitEtreNotifie = false;
 
-        if (listSuiveur.size() > taillePrecedenteListeSuiveur) {
+        if (getListSuiveur().size() > taillePrecedenteListeSuiveur) {
             DoitEtreNotifie = true;
-            notification.setTitre("NOUVEAU ABONNÉ");
-            notification.setMesssage("Un nouvel utilisateur suit votre profil");
-            notification.setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
-            listeNotifications.add(notification);
+            getNotification().setTitre("NOUVEAU ABONNÉ");
+            getNotification().setMesssage("Un nouvel utilisateur suit votre profil");
+            getNotification().setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
+            getListeNotifications().add(getNotification());
         }
         return DoitEtreNotifie;
     }
@@ -277,16 +277,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private boolean verifierDateLimiteActivite() {
         boolean DoitEtreNotifie = false;
 
-        for (Activite activite : listeActivitesRejoint) {
+        for (Activite activite : getListeActivitesRejoint()) {
             joursRestants = ChronoUnit.DAYS.between(dateActuelle, (Temporal) activite.getDateDebut());
 
             // Vérifiez si la date de l'activité est dans les trois jours à venir
             if (joursRestants >=0 && joursRestants <=3) {
                 DoitEtreNotifie = true;
-                notification.setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
-                notification.setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
-                notification.setTypeNotification(TypeNotification.SENSIBILISATION);
-                listeNotifications.add(notification);
+                getNotification().setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
+                getNotification().setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
+                getNotification().setTypeNotification(TypeNotification.SENSIBILISATION);
+                getListeNotifications().add(getNotification());
             }
         }
         return DoitEtreNotifie;
@@ -311,29 +311,28 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
-        boolean bool = false;
-        //Robot robot = verifierNumeroSerieRobot(numeroSerie, listeFournisseur);
-        if (robot != null){
-            robot.setNom(robot.getNom());
-            this.listeRobot.add(robot);
-            bool = true;
-        }
-        return bool;
+
+       boolean robotExiste= this.listeRobot.stream()
+               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
+       if (!robotExiste ) {
+           listeRobot.add(robot);
+       }
+        return  robotExiste;
     }
 
     public void creerTache(String nom, ArrayList<Action> actions){
-        listeTaches.add(new Tache(nom, actions));
+        getListeTaches().add(new Tache(nom, actions));
     }
 
     public Robot getRobot(String numeroDeSerie){
-        return listeRobot.stream()
+        return getListeRobot().stream()
                 .filter(r -> r.getNumeroSerie().equals(numeroDeSerie))
                 .findFirst()
                 .orElse(null);
     }
 
     public Tache getTache(String nom){
-        return listeTaches.stream()
+        return getListeTaches().stream()
                 .filter(t -> t.getNom().equals(nom))
                 .findFirst()
                 .orElse(null);
@@ -359,16 +358,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public ArrayList<Robot> afficherEtatRobot(){
-        return this.listeRobot;
+        return this.getListeRobot();
     }
 
     public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
-        listeActivitesCreer.add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut), new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
+        getListeActivitesCreer().add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut), new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
     }
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
-        listeActions.add(action);
+        getListeActions().add(action);
    /* public void creerTache(String nomTache, ArrayList<Action> actions){
         Tache tache = new Tache(nomTache, actions);
         listeTaches.add(tache);
@@ -414,16 +413,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 }
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
-        for (int i = 0; i < listeRobot.size(); i++) {
-            if (listeRobot.get(i).getNumeroSerie().equals(robot.getNumeroSerie())) {
-                listeRobot.get(i).ajouterComposante(composant);
+        for (int i = 0; i < getListeRobot().size(); i++) {
+            if (getListeRobot().get(i).getNumeroSerie().equals(robot.getNumeroSerie())) {
+                getListeRobot().get(i).ajouterComposante(composant);
             }
         }
     }
 
     public Robot trouverRobot(String nom){
         Robot resultat = null;
-        for (Robot robot : listeRobot) {
+        for (Robot robot : getListeRobot()) {
             if (robot.getNom().equals(nom)) {
                 resultat = robot;
                 break;
@@ -444,7 +443,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public int nombreDeRobot(){
-        return listeRobot.size();
+        return getListeRobot().size();
     }
 
     public ArrayList<Composant> getComposantesAchetes() {
@@ -453,11 +452,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     @JsonIgnore
     public String getProfilUtilisateur(){
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
-                "\n pseudo :" + pseudo + "\n adresse courriel : " +
+                "\n pseudo :" + getPseudo() + "\n adresse courriel : " +
                 this.email + "\nTelephone : " + this.getTelephone() +
                 "\nInteret : " + this.getListeInteret().stream()
                 .map(i -> i.getNom()).collect(Collectors.joining(","))+
-                "\nNombre de point :" + this.point +
+                "\nNombre de point :" + this.getPoint() +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
 
@@ -475,7 +474,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
 
     public void rejoindreActivite(Activite activite) {
-        listeActivitesRejoint.add(activite);
+        getListeActivitesRejoint().add(activite);
     }
     public ArrayList<Interet> getListeInteret() {
         return listeInteret;
@@ -488,7 +487,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Tache> getTacheEnListe(ArrayList<String> listeTache) {
          ArrayList<Tache> listeDeTaches = new ArrayList<Tache>();
          for(String tac : listeTache){
-             listeDeTaches.add(listeTaches.stream()
+             listeDeTaches.add(getListeTaches().stream()
                      .filter(t -> t.getNom().equals(tac))
                      .findFirst()
                      .orElse(null));
@@ -503,4 +502,78 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         }
         return listeInter;
     }
+
+    public void setListeRobot(ArrayList<Robot> listeRobot) {
+        this.listeRobot = listeRobot;
+    }
+
+    public ArrayList<Tache> getListeTaches() {
+        return listeTaches;
+    }
+
+    public void setListeTaches(ArrayList<Tache> listeTaches) {
+        this.listeTaches = listeTaches;
+    }
+
+    public ArrayList<Action> getListeActions() {
+        return listeActions;
+    }
+
+    public void setListeActions(ArrayList<Action> listeActions) {
+        this.listeActions = listeActions;
+    }
+
+    public Set<Utilisateur> getListeUtilisateursSuivi() {
+        return listeUtilisateursSuivi;
+    }
+
+    public void setListeUtilisateursSuivi(Set<Utilisateur> listeUtilisateursSuivi) {
+        this.listeUtilisateursSuivi = listeUtilisateursSuivi;
+    }
+
+    public ArrayList<Notification> getListeNotifications() {
+        return listeNotifications;
+    }
+
+    public void setListeNotifications(ArrayList<Notification> listeNotifications) {
+        this.listeNotifications = listeNotifications;
+    }
+
+    public ArrayList<Activite> getListeActivitesRejoint() {
+        return listeActivitesRejoint;
+    }
+
+    public void setListeActivitesRejoint(ArrayList<Activite> listeActivitesRejoint) {
+        this.listeActivitesRejoint = listeActivitesRejoint;
+    }
+
+    public ArrayList<Activite> getListeActivitesCreer() {
+        return listeActivitesCreer;
+    }
+
+    public void setListeActivitesCreer(ArrayList<Activite> listeActivitesCreer) {
+        this.listeActivitesCreer = listeActivitesCreer;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public Tache getTache() {
+        return tache;
+    }
+
+    public void setTache(Tache tache) {
+        this.tache = tache;
+    }
+
+    public Notification getNotification() {
+        return notification;
+    }
+
+
+    public void setNotifs(ArrayList<Notification> notifs) {
+        this.notification = notification;
+    }
+
 }

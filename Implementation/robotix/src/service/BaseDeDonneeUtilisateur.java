@@ -16,17 +16,18 @@ import java.util.stream.Collectors;
 public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
      private static final String FILE_NAME = "utilisateur.json";
 
-
+     private ArrayList<Interet> listInteret;
      public BaseDeDonneeUtilisateur() throws IOException {
         super(FILE_NAME,new TypeReference<ArrayList<Utilisateur>>() {});
-      
+        listInteret=new ArrayList<>();
+       // init();
      }
 
 
 
     @Override
     protected void init() {
-        //Todo
+
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
                 new Utilisateur("Boubacar", "Kelly", "adresse1", "KellyB",
                         "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new ArrayList<Interet>()),
@@ -115,17 +116,12 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
-    public String recupererListeInteret(){
-        return (String) this.getListObjet().stream()
-                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
-                .distinct()
-                .collect(Collectors.joining(", "));
-    }
 
     public String recupererListeInteretUtilisateur(String pseudo){
         return (String) this.getListObjet().stream()
                 .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
                 .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
+                .map( i-> ((Interet) i).getNom())
                 .distinct()
                 .collect(Collectors.joining(", "));
     }
@@ -135,31 +131,25 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudo))
                 .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
                 .filter(interet-> ((String) interet).substring(0,3).equals(troislettre))
+                .map(i-> ((Interet) i).getNom())
                 .distinct()
                 .collect(Collectors.joining(", "));
     }
 
     public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
     {
-        return (String) this.getListObjet().stream()
-                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
-                .filter(interet-> ((String) interet).substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
+        return (String) this.listInteret.stream()
+                .filter(interet-> interet.getNom().substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
+                .map(i->i.getNom())
                 .distinct()
                 .collect(Collectors.joining(", "));
     }
 
     public boolean verifierPseudo(String pseudo){
 
-             /*return  this.getListObjet().stream()
-                     .anyMatch(u -> ((Utilisateur) u).getPseudo().equals(pseudo));
+    return this.getListObjet().stream()
+            .anyMatch(u->((Utilisateur) u).getPseudo().equals(pseudo));
 
-*/
-        for (int i=0; i<this.getListObjet().size(); ++i)
-        {
-            if (((Utilisateur) this.getListObjet().get(i)).getPseudo().equals(pseudo))
-                return true;
-        }
-        return false;
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){

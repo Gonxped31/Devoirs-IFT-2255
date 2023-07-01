@@ -53,15 +53,16 @@ public class ControlleurUtilisateurs {
 
 
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
-
+        boolean bool=false;
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         if (!(robot == null)){
             robot.setNom(nomRobot);
             robot.setType(type);
-            this.utilisateurCourant.enregistrerRobot(robot);
+           bool= this.utilisateurCourant.enregistrerRobot(robot);
         }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;
+        return bool;
         //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 

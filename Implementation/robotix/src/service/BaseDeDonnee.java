@@ -38,6 +38,7 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            init();
         }
 
         ObjectMapper objectMapper = new ObjectMapper();

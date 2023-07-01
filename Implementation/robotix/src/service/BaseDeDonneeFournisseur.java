@@ -122,7 +122,8 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         String composants =this.listComposant.stream()
                 .flatMap(map -> map.values().stream())
                 .flatMap(List::stream)
-                .filter(composant -> composant.getTypeComposant().equals(typeComposant))
+                .filter(composant -> composant.getTypeComposant().toLowerCase().trim()
+                        .equals(typeComposant.toLowerCase().trim()))
                 .map(composant -> composant.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
 
