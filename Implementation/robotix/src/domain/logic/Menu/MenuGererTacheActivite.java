@@ -159,7 +159,7 @@ public class MenuGererTacheActivite {
 
     public void menuRejoindreActivite(String pseudo, Scanner scanner) {
         Date date = new Date();
-        System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
+        System.out.println("Veuillez choisir une acitivté à rejoindre parmi les suivantes activites parmi les suivantes");
         String nomActivite = scanner.nextLine();
 
         System.out.println("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
