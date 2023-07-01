@@ -14,7 +14,7 @@ public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    //private Menu menu = new Menu();
+    public Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
@@ -85,8 +85,13 @@ public class MenuUtilisateur {
         this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
+<<<<<<< HEAD
         menu = new Menu();
         menu.menuPrincipale(scanner);
+=======
+        menuUtilisateur(scanner, pseudo);
+        //menu.menuPrincipale(scanner);
+>>>>>>> 4d109017a8a690d52c20ae243ed2a44cbc9f9afa
     }
 
     public void connecterUtilisateur(Scanner scanner) throws ParseException, IOException {
@@ -148,13 +153,16 @@ public class MenuUtilisateur {
                 System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
+                break;
             case("7") :
                 menuNotification(scanner, pseudo);
                 /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
+                break;
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
+                break;
             case("9") :
                 menu = new Menu();
                 menu.menuPrincipale(scanner);
