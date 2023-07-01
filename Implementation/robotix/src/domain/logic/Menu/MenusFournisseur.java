@@ -364,12 +364,6 @@ public class MenusFournisseur {
 		return choix;
 	}
 
-
-	public void menuModifierProfileFournisseur(Scanner scanner) {
-		// TODO - implement MenusFournisseur.menuModifierProfileFournisseur
-		throw new UnsupportedOperationException();
-	}
-
 	/* Gestion de composantes */
 	public void menuGererComposantes(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println(" ");
