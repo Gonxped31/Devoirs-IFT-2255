@@ -90,7 +90,7 @@ public class MenusUtilisateur {
         // menu.menuPrincipale(scanner);
     }
 
-    public void connecterUtilisateur(Scanner scanner) {
+    public void connecterUtilisateur(Scanner scanner) throws IOException, ParseException {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
         System.out.println("Veuillez entrer votre mot de passe: ");
@@ -104,7 +104,7 @@ public class MenusUtilisateur {
         }
     }
 
-    public void menuUtilisateur(Scanner scanner, String pseudo) {
+    public void menuUtilisateur(Scanner scanner, String pseudo) throws IOException, ParseException {
         ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
         ArrayList<String> fournisCPU = new ArrayList<>();
         fournisCPU.add("Fournisseur6");
@@ -174,7 +174,7 @@ public class MenusUtilisateur {
         }
     }
 
-    public void menuRequetesPubliques(Scanner scanner, String pseudo) throws ParseException {
+    public void menuRequetesPubliques(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("Veuillez faire une requete publique : ");
         System.out.println("1- Voir la liste d'utilisateurs");
         System.out.println("2- Voir la liste des fournisseurs");
@@ -422,7 +422,7 @@ public class MenusUtilisateur {
         System.out.println(notifications + "\n");
     }
 
-    public void menuNotification(Scanner scanner, String pseudo) throws ParseException {
+    public void menuNotification(Scanner scanner, String pseudo) throws ParseException, IOException {
         for (Notification notif : controlleurUtilisateurs.voirNotifications()) {
             System.out.println("- " + notif);
         }

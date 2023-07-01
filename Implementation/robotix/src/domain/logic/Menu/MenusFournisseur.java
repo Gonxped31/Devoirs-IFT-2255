@@ -86,7 +86,7 @@ public class MenusFournisseur {
 		// menuPrincipale(scanner);
 	}
 
-	public void menuConnexionFournisseur(Scanner scanner) throws ParseException {
+	public void menuConnexionFournisseur(Scanner scanner) throws ParseException, IOException {
 		System.out.println("Veuillez entrez votre nom de fournisseur: ");
 		String nomFournisseur = scanner.nextLine();
 		if (controlleurFournisseurs.authentificationFournisseur(nomFournisseur, "Fournisseur")) {
@@ -98,7 +98,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException {
+	public void menuFournisseur(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println("******************** Menu Fournisseur de " + nomFournisseur + " ********************");
 		System.out.println(" ");
 		LinkedList<Notification> notifications = controlleurFournisseurs.notifier();
@@ -169,7 +169,7 @@ public class MenusFournisseur {
 		}
 	}
 
-	public void menuRequetesPubliques(Scanner scanner, String nomFournisseur) throws ParseException {
+	public void menuRequetesPubliques(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println("Veuillez faire une requete publique : ");
 		System.out.println("1- Voir la liste d'utilisateurs");
 		System.out.println("2- Voir la liste des fournisseurs");
@@ -367,7 +367,7 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuEnregistrerComposante(Scanner scanner, String nomFournisseur) throws ParseException {
+	public void menuEnregistrerComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.print("Nom de la composante : ");
 		String composante = scanner.nextLine();
 		System.out.print("Prix : ");
