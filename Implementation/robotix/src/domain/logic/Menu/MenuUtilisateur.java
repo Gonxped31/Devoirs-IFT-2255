@@ -18,11 +18,12 @@ public class MenuUtilisateur {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private Menu menu;
 
     public MenuUtilisateur() throws IOException {
     }
 
-    public void inscrireUtilisateur(Scanner scanner) throws ParseException {
+    public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
         boolean EmailValide = false;
@@ -81,12 +82,14 @@ public class MenuUtilisateur {
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
         }
+        this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-        //menu.menuPrincipale(scanner);
+        menu = new Menu();
+        menu.menuPrincipale(scanner);
     }
 
-    public void connecterUtilisateur(Scanner scanner) throws ParseException {
+    public void connecterUtilisateur(Scanner scanner) throws ParseException, IOException {
         System.out.println("Veuillez entrer votre pseudo: ");
         String connexion = scanner.nextLine();
         System.out.println("Veuillez entrer votre mot de passe: ");
@@ -96,11 +99,12 @@ public class MenuUtilisateur {
             menuUtilisateur(scanner, connexion);
         } else {
             System.out.println(connexion + " n'existe pas.");
-            //menu.menuPrincipale(scanner);
+            menu = new Menu();
+            menu.menuPrincipale(scanner);
         }
     }
 
-    public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException {
+    public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException, IOException {
         ArrayList<String> fournisCPU = new ArrayList<>();
         fournisCPU.add("Fournisseur6" );
         fournisCPU.add("Adresse1");
@@ -123,9 +127,9 @@ public class MenuUtilisateur {
         String choix = scanner.nextLine();
         switch(choix){
             case("1") :
-                //modifierProfile(scanner, pseudo);
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                modifierProfile(scanner, pseudo);
+                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
                 break;
             case("2") :
@@ -145,18 +149,19 @@ public class MenuUtilisateur {
                 System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
             case("7") :
-                //menuNotification(scanner, pseudo);
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                menuNotification(scanner, pseudo);
+                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
             case("9") :
-                //menu.menuPrincipale(scanner);
+                menu = new Menu();
+                menu.menuPrincipale(scanner);
         }
     }
 
-    public void menuRequetesPubliques(Scanner scanner,String pseudo) throws ParseException {
+    public void menuRequetesPubliques(Scanner scanner,String pseudo) throws ParseException, IOException {
         System.out.println("Veuillez faire une requete publique : ");
         System.out.println("1- Voir la liste d'utilisateurs");
         System.out.println("2- Voir la liste des fournisseurs");
@@ -184,9 +189,9 @@ public class MenuUtilisateur {
                 break;
 
             case "4" :
-                //menuChercherUtilisateur(scanner, pseudo);
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                menuChercherUtilisateur(scanner, pseudo);
+                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
 
             case "5" :
@@ -200,9 +205,9 @@ public class MenuUtilisateur {
                 break;
 
             case "7" :
-                //menuChercherFournisseur(scanner, pseudo);
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                menuChercherFournisseur(scanner, pseudo);
+                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
 
             case "8" :
@@ -212,7 +217,6 @@ public class MenuUtilisateur {
 
         }
     }
-
 
     public void menuRechercheComposante(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par: ");
@@ -282,7 +286,7 @@ public class MenuUtilisateur {
         }
     }
 
-    /*public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
+    public void menuChercherFournisseur(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par:");
         System.out.println("1- Nom");
         System.out.println("2- Email");
@@ -315,9 +319,9 @@ public class MenuUtilisateur {
                 break;
 
         }
-    }*/
+    }
 
-    /*public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
+    public void menuChercherUtilisateur(Scanner scanner, String nomFournisseur){
         System.out.println("Filtrer par:");
         System.out.println("1- Pseudo");
         System.out.println("2- Nom");
@@ -365,51 +369,51 @@ public class MenuUtilisateur {
         System.out.println("7- Nom de la compagnie");
         System.out.println("8- Mot de passe");
         String choix = scanner.nextLine();
-        switch(choix){
-            case "1":
+        switch (choix) {
+            case "1" -> {
                 System.out.println("Entrez votre nouveau nom: ");
                 String nom = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "nom", nom);
-                break;
-            case "2":
+                controlleurUtilisateurs.modifierProfile("nom", nom);
+            }
+            case "2" -> {
                 System.out.println("Entrez votre nouveau prenom: ");
                 String prenom = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "prenom", prenom);
-                break;
-            case "3":
+                controlleurUtilisateurs.modifierProfile("prenom", prenom);
+            }
+            case "3" -> {
                 System.out.println("Entrez votre nouvelle adresse: ");
                 String adresse = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "adresse", adresse);
-                break;
-            case "4":
+                controlleurUtilisateurs.modifierProfile("adresse", adresse);
+            }
+            case "4" -> {
                 System.out.println("Entrez votre nouveau pseudo: ");
                 String newPseudo = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "pseudo", newPseudo);
-                break;
-            case "5": 
+                controlleurUtilisateurs.modifierProfile("pseudo", newPseudo);
+            }
+            case "5" -> {
                 System.out.println("Entrez votre nouveau email : ");
                 String email = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "email", email);
-                break;
-            case "6":
+                controlleurUtilisateurs.modifierProfile("email", email);
+            }
+            case "6" -> {
                 System.out.println("Entrez votre nouveau numero de telephone : ");
                 String numTele = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "numerotelephone", numTele);
-                break;
-            case "7": 
+                controlleurUtilisateurs.modifierProfile("numerotelephone", numTele);
+            }
+            case "7" -> {
                 System.out.println("Entrez votre nouvelle compagnie : ");
                 String compagnie = scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "nomcompagnie", compagnie);
-                break;
-            case "8": 
+                controlleurUtilisateurs.modifierProfile("nomcompagnie", compagnie);
+            }
+            case "8" -> {
                 System.out.println("Entrez votre nouveau mot de passe : ");
-                String mdp= scanner.nextLine();
-                controlleurUtilisateurs.modifierProfile(pseudo, "mdp", mdp);
-                break;
-        }        
+                String mdp = scanner.nextLine();
+                controlleurUtilisateurs.modifierProfile("mdp", mdp);
+            }
+        }
     }
 
-    public void menuNotification(Scanner scanner, String pseudo) throws ParseException {
+    public void menuNotification(Scanner scanner, String pseudo) throws ParseException, IOException {
         for (Notification notif : controlleurUtilisateurs.voirNotifications(pseudo)) {
             System.out.println("- " + notif);
         }
@@ -422,5 +426,5 @@ public class MenuUtilisateur {
                 menuUtilisateur(scanner, pseudo);
                 break;
         }
-    }*/
+    }
 }

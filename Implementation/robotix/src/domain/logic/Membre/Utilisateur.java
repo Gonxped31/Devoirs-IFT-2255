@@ -294,18 +294,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
-            case "nom" :
-                this.setNom(nouvelInfo);
-            case "prenom" :
-                this.setPrenom(nouvelInfo);
-            case "adresse" :
-                this.setAdresse(nouvelInfo);
-            case "email" :
-                this.setEmail(nouvelInfo);
-            case "numerotelephone" :
-                this.setTelephone(nouvelInfo);
-            case "nomcompagnie" :
-                this.setNomCompagnie(nouvelInfo);
+            case "nom" -> this.setNom(nouvelInfo);
+            case "pseudo" -> this.setPseudo(nouvelInfo);
+            case "prenom" -> this.setPrenom(nouvelInfo);
+            case "adresse" -> this.setAdresse(nouvelInfo);
+            case "email" -> this.setEmail(nouvelInfo);
+            case "numerotelephone" -> this.setTelephone(nouvelInfo);
+            case "nomcompagnie" -> this.setNomCompagnie(nouvelInfo);
         }
 
     }

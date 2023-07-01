@@ -12,12 +12,12 @@ import domain.logic.Robot.TypesComposants;
 
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    //private MenuUtilisateur menuUtil = new MenuUtilisateur();
+    private MenuUtilisateur menuUtil;
 
     public MenuGestionFlotte() throws IOException {
     }
 
-    public void gererMaFlotte(Scanner scanner, String pseudo) throws ParseException {
+    public void gererMaFlotte(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("1- Enregistrer un robot");
         System.out.println("2- Afficher état d'un robot");
         System.out.println("3- Ajouter une composante a un robot");
@@ -26,25 +26,15 @@ public class MenuGestionFlotte {
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix) {
-            case "1" :
-                menuEnregistrerRobot(scanner, pseudo);
-                break;
-            case "2" :
-                printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
-                break;
-            case "3" :
-                menuAjouterComposante(scanner, pseudo);
-                break;
-            case "4" :
-                menuAfficherMetriquesFlotte(pseudo);
-                break;
-            case "5" :
-                menuCreerActions(scanner, pseudo);
-                break;
+            case "1" -> menuEnregistrerRobot(scanner, pseudo);
+            case "2" -> printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
+            case "3" -> menuAjouterComposante(scanner, pseudo);
+            case "4" -> menuAfficherMetriquesFlotte(pseudo);
+            case "5" -> menuCreerActions(scanner, pseudo);
         }
     }
 
-    public void menuEnregistrerRobot(Scanner scanner,String pseudo) throws ParseException {
+    public void menuEnregistrerRobot(Scanner scanner,String pseudo) throws ParseException, IOException {
         boolean reessayer = true;
         while (reessayer) {
             System.out.println("Nom du robot : ");
@@ -57,9 +47,7 @@ public class MenuGestionFlotte {
                 System.out.println("Le robot a été bien enrégistré !");
                 reessayer = false;
             } else {
-                System.out.println("Aucun robot vendu par nos founisseurs ne possède ce numéro de série. Voulez vous rééssayer ?");
-                System.out.println("1- Oui");
-                System.out.println("2- Non");
+                System.out.println("Aucun robot vendu par nos founisseurs ne possède ce numéro de série. Voulez vous rééssayer ? (oui/non)");
                 System.out.print(">> Votre choix : ");
                 if (scanner.nextLine().equalsIgnoreCase("non")){
                     break;
@@ -67,7 +55,8 @@ public class MenuGestionFlotte {
             }
         }
         System.out.println(" ");
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
     public void printRobots(ArrayList<Robot> robots) {
         for (Robot robot : robots) {
@@ -80,7 +69,6 @@ public class MenuGestionFlotte {
             System.out.println(" ");
         }
     }
-
     public void menuAjouterComposante(Scanner scanner, String pseudo) throws ParseException {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();

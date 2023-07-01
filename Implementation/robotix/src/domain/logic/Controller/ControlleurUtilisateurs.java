@@ -15,17 +15,27 @@ public class ControlleurUtilisateurs {
     //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
 
+    public ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
+
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
+    }
+
     public ControlleurUtilisateurs() throws IOException {
+
     }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie,this.utilisateurCourant.produireListeInteret(listeInteret));
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean authentification(String nom, String mdp, String type) {
-        return true;
-        //return dataBaseController.authentification(nom, mdp, type);
+    public boolean authentification(String pseudo, String mdp, String type) {
+        boolean bool = false;
+        if(dataBaseController.verifierPseudo(pseudo)){
+            this.utilisateurCourant = dataBaseController.retournerUtilisateur(pseudo);
+            bool = true;
+        }
+        return bool;
     }
 
     /* Code pour les vérifications */
@@ -44,7 +54,7 @@ public class ControlleurUtilisateurs {
 
     /* Actions utilisateur */
 
-    public void modifierProfile(String pseudo, String choix, String info) {
+    public void modifierProfile(String choix, String info) {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         this.utilisateurCourant.modifierProfile(choix, info);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);

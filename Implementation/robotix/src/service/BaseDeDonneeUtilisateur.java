@@ -23,8 +23,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
        // init();
      }
 
-
-
     @Override
     protected void init() {
 
@@ -33,7 +31,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                         "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new ArrayList<Interet>()),
                 new Utilisateur("Damov", "Kamen", "adresse2", "KD",
                         "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new ArrayList<Interet>()),
-                new Utilisateur("Bio", "Samir", "adresse3", "SB",
+                new Utilisateur("Gbian", "Samir", "adresse3", "SB",
                         "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new ArrayList<Interet>()),
                 new Utilisateur("Doren", "Sky", "adresse4", "SD",
                         "DoRen", "emaildorensky@gmail.com", "5144444444", "Dorensky Inc.", new ArrayList<Interet>()),

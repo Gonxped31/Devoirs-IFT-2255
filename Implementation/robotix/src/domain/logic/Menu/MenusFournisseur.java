@@ -162,6 +162,7 @@ public class MenusFournisseur {
 
 			case "5" -> {
 				System.out.println("Au revoir !");
+				menu = new Menu();
 				menu.menuPrincipale(scanner);
 			}
 			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
