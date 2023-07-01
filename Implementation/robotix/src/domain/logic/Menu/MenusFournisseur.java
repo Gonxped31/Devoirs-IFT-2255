@@ -106,9 +106,10 @@ public class MenusFournisseur {
 		System.out.println("1- Ajouter un nouveau robot");
 		System.out.println("2- Retirer un robot");
 		System.out.println("3- Enregistrer une composante");
-		System.out.println("4- Retirer une composante");
-		System.out.println("5- Revenir au menu robotix");
-		System.out.println("6- Faire une requete publique");
+		System.out.println("4- Gérer mes composantes");
+		System.out.println("5- Modifier mon profile");
+		System.out.println("6- Revenir au menu robotix");
+		System.out.println("7- Faire une requete publique");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -134,7 +135,6 @@ public class MenusFournisseur {
 				System.out.println(" ");
 				menuFournisseur(scanner, nomFournisseur);
 			}
-
 			case "2" -> {
 				System.out.print("Veuillez entrer le numero de serie du robot à retirer : ");
 				String numeroSerie = scanner.nextLine();
@@ -146,26 +146,15 @@ public class MenusFournisseur {
 				}
 				menuFournisseur(scanner, nomFournisseur);
 			}
-
 			case "3" -> menuEnregistrerUnComposante(scanner, nomFournisseur);
-
-			case "4" -> {
-				System.out.print("Nom de la composante : ");
-				String composante2 = scanner.nextLine();
-				if(controlleurFournisseurs.retirerComposante(composante2)){
-					System.out.println("La composante a été retirée avec succès !");
-				} else {
-					System.out.println("Vous ne possédez cette composante.");
-				}
-				menuFournisseur(scanner, nomFournisseur);
-			}
-
-			case "5" -> {
+			case "4" -> menuGererComposantes(scanner, nomFournisseur);
+			case "5" -> menuMotifierProfileFournisseur(scanner, nomFournisseur);
+			case "6" -> {
 				System.out.println("Au revoir !");
 				menu = new Menu();
 				menu.menuPrincipale(scanner);
 			}
-			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
+			case "7" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
 	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
@@ -381,9 +370,66 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuGererComposantes(Scanner scanner) {
-		// TODO - implement MenusFournisseur.menuGererComposantes
-		throw new UnsupportedOperationException();
+	/* Gestion de composantes */
+	public void menuGererComposantes(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+		System.out.println(" ");
+		System.out.println("Choisissez une option :");
+		System.out.println("1- Supprimer une composante");
+		System.out.println("2- Modifier le prix d'une composante");
+		System.out.println("3- Modifier la description d'une composante");
+		System.out.println("4- Revenir au menu fournisseur");
+		System.out.println(">>Votre choix :");
+		String choix = scanner.nextLine();
+		switch (choix) {
+			case "1" -> menuSupprimerComposante(scanner, nomFournisseur);
+			case "2" -> menuModifierPrixComposante(scanner, nomFournisseur);
+			case "3" -> menuModifierDescriptionComposante(scanner, nomFournisseur);
+			case "4" -> menuFournisseur(scanner, nomFournisseur);
+		}
+	}
+
+	public void menuSupprimerComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+		System.out.print("Nom de la composante à supprimer : ");
+		String composante = scanner.nextLine();
+		if(controlleurFournisseurs.retirerComposante(composante)){
+			System.out.println("La composante a été retirée avec succès !");
+		} else {
+			System.out.println("Vous ne possédez cette composante.");
+		}
+		System.out.println(" ");
+		menuGererComposantes(scanner, nomFournisseur);
+	}
+
+	public void menuModifierPrixComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+		System.out.print("Nom de la composante à modifier :");
+		String composante = scanner.nextLine();
+		System.out.print("Nouveau prix :");
+		String nouveauPrix = scanner.nextLine();
+		System.out.println("Modification en cours...");
+		if (controlleurFournisseurs.modifierPrixComposante(composante, nouveauPrix)){
+			System.out.println("Modification réussite !");
+			System.out.println("Vous devez vous reconnecter pour voir les modifications.");
+		} else {
+			System.out.println("Échec de la modification. Vérifiez que vous possédez bien cette composante.");
+		}
+		menuGererComposantes(scanner, nomFournisseur);
+	}
+
+	public void menuModifierDescriptionComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+		System.out.print("Nom de la composante à modifier :");
+		String composante = scanner.nextLine();
+		System.out.print("Nouvelle description :");
+		String nouvelleDescription = scanner.nextLine();
+		System.out.println("Modification en cours...");
+		if (controlleurFournisseurs.modifierDescriptionComposante(composante, nouvelleDescription)){
+			System.out.println("Modification réussite !");
+			System.out.println("Vous devez vous reconnecter pour voir les modifications.");
+		} else {
+			System.out.println("Échec de la modification. Vérifiez que vous possédez bien cette composante.");
+		}
+
+		System.out.println(" ");
+		menuGererComposantes(scanner, nomFournisseur);
 	}
 
 	public ArrayList<String> menuEnregistrerComposante(Scanner scanner) throws ParseException {
@@ -396,7 +442,6 @@ public class MenusFournisseur {
 		String description = scanner.nextLine();
 		System.out.print("Type de la composante : ");
 		String type = scanner.nextLine();
-	//	controlleurFournisseurs.ajouterComposante(composante, prix, description, type, nomFournisseur);
 		System.out.println(" ");
 		System.out.println("La composante a été rajoutée avec succès");
 		System.out.println(" ");
@@ -412,9 +457,72 @@ public class MenusFournisseur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuVoirProfileFournisseur(Scanner scanner) {
-		// TODO - implement MenusFournisseur.menuVoirProfileFournisseur
-		throw new UnsupportedOperationException();
+	/* Modification du profile */
+	public void menuMotifierProfileFournisseur(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+		System.out.println("Que voulez-vous modifier");
+		System.out.println("1- Nom");
+		System.out.println("2- Adresse");
+		System.out.println("3- Email");
+		System.out.println("4- Numero de telephone");
+		System.out.println("5- Nom de la compagnie");
+		System.out.println("6- Capacitée de production");
+		System.out.println("7- Mot de passe");
+		System.out.println("8- Retour au menu Fournisseur");
+		String choix = scanner.nextLine();
+		switch (choix) {
+			case "1" -> {
+				System.out.println("Entrez votre nouveau nom: ");
+				String nom = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("nom", nom);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "2" -> {
+				System.out.println("Entrez votre nouveau adresse: ");
+				String adresse = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("adresse", adresse);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "3" -> {
+				System.out.println("Entrez votre nouvelle Email: ");
+				String email = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("email", email);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "4" -> {
+				System.out.println("Entrez votre nouveau numero de telephone : ");
+				String numTele = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("numerotelephone", numTele);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "5" -> {
+				System.out.println("Entrez votre nouvelle compagnie : ");
+				String compagnie = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("nomcompagnie", compagnie);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "6" -> {
+				System.out.println("Entrez votre nouvelle capacite de production : ");
+				String capacite = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("capaciteProduction", capacite);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "7" -> {
+				System.out.print("Entrez votre nouveau mot de passe : ");
+				String mdp = scanner.nextLine();
+				System.out.println("Modification en cours...");
+				controlleurFournisseurs.modifierProfile("mdp", mdp);
+				System.out.println("Modification terminée avec succès !");
+			}
+			case "8" -> menuFournisseur(scanner, nomFournisseur);
+		}
+		System.out.println(" ");
+		menuFournisseur(scanner, nomFournisseur);
 	}
 
 }

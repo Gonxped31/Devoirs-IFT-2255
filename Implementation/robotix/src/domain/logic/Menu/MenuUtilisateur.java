@@ -18,7 +18,6 @@ public class MenuUtilisateur {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
-    private Menu menu;
 
     public MenuUtilisateur() throws IOException {
     }
@@ -85,13 +84,8 @@ public class MenuUtilisateur {
         this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-<<<<<<< HEAD
         menu = new Menu();
         menu.menuPrincipale(scanner);
-=======
-        menuUtilisateur(scanner, pseudo);
-        //menu.menuPrincipale(scanner);
->>>>>>> 4d109017a8a690d52c20ae243ed2a44cbc9f9afa
     }
 
     public void connecterUtilisateur(Scanner scanner) throws ParseException, IOException {
@@ -366,7 +360,7 @@ public class MenuUtilisateur {
         }
     }
 
-    public void modifierProfile(Scanner scanner, String pseudo) {
+    public void modifierProfile(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("Que voulez-vous modifier");
         System.out.println("1- Nom");
         System.out.println("2- Prenom");
@@ -376,6 +370,7 @@ public class MenuUtilisateur {
         System.out.println("6- Numero de telephone");
         System.out.println("7- Nom de la compagnie");
         System.out.println("8- Mot de passe");
+        System.out.println("9- Revenir au menu utilisateur");
         String choix = scanner.nextLine();
         switch (choix) {
             case "1" -> {
@@ -418,6 +413,7 @@ public class MenuUtilisateur {
                 String mdp = scanner.nextLine();
                 controlleurUtilisateurs.modifierProfile("mdp", mdp);
             }
+            case "9" -> menuUtilisateur(scanner, pseudo);
         }
     }
 

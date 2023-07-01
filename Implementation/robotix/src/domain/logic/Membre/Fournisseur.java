@@ -60,7 +60,6 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return this.typeRobotFabriquer;
     }
 
-
     public String getEmail() {
         return this.email;
     }
@@ -75,6 +74,10 @@ public class Fournisseur extends Membre implements java.io.Serializable{
 
     public Notification getNotification() { return this.notification; }
     public ArrayList<Notification> getListeNotifications() { return this.listeNotifications; }
+
+    public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
+        this.capaciteProductionComposantes = capaciteProductionComposantes;
+    }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -153,50 +156,40 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
-    /*@Override
-    public String toString() {
-        return  "Fournisseur { " + '\n' +
-                "Nom = " + getNom() + '\n' +
-                "Adresse = " + getAdresse() + '\n' +
-                "Email = " + getEmail() + '\n' +
-                "Numéro de télephone = " + getTelephone() + '\n' +
-                "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
-                "Type de composantes fabriquées = " + getTypeComposantesFabriquer() + '\n' +
-                "Capacité de fabrication = " + getCapaciteProductionComposantes() + '\n' +
-                "Nom de compagnie = " + getNomCompagnie() + '\n' +
-                "}\n";
-    }*/
-
-    public static ArrayList<Fournisseur> trouverFournisseur(String choix, String info, ArrayList<Fournisseur> listeFournisseurs){
-        ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
-        switch (choix) {
-            case "1" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getNom().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "2" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "3" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getTypeComposantesFabriquer().equals(info)) {
-                        fournisseurs.add(fournisseur);
-
-                    }
-                }
-
-            case "4" :
-                fournisseurs = listeFournisseurs;
+    public boolean modifierPrixComposante(String composante, String nouveauPrix){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setPrix(nouveauPrix);
+                bool = true;
+                break;
+            }
         }
+        return bool;
+    }
 
-        return fournisseurs;
+    public boolean modifierDescriptionComposante(String composante, String nouvelleDescription){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setDescription(nouvelleDescription);
+                bool = true;
+                break;
+            }
+        }
+        return bool;
+    }
+
+    public void modifierProfile(String choix, String info){
+        switch (choix.toLowerCase()) {
+            case "nom" -> this.setNom(info);
+            case "addresse" -> this.setAdresse(info);
+            case "email" -> this.setEmail(info);
+            case "numerotelephone" -> this.setTelephone(info);
+            case "nomcompagnie" -> this.setNomCompagnie(info);
+            case "capaciteproduction" -> this.setCapaciteProductionComposantes(info);
+            case "mdp" -> this.setMotDePasse(info);
+        }
     }
 
     public boolean[] notifier() {

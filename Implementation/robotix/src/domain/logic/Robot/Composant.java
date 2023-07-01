@@ -28,6 +28,14 @@ public class Composant implements java.io.Serializable {
         return prix;
     }
 
+    public void setPrix(String prix) {
+        this.prix = prix;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -37,9 +45,9 @@ public class Composant implements java.io.Serializable {
     }
     @JsonIgnore
     public String getInfoComposantFormater(){
-        return "Nom :" + this.nom +
-                "\nprix :" + this.prix +
-                "\n description : " + this.description +
-                "Type :" + this.typeComposant;
+        return "\nNom : " + this.nom +
+                "\nprix : " + this.prix +
+                "\ndescription : " + this.description +
+                "\nType : " + this.typeComposant;
     }
 }
