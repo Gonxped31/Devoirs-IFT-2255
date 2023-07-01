@@ -24,7 +24,7 @@ public class Menu {
     public Menu() throws IOException {
     }
 
-    public void menuPrincipale(Scanner scanner) throws ParseException {
+    public void menuPrincipale(Scanner scanner) throws ParseException, IOException {
         String choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
         System.out.println("********Binevenue chez Robotix!********");

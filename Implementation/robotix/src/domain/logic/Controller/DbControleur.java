@@ -104,12 +104,12 @@ public class DbControleur {
     public String rechercherFournisseurParEmail(String email) {
         return this.baseDeDonneeFournisseur.rechercherFournisseurParEmail(email);
     }
-    public void supprimerFournisseur(Fournisseur f) {
+    /*public void supprimerFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.supprimerObjet(f);
     }
     public void ajouterFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.ajouterObjet(f);
-    }
+    }*/
     public String rechercherComposantParNomOuParNomOuTroisPremierSousChaine(String nomComposant){
         return  this.baseDeDonneeFournisseur.rechercherComposantParNomOuTroisSouschaine(nomComposant);
     }
