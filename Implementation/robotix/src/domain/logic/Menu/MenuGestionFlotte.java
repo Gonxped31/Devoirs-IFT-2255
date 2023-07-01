@@ -26,11 +26,21 @@ public class MenuGestionFlotte {
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch (choix) {
-            case "1" -> menuEnregistrerRobot(scanner, pseudo);
-            case "2" -> printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
-            case "3" -> menuAjouterComposante(scanner, pseudo);
-            case "4" -> menuAfficherMetriquesFlotte(pseudo);
-            case "5" -> menuCreerActions(scanner, pseudo);
+            case "1" :
+                menuEnregistrerRobot(scanner, pseudo);
+                break;
+            case "2" :
+                printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
+                break;
+            case "3" :
+                menuAjouterComposante(scanner, pseudo);
+                break;
+            case "4" :
+                menuAfficherMetriquesFlotte(pseudo);
+                break;
+            case "5" :
+                menuCreerActions(scanner, pseudo);
+                break;
         }
     }
 
@@ -97,22 +107,38 @@ public class MenuGestionFlotte {
     public void menuCreerActions(Scanner scanner, String pseudo) {
         ArrayList<String> composantes = new ArrayList<>();
         System.out.println("Quelles actions voulez-vous creer?");
-        System.out.println("Nom: ");
+        System.out.print("Nom: ");
         String nomAction = scanner.nextLine();
-        System.out.println("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
+        System.out.print("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
         String decision = "Y";
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une composante:");
             String comp = scanner.nextLine();
             switch (comp.toUpperCase()){
-                case "CPU" -> composantes.add(TypesComposants.CPU.name());
-                case "ROUE"-> composantes.add(TypesComposants.ROUE.name());
-                case "HELICE" -> composantes.add(TypesComposants.HELICE.name());
-                case "HAUTPARLEUR" -> composantes.add(TypesComposants.HAUTPARLEUR.name());
-                case "BRAS" -> composantes.add(TypesComposants.BRAS.name());
-                case "ECRAN" -> composantes.add(TypesComposants.ECRAN.name());
-                case "MICRO" -> composantes.add(TypesComposants.MICRO.name());
-                case "CAMERA" -> composantes.add(TypesComposants.CAMERA.name());
+                case "CPU" :
+                    composantes.add(TypesComposants.CPU.name());
+                    break;
+                case "ROUE":
+                    composantes.add(TypesComposants.ROUE.name());
+                    break;
+                case "HELICE" :
+                    composantes.add(TypesComposants.HELICE.name());
+                    break;
+                case "HAUTPARLEUR" :
+                    composantes.add(TypesComposants.HAUTPARLEUR.name());
+                    break;
+                case "BRAS" :
+                    composantes.add(TypesComposants.BRAS.name());
+                    break;
+                case "ECRAN" :
+                    composantes.add(TypesComposants.ECRAN.name());
+                    break;
+                case "MICRO" :
+                    composantes.add(TypesComposants.MICRO.name());
+                    break;
+                case "CAMERA" :
+                    composantes.add(TypesComposants.CAMERA.name());
+                    break;
             }
             System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
             decision = scanner.nextLine();
