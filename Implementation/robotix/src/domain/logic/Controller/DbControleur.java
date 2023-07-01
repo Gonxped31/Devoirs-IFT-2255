@@ -7,21 +7,22 @@ import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
+import service.BaseDeDonneeInteret;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class DbControleur {
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
-
+   private BaseDeDonneeInteret baseDeDonneeInteret;
     public DbControleur () throws IOException {
         this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
+        this.baseDeDonneeInteret= new BaseDeDonneeInteret();
     }
 
      public String recupererListeUtilisateur(){
@@ -112,7 +113,7 @@ public class DbControleur {
 
 
     public String recupererListeInteret(){
-       return this.baseDeDonneeUtilisateur.recupererListeInteret();
+       return this.baseDeDonneeInteret.recupererListeInteret();
     }
 
     public String recupererListeInteretUtilisateur(String pseudo){
