@@ -39,7 +39,12 @@ public class ControlleurUtilisateurs {
 
     /* Code pour les vérifications */
     public boolean verifierPseudo(String pseudo) {
-        return dataBaseController.verifierPseudo(pseudo);
+        try {
+            dataBaseController.verifierPseudo(pseudo);
+        } catch (NullPointerException e){
+            return true;
+        }
+        return false;
     }
 
     public boolean verifierEmail(String inputEmail) {
@@ -96,8 +101,12 @@ public class ControlleurUtilisateurs {
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        try {
+            this.utilisateurCourant.creerAction(nomAction, composantes, duree);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        } catch (NullPointerException e){
+
+        }
     }
 
     public int afficherMetriquesFlotte(String pseudo){

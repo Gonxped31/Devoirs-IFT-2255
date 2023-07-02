@@ -12,16 +12,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
-     private static final String FILE_NAME = "fournisseur.json";
-     private List<Map<String, List<Robot>>> listRobot;
-     private List<Map<String, List<Composant>>> listComposant;
-    
+        private static final String FILE_NAME = "fournisseur.json";
+        private List<Map<String, List<Robot>>> listRobot;
+        private List<Map<String, List<Composant>>> listComposant;
+
      public BaseDeDonneeFournisseur() throws IOException {
-        super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
-         listComposant= new ArrayList<>();
-         listRobot=new ArrayList<>();
-         initListeRobotEtComposant();
-     }
+            super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
+            listComposant= new ArrayList<>();
+            listRobot=new ArrayList<>();
+            initListeRobotEtComposant();
+        }
 
 
 
@@ -34,7 +34,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
        new Fournisseur("Roy", "123" ,"123 rue des Innovations, Montr�al, QC, H1A 0A1",  "nom1@robotech.ca",
                         "5142104555", "RobotA", "CPU", "30", "RoboTechnologies"),
 
-        new Fournisseur("Roy", "456", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "nom1@robotech.ca",
+        new Fournisseur("Kare", "456", "123 rue des Innovations, Montr�al, QC, H1A 0A1", "nom1@robotech.ca",
                         "5142104555", "RobotA", "CPU", "30", "RoboTechnologies"),
 
         new Fournisseur("Bouchard", "789","456 avenue des Automates, Montr�al, QC, H5M 1N2",
@@ -50,9 +50,44 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                         "info@roboPro.ca", "4506780000", "RobotE", "HAUTPARLEUR","22", "RoboPro")
         ));
 
+        LinkedList<Composant> listComposant = new LinkedList<>();
+        listComposant.add(new Composant("cpu", "150000", "Description cpu", "CPU"));
+        listComposant.add(new Composant("bras", "800000", "Description bras", "BRAS"));
+        listComposant.add(new Composant("roue", "570000", "Description roue", "ROUE"));
+        listComposant.add(new Composant("helice", "457000", "Description helice", "HELICE"));
+        listComposant.add(new Composant("micro", "365000000", "Description micro", "MICRO"));
+        listComposant.add(new Composant("hautparleur", "7540000", "Description hautparleur", "HAUTPARLEUR"));
+        listComposant.add(new Composant("ecran", "841000000", "Description ecran", "ECRAN"));
+
+        LinkedList<LinkedList<Robot>> listeRobots = new LinkedList<>();
+        LinkedList<Robot> listeRobotRoy = new LinkedList<>();
+        LinkedList<Robot> listeRobotKare = new LinkedList<>();
+        LinkedList<Robot> listeRobotBouchard = new LinkedList<>();
+        LinkedList<Robot> listeRobotAdams = new LinkedList<>();
+        LinkedList<Robot> listeRobotWilson = new LinkedList<>();
+        LinkedList<Robot> listeRobotThompson = new LinkedList<>();
+        listeRobotRoy.add(new Robot("", 0, 0, 0, 100, 120, 32, listComposant, "Coureur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+        listeRobotKare.add(new Robot("", 0, 0, 0, 32, 100, 64, listComposant, "Sauteur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+        listeRobotBouchard.add(new Robot("", 0, 0, 0, 45, 75, 32, listComposant, "Musicienne", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+        listeRobotAdams.add(new Robot("", 0, 0, 0, 76, 85, 32, listComposant, "SurPoids", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+        listeRobotWilson.add(new Robot("", 0, 0, 0, 24, 105, 64, listComposant, "Calme", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+        listeRobotThompson.add(new Robot("", 0, 0, 0, 98, 46, 84, listComposant, "Abeille", new LinkedList<>(), new LinkedList<>(), new LinkedList<>()));
+
+        listeRobots.add(listeRobotRoy);
+        listeRobots.add(listeRobotKare);
+        listeRobots.add(listeRobotBouchard);
+        listeRobots.add(listeRobotAdams);
+        listeRobots.add(listeRobotWilson);
+        listeRobots.add(listeRobotThompson);
+
+        for (int i = 0; i < tempList.size(); ++i) {
+            tempList.get(i).setInventaireDeRobot(listeRobots.get(i));
+        }
+
         tempList.stream().forEach(fournisseur -> {
-         this.ajouterObjet(fournisseur);
+            this.ajouterObjet(fournisseur);
         });
+
     }
 
         protected void initListeRobotEtComposant(){

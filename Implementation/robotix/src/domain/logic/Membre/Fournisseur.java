@@ -13,7 +13,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
-    private ArrayList<Robot> inventaireDeRobot=new ArrayList<>();
+    private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private ArrayList<Composant> inventaireComposant= new ArrayList<>();
     private Notification notification = new Notification();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
@@ -39,8 +39,12 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return this.nomCompagnie;
     }
 
-    public ArrayList<Robot> getInventaireDeRobot() {
+    public LinkedList<Robot> getInventaireDeRobot() {
         return inventaireDeRobot;
+    }
+
+    public void setInventaireDeRobot(LinkedList<Robot> inventaireDeRobot) {
+        this.inventaireDeRobot = inventaireDeRobot;
     }
 
     public ArrayList<Composant> getInventaireComposant() {

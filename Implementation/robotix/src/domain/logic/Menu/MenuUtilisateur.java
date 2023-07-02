@@ -43,7 +43,11 @@ public class MenuUtilisateur {
         while (!PseudoUnique) {
             System.out.print("Pseudo: ");
             pseudo = scanner.nextLine();
-            PseudoUnique = controlleurUtilisateurs.verifierPseudo(pseudo);
+            try {
+                PseudoUnique = controlleurUtilisateurs.verifierPseudo(pseudo);
+            } catch (NullPointerException e){
+                PseudoUnique = false;
+            }
             if (PseudoUnique) {
                 System.out.print("Ce pseudo existe déjà, veuillez entrer un autre : ");
             } else {
@@ -51,13 +55,17 @@ public class MenuUtilisateur {
             }
         }
 
-        System.out.println("Mot de passe: ");
+        System.out.print("Mot de passe: ");
         String mdp = scanner.nextLine();
 
         while (!EmailValide) {
             System.out.print("Adresse courriel: ");
             courriel = scanner.nextLine();
-            EmailValide = controlleurUtilisateurs.verifierEmail(courriel);
+            try {
+                EmailValide = controlleurUtilisateurs.verifierEmail(courriel);
+            } catch (NullPointerException e){
+                EmailValide = true;
+            }
             if (!EmailValide) {
                 System.out.println("Email invalide, veuillez reessayer.");
             }
@@ -66,7 +74,11 @@ public class MenuUtilisateur {
         while (!TelephoneValide) {
             System.out.print("Numéro de téléphone: ");
             telephone = scanner.nextLine();
-            TelephoneValide = controlleurUtilisateurs.verifierTelephone(telephone);
+            try {
+                TelephoneValide = controlleurUtilisateurs.verifierTelephone(telephone);
+            } catch (NullPointerException e){
+                TelephoneValide = true;
+            }
             if (!TelephoneValide) {
                 System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
             }
@@ -82,6 +94,11 @@ public class MenuUtilisateur {
             String interet = scanner.nextLine();
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
+            System.out.println("Voulez-vous en ajouter encore? (Y/N)");
+            String decis = scanner.nextLine();
+            if (decis.toUpperCase().equals("N")){
+                break;
+            }
         }
         this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);

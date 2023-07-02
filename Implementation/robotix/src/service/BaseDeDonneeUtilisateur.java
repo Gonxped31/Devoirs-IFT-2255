@@ -144,10 +144,8 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
     public boolean verifierPseudo(String pseudo){
-
     return this.getListObjet().stream()
             .anyMatch(u->((Utilisateur) u).getPseudo().equals(pseudo));
-
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){
