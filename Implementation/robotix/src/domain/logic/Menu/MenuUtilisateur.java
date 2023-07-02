@@ -145,8 +145,9 @@ public class MenuUtilisateur {
                 menuReseau.gererReseauSocial(scanner, pseudo);
                 break;
             case("6") :
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                menuAchat(scanner, pseudo);
+                //System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                //System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
                 break;
             case("7") :
@@ -174,6 +175,30 @@ public class MenuUtilisateur {
             case("10") :
                 menu = new Menu();
                 menu.menuPrincipale(scanner);
+        }
+    }
+
+    public void menuAchat(Scanner scanner, String pseudo) throws ParseException, IOException {
+        System.out.println("Que voulez-vous acheter?");
+        System.out.println("1- Robot");
+        System.out.println("2- Composante");
+        String decision = scanner.nextLine();
+        switch(decision){
+            case "1" -> {
+                System.out.println("Voici la liste des fournisseurs: ");
+                System.out.println(dbControlleur.recupererListFournisseur());
+                System.out.println("Choisissez un fournisseur");
+                String nomFournisseur = scanner.nextLine();
+                System.out.println(dbControlleur.obtenirListRobotFournisseur(nomFournisseur));
+                System.out.println("Entrez le numero du robot a acheter");
+                int numero = scanner.nextInt();
+                System.out.println("Voici le numero de serie");
+                System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
+                menuUtilisateur(scanner, pseudo);
+            }
+            case "2" -> {
+
+            }
         }
     }
 

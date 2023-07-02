@@ -12,6 +12,7 @@ import service.BaseDeDonneeInteret;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
+import java.util.UUID;
 
 
 public class DbControleur {
@@ -140,6 +141,15 @@ public class DbControleur {
     public Fournisseur authentificatiFournisseur(String nomFournisseur, String mdp){
        return this.baseDeDonneeFournisseur.authentificatiFournisseur(nomFournisseur, mdp);
     }
+
+    public String obtenirListRobotFournisseur( String nomFournisseur)
+    {
+        return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);
+    }
+    public UUID acheterRobot(String nomFournisseur, int numero){
+        return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
+    }
+
     public String obtenirListeInteret()
     {
         return this.baseDeDonneeInteret.recupererListeInteret();

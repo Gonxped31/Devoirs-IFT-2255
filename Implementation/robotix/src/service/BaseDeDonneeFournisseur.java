@@ -206,4 +206,23 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                  .findFirst()
                  .orElse(null);
     }
+
+    public String obtenirListRobotFournisseur(String nomFournisseur){
+        return (String) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
+                .map(r->((Robot) r).getInfoRobotFormater())
+                .collect(Collectors.joining("\n"));
+    }
+    public UUID acheterRobot(String nomFournisseur, int numero){
+        return (UUID) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
+                .filter(r->((Robot) r).getNumero()==numero )
+                .findFirst()
+                .map(r->((Robot) r).getNumeroSerie())
+                .orElse(null);
+
+    }
+
 }
