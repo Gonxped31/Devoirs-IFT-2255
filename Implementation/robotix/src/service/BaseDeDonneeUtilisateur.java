@@ -157,6 +157,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .orElse(null);
     }
 
+
     public  Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp){
         return (Utilisateur) this.getListObjet().stream()
                 .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudoUtilisateur) &&
@@ -164,4 +165,5 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .findFirst()
                 .orElse(null);
     }
+
 }

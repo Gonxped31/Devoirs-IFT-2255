@@ -197,10 +197,10 @@ public class ControlleurUtilisateurs {
     public boolean[] notifier() {
         return this.utilisateurCourant.notifier();
     }
-    public boolean souscrireAunInteret(String nomInteret){
-        Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
-        if( i==null)
-        {
+
+    public boolean souscrireAunInteret(String nomInteret) {
+        Interet i = this.dataBaseController.souscrireAunInteret(nomInteret);
+        if (i == null) {
             return false;
         }
 
@@ -209,4 +209,13 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return true;
     }
+
+    public void modifierProfilUtilisateur(String choix, String nouvelInfo)
+    {
+        this.utilisateurCourant.modifierProfile(choix, nouvelInfo);
+    }
+    public  String recupererListeInteret(){
+       return this.dataBaseController.recupererListeInteret();
+    }
+
 }

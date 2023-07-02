@@ -115,20 +115,27 @@ public class Robot implements java.io.Serializable{
     public void allouerTache(Tache tache){
         taches.add(tache);
     }
-    @JsonIgnore
+
     public String getInfoRobotFormater()
     {
         return "Numero : " + numero
                 + " Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
     }
+
     @JsonProperty("numero")
+
     public int getNumero()
     {
         return numero;
     }
+
     @JsonProperty("numero")
     public void setNumero(int newNum){
         numero = newNum;
     }
 }
+
+
+
+

@@ -98,6 +98,8 @@ public class ControlleurFournisseurs {
     public String voirProfil() {
         return fournisseurCourant.getProfilFournisseur();
     }
-
-
+    public void modifierProfilFournisseur(String choix, String nouvelInfo)
+    {
+     this.fournisseurCourant.modifierProfile(choix,nouvelInfo);
+    }
 }

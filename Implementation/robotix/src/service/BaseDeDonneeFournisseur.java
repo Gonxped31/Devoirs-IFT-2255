@@ -1,13 +1,11 @@
 package service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 

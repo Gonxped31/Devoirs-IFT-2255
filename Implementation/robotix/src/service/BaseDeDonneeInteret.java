@@ -22,7 +22,11 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
 
         List<Interet> tempList= new ArrayList<>(Arrays.asList(
 
+
                 new Interet("Combat"),
+
+               new Interet("Combat"),
+
                 new Interet("Foot"),
                 new Interet("Soccer"),
                 new Interet("Danse"),
