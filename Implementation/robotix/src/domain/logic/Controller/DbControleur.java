@@ -142,6 +142,10 @@ public class DbControleur {
        return this.baseDeDonneeFournisseur.authentificatiFournisseur(nomFournisseur, mdp);
     }
 
+    public Utilisateur authentificatiUtilisateur(String nomUtilisateur, String mdp){
+        return this.baseDeDonneeUtilisateur.authentificatiUtilisateur(nomUtilisateur, mdp);
+    }
+
     public String obtenirListRobotFournisseur( String nomFournisseur)
     {
         return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);

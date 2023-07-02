@@ -218,7 +218,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 "\nType de robot fabriquer :" + this.typeRobotFabriquer +
                 "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
                 "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
-                "\nNombre de robot disponible : " + this.getInventaireComposant().size() + "\n";
+                "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() + "\n";
     }
     public boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;

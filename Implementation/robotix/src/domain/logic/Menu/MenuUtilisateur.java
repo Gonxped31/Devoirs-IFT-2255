@@ -14,7 +14,7 @@ import javax.crypto.spec.PSource;
 
 public class MenuUtilisateur {
     /*Section Utilisateur */
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     public Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
@@ -95,7 +95,8 @@ public class MenuUtilisateur {
         String connexion = scanner.nextLine();
         System.out.println("Veuillez entrer votre mot de passe: ");
         String mdp = scanner.nextLine();
-        if (controlleurUtilisateurs.authentification(connexion, mdp, "Utilisateur")) {
+        controlleurUtilisateurs = new ControlleurUtilisateurs();
+        if (controlleurUtilisateurs.authentification(connexion, mdp)) {
             System.out.println("Bienvenue " + connexion + "!");
             menuUtilisateur(scanner, connexion);
         } else {
