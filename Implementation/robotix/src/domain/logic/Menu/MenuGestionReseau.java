@@ -30,6 +30,7 @@ public class MenuGestionReseau {
                 else{
                     System.out.println(nom + " n'a pas pu etre ajoute a votre reseau");
                 }
+                System.out.println("Vous suivez maintenant " + nom);
                 break;
             case "2":
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
@@ -46,8 +47,10 @@ public class MenuGestionReseau {
                 //controlleurUtilisateurs.gererInteret(pseudo);
                 break;
             case "4":
-                menuUtil = new MenuUtilisateur();
-                menuUtil.menuUtilisateur(scanner, pseudo);
+
+                break;
         }
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 }

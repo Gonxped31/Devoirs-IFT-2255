@@ -15,14 +15,14 @@ import domain.logic.Robot.Activite;
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    //private MenuUtilisateur menuUtil;
+    private MenuUtilisateur menuUtil;
     private Activite activite = new Activite();
 
     public MenuGererTacheActivite() throws IOException {
     }
 
     //Tache
-    public void gererMesTaches(Scanner scanner, String pseudo) throws ParseException {
+    public void gererMesTaches(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("1- Créer une tâche");
         System.out.println("2- Allouer une tache a un robot");
         System.out.println("3- Revenir au menu principal");
@@ -36,17 +36,18 @@ public class MenuGererTacheActivite {
                 allouerTacheRobot(scanner, pseudo);
                 break;
             case "3":
-                //menuUtil.menuUtilisateur(scanner, pseudo);
+                menuUtil = new MenuUtilisateur();
+                menuUtil.menuUtilisateur(scanner, pseudo);
                 break;
         }
     }
 
-    public void creerTache(Scanner scanner, String pseudo){
+    public void creerTache(Scanner scanner, String pseudo) throws IOException, ParseException {
         ArrayList<Action> actions = new ArrayList<Action>();
-        System.out.println("Quelles actions voulez-vous creer?");
+        System.out.println("Quelles tache voulez-vous creer?");
         System.out.println("Nom: ");
         String nomAction = scanner.nextLine();
-        System.out.println("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
+        System.out.println("Parmi vos actions, laquelle/lesquelles voulez-vous associer a cette tache?: ");
         String decision = "Y";
         while (decision.toUpperCase().equals("Y")) {
             System.out.println("Entrez une action:");
@@ -57,9 +58,12 @@ public class MenuGererTacheActivite {
             decision = scanner.nextLine();
         }
         controlleurUtilisateurs.creerTache(nomAction, actions);
+        System.out.println("Vous avez creer la tache : " + nomAction);
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-    public void allouerTacheRobot(Scanner scanner, String pseudo) throws ParseException {
+    public void allouerTacheRobot(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("A quel robot voulez-vous allouer une tache");
         String robot = scanner.nextLine();
         System.out.println("Quel est le nom de la tache a allouer?");
@@ -69,12 +73,13 @@ public class MenuGererTacheActivite {
         else{
             System.out.println("La tache n'a pas pu être allouée car vous ne possédez pas le robot ou la tache indiqué");
         }
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
 
     //Activite
-    public void gererMesActivites(Scanner scanner, String pseudo) throws ParseException {
+    public void gererMesActivites(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("1- Créer une activites");
         System.out.println("2- Rejoindre une activite");
         System.out.println("3- Revenir au menu principale");
@@ -88,11 +93,12 @@ public class MenuGererTacheActivite {
                 menuRejoindreActivite(pseudo, scanner);
                 break;
             case "3":
-                //menuUtil.menuUtilisateur(scanner, pseudo);
+                menuUtil = new MenuUtilisateur();
+                menuUtil.menuUtilisateur(scanner, pseudo);
         }
     }
 
-    public void menuCreerActivite(Scanner scanner, String pseudo) throws ParseException {
+    public void menuCreerActivite(Scanner scanner, String pseudo) throws ParseException, IOException {
         boolean continuer = false;
         ArrayList<String> listeTache = new ArrayList<>();
         ArrayList<String> listeInteret = new ArrayList<>();
@@ -128,10 +134,11 @@ public class MenuGererTacheActivite {
         } else {
             System.out.println("Cette activitée existe déjà...");
         }
-        //menuUtil.menuUtilisateur(scanner, pseudo);
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 
-    public void menuRejoindreActivite(String pseudo, Scanner scanner){
+    public void menuRejoindreActivite(String pseudo, Scanner scanner) throws IOException, ParseException {
         Date date = new Date();
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
         String nomActivite = scanner.nextLine();
@@ -149,5 +156,7 @@ public class MenuGererTacheActivite {
         activite.setDateDebut(date);
 
         controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
+        menuUtil = new MenuUtilisateur();
+        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 }
