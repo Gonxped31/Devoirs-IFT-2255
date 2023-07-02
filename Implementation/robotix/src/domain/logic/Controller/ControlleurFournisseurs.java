@@ -95,7 +95,6 @@ public class ControlleurFournisseurs {
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
     }
 
-
     public String voirProfil() {
         return fournisseurCourant.getProfilFournisseur();
     }
