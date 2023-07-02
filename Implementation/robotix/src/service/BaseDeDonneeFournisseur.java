@@ -1,13 +1,11 @@
 package service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -206,4 +204,23 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                  .findFirst()
                  .orElse(null);
     }
+
+    public String obtenirListRobotFournisseur(String nomFournisseur){
+        return (String) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
+                .map(r->((Robot) r).getInfoRobotFormater())
+                .collect(Collectors.joining("\n"));
+    }
+    public UUID acheterRobot(String nomFournisseur, int numero){
+        return (UUID) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
+                .filter(r->((Robot) r).getNumero()==numero )
+                .findFirst()
+                .map(r->((Robot) r).getNumeroSerie())
+                .orElse(null);
+
+    }
+
 }

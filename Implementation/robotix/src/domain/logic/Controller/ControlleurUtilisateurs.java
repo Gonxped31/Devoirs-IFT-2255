@@ -175,4 +175,25 @@ public class ControlleurUtilisateurs {
     public boolean[] notifier() {
         return this.utilisateurCourant.notifier();
     }
+
+    public void modifierProfilUtilisateur(String choix, String nouvelInfo)
+    {
+        this.utilisateurCourant.modifierProfile(choix, nouvelInfo);
+    }
+    public  String recupererListeInteret(){
+       return this.dataBaseController.recupererListeInteret();
+    }
+    public boolean souscrireAunInteret(String nomInteret){
+        boolean check=false;
+       Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
+       if( i==null)
+       {
+         return  check;
+       }
+
+       this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+       this.utilisateurCourant.ajouterUnInteret(i);
+       this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+       return true;
+    }
 }

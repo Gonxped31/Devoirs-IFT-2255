@@ -1,9 +1,11 @@
 package domain.logic.Robot;
 import java.util.LinkedList;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot implements java.io.Serializable{
+    private static int numero=0;
     private String nom;
     private int X, Y, vitesse, batterie, cpu;
     private double memoire; // En GB
@@ -28,6 +30,7 @@ public class Robot implements java.io.Serializable{
         this.taches = taches;
         this.activites = activites;
         this.numeroSerie = UUID.randomUUID();
+        ++numero;
     }
 
     public Robot( ){
@@ -98,6 +101,17 @@ public class Robot implements java.io.Serializable{
 
     public void allouerTache(Tache tache){
         taches.add(tache);
+    }
+
+    public String getInfoRobotFormater()
+    {
+        return "Numero : " + numero
+                + " Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
+                .collect(Collectors.joining("\n"));
+    }
+    public int getNumero()
+    {
+        return numero;
     }
 
 }
