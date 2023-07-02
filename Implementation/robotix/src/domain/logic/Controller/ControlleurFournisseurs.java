@@ -99,5 +99,4 @@ public class ControlleurFournisseurs {
         return fournisseurCourant.getProfilFournisseur();
     }
 
-
 }

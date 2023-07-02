@@ -156,4 +156,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .findFirst()
                 .orElse(null);
     }
+
+
 }
