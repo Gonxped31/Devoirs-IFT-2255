@@ -16,8 +16,7 @@ public class ControlleurUtilisateurs {
     private Utilisateur utilisateurCourant;
 
     public ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
-
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
+        this.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, listeInteret);
     }
 
     public ControlleurUtilisateurs() throws IOException {
