@@ -69,7 +69,11 @@ public class ControlleurUtilisateurs {
         if (!(robot == null)){
             robot.setNom(nomRobot);
             robot.setType(type);
-            bool= this.utilisateurCourant.enregistrerRobot(robot);
+            try {
+                bool = this.utilisateurCourant.enregistrerRobot(robot);
+            } catch (NullPointerException e){
+                return true;
+            }
         }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return bool;
         //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));

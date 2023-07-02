@@ -91,20 +91,26 @@ public class MenuUtilisateur {
     }
 
     public void connecterUtilisateur(Scanner scanner) throws ParseException, IOException {
-        System.out.println("Veuillez entrer votre pseudo: ");
-        String connexion = scanner.nextLine();
-        System.out.println("Veuillez entrer votre mot de passe: ");
-        String mdp = scanner.nextLine();
+
         controlleurUtilisateurs = new ControlleurUtilisateurs();
-        if (controlleurUtilisateurs.authentification(connexion, mdp)) {
-            System.out.println("Bienvenue " + connexion + "!");
-            menuUtilisateur(scanner, connexion);
-        } else {
-            System.out.println(connexion + " n'existe pas.");
-            menu = new Menu();
-            menu.menuPrincipale(scanner);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Veuillez entrer votre pseudo: ");
+            String connexion = scanner.nextLine();
+            System.out.println("Veuillez entrer votre mot de passe: ");
+            String mdp = scanner.nextLine();
+            if (controlleurUtilisateurs.authentification(connexion, mdp)) {
+                System.out.println("Bienvenue " + connexion + "!");
+                menuUtilisateur(scanner, connexion);
+                break;
+            } else {
+                System.out.println(connexion + " n'existe pas.");
+
+            }
         }
+        menu = new Menu();
+        menu.menuPrincipale(scanner);
     }
+
 
     public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException, IOException {
         ArrayList<String> fournisCPU = new ArrayList<>();
