@@ -176,10 +176,7 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.notifier();
     }
 
-    public void modifierProfilUtilisateur(String choix, String nouvelInfo)
-    {
-        this.utilisateurCourant.modifierProfile(choix, nouvelInfo);
-    }
+
     public  String recupererListeInteret(){
        return this.dataBaseController.recupererListeInteret();
     }
