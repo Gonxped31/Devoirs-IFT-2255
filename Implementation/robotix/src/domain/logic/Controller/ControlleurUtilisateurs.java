@@ -132,17 +132,24 @@ public class ControlleurUtilisateurs {
 
     public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        try {
         ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
         ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
         this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;
+        return true;} catch (NullPointerException e){
+            return true;
+        }
     }
 
     public void rejoindreActivite(String pseudo, Activite activite){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.rejoindreActivite(activite);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        try {
+            this.utilisateurCourant.rejoindreActivite(activite);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        } catch (NullPointerException e){
+
+        }
     }
 
     public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
@@ -187,5 +194,17 @@ public class ControlleurUtilisateurs {
 
     public boolean[] notifier() {
         return this.utilisateurCourant.notifier();
+    }
+    public boolean souscrireAunInteret(String nomInteret){
+        Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
+        if( i==null)
+        {
+            return false;
+        }
+
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.ajouterUnInteret(i);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return true;
     }
 }

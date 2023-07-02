@@ -570,5 +570,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void setNotifs(ArrayList<Notification> notifs) {
         this.notification = notification;
     }
+    public void ajouterUnInteret(Interet i){
+        this.listeInteret.add(i);
+    }
 
 }

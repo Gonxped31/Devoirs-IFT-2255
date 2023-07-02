@@ -47,7 +47,8 @@ public class MenuGestionReseau {
                 //controlleurUtilisateurs.gererInteret(pseudo);
                 break;
             case "4":
-
+                menuUtil = new MenuUtilisateur();
+                menuUtil.menuUtilisateur(scanner, pseudo);
                 break;
         }
         menuUtil = new MenuUtilisateur();

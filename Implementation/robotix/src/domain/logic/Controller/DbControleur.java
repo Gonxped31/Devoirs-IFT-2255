@@ -2,6 +2,7 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
@@ -138,5 +139,14 @@ public class DbControleur {
     }
     public Fournisseur authentificatiFournisseur(String nomFournisseur, String mdp){
        return this.baseDeDonneeFournisseur.authentificatiFournisseur(nomFournisseur, mdp);
+    }
+    public String obtenirListeInteret()
+    {
+        return this.baseDeDonneeInteret.recupererListeInteret();
+    }
+    public Interet souscrireAunInteret(String nomInteret)
+    {
+        return this.baseDeDonneeInteret.retournerInteret(nomInteret);
+
     }
 }

@@ -156,6 +156,7 @@ public class MenuGererTacheActivite {
         activite.setDateDebut(date);
 
         controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
+        System.out.println("Vous avez rejoint l'activite: " + nomActivite);
         menuUtil = new MenuUtilisateur();
         menuUtil.menuUtilisateur(scanner, pseudo);
     }

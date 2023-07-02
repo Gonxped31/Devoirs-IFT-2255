@@ -10,6 +10,8 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
+import javax.crypto.spec.PSource;
+
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -121,14 +123,13 @@ public class MenuUtilisateur {
         System.out.println("6- Achats");
         System.out.println("7- Voir mes notifications");
         System.out.println("8- Faire une requete publique");
-        System.out.println("9- Revenir au menu principale");
+        System.out.println("9- Souscrire a un interet");
+        System.out.println("10- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
         switch(choix){
             case("1") :
                 modifierProfile(scanner, pseudo);
-                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
                 break;
             case("2") :
@@ -149,15 +150,28 @@ public class MenuUtilisateur {
                 menuUtilisateur(scanner, pseudo);
                 break;
             case("7") :
-                menuNotification(scanner, pseudo);
-                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");*/
+                //menuNotification(scanner, pseudo);
+                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
+                System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
                 break;
             case("8") :
                 menuRequetesPubliques(scanner, pseudo);
                 break;
-            case("9") :
+            case("9"):
+                System.out.println("Voici la liste d'interets : ");
+                System.out.println(dbControlleur.recupererListeInteret());
+                System.out.println("A quel interet voulez-vous vous souscrire");
+                String decision = scanner.nextLine();
+                if (controlleurUtilisateurs.souscrireAunInteret(decision)){
+                    System.out.println("Vous etes souscrit a : " + decision);
+                } else {
+                    System.out.println("Veuillez verifier le nom de l'interet");
+                }
+                menuUtilisateur(scanner, pseudo);
+                break;
+
+            case("10") :
                 menu = new Menu();
                 menu.menuPrincipale(scanner);
         }
@@ -168,11 +182,11 @@ public class MenuUtilisateur {
         System.out.println("1- Voir la liste d'utilisateurs");
         System.out.println("2- Voir la liste des fournisseurs");
         System.out.println("3- Voir mon profil");
-        System.out.println("4- Chercher utilisateur par: ");//TODO
+        System.out.println("4- Chercher utilisateur par: "); //TODO
         System.out.println("5- Recuperer la liste des activites");
         System.out.println("6- Recuperer la liste des interets");
-        System.out.println("7- Rechercher fournisseur par nom");//TODO
-        System.out.println("8- Rechercher une composante par nom");//TODO
+        System.out.println("7- Rechercher fournisseur par nom"); //TODO
+        System.out.println("8- Rechercher une composante par nom"); //TODO
         String choix = scanner.nextLine();
         switch (choix){
             case "1" :
