@@ -141,6 +141,11 @@ public class MenuGererTacheActivite {
     public void menuRejoindreActivite(String pseudo, Scanner scanner) throws IOException, ParseException {
         Date date = new Date();
         System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
+        System.out.println("1- Ballade en forêt (du 02/07/2000 au 02/08/2000)");
+        System.out.println("2- Course de rally (du 05/07/2000 au 02/08/2001)");
+        System.out.println("3- Soiree netflix and chill (du 09/08/2010 au 02/012/2013)");
+        System.out.println("4- Gaming night (du 02/07/2004 au 02/08/2006)");
+        System.out.println("5- Hokey sur glace (du 14/10/2023 au 02/08/2026)");
         String nomActivite = scanner.nextLine();
 
         System.out.println ("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
@@ -152,6 +157,15 @@ public class MenuGererTacheActivite {
         } catch (ParseException e) {
             System.out.println("Format de date invalide !");
         }
+
+        switch (nomActivite){
+            case "1" -> nomActivite = "Ballade en forêt (du 02/07/2000 au 02/08/2000)";
+            case "2" -> nomActivite = "Course de rally (du 05/07/2000 au 02/08/2001)";
+            case "3" -> nomActivite = "Soiree netflix and chill (du 09/08/2010 au 02/012/2013)";
+            case "4" -> nomActivite = "Gaming night (du 02/07/2004 au 02/08/2006)";
+            case "5" -> nomActivite = "Hokey sur glace (du 14/10/2023 au 02/08/2026)";
+        }
+
         activite.setNom(nomActivite);
         activite.setDateDebut(date);
 

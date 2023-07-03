@@ -40,16 +40,10 @@ public class MenusFournisseur {
 			System.out.print("Nom: ");
 			inputNom = scanner.nextLine();
 			NomUnique = controlleurFournisseurs.verifierNom(inputNom);
-			if (NomUnique){
+			if (!NomUnique){
 				System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
 			}
-			else {
-				break;
-			}
 		}
-
-		System.out.println("Mot de passe: ");
-		String mdp = scanner.nextLine();
 
 		while (!EmailValide) {
 			System.out.print("Adresse courriel: ");
@@ -69,6 +63,8 @@ public class MenusFournisseur {
 			}
 		}
 
+		System.out.println("Mot de passe: ");
+		String mdp = scanner.nextLine();
 		System.out.print("Adresse : ");
 		inputAdresse = scanner.nextLine();
 		System.out.print("Type de robots fabriqu�s: ");
@@ -96,6 +92,7 @@ public class MenusFournisseur {
 			menuFournisseur(scanner, nomFounisseur);
 		} else {
 			System.out.println(nomFounisseur + " n'existe pas.");
+			menu = new Menu();
 			menu.menuPrincipale(scanner);
 		}
 	}
@@ -203,7 +200,12 @@ public class MenusFournisseur {
 				menuFournisseur(scanner, nomFournisseur);
 			}
 			case "5" -> {
-				System.out.println(dbControlleur.recupererListeActivite());
+				String acts = dbControlleur.recupererListeActivite();
+				if (acts.length() == 0){
+					System.out.println("Il n'y a aucune activitée.");
+				} else {
+					System.out.println(acts);
+				}
 				menuFournisseur(scanner, nomFournisseur);
 			}
 			case "6" -> {
@@ -243,12 +245,10 @@ public class MenusFournisseur {
 
 
 	public void menuRechercheInterets(Scanner scanner, String nomFournisseur){
-		System.out.println("Voulez vous appliquer un filtre?");
-		System.out.println("1- Oui");
-		System.out.println("2- Non");
+		System.out.println("Voulez vous appliquer un filtre? (oui/non)");
 		String decision = scanner.nextLine();
 		switch (decision){
-			case "1" -> {
+			case "oui" -> {
 				System.out.println("Par quel filtre voulez vous filtrer?");
 				System.out.println("1- Filtrer par trois premieres lettres");
 				System.out.println("2- Filtrer par pseudo utilisateur");
@@ -258,12 +258,22 @@ public class MenusFournisseur {
 					case "1" -> {
 						System.out.println("Entrez vos 3 characteres");
 						String troislettre = scanner.nextLine();
-						System.out.println(dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre));
+						String res = dbControlleur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre);
+						if (res.length() == 0){
+							System.out.println("Il n'y a aucun interet");
+						} else {
+							System.out.println(res);
+						}
 					}
 					case "2" -> {
 						System.out.println("Entrez le pseudo de l'utilisateur");
 						String pseudo = scanner.nextLine();
-						System.out.println(dbControlleur.recupererListeInteretUtilisateur(pseudo));
+						String res = dbControlleur.recupererListeInteretUtilisateur(pseudo);
+						if (res.length() == 0){
+							System.out.println("Il n'y a aucun interet");
+						} else {
+							System.out.println(res);
+						}
 
 					}
 					case "3" -> {
@@ -271,12 +281,22 @@ public class MenusFournisseur {
 						String pseudo = scanner.nextLine();
 						System.out.println("Entrez les 3 characteres de l'interet");
 						String troislettre = scanner.nextLine();
-						System.out.println(dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo, troislettre));
+						String res = dbControlleur.recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(pseudo, troislettre);
+						if (res.length() == 0){
+							System.out.println("Il n'y a aucun interet");
+						} else {
+							System.out.println(res);
+						}
 					}
 				}
 			}
-			case "2" -> {
-				System.out.println(dbControlleur.recupererListeInteret());
+			case "non" -> {
+				String res = dbControlleur.recupererListeInteret();
+				if (res.length() == 0){
+					System.out.println("Il n'y a aucun interet");
+				} else {
+					System.out.println(res);
+				}
 			}
 		}
 	}
@@ -444,11 +464,6 @@ public class MenusFournisseur {
 		paramettreCoposants.add(description);
 		paramettreCoposants.add(type);
 		return paramettreCoposants;
-	}
-
-	public void menuNotifications(Scanner scanner) {
-		// TODO - implement MenusFournisseur.menuNotifications
-		throw new UnsupportedOperationException();
 	}
 
 	/* Modification du profile */

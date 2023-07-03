@@ -14,7 +14,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
-    private ArrayList<Composant> inventaireComposant= new ArrayList<>();
+    private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     private Notification notification = new Notification();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
@@ -47,9 +47,12 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         this.inventaireDeRobot = inventaireDeRobot;
     }
 
-    public ArrayList<Composant> getInventaireComposant() {
-
+    public LinkedList<Composant> getInventaireComposant() {
         return inventaireComposant;
+    }
+
+    public void setInventaireComposant(LinkedList<Composant> inventaireComposant) {
+        this.inventaireComposant = inventaireComposant;
     }
 
     public String getCapaciteProductionComposantes() {

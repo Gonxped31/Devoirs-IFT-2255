@@ -8,11 +8,14 @@ public class Composant implements java.io.Serializable {
     private String description;
     private String typeComposant;
 
+    private static int numero=0;
+
     public Composant(String nom, String prix, String description, String typeComposant){
         this.nom = nom;
         this.prix = prix;
         this.description = description;
         this.typeComposant = typeComposant;
+        ++numero;
     }
 
     public Composant() {
@@ -45,9 +48,10 @@ public class Composant implements java.io.Serializable {
     }
     @JsonIgnore
     public String getInfoComposantFormater(){
-        return "\nNom : " + this.nom +
-                "\nprix : " + this.prix +
-                "\ndescription : " + this.description +
-                "\nType : " + this.typeComposant;
+        return "\n\nComposante " + ++numero + " :" +
+                " \nNom : " + this.nom +
+                " \nprix : " + this.prix +
+                " \ndescription : " + this.description +
+                " \nType : " + this.typeComposant;
     }
 }

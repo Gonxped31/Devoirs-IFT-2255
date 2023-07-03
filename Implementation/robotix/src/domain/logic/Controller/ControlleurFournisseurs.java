@@ -20,7 +20,7 @@ public class ControlleurFournisseurs {
     public boolean authentificationFournisseur(String nomFournisseur, String mdp){
         Fournisseur f= this.dataBaseController.authentificatiFournisseur(nomFournisseur,mdp);
         this.fournisseurCourant= f;
-        return f.equals(null) ? false: true ;
+        return f != null;
     }
 
     public void inscriptionFournisseur(String inputNom, String mdp, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,

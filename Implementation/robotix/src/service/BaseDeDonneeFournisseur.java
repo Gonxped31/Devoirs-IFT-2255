@@ -82,6 +82,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
 
         for (int i = 0; i < tempList.size(); ++i) {
             tempList.get(i).setInventaireDeRobot(listeRobots.get(i));
+            tempList.get(i).setInventaireComposant(listComposant);
         }
 
         tempList.stream().forEach(fournisseur -> {
@@ -174,7 +175,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .flatMap(map -> map.get(nomFournisseur).stream())
                 .map(composant -> composant.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
-        return composants.isEmpty() ? "Composant non trouver, veuillez verifier le nom du fourniseur": composants;
+        return composants.isEmpty() ? "Aucune composante trouvée...": composants;
     }
 
     public String rechercherFournisseurParNom(String nom){

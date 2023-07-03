@@ -118,8 +118,8 @@ public class Robot implements java.io.Serializable{
     @JsonIgnore
     public String getInfoRobotFormater()
     {
-        return "Numero : " + numero
-                + " Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
+        return " ***** Robot numero : " + numero + " *****"
+                + " \nListe de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
     }
     @JsonProperty("numero")

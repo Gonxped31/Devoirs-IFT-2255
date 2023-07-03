@@ -27,9 +27,9 @@ public class DbControleur {
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
     }
 
-     public String recupererListeUtilisateur(){
-         return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
-     }
+    public String recupererListeUtilisateur(){
+        return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
+    }
 
      public String recupererListFournisseur(){
         return this.baseDeDonneeFournisseur.recupererLalisteDesFournisseur();

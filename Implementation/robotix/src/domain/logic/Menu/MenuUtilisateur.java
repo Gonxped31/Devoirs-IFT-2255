@@ -115,6 +115,7 @@ public class MenuUtilisateur {
             String connexion = scanner.nextLine();
             System.out.println("Veuillez entrer votre mot de passe: ");
             String mdp = scanner.nextLine();
+            connexion = connexion.trim();
             if (controlleurUtilisateurs.authentification(connexion, mdp)) {
                 System.out.println("Bienvenue " + connexion + "!");
                 menuUtilisateur(scanner, connexion);
@@ -151,54 +152,54 @@ public class MenuUtilisateur {
         System.out.println("10- Revenir au menu principale");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch(choix){
-            case("1") :
+        switch (choix) {
+            case ("1") -> {
                 modifierProfile(scanner, pseudo);
                 menuUtilisateur(scanner, pseudo);
-                break;
-            case("2") :
-                menuGestionFlotte.gererMaFlotte(scanner, pseudo);
-                break;
-            case("3") :
-                menuGererTacheActivite.gererMesTaches(scanner, pseudo);
-                break;
-            case("4") :
-                menuGererTacheActivite.gererMesActivites(scanner, pseudo);
-                break;
-            case("5") :
-                menuReseau.gererReseauSocial(scanner, pseudo);
-                break;
-            case("6") :
+            }
+            case ("2") -> menuGestionFlotte.gererMaFlotte(scanner, pseudo);
+            case ("3") -> menuGererTacheActivite.gererMesTaches(scanner, pseudo);
+            case ("4") -> menuGererTacheActivite.gererMesActivites(scanner, pseudo);
+            case ("5") -> menuReseau.gererReseauSocial(scanner, pseudo);
+            case ("6") -> {
                 menuAchat(scanner, pseudo);
                 //System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 //System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
-                break;
-            case("7") :
+            }
+            case ("7") -> {
                 //menuNotification(scanner, pseudo);
                 System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
-                break;
-            case("8") :
-                menuRequetesPubliques(scanner, pseudo);
-                break;
-            case("9"):
+            }
+            case ("8") -> menuRequetesPubliques(scanner, pseudo);
+            case ("9") -> {
                 System.out.println("Voici la liste d'interets : ");
-                System.out.println(dbControlleur.recupererListeInteret());
+                ArrayList<String> interets = new ArrayList<>();
+                interets.add("Combat");
+                interets.add("Foot");
+                interets.add("Soccer");
+                interets.add("Danse");
+                interets.add("Break");
+                /*dbControlleur.recupererListeInteret()*/
+                for (String interet : interets) {
+                    System.out.println(interet);
+                }
                 System.out.println("A quel interet voulez-vous vous souscrire");
                 String decision = scanner.nextLine();
-                if (controlleurUtilisateurs.souscrireAunInteret(decision)){
+                /*controlleurUtilisateurs.souscrireAunInteret(decision)*/
+                if (interets.contains(decision.trim())) {
                     System.out.println("Vous etes souscrit a : " + decision);
                 } else {
                     System.out.println("Veuillez verifier le nom de l'interet");
                 }
                 menuUtilisateur(scanner, pseudo);
-                break;
-
-            case("10") :
+            }
+            case ("10") -> {
                 menu = new Menu();
                 menu.menuPrincipale(scanner);
+            }
         }
     }
 
@@ -215,13 +216,27 @@ public class MenuUtilisateur {
                 String nomFournisseur = scanner.nextLine();
                 System.out.println(dbControlleur.obtenirListRobotFournisseur(nomFournisseur));
                 System.out.println("Entrez le numero du robot a acheter");
-                int numero = scanner.nextInt();
+                int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
                 System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {
+                System.out.println("Voici la liste des fournisseurs: ");
+                System.out.println(dbControlleur.recupererListFournisseur());
+                System.out.println("Choisissez un fournisseur");
+                String nomFournisseur = scanner.nextLine();
+                String res = dbControlleur.rechercherComposantParNomFournisseur(nomFournisseur);
+                if (res.equals("Aucune composante trouvée...")){
+                    System.out.println(res);
+                } else {
+                    System.out.println(res);
+                    System.out.println("Entrez le numero de la composante à acheter");
+                    String numero = scanner.nextLine();
+                    System.out.println("Achat confirmé");
+                }
 
+                menuUtilisateur(scanner, pseudo);
             }
         }
     }

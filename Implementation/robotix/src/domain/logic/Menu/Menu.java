@@ -44,7 +44,10 @@ public class Menu {
                 case "2" -> menusFournisseur.menuInscriptionFournisseur(scanner);
                 case "3" -> menuUtilisateur.connecterUtilisateur(scanner);
                 case "4" -> menusFournisseur.menuConnexionFournisseur(scanner);
-                case "5" -> System.out.println("Au revoir !");
+                case "5" -> {
+                    System.out.println("Au revoir !");
+                    System.exit(0);
+                }
                 default -> {
                     System.out.println("Choix invalide. Veuillez réessayez.");
                     menuPrincipale(scanner);

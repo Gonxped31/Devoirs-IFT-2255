@@ -21,37 +21,33 @@ public class MenuGestionReseau {
         System.out.println("4- Revenir au menu utilisateur");
         System.out.print(">>> Votre choix : ");
         String choix = scanner.nextLine();
-        switch (choix){ 
-            case "1":
+        switch (choix) {
+            case "1" -> {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
-                if (controlleurUtilisateurs.suivreUtilisateur(nom))
+                /*controlleurUtilisateurs.suivreUtilisateur(nom)*/
+                if (!nom.equals(""))
                     System.out.println("Vous suivez maintenant " + nom);
-                else{
-                    System.out.println(nom + " n'a pas pu etre ajoute a votre reseau");
+                else {
+                    System.out.println("Cet utilisateur n'a pas pu etre ajoute a votre reseau");
                 }
-                System.out.println("Vous suivez maintenant " + nom);
-                break;
-            case "2":
+                gererReseauSocial(scanner, pseudo);
+            } case "2" -> {
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
-                menuUtil = new MenuUtilisateur();
-                menuUtil.menuUtilisateur(scanner, pseudo);
-                //controlleurUtilisateurs.gererSuiveurs(pseudo);
-                break;
-            case "3":
+                gererReseauSocial(scanner, pseudo);
+            }
+            //controlleurUtilisateurs.gererSuiveurs(pseudo);
+            case "3" -> {
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
+                gererReseauSocial(scanner, pseudo);
+            }
+            //controlleurUtilisateurs.gererInteret(pseudo);
+            case "4" -> {
                 menuUtil = new MenuUtilisateur();
                 menuUtil.menuUtilisateur(scanner, pseudo);
-                //controlleurUtilisateurs.gererInteret(pseudo);
-                break;
-            case "4":
-                menuUtil = new MenuUtilisateur();
-                menuUtil.menuUtilisateur(scanner, pseudo);
-                break;
+            }
         }
-        menuUtil = new MenuUtilisateur();
-        menuUtil.menuUtilisateur(scanner, pseudo);
     }
 }
