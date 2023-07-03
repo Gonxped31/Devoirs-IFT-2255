@@ -166,9 +166,6 @@ public class MenuGererTacheActivite {
             case "5" -> nomActivite = "Hokey sur glace (du 14/10/2023 au 02/08/2026)";
         }
 
-        activite.setNom(nomActivite);
-        activite.setDateDebut(date);
-
         controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
         System.out.println("Vous avez rejoint l'activite: " + nomActivite);
         menuUtil = new MenuUtilisateur();
