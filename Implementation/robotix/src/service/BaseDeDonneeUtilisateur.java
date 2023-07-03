@@ -23,8 +23,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
        // init();
      }
 
-
-
     @Override
     protected void init() {
 
@@ -33,7 +31,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                         "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new ArrayList<Interet>()),
                 new Utilisateur("Damov", "Kamen", "adresse2", "KD",
                         "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new ArrayList<Interet>()),
-                new Utilisateur("Bio", "Samir", "adresse3", "SB",
+                new Utilisateur("Gbian", "Samir", "adresse3", "SB",
                         "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new ArrayList<Interet>()),
                 new Utilisateur("Doren", "Sky", "adresse4", "SD",
                         "DoRen", "emaildorensky@gmail.com", "5144444444", "Dorensky Inc.", new ArrayList<Interet>()),
@@ -116,12 +114,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
-    public String recupererListeInteret(){
-        return   this.listInteret.stream()
-                .map( i-> i.getNom())
-                .distinct()
-                .collect(Collectors.joining(", "));
-    }
 
     public String recupererListeInteretUtilisateur(String pseudo){
         return (String) this.getListObjet().stream()
@@ -152,15 +144,21 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
     public boolean verifierPseudo(String pseudo){
-
     return this.getListObjet().stream()
             .anyMatch(u->((Utilisateur) u).getPseudo().equals(pseudo));
-
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){
         return (Utilisateur) this.getListObjet().stream()
                 .filter( utilisateur ->( (Utilisateur) utilisateur).getPseudo().equals(pseudo))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public  Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp){
+        return (Utilisateur) this.getListObjet().stream()
+                .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudoUtilisateur) &&
+                        ((Utilisateur) u).getMotDePasse().equals(mdp))
                 .findFirst()
                 .orElse(null);
     }

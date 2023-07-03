@@ -20,7 +20,7 @@ public class ControlleurFournisseurs {
     public boolean authentificationFournisseur(String nomFournisseur, String mdp){
         Fournisseur f= this.dataBaseController.authentificatiFournisseur(nomFournisseur,mdp);
         this.fournisseurCourant= f;
-        return f.equals(null) ? false: true ;
+        return f != null;
     }
 
     public void inscriptionFournisseur(String inputNom, String mdp, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
@@ -75,13 +75,24 @@ public class ControlleurFournisseurs {
         //return fournisseur.retirerComopsante(composante);
     }
 
-    public boolean[] notifier() {
-        return fournisseurCourant.notifier();
+    public boolean modifierPrixComposante(String nomComposante, String prix){
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        boolean bool = this.fournisseurCourant.modifierPrixComposante(nomComposante, prix);
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+        return bool;
     }
 
-    public void voirProfilFournisseur()
-    {
-        System.out.println(this.fournisseurCourant.getProfilFournisseur());
+    public boolean modifierDescriptionComposante(String nomComposante, String description){
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        boolean bool = this.fournisseurCourant.modifierDescriptionComposante(nomComposante, description);
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+        return bool;
+    }
+
+    public void modifierProfile(String choix, String info){
+        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
+        this.fournisseurCourant.modifierProfile(choix, info);
+        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
     }
 
     public String voirProfil() {

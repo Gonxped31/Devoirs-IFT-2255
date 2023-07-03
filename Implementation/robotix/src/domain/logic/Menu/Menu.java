@@ -40,24 +40,18 @@ public class Menu {
             choixUsager = scanner.nextLine();
 
             switch (choixUsager) {
-                case "1" :
-                    menuUtilisateur.inscrireUtilisateur(scanner);
-                    break;
-                case "2" :
-                    menusFournisseur.menuInscriptionFournisseur(scanner);
-                    break;
-                case "3" :
-                    menuUtilisateur.connecterUtilisateur(scanner);
-                    break;
-                case "4" :
-                    menusFournisseur.menuConnexionFournisseur(scanner);
-                    break;
-                case "5" :
+                case "1" -> menuUtilisateur.inscrireUtilisateur(scanner);
+                case "2" -> menusFournisseur.menuInscriptionFournisseur(scanner);
+                case "3" -> menuUtilisateur.connecterUtilisateur(scanner);
+                case "4" -> menusFournisseur.menuConnexionFournisseur(scanner);
+                case "5" -> {
                     System.out.println("Au revoir !");
-                    break;
-                default :
+                    System.exit(0);
+                }
+                default -> {
                     System.out.println("Choix invalide. Veuillez réessayez.");
-                    break;
+                    menuPrincipale(scanner);
+                }
             }
         } while (!options.contains(Integer.parseInt(choixUsager)));
     }

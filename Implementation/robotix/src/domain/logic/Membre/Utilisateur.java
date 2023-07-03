@@ -294,31 +294,25 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
-            case "nom" :
-                this.setNom(nouvelInfo);
-            case "prenom" :
-                this.setPrenom(nouvelInfo);
-            case "adresse" :
-                this.setAdresse(nouvelInfo);
-            case "email" :
-                this.setEmail(nouvelInfo);
-            case "numerotelephone" :
-                this.setTelephone(nouvelInfo);
-            case "nomcompagnie" :
-                this.setNomCompagnie(nouvelInfo);
+            case "nom" -> this.setNom(nouvelInfo);
+            case "pseudo" -> this.setPseudo(nouvelInfo);
+            case "prenom" -> this.setPrenom(nouvelInfo);
+            case "adresse" -> this.setAdresse(nouvelInfo);
+            case "email" -> this.setEmail(nouvelInfo);
+            case "numerotelephone" -> this.setTelephone(nouvelInfo);
+            case "nomcompagnie" -> this.setNomCompagnie(nouvelInfo);
         }
 
     }
 
     public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
-        boolean bool = false;
-        //Robot robot = verifierNumeroSerieRobot(numeroSerie, listeFournisseur);
-        if (robot != null){
-            robot.setNom(robot.getNom());
-            this.getListeRobot().add(robot);
-            bool = true;
-        }
-        return bool;
+
+       boolean robotExiste= this.listeRobot.stream()
+               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
+       if (!robotExiste ) {
+           listeRobot.add(robot);
+       }
+        return  robotExiste;
     }
 
     public void creerTache(String nom, ArrayList<Action> actions){
@@ -575,6 +569,9 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void setNotifs(ArrayList<Notification> notifs) {
         this.notification = notification;
+    }
+    public void ajouterUnInteret(Interet i){
+        this.listeInteret.add(i);
     }
 
 }

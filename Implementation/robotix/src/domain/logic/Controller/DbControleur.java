@@ -2,31 +2,34 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeActivite;
 import service.BaseDeDonneeFournisseur;
+import service.BaseDeDonneeInteret;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
+
 
 public class DbControleur {
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
-
+   private BaseDeDonneeInteret baseDeDonneeInteret;
     public DbControleur () throws IOException {
         this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
+        this.baseDeDonneeInteret= new BaseDeDonneeInteret();
     }
 
-     public String recupererListeUtilisateur(){
-         return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
-     }
+    public String recupererListeUtilisateur(){
+        return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
+    }
 
      public String recupererListFournisseur(){
         return this.baseDeDonneeFournisseur.recupererLalisteDesFournisseur();
@@ -112,7 +115,7 @@ public class DbControleur {
 
 
     public String recupererListeInteret(){
-       return this.baseDeDonneeUtilisateur.recupererListeInteret();
+       return this.baseDeDonneeInteret.recupererListeInteret();
     }
 
     public String recupererListeInteretUtilisateur(String pseudo){
@@ -137,5 +140,27 @@ public class DbControleur {
     }
     public Fournisseur authentificatiFournisseur(String nomFournisseur, String mdp){
        return this.baseDeDonneeFournisseur.authentificatiFournisseur(nomFournisseur, mdp);
+    }
+
+    public Utilisateur authentificatiUtilisateur(String nomUtilisateur, String mdp){
+        return this.baseDeDonneeUtilisateur.authentificatiUtilisateur(nomUtilisateur, mdp);
+    }
+
+    public String obtenirListRobotFournisseur( String nomFournisseur)
+    {
+        return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);
+    }
+    public UUID acheterRobot(String nomFournisseur, int numero){
+        return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
+    }
+
+    public String obtenirListeInteret()
+    {
+        return this.baseDeDonneeInteret.recupererListeInteret();
+    }
+    public Interet souscrireAunInteret(String nomInteret)
+    {
+        return this.baseDeDonneeInteret.retournerInteret(nomInteret);
+
     }
 }

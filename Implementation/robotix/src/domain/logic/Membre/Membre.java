@@ -8,7 +8,7 @@ public abstract class Membre implements java.io.Serializable {
     protected String nomCompagnie;
 
     public Membre(String nom, String adresse, String email, String numeroTelephone, String nomCompagnie, String mdp) {
-        this.setNom(nom);
+        this.nom = nom;
         this.adresse = adresse;
         this.email = email;
         this.setTelephone(numeroTelephone);
@@ -40,4 +40,17 @@ public abstract class Membre implements java.io.Serializable {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNomCompagnie(String nomCompagnie) {
+        this.nomCompagnie = nomCompagnie;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
 }
