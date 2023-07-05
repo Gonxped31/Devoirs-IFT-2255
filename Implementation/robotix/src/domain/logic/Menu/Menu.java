@@ -24,6 +24,12 @@ public class Menu extends JFrame {
     private JPanel menuPanel;
 
     public Menu() throws IOException {
+        setContentPane(menuPanel);
+        setTitle("ROBOTIX");
+        setSize(650, 500);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+
         btnInscrireUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,20 +57,12 @@ public class Menu extends JFrame {
         btnQuitter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                System.exit(0);
             }
         });
     }
 
     public void menuPrincipale(Scanner scanner) throws ParseException, IOException {
-        setContentPane(menuPanel);
-        setTitle("ROBOTIX");
-        setSize(450, 300);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-
-
-
         String choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
         System.out.println("********Binevenue chez Robotix!********");
