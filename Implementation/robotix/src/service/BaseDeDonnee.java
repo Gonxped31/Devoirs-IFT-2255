@@ -6,97 +6,65 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
-
-import com.fasterxml.jackson.core.type.TypeReference;
+import java.util.ArrayList;
+import java.util.List;
 import com.google.gson.Gson;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.logic.Membre.Fournisseur;
-import domain.logic.Membre.Utilisateur;
 
 public abstract class BaseDeDonnee<T>{
 
-private ArrayList<T> listObjet;
+private List<T> listObjet;
 private File database;
-
-
-public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
-    this.database = new File(fileName);
-    this.listObjet = lireFichier(type);
+private Gson gson;
+public BaseDeDonnee(String fileName) throws IOException {
+    this.database= new File(fileName);
+    this.listObjet=lireFichier();
+    this.gson= new Gson();
 }
 
-
-    public ArrayList<T> lireFichier(TypeReference<ArrayList<T>> type) {
-        ArrayList<T> objets = new ArrayList<>();
-
-        if(!database.exists()) {
-            try {
-                database.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+protected abstract Type getType();
+public List<T> lireFichier() throws IOException {
+   
+         if(!database.exists())
+         {
+            database.createNewFile();
             init();
-        }
+         }
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // Vérifier si le fichier est vide
-        if(database.length() != 0) {
-            try {
-                objets = objectMapper.readValue(database, type);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return objets;
-    }
-
-    protected void sauvegarder() {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File(this.database.toURI()), listObjet);
+            String contenu = new String(Files.readAllBytes(Paths.get(database.getPath())));
+            List<T> objets = gson.fromJson(contenu, getType());
+            return objets;
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-public void ajouterObjet(T objet)
-
-{   if (this.listObjet==null){
-    this.listObjet=new ArrayList<>();
+        return new ArrayList<>();
+ }
+    
+protected void sauvegarder()
+{
+   try {
+            FileWriter writer = new FileWriter(this.database);
+            gson.toJson(listObjet, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 }
-
-
-
+public void ajouterObjet(T objet)
+{
     this.listObjet.add(objet);
     this.sauvegarder();
 }
-    public void supprimerObjet(T objet) {
-        Iterator<Object> iterator = (Iterator<Object>) listObjet.iterator();
-        while(iterator.hasNext()) {
-            Object o = iterator.next();
-
-            if( objet instanceof Utilisateur ) {
-                if(((Utilisateur) objet).getPseudo().equals(((Utilisateur) o).getPseudo())){
-                    iterator.remove();
-                }
-            }
-            else if ( objet instanceof Fournisseur) {
-                if(((Fournisseur) o).getNom().equals(((Fournisseur) objet).getNom())){
-                    iterator.remove();
-                }
-            }
-        }
-        sauvegarder();
-    }
-
+public void supprimerObjet(T objet){
+    listObjet.remove(objet);
+    sauvegarder();
+}
  
 protected abstract void init();
 
-    public ArrayList<T> getListObjet()
-    {
-        return this.listObjet==null ? new ArrayList<>() : listObjet;
-
-    }
+public List<T> getListObjet()
+{
+    return this.listObjet;
+}
  
 }

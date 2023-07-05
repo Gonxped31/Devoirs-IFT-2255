@@ -1,11 +1,9 @@
 package domain.logic.Robot;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Tache implements java.io.Serializable{
+public class Tache {
     private String nom;
     private ArrayList<Action> actions;
 
@@ -22,7 +20,6 @@ public class Tache implements java.io.Serializable{
         return actions;
     }
 
-    @JsonIgnore
     public String getInfoTacheFormater(){
         return  "Nom : " + this.nom +
                 "Liste d'action : " + actions.stream()

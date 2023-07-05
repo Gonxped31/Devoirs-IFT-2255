@@ -2,37 +2,33 @@ package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Robot.Composant;
+import domain.logic.Robot.TypesComposants;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.LinkedList;
 
 public class ControlleurFournisseurs {
-    private DbControleur dataBaseController = new DbControleur();
+    private DataBaseController dataBaseController = new DataBaseController();
+    private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
+    private ArrayList<Fournisseur> getListeFournisseurs() {
+        return listeFournisseurs;
+    }
     private Fournisseur fournisseurCourant;
-
-    public ControlleurFournisseurs(String nom, String mdp,  String adresse, String email, String numeroTelephone,
-                                   String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie) throws IOException {
-      this.fournisseurCourant= new Fournisseur(nom, mdp, adresse, email, numeroTelephone,typeDeRobotFabriquer,typeComposantesFabriquer,capacite,nomcompagnie);
-    }
-    public ControlleurFournisseurs() throws IOException {}
-
-    public boolean authentificationFournisseur(String nomFournisseur, String mdp){
-        Fournisseur f= this.dataBaseController.authentificatiFournisseur(nomFournisseur,mdp);
-        this.fournisseurCourant= f;
-        return f != null;
+    public boolean authentificationFournisseur(String connexion, String membre){
+        return Fournisseur.authentification(connexion, listeFournisseurs);
     }
 
-    public void inscriptionFournisseur(String inputNom, String mdp, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
+    public void inscriptionFournisseur(String inputNom, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
                                        String inputTypeComposantes, String inputCapacite, String inputCompagnie){
 
-        dataBaseController.ajouterFournisseur(new Fournisseur(inputNom,mdp, inputAdresse, inputCourriel,
+        dataBaseController.ajouterFournisseur(new Fournisseur(inputNom, inputAdresse, inputCourriel,
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie));
     }
 
+
     /* Code pour les vérifications */
     public boolean verifierNom(String inputNom) {
-        return dataBaseController.verifierNomFournissuer(inputNom);
+        return Fournisseur.verifierNomFournisseur(inputNom, listeFournisseurs);
     }
 
     public boolean verifierEmail(String inputEmail) {
@@ -42,62 +38,33 @@ public class ControlleurFournisseurs {
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
-    public UUID ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        ArrayList<Composant> composants =this.fournisseurCourant.produireComposant(nomsCoposantAajouter);
-       UUID uuid= this.fournisseurCourant.ajouterRobot(composants);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        //dataBaseController.ajouterRobot();
-        return uuid;
+
+    public ArrayList<Fournisseur> trouverFournisseur(String choix, String info){
+        return Fournisseur.trouverFournisseur(choix, info, listeFournisseurs);
     }
 
-    public boolean retirerRobot(String numeroSerie) {
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean b = this.fournisseurCourant.retirerRobot(numeroSerie);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        return b;
+    public void ajouterRobot(Fournisseur fournisseur){
+        fournisseur.ajouterRobot();
     }
 
-    public void ajouterComposante(String nom, String prix, String description, String typesComposants){
-        //fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        this.fournisseurCourant.ajouterComposante(nom, prix,description,typesComposants);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-
-        //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
+    public boolean retirerRobot(String nomRobot, Fournisseur fournisseur) {
+        return fournisseur.retirerRobot(nomRobot);
     }
 
-    public boolean retirerComposante(String composante){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean c = this.fournisseurCourant.retirerComopsante(composante);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        return c;
-        //return fournisseur.retirerComopsante(composante);
+    public void ajouterComposante(String composante, double prix, String description, String typesComposants, Fournisseur fournisseur){
+        fournisseur.ajouterComposante(composante, prix, description, typesComposants);
     }
 
-    public boolean modifierPrixComposante(String nomComposante, String prix){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean bool = this.fournisseurCourant.modifierPrixComposante(nomComposante, prix);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        return bool;
+    public boolean retirerComposante(String composante, Fournisseur fournisseur){
+        return fournisseur.retirerComopsante(composante);
     }
 
-    public boolean modifierDescriptionComposante(String nomComposante, String description){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean bool = this.fournisseurCourant.modifierDescriptionComposante(nomComposante, description);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        return bool;
+    public void notifier(Fournisseur fournisseur) {
+        fournisseur.notifier();
     }
 
-    public void modifierProfile(String choix, String info){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        this.fournisseurCourant.modifierProfile(choix, info);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public void voirProfilFournisseur()
+    {
+        System.out.println(this.fournisseurCourant.getProfilFournisseur());
     }
-
-    public String voirProfil() {
-        return fournisseurCourant.getProfilFournisseur();
-    }
-
-
 }

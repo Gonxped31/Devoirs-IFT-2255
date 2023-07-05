@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ProjectTreeState projectID="13h7hRGAUM3wrwWe" projectPath="C:\Users\Samir\Documents\GitHub\IFT-2255\Conception\Diagramme de classes\Diagramme de classe.vpp">
-	<TreeState name="ModelRepository" viewX="0" viewY="0">
-		<ExpandedPath>ModelRepository</ExpandedPath>
-	</TreeState>
+	<TreeState name="ModelRepository" viewX="0" viewY="0"/>
 	<TreeState name="DiagramNavigator" viewX="0" viewY="0">
 		<ExpandedPath>DiagramNavigator</ExpandedPath>
 	</TreeState>

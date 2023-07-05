@@ -1,25 +1,16 @@
 package domain.logic.Robot;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-public class Composant implements java.io.Serializable {
+public class Composant {
     private String nom;
-    private String prix;
+    private Double prix;
     private String description;
     private String typeComposant;
 
-    private static int numero=0;
-
-    public Composant(String nom, String prix, String description, String typeComposant){
+    public Composant(String nom, Double prix, String description, String typeComposant){
         this.nom = nom;
         this.prix = prix;
         this.description = description;
         this.typeComposant = typeComposant;
-        ++numero;
-    }
-
-    public Composant() {
-
     }
 
 
@@ -27,16 +18,8 @@ public class Composant implements java.io.Serializable {
         return nom;
     }
 
-    public String getPrix() {
+    public Double getPrix() {
         return prix;
-    }
-
-    public void setPrix(String prix) {
-        this.prix = prix;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getDescription() {
@@ -46,12 +29,11 @@ public class Composant implements java.io.Serializable {
     public String getTypeComposant() {
         return typeComposant;
     }
-    @JsonIgnore
+
     public String getInfoComposantFormater(){
-        return "\n\nComposante " + ++numero + " :" +
-                " \nNom : " + this.nom +
-                " \nprix : " + this.prix +
-                " \ndescription : " + this.description +
-                " \nType : " + this.typeComposant;
+        return "Nom :" + this.nom +
+                "\nprix :" + this.prix +
+                "\n description : " + this.description +
+                "Type :" + this.typeComposant;
     }
 }
