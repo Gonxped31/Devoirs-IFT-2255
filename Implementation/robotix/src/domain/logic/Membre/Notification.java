@@ -3,16 +3,31 @@ package domain.logic.Membre;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Notification {
+public class Notification implements java.io.Serializable{
     private String titre;
     private String messsage;
-    private LocalDateTime date = LocalDateTime.now();
+
+
+
+    private String date;// = LocalDateTime.now();
+
     private TypeNotification typeNotification;
 
+
     public Notification() {
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        date = LocalDateTime.parse(date.format(formatDate));
+
+        date =  "01/02/1223";
+
+        //DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        //date = LocalDateTime.parse(date.format(formatDate));
+
+
     }
+
+    /*public String formatDateToString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return date.format(formatter);
+    }*/
 
     public String getTitre() {
         return titre;
@@ -22,7 +37,7 @@ public class Notification {
         return messsage;
     }
 
-    public LocalDateTime getDate() { return date; }
+    public String getDate() { return date; }
 
     public TypeNotification getTypeNotification() {
         return typeNotification;

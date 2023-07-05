@@ -1,7 +1,9 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Membre;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
@@ -15,20 +17,13 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         private List<Map<String, List<Robot>>> listRobot;
         private List<Map<String, List<Composant>>> listComposant;
-        public BaseDeDonneeCommun(String fileName) throws IOException {
-            super(fileName);
+        public <T> BaseDeDonneeCommun(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
+            super(fileName,type );
             listComposant = new ArrayList<>();
             listRobot = new ArrayList<>();
-            initListeRobotEtComposant();
+
         }
 
-
-
-
-        @Override
-        protected Type getType() {
-           return null;
-        }
 
 
         @Override
@@ -36,26 +31,12 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         }
 
-        private void initListeRobotEtComposant() {
-
-            this.getListObjet().stream().forEach(objet -> {
-                listRobot.add(new HashMap<String, List<Robot>>() {{
-                    put(
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getInventaireDeRobot() : ((Utilisateur) objet).getListeRobot())
-                    );
-                }});
-
-                listComposant.add(new HashMap<String, List<Composant>>() {{
-                    put(
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getNom() : ((Utilisateur) objet).getPseudo()),
-                            (objet instanceof Fournisseur ? ((Fournisseur) objet).getInventaireComposant() : ((Utilisateur) objet).getComposantesAchetes())
-                    );
-                }});
-            });
-
+   protected void initListeRobotEtComposant() {
 
         }
+
+
+
 
         public List<Map<String, List<Composant>>> getListComposant() {
             return listComposant;

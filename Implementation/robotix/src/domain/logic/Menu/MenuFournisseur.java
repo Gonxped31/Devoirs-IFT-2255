@@ -1,4 +1,4 @@
-package domain.logic.Menu;
+/*package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -97,16 +97,16 @@ public class MenuFournisseur {
             case "1" :
                 System.out.print("Type de robot fabriqué : ");
                 String type = scanner.nextLine();
-                controlleurFournisseurs.ajouterRobot(fournisseur);
+                controlleurFournisseurs.ajouterRobot();
                 System.out.println(" ");
                 System.out.println("Le robot a été rajouté avec succès !");
                 System.out.println(" ");
                 menuFournisseur(scanner, fournisseur);
 
             case "2" :
-                System.out.print("Veuillez entrer le nom du robot à retirer : ");
-                String nomRobot2 = scanner.nextLine();
-                if(controlleurFournisseurs.retirerRobot(nomRobot2, fournisseur)){
+                System.out.print("Veuillez entrer le numero de serie du robot à retirer : ");
+                String numeroDeSerie = scanner.nextLine();
+                if(controlleurFournisseurs.retirerRobot(numeroDeSerie)){
                     System.out.println("Le robot a été retiré avec succès !");
 
                 } else {
@@ -165,4 +165,4 @@ public class MenuFournisseur {
 
     }
 
-}
+}*/

@@ -1,26 +1,39 @@
 package domain.logic.Membre;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import java.time.LocalDateTime;
+
 import java.util.UUID;
 
 import java.util.*;
 
-public class Fournisseur extends Membre {
+public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
     private Notification notification = new Notification();
-    private LinkedList<Notification> listeNotifications = new LinkedList<>();
-    public Fournisseur(String nom, String adresse, String email, String numeroTelephone,
-                       String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie){
-        super(nom, adresse, email, numeroTelephone, nomcompagnie);
+    private ArrayList<Notification> listeNotifications = new ArrayList<>();
+    private int taillePrecedenteInventaireComposantes;
+
+    @JsonCreator
+    public Fournisseur(@JsonProperty("nom") String nom, @JsonProperty("mdp") String mdp,
+                       @JsonProperty("adresse") String adresse, @JsonProperty("email") String email,
+                       @JsonProperty("numeroTelephone") String numeroTelephone,
+                       @JsonProperty("typeDeRobotFabriquer") String typeDeRobotFabriquer,
+                       @JsonProperty("typeComposantesFabriquer") String typeComposantesFabriquer,
+                       @JsonProperty("capacite") String capacite,
+                       @JsonProperty("nomcompagnie") String nomcompagnie) {
+
+        super(nom, adresse, email, numeroTelephone, nomcompagnie, mdp);
         this.typeRobotFabriquer=typeDeRobotFabriquer;
         this.typeComposantesFabriquer=typeComposantesFabriquer;
         this.capaciteProductionComposantes =capacite;
     }
+
 
     public String getNomCompagnie() {
         return this.nomCompagnie;
@@ -30,8 +43,16 @@ public class Fournisseur extends Membre {
         return inventaireDeRobot;
     }
 
+    public void setInventaireDeRobot(LinkedList<Robot> inventaireDeRobot) {
+        this.inventaireDeRobot = inventaireDeRobot;
+    }
+
     public LinkedList<Composant> getInventaireComposant() {
         return inventaireComposant;
+    }
+
+    public void setInventaireComposant(LinkedList<Composant> inventaireComposant) {
+        this.inventaireComposant = inventaireComposant;
     }
 
     public String getCapaciteProductionComposantes() {
@@ -44,10 +65,6 @@ public class Fournisseur extends Membre {
 
     public String getTypeRobotFabriquer() {
         return this.typeRobotFabriquer;
-    }
-
-    public String getTelephone() {
-        return this.numeroTelephone;
     }
 
     public String getEmail() {
@@ -63,7 +80,11 @@ public class Fournisseur extends Membre {
     }
 
     public Notification getNotification() { return this.notification; }
-    public LinkedList<Notification> getListeNotifications() { return this.listeNotifications; }
+    public ArrayList<Notification> getListeNotifications() { return this.listeNotifications; }
+
+    public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
+        this.capaciteProductionComposantes = capaciteProductionComposantes;
+    }
 
     public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
         boolean authentification = false;
@@ -95,28 +116,35 @@ public class Fournisseur extends Membre {
         return inputTelephone.length() == 10;
     }
 
-    public void ajouterRobot() {
-        inventaireDeRobot.add(new Robot(null,0, 0, 0, 0, 0, 0, null, null, null, null, null));
+    public UUID ajouterRobot(ArrayList<Composant> composants) {
+        Robot r= new Robot();
+        for( Composant c :composants){
+            r.ajouterComposante(c);
+        }
+
+        inventaireDeRobot.add(r);
+      return   r.getNumeroSerie();
     }
 
-    public boolean retirerRobot(String nomRobot) {
-        boolean bool = false;
-        int nbRobot = 0;
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getNom().equals(nomRobot)) {
-                inventaireDeRobot.remove(robot);
-                nbRobot++;
-                break;
-            }
+    public boolean retirerRobot(String numeroSerie) {
+        Robot robot = inventaireDeRobot.stream()
+                .filter(r -> r.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
+                .findFirst()
+                .orElse(null);
+
+        boolean robotExiste = robot != null;
+
+        if (robotExiste) {
+            inventaireDeRobot.remove(robot);
         }
-        if (nbRobot != 0) {
-            bool = true;
-        }
-        return bool;
+
+        return robotExiste;
     }
 
-    public void ajouterComposante(String composante, double prix, String description, String typeComposant) {
-        inventaireComposant.add(new Composant(composante, prix, description, typeComposant));
+
+    public void ajouterComposante(String nom, String prix, String description, String typeComposant) {
+        taillePrecedenteInventaireComposantes = inventaireComposant.size();
+        inventaireComposant.add(new Composant(nom,prix,description,typeComposant));
     }
 
     public boolean retirerComopsante(String nom) {
@@ -124,7 +152,7 @@ public class Fournisseur extends Membre {
         int nbComposantes = 0;
         for (Composant composant : inventaireComposant) {
             if (composant.getNom().equals(nom)) {
-                inventaireComposant.remove(composant);
+                this.inventaireComposant.remove(composant);
                 ++nbComposantes;
                 break;
             }
@@ -135,79 +163,140 @@ public class Fournisseur extends Membre {
         return bool;
     }
 
-    /*@Override
-    public String toString() {
-        return  "Fournisseur { " + '\n' +
-                "Nom = " + getNom() + '\n' +
-                "Adresse = " + getAdresse() + '\n' +
-                "Email = " + getEmail() + '\n' +
-                "Numéro de télephone = " + getTelephone() + '\n' +
-                "Type de robots fabriqués = " + getTypeRobotFabriquer() + '\n' +
-                "Type de composantes fabriquées = " + getTypeComposantesFabriquer() + '\n' +
-                "Capacité de fabrication = " + getCapaciteProductionComposantes() + '\n' +
-                "Nom de compagnie = " + getNomCompagnie() + '\n' +
-                "}\n";
-    }*/
-
-    public static ArrayList<Fournisseur> trouverFournisseur(String choix, String info, ArrayList<Fournisseur> listeFournisseurs){
-        ArrayList<Fournisseur> fournisseurs = new ArrayList<>();
-        switch (choix) {
-            case "1" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getNom().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "2" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getAdresse().equals(info)) {
-                        fournisseurs.add(fournisseur);
-                    }
-                }
-
-            case "3" :
-                for (Fournisseur fournisseur :  listeFournisseurs) {
-                    if (fournisseur.getTypeComposantesFabriquer().equals(info)) {
-                        fournisseurs.add(fournisseur);
-
-                    }
-                }
-
-            case "4" :
-                fournisseurs = listeFournisseurs;
+    public boolean modifierPrixComposante(String composante, String nouveauPrix){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setPrix(nouveauPrix);
+                bool = true;
+                break;
+            }
         }
-
-        return fournisseurs;
+        return bool;
     }
 
-    public void notifier() {
-        boolean EstNotifie = false;
+    public boolean modifierDescriptionComposante(String composante, String nouvelleDescription){
+        boolean bool = false;
+        for (Composant composant : inventaireComposant) {
+            if (composant.getNom().equals(composante)){
+                composant.setDescription(nouvelleDescription);
+                bool = true;
+                break;
+            }
+        }
+        return bool;
+    }
+
+    public void modifierProfile(String choix, String info){
+        switch (choix.toLowerCase()) {
+            case "nom" -> this.setNom(info);
+            case "addresse" -> this.setAdresse(info);
+            case "email" -> this.setEmail(info);
+            case "numerotelephone" -> this.setTelephone(info);
+            case "nomcompagnie" -> this.setNomCompagnie(info);
+            case "capaciteproduction" -> this.setCapaciteProductionComposantes(info);
+            case "mdp" -> this.setMotDePasse(info);
+        }
+    }
+
+    public boolean[] notifier() {
+        boolean[] tabBoolean = new boolean[4];
+        boolean NotifierEtatRobot;
+        boolean NotifierBatterieRobot;
+        boolean NotifiercCPURobot;
+        boolean NotifierAchatComposants;
+
+        NotifierEtatRobot = verifierEtatRobot();
+        NotifierBatterieRobot = verifierBatterieRobot();
+        NotifiercCPURobot = verifierCPURobot();
+        NotifierAchatComposants = verifierInventaireComposants();
+
+        tabBoolean[0] = NotifierEtatRobot;
+        tabBoolean[1] = NotifierAchatComposants;
+        tabBoolean[2] = NotifierBatterieRobot;
+        tabBoolean[3] = NotifiercCPURobot;
+
+        return tabBoolean;
+    }
+    @JsonIgnore
+    public String getProfilFournisseur(){
+        return "Nom :" + super.getNom() + "\nAdresse courriel : " +
+                this.email + "\nTelephone : " + this.getTelephone() +
+                "\nType de robot fabriquer :" + this.typeRobotFabriquer +
+                "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
+                "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
+                "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() + "\n";
+    }
+    public boolean verifierEtatRobot() {
+        boolean DoitEtreNotifie = false;
 
         for (Robot robot : inventaireDeRobot) {
-            if (robot.getVitesse() == 0  || robot.getMemoire() == 0) {
+            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
+                DoitEtreNotifie = true;
                 notification.setTitre("MAUVAIS FONCTIONNEMENT");
                 notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
             }
+        }
+        return DoitEtreNotifie;
+    }
+    public boolean verifierBatterieRobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
             if (robot.getBatterie() >= 20) {
+                DoitEtreNotifie = true;
                 notification.setTitre("BATTERIE FAIBLE");
                 notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
             }
+        }
+        return DoitEtreNotifie;
+    }
+    public boolean verifierCPURobot() {
+        boolean DoitEtreNotifie = false;
+
+        for (Robot robot : inventaireDeRobot) {
             if (robot.getCpu() >= 100) {
+                DoitEtreNotifie = true;
                 notification.setTitre("SURCHARGE CPU");
                 notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                listeNotifications.add(notification);
             }
         }
-    public String getProfilFournisseur(){
-        return "Nom :" + super.getNom() + "\n adresse courriel : " +
-                this.email + "\nTelephone : " + this.numeroTelephone +
-                "Type de robot fabriquer :" + this.typeRobotFabriquer +
-                "Type de composant fabriquer :" + this.typeComposantesFabriquer +
-                "Nombre de robot disponible :" + this.getInventaireComposant().size() +
-                "Nombre de robot disponible : " + this.getInventaireComposant().size();
+        return DoitEtreNotifie;
+    }
+
+    public boolean verifierInventaireComposants() {
+        boolean DoitEtreNotifie = false;
+
+        if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
+            DoitEtreNotifie = true;
+            notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
+            notification.setMesssage("Un utilisateur a acheté une de vos composantes");
+            notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
+            listeNotifications.add(notification);
+        }
+        return DoitEtreNotifie;
+    }
+
+    public  ArrayList<Composant> produireComposant(ArrayList<ArrayList<String>> nomsComposant) {
+        ArrayList<Composant> comps = new ArrayList<>();
+        for (ArrayList<String> a : nomsComposant) {
+
+            comps.add(new Composant(
+                    a.get(0), a.get(1), a.get(2), a.get(3)
+            ));
+
+        }
+        return comps;
+    }
+    @JsonProperty("telephone")
+    public String getNumeroTelephone() {
+        return this.getTelephone();
     }
 
 }
