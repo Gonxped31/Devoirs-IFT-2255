@@ -1,25 +1,24 @@
 package domain.logic.Menu;
-import domain.logic.Controller.ControlleurFournisseurs;
-import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Membre.Fournisseur;
-import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
-
-import javax.xml.transform.sax.SAXSource;
+import javax.swing.*;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu extends JFrame {
     //private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     //private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private TypesComposants typesComposants;
     private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
     private MenusFournisseur menusFournisseur = new MenusFournisseur();
+    private JLabel txtBienvenue;
+    private JButton btnInscrireUtilisateur;
+    private JButton btnInscrireFournisseur;
+    private JButton btnConnecterUtilisateur;
+    private JButton btnConnecterFournisseur;
+    private JButton btnQuitter;
 
     public Menu() throws IOException {
     }
