@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
-        menu.menuPrincipale(scanner);
-        scanner.close();
+        //menu.menuPrincipale(scanner);
+        //scanner.close();
     }
 }
