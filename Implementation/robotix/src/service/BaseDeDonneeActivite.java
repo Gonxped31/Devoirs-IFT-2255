@@ -1,5 +1,6 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
@@ -15,14 +16,10 @@ public class BaseDeDonneeActivite extends BaseDeDonnee {
 private static final String FILE_NAME= "activite.json";
 
 public BaseDeDonneeActivite() throws IOException {
-    super(FILE_NAME);
+    super(FILE_NAME,new TypeReference<ArrayList<Activite>>() {});
 }
 
 
-    @Override
-    protected Type getType() {
-        return new TypeToken<ArrayList<Activite>>(){}.getType();
-    }
 
     @Override
     protected void init() {
@@ -35,4 +32,5 @@ public BaseDeDonneeActivite() throws IOException {
                 .map(activite->((Activite) activite).getInfoActiviteFormater())
                 .collect(Collectors.joining("\n"));
     }
+
 }

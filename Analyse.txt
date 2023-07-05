@@ -1,9 +1,0 @@
-Les parties informatisées seront tout ce qui à trait à:
-- La création de profil d'utilisateur ou fournisseur
-- L'achat de robot ou de composantes.
-- Gérer les robots de la flotte, comme par exemple: l'assignation de tâches à un robot, l'ajout de composantes à un robot.
-- 
-
-Les données seront stockés en format JSON. 
-
-L'application peut être roulée sur un téléphone portable ou bien un PC.
