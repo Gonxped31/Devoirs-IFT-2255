@@ -1,6 +1,8 @@
 package domain.logic.Menu;
 import domain.logic.Robot.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -19,11 +21,50 @@ public class Menu extends JFrame {
     private JButton btnConnecterUtilisateur;
     private JButton btnConnecterFournisseur;
     private JButton btnQuitter;
+    private JPanel menuPanel;
 
     public Menu() throws IOException {
+        btnInscrireUtilisateur.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnInscrireFournisseur.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnConnecterUtilisateur.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnConnecterFournisseur.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnQuitter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
     public void menuPrincipale(Scanner scanner) throws ParseException, IOException {
+        setContentPane(menuPanel);
+        setTitle("ROBOTIX");
+        setSize(450, 300);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+
+
+
         String choixUsager;
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)) ;
         System.out.println("********Binevenue chez Robotix!********");
