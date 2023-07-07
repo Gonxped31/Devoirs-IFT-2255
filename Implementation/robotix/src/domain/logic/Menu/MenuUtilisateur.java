@@ -1,15 +1,11 @@
 package domain.logic.Menu;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Notification;
-
 import domain.logic.Controller.ControlleurUtilisateurs;
-
 import javax.swing.*;
 
 public class MenuUtilisateur extends JFrame {
@@ -41,6 +37,11 @@ public class MenuUtilisateur extends JFrame {
     private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
+        menu.setContentPane(inscriptionUtilisateurPanel);
+        menu.setTitle("Inscription pour un utilisateur");
+        menu.setSize(650, 500);
+        menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        menu.setVisible(true);
     }
 
     public void inscrireGUI() {
