@@ -11,6 +11,7 @@ import domain.logic.Membre.Notification;
 import domain.logic.Controller.ControlleurUtilisateurs;
 
 import javax.crypto.spec.PSource;
+import javax.swing.*;
 
 public class MenuUtilisateur {
     /*Section Utilisateur */
@@ -22,6 +23,14 @@ public class MenuUtilisateur {
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
 
     public MenuUtilisateur() throws IOException {
+    }
+
+    public void inscrireGUI() {
+
+    }
+
+    public void seConnecterGUI() {
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
