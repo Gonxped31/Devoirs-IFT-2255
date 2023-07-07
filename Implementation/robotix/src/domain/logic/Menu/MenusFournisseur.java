@@ -20,6 +20,14 @@ public class MenusFournisseur {
 	public MenusFournisseur() throws IOException {
 	}
 
+	public void inscrireGUI() {
+
+	}
+
+	public void seConnecterGUI() {
+
+	}
+
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
 		boolean NomUnique = false;
 		boolean EmailValide = false;
