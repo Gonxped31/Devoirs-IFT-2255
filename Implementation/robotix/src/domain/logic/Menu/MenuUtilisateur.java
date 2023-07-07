@@ -13,7 +13,7 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 import javax.crypto.spec.PSource;
 import javax.swing.*;
 
-public class MenuUtilisateur {
+public class MenuUtilisateur extends JFrame {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();

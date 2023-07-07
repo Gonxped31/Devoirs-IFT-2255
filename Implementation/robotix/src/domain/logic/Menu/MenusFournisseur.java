@@ -4,6 +4,7 @@ import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class MenusFournisseur {
+public class MenusFournisseur extends JFrame {
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
