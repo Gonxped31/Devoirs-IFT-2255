@@ -17,23 +17,10 @@ public class MenuUtilisateur extends JFrame {
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JPanel inscriptionUtilisateurPanel;
-    private JTextField txtFieldPrenom;
-    private JTextField txtFieldNom;
     private JTextField txtFieldPseudo;
-    private JTextField txtFieldCourriel;
     private JPasswordField txtFieldMdp;
-    private JTextField txtFieldTelephone;
-    private JTextField txtFieldAdresse;
-    private JTextField txtFieldNomCompagnie;
-    private JLabel txtPrenom;
     private JLabel txtPseudo;
-    private JLabel txtNom;
-    private JLabel txtCourriel;
     private JLabel txtMdp;
-    private JLabel txtTelephone;
-    private JLabel txtAdresse;
-    private JLabel txtNomCompagnie;
-    private JLabel txtInterets;
     private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
