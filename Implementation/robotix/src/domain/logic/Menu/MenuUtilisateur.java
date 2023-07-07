@@ -1,4 +1,5 @@
 package domain.logic.Menu;
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -16,15 +17,29 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JPanel container = new JPanel();
     private JPanel inscriptionUtilisateurPanel;
+    private JTextField txtFieldPrenom;
+    private JTextField txtFieldNom;
     private JTextField txtFieldPseudo;
+    private JTextField txtFieldCourriel;
+    private JTextField txtFieldTelephone;
+    private JTextField txtFieldAdresse;
+    private JTextField txtFieldNomCompagnie;
     private JPasswordField txtFieldMdp;
+    private JLabel txtPrenom;
+    private JLabel txtNom;
     private JLabel txtPseudo;
+    private JLabel txtCourriel;
     private JLabel txtMdp;
+    private JLabel txtTelephone;
+    private JLabel txtAdresse;
+    private JLabel txtNomCompagnie;
+    private JLabel txtInterets;
     private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
-
+     
     }
 
     public void inscrireGUI() {
@@ -36,6 +51,7 @@ public class MenuUtilisateur extends JFrame {
     }
 
     public void seConnecterGUI() {
+
 
     }
 
