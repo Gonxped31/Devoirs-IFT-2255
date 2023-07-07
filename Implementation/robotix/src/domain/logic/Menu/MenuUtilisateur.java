@@ -37,11 +37,11 @@ public class MenuUtilisateur extends JFrame {
     private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
-        menu.setContentPane(inscriptionUtilisateurPanel);
-        menu.setTitle("Inscription pour un utilisateur");
-        menu.setSize(650, 500);
-        menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        menu.setVisible(true);
+        setContentPane(inscriptionUtilisateurPanel);
+        setTitle("Inscription pour un utilisateur");
+        setSize(650, 500);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     public void inscrireGUI() {
