@@ -10,7 +10,6 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
-import javax.crypto.spec.PSource;
 import javax.swing.*;
 
 public class MenuUtilisateur {
@@ -21,6 +20,25 @@ public class MenuUtilisateur {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JPanel inscriptionUtilisateurPanel;
+    private JTextField txtFieldPrenom;
+    private JTextField txtFieldNom;
+    private JTextField txtFieldPseudo;
+    private JTextField txtFieldCourriel;
+    private JPasswordField txtFieldMdp;
+    private JTextField txtFieldTelephone;
+    private JTextField txtFieldAdresse;
+    private JTextField txtFieldNomCompagnie;
+    private JLabel txtPrenom;
+    private JLabel txtPseudo;
+    private JLabel txtNom;
+    private JLabel txtCourriel;
+    private JLabel txtMdp;
+    private JLabel txtTelephone;
+    private JLabel txtAdresse;
+    private JLabel txtNomCompagnie;
+    private JLabel txtInterets;
+    private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
     }
@@ -517,5 +535,9 @@ public class MenuUtilisateur {
                 menuUtilisateur(scanner, pseudo);
                 break;
         }
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
