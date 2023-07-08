@@ -1,11 +1,7 @@
 package service;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -40,7 +36,7 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        // Vérifier si le fichier est vide
+
         if(database.length() != 0) {
             try {
                 objets = objectMapper.readValue(database, type);
