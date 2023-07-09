@@ -12,20 +12,14 @@ import java.util.Scanner;
 
 public class ControlleurUtilisateurs {
 
-    private DbControleur dataBaseController = new DbControleur();
-    //private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
-    //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
+    private DbControleur dataBaseController;
+
     private Utilisateur utilisateurCourant;
 
-    public ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
-        this.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, listeInteret);
-    }
-
     public ControlleurUtilisateurs() throws IOException {
-
     }
 
-    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
+    public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
         this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
@@ -70,7 +64,8 @@ public class ControlleurUtilisateurs {
         if (robot != null){
             robot.setNom(nomRobot);
             robot.setType(type);
-            bool = this.utilisateurCourant.enregistrerRobot(robot);
+            bool =
+                    this.utilisateurCourant.enregistrerRobot(robot);
 
         }
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
@@ -217,4 +212,7 @@ public class ControlleurUtilisateurs {
     }
 
 
+    public void setDataBaseController(DbControleur dataBaseController) {
+        this.dataBaseController = dataBaseController;
+    }
 }

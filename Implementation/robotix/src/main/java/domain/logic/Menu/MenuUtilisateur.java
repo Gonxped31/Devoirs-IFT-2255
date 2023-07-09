@@ -13,7 +13,7 @@ import domain.logic.Membre.Notification;
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
-    private DbControleur dbControlleur = new DbControleur();
+    private DbControleur dbControlleur ;
     public Menu menu;
     private MenuGestionFlotte menuGestionFlotte;
     private MenuGererTacheActivite menuGererTacheActivite;
@@ -21,10 +21,13 @@ public class MenuUtilisateur {
 
     public MenuUtilisateur() throws IOException {
         this.controlleurUtilisateurs=new ControlleurUtilisateurs();
+        this.dbControlleur= new DbControleur();
+        this.controlleurUtilisateurs.setDataBaseController(this.dbControlleur);
         this.menuGestionFlotte= new MenuGestionFlotte();
         this.menuGestionFlotte.setControlleurUtilisateurs(this.controlleurUtilisateurs);
         this.menuGererTacheActivite = new MenuGererTacheActivite();
         this.menuReseau = new MenuGestionReseau();
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
@@ -86,7 +89,6 @@ public class MenuUtilisateur {
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
         }
-        this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
         menuUtilisateur(scanner, pseudo);
@@ -185,7 +187,7 @@ public class MenuUtilisateur {
         }
     }
 
-    public void menuAchat(Scanner scanner, String pseudo) throws ParseException, IOException {
+    public void  menuAchat(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("Que voulez-vous acheter?");
         System.out.println("1- Robot");
         System.out.println("2- Composante");

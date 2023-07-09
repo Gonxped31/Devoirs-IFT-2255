@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedList;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot implements java.io.Serializable{
-    private static int StaticNumero=0;
+    private static int staticNumero=0;
     private int numero;
     private String nom;
     private int X, Y, vitesse, batterie, cpu;
@@ -37,11 +39,12 @@ public class Robot implements java.io.Serializable{
         this.taches = taches;
         this.activites = activites;
         this.numeroSerie = UUID.randomUUID();
-        numero=++StaticNumero;
+        numero=++staticNumero;
     }
 
     public Robot( ){
         this.numeroSerie= UUID.randomUUID();
+        numero=++staticNumero;
     }
     public String getNom() {
         return nom;
@@ -121,8 +124,12 @@ public class Robot implements java.io.Serializable{
 
     public String getInfoRobotFormater()
     {
+        AtomicInteger count = new AtomicInteger();
+
         return "Numero : " + numero
-                + "\n Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
+                + "\nListe de composant : \n"
+                + this.composantes.stream()
+                .map(c -> (count.incrementAndGet()) + ". " + c.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
     }
     @JsonProperty("numero")

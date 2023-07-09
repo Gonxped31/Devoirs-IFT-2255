@@ -6,10 +6,7 @@ import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import service.BaseDeDonneeActivite;
-import service.BaseDeDonneeFournisseur;
-import service.BaseDeDonneeInteret;
-import service.BaseDeDonneeUtilisateur;
+import service.*;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -20,11 +17,13 @@ public class DbControleur {
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
+   private BaseDeDonneeRobotVendus baseDeDonneeRobotVendus;
     public DbControleur () throws IOException {
         this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
+        this.baseDeDonneeRobotVendus=new BaseDeDonneeRobotVendus();
     }
 
      public String recupererListeUtilisateur(){
@@ -155,9 +154,13 @@ public class DbControleur {
     public UUID acheterRobot(String nomFournisseur, int numero){
         Fournisseur f= this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
         UUID uuid =this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
-        this.supprimerFournisseur(f);
-        f.retirerRobot(uuid.toString());
-        this.ajouterFournisseur(f);
+        if(uuid!=null) {
+            Robot r = this.retournerRobot(uuid.toString());
+            this.baseDeDonneeRobotVendus.ajouterObjet(r);
+            this.supprimerFournisseur(f);
+            f.retirerRobot(uuid.toString());
+            this.ajouterFournisseur(f);
+        }
         return uuid;
     }
 
@@ -173,7 +176,7 @@ public class DbControleur {
 
     public Robot getCurentSoldRobot(String numeroSerie)
     {
-        return this.baseDeDonneeFournisseur.getCurrentSoldRobot(numeroSerie);
+        return this.baseDeDonneeRobotVendus.getCurrentSolfRobot(numeroSerie);
     }
 
 }

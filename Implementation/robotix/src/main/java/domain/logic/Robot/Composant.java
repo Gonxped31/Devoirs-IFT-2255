@@ -45,9 +45,9 @@ public class Composant implements java.io.Serializable {
     }
     @JsonIgnore
     public String getInfoComposantFormater(){
-        return "\nNom : " + this.nom +
-                "\nprix : " + this.prix +
-                "\ndescription : " + this.description +
-                "\nType : " + this.typeComposant;
+        return "Nom : " + this.nom +
+                "\n   prix : " + this.prix +
+                "\n   description : " + this.description +
+                "\n   Type : " + this.typeComposant;
     }
 }

@@ -14,6 +14,7 @@ public class MenuGestionFlotte {
     private MenuUtilisateur menuUtil;
 
     public MenuGestionFlotte() throws IOException {
+        controlleurUtilisateurs=new ControlleurUtilisateurs();
     }
 
     public void gererMaFlotte(Scanner scanner, String pseudo) throws ParseException, IOException {

@@ -1,6 +1,8 @@
 package domain.logic.Robot;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 
@@ -20,11 +22,19 @@ public class Activite implements java.io.Serializable{
     public Activite () {
 
     }
-    public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){
+    @JsonCreator
+    public Activite(
+            @JsonProperty("nom") String nom,
+            @JsonProperty("dateDebut") Date dateDebut,
+            @JsonProperty("dateFin") Date dateFin,
+            @JsonProperty("listeDeTache") ArrayList<Tache> listeDeTache,
+            @JsonProperty("listeInteretAssocie") ArrayList<Interet> listeInteretAssocie
+    ){
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeDeTache = listeDeTache;
+        this.listeInteretAssocie = listeInteretAssocie;
     }
 
 

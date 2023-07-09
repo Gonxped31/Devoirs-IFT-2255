@@ -224,18 +224,14 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
      * @author Boubacar Hama Bague
      */
     public UUID acheterRobot(String nomFournisseur, int numero){
-         Robot robotAvendre= (Robot) this.getListObjet().stream()
+       return (UUID) this.getListObjet().stream()
                 .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
                 .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
                 .filter(r->((Robot) r).getNumero()==numero )
                 .findFirst()
+                .map(r->((Robot)r).getNumeroSerie())
                 .orElse(null);
 
-        if (robotAvendre != null) {
-            this.listCurrentSoldRobot.add(robotAvendre);
-        }
-
-        return robotAvendre.getNumeroSerie();
     }
 
     public  Fournisseur retournerFournisseur(String nomFournisseur)
@@ -245,9 +241,5 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .findFirst()
                 .orElse(null);
     }
-    public Robot getCurrentSoldRobot(String numeroSeri) {
-        return this.listCurrentSoldRobot.stream().filter(r->r.getNumeroSerie().toString().trim().equals(numeroSeri.trim()))
-                .findFirst()
-                .orElse(null);
-    }
+
 }

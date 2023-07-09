@@ -305,10 +305,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     }
 
-    public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+    public boolean enregistrerRobot(Robot robot){
 
-       boolean robotExiste= this.listeRobot.stream()
-               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
+       boolean robotExiste=false;
+       for( Robot r : listeRobot)
+       {
+           if(r.getNumero()==robot.getNumero())
+           {
+               robotExiste=true;
+           }
+       }
        if (!robotExiste ) {
            listeRobot.add(robot);
        }
@@ -449,8 +455,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
     @JsonIgnore
     public String getProfilUtilisateur(){
-        return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
-                "\n pseudo :" + getPseudo() + "\n adresse courriel : " +
+        return "Nom :" + this.getNom() + "\nPrenom :" + this.getPrenom() +
+                "\npseudo :" + getPseudo() + "\nadresse courriel : " +
                 this.email + "\nTelephone : " + this.getTelephone() +
                 "\nInteret : " + this.getListeInteret().stream()
                 .map(i -> i.getNom()).collect(Collectors.joining(","))+
