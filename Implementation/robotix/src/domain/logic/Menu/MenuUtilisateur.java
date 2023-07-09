@@ -20,7 +20,9 @@ public class MenuUtilisateur {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JPanel menuUtilisateurPanel;
     private JPanel inscriptionUtilisateurPanel;
+    private JPanel loginUtilisateurPanel;
     private JTextField txtFieldPrenom;
     private JTextField txtFieldNom;
     private JTextField txtFieldPseudo;
@@ -39,7 +41,7 @@ public class MenuUtilisateur {
     private JLabel txtNomCompagnie;
     private JLabel txtInterets;
     private JLabel txtInscriptionUtilisateur;
-    private JPanel menuUtilisateurPanel;
+    private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
     }
@@ -49,11 +51,13 @@ public class MenuUtilisateur {
         frameInscription.setSize(650, 500);
         frameInscription.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frameInscription.setVisible(true);
-
     }
 
-    public void seConnecterGUI(JFrame frameInscription) {
-
+    public void seConnecterGUI(JFrame frameLogin) {
+        frameLogin.setContentPane(loginUtilisateurPanel);
+        frameLogin.setSize(650, 500);
+        frameLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameLogin.setVisible(true);
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
