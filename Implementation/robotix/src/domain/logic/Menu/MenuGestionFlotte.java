@@ -20,6 +20,7 @@ public class MenuGestionFlotte {
     private JButton afficherLesMétriquesDeButton;
     private JButton créerActionButton;
     private JButton revenirAuMenuUtilisateurButton;
+    private JLabel menuGestionFlottePanel;
 
     public MenuGestionFlotte() throws IOException {
     }

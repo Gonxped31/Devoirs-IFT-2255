@@ -12,11 +12,18 @@ import domain.logic.Controller.DbControleur;
 import domain.logic.Robot.Action;
 import domain.logic.Robot.Activite;
 
+import javax.swing.*;
+
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
     private Activite activite = new Activite();
+    private JButton btnCreerTache;
+    private JButton btnAllouerTache;
+    private JButton btnRetour;
+    private JLabel txtGererActivites;
+    private JPanel menuGererActivitesPanel;
 
     public MenuGererTacheActivite() throws IOException {
     }
