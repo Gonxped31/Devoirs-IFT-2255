@@ -6,13 +6,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
+
+import javax.swing.*;
 
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
+    private JPanel panel1;
+    private JButton enregistrerUnRobotButton;
+    private JButton afficherÉtatDUnButton;
+    private JButton ajouterUneComposanteÀButton;
+    private JButton afficherLesMétriquesDeButton;
+    private JButton créerActionButton;
+    private JButton revenirAuMenuUtilisateurButton;
 
     public MenuGestionFlotte() throws IOException {
     }
