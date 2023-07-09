@@ -1,7 +1,5 @@
 package domain.logic.Menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -23,6 +21,16 @@ public class MenuUtilisateur {
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JPanel menuUtilisateurPanel;
+    private JButton modifierMonProfilButton;
+    private JButton gérerMaFlotteButton;
+    private JButton gérerMesTâchesButton;
+    private JButton gérerMesActivitésButton;
+    private JButton gérerMonRéseauSocialButton;
+    private JButton achatsButton;
+    private JButton voirMesNotificationsButton;
+    private JButton faireUneRequêtePubliqueButton;
+    private JButton souscrireÀUnInterêtButton;
+    private JButton revenirAuMenuPrincipalButton;
     private JPanel inscriptionUtilisateurPanel;
     private JPanel loginUtilisateurPanel;
     private JTextField txtFieldPrenom;
