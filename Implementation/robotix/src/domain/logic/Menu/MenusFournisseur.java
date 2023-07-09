@@ -2,10 +2,9 @@ package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
-import domain.logic.Membre.Fournisseur;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +15,25 @@ public class MenusFournisseur {
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
+	private JTextField nom;
+	private JTextField email;
+	private JTextField telephone;
+	private JTextField confMdp;
+	private JTextField addresse;
+	private JTextField typeRobot;
+	private JTextField typeComposantes;
+	private JTextField capacitee;
+	private JTextField nomCompagnie;
+	private JPasswordField mdp;
+	private JButton OKButton;
+	private JButton retourButton;
+	private JButton confirmerButton;
+	private JButton ajouterUnNouveauRobotButton;
+	private JButton retirerUnRobotButton;
+	private JButton enregistrerUneComposanteButton;
+	private JButton gérerMesComposantesButton;
+	private JButton modifierMonProfileButton;
+	private JButton faireUneRequetePubliqueButton;
 
 	public MenusFournisseur() throws IOException {
 	}
@@ -65,6 +83,14 @@ public class MenusFournisseur {
 
 		System.out.println("Mot de passe: ");
 		String mdp = scanner.nextLine();
+		boolean continuer = false;
+		do {
+			System.out.print("Veuillez entrer votre mot de passe de nouveau: ");
+			String confMdp = scanner.nextLine();
+			if(!confMdp.equals(mdp)){
+				continuer = true;
+			}
+		} while (continuer);
 		System.out.print("Adresse : ");
 		inputAdresse = scanner.nextLine();
 		System.out.print("Type de robots fabriqu�s: ");
@@ -154,6 +180,7 @@ public class MenusFournisseur {
 			case "7" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
+
 	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.print("Nom de la composante : ");
 		String composante = scanner.nextLine();
