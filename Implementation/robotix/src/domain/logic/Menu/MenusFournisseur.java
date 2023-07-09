@@ -17,31 +17,12 @@ public class MenusFournisseur extends JFrame {
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
-	private JPanel inscriptionFournisseurPanel;
-	private JPasswordField pwFieldMdp;
-	private JLabel txtLoginUtilisateur;
-	private JTextField txtFieldNom;
-	private JTextField txtFieldCourriel;
-	private JTextField txtFieldTelephone;
-	private JTextField txtFieldAdresse;
-	private JTextField txtFieldNomCompagnie;
-	private JLabel txtNom;
-	private JLabel txtCourriel;
-	private JLabel txtMdp;
-	private JLabel txtTelephone;
-	private JLabel txtAdresse;
-	private JLabel txtNomCompagnie;
-	private JLabel txtInscriptionUtilisateur;
 
 	public MenusFournisseur() throws IOException {
 	}
 
 	public void inscrireGUI() {
-		setContentPane(inscriptionFournisseurPanel);
-		setTitle("Nouveau Fournisseur");
-		setSize(650, 500);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setVisible(true);
+
 	}
 
 	public void seConnecterGUI() {
