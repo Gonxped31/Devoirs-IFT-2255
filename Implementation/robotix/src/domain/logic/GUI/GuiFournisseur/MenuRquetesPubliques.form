@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="domain.logic.Menu.MenusFournisseur">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="22" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="664"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="f205d" class="javax.swing.JButton" binding="voirLaListeDButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Voir la liste d'utilisateurs"/>
+        </properties>
+      </component>
+      <component id="b8639" class="javax.swing.JButton" binding="voirLaListeDesButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Voir la liste des fournisseurs"/>
+        </properties>
+      </component>
+      <component id="8e2e6" class="javax.swing.JButton" binding="voirMonProfilButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Voir mon profil"/>
+        </properties>
+      </component>
+      <component id="c7d82" class="javax.swing.JButton" binding="recupererLaListeDesButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Recuperer la liste des activites"/>
+        </properties>
+      </component>
+      <hspacer id="f3b29">
+        <constraints>
+          <grid row="1" column="2" row-span="21" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="ed788" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="MODIFICATION DU PROFILE"/>
+        </properties>
+      </component>
+      <component id="81e4a" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Veuillez faire une requete publique :"/>
+        </properties>
+      </component>
+      <component id="ccb18" class="javax.swing.JButton" binding="retourButton" default-binding="true">
+        <constraints>
+          <grid row="21" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Retour"/>
+        </properties>
+      </component>
+      <component id="429b2" class="javax.swing.JButton" binding="OKButton" default-binding="true">
+        <constraints>
+          <grid row="21" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="OK"/>
+        </properties>
+      </component>
+      <component id="9fd16" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Pseudo"/>
+            <item value="Nom"/>
+            <item value="Prenom"/>
+            <item value="Obtenir liste des suiveurs de? (pseudo voulu)"/>
+          </model>
+        </properties>
+      </component>
+      <component id="c034e" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Chercher Utilisateur"/>
+        </properties>
+      </component>
+      <component id="dd92f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rechercher fournisseur"/>
+        </properties>
+      </component>
+      <component id="28" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+        <constraints>
+          <grid row="15" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Nom"/>
+            <item value="Email"/>
+            <item value="Adresse"/>
+            <item value="Type de composantes"/>
+          </model>
+        </properties>
+      </component>
+      <component id="49e36" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Recuperer la liste des interets"/>
+        </properties>
+      </component>
+      <component id="d8eaa" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Filtrer par trois premieres lettres&quot;"/>
+            <item value="Filtrer par pseudo utilisateur"/>
+            <item value="Filtrer par pseudo utilisateur et trois premieres lettres d'interets"/>
+          </model>
+        </properties>
+      </component>
+      <component id="42fb1" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="f1918" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+        <constraints>
+          <grid row="7" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e4d55" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+        <constraints>
+          <grid row="16" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="79191" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="18" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rechercher une composante"/>
+        </properties>
+      </component>
+      <component id="d363b" class="javax.swing.JComboBox" binding="comboBox4" default-binding="true">
+        <constraints>
+          <grid row="19" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Type de la composante"/>
+            <item value="Nom de fournisseur"/>
+          </model>
+        </properties>
+      </component>
+      <component id="8801" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+        <constraints>
+          <grid row="20" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -25,15 +25,25 @@ public class MenusFournisseur {
 	private JTextField capacitee;
 	private JTextField nomCompagnie;
 	private JPasswordField mdp;
+	private JButton retourButton, ajouterUnNouveauRobotButton, retirerUnRobotButton, enregistrerUneComposanteButton,
+			gérerMesComposantesButton, modifierMonProfileButton, faireUneRequetePubliqueButton;
+	private JTextField textField1;
 	private JButton OKButton;
-	private JButton retourButton;
-	private JButton confirmerButton;
-	private JButton ajouterUnNouveauRobotButton;
-	private JButton retirerUnRobotButton;
-	private JButton enregistrerUneComposanteButton;
-	private JButton gérerMesComposantesButton;
-	private JButton modifierMonProfileButton;
-	private JButton faireUneRequetePubliqueButton;
+	private JTextField textField2;
+	private JTextField textField3;
+	private JTextField textField4;
+	private JButton OKButton1;
+	private JButton supprimerUneComposanteButton;
+	private JButton modifierLePrixDButton;
+	private JButton modifierLaDescriptionDButton;
+	private JButton voirLaListeDButton;
+	private JButton voirLaListeDesButton;
+	private JButton voirMonProfilButton;
+	private JButton recupererLaListeDesButton;
+	private JComboBox comboBox1;
+	private JComboBox comboBox2;
+	private JComboBox comboBox3;
+	private JComboBox comboBox4;
 
 	public MenusFournisseur() throws IOException {
 	}
