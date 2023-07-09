@@ -1,5 +1,7 @@
 package domain.logic.Menu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -41,9 +43,16 @@ public class MenuUtilisateur {
     private JLabel txtNomCompagnie;
     private JLabel txtInterets;
     private JLabel txtInscriptionUtilisateur;
+    private JButton btnRetour;
     private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public void inscrireGUI(JFrame frameInscription) {
