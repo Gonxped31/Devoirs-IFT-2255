@@ -22,7 +22,6 @@ public class Menu extends JFrame {
     private JButton btnConnecterFournisseur;
     private JButton btnQuitter;
     private JPanel menuPanel;
-    private JLabel txtSousTitre;
 
     public Menu() throws IOException {
         setContentPane(menuPanel);
@@ -34,27 +33,27 @@ public class Menu extends JFrame {
         btnInscrireUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //menuUtilisateur.inscrireGUI();
+                menuUtilisateur.inscrireGUI();
 
             }
         });
         btnInscrireFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //menusFournisseur.inscrireGUI();
+                menusFournisseur.inscrireGUI();
             }
         });
         btnConnecterUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //menuUtilisateur.seConnecterGUI();
+                menuUtilisateur.seConnecterGUI();
 
             }
         });
         btnConnecterFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // menusFournisseur.seConnecterGUI();
+                menusFournisseur.seConnecterGUI();
 
             }
         });
