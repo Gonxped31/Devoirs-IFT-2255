@@ -47,26 +47,21 @@ public class MenuUtilisateur {
     private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
-        btnRetour.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
     }
 
     public void inscrireGUI(JFrame frameInscription) {
-        frameInscription.setContentPane(inscriptionUtilisateurPanel);
+        /*frameInscription.setContentPane(inscriptionUtilisateurPanel);
         frameInscription.setSize(650, 500);
         frameInscription.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frameInscription.setVisible(true);
+        frameInscription.setVisible(true);*/
     }
 
     public void seConnecterGUI(JFrame frameLogin) {
-        frameLogin.setContentPane(loginUtilisateurPanel);
+        /*frameLogin.setContentPane(loginUtilisateurPanel);
         frameLogin.setSize(650, 500);
         frameLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frameLogin.setVisible(true);
+        frameLogin.setVisible(true);*/
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
