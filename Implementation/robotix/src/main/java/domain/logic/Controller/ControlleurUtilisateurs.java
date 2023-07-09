@@ -30,7 +30,7 @@ public class ControlleurUtilisateurs {
 
     public boolean authentification(String pseudo, String mdp) {
         Utilisateur u = dataBaseController.authentificatiUtilisateur(pseudo, mdp);
-        if (u == null){
+        if (u.equals(null)){
             return false;
         }
         this.utilisateurCourant = u;
