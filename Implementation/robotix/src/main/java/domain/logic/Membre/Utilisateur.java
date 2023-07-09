@@ -352,8 +352,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return robot;
     }
 
-    public ArrayList<Robot> afficherEtatRobot(){
-        return this.getListeRobot();
+    public String afficherEtatRobot(String numSeri){
+        return  this.listeRobot.stream().filter(r-> r.getNumeroSerie().toString().trim().equals(numSeri.trim()))
+                .findFirst()
+                .map(r-> r.afficherEtatRobot())
+                .orElse("Robot non trouver, veuiller verifier le numero de serie");
     }
 
     public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {

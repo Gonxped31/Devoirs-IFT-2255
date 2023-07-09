@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
 
 
 public class MenuGestionFlotte {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private ControlleurUtilisateurs controlleurUtilisateurs;
     private MenuUtilisateur menuUtil;
 
     public MenuGestionFlotte() throws IOException {
@@ -27,7 +26,10 @@ public class MenuGestionFlotte {
         String choix = scanner.nextLine();
         switch (choix) {
             case "1" -> menuEnregistrerRobot(scanner, pseudo);
-            case "2" -> printRobots(controlleurUtilisateurs.afficherEtatRobot(pseudo));
+            case "2" -> {
+                System.out.println("Veuillez entrer le numero de serie du robot");
+                String numSeri= scanner.nextLine();
+                System.out.println(controlleurUtilisateurs.afficherEtatRobot(numSeri));}
             case "3" -> menuAjouterComposante(scanner, pseudo);
             case "4" -> menuAfficherMetriquesFlotte(pseudo);
             case "5" -> menuCreerActions(scanner, pseudo);
@@ -58,7 +60,7 @@ public class MenuGestionFlotte {
         menuUtil = new MenuUtilisateur();
         menuUtil.menuUtilisateur(scanner, pseudo);
     }
-    public void printRobots(ArrayList<Robot> robots) {
+   /* public void printRobots(ArrayList<Robot> robots) {
         for (Robot robot : robots) {
             System.out.println(">>" + robot.getNom());
             System.out.println("Position : (" + robot.getX() + ", " + robot.getY() + ")");
@@ -68,7 +70,7 @@ public class MenuGestionFlotte {
             System.out.println("Memoire" + robot.getMemoire());
             System.out.println(" ");
         }
-    }
+    }*/
     public void menuAjouterComposante(Scanner scanner, String pseudo) throws ParseException {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
@@ -135,5 +137,9 @@ public class MenuGestionFlotte {
         System.out.println("Veuillez entrer le duree : ");
         String duree = scanner.nextLine();
         controlleurUtilisateurs.creerAction(nomAction, composantes, duree);
+    }
+
+    public void setControlleurUtilisateurs(ControlleurUtilisateurs controlleurUtilisateurs) {
+        this.controlleurUtilisateurs = controlleurUtilisateurs;
     }
 }

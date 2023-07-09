@@ -7,6 +7,7 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ControlleurUtilisateurs {
 
@@ -78,8 +79,9 @@ public class ControlleurUtilisateurs {
         //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
-    public ArrayList<Robot> afficherEtatRobot(String pseudo) {
-        return this.utilisateurCourant.afficherEtatRobot();
+    public String afficherEtatRobot(String numSeri) {
+
+      return this.utilisateurCourant.afficherEtatRobot(numSeri);
     }
 
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){

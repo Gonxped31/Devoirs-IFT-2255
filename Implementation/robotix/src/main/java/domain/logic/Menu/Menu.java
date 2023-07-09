@@ -41,6 +41,7 @@ public class Menu {
 
             switch (choixUsager) {
                 case "1" -> menuUtilisateur.inscrireUtilisateur(scanner);
+
                 case "2" -> menusFournisseur.menuInscriptionFournisseur(scanner);
                 case "3" -> menuUtilisateur.connecterUtilisateur(scanner);
                 case "4" -> menusFournisseur.menuConnexionFournisseur(scanner);

@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot implements java.io.Serializable{
-    private static int numero=0;
+    private static int StaticNumero=0;
+    private int numero;
     private String nom;
     private int X, Y, vitesse, batterie, cpu;
     private double memoire; // En GB
@@ -36,7 +37,7 @@ public class Robot implements java.io.Serializable{
         this.taches = taches;
         this.activites = activites;
         this.numeroSerie = UUID.randomUUID();
-        ++numero;
+        numero=++StaticNumero;
     }
 
     public Robot( ){
@@ -121,7 +122,7 @@ public class Robot implements java.io.Serializable{
     public String getInfoRobotFormater()
     {
         return "Numero : " + numero
-                + " Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
+                + "\n Liste de composant : " + this.composantes.stream().map(c->c.getInfoComposantFormater())
                 .collect(Collectors.joining("\n"));
     }
     @JsonProperty("numero")
@@ -138,5 +139,24 @@ public class Robot implements java.io.Serializable{
     public void setNumero(int newNum){
         numero = newNum;
     }
+
+    public String afficherEtatRobot(){
+        StringBuilder etat = new StringBuilder();
+
+        etat.append("Nom du robot: " + nom + "\n");
+        etat.append("Position X, Y: " + X + ", " + Y + "\n");
+        etat.append("Vitesse: " + vitesse + "\n");
+        etat.append("Batterie: " + batterie + "\n");
+        etat.append("CPU: " + cpu + "\n");
+        etat.append("Memoire: " + memoire + " GB\n");
+        etat.append("Type: " + type + "\n");
+        etat.append("Numéro de série: " + numeroSerie + "\n");
+        etat.append("Nombre de composantes: " + composantes.size() + "\n");
+        etat.append("Nombre d'actions: " + actions.size() + "\n");
+        etat.append("Nombre de tâches: " + taches.size() + "\n");
+
+        return etat.toString();
+    }
+
 }
 

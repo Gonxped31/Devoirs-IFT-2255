@@ -67,12 +67,11 @@ public class ControlleurFournisseurs {
         //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
-    public boolean retirerComposante(String composante){
+    public boolean retirerComposante(String nomComposante){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean c = this.fournisseurCourant.retirerComopsante(composante);
+        boolean bool = this.fournisseurCourant.retirerComopsante(nomComposante);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        return c;
-        //return fournisseur.retirerComopsante(composante);
+        return bool;
     }
 
     public boolean modifierPrixComposante(String nomComposante, String prix){

@@ -15,11 +15,16 @@ public class MenuUtilisateur {
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     public Menu menu;
-    private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
-    private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
-    private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private MenuGestionFlotte menuGestionFlotte;
+    private MenuGererTacheActivite menuGererTacheActivite;
+    private MenuGestionReseau menuReseau;
 
     public MenuUtilisateur() throws IOException {
+        this.controlleurUtilisateurs=new ControlleurUtilisateurs();
+        this.menuGestionFlotte= new MenuGestionFlotte();
+        this.menuGestionFlotte.setControlleurUtilisateurs(this.controlleurUtilisateurs);
+        this.menuGererTacheActivite = new MenuGererTacheActivite();
+        this.menuReseau = new MenuGestionReseau();
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
@@ -84,16 +89,14 @@ public class MenuUtilisateur {
         this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-        menu = new Menu();
-        menu.menuPrincipale(scanner);
+        menuUtilisateur(scanner, pseudo);
     }
 
     public void connecterUtilisateur(Scanner scanner) throws ParseException, IOException {
-
-        controlleurUtilisateurs = new ControlleurUtilisateurs();
+        String connexion="";
         for (int i = 0; i < 3; i++) {
             System.out.println("Veuillez entrer votre pseudo: ");
-            String connexion = scanner.nextLine();
+            connexion = scanner.nextLine();
             System.out.println("Veuillez entrer votre mot de passe: ");
             String mdp = scanner.nextLine();
             if (controlleurUtilisateurs.authentification(connexion, mdp)) {
@@ -105,8 +108,7 @@ public class MenuUtilisateur {
 
             }
         }
-        menu = new Menu();
-        menu.menuPrincipale(scanner);
+      menuUtilisateur(scanner,connexion);
     }
 
 
