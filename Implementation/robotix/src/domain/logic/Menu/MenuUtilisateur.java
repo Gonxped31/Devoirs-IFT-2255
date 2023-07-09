@@ -39,6 +39,7 @@ public class MenuUtilisateur {
     private JLabel txtNomCompagnie;
     private JLabel txtInterets;
     private JLabel txtInscriptionUtilisateur;
+    private JPanel menuUtilisateurPanel;
 
     public MenuUtilisateur() throws IOException {
     }
