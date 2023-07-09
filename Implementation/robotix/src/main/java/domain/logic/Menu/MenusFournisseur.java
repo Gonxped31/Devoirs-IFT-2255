@@ -383,9 +383,9 @@ public class MenusFournisseur {
 	}
 
 	public void menuSupprimerComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
-		System.out.print("Nom de la composante à supprimer : ");
+		System.out.print("Numero de la composante à supprimer : ");
 		String composante = scanner.nextLine();
-		if(controlleurFournisseurs.retirerComposante(composante)){
+		if(controlleurFournisseurs.retirerComposante(Integer.parseInt(composante))){
 			System.out.println("La composante a été retirée avec succès !");
 		} else {
 			System.out.println("Vous ne possédez cette composante.");

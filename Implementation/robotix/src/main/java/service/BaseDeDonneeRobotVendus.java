@@ -22,7 +22,7 @@ public class BaseDeDonneeRobotVendus extends BaseDeDonnee{
     protected void init() {
 
     }
-    public Robot getCurrentSolfRobot(String numeroSeri){
+    public Robot getCurrentSoldRobot(String numeroSeri){
             return (Robot) this.getListObjet().stream()
                     .filter(r->((Robot)r).getNumeroSerie().toString().trim().equals(numeroSeri.trim()))
                     .findFirst()

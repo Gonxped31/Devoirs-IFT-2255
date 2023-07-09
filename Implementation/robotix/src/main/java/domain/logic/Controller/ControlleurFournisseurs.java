@@ -67,9 +67,9 @@ public class ControlleurFournisseurs {
         //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
-    public boolean retirerComposante(String nomComposante){
+    public boolean retirerComposante(int numero){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean bool = this.fournisseurCourant.retirerComopsante(nomComposante);
+        boolean bool = this.fournisseurCourant.retirerComopsante(numero);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
         return bool;
     }

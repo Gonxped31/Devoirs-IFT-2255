@@ -124,13 +124,14 @@ public class Robot implements java.io.Serializable{
 
     public String getInfoRobotFormater()
     {
-        AtomicInteger count = new AtomicInteger();
 
-        return "Numero : " + numero
-                + "\nListe de composant : \n"
-                + this.composantes.stream()
-                .map(c -> (count.incrementAndGet()) + ". " + c.getInfoComposantFormater())
-                .collect(Collectors.joining("\n"));
+        return "Robot numero : " + numero
+                + "\n  Liste de composant : \n"
+                +  this.composantes.stream()
+                .map(c -> "    "+ c.getInfoComposantFormaterPourVendre())
+                .collect(Collectors.joining("\n")) +
+                "\n________________________________________________";
+
     }
     @JsonProperty("numero")
     public int getNumero()

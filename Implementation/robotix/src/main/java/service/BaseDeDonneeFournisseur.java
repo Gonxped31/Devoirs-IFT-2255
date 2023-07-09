@@ -94,11 +94,11 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                        .orElse(null);
      }
 
-    public Composant retournerComposante(String nom){
+    public Composant retournerComposante(int numero){
         return listComposant.stream()
                 .flatMap(map -> map.values().stream())
                 .flatMap(List::stream)
-                .filter(composant -> composant.getNom().equals(nom))
+                .filter(composant -> composant.getNumero()==numero)
                 .findFirst()
                 .orElse(null);
     }
@@ -214,6 +214,13 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .map(r->((Robot) r).getInfoRobotFormater())
                 .collect(Collectors.joining("\n"));
     }
+    public String obtenirListComposantFournisseur(String nomFournisseur){
+        return (String) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireComposant().stream())
+                .map(c->((Composant) c).getInfoComposantFormaterPourVendre())
+                .collect(Collectors.joining("\n"));
+    }
 
     /**
      * Cette méthode permet d'acheter un robot auprès d'un fournisseur spécifique.
@@ -233,6 +240,18 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .orElse(null);
 
     }
+    public String acheterComposant(String nomFournisseur, int numero)
+    {
+        return (String) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireComposant().stream())
+                .findFirst()
+                .filter(c->((Composant) c).getNumero()==numero)
+                .map(c->((Composant) c).getNom())
+                .orElse(null);
+    }
+
+
 
     public  Fournisseur retournerFournisseur(String nomFournisseur)
     {

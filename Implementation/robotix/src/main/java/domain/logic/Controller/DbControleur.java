@@ -18,12 +18,14 @@ public class DbControleur {
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
    private BaseDeDonneeRobotVendus baseDeDonneeRobotVendus;
+   private BaseDeDonneeComposantVendus baseDeDonneeComposantVendus;
     public DbControleur () throws IOException {
         this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
         this.baseDeDonneeRobotVendus=new BaseDeDonneeRobotVendus();
+        this.baseDeDonneeComposantVendus=new BaseDeDonneeComposantVendus();
     }
 
      public String recupererListeUtilisateur(){
@@ -91,8 +93,8 @@ public class DbControleur {
         return baseDeDonneeFournisseur.retournerRobot(numeroSerie);
     }
 
-    public Composant retournerComposante(String nom){
-        return baseDeDonneeFournisseur.retournerComposante(nom);
+    public Composant retournerComposante(int numero){
+        return baseDeDonneeFournisseur.retournerComposante(numero);
     }
 
     public Utilisateur retournerUtilisateur(String pseudo){
@@ -151,10 +153,15 @@ public class DbControleur {
     {
         return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);
     }
+    public String obtenirListComposantFournisseur( String nomFournisseur)
+    {
+        return this.baseDeDonneeFournisseur.obtenirListComposantFournisseur(nomFournisseur);
+    }
     public UUID acheterRobot(String nomFournisseur, int numero){
-        Fournisseur f= this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
+
         UUID uuid =this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
         if(uuid!=null) {
+            Fournisseur f= this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
             Robot r = this.retournerRobot(uuid.toString());
             this.baseDeDonneeRobotVendus.ajouterObjet(r);
             this.supprimerFournisseur(f);
@@ -162,6 +169,20 @@ public class DbControleur {
             this.ajouterFournisseur(f);
         }
         return uuid;
+    }
+    public String acheterComposant(String nomFournisseur, int numero)
+    {
+
+        String nomCoposante= this.baseDeDonneeFournisseur.acheterComposant(nomFournisseur,numero);
+        if( nomCoposante!=null) {
+            Fournisseur f =this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
+            Composant c= this.baseDeDonneeFournisseur.retournerComposante(numero);
+            this.baseDeDonneeComposantVendus.ajouterObjet(c);
+            this.supprimerFournisseur(f);
+            f.retirerComopsante(numero);
+            this.ajouterFournisseur(f);
+        }
+        return nomCoposante;
     }
 
     public String obtenirListeInteret()
@@ -176,7 +197,11 @@ public class DbControleur {
 
     public Robot getCurentSoldRobot(String numeroSerie)
     {
-        return this.baseDeDonneeRobotVendus.getCurrentSolfRobot(numeroSerie);
+        return this.baseDeDonneeRobotVendus.getCurrentSoldRobot(numeroSerie);
+    }
+    public Composant getCurentSoldComposant(String nom, int numero)
+    {
+        return this.baseDeDonneeComposantVendus.getCurrentSoldComposant(nom, numero);
     }
 
 }

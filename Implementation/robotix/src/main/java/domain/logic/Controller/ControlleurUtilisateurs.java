@@ -1,5 +1,5 @@
 package domain.logic.Controller;
-import domain.logic.Membre.Fournisseur;
+
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
@@ -8,7 +8,7 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class ControlleurUtilisateurs {
 
@@ -16,7 +16,7 @@ public class ControlleurUtilisateurs {
 
     private Utilisateur utilisateurCourant;
 
-    public ControlleurUtilisateurs() throws IOException {
+    public ControlleurUtilisateurs()  {
     }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
@@ -71,16 +71,28 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return bool;
     }
+    public boolean enregistrerComposant(String nom, int numero)
+    {
+        boolean bool =false;
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Composant c= this.dataBaseController.getCurentSoldComposant(nom, numero);
+        if(c!=null)
+        {
+            bool=this.utilisateurCourant.ajouterComposant(c);
+        }
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return bool;
+    }
 
     public String afficherEtatRobot(String numSeri) {
 
       return this.utilisateurCourant.afficherEtatRobot(numSeri);
     }
 
-    public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
+    public boolean ajouterComposanteRobot(int numero, String numeroSerie, String pseudo){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
-        Composant comp = this.dataBaseController.retournerComposante(composante);
+        Composant comp = this.dataBaseController.retournerComposante(numero);
         if (!(robot == null) && !(comp == null)){
             robot.ajouterComposante(comp);
         }

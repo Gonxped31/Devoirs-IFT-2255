@@ -1,8 +1,13 @@
 package domain.logic.Robot;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Composant implements java.io.Serializable {
+    private static int staticNumero=0;
+    private int numero;
     private String nom;
     private String prix;
     private String description;
@@ -13,10 +18,11 @@ public class Composant implements java.io.Serializable {
         this.prix = prix;
         this.description = description;
         this.typeComposant = typeComposant;
+        numero=++staticNumero;
     }
 
     public Composant() {
-
+     numero=++staticNumero;
     }
 
 
@@ -45,9 +51,25 @@ public class Composant implements java.io.Serializable {
     }
     @JsonIgnore
     public String getInfoComposantFormater(){
-        return "Nom : " + this.nom +
+        return  "Numero : " +this.numero +
+                "\n   Nom : " + this.nom +
                 "\n   prix : " + this.prix +
                 "\n   description : " + this.description +
                 "\n   Type : " + this.typeComposant;
+    }
+
+    @JsonIgnore
+    public String getInfoComposantFormaterPourVendre(){
+        return  "Composant numero : " +this.numero +
+                "\n     prix : " + this.prix +
+                "\n     description : " + this.description +
+                "\n     Type : " + this.typeComposant+
+                "\n________________________________________________";
+    }
+
+    @JsonProperty("numero")
+    public int getNumero()
+    {
+        return numero;
     }
 }

@@ -194,18 +194,27 @@ public class MenuUtilisateur {
         String decision = scanner.nextLine();
         switch(decision){
             case "1" -> {
-                System.out.println("Voici la liste des fournisseurs: ");
+                System.out.println("Voici la liste des fournisseurs: \n");
                 System.out.println(dbControlleur.recupererListFournisseur());
-                System.out.println("Choisissez un fournisseur");
+                System.out.print("Entrez le nom d'un fournisseur de votre choix : ");
                 String nomFournisseur = scanner.nextLine();
                 System.out.println(dbControlleur.obtenirListRobotFournisseur(nomFournisseur));
-                System.out.println("Entrez le numero du robot a acheter");
-                int numero = scanner.nextInt();
+                System.out.print("Entrez le numero du robot a acheter : ");
+                String numero = scanner.nextLine();
                 System.out.println("Voici le numero de serie");
-                System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
+                System.out.println(dbControlleur.acheterRobot(nomFournisseur, Integer.parseInt(numero)));
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {
+                System.out.println("Voici la liste des fournisseurs: \n");
+                System.out.println(dbControlleur.recupererListFournisseur());
+                System.out.print("Entrez le nom d'un fournisseur de votre choix : ");
+                String nomFournisseur = scanner.nextLine();
+                System.out.println(dbControlleur.obtenirListComposantFournisseur(nomFournisseur));
+                System.out.print("Entrez le numero du composant a acheter : ");
+                String numero = scanner.nextLine();
+                System.out.println("Voici le nom du composant : ");
+                System.out.println(dbControlleur.acheterComposant(nomFournisseur, Integer.parseInt(numero)));
 
             }
         }

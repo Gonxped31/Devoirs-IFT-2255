@@ -582,5 +582,17 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void ajouterUnInteret(Interet i){
         this.listeInteret.add(i);
     }
+    public boolean ajouterComposant(Composant composant)
+    {
 
+        for(Composant c : this.composantesAchetes)
+        {
+            if(c.getNumero()==composant.getNumero() )
+            {
+                return false;
+            }
+        }
+        this.composantesAchetes.add(composant);
+        return true;
+    }
 }

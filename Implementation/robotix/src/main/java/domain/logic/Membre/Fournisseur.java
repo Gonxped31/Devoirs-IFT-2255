@@ -141,11 +141,11 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         inventaireComposant.add(new Composant(nom,prix,description,typeComposant));
     }
 
-    public boolean retirerComopsante(String nom) {
+    public boolean retirerComopsante(int numero) {
         boolean bool = false;
         int nbComposantes = 0;
         for (Composant composant : inventaireComposant) {
-            if (composant.getNom().equals(nom)) {
+            if (composant.getNumero()==numero) {
                 this.inventaireComposant.remove(composant);
                 ++nbComposantes;
                 break;
@@ -214,12 +214,13 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     }
     @JsonIgnore
     public String getProfilFournisseur(){
-        return "Nom :" + super.getNom() + "\nAdresse courriel : " +
+        return "Nom : " + super.getNom() + "\nAdresse courriel : " +
                 this.email + "\nTelephone : " + this.getTelephone() +
-                "\nType de robot fabriquer :" + this.typeRobotFabriquer +
-                "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
-                "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
-                "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() + "\n";
+                "\nType de robot fabriquer : " + this.typeRobotFabriquer +
+                "\nType de composant fabriquer : " + this.typeComposantesFabriquer +
+                "\nNombre de composante disponible : " + this.getInventaireComposant().size() +
+                "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() +
+                "\n_____________________________________________________________________";
     }
     public boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;
