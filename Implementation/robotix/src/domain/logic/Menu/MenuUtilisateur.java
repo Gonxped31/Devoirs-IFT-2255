@@ -44,6 +44,10 @@ public class MenuUtilisateur {
     }
 
     public void inscrireGUI(JFrame frameInscription) {
+        frameInscription.setContentPane(inscriptionUtilisateurPanel);
+        frameInscription.setSize(650, 500);
+        frameInscription.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameInscription.setVisible(true);
 
     }
 
