@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Menu extends JFrame {
+public class Menu {
     //private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     //private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private TypesComposants typesComposants;
@@ -22,35 +22,39 @@ public class Menu extends JFrame {
     private JButton btnConnecterFournisseur;
     private JButton btnQuitter;
     private JPanel menuPanel;
+    private JFrame mainFrame;
 
     public Menu() throws IOException {
-        setContentPane(menuPanel);
-        setTitle("ROBOTIX");
-        setSize(650, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+        mainFrame = new JFrame("Robotix");
+        mainFrame.setContentPane(menuPanel);
+        mainFrame.setSize(650, 500);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainFrame.setVisible(true);
 
         btnInscrireUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                menuUtilisateur.inscrireGUI(mainFrame);
 
             }
         });
         btnInscrireFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                menusFournisseur.inscrireGUI();
             }
         });
         btnConnecterUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                menuUtilisateur.seConnecterGUI(mainFrame);
 
             }
         });
         btnConnecterFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                menusFournisseur.seConnecterGUI();
 
             }
         });

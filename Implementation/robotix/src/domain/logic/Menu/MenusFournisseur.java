@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class MenusFournisseur {
+public class MenusFournisseur extends JFrame {
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
@@ -46,6 +46,14 @@ public class MenusFournisseur {
 	private JComboBox comboBox4;
 
 	public MenusFournisseur() throws IOException {
+	}
+
+	public void inscrireGUI() {
+
+	}
+
+	public void seConnecterGUI() {
+
 	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {

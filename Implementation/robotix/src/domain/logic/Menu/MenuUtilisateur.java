@@ -1,5 +1,7 @@
 package domain.logic.Menu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
-import javax.crypto.spec.PSource;
+import javax.swing.*;
 
 public class MenuUtilisateur {
     /*Section Utilisateur */
@@ -20,8 +22,51 @@ public class MenuUtilisateur {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JPanel menuUtilisateurPanel;
+    private JPanel inscriptionUtilisateurPanel;
+    private JPanel loginUtilisateurPanel;
+    private JTextField txtFieldPrenom;
+    private JTextField txtFieldNom;
+    private JTextField txtFieldPseudo;
+    private JTextField txtFieldCourriel;
+    private JPasswordField txtFieldMdp;
+    private JTextField txtFieldTelephone;
+    private JTextField txtFieldAdresse;
+    private JTextField txtFieldNomCompagnie;
+    private JLabel txtPrenom;
+    private JLabel txtPseudo;
+    private JLabel txtNom;
+    private JLabel txtCourriel;
+    private JLabel txtMdp;
+    private JLabel txtTelephone;
+    private JLabel txtAdresse;
+    private JLabel txtNomCompagnie;
+    private JLabel txtInterets;
+    private JLabel txtInscriptionUtilisateur;
+    private JButton btnRetour;
+    private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    public void inscrireGUI(JFrame frameInscription) {
+        frameInscription.setContentPane(inscriptionUtilisateurPanel);
+        frameInscription.setSize(650, 500);
+        frameInscription.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameInscription.setVisible(true);
+    }
+
+    public void seConnecterGUI(JFrame frameLogin) {
+        frameLogin.setContentPane(loginUtilisateurPanel);
+        frameLogin.setSize(650, 500);
+        frameLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameLogin.setVisible(true);
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
