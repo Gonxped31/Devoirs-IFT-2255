@@ -100,6 +100,7 @@ public class DbControleur {
         return baseDeDonneeUtilisateur.retournerUtilisateur(pseudo);
     }
 
+
     public void supprimerFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.supprimerObjet(f);
     }
@@ -152,9 +153,12 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);
     }
     public UUID acheterRobot(String nomFournisseur, int numero){
-
-        return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
-
+        Fournisseur f= this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
+        UUID uuid =this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
+        this.supprimerFournisseur(f);
+        f.retirerRobot(uuid.toString());
+        this.ajouterFournisseur(f);
+        return uuid;
     }
 
     public String obtenirListeInteret()
@@ -165,6 +169,11 @@ public class DbControleur {
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
 
+    }
+
+    public Robot getCurentSoldRobot(String numeroSerie)
+    {
+        return this.baseDeDonneeFournisseur.getCurrentSoldRobot(numeroSerie);
     }
 
 }

@@ -13,12 +13,14 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
      private static final String FILE_NAME = "fournisseur.json";
      private List<Map<String, List<Robot>>> listRobot;
      private List<Map<String, List<Composant>>> listComposant;
+     private ArrayList<Robot> listCurrentSoldRobot;
     
      public BaseDeDonneeFournisseur() throws IOException {
         super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
          listComposant= new ArrayList<>();
          listRobot=new ArrayList<>();
          initListeRobotEtComposant();
+         listCurrentSoldRobot=new ArrayList<>();
      }
 
 
@@ -212,15 +214,40 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .map(r->((Robot) r).getInfoRobotFormater())
                 .collect(Collectors.joining("\n"));
     }
+
+    /**
+     * Cette méthode permet d'acheter un robot auprès d'un fournisseur spécifique.
+     * @param nomFournisseur Le nom du fournisseur auprès duquel le robot doit être acheté.
+     * @param numero Le numéro du robot à acheter.
+     * @return Le numéro de série du robot acheté, ou null si aucun robot correspondant n'est trouvé.
+     *
+     * @author Boubacar Hama Bague
+     */
     public UUID acheterRobot(String nomFournisseur, int numero){
-        return (UUID) this.getListObjet().stream()
+         Robot robotAvendre= (Robot) this.getListObjet().stream()
                 .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
                 .flatMap(f -> ((Fournisseur) f).getInventaireDeRobot().stream())
                 .filter(r->((Robot) r).getNumero()==numero )
                 .findFirst()
-                .map(r->((Robot) r).getNumeroSerie())
                 .orElse(null);
 
+        if (robotAvendre != null) {
+            this.listCurrentSoldRobot.add(robotAvendre);
+        }
+
+        return robotAvendre.getNumeroSerie();
     }
 
+    public  Fournisseur retournerFournisseur(String nomFournisseur)
+    {
+        return (Fournisseur) this.getListObjet().stream().filter(f->
+                ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .findFirst()
+                .orElse(null);
+    }
+    public Robot getCurrentSoldRobot(String numeroSeri) {
+        return this.listCurrentSoldRobot.stream().filter(r->r.getNumeroSerie().toString().trim().equals(numeroSeri.trim()))
+                .findFirst()
+                .orElse(null);
+    }
 }

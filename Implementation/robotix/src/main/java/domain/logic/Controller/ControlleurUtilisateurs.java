@@ -1,4 +1,5 @@
 package domain.logic.Controller;
+import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
@@ -31,7 +32,7 @@ public class ControlleurUtilisateurs {
 
     public boolean authentification(String pseudo, String mdp) {
         Utilisateur u = dataBaseController.authentificatiUtilisateur(pseudo, mdp);
-        if (u.equals(null)){
+        if (u==null){
             return false;
         }
         this.utilisateurCourant = u;
@@ -65,18 +66,15 @@ public class ControlleurUtilisateurs {
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
         boolean bool=false;
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
-        if (!(robot == null)){
+        Robot robot = this.dataBaseController.getCurentSoldRobot(numeroSerie);
+        if (robot != null){
             robot.setNom(nomRobot);
             robot.setType(type);
-            try {
-                bool = this.utilisateurCourant.enregistrerRobot(robot);
-            } catch (NullPointerException e){
-                return true;
-            }
-        }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+            bool = this.utilisateurCourant.enregistrerRobot(robot);
+
+        }
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return bool;
-        //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
     public String afficherEtatRobot(String numSeri) {
