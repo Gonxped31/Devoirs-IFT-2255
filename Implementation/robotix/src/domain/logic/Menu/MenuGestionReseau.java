@@ -6,9 +6,17 @@ import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 
+import javax.swing.*;
+
 public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
+    private JPanel menuGestionReseauPanel;
+    private JLabel txtGestionReseau;
+    private JButton btnSuivreUtilisateur;
+    private JButton btnGererSuiveur;
+    private JButton btnGererInterets;
+    private JButton btnRetour;
 
     public MenuGestionReseau() throws IOException {
     }
