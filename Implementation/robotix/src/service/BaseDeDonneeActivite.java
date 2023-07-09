@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class BaseDeDonneeActivite extends BaseDeDonnee {
-private static final String FILE_NAME= "activite.json";
+    private static final String FILE_NAME= "activite.json";
 
-public BaseDeDonneeActivite() throws IOException {
-    super(FILE_NAME,new TypeReference<ArrayList<Activite>>() {});
-}
+    public BaseDeDonneeActivite() throws IOException {
+        super(FILE_NAME,new TypeReference<ArrayList<Activite>>() {});
+    }
 
 
 
     @Override
     protected void init() {
-     //Todo
+        //Todo
     }
 
     public String recupererLalisteDesActivite()

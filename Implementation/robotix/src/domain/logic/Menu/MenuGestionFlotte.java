@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
+
 
 public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -86,7 +86,8 @@ public class MenuGestionFlotte {
 
     public void menuAfficherMetriquesFlotte(String pseudo) {
         System.out.println("********** Métriques de ma flotte **********");
-        System.out.println("Nombre de robot : " + controlleurUtilisateurs.afficherMetriquesFlotte(pseudo));
+        //System.out.println("Nombre de robot : " + controlleurUtilisateurs.afficherMetriquesFlotte(pseudo));
+        System.out.println("Nombre de robots");
         System.out.println("Consommation globale du CPU : 83 %");
         System.out.println("Consommation globale de la mémoire : 85 %");
         System.out.println(" ");

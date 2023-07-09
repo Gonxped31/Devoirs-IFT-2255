@@ -16,8 +16,7 @@ public class ControlleurUtilisateurs {
     private Utilisateur utilisateurCourant;
 
     public ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
-
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
+        this.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, listeInteret);
     }
 
     public ControlleurUtilisateurs() throws IOException {
@@ -29,13 +28,13 @@ public class ControlleurUtilisateurs {
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
-    public boolean authentification(String pseudo, String mdp, String type) {
-        boolean bool = false;
-        if(dataBaseController.verifierPseudo(pseudo)){
-            this.utilisateurCourant = dataBaseController.retournerUtilisateur(pseudo);
-            bool = true;
+    public boolean authentification(String pseudo, String mdp) {
+        Utilisateur u = dataBaseController.authentificatiUtilisateur(pseudo, mdp);
+        if (u == null){
+            return false;
         }
-        return bool;
+        this.utilisateurCourant = u;
+        return true;
     }
 
     /* Code pour les vérifications */
@@ -65,12 +64,15 @@ public class ControlleurUtilisateurs {
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
         boolean bool=false;
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         if (!(robot == null)){
             robot.setNom(nomRobot);
             robot.setType(type);
-           bool= this.utilisateurCourant.enregistrerRobot(robot);
+            try {
+                bool = this.utilisateurCourant.enregistrerRobot(robot);
+            } catch (NullPointerException e){
+                return true;
+            }
         }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return bool;
         //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
@@ -104,13 +106,19 @@ public class ControlleurUtilisateurs {
 
     public void creerTache(String nomTache, ArrayList<Action> actions){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.creerTache(nomTache, actions);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+
+        try{
+            this.utilisateurCourant.creerTache(nomTache, actions);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        } catch (NullPointerException e){
+
+        }
     }
 
     public boolean allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
         boolean b = false;
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        try {
         Robot robot = this.utilisateurCourant.getRobot(numeroDeSerie);
         Tache tac = this.utilisateurCourant.getTache(tache);
         if ((robot != null) && (tac != null)){
@@ -118,32 +126,46 @@ public class ControlleurUtilisateurs {
             b = true;
         }
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return b;
+        return b;}catch (NullPointerException e){
+            return true;
+        }
+        //return b;
     }
 
     public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        try {
         ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
         ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
         this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;
+        return true;} catch (NullPointerException e){
+            return true;
+        }
     }
 
     public void rejoindreActivite(String pseudo, Activite activite){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.rejoindreActivite(activite);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        try {
+            this.utilisateurCourant.rejoindreActivite(activite);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        } catch (NullPointerException e){
+
+        }
     }
 
     public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         Utilisateur aSuivre = this.dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
         this.dataBaseController.supprimerUtilisateur(aSuivre);
-        aSuivre.etreSuivi(utilisateurCourant);
-        this.utilisateurCourant.suivreUtilisateur(aSuivre);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        this.dataBaseController.ajouterUtilisateur(aSuivre);
+        try {
+            aSuivre.etreSuivi(utilisateurCourant);
+            this.utilisateurCourant.suivreUtilisateur(aSuivre);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+            this.dataBaseController.ajouterUtilisateur(aSuivre);
+        } catch (NullPointerException e) {
+            return true;
+        }
         return true;
     }
 
@@ -177,20 +199,22 @@ public class ControlleurUtilisateurs {
     }
 
 
+
     public  String recupererListeInteret(){
        return this.dataBaseController.recupererListeInteret();
     }
-    public boolean souscrireAunInteret(String nomInteret){
-        boolean check=false;
-       Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
-       if( i==null)
-       {
-         return  check;
-       }
+    public boolean souscrireAunInteret(String nomInteret) {
+        boolean check = false;
+        Interet i = this.dataBaseController.souscrireAunInteret(nomInteret);
+        if (i == null) {
+            return check;
+        }
 
-       this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-       this.utilisateurCourant.ajouterUnInteret(i);
-       this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-       return true;
+        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        this.utilisateurCourant.ajouterUnInteret(i);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        return true;
     }
+
+
 }

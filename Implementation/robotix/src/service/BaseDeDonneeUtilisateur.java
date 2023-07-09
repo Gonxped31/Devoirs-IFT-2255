@@ -156,4 +156,12 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
+    public  Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp){
+        return (Utilisateur) this.getListObjet().stream()
+                .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudoUtilisateur) &&
+                        ((Utilisateur) u).getMotDePasse().equals(mdp))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

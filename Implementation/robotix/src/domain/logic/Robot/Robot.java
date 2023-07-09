@@ -40,7 +40,7 @@ public class Robot implements java.io.Serializable{
     }
 
     public Robot( ){
-    this.numeroSerie= UUID.randomUUID();
+        this.numeroSerie= UUID.randomUUID();
     }
     public String getNom() {
         return nom;
@@ -58,6 +58,13 @@ public class Robot implements java.io.Serializable{
         return Y;
     }
 
+    public void setY(int newY){
+        this.Y = newY;
+    }
+
+    public void setX(int newX){
+        this.X = newX;
+    }
     public int getVitesse() {
         return vitesse;
     }
@@ -108,7 +115,9 @@ public class Robot implements java.io.Serializable{
     public void allouerTache(Tache tache){
         taches.add(tache);
     }
-@JsonIgnore
+
+    @JsonIgnore
+
     public String getInfoRobotFormater()
     {
         return "Numero : " + numero
@@ -122,4 +131,12 @@ public class Robot implements java.io.Serializable{
     }
 
 
+
+
+
+    @JsonProperty("numero")
+    public void setNumero(int newNum){
+        numero = newNum;
+    }
 }
+
