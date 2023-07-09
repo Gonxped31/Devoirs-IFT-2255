@@ -35,6 +35,7 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuUtilisateur.inscrireGUI();
+
             }
         });
         btnInscrireFournisseur.addActionListener(new ActionListener() {
@@ -47,12 +48,14 @@ public class Menu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuUtilisateur.seConnecterGUI();
+
             }
         });
         btnConnecterFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                menusFournisseur.seConnecterGUI();
+
             }
         });
         btnQuitter.addActionListener(new ActionListener() {

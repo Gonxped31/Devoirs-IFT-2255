@@ -1,6 +1,5 @@
 package domain.logic.Menu;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -18,10 +17,8 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JPanel container = new JPanel();
     private JPanel inscriptionUtilisateurPanel;
-    private JPanel loginUtilisateurPanel;
-    private JPasswordField pwFieldMdp;
-    private JLabel txtLoginUtilisateur;
     private JTextField txtFieldPrenom;
     private JTextField txtFieldNom;
     private JTextField txtFieldPseudo;
@@ -29,6 +26,7 @@ public class MenuUtilisateur extends JFrame {
     private JTextField txtFieldTelephone;
     private JTextField txtFieldAdresse;
     private JTextField txtFieldNomCompagnie;
+    private JPasswordField txtFieldMdp;
     private JLabel txtPrenom;
     private JLabel txtNom;
     private JLabel txtPseudo;
@@ -41,6 +39,7 @@ public class MenuUtilisateur extends JFrame {
     private JLabel txtInscriptionUtilisateur;
 
     public MenuUtilisateur() throws IOException {
+     
     }
 
     public void inscrireGUI() {
@@ -52,11 +51,8 @@ public class MenuUtilisateur extends JFrame {
     }
 
     public void seConnecterGUI() {
-        setContentPane(loginUtilisateurPanel);
-        setTitle("Login pour un utilisateur");
-        setSize(650, 500);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
