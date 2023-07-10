@@ -1,7 +1,5 @@
 package domain.logic.Menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -50,12 +48,12 @@ public class MenuUtilisateur extends JFrame {
 
     }
 
-    public void inscrireGUI(JFrame frameInscription) {
+    public void afficherFormulaireInscription(JFrame frameInscription) {
 
     }
 
     public void seConnecterGUI(JFrame frameLogin) {
-        
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {

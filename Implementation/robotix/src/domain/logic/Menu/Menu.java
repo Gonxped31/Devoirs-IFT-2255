@@ -34,7 +34,7 @@ public class Menu {
         btnInscrireUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuUtilisateur.inscrireGUI(mainFrame);
+                menuUtilisateur.afficherFormulaireInscription(mainFrame);
 
             }
         });
