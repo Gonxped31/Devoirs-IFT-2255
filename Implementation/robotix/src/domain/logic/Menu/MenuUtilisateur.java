@@ -14,7 +14,7 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 
 import javax.swing.*;
 
-public class MenuUtilisateur {
+public class MenuUtilisateur extends JFrame {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
@@ -47,7 +47,7 @@ public class MenuUtilisateur {
     private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
-        
+
     }
 
     public void inscrireGUI(JFrame frameInscription) {
