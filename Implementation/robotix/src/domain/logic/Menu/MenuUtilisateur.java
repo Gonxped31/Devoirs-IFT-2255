@@ -47,12 +47,7 @@ public class MenuUtilisateur {
     private JLabel txtLoginUtilisateur;
 
     public MenuUtilisateur() throws IOException {
-        /*btnRetour.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });*/
+        
     }
 
     public void inscrireGUI(JFrame frameInscription) {
