@@ -31,6 +31,9 @@ public class MenuUtilisateur {
     private JButton faireUneRequêtePubliqueButton;
     private JButton souscrireÀUnInterêtButton;
     private JButton revenirAuMenuPrincipalButton;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
     private JPanel inscriptionUtilisateurPanel;
     private JPanel loginUtilisateurPanel;
     private JTextField txtFieldPrenom;

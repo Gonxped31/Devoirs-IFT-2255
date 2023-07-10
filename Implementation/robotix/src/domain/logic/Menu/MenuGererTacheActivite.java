@@ -22,6 +22,9 @@ public class MenuGererTacheActivite {
     private JButton btnCreerTache;
     private JButton btnAllouerTache;
     private JButton btnRetour;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
     private JLabel txtGererActivites;
     private JPanel menuGererActivitesPanel;
 

@@ -27,6 +27,8 @@ public class MenusFournisseur extends JFrame {
 	private JPasswordField mdp;
 	private JButton retourButton, ajouterUnNouveauRobotButton, retirerUnRobotButton, enregistrerUneComposanteButton,
 			gérerMesComposantesButton, modifierMonProfileButton, faireUneRequetePubliqueButton;
+	private JButton button1;
+	private JButton button2;
 	private JTextField textField1;
 	private JButton OKButton;
 	private JTextField textField2;

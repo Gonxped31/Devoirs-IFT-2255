@@ -74,17 +74,7 @@ public class MenuGestionFlotte {
         System.out.println(" ");
         gererMaFlotte(scanner, pseudo);
     }
-    /*public void printRobots(ArrayList<Robot> robots) {
-        for (Robot robot : robots) {
-            System.out.println(">>" + robot.getNom());
-            System.out.println("Position : (" + robot.getX() + ", " + robot.getY() + ")");
-            System.out.println("Vitesse : " + robot.getVitesse());
-            System.out.println("Niveau de batterie : " + robot.getBatterie());
-            System.out.println("CPU : " + robot.getCpu());
-            System.out.println("Memoire" + robot.getMemoire());
-            System.out.println(" ");
-        }
-    }*/
+
     public void menuAjouterComposante(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.print("Nom de la composante à ajouter : ");
         String nomComposante = scanner.nextLine();
@@ -116,10 +106,19 @@ public class MenuGestionFlotte {
         System.out.println("Quelles actions voulez-vous creer?");
         System.out.print("Nom: ");
         String nomAction = scanner.nextLine();
-        System.out.print("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?: ");
         String decision = "Y";
-        while (decision.toUpperCase().equals("Y")) {
-            System.out.println("Entrez une composante:");
+        boolean valide;
+        System.out.println("Entrez le type de la composante a avoir pour effectuer cette action parmi les types suivant: ");
+        do {
+            valide = true;
+            System.out.println("-" + TypesComposants.CPU.name());
+            System.out.println("-" + TypesComposants.ROUE.name());
+            System.out.println("-" + TypesComposants.HELICE.name());
+            System.out.println("-" + TypesComposants.HAUTPARLEUR.name());
+            System.out.println("-" + TypesComposants.BRAS.name());
+            System.out.println("-" + TypesComposants.ECRAN.name());
+            System.out.println("-" + TypesComposants.MICRO.name());
+            System.out.println("-" + TypesComposants.CAMERA.name());
             String comp = scanner.nextLine();
             switch (comp.toUpperCase()) {
                 case "CPU" -> composantes.add(TypesComposants.CPU.name());
@@ -130,13 +129,21 @@ public class MenuGestionFlotte {
                 case "ECRAN" -> composantes.add(TypesComposants.ECRAN.name());
                 case "MICRO" -> composantes.add(TypesComposants.MICRO.name());
                 case "CAMERA" -> composantes.add(TypesComposants.CAMERA.name());
+                default -> {
+                    System.out.println("Le type entré ne fait pas parti de la liste des types de robot. Veuillez reessayer.");
+                    valide = false;
+                }
             }
-            System.out.println("Voulez-vous rajouter une composante a cette action (Y/N)?");
-            decision = scanner.nextLine();
-        }
+            if (valide){
+                System.out.println("Voulez-vous rajouter une autre composante a cette action (Y/N)?");
+                decision = scanner.nextLine();
+            }
+
+        } while (!valide || decision.toUpperCase().equals("Y"));
         System.out.println("Veuillez entrer le duree : ");
         String duree = scanner.nextLine();
         controlleurUtilisateurs.creerAction(nomAction, composantes, duree);
-        gererMaFlotte(scanner, pseudo);
+        System.out.println("Création de l'action en cours...");
+        System.out.println("L'action a été créée avec succès");
     }
 }
