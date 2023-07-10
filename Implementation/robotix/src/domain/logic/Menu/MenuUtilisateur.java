@@ -52,7 +52,7 @@ public class MenuUtilisateur extends JFrame {
 
     }
 
-    public void seConnecterGUI(JFrame frameLogin) {
+    public void afficherFormulaireConnexion(JFrame frameLogin) {
 
     }
 

@@ -47,7 +47,7 @@ public class Menu {
         btnConnecterUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuUtilisateur.seConnecterGUI(mainFrame);
+                menuUtilisateur.afficherFormulaireConnexion(mainFrame);
 
             }
         });
