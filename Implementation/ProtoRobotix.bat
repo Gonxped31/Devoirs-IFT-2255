@@ -1,3 +1,3 @@
 @echo off
-java -jar ProtoRobotix.jar
+java -jar robotix.jar
 pause
