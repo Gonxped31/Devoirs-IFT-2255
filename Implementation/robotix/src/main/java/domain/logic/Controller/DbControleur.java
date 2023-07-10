@@ -130,7 +130,7 @@ public class DbControleur {
 
     public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
     {
-        return this.baseDeDonneeUtilisateur.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre);
+        return this.baseDeDonneeInteret.recupererListeInteretParFiltrageSurTroisPremierSousChaine(troislettre);
     }
 
     public String rechercherFournisseurParEmail(String email) {
@@ -189,7 +189,7 @@ public class DbControleur {
     {
         return this.baseDeDonneeInteret.recupererListeInteret();
     }
-    public Interet souscrireAunInteret(String nomInteret)
+    public Interet retournerInteret(String nomInteret)
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
 

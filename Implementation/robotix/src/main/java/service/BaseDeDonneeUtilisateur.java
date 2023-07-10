@@ -6,20 +6,31 @@ import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 
 
-import java.io.IOException;
+
  
 import java.util.*;
 import java.util.stream.Collectors;
-
-public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
+/**
+ * La classe BaseDeDonneeUtilisateur est responsable de la gestion des utilisateur dans la base de données.
+ * Cette classe hérite de la classe BaseDeDonnee, qui fournit une interface commune pour toutes les classes de base de données.
+ * @author Boubacar Hama Bague
+ */
+public class BaseDeDonneeUtilisateur extends BaseDeDonnee {
      private static final String FILE_NAME = "utilisateur.json";
 
-     private ArrayList<Interet> listInteret;
-     public BaseDeDonneeUtilisateur() throws IOException {
+    /**
+     * Le constructeur par défaut de la classe BaseDeDonneeUtilisateur.
+     * Il initialise la base de données des utilisateur en utilisant le nom du fichier défini par FILE_NAME.
+     */
+     public BaseDeDonneeUtilisateur()  {
         super(FILE_NAME,new TypeReference<ArrayList<Utilisateur>>() {});
-        listInteret=new ArrayList<>();
-       // init();
+
+
      }
+
+    /**
+     * Cette méthode initialise la liste d'utilisateurs .
+     */
 
     @Override
     protected void init() {
@@ -51,6 +62,12 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
         });
     }
+
+    /**
+     * Cette méthode récupère la liste des informations sur les utilisateurs
+     * et les retourne sous forme de chaine de charactere
+     * @return La liste des utilisateurs.
+     */
     public String recupererLalisteDesUtilisateur()
     {
         return (String) this.getListObjet().stream()
@@ -58,6 +75,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * Cette méthode recherche un utilisateur par pseudo.
+     * @param pseudo Le pseudo de l'utilisateur.
+     * @return Le profil de l'utilisateur si trouvé, sinon un message d'erreur.
+     */
     public String rechercherUtilisateurParPseudo(String pseudo){
          return (String) this.getListObjet().stream()
                  .filter( utilisateur ->( (Utilisateur) utilisateur).getPseudo().equals(pseudo))
@@ -68,6 +90,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                  .orElse("Utilisateur non trouver, veuillez verifier le pseudo");
     }
 
+    /**
+     * Cette méthode recherche un utilisateur par nom.
+     * @param nom Le nom de l'utilisateur.
+     * @return Le profil de l'utilisateur si trouvé, sinon un message d'erreur.
+     */
     public String rechercherUtilisateurParNom(String nom){
         return (String) this.getListObjet().stream()
                 .filter( utilisateur ->( (Utilisateur) utilisateur).getNom().equals(nom))
@@ -78,6 +105,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .orElse("Utilisateur non trouver, veuillez verifier le nom");
     }
 
+    /**
+     * Cette méthode recherche un utilisateur par prénom.
+     * @param prenom Le prénom de l'utilisateur.
+     * @return Le profil de l'utilisateur si trouvé, sinon un message d'erreur.
+     */
     public String rechercherUtilisateurParPrenom(String prenom){
         return (String) this.getListObjet().stream()
                 .filter( utilisateur ->( (Utilisateur) utilisateur).getPrenom().equals(prenom))
@@ -87,6 +119,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .findFirst()
                 .orElse("Utilisateur non trouver, veuillez verifier le prenom");
     }
+    /**
+     * Cette méthode recherche les suiveurs d'un utilisateur.
+     * @param pseudoUtilisateur Le pseudo de l'utilisateur.
+     * @return La liste des suiveurs de l'utilisateur.
+     */
 
     public String rechercherUtilisateurParSuiveur(String pseudoUtilisateur){
 
@@ -102,6 +139,13 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
    }
 
+    /**
+     * Cette méthode filtre la liste des suiveurs d'un utilisateur par pseudo.
+     * @param nomUtilisateur Le nom de l'utilisateur.
+     * @param pseudoSuiveur Le pseudo du suiveur.
+     * @return La liste des suiveurs filtrée.
+     */
+
     public String filtrerListSuiveurParPseudo(String nomUtilisateur, String pseudoSuiveur){
         return (String) this.getListObjet().stream()
                 .filter(u -> ((Utilisateur) u).getNom().equals(nomUtilisateur))
@@ -112,7 +156,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
-
+    /**
+     * Cette méthode récupère la liste des intérêts d'un utilisateur.
+     * @param pseudo Le pseudo de l'utilisateur.
+     * @return La liste des intérêts de l'utilisateur.
+     */
     public String recupererListeInteretUtilisateur(String pseudo){
         return (String) this.getListObjet().stream()
                 .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
@@ -121,26 +169,32 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .distinct()
                 .collect(Collectors.joining(", "));
     }
+
+    /**
+     * Cette méthode filtre la liste des intérêts d'un utilisateur par les trois premières lettres.
+     * @param pseudo Le pseudo de l'utilisateur.
+     * @param troislettre Les trois premières lettres pour le filtrage.
+     * @return La liste des intérêts filtrée.
+     */
     public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
     {
         return (String) this.getListObjet().stream()
                 .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudo))
                 .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
-                .filter(interet-> ((String) interet).substring(0,3).equals(troislettre))
+                .filter(interet-> ((String) interet).substring(0,3).toLowerCase().trim().equals(troislettre.toLowerCase().trim()))
                 .map(i-> ((Interet) i).getNom())
                 .distinct()
                 .collect(Collectors.joining(", "));
     }
 
-    public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
-    {
-        return (String) this.listInteret.stream()
-                .filter(interet-> interet.getNom().substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
-                .map(i->i.getNom())
-                .distinct()
-                .collect(Collectors.joining(", "));
-    }
 
+
+
+    /**
+     * Cette méthode vérifie si un pseudo est unique.
+     * @param pseudo Le pseudo à vérifier.
+     * @return Vrai si le pseudo existe, sinon faux.
+     */
     public boolean verifierPseudo(String pseudo){
 
     return this.getListObjet().stream()
@@ -148,6 +202,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     }
 
+    /**
+     * Cette méthode retourne un utilisateur par son pseudo.
+     * @param pseudo Le pseudo de l'utilisateur.
+     * @return L'utilisateur si trouvé, sinon null.
+     */
     public Utilisateur retournerUtilisateur(String pseudo){
         return (Utilisateur) this.getListObjet().stream()
                 .filter( utilisateur ->( (Utilisateur) utilisateur).getPseudo().equals(pseudo))
@@ -156,6 +215,12 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
+    /**
+     * Cette méthode authentifie un utilisateur par son pseudo et son mot de passe.
+     * @param pseudoUtilisateur Le pseudo de l'utilisateur.
+     * @param mdp Le mot de passe de l'utilisateur.
+     * @return L'utilisateur si l'authentification réussit, sinon null.
+     */
     public  Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp){
         return this.getListObjet().size()!=0 ?(Utilisateur) this.getListObjet().stream()
                 .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudoUtilisateur) &&

@@ -211,16 +211,14 @@ public class ControlleurUtilisateurs {
        return this.dataBaseController.recupererListeInteret();
     }
     public boolean souscrireAunInteret(String nomInteret) {
-        boolean check = false;
-        Interet i = this.dataBaseController.souscrireAunInteret(nomInteret);
-        if (i == null) {
+        Interet i = this.dataBaseController.retournerInteret(nomInteret);
+        if (i != null) {
+            this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+            boolean check=utilisateurCourant.ajouterUnInteret(i);
+            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
             return check;
         }
-
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.ajouterUnInteret(i);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;
+        return false;
     }
 
 

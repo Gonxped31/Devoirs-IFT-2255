@@ -455,12 +455,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
     @JsonIgnore
     public String getProfilUtilisateur(){
-        return "Nom :" + this.getNom() + "\nPrenom :" + this.getPrenom() +
-                "\npseudo :" + getPseudo() + "\nadresse courriel : " +
+        return "Nom : " + this.getNom() + "\nPrenom : " + this.getPrenom() +
+                "\npseudo : " + getPseudo() + "\nadresse courriel : " +
                 this.email + "\nTelephone : " + this.getTelephone() +
                 "\nInteret : " + this.getListeInteret().stream()
                 .map(i -> i.getNom()).collect(Collectors.joining(","))+
-                "\nNombre de point :" + this.getPoint() +
+                "\nNombre de point : " + this.getPoint() +
                 "\nNombre de suiveur : " + this.getListSuiveur().size();
     }
 
@@ -579,8 +579,16 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void setNotifs(ArrayList<Notification> notifs) {
         this.notification = notification;
     }
-    public void ajouterUnInteret(Interet i){
+    public boolean ajouterUnInteret(Interet i){
+        for(Interet interet :listeInteret){
+            if(interet.getNom().equals(i.getNom()))
+            {
+                return false;
+            }
+
+        }
         this.listeInteret.add(i);
+        return true;
     }
     public boolean ajouterComposant(Composant composant)
     {

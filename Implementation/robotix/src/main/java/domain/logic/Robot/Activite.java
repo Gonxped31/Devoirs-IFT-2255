@@ -99,7 +99,4 @@ public class Activite implements java.io.Serializable{
                 .map(tache -> tache.getInfoTacheFormater())
                 .collect(Collectors.joining("\n"));
     }
-    public void rejoindreActivvite(Utilisateur u){
-
-    }
 }

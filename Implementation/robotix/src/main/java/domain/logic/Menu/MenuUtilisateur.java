@@ -171,12 +171,12 @@ public class MenuUtilisateur {
             case("9"):
                 System.out.println("Voici la liste d'interets : ");
                 System.out.println(dbControlleur.recupererListeInteret());
-                System.out.println("A quel interet voulez-vous vous souscrire");
+                System.out.print("A quel interet voulez-vous vous souscrire : ");
                 String decision = scanner.nextLine();
                 if (controlleurUtilisateurs.souscrireAunInteret(decision)){
                     System.out.println("Vous etes souscrit a : " + decision);
                 } else {
-                    System.out.println("Veuillez verifier le nom de l'interet");
+                    System.out.println("Veuillez verifier le nom de l'interet ou la liste de vos interet deja sousris");
                 }
                 menuUtilisateur(scanner, pseudo);
                 break;
