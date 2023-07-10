@@ -1,5 +1,6 @@
 package domain.logic.Menu;
 
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -23,24 +24,25 @@ public class MenuUtilisateur extends JFrame {
     private JPanel menuUtilisateurPanel;
     private JPanel inscriptionUtilisateurPanel;
     private JPanel loginUtilisateurPanel;
-    private JTextField txtFieldPrenom;
-    private JTextField txtFieldNom;
-    private JTextField txtFieldPseudo;
-    private JTextField txtFieldCourriel;
-    private JPasswordField txtFieldMdp;
-    private JTextField txtFieldTelephone;
-    private JTextField txtFieldAdresse;
-    private JTextField txtFieldNomCompagnie;
-    private JLabel txtPrenom;
-    private JLabel txtPseudo;
-    private JLabel txtNom;
-    private JLabel txtCourriel;
-    private JLabel txtMdp;
-    private JLabel txtTelephone;
-    private JLabel txtAdresse;
-    private JLabel txtNomCompagnie;
-    private JLabel txtInterets;
-    private JLabel txtInscriptionUtilisateur;
+    private JLabel inscriptionUtilisateurLabel;
+    private JLabel prenomLabel;
+    private JLabel nomLabel;
+    private JLabel pseudoLabel;
+    private JLabel courrielLabel;
+    private JLabel mdpLabel;
+    private JLabel telephoneLabel;
+    private JLabel adresseLabel;
+    private JLabel nomCompagnieLabel;
+    private ArrayList<JLabel> listeInteretsLabel;
+    private JTextField prenomField;
+    private JTextField nomField;
+    private JTextField pseudoField;
+    private JTextField courrielField;
+    private JPasswordField mdpField;
+    private JTextField telephoneField;
+    private JTextField adresseField;
+    private JTextField nomCompagnieField;
+
     private JButton btnRetour;
     private JLabel txtLoginUtilisateur;
 
@@ -48,7 +50,36 @@ public class MenuUtilisateur extends JFrame {
 
     }
 
-    public void afficherFormulaireInscription(JFrame frameInscription) {
+    public void afficherFormulaireInscription(JFrame frame) {
+        inscriptionUtilisateurPanel = new JPanel();
+        inscriptionUtilisateurPanel.setLayout(new GridLayout());
+
+        prenomLabel = new JLabel("Prenom");
+        prenomField = new JTextField();
+
+        nomLabel = new JLabel("Nom");
+        nomField = new JTextField();
+
+        pseudoLabel = new JLabel("Pseudo");
+        pseudoField = new JTextField();
+
+        courrielLabel = new JLabel("Adresse courriel");
+        courrielField = new JTextField();
+
+        mdpLabel = new JLabel("Mot de passe");
+        mdpField = new JPasswordField();
+
+        telephoneLabel = new JLabel("Numero de telephone");
+        telephoneField = new JTextField();
+
+        nomCompagnieLabel = new JLabel("Nom de compagnie");
+        nomCompagnieField = new JTextField();
+
+        frame.add(prenomLabel);
+        frame.add(prenomLabel);
+
+
+
 
     }
 
