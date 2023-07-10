@@ -35,7 +35,6 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuUtilisateur.afficherFormulaireInscription(mainFrame);
-
             }
         });
         btnInscrireFournisseur.addActionListener(new ActionListener() {
@@ -48,7 +47,6 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuUtilisateur.afficherFormulaireConnexion(mainFrame);
-
             }
         });
         btnConnecterFournisseur.addActionListener(new ActionListener() {

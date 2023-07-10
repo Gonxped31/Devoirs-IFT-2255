@@ -1,6 +1,8 @@
 package domain.logic.Menu;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -17,74 +19,93 @@ public class MenuUtilisateur extends JFrame {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
-    public Menu menu;
+    private Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JPanel menuUtilisateurPanel;
-    private JPanel inscriptionUtilisateurPanel;
-    private JPanel loginUtilisateurPanel;
-    private JLabel inscriptionUtilisateurLabel;
-    private JLabel prenomLabel;
-    private JLabel nomLabel;
-    private JLabel pseudoLabel;
-    private JLabel courrielLabel;
-    private JLabel mdpLabel;
-    private JLabel telephoneLabel;
-    private JLabel adresseLabel;
-    private JLabel nomCompagnieLabel;
-    private ArrayList<JLabel> listeInteretsLabel;
-    private JTextField prenomField;
-    private JTextField nomField;
-    private JTextField pseudoField;
-    private JTextField courrielField;
-    private JPasswordField mdpField;
-    private JTextField telephoneField;
-    private JTextField adresseField;
-    private JTextField nomCompagnieField;
-
-    private JButton btnRetour;
-    private JLabel txtLoginUtilisateur;
+    private JPanel inscriptionUtilisateurPanel = new JPanel();
+    private JPanel loginUtilisateurPanel = new JPanel();
+    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
+    private JLabel loginUtilisateurLabel = new JLabel("CONNEXION");
+    private JLabel prenomLabel = new JLabel("Prenom");
+    private JLabel nomLabel = new JLabel("Nom");
+    private JLabel pseudoLabel = new JLabel("Pseudo");
+    private JLabel courrielLabel = new JLabel("Adresse courriel");
+    private JLabel mdpLabel = new JLabel("Mot de passe");
+    private JLabel telephoneLabel = new JLabel("Numero de telephone");
+    private JLabel adresseLabel = new JLabel("Adresse");
+    private JLabel nomCompagnieLabel = new JLabel("Nom de compagnie");
+    private JLabel interetsLabel = new JLabel("Intérêts");
+    private JTextField prenomField = new JTextField();
+    private JTextField nomField = new JTextField();
+    private JTextField pseudoField = new JTextField();
+    private JTextField courrielField = new JTextField();
+    private JPasswordField mdpField = new JPasswordField();
+    private JTextField telephoneField = new JTextField();
+    private JTextField adresseField = new JTextField();
+    private JTextField nomCompagnieField = new JTextField();
+    private JButton btnRetour = new JButton("Retour");
 
     public MenuUtilisateur() throws IOException {
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
     }
 
-    public void afficherFormulaireInscription(JFrame frame) {
-        inscriptionUtilisateurPanel = new JPanel();
-        inscriptionUtilisateurPanel.setLayout(new GridLayout());
-
-        prenomLabel = new JLabel("Prenom");
-        prenomField = new JTextField();
-
-        nomLabel = new JLabel("Nom");
-        nomField = new JTextField();
-
-        pseudoLabel = new JLabel("Pseudo");
-        pseudoField = new JTextField();
-
-        courrielLabel = new JLabel("Adresse courriel");
-        courrielField = new JTextField();
-
-        mdpLabel = new JLabel("Mot de passe");
-        mdpField = new JPasswordField();
-
-        telephoneLabel = new JLabel("Numero de telephone");
-        telephoneField = new JTextField();
-
-        nomCompagnieLabel = new JLabel("Nom de compagnie");
-        nomCompagnieField = new JTextField();
-
-        frame.add(prenomLabel);
-        frame.add(prenomLabel);
-
-
-
-
+    public void afficherFormulaireInscription(JFrame jFrame) {
+        creerFormulaireInscription();
+        jFrame.getContentPane().removeAll();
+        jFrame.setContentPane(inscriptionUtilisateurPanel);
+        jFrame.revalidate();
+        jFrame.repaint();
     }
 
-    public void afficherFormulaireConnexion(JFrame frameLogin) {
+    public void creerFormulaireInscription() {
+        inscriptionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        inscriptionUtilisateurPanel.add(inscriptionUtilisateurLabel);
+        inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
+        inscriptionUtilisateurPanel.add(prenomLabel);
+        inscriptionUtilisateurPanel.add(prenomField);
+        inscriptionUtilisateurPanel.add(nomLabel);
+        inscriptionUtilisateurPanel.add(nomField);
+        inscriptionUtilisateurPanel.add(pseudoLabel);
+        inscriptionUtilisateurPanel.add(pseudoField);
+        inscriptionUtilisateurPanel.add(courrielLabel);
+        inscriptionUtilisateurPanel.add(courrielField);
+        inscriptionUtilisateurPanel.add(mdpLabel);
+        inscriptionUtilisateurPanel.add(mdpField);
+        inscriptionUtilisateurPanel.add(telephoneLabel);
+        inscriptionUtilisateurPanel.add(telephoneField);
+        inscriptionUtilisateurPanel.add(adresseLabel);
+        inscriptionUtilisateurPanel.add(adresseField);
+        inscriptionUtilisateurPanel.add(nomCompagnieLabel);
+        inscriptionUtilisateurPanel.add(nomCompagnieField);
+        inscriptionUtilisateurPanel.add(interetsLabel);
+        inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
+        inscriptionUtilisateurPanel.add(btnRetour);
+    }
 
+    public void afficherFormulaireConnexion(JFrame jFrame) {
+        creerFormulaireConnexion();
+        jFrame.getContentPane().removeAll();
+        jFrame.setContentPane(loginUtilisateurPanel);
+        jFrame.revalidate();
+        jFrame.repaint();
+    }
+
+    public void creerFormulaireConnexion() {
+        loginUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        loginUtilisateurPanel.add(loginUtilisateurLabel);
+        loginUtilisateurPanel.add(Box.createHorizontalStrut(10));
+        loginUtilisateurPanel.add(pseudoLabel);
+        loginUtilisateurPanel.add(pseudoField);
+        loginUtilisateurPanel.add(mdpLabel);
+        loginUtilisateurPanel.add(mdpField);
+        loginUtilisateurPanel.add(btnRetour);
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
