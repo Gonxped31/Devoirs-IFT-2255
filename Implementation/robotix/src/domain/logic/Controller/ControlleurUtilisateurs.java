@@ -194,6 +194,12 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.voirNotifications();
     }
 
+    public void ajouterNotifs(String pseudo, String message){
+        ArrayList<Notification> notifsCourantes = this.utilisateurCourant.getNotifs();
+
+        this.utilisateurCourant.setListeNotifications(notifsCourantes);
+    }
+
     public void supprimerNotifs(String pseudo) {
         this.utilisateurCourant.getNotifs().clear();
     }

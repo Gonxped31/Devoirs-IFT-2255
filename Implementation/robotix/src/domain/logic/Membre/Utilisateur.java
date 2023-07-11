@@ -534,6 +534,10 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.listeNotifications = listeNotifications;
     }
 
+    public void addNotifs(String titre,String message, String date, TypeNotification typeNotification){
+        this.listeNotifications.add(new Notification(titre, message, date, typeNotification));
+    }
+
     public ArrayList<Activite> getListeActivitesRejoint() {
         return listeActivitesRejoint;
     }
