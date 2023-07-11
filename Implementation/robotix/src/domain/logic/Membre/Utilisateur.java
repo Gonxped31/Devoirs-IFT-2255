@@ -530,7 +530,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return listeNotifications;
     }
 
-    public void setListeNotifications(ArrayList<Notification> listeNotifications) {
+    public void setListeNotifications(@JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
         this.listeNotifications = listeNotifications;
     }
 

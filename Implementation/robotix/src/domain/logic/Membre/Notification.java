@@ -15,7 +15,8 @@ public class Notification implements java.io.Serializable{
 
 
     public Notification() {
-
+        typeNotification = TypeNotification.NOUVEAU_ABONNE;
+        messsage = "TEST";
         date =  "01/02/1223";
 
         //DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
+import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeFournisseur;
@@ -48,9 +49,16 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
         ));
+        Notification n = new Notification();
+        ArrayList<Notification> l = new ArrayList<Notification>();
+        l.add(n);
+        tempList.get(1).setListeNotifications(l);
+        for (Utilisateur u : tempList){
+            System.out.println(u.getListeNotifications());
+        }
+
         tempList.stream().forEach(utilisateur -> {
             this.ajouterObjet(utilisateur);
-
         });
     }
     public String recupererLalisteDesUtilisateur()
