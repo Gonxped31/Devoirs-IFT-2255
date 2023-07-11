@@ -9,6 +9,7 @@ import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.TypeNotification;
 
 import javax.crypto.spec.PSource;
 
@@ -169,6 +170,7 @@ public class MenuUtilisateur {
             }
             case ("7") -> {
                 //menuNotification(scanner, pseudo);
+                controlleurUtilisateurs.ajouterNotifs(pseudo,"Je", "suis", "test", TypeNotification.NOUVEAU_ABONNE);
                 System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);

@@ -53,9 +53,9 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
         ArrayList<Notification> l = new ArrayList<Notification>();
         l.add(n);
         tempList.get(1).setListeNotifications(l);
-        for (Utilisateur u : tempList){
-            System.out.println(u.getListeNotifications());
-        }
+        //for (Utilisateur u : tempList){
+            //System.out.println(u.getListeNotifications());
+        //}
 
         tempList.stream().forEach(utilisateur -> {
             this.ajouterObjet(utilisateur);

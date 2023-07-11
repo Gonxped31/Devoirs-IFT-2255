@@ -1,6 +1,7 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
+import domain.logic.Membre.TypeNotification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
@@ -194,10 +195,13 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.voirNotifications();
     }
 
-    public void ajouterNotifs(String pseudo, String message){
+    //TODO
+    public void ajouterNotifs(String titre, String pseudo, String message, String date, TypeNotification typeNotif){
+        this.dataBaseController.supprimerUtilisateur(dataBaseController.retournerUtilisateur(pseudo));
         ArrayList<Notification> notifsCourantes = this.utilisateurCourant.getNotifs();
-
+        this.utilisateurCourant.addNotifs(titre, message, date, typeNotif);
         this.utilisateurCourant.setListeNotifications(notifsCourantes);
+        this.dataBaseController.ajouterUtilisateur(this.utilisateurCourant);
     }
 
     public void supprimerNotifs(String pseudo) {

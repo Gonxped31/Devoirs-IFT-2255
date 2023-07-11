@@ -1,0 +1,68 @@
+[
+  {
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "pseudo": "KD",
+    "listeInteret": [
+      {
+        "nom": "tennis"
+      },
+      {
+        "nom": "programtion"
+      }
+    ],
+    "motDePasse": "KaMen",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeNotifications": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": {
+      "titre": null,
+      "date": "01/02/1223",
+      "typeNotification": "NOUVEAU_ABONNE",
+      "messsage": "TEST"
+    },
+    "telephone": "1234567890",
+    "notifs": []
+  },
+  {
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "pseudo": "KD",
+    "listeInteret": [
+      {
+        "nom": "tennis"
+      },
+      {
+        "nom": "programtion"
+      }
+    ],
+    "motDePasse": "KaMen",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeNotifications": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": {
+      "titre": null,
+      "date": "01/02/1223",
+      "typeNotification": "NOUVEAU_ABONNE",
+      "messsage": "TEST"
+    },
+    "telephone": "1234567890",
+    "notifs": []
+  }
+]
