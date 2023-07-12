@@ -45,7 +45,7 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
             try {
                 objets = objectMapper.readValue(database, type);
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
 

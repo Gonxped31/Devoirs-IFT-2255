@@ -16,16 +16,8 @@ public class Action implements java.io.Serializable{
         this.duree = duree;
     }
 
-    public String getNomAction(){
-        return nomAction;
-    }
-
     public ArrayList<String> getComposantes(){
         return composantes;
-    }
-
-    public String getDuree(){
-        return duree;
     }
     @JsonIgnore
     public String getInfoActionFormater(){

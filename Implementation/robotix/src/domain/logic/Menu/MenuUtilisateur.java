@@ -15,7 +15,7 @@ import javax.crypto.spec.PSource;
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
-    private DbControleur dbControlleur = new DbControleur();
+    private DbControleur dbControlleur = DbControleur.getDbControleur();
     public Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
@@ -84,13 +84,13 @@ public class MenuUtilisateur {
             }
         }
 
-        System.out.println("Adresse : ");
+        System.out.print("Adresse : ");
         String adresse = scanner.nextLine();
-        System.out.println("Nom de la compagnie : ");
+        System.out.print("Nom de la compagnie : ");
         String nomCompagnie = scanner.nextLine();
-        System.out.println("Ajouter 10 interets: ");
+        System.out.print("Ajouter 10 interets: ");
         for (int i = 9; i >= 0; i--) {
-            System.out.println("Veuillez entrer un interet: ");
+            System.out.print("Veuillez entrer un interet: ");
             String interet = scanner.nextLine();
             listeInteret.add(interet);
             System.out.println("Il vous reste " + i + " interets a choisir");
@@ -111,9 +111,9 @@ public class MenuUtilisateur {
 
         controlleurUtilisateurs = new ControlleurUtilisateurs();
         for (int i = 0; i < 3; i++) {
-            System.out.println("Veuillez entrer votre pseudo: ");
+            System.out.print("Veuillez entrer votre pseudo: ");
             String connexion = scanner.nextLine();
-            System.out.println("Veuillez entrer votre mot de passe: ");
+            System.out.print("Veuillez entrer votre mot de passe: ");
             String mdp = scanner.nextLine();
             connexion = connexion.trim();
             if (controlleurUtilisateurs.authentification(connexion, mdp)) {
@@ -131,13 +131,6 @@ public class MenuUtilisateur {
 
 
     public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException, IOException {
-        ArrayList<String> fournisCPU = new ArrayList<>();
-        fournisCPU.add("Fournisseur6" );
-        fournisCPU.add("Adresse1");
-        fournisCPU.add("Courriel3");
-        fournisCPU.add("Numero4");
-        fournisCPU.add("type3");
-        fournisCPU.add("compagnie2");
         System.out.println("******************** Menu: " + pseudo + " ********************");
         System.out.println("Bienvenue! Veuillez choisir une option:");
         System.out.println("1- Modifier mon profile");
@@ -157,14 +150,12 @@ public class MenuUtilisateur {
                 modifierProfile(scanner, pseudo);
                 menuUtilisateur(scanner, pseudo);
             }
-            case ("2") -> menuGestionFlotte.gererMaFlotte(scanner, pseudo);
+            case ("2") -> menuGestionFlotte.gererMaFlotte(scanner, pseudo,controlleurUtilisateurs);
             case ("3") -> menuGererTacheActivite.gererMesTaches(scanner, pseudo);
             case ("4") -> menuGererTacheActivite.gererMesActivites(scanner, pseudo);
             case ("5") -> menuReseau.gererReseauSocial(scanner, pseudo);
             case ("6") -> {
                 menuAchat(scanner, pseudo);
-                //System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                //System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
             }
             case ("7") -> {

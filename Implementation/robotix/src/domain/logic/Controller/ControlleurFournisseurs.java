@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class ControlleurFournisseurs {
-    private DbControleur dataBaseController = new DbControleur();
+    private DbControleur dataBaseController = DbControleur.getDbControleur();
     private Fournisseur fournisseurCourant;
 
     public ControlleurFournisseurs(String nom, String mdp,  String adresse, String email, String numeroTelephone,

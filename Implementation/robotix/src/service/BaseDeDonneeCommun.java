@@ -14,14 +14,12 @@ import java.util.*;
 
 public class BaseDeDonneeCommun extends BaseDeDonnee {
 
-
         private List<Map<String, List<Robot>>> listRobot;
         private List<Map<String, List<Composant>>> listComposant;
         public <T> BaseDeDonneeCommun(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
             super(fileName,type );
             listComposant = new ArrayList<>();
             listRobot = new ArrayList<>();
-
         }
 
 

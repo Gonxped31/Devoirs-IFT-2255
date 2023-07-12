@@ -48,6 +48,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
         ));
+
         tempList.stream().forEach(utilisateur -> {
             this.ajouterObjet(utilisateur);
 

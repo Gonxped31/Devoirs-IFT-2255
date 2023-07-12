@@ -14,7 +14,7 @@ import domain.logic.Robot.Activite;
 
 public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
-    private DbControleur dbControlleur = new DbControleur();
+    private DbControleur dbControlleur = DbControleur.getDbControleur();
     private MenuUtilisateur menuUtil;
     private Activite activite = new Activite();
 

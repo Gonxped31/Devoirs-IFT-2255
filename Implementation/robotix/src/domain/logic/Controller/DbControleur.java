@@ -16,15 +16,20 @@ import java.util.UUID;
 
 
 public class DbControleur {
+    private static DbControleur dbControleur;
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
-    public DbControleur () throws IOException {
+    private DbControleur () throws IOException {
         this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
+    }
+
+    public static DbControleur getDbControleur() throws IOException {
+        return dbControleur == null ? dbControleur = new DbControleur() : dbControleur;
     }
 
     public String recupererListeUtilisateur(){

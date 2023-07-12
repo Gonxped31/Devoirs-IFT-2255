@@ -362,7 +362,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         Action action = new Action(nomAction, composantes, duree);
-        getListeActions().add(action);
+        this.listeActions.add(action);
    /* public void creerTache(String nomTache, ArrayList<Action> actions){
         Tache tache = new Tache(nomTache, actions);
         listeTaches.add(tache);

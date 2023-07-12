@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ControlleurUtilisateurs {
 
-    private DbControleur dataBaseController = new DbControleur();
+    private DbControleur dataBaseController = DbControleur.getDbControleur();
     //private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
     //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
@@ -101,12 +101,8 @@ public class ControlleurUtilisateurs {
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        try {
-            this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        } catch (NullPointerException e){
-
-        }
+        this.utilisateurCourant.creerAction(nomAction, composantes, duree);
+        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
     public int afficherMetriquesFlotte(String pseudo){

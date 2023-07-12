@@ -15,7 +15,7 @@ public class MenusFournisseur {
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
-	private DbControleur dbControlleur = new DbControleur();
+	private DbControleur dbControlleur = DbControleur.getDbControleur();
 
 	public MenusFournisseur() throws IOException {
 	}
