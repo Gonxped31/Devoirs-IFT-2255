@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.TypeNotification;
 
 public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -25,7 +26,8 @@ public class MenuGestionReseau {
             case "1" -> {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
-                /*controlleurUtilisateurs.suivreUtilisateur(nom)*/
+                controlleurUtilisateurs.suivreUtilisateur(nom);
+                controlleurUtilisateurs.ajouterNotifs(pseudo,"Je", "suis", "test", TypeNotification.NOUVEAU_ABONNE);
                 if (!nom.equals(""))
                     System.out.println("Vous suivez maintenant " + nom);
                 else {
