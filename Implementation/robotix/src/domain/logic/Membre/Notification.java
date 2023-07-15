@@ -19,14 +19,12 @@ public class Notification implements java.io.Serializable{
 
 
     public Notification() {
-        typeNotification = TypeNotification.NOUVEAU_ABONNE;
-        message = "TEST";
-        date =  "01/02/1223";
+        //typeNotification = TypeNotification.NOUVEAU_ABONNE;
+        //message = "TEST";
+        //date =  "01/02/1223";
 
         //DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         //date = LocalDateTime.parse(date.format(formatDate));
-
-
     }
 
     public Notification(String titre, String message, String date, TypeNotification typeNotification){

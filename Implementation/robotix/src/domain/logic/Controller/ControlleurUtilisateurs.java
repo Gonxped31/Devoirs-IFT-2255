@@ -196,13 +196,15 @@ public class ControlleurUtilisateurs {
     }
 
     //TODO
-    public void ajouterNotifs(String pseudo, String titre, String message, String date, TypeNotification typeNotif){
-        this.utilisateurCourant = dataBaseController.retournerUtilisateur(pseudo);
-        ArrayList<Notification> notifsCourantes = this.utilisateurCourant.getNotifs();
-        this.dataBaseController.supprimerUtilisateur(this.utilisateurCourant);
-        this.utilisateurCourant.addNotifs(titre, message, date, typeNotif);
-        this.utilisateurCourant.setListeNotifications(notifsCourantes);
-        this.dataBaseController.ajouterUtilisateur(this.utilisateurCourant);
+    public void ajouterNotifs(String nom, String pseudo, String titre, String message, String date, TypeNotification typeNotif){
+        System.out.println(nom);
+        System.out.println(dataBaseController.retournerUtilisateur(nom));
+        Utilisateur u = dataBaseController.retournerUtilisateur(nom);
+        ArrayList<Notification> notifsCourantes = u.getNotifs();
+        this.dataBaseController.supprimerUtilisateur(u);
+        u.addNotifs(titre, message, date, typeNotif);
+        u.setListeNotifications(notifsCourantes);
+        this.dataBaseController.ajouterUtilisateur(u);
     }
 
     public void supprimerNotifs(String pseudo) {

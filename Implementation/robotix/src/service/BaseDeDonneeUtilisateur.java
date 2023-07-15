@@ -49,10 +49,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new ArrayList<Interet>())
         ));
-        Notification n = new Notification();
+        /*Notification n = new Notification();
         ArrayList<Notification> l = new ArrayList<Notification>();
         l.add(n);
-        tempList.get(1).setListeNotifications(l);
+        tempList.get(1).setListeNotifications(l);*/
+
         //for (Utilisateur u : tempList){
             //System.out.println(u.getListeNotifications());
         //}
