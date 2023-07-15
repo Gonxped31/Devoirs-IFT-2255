@@ -2,6 +2,7 @@ package domain.logic.Membre;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 /*
@@ -27,10 +28,10 @@ public class Notification implements java.io.Serializable{
         //date = LocalDateTime.parse(date.format(formatDate));
     }
 
-    public Notification(String titre, String message, String date, TypeNotification typeNotification){
+    public Notification(String titre, String message, TypeNotification typeNotification){
         this.titre = titre;
         this.message = message;
-        this.date = date;
+        this.date = (new Date()).toString();
         this.typeNotification = typeNotification;
     }
 
@@ -47,7 +48,7 @@ public class Notification implements java.io.Serializable{
         return message;
     }
 
-    public String getDate() { return date; }
+    public String getDate() { return date.toString(); }
 
     public TypeNotification getTypeNotification() {
         return typeNotification;

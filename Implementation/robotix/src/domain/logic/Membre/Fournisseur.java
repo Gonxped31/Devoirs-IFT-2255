@@ -15,7 +15,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
     private LinkedList<Composant> inventaireComposant= new LinkedList<>();
-    private Notification notification = new Notification();
+    //private Notification notification = new Notification();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
 
@@ -79,7 +79,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return super.getNom();
     }
 
-    public Notification getNotification() { return this.notification; }
+    //public Notification getNotification() { return this.notification; }
     public ArrayList<Notification> getListeNotifications() { return this.listeNotifications; }
 
     public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
@@ -233,10 +233,11 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         for (Robot robot : inventaireDeRobot) {
             if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
                 DoitEtreNotifie = true;
-                notification.setTitre("MAUVAIS FONCTIONNEMENT");
+                Notification nouvelleNotification = new Notification("MAUVAIS FONCTIONNEMENT", "Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.", TypeNotification.PROBLEME_ROBOT);
+                /*notification.setTitre("MAUVAIS FONCTIONNEMENT");
                 notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                listeNotifications.add(nouvelleNotification);
             }
         }
         return DoitEtreNotifie;
@@ -247,10 +248,11 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         for (Robot robot : inventaireDeRobot) {
             if (robot.getBatterie() >= 20) {
                 DoitEtreNotifie = true;
-                notification.setTitre("BATTERIE FAIBLE");
+                Notification nouvelleNotification = new Notification("BATTERIE FAIBLE", "La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.", TypeNotification.PROBLEME_ROBOT);
+                /*notification.setTitre("BATTERIE FAIBLE");
                 notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                listeNotifications.add(nouvelleNotification);
             }
         }
         return DoitEtreNotifie;
@@ -261,10 +263,11 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         for (Robot robot : inventaireDeRobot) {
             if (robot.getCpu() >= 100) {
                 DoitEtreNotifie = true;
-                notification.setTitre("SURCHARGE CPU");
+                Notification nouvelleNotification = new Notification("SURCHARGE CPU", "Le CPU du robot " + robot.getNom() + " est surchagé", TypeNotification.PROBLEME_ROBOT);
+                /*notification.setTitre("SURCHARGE CPU");
                 notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(notification);
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                listeNotifications.add(nouvelleNotification);
             }
         }
         return DoitEtreNotifie;
@@ -275,10 +278,11 @@ public class Fournisseur extends Membre implements java.io.Serializable{
 
         if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
             DoitEtreNotifie = true;
-            notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
-            notification.setMesssage("Un utilisateur a acheté une de vos composantes");
-            notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
-            listeNotifications.add(notification);
+            Notification nouvelleNotification = new Notification("ACHAT D'UNE VOS COMPOSANTES", "Un utilisateur a acheté une de vos composantes", TypeNotification.ACHAT_COMPOSANTS);
+            //notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
+            //notification.setMesssage("Un utilisateur a acheté une de vos composantes");
+            //notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
+            listeNotifications.add(nouvelleNotification);
         }
         return DoitEtreNotifie;
     }

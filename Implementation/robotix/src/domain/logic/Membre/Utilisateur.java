@@ -32,7 +32,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private String prenom;
     private int point;
     private Tache tache;
-    private Notification notification = new Notification();
+    //private Notification notification = new Notification();
     private int taillePrecedenteListeSuiveur;
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
@@ -194,10 +194,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         for (Robot robot : getListeRobot()) {
             if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
                 DoitEtreNotifie = true;
-                getNotification().setTitre("MAUVAIS FONCTIONNEMENT");
-                getNotification().setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                getListeNotifications().add(getNotification());
+                Notification nouvelleNotif = new Notification("MAUVAIS FONCTIONNEMENT", "Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.", TypeNotification.PROBLEME_ROBOT);
+                //getNotification().setTitre("MAUVAIS FONCTIONNEMENT");
+                //getNotification().setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
+                //getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
+                getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
@@ -209,10 +210,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         for (Robot robot : getListeRobot()) {
             if (robot.getBatterie() >= 20) {
                 DoitEtreNotifie = true;
-                getNotification().setTitre("BATTERIE FAIBLE");
+                Notification nouvelleNotif = new Notification("BATTERIE FAIBLE", "La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.", TypeNotification.PROBLEME_ROBOT);
+                /*getNotification().setTitre("BATTERIE FAIBLE");
                 getNotification().setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                getListeNotifications().add(getNotification());
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
@@ -224,10 +226,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         for (Robot robot : getListeRobot()) {
             if (robot.getCpu() >= 100) {
                 DoitEtreNotifie = true;
-                getNotification().setTitre("SURCHARGE CPU");
+                Notification nouvelleNotif = new Notification("SURCHARGE CPU", "Le CPU du robot " + robot.getNom() + " est surchagé", TypeNotification.PROBLEME_ROBOT);
+                /*getNotification().setTitre("SURCHARGE CPU");
                 getNotification().setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                getListeNotifications().add(getNotification());
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
@@ -253,10 +256,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
         if (getListSuiveur().size() > taillePrecedenteListeSuiveur) {
             DoitEtreNotifie = true;
-            getNotification().setTitre("NOUVEAU ABONNÉ");
+            Notification nouvelleNotif = new Notification("NOUVEAU ABONNÉ", "Un nouvel utilisateur suit votre profil", TypeNotification.NOUVEAU_ABONNE);
+            /*getNotification().setTitre("NOUVEAU ABONNÉ");
             getNotification().setMesssage("Un nouvel utilisateur suit votre profil");
-            getNotification().setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
-            getListeNotifications().add(getNotification());
+            getNotification().setTypeNotification(TypeNotification.NOUVEAU_ABONNE);*/
+            getListeNotifications().add(nouvelleNotif);
         }
         return DoitEtreNotifie;
     }
@@ -283,10 +287,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             // Vérifiez si la date de l'activité est dans les trois jours à venir
             if (joursRestants >=0 && joursRestants <=3) {
                 DoitEtreNotifie = true;
-                getNotification().setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
+                Notification nouvelleNotif = new Notification("RAPPEL D'UNE DE VOS ACTIVITÉS", "Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom(), TypeNotification.SENSIBILISATION);
+                /*getNotification().setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
                 getNotification().setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
-                getNotification().setTypeNotification(TypeNotification.SENSIBILISATION);
-                getListeNotifications().add(getNotification());
+                getNotification().setTypeNotification(TypeNotification.SENSIBILISATION);*/
+                getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
@@ -535,7 +540,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public void addNotifs(String titre,String message, String date, TypeNotification typeNotification){
-        this.listeNotifications.add(new Notification(titre, message, date, typeNotification));
+        this.listeNotifications.add(new Notification(titre, message, typeNotification));
     }
 
     public ArrayList<Activite> getListeActivitesRejoint() {
@@ -566,14 +571,14 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.tache = tache;
     }
 
-    public Notification getNotification() {
+    /*public Notification getNotification() {
         return notification;
-    }
+    }*/
 
 
-    public void setNotifs(ArrayList<Notification> notifs) {
+    /*public void setNotifs(ArrayList<Notification> notifs) {
         this.notification = notification;
-    }
+    }*/
     public void ajouterUnInteret(Interet i){
         this.listeInteret.add(i);
     }

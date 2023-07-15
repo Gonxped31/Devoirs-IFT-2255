@@ -16,14 +16,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5141111111"
+    "telephone": "5141111111",
+    "notifs": []
   },
   {
     "nom": "Damov",
@@ -42,14 +36,28 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5142222222"
+    "telephone": "5142222222",
+    "notifs": []
+  },
+  {
+    "nom": "Gbian",
+    "prenom": "Samir",
+    "pseudo": "SB",
+    "listeInteret": [],
+    "motDePasse": "SaMir",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeNotifications": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "telephone": "5143333333",
+    "notifs": []
   },
   {
     "nom": "Doren",
@@ -68,14 +76,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5144444444"
+    "telephone": "5144444444",
+    "notifs": []
   },
   {
     "nom": "Brice",
@@ -94,14 +96,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "51455555555"
+    "telephone": "51455555555",
+    "notifs": []
   },
   {
     "nom": "Francois",
@@ -120,14 +116,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5146666666"
+    "telephone": "5146666666",
+    "notifs": []
   },
   {
     "nom": "Mehdi",
@@ -146,14 +136,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5147777777"
+    "telephone": "5147777777",
+    "notifs": []
   },
   {
     "nom": "Monica",
@@ -172,14 +156,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5148888888"
+    "telephone": "5148888888",
+    "notifs": []
   },
   {
     "nom": "Stefano",
@@ -198,14 +176,8 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5149999999"
+    "telephone": "5149999999",
+    "notifs": []
   },
   {
     "nom": "James",
@@ -224,53 +196,7 @@
     "listSuiveur": [],
     "point": 0,
     "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [],
-    "telephone": "5141010101"
-  },
-  {
-    "nom": "Gbian",
-    "prenom": "Samir",
-    "pseudo": "SB",
-    "listeInteret": [],
-    "motDePasse": "SaMir",
-    "listeRobot": [],
-    "listeTaches": [],
-    "listeActions": [],
-    "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
-    "listeNotifications": [
-      {
-        "titre": "Je",
-        "date": "test",
-        "typeNotification": "NOUVEAU_ABONNE",
-        "messsage": "suis"
-      }
-    ],
-    "listeActivitesRejoint": [],
-    "listeActivitesCreer": [],
-    "listSuiveur": [],
-    "point": 0,
-    "tache": null,
-    "notification": {
-      "titre": null,
-      "date": "01/02/1223",
-      "typeNotification": "NOUVEAU_ABONNE",
-      "messsage": "TEST"
-    },
-    "notifs": [
-      {
-        "titre": "Je",
-        "date": "test",
-        "typeNotification": "NOUVEAU_ABONNE",
-        "messsage": "suis"
-      }
-    ],
-    "telephone": "5143333333"
+    "telephone": "5141010101",
+    "notifs": []
   }
 ]

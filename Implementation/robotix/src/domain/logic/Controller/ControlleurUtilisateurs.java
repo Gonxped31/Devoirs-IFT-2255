@@ -197,8 +197,6 @@ public class ControlleurUtilisateurs {
 
     //TODO
     public void ajouterNotifs(String nom, String pseudo, String titre, String message, String date, TypeNotification typeNotif){
-        System.out.println(nom);
-        System.out.println(dataBaseController.retournerUtilisateur(nom));
         Utilisateur u = dataBaseController.retournerUtilisateur(nom);
         ArrayList<Notification> notifsCourantes = u.getNotifs();
         this.dataBaseController.supprimerUtilisateur(u);
