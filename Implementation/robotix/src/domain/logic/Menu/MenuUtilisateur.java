@@ -64,22 +64,71 @@ public class MenuUtilisateur extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherMenuUtilisateur();
-
             }
         });
-
         btnConfirmerInscription.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherMenuUtilisateur();
-
             }
         });
-
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        btnModifierProfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuModifierProfile();
+            }
+        });
+        btnGererFlotte.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnGererTaches.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnGererActivites.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnGererReseauSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnAchats.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuAchats();
+            }
+        });
+        btnVoirNotifications.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuNotifications();
+            }
+        });
+        btnRequetePublique.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuRequetePublique();
+            }
+        });
+        btnSouscrireInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherListeInterets();
             }
         });
     }
@@ -160,6 +209,26 @@ public class MenuUtilisateur extends JFrame {
         loginUtilisateurPanel.add(mdpField);
         loginUtilisateurPanel.add(btnSeConnecter);
         loginUtilisateurPanel.add(btnRetour);
+    }
+
+    public void afficherMenuModifierProfile() {
+
+    }
+
+    public void afficherMenuAchats() {
+
+    }
+
+    public void afficherMenuNotifications() {
+
+    }
+
+    public void afficherMenuRequetePublique() {
+
+    }
+
+    public void afficherListeInterets() {
+
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
