@@ -23,6 +23,7 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
+    private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JPanel loginUtilisateurPanel = new JPanel();
@@ -45,18 +46,36 @@ public class MenuUtilisateur extends JFrame {
     private JTextField telephoneField = new JTextField();
     private JTextField adresseField = new JTextField();
     private JTextField nomCompagnieField = new JTextField();
+    private JButton btnSeConnecter = new JButton("Se Connecter");
+    private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
-    private JButton btnGererFlotte = new JButton("Gérer ma flotte");
-    private JButton btnGererTaches = new JButton("Gérer mes tâches");
-    private JButton btnGererActivites = new JButton("Gérer mes activités");
-    private JButton btnGererReseauSocial = new JButton("Gérer mon réseau social");
+    private JButton btnGererFlotte = new JButton("Gerer ma flotte");
+    private JButton btnGererTaches = new JButton("Gerer mes taches");
+    private JButton btnGererActivites = new JButton("Gerer mes activites");
+    private JButton btnGererReseauSocial = new JButton("Gerer mon reseau social");
     private JButton btnAchats = new JButton("Achats");
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
-    private JButton btnRequetePublique = new JButton("Faire une requête publique");
-    private JButton btnSouscrireInteret = new JButton("Souscrire à un intérêt");
+    private JButton btnRequetePublique = new JButton("Faire une requete publique");
+    private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
 
     public MenuUtilisateur() throws IOException {
+        btnSeConnecter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuUtilisateur();
+
+            }
+        });
+
+        btnConfirmerInscription.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherMenuUtilisateur();
+
+            }
+        });
+
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,12 +84,35 @@ public class MenuUtilisateur extends JFrame {
         });
     }
 
-    public void afficherFormulaireInscription(JFrame jFrame) {
-        creerFormulaireInscription();
+    public void afficherMenuUtilisateur() {
+        creerMenuUtilisateur();
         jFrame.getContentPane().removeAll();
-        jFrame.setContentPane(inscriptionUtilisateurPanel);
+        jFrame.setContentPane(menuUtilisateurPanel);
         jFrame.revalidate();
         jFrame.repaint();
+    }
+
+    public void creerMenuUtilisateur() {
+        menuUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        menuUtilisateurPanel.add(btnModifierProfil);
+        menuUtilisateurPanel.add(btnGererFlotte);
+        menuUtilisateurPanel.add(btnGererTaches);
+        menuUtilisateurPanel.add(btnGererActivites);
+        menuUtilisateurPanel.add(btnGererReseauSocial);
+        menuUtilisateurPanel.add(btnAchats);
+        menuUtilisateurPanel.add(btnVoirNotifications);
+        menuUtilisateurPanel.add(btnRequetePublique);
+        menuUtilisateurPanel.add(btnSouscrireInteret);
+        menuUtilisateurPanel.add(btnRetour);
+    }
+
+    public void afficherFormulaireInscription(JFrame jFrame) {
+        this.jFrame = jFrame;
+        creerFormulaireInscription();
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(inscriptionUtilisateurPanel);
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void creerFormulaireInscription() {
@@ -95,15 +137,17 @@ public class MenuUtilisateur extends JFrame {
         inscriptionUtilisateurPanel.add(nomCompagnieField);
         inscriptionUtilisateurPanel.add(interetsLabel);
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
+        inscriptionUtilisateurPanel.add(btnConfirmerInscription);
         inscriptionUtilisateurPanel.add(btnRetour);
     }
 
     public void afficherFormulaireConnexion(JFrame jFrame) {
+        this.jFrame = jFrame;
         creerFormulaireConnexion();
-        jFrame.getContentPane().removeAll();
-        jFrame.setContentPane(loginUtilisateurPanel);
-        jFrame.revalidate();
-        jFrame.repaint();
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(loginUtilisateurPanel);
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void creerFormulaireConnexion() {
@@ -114,6 +158,7 @@ public class MenuUtilisateur extends JFrame {
         loginUtilisateurPanel.add(pseudoField);
         loginUtilisateurPanel.add(mdpLabel);
         loginUtilisateurPanel.add(mdpField);
+        loginUtilisateurPanel.add(btnSeConnecter);
         loginUtilisateurPanel.add(btnRetour);
     }
 
