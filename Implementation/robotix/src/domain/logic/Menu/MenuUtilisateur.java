@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
+import domain.logic.GUI.MenuModifierProfile;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -49,6 +50,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
+    // MENU UTILISATEUR
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
     private JButton btnGererFlotte = new JButton("Gerer ma flotte");
     private JButton btnGererTaches = new JButton("Gerer mes taches");
@@ -58,6 +60,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
+    private MenuModifierProfile menuModifierProfile = new MenuModifierProfile();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -212,7 +215,10 @@ public class MenuUtilisateur extends JFrame {
     }
 
     public void afficherMenuModifierProfile() {
-
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(menuModifierProfile.getModifierProfilePanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void afficherMenuAchats() {
