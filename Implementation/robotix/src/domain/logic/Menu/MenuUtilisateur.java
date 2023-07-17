@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Notification;
 
@@ -16,6 +17,7 @@ import javax.crypto.spec.PSource;
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private DbControleur dbControlleur = new DbControleur();
     public Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
@@ -123,7 +125,6 @@ public class MenuUtilisateur {
                 break;
             } else {
                 System.out.println(connexion + " n'existe pas.");
-
             }
         }
         menu = new Menu();
@@ -220,7 +221,11 @@ public class MenuUtilisateur {
                 System.out.println("Entrez le numero du robot a acheter");
                 int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
-                System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
+                String numeroSerie = dbControlleur.acheterRobot(nomFournisseur, numero).toString();
+                System.out.println(numeroSerie);
+
+                //Ajouter nom fournisseur
+                controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de robot",pseudo +" a achete " + dbControlleur.retournerRobot(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {
@@ -236,6 +241,7 @@ public class MenuUtilisateur {
                     System.out.println("Entrez le numero de la composante à acheter");
                     String numero = scanner.nextLine();
                     System.out.println("Achat confirmé");
+                    //controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de composant",pseudo +" a achete " + dbControlleur.retournerComposante(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
                 }
 
                 menuUtilisateur(scanner, pseudo);

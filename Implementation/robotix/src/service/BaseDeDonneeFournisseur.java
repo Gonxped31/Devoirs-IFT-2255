@@ -139,6 +139,13 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .orElse(null);
     }
 
+    public Fournisseur retournerFournisseur(String nom){
+        return (Fournisseur) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getNom().equals(nom))
+                .findFirst()
+                .orElse(null);
+    }
+
     public String recupererLalisteDesFournisseur()
     {
         return (String) this.getListObjet().stream()

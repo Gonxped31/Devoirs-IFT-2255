@@ -18,7 +18,7 @@ public class Notification implements java.io.Serializable{
     private String date;// = LocalDateTime.now();
     private TypeNotification typeNotification;
 
-
+/*
     public Notification() {
         //typeNotification = TypeNotification.NOUVEAU_ABONNE;
         //message = "TEST";
@@ -27,7 +27,7 @@ public class Notification implements java.io.Serializable{
         //DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         //date = LocalDateTime.parse(date.format(formatDate));
     }
-
+*/
     public Notification(String titre, String message, TypeNotification typeNotification){
         this.titre = titre;
         this.message = message;

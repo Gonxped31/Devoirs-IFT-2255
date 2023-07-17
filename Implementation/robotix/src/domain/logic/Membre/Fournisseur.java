@@ -198,7 +198,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
             case "mdp" -> this.setMotDePasse(info);
         }
     }
-
+/*
     public boolean[] notifier() {
         boolean[] tabBoolean = new boolean[4];
         boolean NotifierEtatRobot;
@@ -217,7 +217,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         tabBoolean[3] = NotifiercCPURobot;
 
         return tabBoolean;
-    }
+    }*/
     @JsonIgnore
     public String getProfilFournisseur(){
         return "Nom :" + super.getNom() + "\nAdresse courriel : " +
@@ -227,6 +227,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
                 "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() + "\n";
     }
+    /*
     public boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;
 
@@ -236,7 +237,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotification = new Notification("MAUVAIS FONCTIONNEMENT", "Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.", TypeNotification.PROBLEME_ROBOT);
                 /*notification.setTitre("MAUVAIS FONCTIONNEMENT");
                 notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(nouvelleNotification);
             }
         }
@@ -251,7 +252,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotification = new Notification("BATTERIE FAIBLE", "La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.", TypeNotification.PROBLEME_ROBOT);
                 /*notification.setTitre("BATTERIE FAIBLE");
                 notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(nouvelleNotification);
             }
         }
@@ -266,7 +267,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotification = new Notification("SURCHARGE CPU", "Le CPU du robot " + robot.getNom() + " est surchagé", TypeNotification.PROBLEME_ROBOT);
                 /*notification.setTitre("SURCHARGE CPU");
                 notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(nouvelleNotification);
             }
         }
@@ -285,7 +286,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
             listeNotifications.add(nouvelleNotification);
         }
         return DoitEtreNotifie;
-    }
+    }*/
 
     public  ArrayList<Composant> produireComposant(ArrayList<ArrayList<String>> nomsComposant) {
         ArrayList<Composant> comps = new ArrayList<>();
@@ -301,6 +302,19 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     @JsonProperty("telephone")
     public String getNumeroTelephone() {
         return this.getTelephone();
+    }
+
+    @JsonProperty("listeNotifications")
+    public ArrayList<Notification> getNotifs(){
+        return this.listeNotifications;
+    }
+
+    public void addNotifs(String titre,String message, TypeNotification typeNotification){
+        this.listeNotifications.add(new Notification(titre, message, typeNotification));
+    }
+
+    public void setListeNotifications(@JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
+        this.listeNotifications = listeNotifications;
     }
 
 }

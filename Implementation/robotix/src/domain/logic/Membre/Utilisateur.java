@@ -12,10 +12,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.*;
 
-
-
-
-
 public class Utilisateur extends Membre implements java.io.Serializable{
 
     private ArrayList<Robot> listeRobot = new ArrayList<>();
@@ -53,6 +49,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
     }
+
 
 
     public String getPseudo(){
@@ -158,7 +155,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
 
-
+    /*
     public boolean[] notifier(){
         boolean[] tabBoolean = new boolean[7];
         boolean NotifierEtatRobot;
@@ -188,6 +185,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return tabBoolean;
     }
 
+    /*
     private boolean verifierEtatRobot() {
         boolean DoitEtreNotifie = false;
 
@@ -213,13 +211,14 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotif = new Notification("BATTERIE FAIBLE", "La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.", TypeNotification.PROBLEME_ROBOT);
                 /*getNotification().setTitre("BATTERIE FAIBLE");
                 getNotification().setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
-    }
+    }*/
 
+    /*
     private boolean verifierCPURobot() {
         boolean DoitEtreNotifie = false;
 
@@ -229,13 +228,14 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotif = new Notification("SURCHARGE CPU", "Le CPU du robot " + robot.getNom() + " est surchagé", TypeNotification.PROBLEME_ROBOT);
                 /*getNotification().setTitre("SURCHARGE CPU");
                 getNotification().setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);*/
+                getNotification().setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
-    }
+    }*/
 
+    /*
     private boolean verifierNouvelleActivite() {
         boolean DoitEtreNotifie = false;
 
@@ -247,10 +247,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                 notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
                 listeNotifications.add(notification);
             }
-        }*/
+        }
         return DoitEtreNotifie;
-    }
+    }*/
 
+    /*
     private boolean verifierNouveauAbonne() {
         boolean DoitEtreNotifie = false;
 
@@ -259,12 +260,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             Notification nouvelleNotif = new Notification("NOUVEAU ABONNÉ", "Un nouvel utilisateur suit votre profil", TypeNotification.NOUVEAU_ABONNE);
             /*getNotification().setTitre("NOUVEAU ABONNÉ");
             getNotification().setMesssage("Un nouvel utilisateur suit votre profil");
-            getNotification().setTypeNotification(TypeNotification.NOUVEAU_ABONNE);*/
+            getNotification().setTypeNotification(TypeNotification.NOUVEAU_ABONNE);
             getListeNotifications().add(nouvelleNotif);
         }
         return DoitEtreNotifie;
-    }
+    }*/
 
+    /*
     private boolean verifierNouveauParticipant() {
         boolean DoitEtreNotifie = false;
 
@@ -274,10 +276,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             notification.setMesssage("Un nouvel utilisateur joint une de vos activités");
             notification.setTypeNotification(TypeNotification.NOUVEAU_PARTICIPANT);
             listeNotifications.add(notification);
-        }*/
+        }
         return DoitEtreNotifie;
-    }
+    }*/
 
+    /*
     private boolean verifierDateLimiteActivite() {
         boolean DoitEtreNotifie = false;
 
@@ -290,12 +293,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                 Notification nouvelleNotif = new Notification("RAPPEL D'UNE DE VOS ACTIVITÉS", "Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom(), TypeNotification.SENSIBILISATION);
                 /*getNotification().setTitre("RAPPEL D'UNE DE VOS ACTIVITÉS");
                 getNotification().setMesssage("Il ne reste que " + joursRestants + " avant le début de l'activité " + activite.getNom());
-                getNotification().setTypeNotification(TypeNotification.SENSIBILISATION);*/
+                getNotification().setTypeNotification(TypeNotification.SENSIBILISATION);
                 getListeNotifications().add(nouvelleNotif);
             }
         }
         return DoitEtreNotifie;
-    }
+    }*/
 
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
@@ -534,12 +537,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Notification> getListeNotifications() {
         return listeNotifications;
     }
-
-    public void setListeNotifications(@JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
+    @JsonProperty("listeNotifications")
+    public void setListeNotifications( ArrayList<Notification> listeNotifications) {
         this.listeNotifications = listeNotifications;
     }
 
-    public void addNotifs(String titre,String message, String date, TypeNotification typeNotification){
+    public void addNotifs(String titre,String message, TypeNotification typeNotification){
         this.listeNotifications.add(new Notification(titre, message, typeNotification));
     }
 

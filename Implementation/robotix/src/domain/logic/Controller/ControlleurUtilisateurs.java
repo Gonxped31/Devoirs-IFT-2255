@@ -196,11 +196,11 @@ public class ControlleurUtilisateurs {
     }
 
     //TODO
-    public void ajouterNotifs(String nom, String pseudo, String titre, String message, String date, TypeNotification typeNotif){
+    public void ajouterNotifs(String nom, String titre, String message, TypeNotification typeNotif){
         Utilisateur u = dataBaseController.retournerUtilisateur(nom);
         ArrayList<Notification> notifsCourantes = u.getNotifs();
         this.dataBaseController.supprimerUtilisateur(u);
-        u.addNotifs(titre, message, date, typeNotif);
+        u.addNotifs(titre, message,  typeNotif);
         u.setListeNotifications(notifsCourantes);
         this.dataBaseController.ajouterUtilisateur(u);
     }
@@ -213,10 +213,10 @@ public class ControlleurUtilisateurs {
     {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
     }
-
+    /*
     public boolean[] notifier() {
         return this.utilisateurCourant.notifier();
-    }
+    }*/
     public boolean souscrireAunInteret(String nomInteret){
         Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
         if( i==null)

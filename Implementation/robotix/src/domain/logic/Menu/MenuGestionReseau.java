@@ -27,7 +27,7 @@ public class MenuGestionReseau {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
                 //controlleurUtilisateurs.suivreUtilisateur(nom);
-                controlleurUtilisateurs.ajouterNotifs(nom, pseudo,"Je", "suis", "test", TypeNotification.NOUVEAU_ABONNE);
+                controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
                 if (!nom.equals(""))
                     System.out.println("Vous suivez maintenant " + nom);
                 else {

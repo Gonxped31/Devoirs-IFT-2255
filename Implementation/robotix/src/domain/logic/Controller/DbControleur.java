@@ -100,6 +100,10 @@ public class DbControleur {
         return baseDeDonneeUtilisateur.retournerUtilisateur(pseudo);
     }
 
+    public Fournisseur retournerFournisseur(String nom){
+        return baseDeDonneeFournisseur.retournerFournisseur(nom);
+    }
+
     public void supprimerFournisseur(Fournisseur f) {
         this.baseDeDonneeFournisseur.supprimerObjet(f);
     }

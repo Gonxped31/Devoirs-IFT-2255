@@ -102,15 +102,15 @@ public class ControlleurFournisseurs {
         return fournisseurCourant.getProfilFournisseur();
     }
 
-    //TODO
-    public void ajouterNotifs(String nom, String pseudo, String titre, String message, String date, TypeNotification typeNotif){
-        Fournisseur u = dataBaseController.retournerUtilisateur(nom);
-        ArrayList<Notification> notifsCourantes = u.getNotifs();
-        this.dataBaseController.supprimerUtilisateur(u);
-        u.addNotifs(titre, message, date, typeNotif);
-        u.setListeNotifications(notifsCourantes);
-        this.dataBaseController.ajouterUtilisateur(u);
+    public void ajouterNotifs(String nom, String titre, String message,  TypeNotification typeNotif){
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        ArrayList<Notification> notifsCourantes = f.getNotifs();
+        this.dataBaseController.supprimerFournisseur(f);
+        f.addNotifs(titre, message, typeNotif);
+        f.setListeNotifications(notifsCourantes);
+        this.dataBaseController.ajouterFournisseur(f);
     }
+
 
 
 }
