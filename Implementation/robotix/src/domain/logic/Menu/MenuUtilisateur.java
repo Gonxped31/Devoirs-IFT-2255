@@ -23,7 +23,7 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
-    private JPanel menuUtilisateurPanel;
+    private JPanel menuUtilisateurPanel = new JPanel();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JPanel loginUtilisateurPanel = new JPanel();
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
@@ -46,6 +46,15 @@ public class MenuUtilisateur extends JFrame {
     private JTextField adresseField = new JTextField();
     private JTextField nomCompagnieField = new JTextField();
     private JButton btnRetour = new JButton("Retour");
+    private JButton btnModifierProfil = new JButton("Modifier mon profil");
+    private JButton btnGererFlotte = new JButton("Gérer ma flotte");
+    private JButton btnGererTaches = new JButton("Gérer mes tâches");
+    private JButton btnGererActivites = new JButton("Gérer mes activités");
+    private JButton btnGererReseauSocial = new JButton("Gérer mon réseau social");
+    private JButton btnAchats = new JButton("Achats");
+    private JButton btnVoirNotifications = new JButton("Voir mes notifications");
+    private JButton btnRequetePublique = new JButton("Faire une requête publique");
+    private JButton btnSouscrireInteret = new JButton("Souscrire à un intérêt");
 
     public MenuUtilisateur() throws IOException {
         btnRetour.addActionListener(new ActionListener() {
