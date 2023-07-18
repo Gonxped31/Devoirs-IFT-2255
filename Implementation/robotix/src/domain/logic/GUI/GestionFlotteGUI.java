@@ -20,7 +20,7 @@ public class GestionFlotteGUI {
         gestionFlottePanel.add(btnCreerAction);
     }
 
-    public JPanel getGestionFlottePanel() {
+    public JPanel getPanel() {
         return gestionFlottePanel;
     }
 }

@@ -26,7 +26,7 @@ public class ModifierProfileGUI {
         modifierProfilePanel.add(btnMdp);
     }
 
-    public JPanel getModifierProfilePanel() {
+    public JPanel getPanel() {
         return modifierProfilePanel;
     }
 }
