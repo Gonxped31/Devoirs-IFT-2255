@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
 import domain.logic.GUI.GestionFlotteGUI;
+import domain.logic.GUI.GestionTachesGUI;
 import domain.logic.GUI.ModifierProfileGUI;
 import domain.logic.Membre.Notification;
 
@@ -63,6 +64,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
     private ModifierProfileGUI modifierProfileGUI = new ModifierProfileGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
+    private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -98,7 +100,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererTaches.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                afficherMenuGestionTaches();
             }
         });
         btnGererActivites.addActionListener(new ActionListener() {
@@ -227,6 +229,13 @@ public class MenuUtilisateur extends JFrame {
     public void afficherMenuGestionFlotte() {
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(gestionFlotteGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
+    }
+
+    public void afficherMenuGestionTaches() {
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(gestionTachesGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
