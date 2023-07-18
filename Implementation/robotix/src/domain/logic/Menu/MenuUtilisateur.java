@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
-import domain.logic.GUI.MenuModifierProfile;
+import domain.logic.GUI.ModifierProfileGUI;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -60,7 +60,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
-    private MenuModifierProfile menuModifierProfile = new MenuModifierProfile();
+    private ModifierProfileGUI menuModifierProfile = new ModifierProfileGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {

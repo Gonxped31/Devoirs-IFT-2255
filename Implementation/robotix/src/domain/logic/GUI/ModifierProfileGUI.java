@@ -2,7 +2,7 @@ package domain.logic.GUI;
 
 import javax.swing.*;
 
-public class MenuModifierProfile {
+public class ModifierProfileGUI {
     private JPanel modifierProfilePanel = new JPanel();
     private JLabel modifierProfileLabel = new JLabel("Que voulez-vous modifier?");
     private JButton btnNom = new JButton("Nom");
@@ -14,7 +14,7 @@ public class MenuModifierProfile {
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnMdp = new JButton("Mot de passe");
 
-    public MenuModifierProfile() {
+    public ModifierProfileGUI() {
         modifierProfilePanel.add(modifierProfileLabel);
         modifierProfilePanel.add(btnNom);
         modifierProfilePanel.add(btnPrenom);
@@ -28,9 +28,5 @@ public class MenuModifierProfile {
 
     public JPanel getModifierProfilePanel() {
         return modifierProfilePanel;
-    }
-
-    public void setModifierProfilePanel(JPanel modifierProfilePanel) {
-        this.modifierProfilePanel = modifierProfilePanel;
     }
 }
