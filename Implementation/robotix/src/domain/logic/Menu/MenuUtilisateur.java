@@ -67,6 +67,7 @@ public class MenuUtilisateur extends JFrame {
     private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
     private AchatsGUI achatsGUI = new AchatsGUI();
     private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
+    private RequetePubliqueGUI requetePubliqueGUI = new RequetePubliqueGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -261,7 +262,6 @@ public class MenuUtilisateur extends JFrame {
         this.jFrame.setContentPane(achatsGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
-
     }
 
     public void afficherMenuNotifications() {
@@ -269,11 +269,13 @@ public class MenuUtilisateur extends JFrame {
         this.jFrame.setContentPane(gestionNotifsGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
-
     }
 
     public void afficherMenuRequetePublique() {
-
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(requetePubliqueGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void afficherListeInterets() {
