@@ -35,7 +35,7 @@ public class MenuUtilisateur extends JFrame {
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
-    private JPanel loginUtilisateurPanel = new JPanel();
+    private JPanel connexionUtilisateurPanel = new JPanel();
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
     private JLabel loginUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
     private JLabel prenomLabel = new JLabel("Prenom");
@@ -214,21 +214,21 @@ public class MenuUtilisateur extends JFrame {
         this.jFrame = jFrame;
         creerFormulaireConnexion();
         this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(loginUtilisateurPanel);
+        this.jFrame.setContentPane(connexionUtilisateurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
     public void creerFormulaireConnexion() {
-        loginUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        loginUtilisateurPanel.add(loginUtilisateurLabel);
-        loginUtilisateurPanel.add(Box.createHorizontalStrut(10));
-        loginUtilisateurPanel.add(pseudoLabel);
-        loginUtilisateurPanel.add(pseudoField);
-        loginUtilisateurPanel.add(mdpLabel);
-        loginUtilisateurPanel.add(mdpField);
-        loginUtilisateurPanel.add(btnSeConnecter);
-        loginUtilisateurPanel.add(btnRetour);
+        connexionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        connexionUtilisateurPanel.add(loginUtilisateurLabel);
+        connexionUtilisateurPanel.add(Box.createHorizontalStrut(10));
+        connexionUtilisateurPanel.add(pseudoLabel);
+        connexionUtilisateurPanel.add(pseudoField);
+        connexionUtilisateurPanel.add(mdpLabel);
+        connexionUtilisateurPanel.add(mdpField);
+        connexionUtilisateurPanel.add(btnSeConnecter);
+        connexionUtilisateurPanel.add(btnRetour);
     }
 
     public void afficherMenuModifierProfile() {
