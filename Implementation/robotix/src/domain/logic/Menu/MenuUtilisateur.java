@@ -15,7 +15,7 @@ import domain.logic.GUI.UtilisateurGUI.GestionFlotteGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionNotifsGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionReseauGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionTachesGUI;
-import domain.logic.GUI.UtilisateurGUI.ModifierProfileGUI;
+import domain.logic.GUI.UtilisateurGUI.ModifierProfilUtilisateurGUI;
 import domain.logic.GUI.UtilisateurGUI.RequetePubliqueGUI;
 import domain.logic.GUI.UtilisateurGUI.SouscrireInteretGUI;
 import domain.logic.Membre.Notification;
@@ -70,7 +70,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
-    private ModifierProfileGUI modifierProfileGUI = new ModifierProfileGUI();
+    private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
     private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
     private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
@@ -102,7 +102,7 @@ public class MenuUtilisateur extends JFrame {
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherMenuModifierProfile();
+                afficherMenuModifierProfil();
             }
         });
         btnGererFlotte.addActionListener(new ActionListener() {
@@ -234,9 +234,9 @@ public class MenuUtilisateur extends JFrame {
         connexionUtilisateurPanel.add(btnRetour);
     }
 
-    public void afficherMenuModifierProfile() {
+    public void afficherMenuModifierProfil() {
         this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(modifierProfileGUI.getPanel());
+        this.jFrame.setContentPane(modifierProfilUtilisateurGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
