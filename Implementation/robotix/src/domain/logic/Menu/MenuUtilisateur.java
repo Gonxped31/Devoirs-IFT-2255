@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
+import domain.logic.GUI.GestionActivitesGUI;
 import domain.logic.GUI.GestionFlotteGUI;
 import domain.logic.GUI.GestionTachesGUI;
 import domain.logic.GUI.ModifierProfileGUI;
@@ -65,6 +66,7 @@ public class MenuUtilisateur extends JFrame {
     private ModifierProfileGUI modifierProfileGUI = new ModifierProfileGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
     private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
+    private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -106,7 +108,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererActivites.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                afficherMenuGestionActivites();
             }
         });
         btnGererReseauSocial.addActionListener(new ActionListener() {
@@ -236,6 +238,13 @@ public class MenuUtilisateur extends JFrame {
     public void afficherMenuGestionTaches() {
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(gestionTachesGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
+    }
+
+    public void afficherMenuGestionActivites() {
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(gestionActivitesGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
