@@ -9,7 +9,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
-import domain.logic.GUI.Utilisateur.*;
+import domain.logic.GUI.UtilisateurGUI.AchatsGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionActivitesGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionFlotteGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionNotifsGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionReseauGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionTachesGUI;
+import domain.logic.GUI.UtilisateurGUI.ModifierProfileGUI;
+import domain.logic.GUI.UtilisateurGUI.RequetePubliqueGUI;
+import domain.logic.GUI.UtilisateurGUI.SouscrireInteretGUI;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
