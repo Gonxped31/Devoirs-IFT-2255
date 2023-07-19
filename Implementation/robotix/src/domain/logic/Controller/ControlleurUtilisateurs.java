@@ -210,7 +210,6 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.voirNotifications();
     }
 
-    //TODO
     public void ajouterNotifs(String nom, String titre, String message, TypeNotification typeNotif){
         Utilisateur u = dataBaseController.retournerUtilisateur(nom);
         ArrayList<Notification> notifsCourantes = u.getNotifs();

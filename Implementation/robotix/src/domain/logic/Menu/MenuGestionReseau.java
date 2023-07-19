@@ -32,6 +32,7 @@ public class MenuGestionReseau {
                 };
                 if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
                     System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
+                    gererReseauSocial(scanner, pseudo);
                 }
 
                 controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
