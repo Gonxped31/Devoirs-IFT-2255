@@ -6,7 +6,7 @@ public class GererComposantesGUI {
     private JPanel gererComposantesPanel = new JPanel();
 
     public GererComposantesGUI() {
-        
+
     }
 
     public JPanel getPanel() {

@@ -2,9 +2,7 @@ package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
-import domain.logic.GUI.FournisseurGUI.EnregistrerComposanteGUI;
-import domain.logic.GUI.FournisseurGUI.ModifierProfilFournisseurGUI;
-import domain.logic.GUI.FournisseurGUI.RequetePubliqueFournisseurGUI;
+import domain.logic.GUI.FournisseurGUI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,9 +33,13 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnModifierProfil = new JButton("Modifier mon profil");
 	private JButton btnRequetePublique = new JButton("Faire une requete publique");
 	private JButton btnRetour = new JButton("Retour");
+	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
+	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
+	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
+	private GererComposantesGUI gererComposantesGUI = new GererComposantesGUI();
 	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
-	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
+
 
 	/*private JTextField nom;
 	private JTextField email;
