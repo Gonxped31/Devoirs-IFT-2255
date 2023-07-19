@@ -66,6 +66,7 @@ public class MenuUtilisateur extends JFrame {
     private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
     private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
     private AchatsGUI achatsGUI = new AchatsGUI();
+    private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -264,6 +265,10 @@ public class MenuUtilisateur extends JFrame {
     }
 
     public void afficherMenuNotifications() {
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(gestionNotifsGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
 
     }
 
