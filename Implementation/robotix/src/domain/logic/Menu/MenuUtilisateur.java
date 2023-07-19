@@ -68,6 +68,7 @@ public class MenuUtilisateur extends JFrame {
     private AchatsGUI achatsGUI = new AchatsGUI();
     private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
     private RequetePubliqueGUI requetePubliqueGUI = new RequetePubliqueGUI();
+    private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -279,7 +280,10 @@ public class MenuUtilisateur extends JFrame {
     }
 
     public void afficherListeInterets() {
-
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(souscrireInteretGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
