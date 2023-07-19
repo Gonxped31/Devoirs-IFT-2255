@@ -43,6 +43,22 @@ public class MenuGestionReseau {
                 }
                 gererReseauSocial(scanner, pseudo);
             } case "2" -> {
+                System.out.println("Que voulez-vous faire?");
+                System.out.println("1- Voir a qui je suis abonne");
+                System.out.println("2- Supprimer un utilisateur de ma liste d'abonne");
+                String decision = scanner.nextLine();
+                switch (decision) {
+                    case "1" -> {
+                        System.out.println(controlleurUtilisateurs.voirListeUtilisateur(pseudo));
+                        gererReseauSocial(scanner, pseudo);
+                    }
+                    case "2" -> {
+                        System.out.println("Quel utilisateur voulez vous supprimer de votre liste");
+                        String nom = scanner.nextLine();
+                        controlleurUtilisateurs.suppriemrSuivreUtilisateur(pseudo, nom);
+                        gererReseauSocial(scanner, pseudo);
+                    }
+                }
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
                 gererReseauSocial(scanner, pseudo);

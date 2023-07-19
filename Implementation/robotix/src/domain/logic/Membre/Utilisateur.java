@@ -586,4 +586,21 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.listeInteret.add(i);
     }
 
+    public String voirListeUtilisateur() {
+        StringBuilder sb = new StringBuilder();
+        for (Utilisateur u : this.listeUtilisateursSuivi) {
+            sb.append(u.getPseudo()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public boolean supprimerUtilisateurDeMaListe(String utilASupprimer) {
+        for (Utilisateur u : this.listeUtilisateursSuivi){
+            if (u.getPseudo().equals(utilASupprimer)){
+                this.listeUtilisateursSuivi.remove(u);
+                return true;
+            }
+        }
+        return false;
+    }
 }

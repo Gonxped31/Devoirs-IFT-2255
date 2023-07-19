@@ -165,6 +165,44 @@ public class ControlleurUtilisateurs {
         }
     }
 
+    public String voirListeUtilisateur(String pseudo){
+        return dataBaseController.retournerUtilisateur(pseudo).voirListeUtilisateur();
+    }
+
+    public boolean supprimerUtilisateurDeListeSuivi(String pseudo, String utilASupprimer){
+        if (dataBaseController.retournerUtilisateur(pseudo).supprimerUtilisateurDeMaListe(utilASupprimer) == false){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean supprimerEtreSuivi(String pseudo, String pseudoUtilisateurASuivre){
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
+            dataBaseController.supprimerUtilisateur(utilCourant);
+            utilCourant.getListeUtilisateursSuivi().remove(u);
+            dataBaseController.ajouterUtilisateur(utilCourant);
+        } catch (NullPointerException e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean suppriemrSuivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
+        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            dataBaseController.supprimerUtilisateur(u);
+            u.getListSuiveur().remove(utilisateurCourant);
+            dataBaseController.ajouterUtilisateur(u);
+        } catch (NullPointerException e){
+            return false;
+        }
+        return true;
+    }
+
+
     //TODO
     public boolean etreSuivi(String pseudo, String pseudoUtilisateurASuivre){
 
