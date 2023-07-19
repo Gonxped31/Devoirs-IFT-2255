@@ -26,6 +26,7 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(descriptionField);
         enregistrerComposantePanel.add(typeComposanteLabel);
         enregistrerComposantePanel.add(typeComposanteField);
+        enregistrerComposantePanel.add(Box.createHorizontalStrut(10));
         enregistrerComposantePanel.add(btnEnregistrer);
         enregistrerComposantePanel.add(btnAnnuler);
     }
