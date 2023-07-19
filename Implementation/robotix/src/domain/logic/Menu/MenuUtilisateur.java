@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
-import domain.logic.GUI.GestionActivitesGUI;
-import domain.logic.GUI.GestionFlotteGUI;
-import domain.logic.GUI.GestionTachesGUI;
-import domain.logic.GUI.ModifierProfileGUI;
+import domain.logic.GUI.*;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -67,6 +64,7 @@ public class MenuUtilisateur extends JFrame {
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
     private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
     private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
+    private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
 
     public MenuUtilisateur() throws IOException {
         btnSeConnecter.addActionListener(new ActionListener() {
@@ -114,7 +112,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererReseauSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                afficherMenuGestionReseau();
             }
         });
         btnAchats.addActionListener(new ActionListener() {
@@ -245,6 +243,13 @@ public class MenuUtilisateur extends JFrame {
     public void afficherMenuGestionActivites() {
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(gestionActivitesGUI.getPanel());
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
+    }
+
+    public void afficherMenuGestionReseau() {
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(gestionReseauGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }

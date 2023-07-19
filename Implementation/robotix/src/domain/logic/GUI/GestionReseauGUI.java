@@ -13,6 +13,7 @@ public class GestionReseauGUI {
         gestionReseauPanel.add(gestionReseauLabel);
         gestionReseauPanel.add(btnSuivreUtilisateur);
         gestionReseauPanel.add(btnGererSuiveurs);
+        gestionReseauPanel.add(btnGererInterets);
     }
 
     public JPanel getPanel() {
