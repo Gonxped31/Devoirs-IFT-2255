@@ -37,7 +37,7 @@ public class MenuUtilisateur extends JFrame {
     private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JPanel loginUtilisateurPanel = new JPanel();
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
-    private JLabel loginUtilisateurLabel = new JLabel("CONNEXION");
+    private JLabel loginUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
     private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel pseudoLabel = new JLabel("Pseudo");
