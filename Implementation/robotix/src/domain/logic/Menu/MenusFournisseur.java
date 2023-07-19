@@ -2,6 +2,7 @@ package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
+import domain.logic.GUI.FournisseurGUI.EnregistrerComposanteGUI;
 import domain.logic.GUI.FournisseurGUI.ModifierProfilFournisseurGUI;
 import domain.logic.GUI.FournisseurGUI.RequetePubliqueFournisseurGUI;
 
@@ -36,6 +37,7 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnRetour = new JButton("Retour");
 	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
+	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
 
 	/*private JTextField nom;
 	private JTextField email;
@@ -83,7 +85,7 @@ public class MenusFournisseur extends JFrame {
 		btnEnregistrerComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				afficherEnregistrerComposante();
 			}
 		});
 		btnGererComposante.addActionListener(new ActionListener() {
@@ -137,6 +139,13 @@ public class MenusFournisseur extends JFrame {
 
 	public void afficherFormulaireConnexion(JFrame jFrame) {
 
+	}
+
+	public void afficherEnregistrerComposante() {
+		this.jFrame.getContentPane().removeAll();
+		this.jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
+		this.jFrame.revalidate();
+		this.jFrame.repaint();
 	}
 
 	public void afficherMenuModifierProfil() {
