@@ -93,7 +93,7 @@ public class MenusFournisseur extends JFrame {
 		btnModifierProfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				afficherMenuModifierProfil();
 			}
 		});
 		btnRequetePublique.addActionListener(new ActionListener() {
@@ -134,6 +134,13 @@ public class MenusFournisseur extends JFrame {
 
 	public void afficherFormulaireConnexion(JFrame jFrame) {
 
+	}
+
+	public void afficherMenuModifierProfil() {
+		this.jFrame.getContentPane().removeAll();
+		this.jFrame.setContentPane(modifierProfilFournisseurGUI.getPanel());
+		this.jFrame.revalidate();
+		this.jFrame.repaint();
 	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {

@@ -53,7 +53,6 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menusFournisseur.afficherFormulaireConnexion(mainFrame);
-
             }
         });
         btnQuitter.addActionListener(new ActionListener() {
