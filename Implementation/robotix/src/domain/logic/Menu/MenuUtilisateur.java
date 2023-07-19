@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.logic.Controller.DbControleur;
-import domain.logic.GUI.*;
+import domain.logic.GUI.Utilisateur.*;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;

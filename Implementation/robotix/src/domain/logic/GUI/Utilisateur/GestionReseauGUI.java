@@ -1,4 +1,4 @@
-package domain.logic.GUI;
+package domain.logic.GUI.Utilisateur;
 
 import javax.swing.*;
 
