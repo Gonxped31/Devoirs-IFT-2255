@@ -13,6 +13,8 @@ public class EnregistrerComposanteGUI {
     private JTextField prixField = new JTextField();
     private JTextField descriptionField = new JTextField();
     private JTextField typeComposanteField = new JTextField();
+    private JButton btnEnregistrer = new JButton();
+    private JButton btnAnnuler = new JButton();
 
     public EnregistrerComposanteGUI() {
         enregistrerComposantePanel.add(enregistrerComposanteLabel);
@@ -24,6 +26,8 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(descriptionField);
         enregistrerComposantePanel.add(typeComposanteLabel);
         enregistrerComposantePanel.add(typeComposanteField);
+        enregistrerComposantePanel.add(btnEnregistrer);
+        enregistrerComposantePanel.add(btnAnnuler);
     }
 
     public JPanel getPanel() {
