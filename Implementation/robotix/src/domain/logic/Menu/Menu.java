@@ -40,7 +40,7 @@ public class Menu {
         btnInscrireFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menusFournisseur.inscrireGUI();
+                menusFournisseur.afficherFormulaireInscription(mainFrame);
             }
         });
         btnConnecterUtilisateur.addActionListener(new ActionListener() {
@@ -52,7 +52,7 @@ public class Menu {
         btnConnecterFournisseur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menusFournisseur.seConnecterGUI();
+                menusFournisseur.afficherFormulaireConnexion(mainFrame);
 
             }
         });

@@ -4,6 +4,9 @@ import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -22,13 +25,15 @@ public class MenusFournisseur extends JFrame {
 	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
 	private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
 	private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
+	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
+	private JButton btnRetirerRobot = new JButton("Retirer un robot");
+	private JButton btnEnregistrerComposante = new JButton("Enregistrer une composante");
+	private JButton btnGererComposante = new JButton("Gerer mes composantes");
+	private JButton btnModifierProfil = new JButton("Modifier mon profil");
+	private JButton btnRequetePublique = new JButton("Faire une requete publique");
+	private JButton btnRetour = new JButton("Retour");
 
-
-
-
-
-
-	private JTextField nom;
+	/*private JTextField nom;
 	private JTextField email;
 	private JTextField telephone;
 	private JTextField confMdp;
@@ -56,16 +61,76 @@ public class MenusFournisseur extends JFrame {
 	private JComboBox comboBox1;
 	private JComboBox comboBox2;
 	private JComboBox comboBox3;
-	private JComboBox comboBox4;
+	private JComboBox comboBox4;*/
 
 	public MenusFournisseur() throws IOException {
+		btnAjouterRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnRetirerRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnEnregistrerComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnGererComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnModifierProfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnRequetePublique.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnRetour.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 	}
 
-	public void inscrireGUI() {
-
+	public void afficherMenuFournisseur() {
+		creerMenuFournisseur();
+		jFrame.getContentPane().removeAll();
+		jFrame.setContentPane(menuFournisseurPanel);
+		jFrame.revalidate();
+		jFrame.repaint();
 	}
 
-	public void seConnecterGUI() {
+	public void creerMenuFournisseur() {
+		menuFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		menuFournisseurPanel.add(menuFournisseurLabel);
+		menuFournisseurPanel.add(btnAjouterRobot);
+		menuFournisseurPanel.add(btnRetirerRobot);
+		menuFournisseurPanel.add(btnEnregistrerComposante);
+		menuFournisseurPanel.add(btnGererComposante);
+		menuFournisseurPanel.add(btnModifierProfil);
+		menuFournisseurPanel.add(btnRequetePublique);
+		menuFournisseurPanel.add(btnRetour);
+	}
+	public void afficherFormulaireInscription(JFrame jFrame) {
+	}
+
+	public void afficherFormulaireConnexion(JFrame jFrame) {
 
 	}
 
@@ -591,5 +656,4 @@ public class MenusFournisseur extends JFrame {
 		System.out.println(" ");
 		menuFournisseur(scanner, nomFournisseur);
 	}
-
 }
