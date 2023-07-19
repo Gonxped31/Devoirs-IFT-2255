@@ -26,7 +26,14 @@ public class MenuGestionReseau {
             case "1" -> {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
-                controlleurUtilisateurs.suivreUtilisateur(nom);
+                if (controlleurUtilisateurs.suivreUtilisateur(pseudo, nom) == false) {
+                    System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
+                    gererReseauSocial(scanner, pseudo);
+                };
+                if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
+                    System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
+                }
+
                 controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
                 if (!nom.equals(""))
                     System.out.println("Vous suivez maintenant " + nom);

@@ -8,6 +8,7 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class ControlleurUtilisateurs {
 
@@ -165,17 +166,30 @@ public class ControlleurUtilisateurs {
     }
 
     //TODO
-    public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        Utilisateur aSuivre = this.dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
-        this.dataBaseController.supprimerUtilisateur(aSuivre);
+    public boolean etreSuivi(String pseudo, String pseudoUtilisateurASuivre){
+
         try {
-            aSuivre.etreSuivi(utilisateurCourant);
-            this.utilisateurCourant.suivreUtilisateur(aSuivre);
-            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-            this.dataBaseController.ajouterUtilisateur(aSuivre);
-        } catch (NullPointerException e) {
-            return true;
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
+            dataBaseController.supprimerUtilisateur(utilCourant);
+            utilCourant.getListeUtilisateursSuivi().add(u);
+            dataBaseController.ajouterUtilisateur(utilCourant);
+        } catch (NullPointerException e){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean suivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
+        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            dataBaseController.supprimerUtilisateur(u);
+            u.getListSuiveur().add(utilisateurCourant);
+            dataBaseController.ajouterUtilisateur(u);
+        } catch (NullPointerException e){
+            return false;
         }
         return true;
     }
