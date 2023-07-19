@@ -16,7 +16,7 @@ import domain.logic.GUI.UtilisateurGUI.GestionNotifsGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionReseauGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionTachesGUI;
 import domain.logic.GUI.UtilisateurGUI.ModifierProfilUtilisateurGUI;
-import domain.logic.GUI.UtilisateurGUI.RequetePubliqueGUI;
+import domain.logic.GUI.UtilisateurGUI.RequetePubliqueUtilisateurGUI;
 import domain.logic.GUI.UtilisateurGUI.SouscrireInteretGUI;
 import domain.logic.Membre.Notification;
 
@@ -77,7 +77,7 @@ public class MenuUtilisateur extends JFrame {
     private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
     private AchatsGUI achatsGUI = new AchatsGUI();
     private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
-    private RequetePubliqueGUI requetePubliqueGUI = new RequetePubliqueGUI();
+    private RequetePubliqueUtilisateurGUI requetePubliqueUtilisateurGUI = new RequetePubliqueUtilisateurGUI();
     private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
@@ -285,7 +285,7 @@ public class MenuUtilisateur extends JFrame {
 
     public void afficherMenuRequetePublique() {
         this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(requetePubliqueGUI.getPanel());
+        this.jFrame.setContentPane(requetePubliqueUtilisateurGUI.getPanel());
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }

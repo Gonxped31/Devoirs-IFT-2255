@@ -3,6 +3,7 @@ package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.GUI.FournisseurGUI.ModifierProfilFournisseurGUI;
+import domain.logic.GUI.FournisseurGUI.RequetePubliqueFournisseurGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +35,7 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnRequetePublique = new JButton("Faire une requete publique");
 	private JButton btnRetour = new JButton("Retour");
 	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
+	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	/*private JTextField nom;
 	private JTextField email;
@@ -99,6 +101,7 @@ public class MenusFournisseur extends JFrame {
 		btnRequetePublique.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				afficherMenuRequetePublique();
 
 			}
 		});
@@ -139,6 +142,13 @@ public class MenusFournisseur extends JFrame {
 	public void afficherMenuModifierProfil() {
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(modifierProfilFournisseurGUI.getPanel());
+		this.jFrame.revalidate();
+		this.jFrame.repaint();
+	}
+
+	public void afficherMenuRequetePublique() {
+		this.jFrame.getContentPane().removeAll();
+		this.jFrame.setContentPane(requetePubliqueFournisseurGUI.getPanel());
 		this.jFrame.revalidate();
 		this.jFrame.repaint();
 	}
