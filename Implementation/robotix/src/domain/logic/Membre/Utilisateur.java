@@ -28,7 +28,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private String prenom;
     private int point;
     private Tache tache;
-    //private Notification notification = new Notification();
+    private Notification notification;
     private int taillePrecedenteListeSuiveur;
     private LocalDate dateActuelle = LocalDate.now();
     private long joursRestants;
@@ -42,15 +42,15 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                        @JsonProperty("email") String email,
                        @JsonProperty("numeroTelephone") String numeroTelephone,
                        @JsonProperty("nomCompagnie") String nomCompagnie,
-                       @JsonProperty("listeInteret") ArrayList<Interet> listeInteret) {
+                       @JsonProperty("listeInteret") ArrayList<Interet> listeInteret,
+                       @JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
 
         super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
         this.setPseudo(pseudo);
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
+        this.setListeNotifications(listeNotifications);
     }
-
-
 
     public String getPseudo(){
         return pseudo;
@@ -66,7 +66,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Notification> getNotifs(){
         return getListeNotifications();
     }
- 
+
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
@@ -131,7 +131,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public static Utilisateur trouverUtilisateur(String pseudo, ArrayList<Utilisateur> listeUtilisateurs){
-        Utilisateur utilisateur = new Utilisateur(null, null, null, null,null, null, null, null, null);
+        Utilisateur utilisateur = new Utilisateur(null, null, null, null,null, null, null, null, null, null);
         for (Utilisateur utilisateurs : listeUtilisateurs) {
             if (utilisateurs.getPseudo().equals(pseudo)) {
                 utilisateur = utilisateurs;
@@ -537,7 +537,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Notification> getListeNotifications() {
         return listeNotifications;
     }
-    @JsonProperty("listeNotifications")
+
+
     public void setListeNotifications( ArrayList<Notification> listeNotifications) {
         this.listeNotifications = listeNotifications;
     }
@@ -574,14 +575,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.tache = tache;
     }
 
-    /*public Notification getNotification() {
+    public Notification getNotification() {
         return notification;
-    }*/
+    }
 
-
-    /*public void setNotifs(ArrayList<Notification> notifs) {
+    public void setNotifs(ArrayList<Notification> notifs) {
         this.notification = notification;
-    }*/
+    }
     public void ajouterUnInteret(Interet i){
         this.listeInteret.add(i);
     }

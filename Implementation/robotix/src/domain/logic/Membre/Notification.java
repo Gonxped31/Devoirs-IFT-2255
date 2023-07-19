@@ -35,6 +35,10 @@ public class Notification implements java.io.Serializable{
         this.typeNotification = typeNotification;
     }
 
+    public Notification() {
+
+    }
+
     /*public String formatDateToString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         return date.format(formatter);

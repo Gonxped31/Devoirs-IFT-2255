@@ -13,8 +13,8 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
     private String capaciteProductionComposantes;
-    private LinkedList<Robot> inventaireDeRobot=new LinkedList<>();
-    private LinkedList<Composant> inventaireComposant= new LinkedList<>();
+    private LinkedList<Robot> inventaireDeRobot = new LinkedList<>();
+    private LinkedList<Composant> inventaireComposant = new LinkedList<>();
     //private Notification notification = new Notification();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
@@ -313,7 +313,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         this.listeNotifications.add(new Notification(titre, message, typeNotification));
     }
 
-    public void setListeNotifications(@JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
+    public void setListeNotifications(ArrayList<Notification> listeNotifications) {
         this.listeNotifications = listeNotifications;
     }
 
