@@ -36,6 +36,7 @@ public class MenuUtilisateur extends JFrame {
     private JPanel menuUtilisateurPanel = new JPanel();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JPanel connexionUtilisateurPanel = new JPanel();
+    private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
     private JLabel loginUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
     private JLabel prenomLabel = new JLabel("Prenom");
@@ -163,6 +164,7 @@ public class MenuUtilisateur extends JFrame {
 
     public void creerMenuUtilisateur() {
         menuUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        menuUtilisateurPanel.add(menuUtilisateurLabel);
         menuUtilisateurPanel.add(btnModifierProfil);
         menuUtilisateurPanel.add(btnGererFlotte);
         menuUtilisateurPanel.add(btnGererTaches);
