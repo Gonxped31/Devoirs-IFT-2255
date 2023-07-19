@@ -38,7 +38,7 @@ public class MenuUtilisateur extends JFrame {
     private JPanel connexionUtilisateurPanel = new JPanel();
     private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
-    private JLabel loginUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
+    private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
     private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel pseudoLabel = new JLabel("Pseudo");
@@ -223,7 +223,7 @@ public class MenuUtilisateur extends JFrame {
 
     public void creerFormulaireConnexion() {
         connexionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        connexionUtilisateurPanel.add(loginUtilisateurLabel);
+        connexionUtilisateurPanel.add(connexionUtilisateurLabel);
         connexionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         connexionUtilisateurPanel.add(pseudoLabel);
         connexionUtilisateurPanel.add(pseudoField);

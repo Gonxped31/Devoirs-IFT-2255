@@ -15,6 +15,19 @@ public class MenusFournisseur extends JFrame {
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
+	private JFrame jFrame = new JFrame();
+	private JPanel menuFournisseurPanel = new JPanel();
+	private JPanel inscriptionFournisseurPanel = new JPanel();
+	private JPanel connexionFournisseurPanel = new JPanel();
+	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
+	private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
+	private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
+
+
+
+
+
+
 	private JTextField nom;
 	private JTextField email;
 	private JTextField telephone;
