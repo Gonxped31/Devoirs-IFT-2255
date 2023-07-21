@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ConnexionFournisseurGUI {
+    private JFrame jFrame = new JFrame();
     private JPanel connexionFournisseurPanel = new JPanel();
     private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
     private JLabel nomLabel = new JLabel("Nom");
@@ -18,7 +19,6 @@ public class ConnexionFournisseurGUI {
     private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
-    private JFrame jFrame = new JFrame();
 
     public ConnexionFournisseurGUI()  {
         connexionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
