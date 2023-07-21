@@ -200,6 +200,11 @@ public class MenuUtilisateur extends JFrame {
         this.jFrame.repaint();
     }
 
+    public void mettreAJourFrame() {
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
+    }
+
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
         // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
         boolean PseudoUnique = false;
