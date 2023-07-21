@@ -93,7 +93,7 @@ public class MenusFournisseur extends JFrame {
 		btnGererComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				afficherMenuGererComposantes();
 			}
 		});
 		btnModifierProfil.addActionListener(new ActionListener() {
@@ -106,7 +106,6 @@ public class MenusFournisseur extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				afficherMenuRequetePublique();
-
 			}
 		});
 		btnRetour.addActionListener(new ActionListener() {
@@ -146,6 +145,13 @@ public class MenusFournisseur extends JFrame {
 	public void afficherEnregistrerComposante() {
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
+		this.jFrame.revalidate();
+		this.jFrame.repaint();
+	}
+
+	public void afficherMenuGererComposantes() {
+		this.jFrame.getContentPane().removeAll();
+		this.jFrame.setContentPane(gererComposantesGUI.getPanel());
 		this.jFrame.revalidate();
 		this.jFrame.repaint();
 	}
