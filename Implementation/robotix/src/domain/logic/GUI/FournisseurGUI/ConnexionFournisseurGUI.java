@@ -44,7 +44,7 @@ public class ConnexionFournisseurGUI {
 		});
     }
 
-    public JPanel getPanel(JFrame jFrame) {
+    public JPanel afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(connexionFournisseurPanel);

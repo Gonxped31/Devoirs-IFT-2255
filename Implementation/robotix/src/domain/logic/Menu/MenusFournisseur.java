@@ -20,13 +20,11 @@ public class MenusFournisseur extends JFrame {
 	private DbControleur dbControlleur = new DbControleur();
 	private JFrame jFrame = new JFrame();
 	private JPanel menuFournisseurPanel = new JPanel();
-	private JPanel inscriptionFournisseurPanel = new JPanel();
-	//private JPanel connexionFournisseurPanel = new JPanel();
+	//private JPanel inscriptionFournisseurPanel = new JPanel();
 	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
-	private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
-	//private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
+	//private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
 	// INSCRIPTION ET CONNEXION
-	private JLabel nomLabel = new JLabel("Nom");
+	/*private JLabel nomLabel = new JLabel("Nom");
 	private JLabel courrielLabel = new JLabel("Adresse courriel");
 	private JLabel mdpLabel = new JLabel("Mot de passe");
 	private JLabel confirmerMdpLabel = new JLabel("Confirmer le mot de passe");
@@ -45,9 +43,8 @@ public class MenusFournisseur extends JFrame {
 	private JTextField typeRobotFabriquesField = new JTextField();
 	private JTextField typeComposantesFabriquesField = new JTextField();
 	private JTextField capaciteFabricationField = new JTextField();
-	private JTextField nomCompagnieField = new JTextField();
-	//private JButton btnSeConnecter = new JButton("Se Connecter");
-	private JButton btnConfirmerInscription = new JButton("Confirmer");
+	private JTextField nomCompagnieField = new JTextField();*/
+	//private JButton btnConfirmerInscription = new JButton("Confirmer");
 	private JButton btnRetour = new JButton("Retour");
 	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
 	private JButton btnRetirerRobot = new JButton("Retirer un robot");
@@ -63,24 +60,6 @@ public class MenusFournisseur extends JFrame {
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	public MenusFournisseur() throws IOException {
-		/*btnSeConnecter.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				afficherMenuFournisseur();
-			}
-		});*/
-		btnConfirmerInscription.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				afficherMenuFournisseur(jFrame);
-			}
-		});
-		btnRetour.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,6 +96,12 @@ public class MenusFournisseur extends JFrame {
 				afficherMenuRequetePublique();
 			}
 		});
+		btnRetour.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 	}
 
 	public void afficherMenuFournisseur(JFrame jFrame) {
@@ -139,16 +124,16 @@ public class MenusFournisseur extends JFrame {
 		menuFournisseurPanel.add(btnRequetePublique);
 		menuFournisseurPanel.add(btnRetour);
 	}
-	public void afficherFormulaireInscription(JFrame jFrame) {
+	/*public void afficherFormulaireInscription(JFrame jFrame) {
 		this.jFrame = jFrame;
-		creerFormulaireInscription();
+		//creerFormulaireInscription();
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(inscriptionFournisseurPanel);
 		this.jFrame.revalidate();
 		this.jFrame.repaint();
-	}
+	}*/
 
-	public void creerFormulaireInscription() {
+	/*public void creerFormulaireInscription() {
 		inscriptionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
 		inscriptionFournisseurPanel.add(inscriptionFournisseurLabel);
 		inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
@@ -175,27 +160,6 @@ public class MenusFournisseur extends JFrame {
 		inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
 		inscriptionFournisseurPanel.add(btnConfirmerInscription);
 		inscriptionFournisseurPanel.add(btnRetour);
-	}
-
-	/*public void afficherFormulaireConnexion(JFrame jFrame) {
-		this.jFrame = jFrame;
-		//creerFormulaireConnexion();
-		this.jFrame.getContentPane().removeAll();
-		this.jFrame.setContentPane(connexionFournisseurPanel);
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
-	}*/
-
-	/*public void creerFormulaireConnexion() {
-		connexionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-		connexionFournisseurPanel.add(connexionFournisseurLabel);
-		connexionFournisseurPanel.add(Box.createHorizontalStrut(10));
-		connexionFournisseurPanel.add(nomLabel);
-		connexionFournisseurPanel.add(nomField);
-		connexionFournisseurPanel.add(mdpLabel);
-		connexionFournisseurPanel.add(mdpField);
-		connexionFournisseurPanel.add(btnSeConnecter);
-		connexionFournisseurPanel.add(btnRetour);
 	}*/
 
 	public void afficherEnregistrerComposante() {
