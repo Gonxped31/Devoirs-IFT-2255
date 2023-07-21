@@ -36,6 +36,16 @@ public class MenusFournisseur extends JFrame {
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	public MenusFournisseur() throws IOException {
+		menuFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		menuFournisseurPanel.add(menuFournisseurLabel);
+		menuFournisseurPanel.add(btnAjouterRobot);
+		menuFournisseurPanel.add(btnRetirerRobot);
+		menuFournisseurPanel.add(btnEnregistrerComposante);
+		menuFournisseurPanel.add(btnGererComposante);
+		menuFournisseurPanel.add(btnModifierProfil);
+		menuFournisseurPanel.add(btnRequetePublique);
+		menuFournisseurPanel.add(btnRetour);
+
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -82,23 +92,10 @@ public class MenusFournisseur extends JFrame {
 
 	public void afficherMenuFournisseur(JFrame jFrame) {
 		this.jFrame = jFrame;
-		creerMenuFournisseur();
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(menuFournisseurPanel);
 		this.jFrame.revalidate();
 		this.jFrame.repaint();
-	}
-
-	public void creerMenuFournisseur() {
-		menuFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-		menuFournisseurPanel.add(menuFournisseurLabel);
-		menuFournisseurPanel.add(btnAjouterRobot);
-		menuFournisseurPanel.add(btnRetirerRobot);
-		menuFournisseurPanel.add(btnEnregistrerComposante);
-		menuFournisseurPanel.add(btnGererComposante);
-		menuFournisseurPanel.add(btnModifierProfil);
-		menuFournisseurPanel.add(btnRequetePublique);
-		menuFournisseurPanel.add(btnRetour);
 	}
 
 	public void afficherEnregistrerComposante() {
