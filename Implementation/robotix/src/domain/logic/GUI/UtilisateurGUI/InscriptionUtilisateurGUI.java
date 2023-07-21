@@ -69,12 +69,6 @@ public class InscriptionUtilisateurGUI {
                 menuUtilisateur.afficherMenuUtilisateur(jFrame);
             }
         });
-        btnRetour.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
     }
 
     public void afficherPanel(JFrame jFrame) {
@@ -84,5 +78,4 @@ public class InscriptionUtilisateurGUI {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
-
 }
