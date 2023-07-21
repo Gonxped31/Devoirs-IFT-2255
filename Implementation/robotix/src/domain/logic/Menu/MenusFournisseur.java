@@ -15,19 +15,18 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class MenusFournisseur extends JFrame {
-
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
 	private JFrame jFrame = new JFrame();
 	private JPanel menuFournisseurPanel = new JPanel();
 	private JPanel inscriptionFournisseurPanel = new JPanel();
-	private JPanel connexionFournisseurPanel = new JPanel();
+	//private JPanel connexionFournisseurPanel = new JPanel();
 	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
 	private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
-	private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
+	//private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
 	// INSCRIPTION ET CONNEXION
-	private JLabel nomLabel = new JLabel("Nom (ce nom sera celui affiche lors de la visite de votre profil par un utilisateur)");
+	private JLabel nomLabel = new JLabel("Nom");
 	private JLabel courrielLabel = new JLabel("Adresse courriel");
 	private JLabel mdpLabel = new JLabel("Mot de passe");
 	private JLabel confirmerMdpLabel = new JLabel("Confirmer le mot de passe");
@@ -47,7 +46,7 @@ public class MenusFournisseur extends JFrame {
 	private JTextField typeComposantesFabriquesField = new JTextField();
 	private JTextField capaciteFabricationField = new JTextField();
 	private JTextField nomCompagnieField = new JTextField();
-	private JButton btnSeConnecter = new JButton("Se Connecter");
+	//private JButton btnSeConnecter = new JButton("Se Connecter");
 	private JButton btnConfirmerInscription = new JButton("Confirmer");
 	private JButton btnRetour = new JButton("Retour");
 	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
@@ -64,16 +63,16 @@ public class MenusFournisseur extends JFrame {
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	public MenusFournisseur() throws IOException {
-		btnSeConnecter.addActionListener(new ActionListener() {
+		/*btnSeConnecter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				afficherMenuFournisseur();
 			}
-		});
+		});*/
 		btnConfirmerInscription.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				afficherMenuFournisseur();
+				afficherMenuFournisseur(jFrame);
 			}
 		});
 		btnRetour.addActionListener(new ActionListener() {
@@ -120,12 +119,13 @@ public class MenusFournisseur extends JFrame {
 		});
 	}
 
-	public void afficherMenuFournisseur() {
+	public void afficherMenuFournisseur(JFrame jFrame) {
+		this.jFrame = jFrame;
 		creerMenuFournisseur();
-		jFrame.getContentPane().removeAll();
-		jFrame.setContentPane(menuFournisseurPanel);
-		jFrame.revalidate();
-		jFrame.repaint();
+		this.jFrame.getContentPane().removeAll();
+		this.jFrame.setContentPane(menuFournisseurPanel);
+		this.jFrame.revalidate();
+		this.jFrame.repaint();
 	}
 
 	public void creerMenuFournisseur() {
@@ -177,16 +177,16 @@ public class MenusFournisseur extends JFrame {
 		inscriptionFournisseurPanel.add(btnRetour);
 	}
 
-	public void afficherFormulaireConnexion(JFrame jFrame) {
+	/*public void afficherFormulaireConnexion(JFrame jFrame) {
 		this.jFrame = jFrame;
-		creerFormulaireConnexion();
+		//creerFormulaireConnexion();
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(connexionFournisseurPanel);
 		this.jFrame.revalidate();
 		this.jFrame.repaint();
-	}
+	}*/
 
-	public void creerFormulaireConnexion() {
+	/*public void creerFormulaireConnexion() {
 		connexionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
 		connexionFournisseurPanel.add(connexionFournisseurLabel);
 		connexionFournisseurPanel.add(Box.createHorizontalStrut(10));
@@ -196,7 +196,7 @@ public class MenusFournisseur extends JFrame {
 		connexionFournisseurPanel.add(mdpField);
 		connexionFournisseurPanel.add(btnSeConnecter);
 		connexionFournisseurPanel.add(btnRetour);
-	}
+	}*/
 
 	public void afficherEnregistrerComposante() {
 		this.jFrame.getContentPane().removeAll();
