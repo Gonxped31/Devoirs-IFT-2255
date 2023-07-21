@@ -34,12 +34,11 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
-    private JPanel inscriptionUtilisateurPanel = new JPanel();
-    //private JPanel connexionUtilisateurPanel = new JPanel();
+    //private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
-    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
+    //private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
     // INSCRIPTION ET CONNEXION
-    private JLabel prenomLabel = new JLabel("Prenom");
+    /*private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel pseudoLabel = new JLabel("Pseudo");
     private JLabel courrielLabel = new JLabel("Adresse courriel");
@@ -56,7 +55,7 @@ public class MenuUtilisateur extends JFrame {
     private JTextField telephoneField = new JTextField();
     private JTextField adresseField = new JTextField();
     private JTextField nomCompagnieField = new JTextField();
-    private JButton btnConfirmerInscription = new JButton("Confirmer");
+    private JButton btnConfirmerInscription = new JButton("Confirmer");*/
     private JButton btnRetour = new JButton("Retour");
     // MENU UTILISATEUR
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
@@ -79,18 +78,6 @@ public class MenuUtilisateur extends JFrame {
     private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
-        btnConfirmerInscription.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //afficherMenuUtilisateur();
-            }
-        });
-        btnRetour.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -171,7 +158,7 @@ public class MenuUtilisateur extends JFrame {
         menuUtilisateurPanel.add(btnRetour);
     }
 
-    public void afficherFormulaireInscription(JFrame jFrame) {
+    /*public void afficherFormulaireInscription(JFrame jFrame) {
         this.jFrame = jFrame;
         creerFormulaireInscription();
         this.jFrame.getContentPane().removeAll();
@@ -204,7 +191,7 @@ public class MenuUtilisateur extends JFrame {
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         inscriptionUtilisateurPanel.add(btnConfirmerInscription);
         inscriptionUtilisateurPanel.add(btnRetour);
-    }
+    }*/
 
     public void afficherMenuModifierProfil() {
         this.jFrame.getContentPane().removeAll();

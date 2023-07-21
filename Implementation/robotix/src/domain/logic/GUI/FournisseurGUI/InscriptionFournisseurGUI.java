@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class InscriptionFournisseurGUI {
+    private JFrame jFrame = new JFrame();
     private JPanel inscriptionFournisseurPanel = new JPanel();
     private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
     private JLabel nomLabel = new JLabel("Nom");
@@ -34,7 +35,6 @@ public class InscriptionFournisseurGUI {
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
-    private JFrame jFrame = new JFrame();
 
     public InscriptionFournisseurGUI()  {
         inscriptionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
