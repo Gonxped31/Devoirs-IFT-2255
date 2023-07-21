@@ -63,38 +63,25 @@ public class MenusFournisseur extends JFrame {
 	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
-
-	/*private JTextField nom;
-	private JTextField email;
-	private JTextField telephone;
-	private JTextField confMdp;
-	private JTextField addresse;
-	private JTextField typeRobot;
-	private JTextField typeComposantes;
-	private JTextField capacitee;
-	private JTextField nomCompagnie;
-	private JPasswordField mdp;
-	private JButton retourButton, ajouterUnNouveauRobotButton, retirerUnRobotButton, enregistrerUneComposanteButton,
-			gérerMesComposantesButton, modifierMonProfileButton, faireUneRequetePubliqueButton;
-	private JTextField textField1;
-	private JButton OKButton;
-	private JTextField textField2;
-	private JTextField textField3;
-	private JTextField textField4;
-	private JButton OKButton1;
-	private JButton supprimerUneComposanteButton;
-	private JButton modifierLePrixDButton;
-	private JButton modifierLaDescriptionDButton;
-	private JButton voirLaListeDButton;
-	private JButton voirLaListeDesButton;
-	private JButton voirMonProfilButton;
-	private JButton recupererLaListeDesButton;
-	private JComboBox comboBox1;
-	private JComboBox comboBox2;
-	private JComboBox comboBox3;
-	private JComboBox comboBox4;*/
-
 	public MenusFournisseur() throws IOException {
+		btnSeConnecter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				afficherMenuFournisseur();
+			}
+		});
+		btnConfirmerInscription.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				afficherMenuFournisseur();
+			}
+		});
+		btnRetour.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -129,12 +116,6 @@ public class MenusFournisseur extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				afficherMenuRequetePublique();
-			}
-		});
-		btnRetour.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
 			}
 		});
 	}
