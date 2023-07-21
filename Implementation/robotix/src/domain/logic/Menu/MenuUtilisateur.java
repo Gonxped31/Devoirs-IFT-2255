@@ -150,14 +150,14 @@ public class MenuUtilisateur extends JFrame {
 
     public void afficherMenuUtilisateur(JFrame jFrame) {
         this.jFrame = jFrame;
-        jFrame.getContentPane().removeAll();
-        jFrame.setContentPane(menuUtilisateurPanel);
+        this.jFrame.getContentPane().removeAll();
+        this.jFrame.setContentPane(menuUtilisateurPanel);
         mettreAJourFrame();
     }
 
     public void mettreAJourFrame() {
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
+        jFrame.revalidate();
+        jFrame.repaint();
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {

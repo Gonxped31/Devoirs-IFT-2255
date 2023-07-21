@@ -109,8 +109,8 @@ public class MenusFournisseur extends JFrame {
 	}
 
 	public void mettreAJourFrame() {
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
+		jFrame.revalidate();
+		jFrame.repaint();
 	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
