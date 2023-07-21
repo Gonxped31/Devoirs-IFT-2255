@@ -36,7 +36,7 @@ public class InscriptionFournisseurGUI {
     private MenusFournisseur menusFournisseur;
     private JFrame jFrame = new JFrame();
 
-    public InscriptionFournisseurGUI() {
+    public InscriptionFournisseurGUI()  {
         inscriptionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
         inscriptionFournisseurPanel.add(inscriptionFournisseurLabel);
         inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));

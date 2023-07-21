@@ -20,7 +20,7 @@ public class ConnexionFournisseurGUI {
     private MenusFournisseur menusFournisseur;
     private JFrame jFrame = new JFrame();
 
-    public ConnexionFournisseurGUI() {
+    public ConnexionFournisseurGUI()  {
         connexionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
         connexionFournisseurPanel.add(connexionFournisseurLabel);
         connexionFournisseurPanel.add(Box.createHorizontalStrut(10));
