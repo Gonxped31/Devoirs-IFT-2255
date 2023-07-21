@@ -35,8 +35,6 @@ public class MenuUtilisateur extends JFrame {
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
     private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
-    private JButton btnRetour = new JButton("Retour");
-    // MENU UTILISATEUR
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
     private JButton btnGererFlotte = new JButton("Gerer ma flotte");
     private JButton btnGererTaches = new JButton("Gerer mes taches");
@@ -46,6 +44,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
+    private JButton btnRetour = new JButton("Retour");
     private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
     private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
@@ -57,72 +56,6 @@ public class MenuUtilisateur extends JFrame {
     private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
-        btnModifierProfil.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuModifierProfil();
-            }
-        });
-        btnGererFlotte.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuGestionFlotte();
-            }
-        });
-        btnGererTaches.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuGestionTaches();
-            }
-        });
-        btnGererActivites.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuGestionActivites();
-            }
-        });
-        btnGererReseauSocial.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuGestionReseau();
-            }
-        });
-        btnAchats.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuAchats();
-            }
-        });
-        btnVoirNotifications.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuNotifications();
-            }
-        });
-        btnRequetePublique.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherMenuRequetePublique();
-            }
-        });
-        btnSouscrireInteret.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afficherListeInterets();
-            }
-        });
-    }
-
-    public void afficherMenuUtilisateur(JFrame jFrame) {
-        this.jFrame = jFrame;
-        creerMenuUtilisateur();
-        jFrame.getContentPane().removeAll();
-        jFrame.setContentPane(menuUtilisateurPanel);
-        jFrame.revalidate();
-        jFrame.repaint();
-    }
-
-    public void creerMenuUtilisateur() {
         menuUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
         menuUtilisateurPanel.add(menuUtilisateurLabel);
         menuUtilisateurPanel.add(btnModifierProfil);
@@ -135,69 +68,91 @@ public class MenuUtilisateur extends JFrame {
         menuUtilisateurPanel.add(btnRequetePublique);
         menuUtilisateurPanel.add(btnSouscrireInteret);
         menuUtilisateurPanel.add(btnRetour);
+        btnModifierProfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(modifierProfilUtilisateurGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnGererFlotte.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(gestionFlotteGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnGererTaches.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(gestionTachesGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnGererActivites.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(gestionActivitesGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnGererReseauSocial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(gestionReseauGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnAchats.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(achatsGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnVoirNotifications.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(gestionNotifsGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnRequetePublique.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(requetePubliqueUtilisateurGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnSouscrireInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.getContentPane().removeAll();
+                jFrame.setContentPane(souscrireInteretGUI.getPanel());
+                mettreAJourFrame();
+            }
+        });
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
-    public void afficherMenuModifierProfil() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(modifierProfilUtilisateurGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuGestionFlotte() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(gestionFlotteGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuGestionTaches() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(gestionTachesGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuGestionActivites() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(gestionActivitesGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuGestionReseau() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(gestionReseauGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuAchats() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(achatsGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuNotifications() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(gestionNotifsGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherMenuRequetePublique() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(requetePubliqueUtilisateurGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void afficherListeInterets() {
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(souscrireInteretGUI.getPanel());
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
+    public void afficherMenuUtilisateur(JFrame jFrame) {
+        this.jFrame = jFrame;
+        jFrame.getContentPane().removeAll();
+        jFrame.setContentPane(menuUtilisateurPanel);
+        mettreAJourFrame();
     }
 
     public void mettreAJourFrame() {

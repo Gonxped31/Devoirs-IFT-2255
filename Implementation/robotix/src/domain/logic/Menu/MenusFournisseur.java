@@ -45,7 +45,6 @@ public class MenusFournisseur extends JFrame {
 		menuFournisseurPanel.add(btnModifierProfil);
 		menuFournisseurPanel.add(btnRequetePublique);
 		menuFournisseurPanel.add(btnRetour);
-
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
