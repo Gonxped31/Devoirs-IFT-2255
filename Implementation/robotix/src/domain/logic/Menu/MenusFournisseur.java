@@ -49,37 +49,49 @@ public class MenusFournisseur extends JFrame {
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(ajouterRobotGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnRetirerRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(retirerRobotGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnEnregistrerComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				afficherEnregistrerComposante();
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnGererComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				afficherMenuGererComposantes();
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(gererComposantesGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnModifierProfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				afficherMenuModifierProfil();
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(modifierProfilFournisseurGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnRequetePublique.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				afficherMenuRequetePublique();
+				jFrame.getContentPane().removeAll();
+				jFrame.setContentPane(requetePubliqueFournisseurGUI.getPanel());
+				mettreAJourFrame();
 			}
 		});
 		btnRetour.addActionListener(new ActionListener() {
@@ -94,30 +106,6 @@ public class MenusFournisseur extends JFrame {
 		this.jFrame = jFrame;
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(menuFournisseurPanel);
-		mettreAJourFrame();
-	}
-
-	public void afficherEnregistrerComposante() {
-		this.jFrame.getContentPane().removeAll();
-		this.jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
-		mettreAJourFrame();
-	}
-
-	public void afficherMenuGererComposantes() {
-		this.jFrame.getContentPane().removeAll();
-		this.jFrame.setContentPane(gererComposantesGUI.getPanel());
-		mettreAJourFrame();
-	}
-
-	public void afficherMenuModifierProfil() {
-		this.jFrame.getContentPane().removeAll();
-		this.jFrame.setContentPane(modifierProfilFournisseurGUI.getPanel());
-		mettreAJourFrame();
-	}
-
-	public void afficherMenuRequetePublique() {
-		this.jFrame.getContentPane().removeAll();
-		this.jFrame.setContentPane(requetePubliqueFournisseurGUI.getPanel());
 		mettreAJourFrame();
 	}
 
