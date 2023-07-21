@@ -1,6 +1,7 @@
 package domain.logic.Menu;
 import domain.logic.GUI.FournisseurGUI.ConnexionFournisseurGUI;
 import domain.logic.GUI.FournisseurGUI.InscriptionFournisseurGUI;
+import domain.logic.GUI.UtilisateurGUI.ConnexionUtilisateurGUI;
 import domain.logic.Robot.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ public class Menu {
     private TypesComposants typesComposants;
     private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
     private MenusFournisseur menusFournisseur = new MenusFournisseur();
+    private ConnexionUtilisateurGUI connexionUtilisateurGUI = new ConnexionUtilisateurGUI();
     private ConnexionFournisseurGUI connexionFournisseurGUI = new ConnexionFournisseurGUI();
     private InscriptionFournisseurGUI inscriptionFournisseurGUI = new InscriptionFournisseurGUI();
     private JLabel txtBienvenue;
@@ -50,7 +52,7 @@ public class Menu {
         btnConnecterUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuUtilisateur.afficherFormulaireConnexion(mainFrame);
+                connexionUtilisateurGUI.afficherPanel(mainFrame);
             }
         });
         btnConnecterFournisseur.addActionListener(new ActionListener() {

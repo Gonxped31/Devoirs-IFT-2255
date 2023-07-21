@@ -35,10 +35,10 @@ public class MenuUtilisateur extends JFrame {
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
-    private JPanel connexionUtilisateurPanel = new JPanel();
+    //private JPanel connexionUtilisateurPanel = new JPanel();
     private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
     private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
-    private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
+    //private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
     // INSCRIPTION ET CONNEXION
     private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
@@ -57,7 +57,7 @@ public class MenuUtilisateur extends JFrame {
     private JTextField telephoneField = new JTextField();
     private JTextField adresseField = new JTextField();
     private JTextField nomCompagnieField = new JTextField();
-    private JButton btnSeConnecter = new JButton("Se Connecter");
+    //private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     // MENU UTILISATEUR
@@ -81,16 +81,16 @@ public class MenuUtilisateur extends JFrame {
     private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
-        btnSeConnecter.addActionListener(new ActionListener() {
+        /*btnSeConnecter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherMenuUtilisateur();
             }
-        });
+        });*/
         btnConfirmerInscription.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                afficherMenuUtilisateur();
+                //afficherMenuUtilisateur();
             }
         });
         btnRetour.addActionListener(new ActionListener() {
@@ -155,7 +155,8 @@ public class MenuUtilisateur extends JFrame {
         });
     }
 
-    public void afficherMenuUtilisateur() {
+    public void afficherMenuUtilisateur(JFrame jFrame) {
+        this.jFrame = jFrame;
         creerMenuUtilisateur();
         jFrame.getContentPane().removeAll();
         jFrame.setContentPane(menuUtilisateurPanel);
@@ -213,7 +214,7 @@ public class MenuUtilisateur extends JFrame {
         inscriptionUtilisateurPanel.add(btnRetour);
     }
 
-    public void afficherFormulaireConnexion(JFrame jFrame) {
+    /*public void afficherFormulaireConnexion(JFrame jFrame) {
         this.jFrame = jFrame;
         creerFormulaireConnexion();
         this.jFrame.getContentPane().removeAll();
@@ -232,7 +233,7 @@ public class MenuUtilisateur extends JFrame {
         connexionUtilisateurPanel.add(mdpField);
         connexionUtilisateurPanel.add(btnSeConnecter);
         connexionUtilisateurPanel.add(btnRetour);
-    }
+    }*/
 
     public void afficherMenuModifierProfil() {
         this.jFrame.getContentPane().removeAll();
