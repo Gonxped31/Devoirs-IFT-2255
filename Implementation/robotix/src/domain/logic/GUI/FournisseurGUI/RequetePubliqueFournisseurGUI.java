@@ -13,6 +13,18 @@ public class RequetePubliqueFournisseurGUI {
     private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheNomFournisseur = new JButton("Rechercher fournisseur");
     private JButton btnRechercheNomComposante = new JButton("Rechercher une composante");
+    private JComboBox pesudo = new JComboBox<>();
+    private JComboBox filtrer = new JComboBox<>();
+    private JComboBox nom = new JComboBox<>();
+    private JComboBox type = new JComboBox<>();
+    private JTextField textField1 = new JTextField();
+    private JTextField textField2 = new JTextField();
+    private JTextField textField3 = new JTextField();
+    private JTextField textField4 = new JTextField();
+    private JLabel label1 = new JLabel();
+    private JLabel label2 = new JLabel();
+    private JLabel label3 = new JLabel();
+    private JLabel label4 = new JLabel();
 
     public RequetePubliqueFournisseurGUI() {
         requetePubliqueUtilisateurPanel.add(requetePubliqueUtilisateurLabel);
