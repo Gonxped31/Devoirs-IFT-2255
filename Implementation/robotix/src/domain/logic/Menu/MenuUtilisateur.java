@@ -34,28 +34,7 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
-    //private JPanel inscriptionUtilisateurPanel = new JPanel();
     private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
-    //private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
-    // INSCRIPTION ET CONNEXION
-    /*private JLabel prenomLabel = new JLabel("Prenom");
-    private JLabel nomLabel = new JLabel("Nom");
-    private JLabel pseudoLabel = new JLabel("Pseudo");
-    private JLabel courrielLabel = new JLabel("Adresse courriel");
-    private JLabel mdpLabel = new JLabel("Mot de passe");
-    private JLabel telephoneLabel = new JLabel("Numero de telephone");
-    private JLabel adresseLabel = new JLabel("Adresse");
-    private JLabel nomCompagnieLabel = new JLabel("Nom de compagnie");
-    private JLabel interetsLabel = new JLabel("Intérêts");
-    private JTextField prenomField = new JTextField();
-    private JTextField nomField = new JTextField();
-    private JTextField pseudoField = new JTextField();
-    private JTextField courrielField = new JTextField();
-    private JPasswordField mdpField = new JPasswordField();
-    private JTextField telephoneField = new JTextField();
-    private JTextField adresseField = new JTextField();
-    private JTextField nomCompagnieField = new JTextField();
-    private JButton btnConfirmerInscription = new JButton("Confirmer");*/
     private JButton btnRetour = new JButton("Retour");
     // MENU UTILISATEUR
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
@@ -157,41 +136,6 @@ public class MenuUtilisateur extends JFrame {
         menuUtilisateurPanel.add(btnSouscrireInteret);
         menuUtilisateurPanel.add(btnRetour);
     }
-
-    /*public void afficherFormulaireInscription(JFrame jFrame) {
-        this.jFrame = jFrame;
-        creerFormulaireInscription();
-        this.jFrame.getContentPane().removeAll();
-        this.jFrame.setContentPane(inscriptionUtilisateurPanel);
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
-    }
-
-    public void creerFormulaireInscription() {
-        inscriptionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        inscriptionUtilisateurPanel.add(inscriptionUtilisateurLabel);
-        inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
-        inscriptionUtilisateurPanel.add(prenomLabel);
-        inscriptionUtilisateurPanel.add(prenomField);
-        inscriptionUtilisateurPanel.add(nomLabel);
-        inscriptionUtilisateurPanel.add(nomField);
-        inscriptionUtilisateurPanel.add(pseudoLabel);
-        inscriptionUtilisateurPanel.add(pseudoField);
-        inscriptionUtilisateurPanel.add(courrielLabel);
-        inscriptionUtilisateurPanel.add(courrielField);
-        inscriptionUtilisateurPanel.add(mdpLabel);
-        inscriptionUtilisateurPanel.add(mdpField);
-        inscriptionUtilisateurPanel.add(telephoneLabel);
-        inscriptionUtilisateurPanel.add(telephoneField);
-        inscriptionUtilisateurPanel.add(adresseLabel);
-        inscriptionUtilisateurPanel.add(adresseField);
-        inscriptionUtilisateurPanel.add(nomCompagnieLabel);
-        inscriptionUtilisateurPanel.add(nomCompagnieField);
-        inscriptionUtilisateurPanel.add(interetsLabel);
-        inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
-        inscriptionUtilisateurPanel.add(btnConfirmerInscription);
-        inscriptionUtilisateurPanel.add(btnRetour);
-    }*/
 
     public void afficherMenuModifierProfil() {
         this.jFrame.getContentPane().removeAll();
