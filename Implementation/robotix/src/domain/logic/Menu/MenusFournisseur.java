@@ -94,22 +94,19 @@ public class MenusFournisseur extends JFrame {
 		this.jFrame = jFrame;
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(menuFournisseurPanel);
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
+		mettreAJourFrame();
 	}
 
 	public void afficherEnregistrerComposante() {
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
+		mettreAJourFrame();
 	}
 
 	public void afficherMenuGererComposantes() {
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(gererComposantesGUI.getPanel());
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
+		mettreAJourFrame();
 	}
 
 	public void afficherMenuModifierProfil() {
@@ -121,8 +118,7 @@ public class MenusFournisseur extends JFrame {
 	public void afficherMenuRequetePublique() {
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(requetePubliqueFournisseurGUI.getPanel());
-		this.jFrame.revalidate();
-		this.jFrame.repaint();
+		mettreAJourFrame();
 	}
 
 	public void mettreAJourFrame() {
