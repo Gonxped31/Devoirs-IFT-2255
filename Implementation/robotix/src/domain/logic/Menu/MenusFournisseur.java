@@ -21,13 +21,13 @@ public class MenusFournisseur extends JFrame {
 	private JFrame jFrame = new JFrame();
 	private JPanel menuFournisseurPanel = new JPanel();
 	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
-	private JButton btnRetour = new JButton("Retour");
 	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
 	private JButton btnRetirerRobot = new JButton("Retirer un robot");
 	private JButton btnEnregistrerComposante = new JButton("Enregistrer une composante");
 	private JButton btnGererComposante = new JButton("Gerer mes composantes");
 	private JButton btnModifierProfil = new JButton("Modifier mon profil");
 	private JButton btnRequetePublique = new JButton("Faire une requete publique");
+	private JButton btnRetour = new JButton("Retour");
 	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
 	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
 	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
