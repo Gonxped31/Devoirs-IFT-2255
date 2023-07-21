@@ -44,13 +44,11 @@ public class ConnexionFournisseurGUI {
 		});
     }
 
-    public JPanel afficherPanel(JFrame jFrame) {
+    public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(connexionFournisseurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();
-
-        return connexionFournisseurPanel;
     }
 }

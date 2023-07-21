@@ -84,13 +84,11 @@ public class InscriptionFournisseurGUI {
         });
     }
 
-    public JPanel afficherPanel(JFrame jFrame) {
+    public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(inscriptionFournisseurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();
-
-        return inscriptionFournisseurPanel;
     }
 }
