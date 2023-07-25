@@ -11,7 +11,7 @@ public class GestionNotifsGUI {
         gestionNotifsPanel.add(gestionNotifsLabel);
     }
 
-    public void changerContenu(JFrame jFrame) {
+    public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(gestionNotifsPanel);
         mettreAJourFrame();

@@ -81,7 +81,7 @@ public class RequetePubliqueUtilisateurGUI {
         rechercheNomComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
     }
 
-    public void changerContenu(JFrame jFrame) {
+    public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

@@ -71,55 +71,55 @@ public class MenuUtilisateur extends JFrame {
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modifierProfilUtilisateurGUI.changerContenu(jFrame);
+                modifierProfilUtilisateurGUI.afficherPanel(jFrame);
             }
         });
         btnGererFlotte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionFlotteGUI.changerContenu(jFrame);
+                gestionFlotteGUI.afficherPanel(jFrame);
             }
         });
         btnGererTaches.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionTachesGUI.changerContenu(jFrame);
+                gestionTachesGUI.afficherPanel(jFrame);
             }
         });
         btnGererActivites.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionActivitesGUI.changerContenu(jFrame);
+                gestionActivitesGUI.afficherPanel(jFrame);
             }
         });
         btnGererReseauSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionReseauGUI.changerContenu(jFrame);
+                gestionReseauGUI.afficherPanel(jFrame);
             }
         });
         btnAchats.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                achatsGUI.changerContenu(jFrame);
+                achatsGUI.afficherPanel(jFrame);
             }
         });
         btnVoirNotifications.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionNotifsGUI.changerContenu(jFrame);
+                gestionNotifsGUI.afficherPanel(jFrame);
             }
         });
         btnRequetePublique.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                requetePubliqueUtilisateurGUI.changerContenu(jFrame);
+                requetePubliqueUtilisateurGUI.afficherPanel(jFrame);
             }
         });
         btnSouscrireInteret.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                souscrireInteretGUI.changerContenu(jFrame);
+                souscrireInteretGUI.afficherPanel(jFrame);
             }
         });
         btnRetour.addActionListener(new ActionListener() {
@@ -134,12 +134,8 @@ public class MenuUtilisateur extends JFrame {
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(menuUtilisateurPanel);
-        mettreAJourFrame();
-    }
-
-    public void mettreAJourFrame() {
-        jFrame.revalidate();
-        jFrame.repaint();
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {

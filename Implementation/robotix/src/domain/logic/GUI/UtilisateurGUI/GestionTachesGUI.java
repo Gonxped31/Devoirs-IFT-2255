@@ -45,7 +45,7 @@ public class GestionTachesGUI {
         allouerTachePanel.add(nomTacheAlloueField);
     }
 
-    public void changerContenu(JFrame jFrame) {
+    public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();
