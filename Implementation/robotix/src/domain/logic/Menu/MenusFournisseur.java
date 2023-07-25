@@ -80,9 +80,7 @@ public class MenusFournisseur extends JFrame {
 		btnModifierProfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				jFrame.getContentPane().removeAll();
-				jFrame.setContentPane(modifierProfilFournisseurGUI.getPanel());
-				mettreAJourFrame();
+				modifierProfilFournisseurGUI.afficherMainPanel(jFrame);
 			}
 		});
 		btnRequetePublique.addActionListener(new ActionListener() {

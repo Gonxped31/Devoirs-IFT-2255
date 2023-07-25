@@ -16,15 +16,15 @@ public class ModifierProfilUtilisateurGUI {
     private JPanel modifierTelephonePanel = new JPanel();
     private JPanel modifierCompagniePanel = new JPanel();
     private JPanel modifierMdpPanel = new JPanel();
-    private JLabel modifierProfilUtilisateurLabel = new JLabel("Que voulez-vous modifier?");
-    private JLabel modifierNomLabel = new JLabel("Entrez votre nouveau nom");
-    private JLabel modifierPrenomLabel = new JLabel("Entrez votre nouveau prenom");
-    private JLabel modifierAdresseLabel = new JLabel("Entrez votre nouvelle adresse");
-    private JLabel modifierPseudoLabel = new JLabel("Entrez votre nouveau pseudo");
-    private JLabel modifierEmailLabel = new JLabel("Entrez votre nouveau email");
-    private JLabel modifierTelephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
-    private JLabel modifierCompagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
-    private JLabel modifierMdpLabel = new JLabel("Entrez votre nouveau mot de passe");
+    private JLabel profilUtilisateurLabel = new JLabel("Que voulez-vous modifier?");
+    private JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
+    private JLabel prenomLabel = new JLabel("Entrez votre nouveau prenom");
+    private JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
+    private JLabel pseudoLabel = new JLabel("Entrez votre nouveau pseudo");
+    private JLabel emailLabel = new JLabel("Entrez votre nouveau email");
+    private JLabel telephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
+    private JLabel compagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
+    private JLabel mdpLabel = new JLabel("Entrez votre nouveau mot de passe");
     private JTextField nouveauNomField = new JTextField();
     private JTextField nouveauPrenomField = new JTextField();
     private JTextField nouvelleAdresseField = new JTextField();
@@ -113,7 +113,7 @@ public class ModifierProfilUtilisateurGUI {
 
     public void setMainPanel() {
         mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        mainPanel.add(modifierProfilUtilisateurLabel);
+        mainPanel.add(profilUtilisateurLabel);
         mainPanel.add(btnNom);
         mainPanel.add(btnPrenom);
         mainPanel.add(btnAdresse);
@@ -126,49 +126,49 @@ public class ModifierProfilUtilisateurGUI {
 
     public void setModifierNomPanel() {
         modifierNomPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierNomPanel.add(modifierNomLabel);
+        modifierNomPanel.add(nomLabel);
         modifierNomPanel.add(nouveauNomField);
     }
 
     public void setModifierPrenomPanel() {
         modifierPrenomPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierPrenomPanel.add(modifierPrenomLabel);
+        modifierPrenomPanel.add(prenomLabel);
         modifierPrenomPanel.add(nouveauPrenomField);
     }
 
     public void setModifierAdressePanel() {
         modifierAdressePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierAdressePanel.add(modifierAdresseLabel);
+        modifierAdressePanel.add(adresseLabel);
         modifierAdressePanel.add(nouvelleAdresseField);
     }
 
     public void setModifierPseudoPanel() {
         modifierPseudoPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierPseudoPanel.add(modifierPseudoLabel);
+        modifierPseudoPanel.add(pseudoLabel);
         modifierPseudoPanel.add(nouveauPseudoField);
     }
 
     public void setModifierEmailPanel() {
         modifierEmailPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierEmailPanel.add(modifierEmailLabel);
+        modifierEmailPanel.add(emailLabel);
         modifierEmailPanel.add(nouveauEmailField);
     }
 
     public void setModifierTelephonePanel() {
         modifierTelephonePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierTelephonePanel.add(modifierTelephoneLabel);
+        modifierTelephonePanel.add(telephoneLabel);
         modifierTelephonePanel.add(nouveauTelephoneField);
     }
 
     public void setModifierCompagniePanel() {
         modifierCompagniePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierCompagniePanel.add(modifierCompagnieLabel);
+        modifierCompagniePanel.add(compagnieLabel);
         modifierCompagniePanel.add(nouvelleCompagnieField);
     }
 
     public void setModifierMdpPanel() {
         modifierMdpPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierMdpPanel.add(modifierMdpLabel);
+        modifierMdpPanel.add(mdpLabel);
         modifierMdpPanel.add(nouveauMdpField);
     }
 
