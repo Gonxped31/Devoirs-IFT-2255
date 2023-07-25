@@ -83,9 +83,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererTaches.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(gestionTachesGUI.getPanel());
-                mettreAJourFrame();
+                gestionTachesGUI.changerContenu(jFrame);
             }
         });
         btnGererActivites.addActionListener(new ActionListener() {
