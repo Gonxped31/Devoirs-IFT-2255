@@ -113,9 +113,7 @@ public class MenuUtilisateur extends JFrame {
         btnRequetePublique.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(requetePubliqueUtilisateurGUI.getPanel());
-                mettreAJourFrame();
+                requetePubliqueUtilisateurGUI.changerContenu(jFrame);
             }
         });
         btnSouscrireInteret.addActionListener(new ActionListener() {
