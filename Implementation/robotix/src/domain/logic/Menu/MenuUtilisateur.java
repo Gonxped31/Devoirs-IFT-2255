@@ -89,9 +89,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererActivites.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(gestionActivitesGUI.getPanel());
-                mettreAJourFrame();
+                gestionActivitesGUI.changerContenu(jFrame);
             }
         });
         btnGererReseauSocial.addActionListener(new ActionListener() {
