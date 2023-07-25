@@ -1,22 +1,53 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GestionReseauGUI {
-    private JPanel gestionReseauPanel = new JPanel();
+    private JFrame jFrame = new JFrame();
+    private JPanel mainPanel = new JPanel();
+    private JPanel suivreUtilisateurPanel = new JPanel();
+    private JPanel gererSuiveursPanel = new JPanel();
+    private JPanel gererInteretsPanel = new JPanel();
     private JLabel gestionReseauLabel = new JLabel("Gestion reseau");
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
     private JButton btnGererSuiveurs = new JButton("Gerer mes suiveurs");
     private JButton btnGererInterets = new JButton("Gerer mes interets");
 
     public GestionReseauGUI() {
-        gestionReseauPanel.add(gestionReseauLabel);
-        gestionReseauPanel.add(btnSuivreUtilisateur);
-        gestionReseauPanel.add(btnGererSuiveurs);
-        gestionReseauPanel.add(btnGererInterets);
+        setMainPanel();
+        setSuivreUtilisateurPanel();
+        setGererSuiveursPanel();
+        setGererInteretsPanel();
     }
 
-    public JPanel getPanel() {
-        return gestionReseauPanel;
+    public void setMainPanel() {
+        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.add(gestionReseauLabel);
+        mainPanel.add(btnSuivreUtilisateur);
+        mainPanel.add(btnGererSuiveurs);
+        mainPanel.add(btnGererInterets);
+    }
+    public void setSuivreUtilisateurPanel() {
+        suivreUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void setGererSuiveursPanel() {
+        gererSuiveursPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void setGererInteretsPanel() {
+        gererInteretsPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void changerContenu(JFrame jFrame) {
+        this.jFrame = jFrame;
+        this.jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void mettreAJourFrame() {
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 }
