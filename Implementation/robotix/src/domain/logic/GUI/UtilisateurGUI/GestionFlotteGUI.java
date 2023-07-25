@@ -1,9 +1,16 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GestionFlotteGUI {
-    private JPanel gestionFlottePanel = new JPanel();
+    private JFrame jFrame = new JFrame();
+    private JPanel mainPanel = new JPanel();
+    private JPanel enregistrerRobotPanel = new JPanel();
+    private JPanel afficherEtatRobotPanel = new JPanel();
+    private JPanel ajouterComposantePanel = new JPanel();
+    private JPanel afficherMetriquesPanel = new JPanel();
+    private JPanel creerActionPanel = new JPanel();
     private JLabel gestionFlotteLabel = new JLabel("Gestion de ma flotte");
     private JButton btnEnregistrerRobot = new JButton("Enregistrer un robot");
     private JButton btnAfficherEtatRobot = new JButton("Afficher etat d'un robot");
@@ -12,15 +19,49 @@ public class GestionFlotteGUI {
     private JButton btnCreerAction = new JButton("Creer action");
 
     public GestionFlotteGUI() {
-        gestionFlottePanel.add(gestionFlotteLabel);
-        gestionFlottePanel.add(btnEnregistrerRobot);
-        gestionFlottePanel.add(btnAfficherEtatRobot);
-        gestionFlottePanel.add(btnAjouterComposante);
-        gestionFlottePanel.add(btnAfficherMetriques);
-        gestionFlottePanel.add(btnCreerAction);
+        setMainPanel();
+        setEnregistrerRobotPanel();
+        setAfficherEtatRobotPanel();
+        setAjouterComposantePanel();
+        setAfficherMetriquesPanel();
+        setCreerActionPanel();
     }
 
-    public JPanel getPanel() {
-        return gestionFlottePanel;
+    public void setMainPanel() {
+        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.add(gestionFlotteLabel);
+        mainPanel.add(btnEnregistrerRobot);
+        mainPanel.add(btnAfficherEtatRobot);
+        mainPanel.add(btnAjouterComposante);
+        mainPanel.add(btnAfficherMetriques);
+        mainPanel.add(btnCreerAction);
+    }
+    public void setEnregistrerRobotPanel() {
+        enregistrerRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void setAfficherEtatRobotPanel() {
+        afficherEtatRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+    public void setAjouterComposantePanel() {
+        ajouterComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+    public void setAfficherMetriquesPanel() {
+        afficherMetriquesPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void setCreerActionPanel() {
+        creerActionPanel.setLayout(new GridLayout(0, 2, 5, 5));
+    }
+
+    public void changerContenu(JFrame jFrame) {
+        this.jFrame = jFrame;
+        this.jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void mettreAJourFrame() {
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 }

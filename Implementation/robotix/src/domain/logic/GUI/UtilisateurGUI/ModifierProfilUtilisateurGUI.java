@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class ModifierProfilUtilisateurGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel modifierProfilUtilisateurPanel = new JPanel();
+    private JPanel mainPanel = new JPanel();
     private JPanel modifierNomPanel = new JPanel();
     private JPanel modifierPrenomPanel = new JPanel();
     private JPanel modifierAdressePanel = new JPanel();
@@ -112,16 +112,16 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setMainPanel() {
-        modifierProfilUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierProfilUtilisateurPanel.add(modifierProfilUtilisateurLabel);
-        modifierProfilUtilisateurPanel.add(btnNom);
-        modifierProfilUtilisateurPanel.add(btnPrenom);
-        modifierProfilUtilisateurPanel.add(btnAdresse);
-        modifierProfilUtilisateurPanel.add(btnPseudo);
-        modifierProfilUtilisateurPanel.add(btnEmail);
-        modifierProfilUtilisateurPanel.add(btnNumeroTelephone);
-        modifierProfilUtilisateurPanel.add(btnNomCompagnie);
-        modifierProfilUtilisateurPanel.add(btnMdp);
+        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.add(modifierProfilUtilisateurLabel);
+        mainPanel.add(btnNom);
+        mainPanel.add(btnPrenom);
+        mainPanel.add(btnAdresse);
+        mainPanel.add(btnPseudo);
+        mainPanel.add(btnEmail);
+        mainPanel.add(btnNumeroTelephone);
+        mainPanel.add(btnNomCompagnie);
+        mainPanel.add(btnMdp);
     }
 
     public void setModifierNomPanel() {
@@ -174,7 +174,7 @@ public class ModifierProfilUtilisateurGUI {
 
     public void changerContenu(JFrame jFrame) {
         this.jFrame = jFrame;
-        this.jFrame.setContentPane(modifierProfilUtilisateurPanel);
+        this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();
     }
 

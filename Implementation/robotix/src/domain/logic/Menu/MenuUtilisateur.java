@@ -77,9 +77,7 @@ public class MenuUtilisateur extends JFrame {
         btnGererFlotte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(gestionFlotteGUI.getPanel());
-                mettreAJourFrame();
+                gestionFlotteGUI.changerContenu(jFrame);
             }
         });
         btnGererTaches.addActionListener(new ActionListener() {
