@@ -43,47 +43,15 @@ public class ModifierProfilUtilisateurGUI {
     private JButton btnMdp = new JButton("Mot de passe");
 
     public ModifierProfilUtilisateurGUI() {
-        modifierProfilUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierProfilUtilisateurPanel.add(modifierProfilUtilisateurLabel);
-        modifierProfilUtilisateurPanel.add(btnNom);
-        modifierProfilUtilisateurPanel.add(btnPrenom);
-        modifierProfilUtilisateurPanel.add(btnAdresse);
-        modifierProfilUtilisateurPanel.add(btnPseudo);
-        modifierProfilUtilisateurPanel.add(btnEmail);
-        modifierProfilUtilisateurPanel.add(btnNumeroTelephone);
-        modifierProfilUtilisateurPanel.add(btnNomCompagnie);
-        modifierProfilUtilisateurPanel.add(btnMdp);
-
-        modifierNomPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierNomPanel.add(modifierNomLabel);
-        modifierNomPanel.add(nouveauNomField);
-
-        modifierPrenomPanel.add(modifierPrenomLabel);
-        modifierPrenomPanel.add(nouveauPrenomField);
-
-        modifierAdressePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierAdressePanel.add(modifierAdresseLabel);
-        modifierAdressePanel.add(nouvelleAdresseField);
-
-        modifierPseudoPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierPseudoPanel.add(modifierPseudoLabel);
-        modifierPseudoPanel.add(nouveauPseudoField);
-
-        modifierEmailPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierEmailPanel.add(modifierEmailLabel);
-        modifierEmailPanel.add(nouveauEmailField);
-
-        modifierTelephonePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierTelephonePanel.add(modifierTelephoneLabel);
-        modifierTelephonePanel.add(nouveauTelephoneField);
-
-        modifierCompagniePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierCompagniePanel.add(modifierCompagnieLabel);
-        modifierCompagniePanel.add(nouvelleCompagnieField);
-
-        modifierMdpPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierMdpPanel.add(modifierMdpLabel);
-        modifierMdpPanel.add(nouveauMdpField);
+        setMainPanel();
+        setModifierNomPanel();
+        setModifierPrenomPanel();
+        setModifierAdressePanel();
+        setModifierPseudoPanel();
+        setModifierEmailPanel();
+        setModifierTelephonePanel();
+        setModifierCompagniePanel();
+        setModifierMdpPanel();
 
         btnNom.addActionListener(new ActionListener() {
             @Override
@@ -141,6 +109,67 @@ public class ModifierProfilUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
+    }
+
+    public void setMainPanel() {
+        modifierProfilUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierProfilUtilisateurPanel.add(modifierProfilUtilisateurLabel);
+        modifierProfilUtilisateurPanel.add(btnNom);
+        modifierProfilUtilisateurPanel.add(btnPrenom);
+        modifierProfilUtilisateurPanel.add(btnAdresse);
+        modifierProfilUtilisateurPanel.add(btnPseudo);
+        modifierProfilUtilisateurPanel.add(btnEmail);
+        modifierProfilUtilisateurPanel.add(btnNumeroTelephone);
+        modifierProfilUtilisateurPanel.add(btnNomCompagnie);
+        modifierProfilUtilisateurPanel.add(btnMdp);
+    }
+
+    public void setModifierNomPanel() {
+        modifierNomPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierNomPanel.add(modifierNomLabel);
+        modifierNomPanel.add(nouveauNomField);
+    }
+
+    public void setModifierPrenomPanel() {
+        modifierPrenomPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierPrenomPanel.add(modifierPrenomLabel);
+        modifierPrenomPanel.add(nouveauPrenomField);
+    }
+
+    public void setModifierAdressePanel() {
+        modifierAdressePanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierAdressePanel.add(modifierAdresseLabel);
+        modifierAdressePanel.add(nouvelleAdresseField);
+    }
+
+    public void setModifierPseudoPanel() {
+        modifierPseudoPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierPseudoPanel.add(modifierPseudoLabel);
+        modifierPseudoPanel.add(nouveauPseudoField);
+    }
+
+    public void setModifierEmailPanel() {
+        modifierEmailPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierEmailPanel.add(modifierEmailLabel);
+        modifierEmailPanel.add(nouveauEmailField);
+    }
+
+    public void setModifierTelephonePanel() {
+        modifierTelephonePanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierTelephonePanel.add(modifierTelephoneLabel);
+        modifierTelephonePanel.add(nouveauTelephoneField);
+    }
+
+    public void setModifierCompagniePanel() {
+        modifierCompagniePanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierCompagniePanel.add(modifierCompagnieLabel);
+        modifierCompagniePanel.add(nouvelleCompagnieField);
+    }
+
+    public void setModifierMdpPanel() {
+        modifierMdpPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierMdpPanel.add(modifierMdpLabel);
+        modifierMdpPanel.add(nouveauMdpField);
     }
 
     public void changerContenu(JFrame jFrame) {
