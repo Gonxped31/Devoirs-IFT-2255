@@ -39,7 +39,7 @@ public class ConnexionUtilisateurGUI {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                menuUtilisateur.afficherMenuUtilisateur(jFrame);
+                menuUtilisateur.afficherMenuUtilisateurPanel(jFrame);
             }
         });
     }

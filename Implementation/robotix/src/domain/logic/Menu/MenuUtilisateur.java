@@ -130,7 +130,7 @@ public class MenuUtilisateur extends JFrame {
         });
     }
 
-    public void afficherMenuUtilisateur(JFrame jFrame) {
+    public void afficherMenuUtilisateurPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(menuUtilisateurPanel);
