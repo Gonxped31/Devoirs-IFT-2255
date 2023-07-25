@@ -3,7 +3,14 @@ package domain.logic.GUI.UtilisateurGUI;
 import javax.swing.*;
 
 public class SouscrireInteretGUI {
+    private JFrame jFrame = new JFrame();
     private JPanel souscrireInteretPanel = new JPanel();
+    private JLabel listeInteretLabel = new JLabel("Voici la liste d'interets");
+    private JRadioButton combatLabel = new JRadioButton("Combat");
+    private JRadioButton footLabel = new JRadioButton("Foot");
+    private JRadioButton soccerLabel = new JRadioButton("Soccer");
+    private JRadioButton danseLabel = new JRadioButton("Danse");
+    private JRadioButton breakLabel = new JRadioButton("Break");
     private JLabel souscrireInteretLabel = new JLabel("A quel interet voulez-vous souscrire?");
     private JButton btnCombat = new JButton("Combat");
     private JButton btnFoot = new JButton("Foot");
@@ -12,6 +19,12 @@ public class SouscrireInteretGUI {
     private JButton btnBreak = new JButton("Break");
 
     public SouscrireInteretGUI() {
+        souscrireInteretPanel.add(listeInteretLabel);
+        souscrireInteretPanel.add(combatLabel);
+        souscrireInteretPanel.add(footLabel);
+        souscrireInteretPanel.add(soccerLabel);
+        souscrireInteretPanel.add(danseLabel);
+        souscrireInteretPanel.add(breakLabel);
         souscrireInteretPanel.add(souscrireInteretLabel);
         souscrireInteretPanel.add(btnCombat);
         souscrireInteretPanel.add(btnFoot);
@@ -20,7 +33,14 @@ public class SouscrireInteretGUI {
         souscrireInteretPanel.add(btnBreak);
     }
 
-    public JPanel getPanel() {
-        return souscrireInteretPanel;
+    public void changerContenu(JFrame jFrame) {
+        this.jFrame = jFrame;
+        this.jFrame.setContentPane(souscrireInteretPanel);
+        mettreAJourFrame();
+    }
+
+    public void mettreAJourFrame() {
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 }
