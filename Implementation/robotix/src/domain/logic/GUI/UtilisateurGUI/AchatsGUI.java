@@ -17,6 +17,12 @@ public class AchatsGUI {
         setAchatRobotPanel();
         setAchatComposantePanel();
     }
+    public void setMainPanel() {
+        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.add(achatsLabel);
+        mainPanel.add(btnAchatRobot);
+        mainPanel.add(btnAchatComposante);
+    }
 
     public void setAchatRobotPanel() {
         achatRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
@@ -24,13 +30,6 @@ public class AchatsGUI {
 
     public void setAchatComposantePanel() {
         achatComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
-    }
-
-    public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        mainPanel.add(achatsLabel);
-        mainPanel.add(btnAchatRobot);
-        mainPanel.add(btnAchatComposante);
     }
 
     public void changerContenu(JFrame jFrame) {
