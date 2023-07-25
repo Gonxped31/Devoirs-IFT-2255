@@ -58,7 +58,6 @@ public class ModifierProfilUtilisateurGUI {
         modifierNomPanel.add(modifierNomLabel);
         modifierNomPanel.add(nouveauNomField);
 
-        modifierPrenomPanel.setLayout(new GridLayout(0, 2, 5, 5));
         modifierPrenomPanel.add(modifierPrenomLabel);
         modifierPrenomPanel.add(nouveauPrenomField);
 
