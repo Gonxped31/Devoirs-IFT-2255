@@ -33,7 +33,7 @@ public class SouscrireInteretGUI {
         souscrireInteretPanel.add(btnBreak);
     }
 
-    public void afficherPanel(JFrame jFrame) {
+    public void afficherMainPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(souscrireInteretPanel);
         mettreAJourFrame();

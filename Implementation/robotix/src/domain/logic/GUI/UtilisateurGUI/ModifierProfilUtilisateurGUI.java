@@ -172,7 +172,7 @@ public class ModifierProfilUtilisateurGUI {
         modifierMdpPanel.add(nouveauMdpField);
     }
 
-    public void afficherPanel(JFrame jFrame) {
+    public void afficherMainPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

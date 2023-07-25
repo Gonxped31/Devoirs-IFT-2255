@@ -33,7 +33,7 @@ public class GestionActivitesGUI {
         rejoindreActivitePanel.setLayout(new GridLayout(0, 2, 5, 5));
     }
 
-    public void afficherPanel(JFrame jFrame) {
+    public void afficherMainPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

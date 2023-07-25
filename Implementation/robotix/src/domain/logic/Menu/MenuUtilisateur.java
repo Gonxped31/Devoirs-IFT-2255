@@ -71,55 +71,55 @@ public class MenuUtilisateur extends JFrame {
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modifierProfilUtilisateurGUI.afficherPanel(jFrame);
+                modifierProfilUtilisateurGUI.afficherMainPanel(jFrame);
             }
         });
         btnGererFlotte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionFlotteGUI.afficherPanel(jFrame);
+                gestionFlotteGUI.afficherMainPanel(jFrame);
             }
         });
         btnGererTaches.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionTachesGUI.afficherPanel(jFrame);
+                gestionTachesGUI.afficherMainPanel(jFrame);
             }
         });
         btnGererActivites.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionActivitesGUI.afficherPanel(jFrame);
+                gestionActivitesGUI.afficherMainPanel(jFrame);
             }
         });
         btnGererReseauSocial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionReseauGUI.afficherPanel(jFrame);
+                gestionReseauGUI.afficherMainPanel(jFrame);
             }
         });
         btnAchats.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                achatsGUI.afficherPanel(jFrame);
+                achatsGUI.afficherMainPanel(jFrame);
             }
         });
         btnVoirNotifications.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gestionNotifsGUI.afficherPanel(jFrame);
+                gestionNotifsGUI.afficherMainPanel(jFrame);
             }
         });
         btnRequetePublique.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                requetePubliqueUtilisateurGUI.afficherPanel(jFrame);
+                requetePubliqueUtilisateurGUI.afficherMainPanel(jFrame);
             }
         });
         btnSouscrireInteret.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                souscrireInteretGUI.afficherPanel(jFrame);
+                souscrireInteretGUI.afficherMainPanel(jFrame);
             }
         });
         btnRetour.addActionListener(new ActionListener() {
