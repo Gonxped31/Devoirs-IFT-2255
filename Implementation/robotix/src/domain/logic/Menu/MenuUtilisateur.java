@@ -101,9 +101,7 @@ public class MenuUtilisateur extends JFrame {
         btnAchats.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(achatsGUI.getPanel());
-                mettreAJourFrame();
+                achatsGUI.changerContenu(jFrame);
             }
         });
         btnVoirNotifications.addActionListener(new ActionListener() {
