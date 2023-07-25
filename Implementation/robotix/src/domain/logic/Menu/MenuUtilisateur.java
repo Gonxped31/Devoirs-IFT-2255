@@ -71,9 +71,7 @@ public class MenuUtilisateur extends JFrame {
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(modifierProfilUtilisateurGUI.getPanel());
-                mettreAJourFrame();
+                modifierProfilUtilisateurGUI.changerContenu(jFrame);
             }
         });
         btnGererFlotte.addActionListener(new ActionListener() {
