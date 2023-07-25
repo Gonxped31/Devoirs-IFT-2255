@@ -109,9 +109,7 @@ public class MenuUtilisateur extends JFrame {
         btnVoirNotifications.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.getContentPane().removeAll();
-                jFrame.setContentPane(gestionNotifsGUI.getPanel());
-                mettreAJourFrame();
+                gestionNotifsGUI.changerContenu(jFrame);
             }
         });
         btnRequetePublique.addActionListener(new ActionListener() {
