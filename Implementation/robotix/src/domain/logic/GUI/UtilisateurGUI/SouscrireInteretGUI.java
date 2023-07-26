@@ -1,6 +1,9 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SouscrireInteretGUI {
     private JFrame jFrame = new JFrame();
@@ -17,6 +20,8 @@ public class SouscrireInteretGUI {
     private JButton btnSoccer= new JButton("Soccer");
     private JButton btnDanse = new JButton("Danse");
     private JButton btnBreak = new JButton("Break");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public SouscrireInteretGUI() {
         souscrireInteretPanel.add(listeInteretLabel);
@@ -31,9 +36,20 @@ public class SouscrireInteretGUI {
         souscrireInteretPanel.add(btnSoccer);
         souscrireInteretPanel.add(btnDanse);
         souscrireInteretPanel.add(btnBreak);
+        souscrireInteretPanel.add(btnRetour);
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+        });
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(souscrireInteretPanel);
         mettreAJourFrame();

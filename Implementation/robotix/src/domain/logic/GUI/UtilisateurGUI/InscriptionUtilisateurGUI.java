@@ -77,7 +77,6 @@ public class InscriptionUtilisateurGUI {
                 menuUtilisateur.afficherMenuUtilisateurPanel(jFrame);
             }
         });
-
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -41,6 +41,8 @@ public class ModifierProfilUtilisateurGUI {
     private JButton btnNumeroTelephone = new JButton("Numero de telephone");
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnMdp = new JButton("Mot de passe");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public ModifierProfilUtilisateurGUI() {
         setMainPanel();
@@ -109,6 +111,14 @@ public class ModifierProfilUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -122,6 +132,7 @@ public class ModifierProfilUtilisateurGUI {
         mainPanel.add(btnNumeroTelephone);
         mainPanel.add(btnNomCompagnie);
         mainPanel.add(btnMdp);
+        mainPanel.add(btnRetour);
     }
 
     public void setModifierNomPanel() {
@@ -173,6 +184,7 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

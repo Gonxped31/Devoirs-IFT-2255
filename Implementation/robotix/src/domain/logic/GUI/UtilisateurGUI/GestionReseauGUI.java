@@ -2,6 +2,8 @@ package domain.logic.GUI.UtilisateurGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GestionReseauGUI {
     private JFrame jFrame = new JFrame();
@@ -13,12 +15,23 @@ public class GestionReseauGUI {
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
     private JButton btnGererSuiveurs = new JButton("Gerer mes suiveurs");
     private JButton btnGererInterets = new JButton("Gerer mes interets");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public GestionReseauGUI() {
         setMainPanel();
         setSuivreUtilisateurPanel();
         setGererSuiveursPanel();
         setGererInteretsPanel();
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -27,6 +40,7 @@ public class GestionReseauGUI {
         mainPanel.add(btnSuivreUtilisateur);
         mainPanel.add(btnGererSuiveurs);
         mainPanel.add(btnGererInterets);
+        mainPanel.add(btnRetour);
     }
     public void setSuivreUtilisateurPanel() {
         suivreUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
@@ -41,6 +55,7 @@ public class GestionReseauGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

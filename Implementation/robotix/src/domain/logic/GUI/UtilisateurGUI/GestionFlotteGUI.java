@@ -17,6 +17,8 @@ public class GestionFlotteGUI {
     private JButton btnAjouterComposante = new JButton("Ajouter une composante a un robot");
     private JButton btnAfficherMetriques = new JButton("Afficher les metriques de ma flotte");
     private JButton btnCreerAction = new JButton("Creer action");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public GestionFlotteGUI() {
         setMainPanel();
