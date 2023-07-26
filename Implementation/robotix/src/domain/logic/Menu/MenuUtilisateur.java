@@ -44,7 +44,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
     private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
-    private JButton btnRetour = new JButton("Retour");
+    private JButton btnDeconnexion = new JButton("Deconnexion");
     private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
     private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
@@ -67,7 +67,7 @@ public class MenuUtilisateur extends JFrame {
         menuUtilisateurPanel.add(btnVoirNotifications);
         menuUtilisateurPanel.add(btnRequetePublique);
         menuUtilisateurPanel.add(btnSouscrireInteret);
-        menuUtilisateurPanel.add(btnRetour);
+        menuUtilisateurPanel.add(btnDeconnexion);
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -122,17 +122,21 @@ public class MenuUtilisateur extends JFrame {
                 souscrireInteretGUI.afficherMainPanel(jFrame);
             }
         });
-        btnRetour.addActionListener(new ActionListener() {
+        btnDeconnexion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                jFrame.dispose();
+                try {
+                    Menu menu = new Menu();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
 
     public void afficherMenuUtilisateurPanel(JFrame jFrame) {
         this.jFrame = jFrame;
-        this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(menuUtilisateurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();

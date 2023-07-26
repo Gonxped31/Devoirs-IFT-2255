@@ -27,7 +27,7 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnGererComposante = new JButton("Gerer mes composantes");
 	private JButton btnModifierProfil = new JButton("Modifier mon profil");
 	private JButton btnRequetePublique = new JButton("Faire une requete publique");
-	private JButton btnRetour = new JButton("Retour");
+	private JButton btnDeconnexion = new JButton("Deconnexion");
 	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
 	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
 	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
@@ -44,7 +44,7 @@ public class MenusFournisseur extends JFrame {
 		menuFournisseurPanel.add(btnGererComposante);
 		menuFournisseurPanel.add(btnModifierProfil);
 		menuFournisseurPanel.add(btnRequetePublique);
-		menuFournisseurPanel.add(btnRetour);
+		menuFournisseurPanel.add(btnDeconnexion);
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -81,17 +81,21 @@ public class MenusFournisseur extends JFrame {
 				requetePubliqueFournisseurGUI.afficherMainPanel(jFrame);
 			}
 		});
-		btnRetour.addActionListener(new ActionListener() {
+		btnDeconnexion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				jFrame.dispose();
+				try {
+					Menu menu = new Menu();
+				} catch (IOException ex) {
+					throw new RuntimeException(ex);
+				}
 			}
 		});
 	}
 
 	public void afficherMenuFournisseur(JFrame jFrame) {
 		this.jFrame = jFrame;
-		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(menuFournisseurPanel);
 		jFrame.revalidate();
 		jFrame.repaint();
