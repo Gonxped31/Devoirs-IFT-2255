@@ -13,8 +13,8 @@ public class RetirerRobotGUI {
     public RetirerRobotGUI() {
         retirerRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
         retirerRobotPanel.add(retirerRobotLabel);
-        retirerRobotPanel.add(btnRetirerRobot);
         retirerRobotPanel.add(numeroRobot);
+        retirerRobotPanel.add(btnRetirerRobot);
         retirerRobotPanel.add(btnRetour);
 
     }
