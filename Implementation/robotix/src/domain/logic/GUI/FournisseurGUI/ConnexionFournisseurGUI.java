@@ -62,7 +62,6 @@ public class ConnexionFournisseurGUI {
     public void afficherPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
-        this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(connexionFournisseurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();

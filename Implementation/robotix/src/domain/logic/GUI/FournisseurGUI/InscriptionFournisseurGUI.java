@@ -37,6 +37,7 @@ public class InscriptionFournisseurGUI {
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
     private Container panelPrecedent = new Container();
+
     public InscriptionFournisseurGUI()  {
         inscriptionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         inscriptionFournisseurPanel.setLayout(new GridLayout(0, 1));
