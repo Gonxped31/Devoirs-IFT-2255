@@ -2,6 +2,8 @@ package domain.logic.GUI.FournisseurGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RequetePubliqueFournisseurGUI {
     private JFrame jFrame = new JFrame();
@@ -23,6 +25,8 @@ public class RequetePubliqueFournisseurGUI {
     private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheNomFournisseur = new JButton("Rechercher fournisseur");
     private JButton btnRechercheNomComposante = new JButton("Rechercher une composante");
+    private JButton btnRetour = new JButton();
+    private Container panelPrecedent = new Container();
     private JComboBox pesudo = new JComboBox<>();
     private JComboBox filtrer = new JComboBox<>();
     private JComboBox nom = new JComboBox<>();
@@ -46,6 +50,14 @@ public class RequetePubliqueFournisseurGUI {
         setRecupererListeInteretsPanel();
         setRechercheNomFournisseurPanel();
         setRechercheNomComposantePanel();
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                mettreAJourFrame();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -59,6 +71,7 @@ public class RequetePubliqueFournisseurGUI {
         mainPanel.add(btnRecupererListeInterets);
         mainPanel.add(btnRechercheNomFournisseur);
         mainPanel.add(btnVoirListeFournisseurs);
+        mainPanel.add(btnRetour);
     }
 
     public void setVoirListeUtilisateursPanel() {
@@ -94,6 +107,7 @@ public class RequetePubliqueFournisseurGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

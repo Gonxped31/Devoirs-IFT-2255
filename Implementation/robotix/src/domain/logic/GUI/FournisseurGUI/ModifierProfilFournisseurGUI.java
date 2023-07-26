@@ -37,6 +37,8 @@ public class ModifierProfilFournisseurGUI {
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnCapaciteProduction = new JButton("Capacite de production");
     private JButton btnMdp = new JButton("Mot de passe");
+    private JButton btnRetour = new JButton();
+    private Container panelPrecedent = new Container();
 
     public ModifierProfilFournisseurGUI() {
         setMainPanel();
@@ -97,6 +99,13 @@ public class ModifierProfilFournisseurGUI {
                 mettreAJourFrame();
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                mettreAJourFrame();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -109,6 +118,7 @@ public class ModifierProfilFournisseurGUI {
         mainPanel.add(btnNomCompagnie);
         mainPanel.add(btnCapaciteProduction);
         mainPanel.add(btnMdp);
+        mainPanel.add(btnRetour);
     }
 
     public void setModifierNomPanel() {
@@ -154,6 +164,7 @@ public class ModifierProfilFournisseurGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

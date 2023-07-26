@@ -30,6 +30,8 @@ public class GererComposantesGUI {
     private JButton btnConfirmerSupprression = new JButton("Supprimer la composante");
     private JButton btnConfirmerModifPrix = new JButton("Confirmer la modification du prix");
     private JButton btnConfirmerModifDesc = new JButton("Confirmer la modification de la description");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public GererComposantesGUI() {
         setMainPanel();
@@ -100,6 +102,7 @@ public class GererComposantesGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();

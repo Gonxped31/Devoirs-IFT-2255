@@ -2,6 +2,8 @@ package domain.logic.GUI.FournisseurGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EnregistrerComposanteGUI {
     private JFrame jFrame = new JFrame();
@@ -17,6 +19,8 @@ public class EnregistrerComposanteGUI {
     private JTextField typeComposanteField = new JTextField();
     private JButton btnEnregistrer = new JButton("Enregistrer");
     private JButton btnAnnuler = new JButton("Annuler");
+    private JButton btnRetour = new JButton("Retour");
+    private Container panelPrecedent = new Container();
 
     public EnregistrerComposanteGUI() {
         enregistrerComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
@@ -32,9 +36,18 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(typeComposanteField);
         enregistrerComposantePanel.add(btnEnregistrer);
         enregistrerComposantePanel.add(btnAnnuler);
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                mettreAJourFrame();
+            }
+        });
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(enregistrerComposantePanel);
         mettreAJourFrame();
