@@ -1,6 +1,7 @@
 package domain.logic.GUI.FournisseurGUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class EnregistrerComposanteGUI {
     private JFrame jFrame = new JFrame();
@@ -14,11 +15,13 @@ public class EnregistrerComposanteGUI {
     private JTextField prixField = new JTextField();
     private JTextField descriptionField = new JTextField();
     private JTextField typeComposanteField = new JTextField();
-    private JButton btnEnregistrer = new JButton();
-    private JButton btnAnnuler = new JButton();
+    private JButton btnEnregistrer = new JButton("Enregistrer");
+    private JButton btnAnnuler = new JButton("Annuler");
 
     public EnregistrerComposanteGUI() {
+        enregistrerComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
         enregistrerComposantePanel.add(enregistrerComposanteLabel);
+        enregistrerComposantePanel.add(Box.createHorizontalStrut(10));
         enregistrerComposantePanel.add(nomComposanteLabel);
         enregistrerComposantePanel.add(nomComposanteField);
         enregistrerComposantePanel.add(prixLabel);
@@ -27,7 +30,6 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(descriptionField);
         enregistrerComposantePanel.add(typeComposanteLabel);
         enregistrerComposantePanel.add(typeComposanteField);
-        enregistrerComposantePanel.add(Box.createHorizontalStrut(10));
         enregistrerComposantePanel.add(btnEnregistrer);
         enregistrerComposantePanel.add(btnAnnuler);
     }
@@ -35,6 +37,7 @@ public class EnregistrerComposanteGUI {
     public void afficherMainPanel(JFrame jFrame) {
         this.jFrame = jFrame;
         this.jFrame.setContentPane(enregistrerComposantePanel);
+        mettreAJourFrame();
     }
 
     public void mettreAJourFrame() {
