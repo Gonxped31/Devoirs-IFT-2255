@@ -1,5 +1,6 @@
 package domain.logic.GUI.UtilisateurGUI;
 
+import domain.logic.Menu.Menu;
 import domain.logic.Menu.MenuUtilisateur;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Stack;
 
 public class InscriptionUtilisateurGUI {
     private JFrame jFrame = new JFrame();
@@ -32,6 +34,8 @@ public class InscriptionUtilisateurGUI {
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenuUtilisateur menuUtilisateur;
+    private Stack<Container> panelStack = new Stack<>();
+
 
     public InscriptionUtilisateurGUI() {
         inscriptionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -74,11 +78,23 @@ public class InscriptionUtilisateurGUI {
                 menuUtilisateur.afficherMenuUtilisateurPanel(jFrame);
             }
         });
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu menu;
+                try {
+                    menu = new Menu();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                menu.afficherPanel(jFrame);
+            }
+        });
     }
 
     public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
-        this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(inscriptionUtilisateurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();

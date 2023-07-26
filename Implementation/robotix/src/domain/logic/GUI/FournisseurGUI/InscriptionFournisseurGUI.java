@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Stack;
 
 public class InscriptionFournisseurGUI {
     private JFrame jFrame = new JFrame();
@@ -35,6 +36,7 @@ public class InscriptionFournisseurGUI {
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
+    private Stack<JPanel> panelStack = new Stack<>();
 
     public InscriptionFournisseurGUI()  {
         inscriptionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
