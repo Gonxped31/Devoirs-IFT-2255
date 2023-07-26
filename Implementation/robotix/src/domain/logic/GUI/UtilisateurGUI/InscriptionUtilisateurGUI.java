@@ -81,8 +81,7 @@ public class InscriptionUtilisateurGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
-                jFrame.revalidate();
-                jFrame.repaint();
+                mettreAJourFrame();
             }
         });
     }
@@ -91,6 +90,11 @@ public class InscriptionUtilisateurGUI {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
         this.jFrame.setContentPane(inscriptionUtilisateurPanel);
+        this.jFrame.revalidate();
+        mettreAJourFrame();
+    }
+
+    public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }

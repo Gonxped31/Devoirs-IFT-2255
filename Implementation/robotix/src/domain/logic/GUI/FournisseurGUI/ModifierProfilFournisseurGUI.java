@@ -37,7 +37,7 @@ public class ModifierProfilFournisseurGUI {
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnCapaciteProduction = new JButton("Capacite de production");
     private JButton btnMdp = new JButton("Mot de passe");
-    private JButton btnRetour = new JButton();
+    private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
 
     public ModifierProfilFournisseurGUI() {

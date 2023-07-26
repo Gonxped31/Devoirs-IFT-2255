@@ -53,8 +53,7 @@ public class ConnexionUtilisateurGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
-                jFrame.revalidate();
-                jFrame.repaint();
+                mettreAJourFrame();
             }
         });
     }
@@ -63,6 +62,10 @@ public class ConnexionUtilisateurGUI {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
         this.jFrame.setContentPane(connexionUtilisateurPanel);
+        mettreAJourFrame();
+    }
+
+    public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }

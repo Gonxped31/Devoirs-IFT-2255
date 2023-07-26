@@ -25,7 +25,7 @@ public class RequetePubliqueFournisseurGUI {
     private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheNomFournisseur = new JButton("Rechercher fournisseur");
     private JButton btnRechercheNomComposante = new JButton("Rechercher une composante");
-    private JButton btnRetour = new JButton();
+    private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
     private JComboBox pesudo = new JComboBox<>();
     private JComboBox filtrer = new JComboBox<>();

@@ -34,8 +34,7 @@ public class GestionFlotteGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
-                jFrame.revalidate();
-                jFrame.repaint();
+                mettreAJourFrame();
             }
         });
     }
