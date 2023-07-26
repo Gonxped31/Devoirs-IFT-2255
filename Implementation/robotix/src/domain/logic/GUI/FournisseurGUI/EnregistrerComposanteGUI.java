@@ -3,6 +3,7 @@ package domain.logic.GUI.FournisseurGUI;
 import javax.swing.*;
 
 public class EnregistrerComposanteGUI {
+    private JFrame jFrame = new JFrame();
     private JPanel enregistrerComposantePanel = new JPanel();
     private JLabel enregistrerComposanteLabel = new JLabel("Enregistrer une composante");
     private JLabel nomComposanteLabel = new JLabel("Nom de la composante");
@@ -31,7 +32,13 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(btnAnnuler);
     }
 
-    public JPanel getPanel() {
-        return enregistrerComposantePanel;
+    public void afficherMainPanel(JFrame jFrame) {
+        this.jFrame = jFrame;
+        this.jFrame.setContentPane(enregistrerComposantePanel);
+    }
+
+    public void mettreAJourFrame() {
+        this.jFrame.revalidate();
+        this.jFrame.repaint();
     }
 }

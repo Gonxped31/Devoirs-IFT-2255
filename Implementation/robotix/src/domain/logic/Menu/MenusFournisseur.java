@@ -64,9 +64,7 @@ public class MenusFournisseur extends JFrame {
 		btnEnregistrerComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				jFrame.getContentPane().removeAll();
-				jFrame.setContentPane(enregistrerComposanteGUI.getPanel());
-				mettreAJourFrame();
+				enregistrerComposanteGUI.afficherMainPanel(jFrame);
 			}
 		});
 		btnGererComposante.addActionListener(new ActionListener() {
