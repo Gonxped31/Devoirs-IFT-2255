@@ -60,6 +60,13 @@ public class GererComposantesGUI {
                 mettreAJourFrame();
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                mettreAJourFrame();
+            }
+        });
     }
 
     public void setMainPanel() {
