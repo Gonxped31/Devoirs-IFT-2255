@@ -1,7 +1,12 @@
 package domain.logic.GUI.FournisseurGUI;
 
+import domain.logic.Menu.MenuUtilisateur;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GererComposantesGUI {
     private JFrame jFrame = new JFrame();
@@ -31,6 +36,28 @@ public class GererComposantesGUI {
         setSupprimerComposantePanel();
         setModifierPrixComposantePanel();
         setModifierDescComposantePanel();
+
+        btnSupprimer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(supprimerComposantePanel);
+                mettreAJourFrame();
+            }
+        });
+        btnModifierPrix.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(modifierPrixComposantePanel);
+                mettreAJourFrame();
+            }
+        });
+        btnModifierDesc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(modifierDescComposantePanel);
+                mettreAJourFrame();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -68,7 +95,6 @@ public class GererComposantesGUI {
         modifierDescComposantePanel.add(btnConfirmerModifDesc);
         modifierDescComposantePanel.add(btnAnnuler);
     }
-
 
     public void afficherMainPanel(JFrame jFrame) {
         this.jFrame = jFrame;
