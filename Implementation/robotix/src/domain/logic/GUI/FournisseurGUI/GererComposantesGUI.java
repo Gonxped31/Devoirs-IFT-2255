@@ -68,6 +68,7 @@ public class GererComposantesGUI {
         mainPanel.add(btnSupprimer);
         mainPanel.add(btnModifierPrix);
         mainPanel.add(btnModifierDesc);
+        mainPanel.add(btnRetour);
     }
 
     public void setSupprimerComposantePanel() {

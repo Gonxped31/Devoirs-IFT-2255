@@ -18,7 +18,6 @@ public class EnregistrerComposanteGUI {
     private JTextField descriptionField = new JTextField();
     private JTextField typeComposanteField = new JTextField();
     private JButton btnEnregistrer = new JButton("Enregistrer");
-    private JButton btnAnnuler = new JButton("Annuler");
     private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
 
@@ -35,7 +34,7 @@ public class EnregistrerComposanteGUI {
         enregistrerComposantePanel.add(typeComposanteLabel);
         enregistrerComposantePanel.add(typeComposanteField);
         enregistrerComposantePanel.add(btnEnregistrer);
-        enregistrerComposantePanel.add(btnAnnuler);
+        enregistrerComposantePanel.add(btnRetour);
 
         btnRetour.addActionListener(new ActionListener() {
             @Override

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class AjouterRobotGUI {
     private JFrame jFrame = new JFrame();
     private JPanel ajouterRobotPanel = new JPanel();
-    private JButton btnRetour = new JButton();
+    private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
     public AjouterRobotGUI() {
         ajouterRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
