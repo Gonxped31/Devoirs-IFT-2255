@@ -24,7 +24,7 @@ public class Menu {
     private ConnexionUtilisateurGUI connexionUtilisateurGUI = new ConnexionUtilisateurGUI();
     private InscriptionFournisseurGUI inscriptionFournisseurGUI = new InscriptionFournisseurGUI();
     private ConnexionFournisseurGUI connexionFournisseurGUI = new ConnexionFournisseurGUI();
-    private JFrame jFrame;
+    private JFrame jFrame = new JFrame("Robotix");
     private JPanel menuPrincipalPanel = new JPanel();
     private JLabel bienvenueLabel =  new JLabel("Bienvenue chez Robotix!", SwingConstants.CENTER);
     private JLabel optionsLabel =  new JLabel("Veuillez choisir l'une des options suivantes", SwingConstants.CENTER);
@@ -36,7 +36,6 @@ public class Menu {
 
     public Menu() throws IOException {
         setPanel();
-        jFrame = new JFrame("Robotix");
         jFrame.setContentPane(menuPrincipalPanel);
         jFrame.setSize(750, 600);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -92,13 +91,6 @@ public class Menu {
         menuPrincipalPanel.add(btnConnecterFournisseur);
         menuPrincipalPanel.add(Box.createHorizontalStrut(10));
         menuPrincipalPanel.add(btnQuitter);
-    }
-
-    public void afficherPanel(JFrame jFrame) {
-        this.jFrame = jFrame;
-        this.jFrame.setContentPane(menuPrincipalPanel);
-        this.jFrame.revalidate();
-        this.jFrame.repaint();
     }
 
     public void menuPrincipale(Scanner scanner) throws ParseException, IOException {

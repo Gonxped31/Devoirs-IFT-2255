@@ -34,8 +34,7 @@ public class InscriptionUtilisateurGUI {
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenuUtilisateur menuUtilisateur;
-    private Stack<Container> panelStack = new Stack<>();
-
+    private Container panelPrecedent = new Container();
 
     public InscriptionUtilisateurGUI() {
         inscriptionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -82,18 +81,15 @@ public class InscriptionUtilisateurGUI {
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Menu menu;
-                try {
-                    menu = new Menu();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                menu.afficherPanel(jFrame);
+                jFrame.setContentPane(panelPrecedent); // Mettre à jour le contentPane avec le panel précédent
+                jFrame.revalidate();
+                jFrame.repaint();
             }
         });
     }
 
     public void afficherPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
         this.jFrame.setContentPane(inscriptionUtilisateurPanel);
         this.jFrame.revalidate();
