@@ -2,6 +2,8 @@ package domain.logic.GUI.UtilisateurGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GestionFlotteGUI {
     private JFrame jFrame = new JFrame();
@@ -27,6 +29,15 @@ public class GestionFlotteGUI {
         setAjouterComposantePanel();
         setAfficherMetriquesPanel();
         setCreerActionPanel();
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+        });
     }
 
     public void setMainPanel() {
@@ -37,6 +48,7 @@ public class GestionFlotteGUI {
         mainPanel.add(btnAjouterComposante);
         mainPanel.add(btnAfficherMetriques);
         mainPanel.add(btnCreerAction);
+        mainPanel.add(btnRetour);
     }
     public void setEnregistrerRobotPanel() {
         enregistrerRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
@@ -57,6 +69,7 @@ public class GestionFlotteGUI {
     }
 
     public void afficherMainPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
         this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();
