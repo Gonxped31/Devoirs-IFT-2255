@@ -11,7 +11,7 @@ import java.io.IOException;
 public class InscriptionFournisseurGUI {
     private JFrame jFrame = new JFrame();
     private JPanel inscriptionFournisseurPanel = new JPanel();
-    private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur");
+    private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel courrielLabel = new JLabel("Adresse courriel");
     private JLabel mdpLabel = new JLabel("Mot de passe");
@@ -37,7 +37,11 @@ public class InscriptionFournisseurGUI {
     private MenusFournisseur menusFournisseur;
 
     public InscriptionFournisseurGUI()  {
-        inscriptionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        inscriptionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        inscriptionFournisseurPanel.setLayout(new GridLayout(0, 1));
+        inscriptionFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         inscriptionFournisseurPanel.add(inscriptionFournisseurLabel);
         inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
         inscriptionFournisseurPanel.add(nomLabel);
@@ -62,6 +66,7 @@ public class InscriptionFournisseurGUI {
         inscriptionFournisseurPanel.add(nomCompagnieField);
         inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
         inscriptionFournisseurPanel.add(btnConfirmerInscription);
+        inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
         inscriptionFournisseurPanel.add(btnRetour);
 
         btnConfirmerInscription.addActionListener(new ActionListener() {
@@ -86,7 +91,6 @@ public class InscriptionFournisseurGUI {
 
     public void afficherPanel(JFrame jFrame) {
         this.jFrame = jFrame;
-        this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(inscriptionFournisseurPanel);
         this.jFrame.revalidate();
         this.jFrame.repaint();

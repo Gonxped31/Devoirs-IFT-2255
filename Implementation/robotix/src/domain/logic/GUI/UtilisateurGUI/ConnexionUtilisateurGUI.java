@@ -21,9 +21,14 @@ public class ConnexionUtilisateurGUI {
     private MenuUtilisateur menuUtilisateur;
 
     public ConnexionUtilisateurGUI() {
-        connexionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        connexionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        connexionUtilisateurPanel.setLayout(new BoxLayout(connexionUtilisateurPanel, BoxLayout.Y_AXIS));
+        connexionUtilisateurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pseudoField.setMaximumSize(new Dimension(Integer.MAX_VALUE, pseudoField.getPreferredSize().height));
+        mdpField.setMaximumSize(new Dimension(Integer.MAX_VALUE, mdpField.getPreferredSize().height));
+
+        // Ajout des composantes
         connexionUtilisateurPanel.add(connexionUtilisateurLabel);
-        connexionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         connexionUtilisateurPanel.add(pseudoLabel);
         connexionUtilisateurPanel.add(pseudoField);
         connexionUtilisateurPanel.add(mdpLabel);

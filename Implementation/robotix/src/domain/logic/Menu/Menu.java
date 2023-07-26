@@ -35,7 +35,7 @@ public class Menu {
     public Menu() throws IOException {
         mainFrame = new JFrame("Robotix");
         mainFrame.setContentPane(menuPanel);
-        mainFrame.setSize(650, 500);
+        mainFrame.setSize(750, 600);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
 

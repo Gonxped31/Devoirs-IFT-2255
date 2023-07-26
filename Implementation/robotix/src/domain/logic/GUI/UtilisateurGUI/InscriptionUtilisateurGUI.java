@@ -11,7 +11,7 @@ import java.io.IOException;
 public class InscriptionUtilisateurGUI {
     private JFrame jFrame = new JFrame();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
-    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur");
+    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur", SwingConstants.CENTER);
     private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel pseudoLabel = new JLabel("Pseudo");
@@ -34,7 +34,11 @@ public class InscriptionUtilisateurGUI {
     private MenuUtilisateur menuUtilisateur;
 
     public InscriptionUtilisateurGUI() {
-        inscriptionUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        inscriptionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        inscriptionUtilisateurPanel.setLayout(new GridLayout(0, 1));
+        inscriptionUtilisateurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         inscriptionUtilisateurPanel.add(inscriptionUtilisateurLabel);
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         inscriptionUtilisateurPanel.add(prenomLabel);
@@ -56,6 +60,7 @@ public class InscriptionUtilisateurGUI {
         inscriptionUtilisateurPanel.add(interetsLabel);
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         inscriptionUtilisateurPanel.add(btnConfirmerInscription);
+        inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         inscriptionUtilisateurPanel.add(btnRetour);
 
         btnConfirmerInscription.addActionListener(new ActionListener() {

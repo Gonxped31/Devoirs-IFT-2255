@@ -14,16 +14,21 @@ public class ConnexionFournisseurGUI {
     private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel mdpLabel = new JLabel("Mot de passe");
-    private JTextField nomField = new JTextField();
-    private JPasswordField mdpField = new JPasswordField();
+    private JTextField nomField = new JTextField(10);
+    private JPasswordField mdpField = new JPasswordField(10);
     private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
 
     public ConnexionFournisseurGUI()  {
-        connexionFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        connexionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        connexionFournisseurPanel.setLayout(new BoxLayout(connexionFournisseurPanel, BoxLayout.Y_AXIS));
+        connexionFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        nomField.setMaximumSize(new Dimension(Integer.MAX_VALUE, nomField.getPreferredSize().height));
+        mdpField.setMaximumSize(new Dimension(Integer.MAX_VALUE, mdpField.getPreferredSize().height));
+
+        // Ajout des composantes
         connexionFournisseurPanel.add(connexionFournisseurLabel);
-        connexionFournisseurPanel.add(Box.createHorizontalStrut(10));
         connexionFournisseurPanel.add(nomLabel);
         connexionFournisseurPanel.add(nomField);
         connexionFournisseurPanel.add(mdpLabel);
