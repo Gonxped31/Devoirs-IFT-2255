@@ -19,6 +19,7 @@ public class ConnexionUtilisateurGUI {
     private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnRetour = new JButton("Retour");
     private MenuUtilisateur menuUtilisateur;
+    private Container panelPrecedent = new Container();
 
     public ConnexionUtilisateurGUI() {
         connexionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -47,9 +48,19 @@ public class ConnexionUtilisateurGUI {
                 menuUtilisateur.afficherMenuUtilisateurPanel(jFrame);
             }
         });
+
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+        });
     }
 
     public void afficherPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
         this.jFrame.getContentPane().removeAll();
         this.jFrame.setContentPane(connexionUtilisateurPanel);
