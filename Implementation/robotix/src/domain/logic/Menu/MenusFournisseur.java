@@ -48,9 +48,7 @@ public class MenusFournisseur extends JFrame {
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				jFrame.getContentPane().removeAll();
-				jFrame.setContentPane(ajouterRobotGUI.getPanel());
-				mettreAJourFrame();
+				ajouterRobotGUI.afficherMainPanel(jFrame);
 			}
 		});
 		btnRetirerRobot.addActionListener(new ActionListener() {
