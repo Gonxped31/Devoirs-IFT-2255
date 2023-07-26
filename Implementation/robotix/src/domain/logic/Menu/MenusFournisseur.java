@@ -93,10 +93,6 @@ public class MenusFournisseur extends JFrame {
 		this.jFrame = jFrame;
 		this.jFrame.getContentPane().removeAll();
 		this.jFrame.setContentPane(menuFournisseurPanel);
-		mettreAJourFrame();
-	}
-
-	public void mettreAJourFrame() {
 		jFrame.revalidate();
 		jFrame.repaint();
 	}
