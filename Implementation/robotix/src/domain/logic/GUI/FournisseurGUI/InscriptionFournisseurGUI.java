@@ -36,8 +36,7 @@ public class InscriptionFournisseurGUI {
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
-    private Stack<JPanel> panelStack = new Stack<>();
-
+    private Container panelPrecedent = new Container();
     public InscriptionFournisseurGUI()  {
         inscriptionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         inscriptionFournisseurPanel.setLayout(new GridLayout(0, 1));
@@ -86,12 +85,15 @@ public class InscriptionFournisseurGUI {
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                jFrame.setContentPane(panelPrecedent); // Mettre à jour le contentPane avec le panel précédent
+                jFrame.revalidate();
+                jFrame.repaint();
             }
         });
     }
 
     public void afficherPanel(JFrame jFrame) {
+        panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
         this.jFrame.setContentPane(inscriptionFournisseurPanel);
         this.jFrame.revalidate();
