@@ -313,14 +313,24 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     }
 
-    public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+    public boolean enregistrerRobot(String nomRobot, Robot robot, String type) {
+        robot.setNom(nomRobot);
+        robot.setType(type);
 
-       boolean robotExiste= this.listeRobot.stream()
-               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
-       if (!robotExiste ) {
-           listeRobot.add(robot);
-       }
-        return  robotExiste;
+        boolean robotExiste = false;
+        System.out.println(listeRobot);
+        for (Robot r : listeRobot) {
+            if (r.getNumeroSerie().equals(robot.getNumeroSerie())) {
+                robotExiste = true;
+                break;
+            }
+        }
+
+        if (!robotExiste) {
+            listeRobot.add(robot);
+        }
+
+        return robotExiste;
     }
 
     public void creerTache(String nom, ArrayList<Action> actions){
@@ -602,5 +612,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             }
         }
         return false;
+    }
+
+    public void ajouterRobot(Robot robot) {
+        System.out.println(listeRobot);
+        listeRobot.add(robot);
+        System.out.println(listeRobot);
     }
 }

@@ -128,7 +128,17 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                        .filter(robot -> robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
                        .findFirst()
                        .orElse(null);
-     }
+            /*for (Map<String, List<Robot>> map : listRobot) {
+                for (List<Robot> robotList : map.values()) {
+                    for (Robot robot : robotList) {
+                        if (robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim())) {
+                            return robot;
+                        }
+                    }
+                }
+            }
+            return null;*/
+    }
 
     public Composant retournerComposante(String nom){
         return listComposant.stream()

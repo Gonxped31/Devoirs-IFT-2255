@@ -52,7 +52,7 @@ public class MenuGestionFlotte {
             String type = scanner.nextLine();
             System.out.println("Numero de serie: ");
             String numeroDeSerie = scanner.nextLine();
-            if(controlleurUtilisateurs.enregistrerRobot(nomRobot, type, numeroDeSerie)) {
+            if(controlleurUtilisateurs.enregistrerRobot(nomRobot, type, numeroDeSerie, pseudo)) {
                 System.out.println("Le robot a été bien enrégistré !");
                 reessayer = false;
             } else {

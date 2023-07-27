@@ -222,10 +222,12 @@ public class MenuUtilisateur {
                 int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
                 String numeroSerie = dbControlleur.acheterRobot(nomFournisseur, numero).toString();
+                controlleurUtilisateurs.ajouterRobot(pseudo, numeroSerie);
                 System.out.println(numeroSerie);
 
                 //Ajouter nom fournisseur
-                controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de robot",pseudo +" a achete " + dbControlleur.retournerRobot(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
+                controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de robot",pseudo +" a achete "
+                            + dbControlleur.retournerRobot(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {

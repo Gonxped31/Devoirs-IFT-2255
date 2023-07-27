@@ -68,21 +68,17 @@ public class ControlleurUtilisateurs {
 
 
 
-    public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
+    public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie, String pseudo) {
         boolean bool=false;
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Utilisateur u = this.dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
-        if (!(robot == null)){
-            robot.setNom(nomRobot);
-            robot.setType(type);
-            try {
-                bool = this.utilisateurCourant.enregistrerRobot(robot);
-            } catch (NullPointerException e){
-                return true;
-            }
-        }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        System.out.println(robot);
+        if (robot != null){
+            bool = u.enregistrerRobot(nomRobot, robot, type);
+        }
+        this.dataBaseController.ajouterUtilisateur(u);
         return bool;
-        //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
@@ -282,5 +278,13 @@ public class ControlleurUtilisateurs {
         this.utilisateurCourant.ajouterUnInteret(i);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return true;
+    }
+
+    public void ajouterRobot(String pseudo, String numeroSerie) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        Robot robot = dataBaseController.retournerRobot(numeroSerie);
+        u.ajouterRobot(robot);
+        dataBaseController.ajouterUtilisateur(u);
     }
 }
