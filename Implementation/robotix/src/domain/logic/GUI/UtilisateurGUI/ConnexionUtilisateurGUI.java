@@ -10,8 +10,9 @@ import java.io.IOException;
 
 public class ConnexionUtilisateurGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel connexionUtilisateurPanel = new JPanel();
-    private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur");
+    private JPanel mainPanel = new JPanel(new BorderLayout());
+    private JPanel formulairePanel = new JPanel(new GridBagLayout());
+    private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur", SwingConstants.CENTER);
     private JLabel pseudoLabel = new JLabel("Pseudo");
     private JLabel mdpLabel = new JLabel("Mot de passe");
     private JTextField pseudoField = new JTextField();
@@ -20,22 +21,33 @@ public class ConnexionUtilisateurGUI {
     private JButton btnRetour = new JButton("Retour");
     private MenuUtilisateur menuUtilisateur;
     private Container panelPrecedent = new Container();
+    private GridBagConstraints constraints = new GridBagConstraints();
 
     public ConnexionUtilisateurGUI() {
+        // Setup de quelques composantes
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         connexionUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        connexionUtilisateurPanel.setLayout(new BoxLayout(connexionUtilisateurPanel, BoxLayout.Y_AXIS));
-        connexionUtilisateurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        pseudoField.setMaximumSize(new Dimension(Integer.MAX_VALUE, pseudoField.getPreferredSize().height));
-        mdpField.setMaximumSize(new Dimension(Integer.MAX_VALUE, mdpField.getPreferredSize().height));
+        connexionUtilisateurLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pseudoField.setPreferredSize(new Dimension(200, 30));
+        mdpField.setPreferredSize(new Dimension(200, 30));
+
+        // Mise en page du formulaire
+        formulairePanel.add(pseudoLabel, constraints);
+        constraints.gridy = 1;
+        formulairePanel.add(pseudoField, constraints);
+        constraints.gridy = 2;
+        formulairePanel.add(mdpLabel, constraints);
+        constraints.gridy = 3;
+        formulairePanel.add(mdpField, constraints);
+        constraints.gridy = 4;
+        formulairePanel.add(btnSeConnecter, constraints);
+        constraints.gridy = 5;
+        formulairePanel.add(btnRetour, constraints);
 
         // Ajout des composantes
-        connexionUtilisateurPanel.add(connexionUtilisateurLabel);
-        connexionUtilisateurPanel.add(pseudoLabel);
-        connexionUtilisateurPanel.add(pseudoField);
-        connexionUtilisateurPanel.add(mdpLabel);
-        connexionUtilisateurPanel.add(mdpField);
-        connexionUtilisateurPanel.add(btnSeConnecter);
-        connexionUtilisateurPanel.add(btnRetour);
+        mainPanel.add(connexionUtilisateurLabel, BorderLayout.NORTH);
+        mainPanel.add(formulairePanel, BorderLayout.CENTER);
 
         btnSeConnecter.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +73,7 @@ public class ConnexionUtilisateurGUI {
     public void afficherPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
-        this.jFrame.setContentPane(connexionUtilisateurPanel);
+        this.jFrame.setContentPane(mainPanel);
         mettreAJourFrame();
     }
 
