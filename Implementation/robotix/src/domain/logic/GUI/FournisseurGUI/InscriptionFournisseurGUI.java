@@ -7,12 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Stack;
 
 public class InscriptionFournisseurGUI {
     private JFrame jFrame = new JFrame();
     private JPanel inscriptionFournisseurPanel = new JPanel();
-    private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que fournisseur", SwingConstants.CENTER);
+    private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que nouveau fournisseur", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel courrielLabel = new JLabel("Adresse courriel");
     private JLabel mdpLabel = new JLabel("Mot de passe");

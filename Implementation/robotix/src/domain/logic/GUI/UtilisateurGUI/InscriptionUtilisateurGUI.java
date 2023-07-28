@@ -8,12 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Stack;
 
 public class InscriptionUtilisateurGUI {
     private JFrame jFrame = new JFrame();
     private JPanel inscriptionUtilisateurPanel = new JPanel();
-    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant qu'utilisateur", SwingConstants.CENTER);
+    private JLabel inscriptionUtilisateurLabel = new JLabel("Inscription en tant que nouvel utilisateur", SwingConstants.CENTER);
     private JLabel prenomLabel = new JLabel("Prenom");
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel pseudoLabel = new JLabel("Pseudo");
