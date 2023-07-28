@@ -196,7 +196,15 @@ public class GestionFlotteGUI {
 
     public void setCreerActionPanel() {
         JLabel nomActionLabel = new JLabel("Nom de l'action a creer");
+        JLabel nomComposanteLabel = new JLabel("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?");
+        JLabel optionAjouterLabel = new JLabel("Voulez-vous rajouter une composante a cette action?");
+        JLabel dureeLabel = new JLabel("Veuillez entrer le duree");
         JTextField nomActionField = new JTextField();
+        JTextField nomComposanteField = new JTextField();
+        JTextField dureeField = new JTextField();
+        JRadioButton radioButtonOui = new JRadioButton("Oui");
+        JRadioButton radioButtonNon = new JRadioButton("Non");
+        JButton btnCreationAction = new JButton("Creation de l'action");
         JButton btnMenuGestionFlotte = new JButton("Retour");
 
         constraints.gridy = 0;
@@ -204,8 +212,25 @@ public class GestionFlotteGUI {
         constraints.gridy = 1;
         creerActionPanel.add(nomActionField, constraints);
         constraints.gridy = 2;
+        creerActionPanel.add(nomComposanteLabel, constraints);
+        constraints.gridy = 3;
+        creerActionPanel.add(nomComposanteField, constraints);
+        constraints.gridy = 4;
+        creerActionPanel.add(optionAjouterLabel, constraints);
+        constraints.gridy = 5;
+        creerActionPanel.add(radioButtonOui, constraints);
+        constraints.gridy = 6;
+        creerActionPanel.add(radioButtonNon, constraints);
+        constraints.gridy = 7;
+        creerActionPanel.add(dureeLabel, constraints);
+        constraints.gridy = 8;
+        creerActionPanel.add(dureeField, constraints);
+        constraints.gridy = 9;
+        creerActionPanel.add(btnCreationAction, constraints);
+        constraints.gridy = 10;
         creerActionPanel.add(btnMenuGestionFlotte, constraints);
 
+        onBtnCreationActionClicked(btnCreationAction, nomActionField, nomComposanteField, radioButtonOui, radioButtonNon, dureeField);
         onBtnAnnulerClicked(btnMenuGestionFlotte);
     }
 
@@ -244,6 +269,20 @@ public class GestionFlotteGUI {
             }
         });
     }
+
+    public void onBtnCreationActionClicked(JButton btnCreationAction, JTextField nomActionField, JTextField nomComposanteField,
+                                           JRadioButton radioButtonOui, JRadioButton radioButtonNon, JTextField dureeField) {
+        btnCreationAction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (nomActionField.getText().length() == 0 ||  nomComposanteField.getText().length() == 0 ||  dureeField.getText().length() == 0)
+                    afficherMessageErreurCreationAction();
+                else
+                    confirmerCreationAction();
+            }
+        });
+    }
+
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -274,6 +313,16 @@ public class GestionFlotteGUI {
         mettreAJourFrame();
     }
 
+    public void confirmerCreationAction() {
+        String message = "L'action a ete bien creee";
+        String title = "Creation terminee";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
     public void afficherMessageErreurEnregistrerRobot() {
         String message = "Aucun robot vendu par nos fournisseurs ne possede ce numero de serie. Veuillez reessayer.";
         String title = "Erreur";
@@ -284,6 +333,14 @@ public class GestionFlotteGUI {
 
     public void afficherMessageErreurAjoutComposante() {
         String message = "La composante ou le robot entree n'existe pas. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurCreationAction() {
+        String message = "Veuillez reessayer.";
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
