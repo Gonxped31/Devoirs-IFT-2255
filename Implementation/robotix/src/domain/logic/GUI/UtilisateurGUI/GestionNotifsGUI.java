@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class GestionNotifsGUI {
     private JFrame jFrame = new JFrame();
     private JPanel gestionNotifsPanel = new JPanel();
-    private JLabel gestionNotifsLabel = new JLabel("Vos notifications");
+    private JLabel gestionNotifsLabel = new JLabel("Vos notifications", SwingConstants.CENTER);
     private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
 

@@ -11,7 +11,7 @@ public class GestionReseauGUI {
     private JPanel suivreUtilisateurPanel = new JPanel();
     private JPanel gererSuiveursPanel = new JPanel();
     private JPanel gererInteretsPanel = new JPanel();
-    private JLabel gestionReseauLabel = new JLabel("Gestion reseau");
+    private JLabel gestionReseauLabel = new JLabel("Gestion reseau", SwingConstants.CENTER);
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
     private JButton btnGererSuiveurs = new JButton("Gerer mes suiveurs");
     private JButton btnGererInterets = new JButton("Gerer mes interets");
@@ -34,11 +34,19 @@ public class GestionReseauGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(gestionReseauLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnSuivreUtilisateur);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnGererSuiveurs);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnGererInterets);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
     public void setSuivreUtilisateurPanel() {

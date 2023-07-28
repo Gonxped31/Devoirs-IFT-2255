@@ -10,7 +10,7 @@ public class GestionTachesGUI {
     private JPanel mainPanel = new JPanel();
     private JPanel creerTachePanel = new JPanel();
     private JPanel allouerTachePanel = new JPanel();
-    private JLabel gestionTachesLabel = new JLabel("Gestion de mes taches");
+    private JLabel gestionTachesLabel = new JLabel("Gestion de mes taches", SwingConstants.CENTER);
     private JLabel creerTacheLabel = new JLabel("Quelles tache voulez-vous creer?");
     private JLabel allouerTacheLabel = new JLabel("A quel robot voulez-vous allouer une tache?");
     private JLabel allouerTacheLabel2 = new JLabel("Quel est le nom de la tache a allouer?");
@@ -37,10 +37,17 @@ public class GestionTachesGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(gestionTachesLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnCreerTache);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnAllouerTache);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
 

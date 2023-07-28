@@ -13,7 +13,7 @@ public class GestionFlotteGUI {
     private JPanel ajouterComposantePanel = new JPanel();
     private JPanel afficherMetriquesPanel = new JPanel();
     private JPanel creerActionPanel = new JPanel();
-    private JLabel gestionFlotteLabel = new JLabel("Gestion de ma flotte");
+    private JLabel gestionFlotteLabel = new JLabel("Gestion de ma flotte", SwingConstants.CENTER);
     private JButton btnEnregistrerRobot = new JButton("Enregistrer un robot");
     private JButton btnAfficherEtatRobot = new JButton("Afficher etat d'un robot");
     private JButton btnAjouterComposante = new JButton("Ajouter une composante a un robot");
@@ -40,13 +40,23 @@ public class GestionFlotteGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(gestionFlotteLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnEnregistrerRobot);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnAfficherEtatRobot);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnAjouterComposante);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnAfficherMetriques);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnCreerAction);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
     public void setEnregistrerRobotPanel() {

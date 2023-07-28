@@ -10,7 +10,7 @@ public class GestionActivitesGUI {
     private JPanel mainPanel = new JPanel();
     private JPanel creerActivitePanel = new JPanel();
     private JPanel rejoindreActivitePanel = new JPanel();
-    private JLabel gestionActivitesLabel = new JLabel("Gestion de mes activites");
+    private JLabel gestionActivitesLabel = new JLabel("Gestion de mes activites", SwingConstants.CENTER);
     private JButton btnCreerActivite = new JButton("Creer une activite");
     private JButton btnRejoindreActivite = new JButton("Rejoindre une activite");
     private JButton btnRetour = new JButton("Retour");
@@ -31,10 +31,17 @@ public class GestionActivitesGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(gestionActivitesLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnCreerActivite);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRejoindreActivite);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
 

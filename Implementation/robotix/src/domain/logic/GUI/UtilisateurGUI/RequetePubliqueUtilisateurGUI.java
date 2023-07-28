@@ -16,7 +16,7 @@ public class RequetePubliqueUtilisateurGUI {
     private JPanel recupererListeInteretsPanel = new JPanel();
     private JPanel rechercheNomFournisseurPanel = new JPanel();
     private JPanel rechercheNomComposantePanel = new JPanel();
-    private JLabel requetePubliqueUtilisateurLabel = new JLabel("Veuillez faire une requete publique");
+    private JLabel requetePubliqueUtilisateurLabel = new JLabel("Veuillez faire une requete publique", SwingConstants.CENTER);
     private JButton btnVoirListeUtilisateurs = new JButton("Voir la liste d'utilisateurs");
     private JButton btnVoirListeFournisseurs = new JButton("Voir la liste des fournisseurs");
     private JButton btnVoirProfil = new JButton("Voir mon profil");
@@ -49,16 +49,29 @@ public class RequetePubliqueUtilisateurGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(requetePubliqueUtilisateurLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnVoirListeUtilisateurs);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnVoirListeFournisseurs);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnVoirProfil);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnChercherUtilisateur);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRecupererListeActivites);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRecupererListeInterets);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRechercheNomFournisseur);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRechercheNomComposante);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
 
