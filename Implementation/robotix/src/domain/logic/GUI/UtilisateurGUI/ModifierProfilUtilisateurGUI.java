@@ -41,7 +41,7 @@ public class ModifierProfilUtilisateurGUI {
     private JButton btnNumeroTelephone = new JButton("Numero de telephone");
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnMdp = new JButton("Mot de passe");
-    private JButton btnRetourMenuPrincipal = new JButton("Retour au menu utilisateur");
+    private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
@@ -114,7 +114,7 @@ public class ModifierProfilUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
-        btnRetourMenuPrincipal.addActionListener(new ActionListener() {
+        btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(panelPrecedent);
@@ -146,7 +146,7 @@ public class ModifierProfilUtilisateurGUI {
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnMdp);
         mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnRetourMenuPrincipal);
+        mainPanel.add(btnRetour);
     }
 
     public void setModifierNomPanel() {

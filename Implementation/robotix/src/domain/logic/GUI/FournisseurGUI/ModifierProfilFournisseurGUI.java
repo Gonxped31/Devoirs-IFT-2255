@@ -7,14 +7,14 @@ import java.awt.event.ActionListener;
 
 public class ModifierProfilFournisseurGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel mainPanel = new JPanel();
-    private JPanel modifierNomPanel = new JPanel();
-    private JPanel modifierAdressePanel = new JPanel();
-    private JPanel modifierEmailPanel = new JPanel();
-    private JPanel modifierTelephonePanel = new JPanel();
-    private JPanel modifierCompagniePanel = new JPanel();
-    private JPanel modifierCapaciteProductionPanel = new JPanel();
-    private JPanel modifierMdpPanel = new JPanel();
+    private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel modifierNomPanel = new JPanel(new GridBagLayout());
+    private JPanel modifierAdressePanel = new JPanel(new GridBagLayout());
+    private JPanel modifierEmailPanel = new JPanel(new GridBagLayout());
+    private JPanel modifierTelephonePanel = new JPanel(new GridBagLayout());
+    private JPanel modifierCompagniePanel = new JPanel(new GridBagLayout());
+    private JPanel modifierCapaciteProductionPanel = new JPanel(new GridBagLayout());
+    private JPanel modifierMdpPanel = new JPanel(new GridBagLayout());
     private JLabel profilFournisseurLabel = new JLabel("Que voulez-vous modifier?", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
     private JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
@@ -37,10 +37,13 @@ public class ModifierProfilFournisseurGUI {
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnCapaciteProduction = new JButton("Capacite de production");
     private JButton btnMdp = new JButton("Mot de passe");
-    private JButton btnRetour = new JButton("Retour");
+    private JButton btnRetour = new JButton("Retour au menu fournisseur");
     private Container panelPrecedent = new Container();
+    private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public ModifierProfilFournisseurGUI() {
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
         setModifierNomPanel();
         setModifierAdressePanel();
@@ -102,7 +105,7 @@ public class ModifierProfilFournisseurGUI {
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.setContentPane(panelPrecedent);
                 mettreAJourFrame();
             }
         });
@@ -110,7 +113,6 @@ public class ModifierProfilFournisseurGUI {
 
     public void setMainPanel() {
         profilFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        mainPanel.setLayout(new GridLayout(0, 1));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Ajout des composantes
@@ -134,45 +136,122 @@ public class ModifierProfilFournisseurGUI {
     }
 
     public void setModifierNomPanel() {
-        modifierNomPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierNomPanel.add(nomLabel);
-        modifierNomPanel.add(nouveauNomField);
+        JButton btnEnregistrerNom = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerNom);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouveauNomField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierNomPanel.add(nomLabel, constraints);
+        constraints.gridy = 1;
+        modifierNomPanel.add(nouveauNomField, constraints);
+        constraints.gridy = 2;
+        modifierNomPanel.add(btnEnregistrerNom, constraints);
+        constraints.gridy = 3;
+        modifierNomPanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierAdressePanel() {
-        modifierAdressePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierAdressePanel.add(adresseLabel);
-        modifierAdressePanel.add(nouvelleAdresseField);
+        JButton btnEnregistrerAdresse = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerAdresse);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouvelleAdresseField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierAdressePanel.add(adresseLabel, constraints);
+        constraints.gridy = 1;
+        modifierAdressePanel.add(nouvelleAdresseField, constraints);
+        constraints.gridy = 2;
+        modifierAdressePanel.add(btnEnregistrerAdresse, constraints);
+        constraints.gridy = 3;
+        modifierAdressePanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierEmailPanel() {
-        modifierEmailPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierEmailPanel.add(emailLabel);
-        modifierEmailPanel.add(nouveauEmailField);
+        JButton btnEnregistrerEmail = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerEmail);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouveauEmailField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierEmailPanel.add(emailLabel, constraints);
+        constraints.gridy = 1;
+        modifierEmailPanel.add(nouveauEmailField, constraints);
+        constraints.gridy = 2;
+        modifierEmailPanel.add(btnEnregistrerEmail, constraints);
+        constraints.gridy = 3;
+        modifierEmailPanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierTelephonePanel() {
-        modifierTelephonePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierTelephonePanel.add(telephoneLabel);
-        modifierTelephonePanel.add(nouveauTelephoneField);
+        JButton btnEnregistrerTelephone = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerTelephone);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouveauTelephoneField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierTelephonePanel.add(telephoneLabel, constraints);
+        constraints.gridy = 1;
+        modifierTelephonePanel.add(nouveauTelephoneField, constraints);
+        constraints.gridy = 2;
+        modifierTelephonePanel.add(btnEnregistrerTelephone, constraints);
+        constraints.gridy = 3;
+        modifierTelephonePanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierCompagniePanel() {
-        modifierCompagniePanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierCompagniePanel.add(compagnieLabel);
-        modifierCompagniePanel.add(nouvelleCompagnieField);
+        JButton btnEnregistrerCompagnie = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerCompagnie);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouvelleCompagnieField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierCompagniePanel.add(compagnieLabel, constraints);
+        constraints.gridy = 1;
+        modifierCompagniePanel.add(nouvelleCompagnieField, constraints);
+        constraints.gridy = 2;
+        modifierCompagniePanel.add(btnEnregistrerCompagnie, constraints);
+        constraints.gridy = 3;
+        modifierCompagniePanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierCapaciteProductionPanel() {
-        modifierCapaciteProductionPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierCapaciteProductionPanel.add(capaciteProductionLabel);
-        modifierCapaciteProductionPanel.add(nouvelleCapaciteProductionField);
+        JButton btnEnregistrerCP = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerCP);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouvelleCapaciteProductionField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierCapaciteProductionPanel.add(capaciteProductionLabel, constraints);
+        constraints.gridy = 1;
+        modifierCapaciteProductionPanel.add(nouveauMdpField, constraints);
+        constraints.gridy = 2;
+        modifierCapaciteProductionPanel.add(btnEnregistrerCP, constraints);
+        constraints.gridy = 3;
+        modifierCapaciteProductionPanel.add(btnAnnuler, constraints);
     }
 
     public void setModifierMdpPanel() {
-        modifierMdpPanel.setLayout(new GridLayout(0, 2, 5, 5));
-        modifierMdpPanel.add(mdpLabel);
-        modifierMdpPanel.add(nouveauMdpField);
+        JButton btnEnregistrerMdp = new JButton("Enregistrer les modifications");
+        JButton btnAnnuler = new JButton("Annuler les modifications");
+        onBtnEnregistrerClicked(btnEnregistrerMdp);
+        onBtnAnnulerClicked(btnAnnuler);
+
+        nouveauMdpField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        modifierMdpPanel.add(mdpLabel, constraints);
+        constraints.gridy = 1;
+        modifierMdpPanel.add(nouveauMdpField, constraints);
+        constraints.gridy = 2;
+        modifierMdpPanel.add(btnEnregistrerMdp, constraints);
+        constraints.gridy = 3;
+        modifierMdpPanel.add(btnAnnuler, constraints);
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -185,5 +264,22 @@ public class ModifierProfilFournisseurGUI {
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
+    }
+    public void onBtnEnregistrerClicked(JButton btnEnregistrer) {
+        btnEnregistrer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+    public void onBtnAnnulerClicked(JButton btnAnnuler) {
+        btnAnnuler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(mainPanel);
+                mettreAJourFrame();
+            }
+        });
     }
 }
