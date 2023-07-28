@@ -230,7 +230,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 0;
         modifierCapaciteProductionPanel.add(capaciteProductionLabel, constraints);
         constraints.gridy = 1;
-        modifierCapaciteProductionPanel.add(nouveauMdpField, constraints);
+        modifierCapaciteProductionPanel.add(nouvelleCapaciteProductionField, constraints);
         constraints.gridy = 2;
         modifierCapaciteProductionPanel.add(btnEnregistrerCP, constraints);
         constraints.gridy = 3;
