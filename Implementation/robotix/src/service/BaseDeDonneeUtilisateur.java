@@ -1,20 +1,11 @@
 package service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.reflect.TypeToken;
-import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
-import domain.logic.Robot.Robot;
-import service.BaseDeDonneeFournisseur;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -179,4 +170,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
 
+    public StringBuilder retournerInteretsUtilisateur(String pseudo) {
+        List<Utilisateur> utilisateurs = this.getListObjet();
+        StringBuilder interestsStringBuilder = new StringBuilder();
+        for (Utilisateur u : utilisateurs){
+            if (u.getPseudo().equals(pseudo)) {
+                for (Interet i : u.getListeInteret()) {
+                    interestsStringBuilder.append(i.getNom()).append("\n");
+                }
+                break;
+            }
+        }
+        return interestsStringBuilder;
+    }
 }

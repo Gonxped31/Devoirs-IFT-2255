@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class ControlleurUtilisateurs {
 
@@ -298,5 +297,13 @@ public class ControlleurUtilisateurs {
         dataBaseController.supprimerUtilisateur(u);
         u.getListeInteret().add(new Interet(interet));
         dataBaseController.ajouterUtilisateur(u);
+    }
+
+    public StringBuilder retournerInteretUtilisateur(String pseudo) {
+        return dataBaseController.retournerListeInteretsUtilisateur(pseudo);
+    }
+
+    public void desabonnerInteret(String choix, String pseudo) {
+
     }
 }

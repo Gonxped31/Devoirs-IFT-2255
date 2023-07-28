@@ -180,4 +180,8 @@ public class DbControleur {
         System.out.println(baseDeDonneeInteret.retournerInteret(interet));
         baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interet));
     }
+
+    public StringBuilder retournerListeInteretsUtilisateur(String pseudo) {
+        return baseDeDonneeUtilisateur.retournerInteretsUtilisateur(pseudo);
+    }
 }

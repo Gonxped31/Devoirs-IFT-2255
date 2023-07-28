@@ -117,8 +117,14 @@ public class MenuGestionReseau {
                 System.out.println(">>> Votre choix : ");
                 String interet = scanner.nextLine();
                 controlleurUtilisateurs.abonnerInteret(interet, pseudo);
+            }
+            case ("5") -> {
+                System.out.println("A quel interet voulez-vous vous desabonner?");
+                System.out.println(controlleurUtilisateurs.retournerInteretUtilisateur(pseudo));
+                String choix = scanner.nextLine();
+                controlleurUtilisateurs.desabonnerInteret(choix, pseudo);
+            }
 
-                }
             }
         }
 
