@@ -276,7 +276,10 @@ public class ModifierProfilFournisseurGUI {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if (response.getText().length() == 0)
+                    afficherMessageErreur();
+                else
+                    afficherMessageConfirmation();
             }
         });
     }
@@ -288,5 +291,23 @@ public class ModifierProfilFournisseurGUI {
                 mettreAJourFrame();
             }
         });
+    }
+
+    public void afficherMessageConfirmation() {
+        String message = "Votre ___ a ete change avec succes!";
+        String title = "Modification terminee";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void afficherMessageErreur() {
+        String message = "Une erreur s'est produite ! Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 }
