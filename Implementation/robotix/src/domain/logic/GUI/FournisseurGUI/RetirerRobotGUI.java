@@ -8,13 +8,17 @@ import java.awt.event.ActionListener;
 public class RetirerRobotGUI {
     private JFrame jFrame = new JFrame();
     private JPanel retirerRobotPanel = new JPanel();
-    private JLabel retirerRobotLabel = new JLabel("Veuillez entrer le numero de serie du robot à retirer");
+    private JLabel retirerRobotLabel = new JLabel("Veuillez entrer le numero de serie du robot à retirer", SwingConstants.CENTER);
     private JButton btnRetirerRobot = new JButton("Retirer le robot");
     private JTextField numeroRobot = new JTextField();
     private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
     public RetirerRobotGUI() {
-        retirerRobotPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        retirerRobotLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        retirerRobotPanel.setLayout(new GridLayout(0, 1));
+        retirerRobotPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         retirerRobotPanel.add(retirerRobotLabel);
         retirerRobotPanel.add(numeroRobot);
         retirerRobotPanel.add(btnRetirerRobot);

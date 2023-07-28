@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class EnregistrerComposanteGUI {
     private JFrame jFrame = new JFrame();
     private JPanel enregistrerComposantePanel = new JPanel();
-    private JLabel enregistrerComposanteLabel = new JLabel("Enregistrer une composante");
+    private JLabel enregistrerComposanteLabel = new JLabel("Enregistrer une composante", SwingConstants.CENTER);
     private JLabel nomComposanteLabel = new JLabel("Nom de la composante");
     private JLabel prixLabel = new JLabel("Prix");
     private JLabel descriptionLabel = new JLabel("Description");
@@ -22,7 +22,11 @@ public class EnregistrerComposanteGUI {
     private Container panelPrecedent = new Container();
 
     public EnregistrerComposanteGUI() {
-        enregistrerComposantePanel.setLayout(new GridLayout(0, 2, 5, 5));
+        enregistrerComposanteLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        enregistrerComposantePanel.setLayout(new GridLayout(0, 1));
+        enregistrerComposantePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         enregistrerComposantePanel.add(enregistrerComposanteLabel);
         enregistrerComposantePanel.add(Box.createHorizontalStrut(10));
         enregistrerComposantePanel.add(nomComposanteLabel);

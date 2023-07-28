@@ -15,7 +15,7 @@ public class ModifierProfilFournisseurGUI {
     private JPanel modifierCompagniePanel = new JPanel();
     private JPanel modifierCapaciteProductionPanel = new JPanel();
     private JPanel modifierMdpPanel = new JPanel();
-    private JLabel profilFournisseurLabel = new JLabel("Que voulez-vous modifier?");
+    private JLabel profilFournisseurLabel = new JLabel("Que voulez-vous modifier?", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
     private JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
     private JLabel emailLabel = new JLabel("Entrez votre nouveau email");
@@ -109,15 +109,27 @@ public class ModifierProfilFournisseurGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        profilFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(profilFournisseurLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnNom);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnAdresse);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnEmail);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnNumeroTelephone);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnNomCompagnie);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnCapaciteProduction);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnMdp);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
 

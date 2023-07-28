@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class MenusFournisseur extends JFrame {
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
+	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
 	private JFrame jFrame = new JFrame();
 	private JPanel menuFournisseurPanel = new JPanel();

@@ -14,7 +14,7 @@ public class GererComposantesGUI {
     private JPanel supprimerComposantePanel = new JPanel();
     private JPanel modifierPrixComposantePanel = new JPanel();
     private JPanel modifierDescComposantePanel = new JPanel();
-    private JLabel gererComposantesLabel = new JLabel("Choisissez une option");
+    private JLabel gererComposantesLabel = new JLabel("Choisissez une option", SwingConstants.CENTER);
     private JLabel supprimerComposanteLabel = new JLabel("Supprimer une composante");
     private JLabel supprimerNomComposanteLabel = new JLabel("Nom de la composante a supprimer");
     private JLabel modifierPrixComposanteLabel = new JLabel("Modifier le prix d'une composante");
@@ -70,11 +70,19 @@ public class GererComposantesGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        gererComposantesLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        mainPanel.setLayout(new GridLayout(0, 1));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         mainPanel.add(gererComposantesLabel);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnSupprimer);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnModifierPrix);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnModifierDesc);
+        mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
 
