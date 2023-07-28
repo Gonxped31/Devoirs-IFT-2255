@@ -8,6 +8,7 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ControlleurUtilisateurs {
@@ -143,7 +144,7 @@ public class ControlleurUtilisateurs {
         this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
         try {
         ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
-        ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
+        HashSet<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
         this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return true;} catch (NullPointerException e){

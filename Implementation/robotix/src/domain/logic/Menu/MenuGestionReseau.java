@@ -5,10 +5,12 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.TypeNotification;
 
 public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
 
     public MenuGestionReseau() throws IOException {
@@ -65,6 +67,7 @@ public class MenuGestionReseau {
             }
             //controlleurUtilisateurs.gererSuiveurs(pseudo);
             case "3" -> {
+                menuGestionInterets(pseudo);
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
                 gererReseauSocial(scanner, pseudo);
@@ -76,4 +79,23 @@ public class MenuGestionReseau {
             }
         }
     }
+
+    public void menuGestionInterets(String pseudo, Scanner scanner){
+        System.out.println("Veuillez choisir une option: ");
+        System.out.println("1- Ajouter un interets");
+        System.out.println("2- Modifier un interet");
+        System.out.println("3- Supprimer un interet");
+        System.out.println("4- S'abonner a un interet");
+        System.out.println("5- Se desabonner d'un interet");
+        String decision = scanner.nextLine();
+        switch (decision){
+            case ("1") -> {
+                String interet = scanner.nextLine();
+                dbControlleur.ajouterInteret(interet);
+            }
+        }
+
+    }
+
+
 }

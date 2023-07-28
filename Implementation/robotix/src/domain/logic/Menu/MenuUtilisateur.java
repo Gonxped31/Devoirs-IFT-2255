@@ -178,6 +178,7 @@ public class MenuUtilisateur {
             }
             case ("8") -> menuRequetesPubliques(scanner, pseudo);
             case ("9") -> {
+
                 System.out.println("Voici la liste d'interets : ");
                 ArrayList<String> interets = new ArrayList<>();
                 interets.add("Combat");
@@ -185,7 +186,7 @@ public class MenuUtilisateur {
                 interets.add("Soccer");
                 interets.add("Danse");
                 interets.add("Break");
-                /*dbControlleur.recupererListeInteret()*/
+                dbControlleur.recupererListeInteret();
                 for (String interet : interets) {
                     System.out.println(interet);
                 }

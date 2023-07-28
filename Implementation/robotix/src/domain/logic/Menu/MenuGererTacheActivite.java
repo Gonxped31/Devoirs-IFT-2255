@@ -16,7 +16,7 @@ public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
-    private Activite activite = new Activite();
+
 
     public MenuGererTacheActivite() throws IOException {
     }
@@ -166,7 +166,7 @@ public class MenuGererTacheActivite {
             case "5" -> nomActivite = "Hokey sur glace (du 14/10/2023 au 02/08/2026)";
         }
 
-        controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
+        //controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
         System.out.println("Vous avez rejoint l'activite: " + nomActivite);
         menuUtil = new MenuUtilisateur();
         menuUtil.menuUtilisateur(scanner, pseudo);

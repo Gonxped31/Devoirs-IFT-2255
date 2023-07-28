@@ -166,6 +166,9 @@ public class DbControleur {
     public Interet souscrireAunInteret(String nomInteret)
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
+    }
+
+    public boolean ajouterInteret(String interet) {
 
     }
 }

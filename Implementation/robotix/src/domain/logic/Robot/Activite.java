@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class Activite implements java.io.Serializable{
@@ -18,7 +18,7 @@ public class Activite implements java.io.Serializable{
     private ArrayList<Utilisateur> listeUtilisateurInsccrit = new ArrayList<>();
     private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
 
-    public Activite () {
+    public Activite (String nomActivite, Date parse, Date dateFin, ArrayList<Tache> listeTache, HashSet<Interet> listeInterets) {
 
     }
     public Activite(String nom, Date dateDebut, Date dateFin, ArrayList<Tache> listeDeTache, ArrayList<Interet> listeInteretAssocie){

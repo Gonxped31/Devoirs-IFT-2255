@@ -19,7 +19,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private ArrayList<Action> listeActions = new ArrayList<>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
     private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
-    private ArrayList<Interet> listeInteret = new ArrayList<>();
+    private HashSet<Interet> listeInteret = new HashSet<>();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private ArrayList<Activite> listeActivitesCreer = new ArrayList<>();
@@ -42,7 +42,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                        @JsonProperty("email") String email,
                        @JsonProperty("numeroTelephone") String numeroTelephone,
                        @JsonProperty("nomCompagnie") String nomCompagnie,
-                       @JsonProperty("listeInteret") ArrayList<Interet> listeInteret,
+                       @JsonProperty("listeInteret") HashSet<Interet> listeInteret,
                        @JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
 
         super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
@@ -374,7 +374,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return this.getListeRobot();
     }
 
-    public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
+    public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, HashSet<Interet> listeInterets) throws ParseException {
         getListeActivitesCreer().add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut), new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
     }
 
@@ -489,11 +489,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void rejoindreActivite(Activite activite) {
         getListeActivitesRejoint().add(activite);
     }
-    public ArrayList<Interet> getListeInteret() {
+    public Set<Interet> getListeInteret() {
         return listeInteret;
     }
 
-    public void setListeInteret(ArrayList<Interet> listeInteret) {
+    public void setListeInteret(HashSet<Interet> listeInteret) {
         this.listeInteret = listeInteret;
     }
 
@@ -508,8 +508,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
          return listeDeTaches;
     }
 
-    public static ArrayList<Interet> produireListeInteret(ArrayList<String> listeInteret){
-        ArrayList<Interet> listeInter = new ArrayList<>();
+    public static HashSet<Interet> produireListeInteret(ArrayList<String> listeInteret){
+        HashSet<Interet> listeInter = new HashSet<>();
         for(String inter :listeInteret){
             listeInter.add(new Interet(inter));
         }
