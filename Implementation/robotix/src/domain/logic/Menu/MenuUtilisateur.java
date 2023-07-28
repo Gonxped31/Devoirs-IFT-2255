@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.GUI.UtilisateurGUI.AchatsGUI;
 import domain.logic.GUI.UtilisateurGUI.GestionActivitesGUI;
@@ -21,12 +22,14 @@ import domain.logic.GUI.UtilisateurGUI.SouscrireInteretGUI;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.TypeNotification;
 
 import javax.swing.*;
 
 public class MenuUtilisateur extends JFrame {
     /* Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private DbControleur dbControlleur = new DbControleur();
     private Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
@@ -243,7 +246,6 @@ public class MenuUtilisateur extends JFrame {
                 break;
             } else {
                 System.out.println(connexion + " n'existe pas.");
-
             }
         }
         menu = new Menu();
@@ -289,7 +291,8 @@ public class MenuUtilisateur extends JFrame {
                 menuUtilisateur(scanner, pseudo);
             }
             case ("7") -> {
-                // menuNotification(scanner, pseudo);
+                menuNotification(scanner, pseudo);
+
                 System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
                 System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
@@ -339,7 +342,13 @@ public class MenuUtilisateur extends JFrame {
                 System.out.println("Entrez le numero du robot a acheter");
                 int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
-                System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
+                String numeroSerie = dbControlleur.acheterRobot(nomFournisseur, numero).toString();
+                controlleurUtilisateurs.ajouterRobot(pseudo, numeroSerie);
+                System.out.println(numeroSerie);
+
+                // Ajouter nom fournisseur
+                controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de robot", pseudo + " a achete "
+                        + dbControlleur.retournerRobot(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {
@@ -355,6 +364,10 @@ public class MenuUtilisateur extends JFrame {
                     System.out.println("Entrez le numero de la composante à acheter");
                     String numero = scanner.nextLine();
                     System.out.println("Achat confirmé");
+                    // controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de
+                    // composant",pseudo +" a achete " +
+                    // dbControlleur.retournerComposante(numeroSerie).getNom(),
+                    // TypeNotification.ACHAT_ROBOT);
                 }
 
                 menuUtilisateur(scanner, pseudo);
