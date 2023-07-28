@@ -17,6 +17,7 @@ public class ModifierProfilUtilisateurGUI {
     private JPanel modifierCompagniePanel = new JPanel();
     private JPanel modifierMdpPanel = new JPanel();
     private JLabel profilUtilisateurLabel = new JLabel("Que voulez-vous modifier?", SwingConstants.CENTER);
+    private JLabel modifierNomLabel = new JLabel("Modifier votre nom", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
     private JLabel prenomLabel = new JLabel("Entrez votre nouveau prenom");
     private JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
@@ -41,7 +42,8 @@ public class ModifierProfilUtilisateurGUI {
     private JButton btnNumeroTelephone = new JButton("Numero de telephone");
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnMdp = new JButton("Mot de passe");
-    private JButton btnRetour = new JButton("Retour");
+    private JButton btnRetourMenuPrincipal = new JButton("Retour au menu utilisateur");
+    private JButton btnAnnuler = new JButton("Annuler mes modifications");
     private Container panelPrecedent = new Container();
 
     public ModifierProfilUtilisateurGUI() {
@@ -111,7 +113,7 @@ public class ModifierProfilUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
-        btnRetour.addActionListener(new ActionListener() {
+        btnRetourMenuPrincipal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(panelPrecedent); // Mettre a jour le contentPane avec le panel precedent
@@ -144,11 +146,17 @@ public class ModifierProfilUtilisateurGUI {
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnMdp);
         mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnRetour);
+        mainPanel.add(btnRetourMenuPrincipal);
     }
 
     public void setModifierNomPanel() {
-        modifierNomPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        modifierNomLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        modifierNomPanel.setLayout(new BoxLayout(modifierNomPanel, BoxLayout.Y_AXIS));
+        modifierNomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        nouveauNomField.setMaximumSize(new Dimension(Integer.MAX_VALUE, nouveauNomField.getPreferredSize().height));
+
+        // Ajout des composantes
+        modifierNomPanel.add(modifierNomLabel);
         modifierNomPanel.add(nomLabel);
         modifierNomPanel.add(nouveauNomField);
     }
