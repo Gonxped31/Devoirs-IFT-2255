@@ -17,22 +17,6 @@ public class ModifierProfilUtilisateurGUI {
     private JPanel modifierCompagniePanel = new JPanel(new GridBagLayout());
     private JPanel modifierMdpPanel = new JPanel(new GridBagLayout());
     private JLabel profilUtilisateurLabel = new JLabel("Que voulez-vous modifier?", SwingConstants.CENTER);
-    private JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
-    private JLabel prenomLabel = new JLabel("Entrez votre nouveau prenom");
-    private JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
-    private JLabel pseudoLabel = new JLabel("Entrez votre nouveau pseudo");
-    private JLabel emailLabel = new JLabel("Entrez votre nouveau email");
-    private JLabel telephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
-    private JLabel compagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
-    private JLabel mdpLabel = new JLabel("Entrez votre nouveau mot de passe");
-    private JTextField nouveauNomField = new JTextField();
-    private JTextField nouveauPrenomField = new JTextField();
-    private JTextField nouvelleAdresseField = new JTextField();
-    private JTextField nouveauPseudoField = new JTextField();
-    private JTextField nouveauEmailField = new JTextField();
-    private JTextField nouveauTelephoneField = new JTextField();
-    private JTextField nouvelleCompagnieField = new JTextField();
-    private JPasswordField nouveauMdpField = new JPasswordField();
     private JButton btnNom = new JButton("Nom");
     private JButton btnPrenom = new JButton("Prenom");
     private JButton btnAdresse = new JButton("Adresse");
@@ -150,6 +134,9 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierNomPanel() {
+        // Déclaration des composantes implementees dans le panel
+        JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
+        JTextField nouveauNomField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -168,6 +155,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierPrenomPanel() {
+        JLabel prenomLabel = new JLabel("Entrez votre nouveau prenom");
+        JTextField nouveauPrenomField = new JTextField();
         JButton btnEnregistrerPrenom = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -186,6 +175,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierAdressePanel() {
+        JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
+        JTextField nouvelleAdresseField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -204,6 +195,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierPseudoPanel() {
+        JLabel pseudoLabel = new JLabel("Entrez votre nouveau pseudo");
+        JTextField nouveauPseudoField = new JTextField();
         JButton btnEnregistrerPseudo = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -222,6 +215,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierEmailPanel() {
+        JLabel emailLabel = new JLabel("Entrez votre nouveau email");
+        JTextField nouveauEmailField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -240,6 +235,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierTelephonePanel() {
+        JLabel telephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
+        JTextField nouveauTelephoneField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -258,6 +255,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierCompagniePanel() {
+        JLabel compagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
+        JTextField nouvelleCompagnieField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
@@ -276,6 +275,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierMdpPanel() {
+        JLabel mdpLabel = new JLabel("Entrez votre nouveau mot de passe");
+        JPasswordField nouveauMdpField = new JPasswordField();
         JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
 
