@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -157,8 +158,6 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return getListeNotifications();
     }
 
-
-
     public boolean[] notifier(){
         boolean[] tabBoolean = new boolean[7];
         boolean NotifierEtatRobot;
@@ -305,7 +304,9 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     }
 
-    public boolean enregistrerRobot(Robot robot){//String nomRobot, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+    public boolean enregistrerRobot(String nomRobot, Robot robot, String type){//, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
+        robot.setNom(nomRobot);
+        robot.setType(type);
 
        boolean robotExiste= this.listeRobot.stream()
                .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
@@ -315,22 +316,50 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return  robotExiste;
     }
 
-    public void creerTache(String nom, ArrayList<Action> actions){
-        getListeTaches().add(new Tache(nom, actions));
+    public ArrayList<String> creerTache(String nom, ArrayList<String> stringActions){
+        Map<String, Action> map = new HashMap<>();
+        listeActions.forEach(action -> map.put(action.getNomAction(), action));
+        ArrayList<String> actionList = new ArrayList<>(map.keySet());
+        ArrayList<Action> actions = new ArrayList<>();
+        int numberOfActions = stringActions.size();
+        IntStream.range(0, stringActions.size()).forEach(i -> {
+            String act = stringActions.get(0);
+            if (actionList.contains(act)){
+                actions.add(map.get(act));
+                stringActions.remove(0);
+            }
+        });
+
+        if (actions.size() == numberOfActions){
+            listeTaches.add(new Tache(nom, actions));
+        }
+        return stringActions;
     }
 
     public Robot getRobot(String numeroDeSerie){
-        return getListeRobot().stream()
-                .filter(r -> r.getNumeroSerie().equals(numeroDeSerie))
+        return listeRobot.stream()
+                .filter(r -> r.getNumeroSerie().toString().equals(numeroDeSerie))
                 .findFirst()
                 .orElse(null);
     }
 
     public Tache getTache(String nom){
-        return getListeTaches().stream()
+        return listeTaches.stream()
                 .filter(t -> t.getNom().equals(nom))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public String listeActions(){
+        return listeActions.stream()
+                        .map(Action::getInfoActionFormater)
+                        .collect(Collectors.joining("\n\n"));
+    }
+
+    public String listeTaches(){
+        return listeTaches.stream()
+                .map(Tache::getInfoTacheFormater)
+                .collect(Collectors.joining("\n\n"));
     }
 
     public Robot verifierNumeroSerieRobot(String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
@@ -356,56 +385,29 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return this.getListeRobot();
     }
 
-    public void creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
-        getListeActivitesCreer().add(new Activite(nomActivite, new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut), new SimpleDateFormat("dd/MM/yyyy").parse(dateFin), listeTache, listeInterets));
+    public boolean creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
+        if (!verifierExistenceActivite(nomActivite)){
+            listeActivitesCreer.add(new Activite(nomActivite, new SimpleDateFormat("yyyy-MM-dd").parse(dateDebut), new SimpleDateFormat("yyyy-MM-dd").parse(dateFin), listeTache, listeInterets));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean verifierExistenceActivite(String nomActivite){
+        boolean result = false;
+        for (Activite activite1 : listeActivitesCreer) {
+            if (activite1.getNom().equals(nomActivite)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
-        Action action = new Action(nomAction, composantes, duree);
-        this.listeActions.add(action);
-   /* public void creerTache(String nomTache, ArrayList<Action> actions){
-        Tache tache = new Tache(nomTache, actions);
-        listeTaches.add(tache);
+        listeActions.add(new Action(nomAction, composantes, duree));
     }
-        taches.add(tache);
-    }*/
-    /*public boolean allouerTache(String robot, String tache){
-        Robot rob = trouverRobot(robot);
-        Tache tac = trouverTache(tache);
-        if (rob.getNom().equals(null) || tac.getNom().equals(null)){
-            return false;
-        }
-        else {
-            rob.getTaches().add(tac);
-            return true;
-        }
-    }*/
-
-    /*private Tache trouverTache(String nom) {
-        Tache resultat = null;
-        for (Tache tache : listeTaches) {
-            if (tache.getNom().equals(nom)) {
-                resultat = tache;
-                break;
-            }
-        }
-        return resultat;
-    }*/
-
-    /*public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<Activite> listActivites) {
-        int compteur = 0;
-        for (Activite activite : listActivites) {
-            if (nomActivite.equals(activite.getNom())){
-                break;
-            }
-            compteur++;
-        }
-
-        if(compteur == listActivites.size()){
-            Activite activite = new Activite(nomActivite, dateDebut, dateFin, listeTache, null, null);
-        }
-    }*/
-}
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
         for (int i = 0; i < getListeRobot().size(); i++) {
@@ -481,20 +483,19 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public ArrayList<Tache> getTacheEnListe(ArrayList<String> listeTache) {
          ArrayList<Tache> listeDeTaches = new ArrayList<Tache>();
-         for(String tac : listeTache){
+         listeTache.forEach(tac -> {
              listeDeTaches.add(getListeTaches().stream()
                      .filter(t -> t.getNom().equals(tac))
                      .findFirst()
                      .orElse(null));
-         }
+         });
+
          return listeDeTaches;
     }
 
     public static ArrayList<Interet> produireListeInteret(ArrayList<String> listeInteret){
         ArrayList<Interet> listeInter = new ArrayList<>();
-        for(String inter :listeInteret){
-            listeInter.add(new Interet(inter));
-        }
+        listeInteret.forEach(inter -> listeInter.add(new Interet(inter)));
         return listeInter;
     }
 

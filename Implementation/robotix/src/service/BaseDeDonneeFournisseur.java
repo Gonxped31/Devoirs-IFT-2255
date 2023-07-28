@@ -15,16 +15,18 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         private static final String FILE_NAME = "fournisseur.json";
         private List<Map<String, List<Robot>>> listRobot;
         private List<Map<String, List<Composant>>> listComposant;
+        private static BaseDeDonneeFournisseur baseDeDonneeFournisseur;
 
-     public BaseDeDonneeFournisseur() throws IOException {
+     private BaseDeDonneeFournisseur() throws IOException {
             super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
             listComposant= new ArrayList<>();
             listRobot=new ArrayList<>();
             initListeRobotEtComposant();
-        }
+     }
 
-
-
+     public static BaseDeDonneeFournisseur getBaseDeDonneeFournisseur() throws IOException {
+         return baseDeDonneeFournisseur == null ? new BaseDeDonneeFournisseur() : baseDeDonneeFournisseur;
+     }
 
     @Override
     protected void init() {

@@ -100,7 +100,9 @@ public class MenuUtilisateur {
                 break;
             }
         }
-        this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
+        this.controlleurUtilisateurs = ControlleurUtilisateurs.getControlleurUtilisateurs(nom, prenom, adresse, pseudo,
+                mdp, courriel, telephone, nomCompagnie, listeInteret);
+
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
         menu = new Menu();
@@ -150,7 +152,7 @@ public class MenuUtilisateur {
                 modifierProfile(scanner, pseudo);
                 menuUtilisateur(scanner, pseudo);
             }
-            case ("2") -> menuGestionFlotte.gererMaFlotte(scanner, pseudo,controlleurUtilisateurs);
+            case ("2") -> menuGestionFlotte.gererMaFlotte(scanner, pseudo);
             case ("3") -> menuGererTacheActivite.gererMesTaches(scanner, pseudo);
             case ("4") -> menuGererTacheActivite.gererMesActivites(scanner, pseudo);
             case ("5") -> menuReseau.gererReseauSocial(scanner, pseudo);
@@ -210,6 +212,8 @@ public class MenuUtilisateur {
                 int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
                 System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
+                System.out.println(">>> VEUILLEZ LE CONSERVER TRÈS PRÉCIEUSEMENT PUISQU'IL EST INDISPENSABLE POUR EFFECTUER " +
+                        "TOUT CHANGEMENT  OU TOUTE CONSULTATION PAR RAPPORT A VOS ROBOT ! <<<");
                 menuUtilisateur(scanner, pseudo);
             }
             case "2" -> {

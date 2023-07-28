@@ -4,6 +4,7 @@ import domain.logic.Membre.Fournisseur;
 
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Activite;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import service.BaseDeDonneeActivite;
@@ -22,8 +23,8 @@ public class DbControleur {
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
     private DbControleur () throws IOException {
-        this.baseDeDonneeFournisseur=new BaseDeDonneeFournisseur();
-        this.baseDeDonneeUtilisateur=new BaseDeDonneeUtilisateur();
+        this.baseDeDonneeFournisseur=BaseDeDonneeFournisseur.getBaseDeDonneeFournisseur();
+        this.baseDeDonneeUtilisateur=BaseDeDonneeUtilisateur.getBaseDeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
     }
@@ -81,6 +82,9 @@ public class DbControleur {
     }
     public String rechercherFournisseurParTypeDeComposant(String typeDeComposant){
         return this.baseDeDonneeFournisseur.rechercherFournisseurParTypeDeComposant(typeDeComposant);
+    }
+    public void  ajouterActivite(Activite activite){
+
     }
     public String recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();

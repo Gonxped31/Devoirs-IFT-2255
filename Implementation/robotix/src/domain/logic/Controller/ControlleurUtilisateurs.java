@@ -7,16 +7,26 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 
 public class ControlleurUtilisateurs {
 
     private DbControleur dataBaseController = DbControleur.getDbControleur();
+    private static ControlleurUtilisateurs controlleurUtilisateurs;
     //private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
     //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
 
-    public ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email, String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
+    private ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email,
+                                    String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
         this.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, listeInteret);
+    }
+
+    public static ControlleurUtilisateurs getControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo,
+                                                              String mdp, String email, String numeroTelephone,
+                                                              String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
+        return controlleurUtilisateurs == null ? new ControlleurUtilisateurs(nom, prenom, adresse, pseudo, mdp, email,
+                numeroTelephone, nomCompagnie, listeInteret) : controlleurUtilisateurs;
     }
 
     public ControlleurUtilisateurs() throws IOException {
@@ -66,21 +76,16 @@ public class ControlleurUtilisateurs {
 
 
 
-    public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie) {
+    public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie, String pseudo) {
         boolean bool=false;
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
-        if (!(robot == null)){
-            robot.setNom(nomRobot);
-            robot.setType(type);
-            try {
-                bool = this.utilisateurCourant.enregistrerRobot(robot);
-            } catch (NullPointerException e){
-                return true;
-            }
-        }this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+        if (robot != null){
+            bool = u.enregistrerRobot(nomRobot ,robot, type);
+        }
+        this.dataBaseController.ajouterUtilisateur(u);
         return bool;
-        //return this.utilisateurCourant.enregistrerRobot(dataBaseController.retournerRobot(numeroSerie, nomRobot, type));
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
@@ -88,65 +93,79 @@ public class ControlleurUtilisateurs {
     }
 
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
         Composant comp = this.dataBaseController.retournerComposante(composante);
         if (!(robot == null) && !(comp == null)){
             robot.ajouterComposante(comp);
+            this.dataBaseController.ajouterUtilisateur(u);
+            return true;
+        } else {
+            this.dataBaseController.ajouterUtilisateur(u);
+            return false;
         }
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;
-        //return !(dataBaseController.ajouterComposanteRobot(numeroSerie, composante, pseudo) == null) ? this.utilisateurCourant.ajouterComposanteRobot(composante, dataBaseController.retournerRobot(numeroSerie)):false;
     }
 
-    public void creerAction(String nomAction, ArrayList<String> composantes, String duree){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.creerAction(nomAction, composantes, duree);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+    public void creerAction(String nomAction, ArrayList<String> composantes, String duree, String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.creerAction(nomAction, composantes, duree);
+        dataBaseController.ajouterUtilisateur(u);
     }
 
     public int afficherMetriquesFlotte(String pseudo){
         return this.utilisateurCourant.nombreDeRobot();
     }
 
-    public void creerTache(String nomTache, ArrayList<Action> actions){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
+    public ArrayList<String> creerTache(String nomTache, ArrayList<String> actions, String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
+        ArrayList<String> actionsRestantes = u.creerTache(nomTache, actions);
+        this.dataBaseController.ajouterUtilisateur(u);
+        return actionsRestantes;
+    }
 
-        try{
-            this.utilisateurCourant.creerTache(nomTache, actions);
-            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        } catch (NullPointerException e){
+    public String recuprerListeAction(String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        String result = u.listeActions();
+        if (result == null)
+            return "";
+        else
+            return result;
+    }
 
-        }
+    public String recuprerListeTache(String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        String result = u.listeTaches();
+        if (result == null)
+            return "";
+        else
+            return result;
     }
 
     public boolean allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
-        boolean b = false;
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        try {
-        Robot robot = this.utilisateurCourant.getRobot(numeroDeSerie);
-        Tache tac = this.utilisateurCourant.getTache(tache);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        boolean bool = false;
+        this.dataBaseController.supprimerUtilisateur(u);
+        Robot robot = u.getRobot(numeroDeSerie);
+        Tache tac = u.getTache(tache);
         if ((robot != null) && (tac != null)){
             robot.allouerTache(tac);
-            b = true;
+            bool = true;
         }
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return b;}catch (NullPointerException e){
-            return true;
-        }
-        //return b;
+        this.dataBaseController.ajouterUtilisateur(u);
+        return bool;
     }
 
-    public boolean creerActivites(String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        try {
-        ArrayList<Tache> listeTac = this.utilisateurCourant.getTacheEnListe(listeTache);
-        ArrayList<Interet> listeInter = this.utilisateurCourant.produireListeInteret(listeInteret);
-        this.utilisateurCourant.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        return true;} catch (NullPointerException e){
-            return true;
-        }
+    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
+        ArrayList<Tache> listeTac = u.getTacheEnListe(listeTache);
+        ArrayList<Interet> listeInter = Utilisateur.produireListeInteret(listeInteret);
+        boolean ressult = u.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
+        this.dataBaseController.ajouterUtilisateur(u);
+        return ressult;
     }
 
     public void rejoindreActivite(String pseudo, Activite activite){

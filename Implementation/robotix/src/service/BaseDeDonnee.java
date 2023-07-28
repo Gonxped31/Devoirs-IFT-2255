@@ -45,10 +45,9 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
             try {
                 objets = objectMapper.readValue(database, type);
             } catch (IOException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
         }
-
         return objets;
     }
 
@@ -60,17 +59,15 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
             e.printStackTrace();
         }
     }
-public void ajouterObjet(T objet)
 
-{   if (this.listObjet==null){
-    this.listObjet=new ArrayList<>();
-}
+    public void ajouterObjet(T objet) {
+        if (this.listObjet==null){
+        this.listObjet=new ArrayList<>();
+        }
+        this.listObjet.add(objet);
+        this.sauvegarder();
+    }
 
-
-
-    this.listObjet.add(objet);
-    this.sauvegarder();
-}
     public void supprimerObjet(T objet) {
         Iterator<Object> iterator = (Iterator<Object>) listObjet.iterator();
         while(iterator.hasNext()) {

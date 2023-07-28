@@ -12,15 +12,21 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
      private static final String FILE_NAME = "utilisateur.json";
+     private static BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
 
      private ArrayList<Interet> listInteret;
-     public BaseDeDonneeUtilisateur() throws IOException {
+     private BaseDeDonneeUtilisateur() throws IOException {
         super(FILE_NAME,new TypeReference<ArrayList<Utilisateur>>() {});
         listInteret=new ArrayList<>();
        // init();
+     }
+
+     public static BaseDeDonneeUtilisateur getBaseDeUtilisateur() throws IOException {
+         return baseDeDonneeUtilisateur == null ?  new BaseDeDonneeUtilisateur() : baseDeDonneeUtilisateur;
      }
 
     @Override
@@ -156,11 +162,19 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .orElse(null);
     }
 
-    public  Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp){
-        return (Utilisateur) this.getListObjet().stream()
-                .filter(u-> ((Utilisateur) u).getPseudo().equals(pseudoUtilisateur) &&
-                        ((Utilisateur) u).getMotDePasse().equals(mdp))
-                .findFirst()
-                .orElse(null);
+    public Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp) {
+         Utilisateur result = null;
+        //System.out.println(this.getListObjet());
+        for (Object obj : this.getListObjet()) {
+            //System.out.println(obj instanceof Utilisateur utilisateur);
+            if (obj instanceof Utilisateur utilisateur) {
+                //System.out.println(utilisateur.getPseudo());
+                //System.out.println(utilisateur.getMotDePasse());
+                if (utilisateur.getPseudo().equals(pseudoUtilisateur) && utilisateur.getMotDePasse().equals(mdp)) {
+                    result = utilisateur;
+                }
+            }
+        }
+        return result;
     }
 }

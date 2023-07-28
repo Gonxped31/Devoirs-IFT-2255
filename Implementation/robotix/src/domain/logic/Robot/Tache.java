@@ -1,17 +1,22 @@
 package domain.logic.Robot;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Tache implements java.io.Serializable{
     private String nom;
-    private ArrayList<Action> actions;
+    private ArrayList<Action> taches;
 
-    public Tache(String nom, ArrayList<Action> actions){
+    @JsonCreator
+    public Tache(
+            @JsonProperty("nom") String nom,
+            @JsonProperty("taches") ArrayList<Action> taches){
         this.nom = nom;
-        this.actions = actions;
+        this.taches = taches;
     }
 
     public String getNom() {
@@ -19,13 +24,13 @@ public class Tache implements java.io.Serializable{
     }
 
     public ArrayList<Action> getTaches() {
-        return actions;
+        return taches;
     }
 
     @JsonIgnore
     public String getInfoTacheFormater(){
         return  "Nom : " + this.nom +
-                "Liste d'action : " + actions.stream()
+                "Liste d'action : " + taches.stream()
                 .map(action -> action.getInfoActionFormater())
                 .collect(Collectors.joining("\n"));
     }
