@@ -169,6 +169,7 @@ public class DbControleur {
     }
 
     public void ajouterInteret(String interet) {
+
         baseDeDonneeInteret.ajouterObjet(new Interet(interet));
     }
 }

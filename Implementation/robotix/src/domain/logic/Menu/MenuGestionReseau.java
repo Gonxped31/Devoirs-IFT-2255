@@ -92,7 +92,13 @@ public class MenuGestionReseau {
             case ("1") -> {
                 System.out.println("Ajouter interet dans le systeme Robotix");
                 String interet = scanner.nextLine();
-                dbControlleur.ajouterInteret(interet);
+                if (dbControlleur.souscrireAunInteret(interet) == null){
+                    dbControlleur.ajouterInteret(interet);
+                }
+                else {
+                    System.out.println("Cette interet interet existe deja dans le systeme");
+                }
+
             }
         }
 

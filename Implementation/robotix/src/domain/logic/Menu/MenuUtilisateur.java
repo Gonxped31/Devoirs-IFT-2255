@@ -165,8 +165,6 @@ public class MenuUtilisateur {
             case ("5") -> menuReseau.gererReseauSocial(scanner, pseudo);
             case ("6") -> {
                 menuAchat(scanner, pseudo);
-                //System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                //System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
             }
             case ("7") -> {
