@@ -24,7 +24,8 @@ public class SouscrireInteretGUI {
     private Container panelPrecedent = new Container();
 
     public SouscrireInteretGUI() {
-        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        listeInteretLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        souscrireInteretLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setLayout(new GridLayout(0, 1));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 

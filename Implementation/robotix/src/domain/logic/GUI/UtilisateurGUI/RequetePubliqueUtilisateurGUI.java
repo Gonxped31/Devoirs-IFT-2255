@@ -20,7 +20,7 @@ public class RequetePubliqueUtilisateurGUI {
     private JButton btnVoirListeUtilisateurs = new JButton("Voir la liste d'utilisateurs");
     private JButton btnVoirListeFournisseurs = new JButton("Voir la liste des fournisseurs");
     private JButton btnVoirProfil = new JButton("Voir mon profil");
-    private JButton btnChercherUtilisateur = new JButton("Chercher utilisateur par:  ");
+    private JButton btnChercherUtilisateur = new JButton("Chercher utilisateur par");
     private JButton btnRecupererListeActivites = new JButton("Recuperer la liste des activites");
     private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheNomFournisseur = new JButton("Rechercher fournisseur par nom");
@@ -49,7 +49,7 @@ public class RequetePubliqueUtilisateurGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        requetePubliqueUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setLayout(new GridLayout(0, 1));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 

@@ -31,7 +31,7 @@ public class GestionActivitesGUI {
     }
 
     public void setMainPanel() {
-        mainPanel.setFont(new Font("Arial", Font.BOLD, 18));
+        gestionActivitesLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setLayout(new GridLayout(0, 1));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 

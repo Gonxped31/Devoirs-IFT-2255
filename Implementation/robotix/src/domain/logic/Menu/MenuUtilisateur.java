@@ -46,7 +46,7 @@ public class MenuUtilisateur extends JFrame {
     private JButton btnAchats = new JButton("Achats");
     private JButton btnVoirNotifications = new JButton("Voir mes notifications");
     private JButton btnRequetePublique = new JButton("Faire une requete publique");
-    private JButton btnSouscrireInteret = new JButton("Souscrire à un interet");
+    private JButton btnSouscrireInteret = new JButton("Souscrire a un interet");
     private JButton btnDeconnexion = new JButton("Deconnexion");
     private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI();
     private GestionFlotteGUI gestionFlotteGUI = new GestionFlotteGUI();
