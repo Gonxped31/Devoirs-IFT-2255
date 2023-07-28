@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 
 public abstract class BaseDeDonnee<T>{
@@ -83,6 +84,11 @@ public void ajouterObjet(T objet)
             }
             else if ( objet instanceof Fournisseur) {
                 if(((Fournisseur) o).getNom().equals(((Fournisseur) objet).getNom())){
+                    iterator.remove();
+                }
+            }
+            else if (objet instanceof Interet){
+                if(((Interet) o).getNom().equals(((Interet) objet).getNom())){
                     iterator.remove();
                 }
             }

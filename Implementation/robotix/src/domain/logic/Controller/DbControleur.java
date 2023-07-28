@@ -169,7 +169,6 @@ public class DbControleur {
     }
 
     public void ajouterInteret(String interet) {
-
         baseDeDonneeInteret.ajouterObjet(new Interet(interet));
     }
 
@@ -178,6 +177,7 @@ public class DbControleur {
     }
 
     public void supprimerInteret(String interet) {
+        System.out.println(baseDeDonneeInteret.retournerInteret(interet));
         baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interet));
     }
 }
