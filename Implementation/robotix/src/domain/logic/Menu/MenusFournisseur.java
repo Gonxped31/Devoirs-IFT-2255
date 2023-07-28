@@ -20,7 +20,7 @@ public class MenusFournisseur extends JFrame {
 	private DbControleur dbControlleur = new DbControleur();
 	private JFrame jFrame = new JFrame();
 	private JPanel menuFournisseurPanel = new JPanel();
-	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur");
+	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur", SwingConstants.CENTER);
 	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
 	private JButton btnRetirerRobot = new JButton("Retirer un robot");
 	private JButton btnEnregistrerComposante = new JButton("Enregistrer une composante");
@@ -36,15 +36,27 @@ public class MenusFournisseur extends JFrame {
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	public MenusFournisseur() throws IOException {
-		menuFournisseurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		menuFournisseurPanel.setLayout(new GridLayout(0, 1));
+		menuFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+		// Ajout des composantes
 		menuFournisseurPanel.add(menuFournisseurLabel);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnAjouterRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnRetirerRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnEnregistrerComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnGererComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnModifierProfil);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnRequetePublique);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
 		menuFournisseurPanel.add(btnDeconnexion);
+
 		btnAjouterRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
