@@ -168,7 +168,7 @@ public class DbControleur {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
     }
 
-    public boolean ajouterInteret(String interet) {
-
+    public void ajouterInteret(String interet) {
+        baseDeDonneeInteret.ajouterObjet(new Interet(interet));
     }
 }

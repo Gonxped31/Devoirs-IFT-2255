@@ -67,7 +67,7 @@ public class MenuGestionReseau {
             }
             //controlleurUtilisateurs.gererSuiveurs(pseudo);
             case "3" -> {
-                menuGestionInterets(pseudo);
+                menuGestionInterets(pseudo, scanner);
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
                 gererReseauSocial(scanner, pseudo);
@@ -90,6 +90,7 @@ public class MenuGestionReseau {
         String decision = scanner.nextLine();
         switch (decision){
             case ("1") -> {
+                System.out.println("Ajouter interet dans le systeme Robotix");
                 String interet = scanner.nextLine();
                 dbControlleur.ajouterInteret(interet);
             }
