@@ -304,6 +304,9 @@ public class ControlleurUtilisateurs {
     }
 
     public void desabonnerInteret(String choix, String pseudo) {
-
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.desabonnerInteret(choix);
+        dataBaseController.ajouterUtilisateur(u);
     }
 }

@@ -619,4 +619,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         listeRobot.add(robot);
         System.out.println(listeRobot);
     }
+
+    public void desabonnerInteret(String choix) {
+
+        for (Interet i : getListeInteret()){
+            if (i.getNom().equals(choix)){
+                getListeInteret().remove(i);
+            }
+        }
+    }
 }
