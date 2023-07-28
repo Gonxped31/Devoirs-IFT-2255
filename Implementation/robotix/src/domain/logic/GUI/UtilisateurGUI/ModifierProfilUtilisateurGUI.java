@@ -150,10 +150,8 @@ public class ModifierProfilUtilisateurGUI {
     }
 
     public void setModifierNomPanel() {
-        JButton btnEnregistrerNom = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerNom);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauNomField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -161,16 +159,17 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierNomPanel.add(nouveauNomField, constraints);
         constraints.gridy = 2;
-        modifierNomPanel.add(btnEnregistrerNom, constraints);
+        modifierNomPanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierNomPanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauNomField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierPrenomPanel() {
         JButton btnEnregistrerPrenom = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerPrenom);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauPrenomField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -181,13 +180,14 @@ public class ModifierProfilUtilisateurGUI {
         modifierPrenomPanel.add(btnEnregistrerPrenom, constraints);
         constraints.gridy = 3;
         modifierPrenomPanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrerPrenom, nouveauPrenomField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierAdressePanel() {
-        JButton btnEnregistrerAdresse = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerAdresse);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouvelleAdresseField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -195,16 +195,17 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierAdressePanel.add(nouvelleAdresseField, constraints);
         constraints.gridy = 2;
-        modifierAdressePanel.add(btnEnregistrerAdresse, constraints);
+        modifierAdressePanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierAdressePanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouvelleAdresseField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierPseudoPanel() {
         JButton btnEnregistrerPseudo = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerPseudo);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauPseudoField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -215,13 +216,14 @@ public class ModifierProfilUtilisateurGUI {
         modifierPseudoPanel.add(btnEnregistrerPseudo, constraints);
         constraints.gridy = 3;
         modifierPseudoPanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrerPseudo, nouveauPseudoField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierEmailPanel() {
-        JButton btnEnregistrerEmail = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerEmail);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauEmailField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -229,16 +231,17 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierEmailPanel.add(nouveauEmailField, constraints);
         constraints.gridy = 2;
-        modifierEmailPanel.add(btnEnregistrerEmail, constraints);
+        modifierEmailPanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierEmailPanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauEmailField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierTelephonePanel() {
-        JButton btnEnregistrerTelephone = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerTelephone);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauTelephoneField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -246,16 +249,17 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierTelephonePanel.add(nouveauTelephoneField, constraints);
         constraints.gridy = 2;
-        modifierTelephonePanel.add(btnEnregistrerTelephone, constraints);
+        modifierTelephonePanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierTelephonePanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauTelephoneField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierCompagniePanel() {
-        JButton btnEnregistrerCompagnie = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerCompagnie);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouvelleCompagnieField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -263,16 +267,17 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierCompagniePanel.add(nouvelleCompagnieField, constraints);
         constraints.gridy = 2;
-        modifierCompagniePanel.add(btnEnregistrerCompagnie, constraints);
+        modifierCompagniePanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierCompagniePanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouvelleCompagnieField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void setModifierMdpPanel() {
-        JButton btnEnregistrerMdp = new JButton("Enregistrer les modifications");
+        JButton btnEnregistrer = new JButton("Enregistrer les modifications");
         JButton btnAnnuler = new JButton("Annuler les modifications");
-        onBtnEnregistrerClicked(btnEnregistrerMdp);
-        onBtnAnnulerClicked(btnAnnuler);
 
         nouveauMdpField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
@@ -280,9 +285,12 @@ public class ModifierProfilUtilisateurGUI {
         constraints.gridy = 1;
         modifierMdpPanel.add(nouveauMdpField, constraints);
         constraints.gridy = 2;
-        modifierMdpPanel.add(btnEnregistrerMdp, constraints);
+        modifierMdpPanel.add(btnEnregistrer, constraints);
         constraints.gridy = 3;
         modifierMdpPanel.add(btnAnnuler, constraints);
+
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauMdpField);
+        onBtnAnnulerClicked(btnAnnuler);
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -297,7 +305,7 @@ public class ModifierProfilUtilisateurGUI {
         this.jFrame.repaint();
     }
 
-    public void onBtnEnregistrerClicked(JButton btnEnregistrer) {
+    public void onBtnEnregistrerClicked(JButton btnEnregistrer, JTextField response) {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
