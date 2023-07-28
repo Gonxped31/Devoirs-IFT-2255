@@ -489,7 +489,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void rejoindreActivite(Activite activite) {
         getListeActivitesRejoint().add(activite);
     }
-    public Set<Interet> getListeInteret() {
+    public HashSet<Interet> getListeInteret() {
         return listeInteret;
     }
 

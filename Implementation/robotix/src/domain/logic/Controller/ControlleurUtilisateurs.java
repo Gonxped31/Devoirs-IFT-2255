@@ -288,4 +288,8 @@ public class ControlleurUtilisateurs {
         u.ajouterRobot(robot);
         dataBaseController.ajouterUtilisateur(u);
     }
+
+    public boolean extraireInteretsUtilisateurs(String interet) {
+        return this.dataBaseController.extraireInterets(interet);
+    }
 }

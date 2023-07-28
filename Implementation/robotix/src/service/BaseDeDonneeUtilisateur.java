@@ -1,6 +1,10 @@
 package service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.reflect.TypeToken;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
@@ -161,4 +165,18 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 .findFirst()
                 .orElse(null);
     }
+
+    public boolean extractInterests(String interet) {
+        List<Utilisateur> utilisateurs = this.getListObjet(); // Assuming getListObjet() returns List<Utilisateur>
+        for (Utilisateur u : utilisateurs) {
+            for (Interet i : u.getListeInteret()) {
+                if (interet.equals(i.getNom())){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 }

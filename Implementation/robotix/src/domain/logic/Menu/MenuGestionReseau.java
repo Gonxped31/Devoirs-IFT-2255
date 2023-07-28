@@ -92,12 +92,25 @@ public class MenuGestionReseau {
             case ("1") -> {
                 System.out.println("Ajouter interet dans le systeme Robotix");
                 String interet = scanner.nextLine();
-                if (dbControlleur.souscrireAunInteret(interet) == null){
+                if (dbControlleur.souscrireAunInteret(interet) == null) {
                     dbControlleur.ajouterInteret(interet);
-                }
-                else {
+                } else {
                     System.out.println("Cette interet interet existe deja dans le systeme");
                 }
+            }
+            case ("2") -> {
+
+            }
+            case ("3") -> {
+                System.out.println("Supprimer un interet");
+                String interet = scanner.nextLine();
+                if (controlleurUtilisateurs.extraireInteretsUtilisateurs(interet)){
+                    dbControlleur.supprimerInteret(interet);
+                    System.out.println("Supprimer avec succes");
+                }else{
+                    System.out.println("Un utilisateur possede cet interet vous ne pouvez pas le supprimer");
+                }
+            }
 
             }
         }
@@ -105,4 +118,3 @@ public class MenuGestionReseau {
     }
 
 
-}

@@ -172,4 +172,12 @@ public class DbControleur {
 
         baseDeDonneeInteret.ajouterObjet(new Interet(interet));
     }
+
+    public boolean extraireInterets(String interet) {
+        return baseDeDonneeUtilisateur.extractInterests(interet);
+    }
+
+    public void supprimerInteret(String interet) {
+        baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interet));
+    }
 }
