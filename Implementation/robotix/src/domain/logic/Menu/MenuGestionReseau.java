@@ -111,7 +111,14 @@ public class MenuGestionReseau {
                     System.out.println("Un utilisateur possede cet interet vous ne pouvez pas le supprimer");
                 }
             }
+            case ("4") -> {
+                System.out.println("Veuillez choisir l'interet auquel vous voulez vous abonner");
+                System.out.println(dbControlleur.recupererListeInteret());
+                System.out.println(">>> Votre choix : ");
+                String interet = scanner.nextLine();
+                controlleurUtilisateurs.abonnerInteret(interet, pseudo);
 
+                }
             }
         }
 

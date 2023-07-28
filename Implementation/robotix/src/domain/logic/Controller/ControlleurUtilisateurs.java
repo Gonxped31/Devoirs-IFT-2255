@@ -292,4 +292,11 @@ public class ControlleurUtilisateurs {
     public boolean extraireInteretsUtilisateurs(String interet) {
         return this.dataBaseController.extraireInterets(interet);
     }
+
+    public void abonnerInteret(String interet, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.getListeInteret().add(new Interet(interet));
+        dataBaseController.ajouterUtilisateur(u);
+    }
 }

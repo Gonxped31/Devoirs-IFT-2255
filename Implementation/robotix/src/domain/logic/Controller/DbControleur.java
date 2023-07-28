@@ -120,7 +120,7 @@ public class DbControleur {
 
 
     public String recupererListeInteret(){
-       return this.baseDeDonneeInteret.recupererListeInteret();
+       return baseDeDonneeInteret.recupererListeInteret();
     }
 
     public String recupererListeInteretUtilisateur(String pseudo){
