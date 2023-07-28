@@ -20,7 +20,7 @@ public class RequetePubliqueFournisseurGUI {
     private JButton btnVoirListeUtilisateurs = new JButton("Voir la liste d'utilisateurs");
     private JButton btnVoirListeFournisseurs = new JButton("Voir la liste des fournisseurs");
     private JButton btnVoirProfil = new JButton("Voir mon profil");
-    private JButton btnChercherUtilisateur = new JButton("Chercher utilisateur par:  ");
+    private JButton btnChercherUtilisateur = new JButton("Chercher utilisateur par");
     private JButton btnRecupererListeActivites = new JButton("Recuperer la liste des activites");
     private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheNomFournisseur = new JButton("Rechercher fournisseur");
@@ -81,8 +81,6 @@ public class RequetePubliqueFournisseurGUI {
         mainPanel.add(btnRecupererListeInterets);
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRechercheNomFournisseur);
-        mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnVoirListeFournisseurs);
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
