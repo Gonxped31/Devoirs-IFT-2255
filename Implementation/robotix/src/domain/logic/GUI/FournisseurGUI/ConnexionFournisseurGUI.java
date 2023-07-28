@@ -15,8 +15,8 @@ public class ConnexionFournisseurGUI {
     private JLabel connexionFournisseurLabel = new JLabel("Connexion en tant que fournisseur", SwingConstants.CENTER);
     private JLabel nomLabel = new JLabel("Nom");
     private JLabel mdpLabel = new JLabel("Mot de passe");
-    private JTextField nomField = new JTextField(10);
-    private JPasswordField mdpField = new JPasswordField(10);
+    private JTextField nomField = new JTextField();
+    private JPasswordField mdpField = new JPasswordField();
     private JButton btnSeConnecter = new JButton("Se Connecter");
     private JButton btnRetour = new JButton("Retour");
     private MenusFournisseur menusFournisseur;
