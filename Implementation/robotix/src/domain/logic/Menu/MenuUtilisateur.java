@@ -37,7 +37,7 @@ public class MenuUtilisateur extends JFrame {
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
     private JFrame jFrame = new JFrame();
     private JPanel menuUtilisateurPanel = new JPanel();
-    private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur");
+    private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur", SwingConstants.CENTER);
     private JButton btnModifierProfil = new JButton("Modifier mon profil");
     private JButton btnGererFlotte = new JButton("Gerer ma flotte");
     private JButton btnGererTaches = new JButton("Gerer mes taches");
@@ -59,18 +59,33 @@ public class MenuUtilisateur extends JFrame {
     private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
     public MenuUtilisateur() throws IOException {
-        menuUtilisateurPanel.setLayout(new GridLayout(0, 2, 5, 5));
+        menuUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        menuUtilisateurPanel.setLayout(new GridLayout(0, 1));
+        menuUtilisateurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ajout des composantes
         menuUtilisateurPanel.add(menuUtilisateurLabel);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnModifierProfil);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnGererFlotte);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnGererTaches);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnGererActivites);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnGererReseauSocial);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnAchats);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnVoirNotifications);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnRequetePublique);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnSouscrireInteret);
+        menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
         menuUtilisateurPanel.add(btnDeconnexion);
+
         btnModifierProfil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
