@@ -53,7 +53,6 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
                     .findFirst()
                     .orElse(null);
         }
-
     }
 
 

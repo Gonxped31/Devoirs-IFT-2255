@@ -1,6 +1,7 @@
 package domain.logic.Controller;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
+import domain.logic.Membre.TypeNotification;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.*;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.HashSet;
 
 public class ControlleurUtilisateurs {
 
@@ -36,7 +38,7 @@ public class ControlleurUtilisateurs {
     }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret));
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret), new ArrayList<Notification>());
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
@@ -170,7 +172,7 @@ public class ControlleurUtilisateurs {
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         this.dataBaseController.supprimerUtilisateur(u);
         ArrayList<Tache> listeTac = u.getTacheEnListe(listeTache);
-        ArrayList<Interet> listeInter = Utilisateur.produireListeInteret(listeInteret);
+        HashSet<Interet> listeInter = Utilisateur.produireListeInteret(listeInteret);
         boolean ressult = u.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
         this.dataBaseController.ajouterActivite(u.getActiviteCree(nomActivite));
         this.dataBaseController.ajouterUtilisateur(u);
@@ -230,21 +232,74 @@ public class ControlleurUtilisateurs {
         robot.setDisponible(true);
     }
 
-    public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        Utilisateur aSuivre = this.dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
-        this.dataBaseController.supprimerUtilisateur(aSuivre);
-        try {
-            aSuivre.etreSuivi(utilisateurCourant);
-            this.utilisateurCourant.suivreUtilisateur(aSuivre);
-            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-            this.dataBaseController.ajouterUtilisateur(aSuivre);
-        } catch (NullPointerException e) {
-            return true;
+    public String voirListeUtilisateur(String pseudo){
+        return dataBaseController.retournerUtilisateur(pseudo).voirListeUtilisateur();
+    }
+
+    public boolean supprimerUtilisateurDeListeSuivi(String pseudo, String utilASupprimer){
+        if (dataBaseController.retournerUtilisateur(pseudo).supprimerUtilisateurDeMaListe(utilASupprimer) == false){
+            return false;
         }
         return true;
     }
 
+    public boolean supprimerEtreSuivi(String pseudo, String pseudoUtilisateurASuivre){
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
+            dataBaseController.supprimerUtilisateur(utilCourant);
+            utilCourant.getListeUtilisateursSuivi().remove(u);
+            dataBaseController.ajouterUtilisateur(utilCourant);
+        } catch (NullPointerException e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean suppriemrSuivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
+        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            dataBaseController.supprimerUtilisateur(u);
+            u.getListSuiveur().remove(utilisateurCourant);
+            dataBaseController.ajouterUtilisateur(u);
+        } catch (NullPointerException e){
+            return false;
+        }
+        return true;
+    }
+
+
+    //TODO
+    public boolean etreSuivi(String pseudo, String pseudoUtilisateurASuivre){
+
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
+            dataBaseController.supprimerUtilisateur(utilCourant);
+            utilCourant.getListeUtilisateursSuivi().add(u);
+            dataBaseController.ajouterUtilisateur(utilCourant);
+        } catch (NullPointerException e){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean suivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
+        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
+        try {
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            dataBaseController.supprimerUtilisateur(u);
+            u.getListSuiveur().add(utilisateurCourant);
+            dataBaseController.ajouterUtilisateur(u);
+        } catch (NullPointerException e){
+            return false;
+        }
+        return true;
+    }
+
+    //TODO
     /*
     public void gererSuiveurs(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);
@@ -257,21 +312,34 @@ public class ControlleurUtilisateurs {
     }*/
 
     public ArrayList<Notification> voirNotifications(String pseudo){
-        return this.utilisateurCourant.voirNotifications();
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.voirNotifications();
+    }
+
+    public void ajouterNotifs(String nom, String titre, String message, TypeNotification typeNotif){
+        Utilisateur u = dataBaseController.retournerUtilisateur(nom);
+        ArrayList<Notification> notifsCourantes = u.getNotifs();
+        this.dataBaseController.supprimerUtilisateur(u);
+        u.addNotifs(titre, message,  typeNotif);
+        u.setListeNotifications(notifsCourantes);
+        this.dataBaseController.ajouterUtilisateur(u);
     }
 
     public void supprimerNotifs(String pseudo) {
-        this.utilisateurCourant.getNotifs().clear();
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.getNotifs().clear();
+        dataBaseController.ajouterUtilisateur(u);
     }
 
     public void voirProfilUtilisateurCourant()
     {
        System.out.println(this.utilisateurCourant.getProfilUtilisateur());
     }
-
+    /*
     public boolean[] notifier() {
         return this.utilisateurCourant.notifier();
-    }
+    }*/
     public boolean souscrireAunInteret(String nomInteret){
         Interet i= this.dataBaseController.souscrireAunInteret(nomInteret);
         if( i==null)
@@ -283,5 +351,39 @@ public class ControlleurUtilisateurs {
         this.utilisateurCourant.ajouterUnInteret(i);
         this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
         return true;
+    }
+
+    public void ajouterRobot(String pseudo, String numeroSerie) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        Robot robot = dataBaseController.retournerRobot(numeroSerie);
+        u.ajouterRobot(robot);
+        dataBaseController.ajouterUtilisateur(u);
+    }
+
+    public boolean extraireInteretsUtilisateurs(String interet) {
+        return this.dataBaseController.extraireInterets(interet);
+    }
+
+    public void abonnerInteret(String interet, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.getListeInteret().add(new Interet(interet));
+        dataBaseController.ajouterUtilisateur(u);
+    }
+
+    public StringBuilder retournerInteretUtilisateur(String pseudo) {
+        return dataBaseController.retournerListeInteretsUtilisateur(pseudo);
+    }
+
+    public void desabonnerInteret(String choix, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.desabonnerInteret(choix);
+        dataBaseController.ajouterUtilisateur(u);
+    }
+
+    public boolean existeDansListeSuivi(String pseudo, String nom) {
+        return dataBaseController.existeDansListeSuivi(pseudo, nom);
     }
 }

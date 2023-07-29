@@ -8,6 +8,7 @@ import domain.logic.Membre.Utilisateur;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ public class Activite implements java.io.Serializable{
     private Date dateFin;
     private ArrayList<Tache> listeDeTache = new ArrayList<>();
     private ArrayList<String> listeUtilisateurInsccrit = new ArrayList<>();
-    private ArrayList<Interet> listeInteretAssocie = new ArrayList<>();
+    private HashSet<Interet> listeInteretAssocie = new HashSet<>();
     private int points;
     private int dureeActivite;
     private ArrayList<Robot> listeRobotsInscrits = new ArrayList<>();
@@ -34,7 +35,7 @@ public class Activite implements java.io.Serializable{
                     @JsonProperty("dateDebut") Date dateDebut,
                     @JsonProperty("dateFin") Date dateFin,
                     @JsonProperty("listeDeTache") ArrayList<Tache> listeDeTache,
-                    @JsonProperty("listeInteretAssocie") ArrayList<Interet> listeInteretAssocie){
+                    @JsonProperty("listeInteretAssocie") HashSet<Interet> listeInteretAssocie){
         this.auteur = auteur;
         this.nom = nom;
         this.dateDebut = dateDebut;
@@ -51,16 +52,20 @@ public class Activite implements java.io.Serializable{
     public String getNom() {
         return nom;
     }
+
     public Date getDateDebut() {
         return dateDebut;
     }
+
     public Date getDateFin() {
         return dateFin;
     }
+
     public ArrayList<Tache> getListeDeTache() {
         return listeDeTache;
     }
-    public ArrayList<Interet> getListeInteretAssocie() {
+
+    public HashSet<Interet> getListeInteretAssocie() {
         return listeInteretAssocie;
     }
     public ArrayList<String> getListeUtilisateurInsccrit() {
@@ -93,7 +98,7 @@ public class Activite implements java.io.Serializable{
     public void setListeUtilisateurInsccrit(ArrayList<String> listeUtilisateurInsccrit) {
         this.listeUtilisateurInsccrit = listeUtilisateurInsccrit;
     }
-    public void setListeInteretAssocie(ArrayList<Interet> listeInteretAssocie) {
+    public void setListeInteretAssocie(HashSet<Interet> listeInteretAssocie) {
         this.listeInteretAssocie = listeInteretAssocie;
     }
     public void setDureeActivite(int dureeActivite) {

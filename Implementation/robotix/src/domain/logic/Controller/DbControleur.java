@@ -23,7 +23,7 @@ public class DbControleur {
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
-    private DbControleur () throws IOException, ParseException {
+    public DbControleur() throws IOException, ParseException {
         this.baseDeDonneeFournisseur=BaseDeDonneeFournisseur.getBaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=BaseDeDonneeUtilisateur.getBaseDeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
@@ -105,7 +105,8 @@ public class DbControleur {
     }
 
     public Robot retournerRobot(String numeroSerie){
-        return baseDeDonneeFournisseur.retournerRobot(numeroSerie);
+        System.out.println(this.baseDeDonneeFournisseur.getListRobot());
+        return this.baseDeDonneeFournisseur.retournerRobot(numeroSerie);
     }
 
     public Composant retournerComposante(String nom){
@@ -114,6 +115,10 @@ public class DbControleur {
 
     public Utilisateur retournerUtilisateur(String pseudo){
         return baseDeDonneeUtilisateur.retournerUtilisateur(pseudo);
+    }
+
+    public Fournisseur retournerFournisseur(String nom){
+        return baseDeDonneeFournisseur.retournerFournisseur(nom);
     }
 
     public void supprimerFournisseur(Fournisseur f) {
@@ -131,7 +136,7 @@ public class DbControleur {
 
 
     public String recupererListeInteret(){
-       return this.baseDeDonneeInteret.recupererListeInteret();
+       return baseDeDonneeInteret.recupererListeInteret();
     }
 
     public String recupererListeInteretUtilisateur(String pseudo){
@@ -177,6 +182,31 @@ public class DbControleur {
     public Interet souscrireAunInteret(String nomInteret)
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
+    }
 
+    public void ajouterInteret(String interet) {
+        baseDeDonneeInteret.ajouterObjet(new Interet(interet));
+    }
+
+    public boolean extraireInterets(String interet) {
+        return baseDeDonneeUtilisateur.extractInterests(interet);
+    }
+
+    public void supprimerInteret(String interet) {
+        System.out.println(baseDeDonneeInteret.retournerInteret(interet));
+        baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interet));
+    }
+
+    public StringBuilder retournerListeInteretsUtilisateur(String pseudo) {
+        return baseDeDonneeUtilisateur.retournerInteretsUtilisateur(pseudo);
+    }
+
+    public void modifierInteret(String interetCourant, String nouvelInteret) {
+        baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interetCourant));
+        baseDeDonneeInteret.ajouterObjet(new Interet(nouvelInteret));
+    }
+
+    public boolean existeDansListeSuivi(String pseudo, String nom) {
+        return baseDeDonneeUtilisateur.existeDansListeSuivi(pseudo, nom);
     }
 }

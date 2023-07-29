@@ -5,16 +5,19 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.TypeNotification;
 
 import javax.crypto.spec.PSource;
 
 public class MenuUtilisateur {
     /*Section Utilisateur */
     private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
+    private ControlleurFournisseurs controlleurFournisseurs;
     private DbControleur dbControlleur = DbControleur.getDbControleur();
     public Menu menu;
     private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
@@ -105,6 +108,7 @@ public class MenuUtilisateur {
 
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
+        EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj","bio.samir.gbian@umontreal.ca", "Test Robotix", "Test Test");
         menu = new Menu();
         menu.menuPrincipale(scanner);
     }
@@ -124,7 +128,6 @@ public class MenuUtilisateur {
                 break;
             } else {
                 System.out.println(connexion + " n'existe pas.");
-
             }
         }
         menu = new Menu();
@@ -161,13 +164,12 @@ public class MenuUtilisateur {
                 menuUtilisateur(scanner, pseudo);
             }
             case ("7") -> {
-                //menuNotification(scanner, pseudo);
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
+                menuNotification(scanner, pseudo);
                 menuUtilisateur(scanner, pseudo);
             }
             case ("8") -> menuRequetesPubliques(scanner, pseudo);
             case ("9") -> {
+
                 System.out.println("Voici la liste d'interets : ");
                 ArrayList<String> interets = new ArrayList<>();
                 interets.add("Combat");
@@ -175,7 +177,7 @@ public class MenuUtilisateur {
                 interets.add("Soccer");
                 interets.add("Danse");
                 interets.add("Break");
-                /*dbControlleur.recupererListeInteret()*/
+                dbControlleur.recupererListeInteret();
                 for (String interet : interets) {
                     System.out.println(interet);
                 }
@@ -211,6 +213,13 @@ public class MenuUtilisateur {
                 System.out.println("Entrez le numero du robot a acheter");
                 int numero = Integer.parseInt(scanner.nextLine());
                 System.out.println("Voici le numero de serie");
+                String numeroSerie = dbControlleur.acheterRobot(nomFournisseur, numero).toString();
+                controlleurUtilisateurs.ajouterRobot(pseudo, numeroSerie);
+                System.out.println(numeroSerie);
+
+                //Ajouter nom fournisseur
+                controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de robot",pseudo +" a achete "
+                            + dbControlleur.retournerRobot(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
                 System.out.println(dbControlleur.acheterRobot(nomFournisseur, numero));
                 System.out.println(">>> VEUILLEZ LE CONSERVER TRÈS PRÉCIEUSEMENT PUISQU'IL EST INDISPENSABLE POUR EFFECTUER " +
                         "TOUT CHANGEMENT  OU TOUTE CONSULTATION PAR RAPPORT A VOS ROBOT ! <<<");
@@ -229,6 +238,7 @@ public class MenuUtilisateur {
                     System.out.println("Entrez le numero de la composante à acheter");
                     String numero = scanner.nextLine();
                     System.out.println("Achat confirmé");
+                    controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de composant",pseudo +" a achete une composante", TypeNotification.ACHAT_ROBOT);
                 }
 
                 menuUtilisateur(scanner, pseudo);

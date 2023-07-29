@@ -50,4 +50,7 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
                 .orElse(null);
     }
 
+    public void modifierInteret(String interetCourant, String nouvelInteret) {
+
+    }
 }

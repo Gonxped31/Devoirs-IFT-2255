@@ -131,13 +131,30 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                        .filter(robot -> robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
                        .findFirst()
                        .orElse(null);
-     }
+            /*for (Map<String, List<Robot>> map : listRobot) {
+                for (List<Robot> robotList : map.values()) {
+                    for (Robot robot : robotList) {
+                        if (robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim())) {
+                            return robot;
+                        }
+                    }
+                }
+            }
+            return null;*/
+    }
 
     public Composant retournerComposante(String nom){
         return listComposant.stream()
                 .flatMap(map -> map.values().stream())
                 .flatMap(List::stream)
                 .filter(composant -> composant.getNom().equals(nom))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Fournisseur retournerFournisseur(String nom){
+        return (Fournisseur) this.getListObjet().stream()
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getNom().equals(nom))
                 .findFirst()
                 .orElse(null);
     }

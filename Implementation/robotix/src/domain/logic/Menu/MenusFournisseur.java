@@ -3,6 +3,7 @@ package domain.logic.Menu;
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Notification;
 
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -105,8 +106,9 @@ public class MenusFournisseur {
 		System.out.println("3- Enregistrer une composante");
 		System.out.println("4- Gérer mes composantes");
 		System.out.println("5- Modifier mon profile");
-		System.out.println("6- Revenir au menu robotix");
-		System.out.println("7- Faire une requete publique");
+		System.out.println("6- Faire une requete publique");
+		System.out.println("7- Voir notifications");
+		System.out.println("8- Revenir au menu robotix");
 		System.out.print(">>> Votre choix : ");
 		String choixUsager = scanner.nextLine();
 
@@ -146,12 +148,26 @@ public class MenusFournisseur {
 			case "3" -> menuEnregistrerUnComposante(scanner, nomFournisseur);
 			case "4" -> menuGererComposantes(scanner, nomFournisseur);
 			case "5" -> menuMotifierProfileFournisseur(scanner, nomFournisseur);
-			case "6" -> {
+			case "6" -> menuRequetesPubliques(scanner, nomFournisseur);
+			case "7" -> {
+				for (Notification notif : controlleurFournisseurs.voirNotifications(nomFournisseur)) {
+					System.out.println("- " + notif);
+				}
+				System.out.println("Voulez-vous supprimer les notifs (Y/N)?");
+				String decision = scanner.nextLine();
+				switch (decision.toUpperCase()){
+					case "Y":
+						controlleurFournisseurs.supprimerNotifs(nomFournisseur);
+					case "N":
+						menuFournisseur(scanner, nomFournisseur);
+						break;
+				}
+			}
+			case "8" -> {
 				System.out.println("Au revoir !");
 				menu = new Menu();
 				menu.menuPrincipale(scanner);
 			}
-			case "7" -> menuRequetesPubliques(scanner, nomFournisseur);
 		}
 	}
 	public void menuEnregistrerUnComposante(Scanner scanner, String nomFournisseur) throws ParseException, IOException {

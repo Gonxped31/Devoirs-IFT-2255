@@ -1,6 +1,9 @@
 package domain.logic.Controller;
 
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Notification;
+import domain.logic.Membre.TypeNotification;
+import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 
 import java.io.IOException;
@@ -100,5 +103,25 @@ public class ControlleurFournisseurs {
         return fournisseurCourant.getProfilFournisseur();
     }
 
+    public void ajouterNotifs(String nom, String titre, String message,  TypeNotification typeNotif){
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        ArrayList<Notification> notifsCourantes = f.getNotifs();
+        this.dataBaseController.supprimerFournisseur(f);
+        f.addNotifs(titre, message, typeNotif);
+        f.setListeNotifications(notifsCourantes);
+        this.dataBaseController.ajouterFournisseur(f);
+    }
 
+
+    public ArrayList<Notification> voirNotifications(String nom){
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        return f.voirNotifications();
+    }
+
+    public void supprimerNotifs(String nom) {
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        dataBaseController.supprimerFournisseur(f);
+        f.getNotifs().clear();
+        dataBaseController.ajouterFournisseur(f);
+    }
 }

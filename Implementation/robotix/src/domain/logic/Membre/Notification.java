@@ -2,25 +2,40 @@ package domain.logic.Membre;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+
+/*
+Use case:
+- quand on a été suivi
+- problème avec système
+- date limite des activité
+*/
 
 public class Notification implements java.io.Serializable{
     private String titre;
-    private String messsage;
-
-
-
+    private String message;
     private String date;// = LocalDateTime.now();
-
     private TypeNotification typeNotification;
 
-
+/*
     public Notification() {
-
-        date =  "01/02/1223";
+        //typeNotification = TypeNotification.NOUVEAU_ABONNE;
+        //message = "TEST";
+        //date =  "01/02/1223";
 
         //DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         //date = LocalDateTime.parse(date.format(formatDate));
+    }
+*/
+    public Notification(String titre, String message, TypeNotification typeNotification){
+        this.titre = titre;
+        this.message = message;
+        this.date = (new Date()).toString();
+        this.typeNotification = typeNotification;
+    }
 
+    public Notification() {
 
     }
 
@@ -34,10 +49,10 @@ public class Notification implements java.io.Serializable{
     }
 
     public String getMesssage() {
-        return messsage;
+        return message;
     }
 
-    public String getDate() { return date; }
+    public String getDate() { return date.toString(); }
 
     public TypeNotification getTypeNotification() {
         return typeNotification;
@@ -48,7 +63,7 @@ public class Notification implements java.io.Serializable{
     }
 
     public void setMesssage(String messsage) {
-        this.messsage = messsage;
+        this.message = messsage;
     }
 
     public void setTypeNotification(TypeNotification typeNotification) {

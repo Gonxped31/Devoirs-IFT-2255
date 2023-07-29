@@ -1,4 +1,5 @@
 package domain.logic.Robot;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +10,7 @@ import java.util.stream.Collectors;
 
 // Pourquoi est-ce qu'un robot doit prendre des actions et des tâches en paramètre ?
 public class Robot implements java.io.Serializable{
-    private static int numero=0;
+    private static int numero = 0;
     private String nom;
     private int X, Y, vitesse, batterie, cpu;
     private double memoire; // En GB
@@ -44,6 +45,7 @@ public class Robot implements java.io.Serializable{
     public Robot( ){
         this.numeroSerie= UUID.randomUUID();
     }
+
     public String getNom() {
         return nom;
     }
@@ -67,6 +69,7 @@ public class Robot implements java.io.Serializable{
     public void setX(int newX){
         this.X = newX;
     }
+
     public int getVitesse() {
         return vitesse;
     }

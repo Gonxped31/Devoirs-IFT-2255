@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.logic.Membre.Fournisseur;
+import domain.logic.Membre.Interet;
 import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Activite;
 
@@ -84,6 +85,11 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
             }
             else if ( objet instanceof Fournisseur) {
                 if(((Fournisseur) o).getNom().equals(((Fournisseur) objet).getNom())){
+                    iterator.remove();
+                }
+            }
+            else if (objet instanceof Interet){
+                if(((Interet) o).getNom().equals(((Interet) objet).getNom())){
                     iterator.remove();
                 }
             }
