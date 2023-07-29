@@ -31,7 +31,7 @@ public class MenuGestionReseau {
                 if (controlleurUtilisateurs.suivreUtilisateur(pseudo, nom) == false) {
                     System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
                     gererReseauSocial(scanner, pseudo);
-                };
+                }
                 if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
                     System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
                     gererReseauSocial(scanner, pseudo);
@@ -99,6 +99,8 @@ public class MenuGestionReseau {
                 }
             }
             case ("2") -> {
+                System.out.println("Veuillez choisir l'interet a modifier");
+                System.out.println(dbControlleur.recupererListeInteret());
 
             }
             case ("3") -> {

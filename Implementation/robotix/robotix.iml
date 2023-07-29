@@ -14,6 +14,8 @@
     <orderEntry type="library" name="gson-2.8.9" level="project" />
     <orderEntry type="library" name="jackson-annotations-2.15.21" level="project" />
     <orderEntry type="library" name="jackson-annotations-2.15.2" level="project" />
-    <orderEntry type="library" name="commons-email-1.5-javadoc" level="project" />
+    <orderEntry type="library" name="commons-email-1.5" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
   </component>
 </module>
