@@ -106,7 +106,7 @@ public class MenuUtilisateur {
         this.controlleurUtilisateurs = new ControlleurUtilisateurs(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
         System.out.println("Have fun " + pseudo + " !");
-        //EmailSender.sendEmail("robotrobotix4@gmail.com","Kamendinio","kamendamov123@gmail.com", "Test Robotix", "Test Test");
+        EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj","kamendamov123@gmail.com", "Test Robotix", "Test Test");
         menu = new Menu();
         menu.menuPrincipale(scanner);
     }
