@@ -184,4 +184,9 @@ public class DbControleur {
     public StringBuilder retournerListeInteretsUtilisateur(String pseudo) {
         return baseDeDonneeUtilisateur.retournerInteretsUtilisateur(pseudo);
     }
+
+    public void modifierInteret(String interetCourant, String nouvelInteret) {
+        baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interetCourant));
+        baseDeDonneeInteret.ajouterObjet(new Interet(nouvelInteret));
+    }
 }

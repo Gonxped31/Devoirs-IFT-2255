@@ -101,6 +101,14 @@ public class MenuGestionReseau {
             case ("2") -> {
                 System.out.println("Veuillez choisir l'interet a modifier");
                 System.out.println(dbControlleur.recupererListeInteret());
+                String interet = scanner.nextLine();
+                if (controlleurUtilisateurs.extraireInteretsUtilisateurs(interet)){
+                    System.out.println("Comment voulez-vous le modifier?");
+                    String nouvelInteret = scanner.nextLine();
+                    dbControlleur.modifierInteret(interet,nouvelInteret);
+                }else{
+                    System.out.println("Peut pas modifier l'interet car quelqu'un le possede");
+                }
 
             }
             case ("3") -> {

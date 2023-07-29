@@ -621,10 +621,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
     public void desabonnerInteret(String choix) {
-
-        for (Interet i : getListeInteret()){
-            if (i.getNom().equals(choix)){
-                getListeInteret().remove(i);
+        Iterator<Interet> iterator = getListeInteret().iterator();
+        while (iterator.hasNext()) {
+            Interet i = iterator.next();
+            if (i.getNom().equals(choix)) {
+                iterator.remove(); // Safely remove the element using the iterator
             }
         }
     }
