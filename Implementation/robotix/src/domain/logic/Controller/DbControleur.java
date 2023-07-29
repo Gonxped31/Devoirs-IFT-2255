@@ -13,6 +13,7 @@ import service.BaseDeDonneeInteret;
 import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.UUID;
 
 
@@ -22,14 +23,14 @@ public class DbControleur {
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
    private BaseDeDonneeInteret baseDeDonneeInteret;
-    private DbControleur () throws IOException {
+    private DbControleur () throws IOException, ParseException {
         this.baseDeDonneeFournisseur=BaseDeDonneeFournisseur.getBaseDeDonneeFournisseur();
         this.baseDeDonneeUtilisateur=BaseDeDonneeUtilisateur.getBaseDeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
     }
 
-    public static DbControleur getDbControleur() throws IOException {
+    public static DbControleur getDbControleur() throws IOException, ParseException {
         return dbControleur == null ? dbControleur = new DbControleur() : dbControleur;
     }
 
@@ -84,7 +85,13 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.rechercherFournisseurParTypeDeComposant(typeDeComposant);
     }
     public void  ajouterActivite(Activite activite){
-
+        this.baseDeDonneeActivite.ajouterObjet(activite);
+    }
+    public void supprimerActivite(Activite activite){
+        this.baseDeDonneeActivite.supprimerObjet(activite);
+    }
+    public Activite retournerActivite(String nomActivite){
+        return baseDeDonneeActivite.retournerActivite(nomActivite);
     }
     public String recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();

@@ -20,12 +20,10 @@ public class MenuGererTacheActivite {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = DbControleur.getDbControleur();
     private MenuUtilisateur menuUtil;
-    private Activite activite = new Activite();
-
-    public MenuGererTacheActivite() throws IOException {
+    public MenuGererTacheActivite() throws IOException, ParseException {
     }
 
-    //Tache
+    //Taches
     public void gererMesTaches(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("********** Gestion des taches **********");
         System.out.println("1- Créer une tâche");
@@ -62,7 +60,7 @@ public class MenuGererTacheActivite {
                 decision = scanner.nextLine();
             }
             ArrayList<String> list = controlleurUtilisateurs.creerTache(nomAction, actions, pseudo);
-            if (list.size() != 0){
+            if (!list.isEmpty()){
                 System.out.println("Vous ne possédez pas les actions suivantes : ");
                 list.forEach(System.out::println);
                 System.out.println("Vous pouvez les creer dans le menu de gestion de votre flotte.");
@@ -89,7 +87,7 @@ public class MenuGererTacheActivite {
     }
 
 
-    //Activite
+    //Activites
     public void gererMesActivites(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("********** Gestion des activites **********");
         System.out.println("1- Créer une activites");
@@ -139,7 +137,7 @@ public class MenuGererTacheActivite {
 
         do {
             String taches = controlleurUtilisateurs.recuprerListeTache(pseudo);
-            if (taches.equals("")){
+            if (taches.isEmpty()){
                 System.out.println("Vous ne possedez aucune tache.");
                 continuer = false;
             } else {
@@ -177,37 +175,47 @@ public class MenuGererTacheActivite {
         gererMesActivites(scanner, pseudo);
     }
 
+    //TODO: Separer le menu pour ajouter un utilisateur de celui pour ajouter un robot.
     public void menuRejoindreActivite(String pseudo, Scanner scanner) throws IOException, ParseException {
         Date date = new Date();
-        System.out.println("Veuillez choisir une a rejoindre parmi les suivantes activites parmi les suivantes");
-        System.out.println("1- Ballade en forêt (du 02/07/2000 au 02/08/2000)");
-        System.out.println("2- Course de rally (du 05/07/2000 au 02/08/2001)");
-        System.out.println("3- Soiree netflix and chill (du 09/08/2010 au 02/012/2013)");
-        System.out.println("4- Gaming night (du 02/07/2004 au 02/08/2006)");
-        System.out.println("5- Hokey sur glace (du 14/10/2023 au 02/08/2026)");
-        String nomActivite = scanner.nextLine();
-
-        System.out.println ("Entrez une date de début de l'activité (format dd/MM/yyyy) : ");
-        String dateDebut = scanner.nextLine();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            date = dateFormat.parse(dateDebut);
-        } catch (ParseException e) {
-            System.out.println("Format de date invalide !");
+        String liste = controlleurUtilisateurs.recupererListeActivites();
+        if (!liste.isEmpty()){
+            System.out.println("Veuillez le nom de l'activite a rejoindre parmi les activites suivantes :");
+            System.out.println(liste);
+            System.out.print(">>> Votre choix : ");
+            String nomActivite = scanner.nextLine();
+            String result = controlleurUtilisateurs.rejoindreActivite(pseudo, nomActivite);
+            if (result.equals("true")){
+                String robots = controlleurUtilisateurs.recupererListeRobot(pseudo);
+                if (!robots.isEmpty()){
+                    ArrayList<String> numeroRobots = new ArrayList<>();
+                    String choix;
+                    do {
+                        System.out.println("Quel robot voulez vous rajouter a cette activitee ? (veuillez entrer le numero de serie du robot) :");
+                        System.out.println(robots);
+                        System.out.print(">>> Votre choix : ");
+                        numeroRobots.add(scanner.nextLine().trim());
+                        System.out.print("Voulez-vous ajouter un autre robot ? (Y/N) : ");
+                        choix = scanner.nextLine();
+                    } while (choix.toUpperCase().equals("Y"));
+                    if (!controlleurUtilisateurs.ajouterRobotActivite(numeroRobots, nomActivite, pseudo)){
+                        System.out.println("Tous les robots n'ont pas pu etre rajoutes. Certains n'ont pas pu etre ajoutes " +
+                                "car le numero de serie est inexistant ou ils sont occupees dans une autre activitee.");
+                    } else {
+                        System.out.printf("Tous les robots ont ete rajoutes avec succes !");
+                    }
+                } else {
+                    System.out.println("Vous ne possedez aucun robot disponible pour rejoindre une activite.");
+                }
+                System.out.println("Vous avez rejoint l'activite: " + nomActivite + " avec succes.");
+            } else if (result.equals("true2")) {
+                System.out.println("Vous avez deja rejoint cette activitee.");
+            } else {
+                System.out.println("L'activite que vous tentez de rejoindre n'existe pas.");
+            }
+        } else {
+            System.out.println("Oups.... On dirait bien que vous ne possedez aucune activitee...");
         }
-
-        switch (nomActivite){
-            case "1" -> nomActivite = "Ballade en forêt (du 02/07/2000 au 02/08/2000)";
-            case "2" -> nomActivite = "Course de rally (du 05/07/2000 au 02/08/2001)";
-            case "3" -> nomActivite = "Soiree netflix and chill (du 09/08/2010 au 02/012/2013)";
-            case "4" -> nomActivite = "Gaming night (du 02/07/2004 au 02/08/2006)";
-            case "5" -> nomActivite = "Hokey sur glace (du 14/10/2023 au 02/08/2026)";
-        }
-
-        controlleurUtilisateurs.rejoindreActivite(pseudo, activite);
-        System.out.println("Vous avez rejoint l'activite: " + nomActivite);
-        menuUtil = new MenuUtilisateur();
-        menuUtil.menuUtilisateur(scanner, pseudo);
+        gererMesActivites(scanner, pseudo);
     }
 }

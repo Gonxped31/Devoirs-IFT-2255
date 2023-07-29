@@ -21,7 +21,7 @@ public class Menu {
     private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
     private MenusFournisseur menusFournisseur = new MenusFournisseur();
 
-    public Menu() throws IOException {
+    public Menu() throws IOException, ParseException {
     }
 
     public void menuPrincipale(Scanner scanner) throws ParseException, IOException {

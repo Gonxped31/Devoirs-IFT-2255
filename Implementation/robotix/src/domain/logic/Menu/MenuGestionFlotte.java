@@ -14,7 +14,7 @@ public class MenuGestionFlotte {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
 
-    public MenuGestionFlotte() throws IOException {
+    public MenuGestionFlotte() throws IOException, ParseException {
     }
     
     public void gererMaFlotte(Scanner scanner, String pseudo) throws ParseException, IOException {
@@ -132,7 +132,7 @@ public class MenuGestionFlotte {
             }
 
         } while (!valide || decision.toUpperCase().equals("Y"));
-        System.out.println("Veuillez entrer le duree : ");
+        System.out.print("Veuillez entrer le duree de l'action (en secondes) : ");
         String duree = scanner.nextLine();
         controlleurUtilisateurs.creerAction(nomAction, composantes, duree, pseudo);
         System.out.println("Création de l'action en cours...");

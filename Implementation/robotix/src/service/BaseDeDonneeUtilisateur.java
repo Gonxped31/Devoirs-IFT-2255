@@ -10,6 +10,7 @@ import service.BaseDeDonneeFournisseur;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,13 +20,13 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
      private static BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
 
      private ArrayList<Interet> listInteret;
-     private BaseDeDonneeUtilisateur() throws IOException {
+     private BaseDeDonneeUtilisateur() throws IOException, ParseException {
         super(FILE_NAME,new TypeReference<ArrayList<Utilisateur>>() {});
         listInteret=new ArrayList<>();
        // init();
      }
 
-     public static BaseDeDonneeUtilisateur getBaseDeUtilisateur() throws IOException {
+     public static BaseDeDonneeUtilisateur getBaseDeUtilisateur() throws IOException, ParseException {
          return baseDeDonneeUtilisateur == null ?  new BaseDeDonneeUtilisateur() : baseDeDonneeUtilisateur;
      }
 
@@ -164,12 +165,8 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     public Utilisateur authentificatiUtilisateur(String pseudoUtilisateur, String mdp) {
          Utilisateur result = null;
-        //System.out.println(this.getListObjet());
         for (Object obj : this.getListObjet()) {
-            //System.out.println(obj instanceof Utilisateur utilisateur);
             if (obj instanceof Utilisateur utilisateur) {
-                //System.out.println(utilisateur.getPseudo());
-                //System.out.println(utilisateur.getMotDePasse());
                 if (utilisateur.getPseudo().equals(pseudoUtilisateur) && utilisateur.getMotDePasse().equals(mdp)) {
                     result = utilisateur;
                 }

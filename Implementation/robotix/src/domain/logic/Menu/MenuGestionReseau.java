@@ -10,7 +10,7 @@ public class MenuGestionReseau {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
 
-    public MenuGestionReseau() throws IOException {
+    public MenuGestionReseau() throws IOException, ParseException {
     }
 
     public void gererReseauSocial(Scanner scanner, String pseudo) throws ParseException, IOException {

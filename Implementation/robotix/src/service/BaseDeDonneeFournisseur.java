@@ -8,6 +8,7 @@ import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -17,14 +18,14 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
         private List<Map<String, List<Composant>>> listComposant;
         private static BaseDeDonneeFournisseur baseDeDonneeFournisseur;
 
-     private BaseDeDonneeFournisseur() throws IOException {
+     private BaseDeDonneeFournisseur() throws IOException, ParseException {
             super(FILE_NAME,new TypeReference<ArrayList<Fournisseur>>() {});
             listComposant= new ArrayList<>();
             listRobot=new ArrayList<>();
             initListeRobotEtComposant();
      }
 
-     public static BaseDeDonneeFournisseur getBaseDeDonneeFournisseur() throws IOException {
+     public static BaseDeDonneeFournisseur getBaseDeDonneeFournisseur() throws IOException, ParseException {
          return baseDeDonneeFournisseur == null ? new BaseDeDonneeFournisseur() : baseDeDonneeFournisseur;
      }
 

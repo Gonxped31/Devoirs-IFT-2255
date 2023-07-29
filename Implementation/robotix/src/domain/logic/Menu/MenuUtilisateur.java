@@ -21,7 +21,7 @@ public class MenuUtilisateur {
     private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
     private MenuGestionReseau menuReseau = new MenuGestionReseau();
 
-    public MenuUtilisateur() throws IOException {
+    public MenuUtilisateur() throws IOException, ParseException {
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {

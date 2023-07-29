@@ -4,6 +4,7 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Robot.Composant;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -12,10 +13,10 @@ public class ControlleurFournisseurs {
     private Fournisseur fournisseurCourant;
 
     public ControlleurFournisseurs(String nom, String mdp,  String adresse, String email, String numeroTelephone,
-                                   String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie) throws IOException {
+                                   String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie) throws IOException, ParseException {
       this.fournisseurCourant= new Fournisseur(nom, mdp, adresse, email, numeroTelephone,typeDeRobotFabriquer,typeComposantesFabriquer,capacite,nomcompagnie);
     }
-    public ControlleurFournisseurs() throws IOException {}
+    public ControlleurFournisseurs() throws IOException, ParseException {}
 
     public boolean authentificationFournisseur(String nomFournisseur, String mdp){
         Fournisseur f= this.dataBaseController.authentificatiFournisseur(nomFournisseur,mdp);

@@ -19,6 +19,7 @@ public class Robot implements java.io.Serializable{
     private LinkedList<Tache> taches;
     private LinkedList<Activite> activites;
     private UUID numeroSerie;
+    private boolean disponible;
 
     @JsonCreator
     public Robot(@JsonProperty("nom") String nom,@JsonProperty("X") int X, @JsonProperty("Y")int Y,@JsonProperty("vitesse") int vitesse,@JsonProperty("batterie") int batterie,@JsonProperty("cpu") int cpu,@JsonProperty("memoire") double memoire,@JsonProperty("composantes") LinkedList<Composant> composantes,@JsonProperty("type") String type,
@@ -36,6 +37,7 @@ public class Robot implements java.io.Serializable{
         this.taches = taches;
         this.activites = activites;
         this.numeroSerie = UUID.randomUUID();
+        this.disponible = true;
         ++numero;
     }
 
@@ -104,6 +106,11 @@ public class Robot implements java.io.Serializable{
     public UUID getNumeroSerie() {
         return numeroSerie;
     }
+
+    public boolean estDisponible() {
+        return disponible;
+    }
+
     public void ajouterComposante(Composant composant){
         composantes.add(composant);
     }
@@ -111,10 +118,13 @@ public class Robot implements java.io.Serializable{
     public void setType(String type) {
         this.type = type;
     }
-
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
     public void allouerTache(Tache tache){
         taches.add(tache);
     }
+
     @JsonIgnore
     public String getInfoRobotFormater()
     {
@@ -131,4 +141,7 @@ public class Robot implements java.io.Serializable{
     public void setNumero(int newNum){
         numero = newNum;
     }
+
+
+
 }

@@ -6,13 +6,17 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Activite;
 
 public abstract class BaseDeDonnee<T>{
 
@@ -20,13 +24,13 @@ private ArrayList<T> listObjet;
 private File database;
 
 
-public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
+public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IOException, ParseException {
     this.database = new File(fileName);
     this.listObjet = lireFichier(type);
 }
 
 
-    public ArrayList<T> lireFichier(TypeReference<ArrayList<T>> type) {
+    public ArrayList<T> lireFichier(TypeReference<ArrayList<T>> type) throws ParseException {
         ArrayList<T> objets = new ArrayList<>();
 
         if(!database.exists()) {
@@ -83,12 +87,17 @@ public BaseDeDonnee(String fileName, TypeReference<ArrayList<T>> type) throws IO
                     iterator.remove();
                 }
             }
+            else if (objet instanceof Activite) {
+                if(((Activite) o).getNom().equals(((Activite) objet).getNom())){
+                    iterator.remove();
+                }
+            }
         }
         sauvegarder();
     }
 
  
-protected abstract void init();
+protected abstract void init() throws ParseException;
 
     public ArrayList<T> getListObjet()
     {

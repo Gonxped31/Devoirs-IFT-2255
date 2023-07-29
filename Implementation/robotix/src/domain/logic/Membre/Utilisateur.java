@@ -13,10 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.*;
 
-
-
-
-
 public class Utilisateur extends Membre implements java.io.Serializable{
 
     private ArrayList<Robot> listeRobot = new ArrayList<>();
@@ -132,17 +128,6 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public static boolean verifierTelephoneUtilisateur(String inputTelephone) {
         return  inputTelephone.length() == 10;
-    }
-
-    public static Utilisateur trouverUtilisateur(String pseudo, ArrayList<Utilisateur> listeUtilisateurs){
-        Utilisateur utilisateur = new Utilisateur(null, null, null, null,null, null, null, null, null);
-        for (Utilisateur utilisateurs : listeUtilisateurs) {
-            if (utilisateurs.getPseudo().equals(pseudo)) {
-                utilisateur = utilisateurs;
-                break;
-            }
-        }
-        return utilisateur;
     }
 
     public void suivreUtilisateur(Utilisateur suivi){
@@ -315,23 +300,37 @@ public class Utilisateur extends Membre implements java.io.Serializable{
        }
         return  robotExiste;
     }
+    public String listeRobot(){
+        String result = "";
+        for (Robot robot: listeRobot) {
+            if (robot.estDisponible()){
+                result += "\n-" + robot.getNom() + " : " + robot.getNumeroSerie().toString();
+            }
+        }
+        return result;
+    }
 
     public ArrayList<String> creerTache(String nom, ArrayList<String> stringActions){
         Map<String, Action> map = new HashMap<>();
+        int dureeTache = 0;
         listeActions.forEach(action -> map.put(action.getNomAction(), action));
         ArrayList<String> actionList = new ArrayList<>(map.keySet());
         ArrayList<Action> actions = new ArrayList<>();
         int numberOfActions = stringActions.size();
-        IntStream.range(0, stringActions.size()).forEach(i -> {
+        for (int i = 0; i < numberOfActions; i++) {
             String act = stringActions.get(0);
-            if (actionList.contains(act)){
-                actions.add(map.get(act));
+            if (actionList.contains(act.trim())){
+                Action action = map.get(act);
+                dureeTache += Integer.parseInt(action.getDuree());
+                actions.add(action);
                 stringActions.remove(0);
             }
-        });
+        }
 
         if (actions.size() == numberOfActions){
-            listeTaches.add(new Tache(nom, actions));
+            Tache tache = new Tache(nom, actions);
+            tache.setDureeTache(dureeTache);
+            listeTaches.add(tache);
         }
         return stringActions;
     }
@@ -387,11 +386,47 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public boolean creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, ArrayList<Interet> listeInterets) throws ParseException {
         if (!verifierExistenceActivite(nomActivite)){
-            listeActivitesCreer.add(new Activite(nomActivite, new SimpleDateFormat("yyyy-MM-dd").parse(dateDebut), new SimpleDateFormat("yyyy-MM-dd").parse(dateFin), listeTache, listeInterets));
+            int dureeActivitee = listeTache.stream()
+                    .mapToInt(Tache::getDureeTache)
+                    .sum();
+            Activite activite = new Activite(pseudo, nomActivite, new SimpleDateFormat("yyyy-MM-dd").parse(dateDebut),
+                    new SimpleDateFormat("yyyy-MM-dd").parse(dateFin), listeTache, listeInterets);
+            activite.setDureeActivite(dureeActivitee);
+            listeActivitesCreer.add(activite);
             return true;
         } else {
             return false;
         }
+    }
+    public boolean rejoindreActivite(Activite activite) {
+        Activite activite1 = getActiviteRejoint(activite.getNom());
+        if (activite1 == null){
+            listeActivitesRejoint.add(activite);
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public Activite getActiviteCree(String nom){
+        Activite activite1 = null;
+        for (Activite activite: listeActivitesCreer) {
+            if (activite.getNom().equals(nom)){
+                activite1 = activite;
+                break;
+            }
+        }
+        return activite1;
+    }
+
+    public Activite getActiviteRejoint(String nom){
+        Activite activite1 = null;
+        for (Activite activite: listeActivitesRejoint) {
+            if (activite.getNom().equals(nom)){
+                activite1 = activite;
+                break;
+            }
+        }
+        return activite1;
     }
 
     private boolean verifierExistenceActivite(String nomActivite){
@@ -470,9 +505,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     }
 
 
-    public void rejoindreActivite(Activite activite) {
-        getListeActivitesRejoint().add(activite);
-    }
+
     public ArrayList<Interet> getListeInteret() {
         return listeInteret;
     }

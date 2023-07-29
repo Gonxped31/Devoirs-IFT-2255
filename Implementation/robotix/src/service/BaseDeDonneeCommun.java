@@ -9,6 +9,7 @@ import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -16,7 +17,7 @@ public class BaseDeDonneeCommun extends BaseDeDonnee {
 
         private List<Map<String, List<Robot>>> listRobot;
         private List<Map<String, List<Composant>>> listComposant;
-        public <T> BaseDeDonneeCommun(String fileName, TypeReference<ArrayList<T>> type) throws IOException {
+        public <T> BaseDeDonneeCommun(String fileName, TypeReference<ArrayList<T>> type) throws IOException, ParseException {
             super(fileName,type );
             listComposant = new ArrayList<>();
             listRobot = new ArrayList<>();

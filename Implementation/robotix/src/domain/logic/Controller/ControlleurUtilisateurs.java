@@ -7,7 +7,9 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ControlleurUtilisateurs {
 
@@ -18,18 +20,18 @@ public class ControlleurUtilisateurs {
     private Utilisateur utilisateurCourant;
 
     private ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email,
-                                    String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
+                                    String numeroTelephone, String nomCompagnie, ArrayList<String> listeInteret) throws IOException, ParseException {
         this.inscriptionUtilisateur(nom, prenom, adresse, pseudo, mdp, email, numeroTelephone, nomCompagnie, listeInteret);
     }
 
     public static ControlleurUtilisateurs getControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo,
                                                               String mdp, String email, String numeroTelephone,
-                                                              String nomCompagnie, ArrayList<String> listeInteret) throws IOException {
+                                                              String nomCompagnie, ArrayList<String> listeInteret) throws IOException, ParseException {
         return controlleurUtilisateurs == null ? new ControlleurUtilisateurs(nom, prenom, adresse, pseudo, mdp, email,
                 numeroTelephone, nomCompagnie, listeInteret) : controlleurUtilisateurs;
     }
 
-    public ControlleurUtilisateurs() throws IOException {
+    public ControlleurUtilisateurs() throws IOException, ParseException {
 
     }
 
@@ -86,6 +88,11 @@ public class ControlleurUtilisateurs {
         }
         this.dataBaseController.ajouterUtilisateur(u);
         return bool;
+    }
+
+    public String recupererListeRobot(String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.listeRobot();
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
@@ -158,24 +165,69 @@ public class ControlleurUtilisateurs {
         return bool;
     }
 
-    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin, ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
+    public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin,
+                                  ArrayList<String> listeTache, ArrayList<String> listeInteret) throws ParseException {
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         this.dataBaseController.supprimerUtilisateur(u);
         ArrayList<Tache> listeTac = u.getTacheEnListe(listeTache);
         ArrayList<Interet> listeInter = Utilisateur.produireListeInteret(listeInteret);
         boolean ressult = u.creerActivite(nomActivite, dateDebut, dateFin, listeTac, listeInter);
+        this.dataBaseController.ajouterActivite(u.getActiviteCree(nomActivite));
         this.dataBaseController.ajouterUtilisateur(u);
         return ressult;
     }
 
-    public void rejoindreActivite(String pseudo, Activite activite){
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        try {
-            this.utilisateurCourant.rejoindreActivite(activite);
-            this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
-        } catch (NullPointerException e){
+    public String recupererListeActivites(){
+        return dataBaseController.recupererListeActivite();
+    }
 
+    public String rejoindreActivite(String pseudo, String nomActivite) {
+        String result = "false";
+        Utilisateur utilisateur = dataBaseController.retournerUtilisateur(pseudo);
+        Activite activite = dataBaseController.retournerActivite(nomActivite);
+        if (utilisateur != null && activite != null) {
+            dataBaseController.supprimerUtilisateur(utilisateur);
+            dataBaseController.supprimerActivite(activite);
+            if (!utilisateur.rejoindreActivite(activite)){
+                activite.getListeUtilisateurInsccrit().add(utilisateur.getPseudo());
+                dataBaseController.ajouterActivite(activite);
+                dataBaseController.ajouterUtilisateur(utilisateur);
+                result = "true";
+            } else {
+                dataBaseController.ajouterActivite(activite);
+                dataBaseController.ajouterUtilisateur(utilisateur);
+                result = "true2";
+            }
         }
+
+        return result;
+    }
+
+    public boolean ajouterRobotActivite(ArrayList<String> numeroSerieRobots, String nomActivite ,String pseudo){
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        Activite activite = dataBaseController.retournerActivite(nomActivite);
+        dataBaseController.supprimerUtilisateur(u);
+        dataBaseController.supprimerActivite(activite);
+        ArrayList<Robot> robots = new ArrayList<>();
+        numeroSerieRobots.forEach(num -> robots.add(dataBaseController.retournerRobot(num)));
+        int iterations = robots.size();
+        int compteur = 0;
+        for (int i = 0; i < iterations; i++) {
+            Robot robot = robots.get(0);
+            if (robot != null && robot.estDisponible()){
+                robot.setDisponible(false);
+                activite.getListeRobotsInscrits().add(robot);
+                scheduler.schedule(() -> marquerRobotDisponible(robot), activite.getDureeActivite(), TimeUnit.SECONDS);
+                compteur++;
+            }
+        }
+        dataBaseController.ajouterActivite(activite);
+        dataBaseController.ajouterUtilisateur(u);
+        return compteur == iterations;
+    }
+    private void marquerRobotDisponible(Robot robot){
+        robot.setDisponible(true);
     }
 
     public boolean suivreUtilisateur(String pseudoUtilisateurASuivre){
@@ -193,7 +245,6 @@ public class ControlleurUtilisateurs {
         return true;
     }
 
-    //TODO
     /*
     public void gererSuiveurs(String pseudo){
         Utilisateur utilisateur = Utilisateur.trouverUtilisateur(pseudo, listeUtilisateurs);

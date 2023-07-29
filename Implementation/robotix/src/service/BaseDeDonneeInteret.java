@@ -5,6 +5,7 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class BaseDeDonneeInteret extends BaseDeDonnee{
     private static final String FILE_NAME= "interet.json";
-    public BaseDeDonneeInteret() throws IOException {
+    public BaseDeDonneeInteret() throws IOException, ParseException {
         super(FILE_NAME, new TypeReference<ArrayList<Interet>>() {});
     }
 

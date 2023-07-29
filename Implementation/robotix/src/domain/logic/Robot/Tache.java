@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Tache implements java.io.Serializable{
     private String nom;
     private ArrayList<Action> taches;
+    private int dureeTache;
 
     @JsonCreator
     public Tache(
@@ -19,18 +20,26 @@ public class Tache implements java.io.Serializable{
         this.taches = taches;
     }
 
+    //Getters
     public String getNom() {
         return nom;
     }
-
     public ArrayList<Action> getTaches() {
         return taches;
+    }
+    public int getDureeTache() {
+        return dureeTache;
+    }
+
+    //Setters
+    public void setDureeTache(int dureeTache) {
+        this.dureeTache = dureeTache;
     }
 
     @JsonIgnore
     public String getInfoTacheFormater(){
-        return  "Nom : " + this.nom +
-                "Liste d'action : " + taches.stream()
+        return  "\nNom : " + this.nom +
+                "\nListe d'action : " + taches.stream()
                 .map(action -> action.getInfoActionFormater())
                 .collect(Collectors.joining("\n"));
     }
