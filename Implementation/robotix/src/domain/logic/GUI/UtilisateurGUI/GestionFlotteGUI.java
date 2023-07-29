@@ -135,12 +135,12 @@ public class GestionFlotteGUI {
     }
 
     public void setAfficherEtatRobotPanel() {
-        JButton btnMenuGestionFlotte = new JButton("Retour");
+        JButton btnRetour = new JButton("Retour");
 
         constraints.gridy = 0;
-        afficherEtatRobotPanel.add(btnMenuGestionFlotte);
+        afficherEtatRobotPanel.add(btnRetour);
 
-        onBtnAnnulerClicked(btnMenuGestionFlotte);
+        onBtnAnnulerClicked(btnRetour);
     }
     public void setAjouterComposantePanel() {
         JLabel nomComposanteLabel = new JLabel("Nom de la composante a ajouter");
