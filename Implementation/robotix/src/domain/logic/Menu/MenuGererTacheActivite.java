@@ -175,9 +175,7 @@ public class MenuGererTacheActivite {
         gererMesActivites(scanner, pseudo);
     }
 
-    //TODO: Separer le menu pour ajouter un utilisateur de celui pour ajouter un robot.
     public void menuRejoindreActivite(String pseudo, Scanner scanner) throws IOException, ParseException {
-        Date date = new Date();
         String liste = controlleurUtilisateurs.recupererListeActivites();
         if (!liste.isEmpty()){
             System.out.println("Veuillez le nom de l'activite a rejoindre parmi les activites suivantes :");
@@ -186,28 +184,7 @@ public class MenuGererTacheActivite {
             String nomActivite = scanner.nextLine();
             String result = controlleurUtilisateurs.rejoindreActivite(pseudo, nomActivite);
             if (result.equals("true")){
-                String robots = controlleurUtilisateurs.recupererListeRobot(pseudo);
-                if (!robots.isEmpty()){
-                    ArrayList<String> numeroRobots = new ArrayList<>();
-                    String choix;
-                    do {
-                        System.out.println("Quel robot voulez vous rajouter a cette activitee ? (veuillez entrer le numero de serie du robot) :");
-                        System.out.println(robots);
-                        System.out.print(">>> Votre choix : ");
-                        numeroRobots.add(scanner.nextLine().trim());
-                        System.out.print("Voulez-vous ajouter un autre robot ? (Y/N) : ");
-                        choix = scanner.nextLine();
-                    } while (choix.toUpperCase().equals("Y"));
-                    if (!controlleurUtilisateurs.ajouterRobotActivite(numeroRobots, nomActivite, pseudo)){
-                        System.out.println("Tous les robots n'ont pas pu etre rajoutes. Certains n'ont pas pu etre ajoutes " +
-                                "car le numero de serie est inexistant ou ils sont occupees dans une autre activitee.");
-                    } else {
-                        System.out.printf("Tous les robots ont ete rajoutes avec succes !");
-                    }
-                } else {
-                    System.out.println("Vous ne possedez aucun robot disponible pour rejoindre une activite.");
-                }
-                System.out.println("Vous avez rejoint l'activite: " + nomActivite + " avec succes.");
+                menuAjouterRobotActivite(scanner, pseudo, nomActivite);
             } else if (result.equals("true2")) {
                 System.out.println("Vous avez deja rejoint cette activitee.");
             } else {
@@ -217,5 +194,30 @@ public class MenuGererTacheActivite {
             System.out.println("Oups.... On dirait bien que vous ne possedez aucune activitee...");
         }
         gererMesActivites(scanner, pseudo);
+    }
+
+    private void menuAjouterRobotActivite(Scanner scanner, String pseudo, String nomActivite){
+        String robots = controlleurUtilisateurs.recupererListeRobot(pseudo);
+        if (!robots.isEmpty()){
+            ArrayList<String> numeroRobots = new ArrayList<>();
+            String choix;
+            do {
+                System.out.println("Quel robot voulez vous rajouter a cette activitee ? (veuillez entrer le numero de serie du robot) :");
+                System.out.println(robots);
+                System.out.print(">>> Votre choix : ");
+                numeroRobots.add(scanner.nextLine().trim());
+                System.out.print("Voulez-vous ajouter un autre robot ? (Y/N) : ");
+                choix = scanner.nextLine();
+            } while (choix.toUpperCase().equals("Y"));
+            if (!controlleurUtilisateurs.ajouterRobotActivite(numeroRobots, nomActivite, pseudo)){
+                System.out.println("Tous les robots n'ont pas pu etre rajoutes. Certains n'ont pas pu etre ajoutes " +
+                        "car le numero de serie est inexistant ou ils sont occupees dans une autre activitee.");
+            } else {
+                System.out.printf("Tous les robots ont ete rajoutes avec succes !");
+            }
+        } else {
+            System.out.println("Vous ne possedez aucun robot disponible pour rejoindre une activite.");
+        }
+        System.out.println("Vous avez rejoint l'activite: " + nomActivite + " avec succes.");
     }
 }
