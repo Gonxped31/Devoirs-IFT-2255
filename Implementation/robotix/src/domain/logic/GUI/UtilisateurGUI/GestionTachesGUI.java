@@ -27,14 +27,14 @@ public class GestionTachesGUI {
         btnCreerTache.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.setContentPane(creerTachePanel); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.setContentPane(creerTachePanel);
                 mettreAJourFrame();
             }
         });
         btnAllouerTache.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.setContentPane(allouerTachePanel); // Mettre a jour le contentPane avec le panel precedent
+                jFrame.setContentPane(allouerTachePanel);
                 mettreAJourFrame();
             }
         });
