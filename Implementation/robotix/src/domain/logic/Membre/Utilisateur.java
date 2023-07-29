@@ -24,6 +24,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private ArrayList<Activite> listeActivitesCreer = new ArrayList<>();
     private Set<Utilisateur> listSuiveur = new HashSet<>();
+    private Set<Metrique> listeMetriques = new HashSet<>();
     private String pseudo;
     private String prenom;
     private int point;
