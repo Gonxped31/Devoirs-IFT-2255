@@ -97,7 +97,6 @@ public class GestionTachesGUI {
         constraints.gridy = 8;
         creerTachePanel.add(btnAnnuler, constraints);
 
-
         onBtnTacheCreeeClicked(btnCreation, tacheCreeeField, actionField, radioButtonOui, radioButtonNon);
         onBtnAnnulerClicked(btnAnnuler);
     }

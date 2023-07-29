@@ -7,19 +7,23 @@ import java.awt.event.ActionListener;
 
 public class GestionNotifsGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel mainPanel = new JPanel();
+    private JPanel mainPanel = new JPanel(new BorderLayout());
+    private JPanel notifsPanel = new JPanel(new GridBagLayout());
     private JLabel gestionNotifsLabel = new JLabel("Vos notifications", SwingConstants.CENTER);
     private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
+    private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionNotifsGUI() {
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         gestionNotifsLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        mainPanel.setLayout(new GridLayout(0, 1));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        mainPanel.add(gestionNotifsLabel);
-        mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnRetour);
+        // Ajout des composantes
+        constraints.gridy = 0;
+        notifsPanel.add(btnRetour, constraints);
+        mainPanel.add(gestionNotifsLabel, BorderLayout.NORTH);
+        mainPanel.add(notifsPanel, BorderLayout.CENTER);
 
         btnRetour.addActionListener(new ActionListener() {
             @Override
