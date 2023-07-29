@@ -240,7 +240,7 @@ public class MenuUtilisateur {
                     System.out.println("Entrez le numero de la composante à acheter");
                     String numero = scanner.nextLine();
                     System.out.println("Achat confirmé");
-                    //controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de composant",pseudo +" a achete " + dbControlleur.retournerComposante(numeroSerie).getNom(), TypeNotification.ACHAT_ROBOT);
+                    controlleurFournisseurs.ajouterNotifs(nomFournisseur, "Achat de composant",pseudo +" a achete une composante", TypeNotification.ACHAT_ROBOT);
                 }
 
                 menuUtilisateur(scanner, pseudo);
