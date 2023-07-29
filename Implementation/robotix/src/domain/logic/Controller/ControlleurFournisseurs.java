@@ -3,7 +3,6 @@ package domain.logic.Controller;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.TypeNotification;
-import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Composant;
 
 import java.io.IOException;
@@ -11,22 +10,71 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Contrôleur pour la gestion des fournisseurs.
+ */
 public class ControlleurFournisseurs {
-    private DbControleur dataBaseController = DbControleur.getDbControleur();
+    // Référence au contrôleur de la base de données
+    private final DbControleur dataBaseController = DbControleur.getDbControleur();
+
+    // Fournisseur actuellement connecté
     private Fournisseur fournisseurCourant;
 
-    public ControlleurFournisseurs(String nom, String mdp,  String adresse, String email, String numeroTelephone,
+    /**
+     * Constructeur pour la création d'un nouveau fournisseur.
+     *
+     * @param nom                Le nom du fournisseur.
+     * @param mdp                Le mot de passe du fournisseur.
+     * @param adresse            L'adresse du fournisseur.
+     * @param email              L'adresse email du fournisseur.
+     * @param numeroTelephone    Le numéro de téléphone du fournisseur.
+     * @param typeDeRobotFabriquer  Le type de robot à fabriquer par le fournisseur.
+     * @param typeComposantesFabriquer  Le type de composantes à fabriquer par le fournisseur.
+     * @param capacite           La capacité du fournisseur.
+     * @param nomcompagnie       Le nom de la compagnie du fournisseur.
+     * @throws IOException       En cas d'erreur d'entrée/sortie lors de l'accès à la base de données.
+     * @throws ParseException    En cas d'erreur de parsing de date lors de l'accès à la base de données.
+     */
+    public ControlleurFournisseurs(String nom, String mdp, String adresse, String email, String numeroTelephone,
                                    String typeDeRobotFabriquer, String typeComposantesFabriquer, String capacite, String nomcompagnie) throws IOException, ParseException {
-      this.fournisseurCourant= new Fournisseur(nom, mdp, adresse, email, numeroTelephone,typeDeRobotFabriquer,typeComposantesFabriquer,capacite,nomcompagnie);
+        this.fournisseurCourant = new Fournisseur(nom, mdp, adresse, email, numeroTelephone, typeDeRobotFabriquer, typeComposantesFabriquer, capacite, nomcompagnie);
     }
-    public ControlleurFournisseurs() throws IOException, ParseException {}
 
-    public boolean authentificationFournisseur(String nomFournisseur, String mdp){
-        Fournisseur f= this.dataBaseController.authentificatiFournisseur(nomFournisseur,mdp);
-        this.fournisseurCourant= f;
+    /**
+     * Constructeur par défaut.
+     *
+     * @throws IOException      En cas d'erreur d'entrée/sortie lors de l'accès à la base de données.
+     * @throws ParseException   En cas d'erreur de parsing de date lors de l'accès à la base de données.
+     */
+    public ControlleurFournisseurs() throws IOException, ParseException {
+    }
+
+    /**
+     * Méthode pour l'authentification d'un fournisseur.
+     *
+     * @param nomFournisseur Le nom du fournisseur à authentifier.
+     * @param mdp Le mot de passe du fournisseur à authentifier.
+     * @return {@code true} si l'authentification réussit, {@code false} sinon.
+     */
+    public boolean authentificationFournisseur(String nomFournisseur, String mdp) {
+        Fournisseur f = this.dataBaseController.authentificatiFournisseur(nomFournisseur, mdp);
+        this.fournisseurCourant = f;
         return f != null;
     }
 
+    /**
+     * Méthode pour inscrire un nouveau fournisseur.
+     *
+     * @param inputNom Le nom du fournisseur à inscrire.
+     * @param mdp Le mot de passe du fournisseur à inscrire.
+     * @param inputAdresse L'adresse du fournisseur à inscrire.
+     * @param inputCourriel L'adresse email du fournisseur à inscrire.
+     * @param inputTelephone Le numéro de téléphone du fournisseur à inscrire.
+     * @param inputTypeRobot Le type de robot à fabriquer par le fournisseur.
+     * @param inputTypeComposantes Le type de composantes à fabriquer par le fournisseur.
+     * @param inputCapacite La capacité du fournisseur.
+     * @param inputCompagnie Le nom de la compagnie du fournisseur.
+     */
     public void inscriptionFournisseur(String inputNom, String mdp, String inputAdresse, String inputCourriel, String inputTelephone, String inputTypeRobot,
                                        String inputTypeComposantes, String inputCapacite, String inputCompagnie){
 
@@ -34,27 +82,56 @@ public class ControlleurFournisseurs {
                 inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie));
     }
 
-    /* Code pour les vérifications */
+    /**
+     * Vérifie si le nom du fournisseur est valide en vérifiant s'il est unique dans la base de données.
+     *
+     * @param inputNom Le nom du fournisseur à vérifier.
+     * @return {@code true} si le nom est valide (unique), {@code false} sinon.
+     */
     public boolean verifierNom(String inputNom) {
         return dataBaseController.verifierNomFournissuer(inputNom);
     }
 
+    /**
+     * Vérifie si l'adresse email du fournisseur est valide en vérifiant sa syntaxe.
+     *
+     * @param inputEmail L'adresse email du fournisseur à vérifier.
+     * @return {@code true} si l'adresse email est valide, {@code false} sinon.
+     */
     public boolean verifierEmail(String inputEmail) {
         return Fournisseur.verifierEmailFournisseur(inputEmail);
     }
 
+    /**
+     * Vérifie si le numéro de téléphone du fournisseur est valide en vérifiant sa syntaxe.
+     *
+     * @param inputTelephone Le numéro de téléphone du fournisseur à vérifier.
+     * @return {@code true} si le numéro de téléphone est valide, {@code false} sinon.
+     */
     public boolean verifierTelephone(String inputTelephone) {
         return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
     }
+
+    /**
+     * Méthode pour ajouter un nouveau robot fabriqué par le fournisseur actuel.
+     *
+     * @param nomsCoposantAajouter La liste des noms des composants à ajouter au robot.
+     * @return L'identifiant unique du robot ajouté.
+     */
     public UUID ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         ArrayList<Composant> composants =this.fournisseurCourant.produireComposant(nomsCoposantAajouter);
        UUID uuid= this.fournisseurCourant.ajouterRobot(composants);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-        //dataBaseController.ajouterRobot();
         return uuid;
     }
 
+    /**
+     * Méthode pour retirer un robot du fournisseur actuel.
+     *
+     * @param numeroSerie Le numéro de série du robot à retirer.
+     * @return {@code true} si le robot a été retiré avec succès, {@code false} sinon.
+     */
     public boolean retirerRobot(String numeroSerie) {
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         boolean b = this.fournisseurCourant.retirerRobot(numeroSerie);
@@ -62,23 +139,40 @@ public class ControlleurFournisseurs {
         return b;
     }
 
+    /**
+     * Méthode pour ajouter une nouvelle composante au fournisseur actuel.
+     *
+     * @param nom Le nom de la composante à ajouter.
+     * @param prix Le prix de la composante à ajouter.
+     * @param description La description de la composante à ajouter.
+     * @param typesComposants Le type de composants de la composante à ajouter.
+     */
     public void ajouterComposante(String nom, String prix, String description, String typesComposants){
-        //fournisseurCourant.ajouterComposante(composante, prix, description, typesComposants);
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         this.fournisseurCourant.ajouterComposante(nom, prix,description,typesComposants);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
-
-        //dataBaseController.ajouterComposanteFournisseur(composante, prix, description, typesComposants, nomFournisseur);
     }
 
+    /**
+     * Méthode pour retirer une composante du fournisseur actuel.
+     *
+     * @param composante Le nom de la composante à retirer.
+     * @return {@code true} si la composante a été retirée avec succès, {@code false} sinon.
+     */
     public boolean retirerComposante(String composante){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         boolean c = this.fournisseurCourant.retirerComopsante(composante);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
         return c;
-        //return fournisseur.retirerComopsante(composante);
     }
 
+    /**
+     * Méthode pour modifier le prix d'une composante du fournisseur actuel.
+     *
+     * @param nomComposante Le nom de la composante dont on veut modifier le prix.
+     * @param prix Le nouveau prix de la composante.
+     * @return {@code true} si la modification a réussi, {@code false} sinon.
+     */
     public boolean modifierPrixComposante(String nomComposante, String prix){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         boolean bool = this.fournisseurCourant.modifierPrixComposante(nomComposante, prix);
@@ -86,6 +180,13 @@ public class ControlleurFournisseurs {
         return bool;
     }
 
+    /**
+     * Méthode pour modifier la description d'une composante du fournisseur actuel.
+     *
+     * @param nomComposante Le nom de la composante dont on veut modifier la description.
+     * @param description La nouvelle description de la composante.
+     * @return {@code true} si la modification a réussi, {@code false} sinon.
+     */
     public boolean modifierDescriptionComposante(String nomComposante, String description){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         boolean bool = this.fournisseurCourant.modifierDescriptionComposante(nomComposante, description);
@@ -93,16 +194,35 @@ public class ControlleurFournisseurs {
         return bool;
     }
 
+    /**
+     * Méthode pour modifier le profil du fournisseur actuel.
+     *
+     * @param choix Le choix de modification à effectuer (par exemple, "nom", "mdp", "adresse", etc.).
+     * @param info Les informations à mettre à jour pour le choix spécifié.
+     */
     public void modifierProfile(String choix, String info){
         this.dataBaseController.supprimerFournisseur(fournisseurCourant);
         this.fournisseurCourant.modifierProfile(choix, info);
         this.dataBaseController.ajouterFournisseur(fournisseurCourant);
     }
 
+    /**
+     * Méthode pour afficher le profil du fournisseur actuel.
+     *
+     * @return Le profil du fournisseur sous forme de chaîne de caractères.
+     */
     public String voirProfil() {
         return fournisseurCourant.getProfilFournisseur();
     }
 
+    /**
+     * Méthode pour ajouter une nouvelle notification au fournisseur spécifié.
+     *
+     * @param nom Le nom du fournisseur auquel ajouter la notification.
+     * @param titre Le titre de la notification.
+     * @param message Le message de la notification.
+     * @param typeNotif Le type de notification (par exemple, TypeNotification.INFO, TypeNotification.ALERT, etc.).
+     */
     public void ajouterNotifs(String nom, String titre, String message,  TypeNotification typeNotif){
         Fournisseur f = dataBaseController.retournerFournisseur(nom);
         ArrayList<Notification> notifsCourantes = f.getNotifs();
@@ -112,12 +232,22 @@ public class ControlleurFournisseurs {
         this.dataBaseController.ajouterFournisseur(f);
     }
 
-
+    /**
+     * Méthode pour voir les notifications du fournisseur spécifié.
+     *
+     * @param nom Le nom du fournisseur dont on veut voir les notifications.
+     * @return Une liste d'objets Notification contenant les notifications du fournisseur.
+     */
     public ArrayList<Notification> voirNotifications(String nom){
         Fournisseur f = dataBaseController.retournerFournisseur(nom);
         return f.voirNotifications();
     }
 
+    /**
+     * Méthode pour supprimer toutes les notifications du fournisseur spécifié.
+     *
+     * @param nom Le nom du fournisseur dont on veut supprimer les notifications.
+     */
     public void supprimerNotifs(String nom) {
         Fournisseur f = dataBaseController.retournerFournisseur(nom);
         dataBaseController.supprimerFournisseur(f);
