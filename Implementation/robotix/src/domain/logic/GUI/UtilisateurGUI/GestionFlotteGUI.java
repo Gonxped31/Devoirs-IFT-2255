@@ -197,7 +197,7 @@ public class GestionFlotteGUI {
     public void setCreerActionPanel() {
         JLabel nomActionLabel = new JLabel("Nom de l'action a creer");
         JLabel nomComposanteLabel = new JLabel("Parmi vos composantes, laquelle/lesquelles voulez-vous associer a cette action?");
-        JLabel optionAjouterLabel = new JLabel("Voulez-vous rajouter une composante a cette action?");
+        JLabel ajouterComposanteLabel = new JLabel("Voulez-vous rajouter une composante a cette action?");
         JLabel dureeLabel = new JLabel("Veuillez entrer le duree");
         JTextField nomActionField = new JTextField();
         JTextField nomComposanteField = new JTextField();
@@ -216,7 +216,7 @@ public class GestionFlotteGUI {
         constraints.gridy = 3;
         creerActionPanel.add(nomComposanteField, constraints);
         constraints.gridy = 4;
-        creerActionPanel.add(optionAjouterLabel, constraints);
+        creerActionPanel.add(ajouterComposanteLabel, constraints);
         constraints.gridy = 5;
         creerActionPanel.add(radioButtonOui, constraints);
         constraints.gridy = 6;
