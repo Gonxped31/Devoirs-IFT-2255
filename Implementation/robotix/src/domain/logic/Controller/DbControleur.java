@@ -189,4 +189,8 @@ public class DbControleur {
         baseDeDonneeInteret.supprimerObjet(baseDeDonneeInteret.retournerInteret(interetCourant));
         baseDeDonneeInteret.ajouterObjet(new Interet(nouvelInteret));
     }
+
+    public boolean existeDansListeSuivi(String pseudo, String nom) {
+        return baseDeDonneeUtilisateur.existeDansListeSuivi(pseudo, nom);
+    }
 }

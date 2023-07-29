@@ -183,4 +183,16 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
         }
         return interestsStringBuilder;
     }
+
+    public boolean existeDansListeSuivi(String pseudo, String nom) {
+        List<Utilisateur> utilisateurs = this.getListObjet();
+        for (Utilisateur u : utilisateurs){
+            for (Utilisateur suivi : u.getListeUtilisateursSuivi()){
+                if (suivi.getPseudo().equals(nom)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

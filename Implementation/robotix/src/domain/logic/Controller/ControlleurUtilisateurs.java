@@ -241,7 +241,8 @@ public class ControlleurUtilisateurs {
     }*/
 
     public ArrayList<Notification> voirNotifications(String pseudo){
-        return this.utilisateurCourant.voirNotifications();
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.voirNotifications();
     }
 
     public void ajouterNotifs(String nom, String titre, String message, TypeNotification typeNotif){
@@ -308,5 +309,9 @@ public class ControlleurUtilisateurs {
         dataBaseController.supprimerUtilisateur(u);
         u.desabonnerInteret(choix);
         dataBaseController.ajouterUtilisateur(u);
+    }
+
+    public boolean existeDansListeSuivi(String pseudo, String nom) {
+        return dataBaseController.existeDansListeSuivi(pseudo, nom);
     }
 }

@@ -28,22 +28,30 @@ public class MenuGestionReseau {
             case "1" -> {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
-                if (controlleurUtilisateurs.suivreUtilisateur(pseudo, nom) == false) {
+                if (nom.equals(pseudo)){
+                    System.out.println();
+                }
+                else if (controlleurUtilisateurs.existeDansListeSuivi(pseudo, nom)){
+                    System.out.println("Vous suivez deja " + nom);
+                    gererReseauSocial(scanner, pseudo);
+                }
+                else if (controlleurUtilisateurs.suivreUtilisateur(pseudo, nom) == false) {
                     System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
                     gererReseauSocial(scanner, pseudo);
                 }
-                if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
+                else if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
                     System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
                     gererReseauSocial(scanner, pseudo);
                 }
-
-                controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
-                if (!nom.equals(""))
-                    System.out.println("Vous suivez maintenant " + nom);
-                else {
-                    System.out.println("Cet utilisateur n'a pas pu etre ajoute a votre reseau");
+                else{
+                    controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
+                    if (!nom.equals(""))
+                        System.out.println("Vous suivez maintenant " + nom);
+                    else {
+                        System.out.println("Cet utilisateur n'a pas pu etre ajoute a votre reseau");
+                    }
+                    gererReseauSocial(scanner, pseudo);
                 }
-                gererReseauSocial(scanner, pseudo);
             } case "2" -> {
                 System.out.println("Que voulez-vous faire?");
                 System.out.println("1- Voir a qui je suis abonne");
