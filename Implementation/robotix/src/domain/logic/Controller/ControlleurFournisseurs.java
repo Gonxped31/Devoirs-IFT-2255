@@ -112,5 +112,15 @@ public class ControlleurFournisseurs {
     }
 
 
+    public ArrayList<Notification> voirNotifications(String nom){
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        return f.voirNotifications();
+    }
 
+    public void supprimerNotifs(String nom) {
+        Fournisseur f = dataBaseController.retournerFournisseur(nom);
+        dataBaseController.supprimerFournisseur(f);
+        f.getNotifs().clear();
+        dataBaseController.ajouterFournisseur(f);
+    }
 }

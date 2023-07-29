@@ -317,5 +317,9 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         this.listeNotifications = listeNotifications;
     }
 
+    public ArrayList<Notification> voirNotifications(){
+        return getListeNotifications();
+    }
+
 }
 

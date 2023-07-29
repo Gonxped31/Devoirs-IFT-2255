@@ -255,9 +255,10 @@ public class ControlleurUtilisateurs {
     }
 
     public void supprimerNotifs(String pseudo) {
-        dataBaseController.supprimerUtilisateur(this.utilisateurCourant);
-        this.utilisateurCourant.getNotifs().clear();
-        dataBaseController.ajouterUtilisateur(this.utilisateurCourant);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.getNotifs().clear();
+        dataBaseController.ajouterUtilisateur(u);
     }
 
     public void voirProfilUtilisateurCourant()

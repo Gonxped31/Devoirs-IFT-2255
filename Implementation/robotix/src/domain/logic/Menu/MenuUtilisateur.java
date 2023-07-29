@@ -170,9 +170,6 @@ public class MenuUtilisateur {
             }
             case ("7") -> {
                 menuNotification(scanner, pseudo);
-               
-                System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");
                 menuUtilisateur(scanner, pseudo);
             }
             case ("8") -> menuRequetesPubliques(scanner, pseudo);
