@@ -89,7 +89,8 @@ public class DbControleur {
     }
 
     public Robot retournerRobot(String numeroSerie){
-        return baseDeDonneeFournisseur.retournerRobot(numeroSerie);
+        System.out.println(this.baseDeDonneeFournisseur.getListRobot());
+        return this.baseDeDonneeFournisseur.retournerRobot(numeroSerie);
     }
 
     public Composant retournerComposante(String nom){
@@ -98,6 +99,10 @@ public class DbControleur {
 
     public Utilisateur retournerUtilisateur(String pseudo){
         return baseDeDonneeUtilisateur.retournerUtilisateur(pseudo);
+    }
+
+    public Fournisseur retournerFournisseur(String nom){
+        return baseDeDonneeFournisseur.retournerFournisseur(nom);
     }
 
     public void supprimerFournisseur(Fournisseur f) {

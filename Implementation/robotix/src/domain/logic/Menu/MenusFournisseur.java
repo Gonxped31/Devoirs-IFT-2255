@@ -2,8 +2,12 @@ package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
+import domain.logic.GUI.FournisseurGUI.*;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,51 +15,102 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class MenusFournisseur extends JFrame {
-
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
+	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
 	private DbControleur dbControlleur = new DbControleur();
-	private JTextField nom;
-	private JTextField email;
-	private JTextField telephone;
-	private JTextField confMdp;
-	private JTextField addresse;
-	private JTextField typeRobot;
-	private JTextField typeComposantes;
-	private JTextField capacitee;
-	private JTextField nomCompagnie;
-	private JPasswordField mdp;
-	private JButton retourButton, ajouterUnNouveauRobotButton, retirerUnRobotButton, enregistrerUneComposanteButton,
-			gérerMesComposantesButton, modifierMonProfileButton, faireUneRequetePubliqueButton;
-	private JButton button1;
-	private JButton button2;
-	private JTextField textField1;
-	private JButton OKButton;
-	private JTextField textField2;
-	private JTextField textField3;
-	private JTextField textField4;
-	private JButton OKButton1;
-	private JButton supprimerUneComposanteButton;
-	private JButton modifierLePrixDButton;
-	private JButton modifierLaDescriptionDButton;
-	private JButton voirLaListeDButton;
-	private JButton voirLaListeDesButton;
-	private JButton voirMonProfilButton;
-	private JButton recupererLaListeDesButton;
-	private JComboBox comboBox1;
-	private JComboBox comboBox2;
-	private JComboBox comboBox3;
-	private JComboBox comboBox4;
+	private JFrame jFrame = new JFrame();
+	private JPanel menuFournisseurPanel = new JPanel();
+	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur", SwingConstants.CENTER);
+	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
+	private JButton btnRetirerRobot = new JButton("Retirer un robot");
+	private JButton btnEnregistrerComposante = new JButton("Enregistrer une composante");
+	private JButton btnGererComposante = new JButton("Gerer mes composantes");
+	private JButton btnModifierProfil = new JButton("Modifier mon profil");
+	private JButton btnRequetePublique = new JButton("Faire une requete publique");
+	private JButton btnDeconnexion = new JButton("Deconnexion");
+	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
+	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
+	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
+	private GererComposantesGUI gererComposantesGUI = new GererComposantesGUI();
+	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
+	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
 
 	public MenusFournisseur() throws IOException {
+		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		menuFournisseurPanel.setLayout(new GridLayout(0, 1));
+		menuFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+		// Ajout des composantes
+		menuFournisseurPanel.add(menuFournisseurLabel);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnAjouterRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnRetirerRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnEnregistrerComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnGererComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnModifierProfil);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnRequetePublique);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnDeconnexion);
+
+		btnAjouterRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ajouterRobotGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnRetirerRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				retirerRobotGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnEnregistrerComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				enregistrerComposanteGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnGererComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gererComposantesGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnModifierProfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifierProfilFournisseurGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnRequetePublique.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				requetePubliqueFournisseurGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnDeconnexion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jFrame.dispose();
+				try {
+					Menu menu = new Menu();
+				} catch (IOException ex) {
+					throw new RuntimeException(ex);
+				}
+			}
+		});
 	}
 
-	public void inscrireGUI() {
-
-	}
-
-	public void seConnecterGUI() {
-
+	public void afficherMenuFournisseur(JFrame jFrame) {
+		this.jFrame = jFrame;
+		this.jFrame.setContentPane(menuFournisseurPanel);
+		jFrame.revalidate();
+		jFrame.repaint();
 	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
@@ -580,5 +635,4 @@ public class MenusFournisseur extends JFrame {
 		System.out.println(" ");
 		menuFournisseur(scanner, nomFournisseur);
 	}
-
 }

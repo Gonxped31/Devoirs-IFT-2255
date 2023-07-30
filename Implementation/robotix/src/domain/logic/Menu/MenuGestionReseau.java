@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Membre.TypeNotification;
 
 import javax.swing.*;
 
@@ -33,7 +34,16 @@ public class MenuGestionReseau {
             case "1" -> {
                 System.out.println("Quel est le pseudo de l'utilisateur que vous voulez suivre");
                 String nom = scanner.nextLine();
-                /*controlleurUtilisateurs.suivreUtilisateur(nom)*/
+                if (controlleurUtilisateurs.suivreUtilisateur(pseudo, nom) == false) {
+                    System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
+                    gererReseauSocial(scanner, pseudo);
+                };
+                if (controlleurUtilisateurs.etreSuivi(pseudo, nom) == false){
+                    System.out.println("L'utilisateur que vous voulez suivre n'existe pas");
+                    gererReseauSocial(scanner, pseudo);
+                }
+
+                controlleurUtilisateurs.ajouterNotifs(nom, "Nouvel abonne",pseudo + " vous a suivi",  TypeNotification.NOUVEAU_ABONNE);
                 if (!nom.equals(""))
                     System.out.println("Vous suivez maintenant " + nom);
                 else {
@@ -41,6 +51,22 @@ public class MenuGestionReseau {
                 }
                 gererReseauSocial(scanner, pseudo);
             } case "2" -> {
+                System.out.println("Que voulez-vous faire?");
+                System.out.println("1- Voir a qui je suis abonne");
+                System.out.println("2- Supprimer un utilisateur de ma liste d'abonne");
+                String decision = scanner.nextLine();
+                switch (decision) {
+                    case "1" -> {
+                        System.out.println(controlleurUtilisateurs.voirListeUtilisateur(pseudo));
+                        gererReseauSocial(scanner, pseudo);
+                    }
+                    case "2" -> {
+                        System.out.println("Quel utilisateur voulez vous supprimer de votre liste");
+                        String nom = scanner.nextLine();
+                        controlleurUtilisateurs.suppriemrSuivreUtilisateur(pseudo, nom);
+                        gererReseauSocial(scanner, pseudo);
+                    }
+                }
                 System.out.println("Cette fonctionalitée n'est pas encore disponible );");
                 System.out.println("Veuillez rééssayer plus tard.");
                 gererReseauSocial(scanner, pseudo);
