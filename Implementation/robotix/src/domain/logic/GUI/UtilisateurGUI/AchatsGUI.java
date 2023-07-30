@@ -13,7 +13,7 @@ public class AchatsGUI {
     private JLabel achatsLabel = new JLabel("Que voulez-vous acheter?", SwingConstants.CENTER);
     private JButton btnAchatRobot = new JButton("Robot");
     private JButton btnAchatComposante = new JButton("Composante");
-    private JButton btnRetour = new JButton("Retour");
+    private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
