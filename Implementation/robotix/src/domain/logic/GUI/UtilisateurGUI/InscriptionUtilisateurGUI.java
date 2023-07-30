@@ -1,6 +1,5 @@
 package domain.logic.GUI.UtilisateurGUI;
 
-import domain.logic.Menu.Menu;
 import domain.logic.Menu.MenuUtilisateur;
 
 import javax.swing.*;
@@ -8,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class InscriptionUtilisateurGUI {
     private JFrame jFrame = new JFrame();
@@ -21,7 +21,7 @@ public class InscriptionUtilisateurGUI {
     private JLabel telephoneLabel = new JLabel("Numero de telephone");
     private JLabel adresseLabel = new JLabel("Adresse");
     private JLabel nomCompagnieLabel = new JLabel("Nom de compagnie");
-    private JLabel interetsLabel = new JLabel("Intérêts");
+    private JLabel interetLabel = new JLabel("Intérêts");
     private JTextField prenomField = new JTextField();
     private JTextField nomField = new JTextField();
     private JTextField pseudoField = new JTextField();
@@ -30,6 +30,7 @@ public class InscriptionUtilisateurGUI {
     private JTextField telephoneField = new JTextField();
     private JTextField adresseField = new JTextField();
     private JTextField nomCompagnieField = new JTextField();
+    private JTextField interetField = new JTextField();
     private JButton btnConfirmerInscription = new JButton("Confirmer");
     private JButton btnRetour = new JButton("Retour");
     private MenuUtilisateur menuUtilisateur;
@@ -59,7 +60,8 @@ public class InscriptionUtilisateurGUI {
         inscriptionUtilisateurPanel.add(adresseField);
         inscriptionUtilisateurPanel.add(nomCompagnieLabel);
         inscriptionUtilisateurPanel.add(nomCompagnieField);
-        inscriptionUtilisateurPanel.add(interetsLabel);
+        inscriptionUtilisateurPanel.add(interetLabel);
+        inscriptionUtilisateurPanel.add(interetField);
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
         inscriptionUtilisateurPanel.add(btnConfirmerInscription);
         inscriptionUtilisateurPanel.add(Box.createHorizontalStrut(10));
