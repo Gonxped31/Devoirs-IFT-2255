@@ -53,20 +53,7 @@ public class ControlleurUtilisateurs {
 
     /* Code pour les vérifications */
     public boolean verifierPseudo(String pseudo) {
-        try {
-            dataBaseController.verifierPseudo(pseudo);
-        } catch (NullPointerException e){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean verifierEmail(String inputEmail) {
-        return Utilisateur.verifierEmailUtilisateur(inputEmail);
-    }
-
-    public boolean verifierTelephone(String inputTelephone) {
-        return Utilisateur.verifierTelephoneUtilisateur(inputTelephone);
+        return dataBaseController.verifierPseudo(pseudo);
     }
 
 

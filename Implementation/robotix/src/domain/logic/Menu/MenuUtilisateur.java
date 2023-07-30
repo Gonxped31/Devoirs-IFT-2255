@@ -11,12 +11,12 @@ import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Membre.TypeNotification;
-
-import javax.crypto.spec.PSource;
+import domain.logic.Outils.EmailSender;
+import domain.logic.Outils.Verifications;
 
 public class MenuUtilisateur {
     /*Section Utilisateur */
-    private ControlleurUtilisateurs controlleurUtilisateurs;// = new ControlleurUtilisateurs();
+    private ControlleurUtilisateurs controlleurUtilisateurs;
     private ControlleurFournisseurs controlleurFournisseurs;
     private DbControleur dbControlleur = DbControleur.getDbControleur();
     public Menu menu;
@@ -28,8 +28,8 @@ public class MenuUtilisateur {
     }
 
     public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
-        // TODO : VERIFIER SI L'UTILISATEUR EST DÉJÀ INSCRIT
-        boolean PseudoUnique = false;
+        controlleurUtilisateurs = new ControlleurUtilisateurs();
+        boolean PseudoExiste = false;
         boolean EmailValide = false;
         boolean TelephoneValide = false;
         String pseudo = "";
@@ -43,20 +43,14 @@ public class MenuUtilisateur {
         System.out.print("Nom :");
         String nom = scanner.nextLine();
 
-        while (!PseudoUnique) {
-            System.out.print("Pseudo: ");
+        System.out.print("Pseudo: ");
+        do {
             pseudo = scanner.nextLine();
-            try {
-                PseudoUnique = controlleurUtilisateurs.verifierPseudo(pseudo);
-            } catch (NullPointerException e){
-                PseudoUnique = false;
-            }
-            if (PseudoUnique) {
+            PseudoExiste = controlleurUtilisateurs.verifierPseudo(pseudo);
+            if (PseudoExiste) {
                 System.out.print("Ce pseudo existe déjà, veuillez entrer un autre : ");
-            } else {
-                break;
             }
-        }
+        } while (PseudoExiste);
 
         System.out.print("Mot de passe: ");
         String mdp = scanner.nextLine();
@@ -65,7 +59,7 @@ public class MenuUtilisateur {
             System.out.print("Adresse courriel: ");
             courriel = scanner.nextLine();
             try {
-                EmailValide = controlleurUtilisateurs.verifierEmail(courriel);
+                EmailValide = Verifications.verifierEmail(courriel);
             } catch (NullPointerException e){
                 EmailValide = true;
             }
@@ -78,12 +72,12 @@ public class MenuUtilisateur {
             System.out.print("Numéro de téléphone: ");
             telephone = scanner.nextLine();
             try {
-                TelephoneValide = controlleurUtilisateurs.verifierTelephone(telephone);
+                TelephoneValide = Verifications.verifierTelephone(telephone);
             } catch (NullPointerException e){
                 TelephoneValide = true;
             }
             if (!TelephoneValide) {
-                System.out.println("Le numéro de téléphone doit obtenir exactement 10 caractères. Veuillez réessayez: ");
+                System.out.println("Le numéro de téléphone est invalide. Veuillez réessayez.");
             }
         }
 
@@ -91,13 +85,12 @@ public class MenuUtilisateur {
         String adresse = scanner.nextLine();
         System.out.print("Nom de la compagnie : ");
         String nomCompagnie = scanner.nextLine();
-        System.out.print("Ajouter 10 interets: ");
+        System.out.print("Vous devez ajouter des interets (au plus 10 interets)");
         for (int i = 9; i >= 0; i--) {
             System.out.print("Veuillez entrer un interet: ");
             String interet = scanner.nextLine();
             listeInteret.add(interet);
-            System.out.println("Il vous reste " + i + " interets a choisir");
-            System.out.println("Voulez-vous en ajouter encore? (Y/N)");
+            System.out.println("Vous pouvez encore choisir " + i + " interets. Voulez-vous en ajouter encore? (Y/N)");
             String decis = scanner.nextLine();
             if (decis.toUpperCase().equals("N")){
                 break;
@@ -107,8 +100,14 @@ public class MenuUtilisateur {
                 mdp, courriel, telephone, nomCompagnie, listeInteret);
 
         controlleurUtilisateurs.inscriptionUtilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, listeInteret);
+        System.out.println("Envoie de l'email de confirmation en cours. Veuillez patienter...");
+        String body = "Cher " + pseudo + ",\n\nNous vous remercions de vous être abonné à Robotix !\nProfitez des fonctionalitées multiples" +
+                " que vous propose cette application en tant qu'utilisateur ! Si vous désirez toutefois vendre aussi des robots, vous pouvez" +
+                " toujours vous inscrire en tant que fournisseur. \n\nCordialement,\nL'équipe Robotix";
+
+        EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj",courriel,
+                "Confirmation d'inscription", body);
         System.out.println("Have fun " + pseudo + " !");
-        EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj","bio.samir.gbian@umontreal.ca", "Test Robotix", "Test Test");
         menu = new Menu();
         menu.menuPrincipale(scanner);
     }

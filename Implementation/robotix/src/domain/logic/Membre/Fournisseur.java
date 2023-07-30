@@ -108,14 +108,6 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
-    public static boolean verifierEmailFournisseur(String inputEmail) {
-        return inputEmail.contains("@");
-    }
-
-    public static boolean verifierTelephoneFournisseur(String inputTelephone) {
-        return inputTelephone.length() == 10;
-    }
-
     public UUID ajouterRobot(ArrayList<Composant> composants) {
         Robot r= new Robot();
         for( Composant c :composants){

@@ -4,6 +4,8 @@ import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Notification;
+import domain.logic.Outils.EmailSender;
+import domain.logic.Outils.Verifications;
 
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -15,14 +17,14 @@ import java.util.UUID;
 public class MenusFournisseur {
 
 	private Menu menu;
-	private ControlleurFournisseurs controlleurFournisseurs=new ControlleurFournisseurs();
+	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
 	private DbControleur dbControlleur = DbControleur.getDbControleur();
 
 	public MenusFournisseur() throws IOException, ParseException {
 	}
 
 	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
-		boolean NomUnique = false;
+		boolean NomExiste = true;
 		boolean EmailValide = false;
 		boolean TelephoneValide = false;
 
@@ -37,19 +39,19 @@ public class MenusFournisseur {
 
 		System.out.println("********Nouveau fournisseur********");
 
-		while (!NomUnique) {
-			System.out.print("Nom: ");
+		System.out.print("Nom: ");
+		while (NomExiste) {
 			inputNom = scanner.nextLine();
-			NomUnique = controlleurFournisseurs.verifierNom(inputNom);
-			if (!NomUnique){
-				System.out.println("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
+			NomExiste = controlleurFournisseurs.verifierNom(inputNom);
+			if (NomExiste){
+				System.out.print("Ce nom de fournisseur existe déjà. Veuillez saisir un autre nom: ");
 			}
 		}
 
 		while (!EmailValide) {
 			System.out.print("Adresse courriel: ");
 			inputEmail = scanner.nextLine();
-			EmailValide = controlleurFournisseurs.verifierEmail(inputEmail);
+			EmailValide = Verifications.verifierEmail(inputEmail);
 			if (!EmailValide) {
 				System.out.println("Email invalide, veuillez reessayer.");
 			}
@@ -58,7 +60,7 @@ public class MenusFournisseur {
 		while (!TelephoneValide) {
 			System.out.print("Num�ro de t�l�phone: ");
 			inputTelephone = scanner.nextLine();
-			TelephoneValide = controlleurFournisseurs.verifierTelephone(inputTelephone);
+			TelephoneValide = Verifications.verifierTelephone(inputTelephone);
 			if (!TelephoneValide) {
 				System.out.println("Le num�ro de t�l�phone doit obtenir exactement 10 caract�res. Veuillez r�essayez: ");
 			}
@@ -68,11 +70,11 @@ public class MenusFournisseur {
 		String mdp = scanner.nextLine();
 		System.out.print("Adresse : ");
 		inputAdresse = scanner.nextLine();
-		System.out.print("Type de robots fabriqu�s: ");
+		System.out.print("Type de robots fabriques: ");
 		inputTypeRobot = scanner.nextLine();
-		System.out.print("Type de composantes fabriqu�es: ");
+		System.out.print("Type de composantes fabriquees: ");
 		inputTypeComposantes = scanner.nextLine();
-		System.out.print("Capacit� de fabrication: ");
+		System.out.print("Capacite de fabrication: ");
 		inputCapacite = scanner.nextLine();
 		System.out.print("Nom de compagnie: ");
 		inputCompagnie = scanner.nextLine();
@@ -80,7 +82,17 @@ public class MenusFournisseur {
 			   inputTelephone,inputTypeRobot,inputTypeComposantes,inputCapacite,inputCompagnie);
 		controlleurFournisseurs.inscriptionFournisseur(inputNom, mdp, inputAdresse, inputEmail,
 				inputTelephone, inputTypeRobot, inputTypeComposantes, inputCapacite, inputCompagnie);
-        menuFournisseur(scanner, inputNom);//menu.menuPrincipale(scanner);
+
+		System.out.println("Envoie de l'email de confirmation en cours. Veuillez patienter...");
+
+		String body = "Cher " + inputNom + ",\n\nNous vous remercions de vous être abonné au syteme de vente de robot chez Robotix !" +
+				"\nSi vous avez toutefois besoin de gérer des robots, vous pouvez vous inscrire en tant qu'utilisateur. " +
+				"\n\nCordialement,\nL'équipe Robotix";
+
+		EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj", inputEmail,
+				"Confirmation d'inscription", body);
+
+		menuFournisseur(scanner, inputNom);
 	}
 
 	public void menuConnexionFournisseur(Scanner scanner) throws ParseException, IOException {

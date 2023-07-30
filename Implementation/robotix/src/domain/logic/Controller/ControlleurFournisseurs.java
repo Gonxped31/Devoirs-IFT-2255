@@ -93,26 +93,6 @@ public class ControlleurFournisseurs {
     }
 
     /**
-     * Vérifie si l'adresse email du fournisseur est valide en vérifiant sa syntaxe.
-     *
-     * @param inputEmail L'adresse email du fournisseur à vérifier.
-     * @return {@code true} si l'adresse email est valide, {@code false} sinon.
-     */
-    public boolean verifierEmail(String inputEmail) {
-        return Fournisseur.verifierEmailFournisseur(inputEmail);
-    }
-
-    /**
-     * Vérifie si le numéro de téléphone du fournisseur est valide en vérifiant sa syntaxe.
-     *
-     * @param inputTelephone Le numéro de téléphone du fournisseur à vérifier.
-     * @return {@code true} si le numéro de téléphone est valide, {@code false} sinon.
-     */
-    public boolean verifierTelephone(String inputTelephone) {
-        return Fournisseur.verifierTelephoneFournisseur(inputTelephone);
-    }
-
-    /**
      * Méthode pour ajouter un nouveau robot fabriqué par le fournisseur actuel.
      *
      * @param nomsCoposantAajouter La liste des noms des composants à ajouter au robot.
