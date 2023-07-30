@@ -20,8 +20,9 @@ public class RetirerRobotGUI {
         JTextField numeroRobotField = new JTextField();
         JButton btnRetirerRobot = new JButton("Retirer le robot");
         JButton btnRetour = new JButton("Retour");
+
         // Setup la dimension du JTextField
-        numeroRobotLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        numeroRobotField.setPreferredSize(new Dimension(200, 30));
 
         // Ajout des composantes
         constraints.gridy = 0;
