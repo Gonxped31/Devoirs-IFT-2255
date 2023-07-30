@@ -7,23 +7,41 @@ import java.awt.event.ActionListener;
 
 public class RetirerRobotGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel retirerRobotPanel = new JPanel();
-    private JLabel retirerRobotLabel = new JLabel("Veuillez entrer le numero de serie du robot à retirer", SwingConstants.CENTER);
-    private JButton btnRetirerRobot = new JButton("Retirer le robot");
-    private JTextField numeroRobot = new JTextField();
-    private JButton btnRetour = new JButton("Retour");
+    private JPanel retirerRobotPanel = new JPanel(new GridBagLayout());
     private Container panelPrecedent = new Container();
+    private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
+
     public RetirerRobotGUI() {
-        retirerRobotLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        retirerRobotPanel.setLayout(new GridLayout(0, 1));
-        retirerRobotPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+
+        // Déclaration des composantes implementees dans le panel
+        JLabel numeroRobotLabel = new JLabel("Entrez le numero de serie du robot à retirer");
+        JTextField numeroRobotField = new JTextField();
+        JButton btnRetirerRobot = new JButton("Retirer le robot");
+        JButton btnRetour = new JButton("Retour");
+        // Setup la dimension du JTextField
+        numeroRobotLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
         // Ajout des composantes
-        retirerRobotPanel.add(retirerRobotLabel);
-        retirerRobotPanel.add(numeroRobot);
-        retirerRobotPanel.add(btnRetirerRobot);
-        retirerRobotPanel.add(btnRetour);
+        constraints.gridy = 0;
+        retirerRobotPanel.add(numeroRobotLabel, constraints);
+        constraints.gridy = 1;
+        retirerRobotPanel.add(numeroRobotField, constraints);
+        constraints.gridy = 2;
+        retirerRobotPanel.add(btnRetirerRobot, constraints);
+        constraints.gridy = 3;
+        retirerRobotPanel.add(btnRetour, constraints);
 
+        btnRetirerRobot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (numeroRobotField.getText().length() == 0) {
+                    afficherMessageErreur();
+                } else
+                    afficherMessageValidation();
+            }
+        });
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,5 +61,21 @@ public class RetirerRobotGUI {
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
+    }
+
+    public void afficherMessageValidation() {
+        String message = "Le robot a ete retire avec succes";
+        String title = "Operation reussie";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreur() {
+        String message = "Vous ne possedez ce robot. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 }

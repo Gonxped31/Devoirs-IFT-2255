@@ -55,10 +55,10 @@ public class SouscrireInteretGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (buttonGroup.getSelection() == null)
-                    affirmerMessageErreur();
+                    afficherrMessageErreur();
                 else {
                     String interetSelectionne = buttonGroup.getSelection().getActionCommand();
-                    affirmerMessageValidation(interetSelectionne);
+                    afficherMessageValidation(interetSelectionne);
                 }
             }
         });
@@ -87,7 +87,7 @@ public class SouscrireInteretGUI {
         this.jFrame.repaint();
     }
 
-    public void affirmerMessageValidation(String interetSelectionne) {
+    public void afficherMessageValidation(String interetSelectionne) {
         String message = "Vous etes souscrit a l'interet " + interetSelectionne;
         String title = "Souscription reussie";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
@@ -96,7 +96,7 @@ public class SouscrireInteretGUI {
         retournerMenuUtilisateur();
     }
 
-    public void affirmerMessageErreur() {
+    public void afficherrMessageErreur() {
         String message = "Vous devez selectionne un interet. Veuillez reessayer.";
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;

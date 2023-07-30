@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class EnregistrerComposanteGUI {
     private JFrame jFrame = new JFrame();
-    private JPanel enregistrerComposantePanel = new JPanel();
+    private JPanel enregistrerComposantePanel = new JPanel(new GridBagLayout());
     private JLabel enregistrerComposanteLabel = new JLabel("Enregistrer une composante", SwingConstants.CENTER);
     private JLabel nomComposanteLabel = new JLabel("Nom de la composante");
     private JLabel prixLabel = new JLabel("Prix");
@@ -20,10 +20,14 @@ public class EnregistrerComposanteGUI {
     private JButton btnEnregistrer = new JButton("Enregistrer");
     private JButton btnRetour = new JButton("Retour");
     private Container panelPrecedent = new Container();
+    private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public EnregistrerComposanteGUI() {
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+
         enregistrerComposanteLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        enregistrerComposantePanel.setLayout(new GridLayout(0, 1));
+        enregistrerComposantePanel.setLayout();
         enregistrerComposantePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Ajout des composantes
