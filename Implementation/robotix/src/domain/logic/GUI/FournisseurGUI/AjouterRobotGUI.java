@@ -23,7 +23,7 @@ public class AjouterRobotGUI {
         JRadioButton ouiLabel = new JRadioButton("Oui");
         JRadioButton nonLabel = new JRadioButton("Non");
         JButton btnAjouter = new JButton("Ajouter ce nouveau robot");
-        JButton btnRetour = new JButton("Retour");
+        JButton btnRetour = new JButton("Retour au menu Fournisseur");
 
         // Setup la dimension du JTextField
         infosField.setPreferredSize(new Dimension(200, 30));

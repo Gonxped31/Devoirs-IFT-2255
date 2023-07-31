@@ -25,7 +25,7 @@ public class EnregistrerComposanteGUI {
         JTextField descriptionField = new JTextField();
         JTextField typeComposanteField = new JTextField();
         JButton btnEnregistrer = new JButton("Enregistrer");
-        JButton btnRetour = new JButton("Retour");
+        JButton btnRetour = new JButton("Retour au menu Fournisseur");
 
         // Setup la dimension des JTextField
         nomComposanteField.setPreferredSize(new Dimension(200, 30));

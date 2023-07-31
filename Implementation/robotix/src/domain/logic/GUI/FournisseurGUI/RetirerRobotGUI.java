@@ -19,7 +19,7 @@ public class RetirerRobotGUI {
         JLabel numeroRobotLabel = new JLabel("Entrez le numero de serie du robot à retirer");
         JTextField numeroRobotField = new JTextField();
         JButton btnRetirerRobot = new JButton("Retirer le robot");
-        JButton btnRetour = new JButton("Retour");
+        JButton btnRetour = new JButton("Retour au menu Fournisseur");
 
         // Setup la dimension du JTextField
         numeroRobotField.setPreferredSize(new Dimension(200, 30));

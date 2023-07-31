@@ -38,7 +38,7 @@ public class RequetePubliqueUtilisateurGUI {
     private JButton btnVoirProfil = new JButton("Voir mon profil");
     private JButton btnRechercheUtilisateur = new JButton("Rechercher un utilisateur");
     private JButton btnRecupererListeActivites = new JButton("Recuperer la liste des activites");
-    private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
+    private JButton btnRechercheInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheFournisseur = new JButton("Rechercher un fournisseur");
     private JButton btnRechercheComposante = new JButton("Rechercher une composante");
     private JButton btnRetour = new JButton("Retour au menu Utilisateur");
@@ -123,7 +123,7 @@ public class RequetePubliqueUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
-        btnRecupererListeInterets.addActionListener(new ActionListener() {
+        btnRechercheInterets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(rechercheInteretsPanel);
@@ -187,7 +187,7 @@ public class RequetePubliqueUtilisateurGUI {
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRecupererListeActivites);
         mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnRecupererListeInterets);
+        mainPanel.add(btnRechercheInterets);
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRechercheFournisseur);
         mainPanel.add(Box.createHorizontalStrut(10));

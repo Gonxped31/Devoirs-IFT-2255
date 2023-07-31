@@ -15,7 +15,7 @@ public class GererComposantesGUI {
     private JButton btnSupprimer = new JButton("Supprimer");
     private JButton btnModifierPrix = new JButton("Modifier le prix");
     private JButton btnModifierDesc = new JButton("Modifier la description");
-    private JButton btnRetour = new JButton("Retour");
+    private JButton btnRetour = new JButton("Retour au menu Fournisseur");
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
