@@ -11,7 +11,7 @@ import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
 
 public class MenuGestionFlotte {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /*private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private MenuUtilisateur menuUtil;
 
     public MenuGestionFlotte() throws IOException, ParseException {
@@ -138,5 +138,5 @@ public class MenuGestionFlotte {
         System.out.println("Création de l'action en cours...");
         System.out.println("L'action a été créée avec succès");
         gererMaFlotte(scanner, pseudo);
-    }
+    }*/
 }

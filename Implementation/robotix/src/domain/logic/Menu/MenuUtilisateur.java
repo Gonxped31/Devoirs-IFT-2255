@@ -1,12 +1,18 @@
 package domain.logic.Menu;
 
+import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.awt.event.ActionEvent;
+
+
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
+
 import domain.logic.Membre.Notification;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
@@ -14,20 +20,159 @@ import domain.logic.Membre.TypeNotification;
 import domain.logic.Outils.EmailSender;
 import domain.logic.Outils.Verifications;
 
-public class MenuUtilisateur {
-    /*Section Utilisateur */
-    private ControlleurUtilisateurs controlleurUtilisateurs;
-    private ControlleurFournisseurs controlleurFournisseurs;
-    private DbControleur dbControlleur = DbControleur.getDbControleur();
-    public Menu menu;
-    private MenuGestionFlotte menuGestionFlotte = new MenuGestionFlotte();
-    private MenuGererTacheActivite menuGererTacheActivite = new MenuGererTacheActivite();
-    private MenuGestionReseau menuReseau = new MenuGestionReseau();
+import javax.swing.*;
 
-    public MenuUtilisateur() throws IOException, ParseException {
-    }
 
-    public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
+import domain.logic.GUI.UtilisateurGUI.AchatsGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionActivitesGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionFlotteGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionNotifsGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionReseauGUI;
+import domain.logic.GUI.UtilisateurGUI.GestionTachesGUI;
+import domain.logic.GUI.UtilisateurGUI.ModifierProfilUtilisateurGUI;
+import domain.logic.GUI.UtilisateurGUI.RequetePubliqueUtilisateurGUI;
+import domain.logic.GUI.UtilisateurGUI.SouscrireInteretGUI;
+
+
+
+public class MenuUtilisateur extends JFrame {
+        /* Section Utilisateur */
+        private String pseudo;
+        private JFrame jFrame = new JFrame();
+        private JPanel menuUtilisateurPanel = new JPanel();
+        private JLabel menuUtilisateurLabel = new JLabel("Menu Utilisateur", SwingConstants.CENTER);
+        private JButton btnModifierProfil = new JButton("Modifier mon profil");
+        private JButton btnGererFlotte = new JButton("Gerer ma flotte");
+        private JButton btnGererTaches = new JButton("Gerer mes taches");
+        private JButton btnGererActivites = new JButton("Gerer mes activites");
+        private JButton btnGererReseauSocial = new JButton("Gerer mon reseau social");
+        private JButton btnAchats = new JButton("Achats");
+        private JButton btnVoirNotifications = new JButton("Voir mes notifications");
+        private JButton btnRequetePublique = new JButton("Faire une requete publique");
+        private JButton btnSouscrireInteret = new JButton("Souscrire a un interet");
+        private JButton btnDeconnexion = new JButton("Deconnexion");
+        private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI;
+        private GestionFlotteGUI gestionFlotteGUI;
+        private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
+        private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
+        private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
+        private AchatsGUI achatsGUI;
+        private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
+        private RequetePubliqueUtilisateurGUI requetePubliqueUtilisateurGUI = new RequetePubliqueUtilisateurGUI();
+        private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
+
+        public MenuUtilisateur() throws IOException, ParseException {
+
+        }
+
+        public MenuUtilisateur(String pseudo) throws IOException, ParseException {
+            this.pseudo = pseudo;
+            gestionFlotteGUI = new GestionFlotteGUI(pseudo);
+            achatsGUI = new AchatsGUI(pseudo);
+            modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI(pseudo);
+            menuUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+            menuUtilisateurPanel.setLayout(new GridLayout(0, 1));
+            menuUtilisateurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+            // Ajout des composantes
+            menuUtilisateurPanel.add(menuUtilisateurLabel);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnModifierProfil);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnGererFlotte);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnGererTaches);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnGererActivites);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnGererReseauSocial);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnAchats);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnVoirNotifications);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnRequetePublique);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnSouscrireInteret);
+            menuUtilisateurPanel.add(Box.createHorizontalStrut(10));
+            menuUtilisateurPanel.add(btnDeconnexion);
+
+            btnModifierProfil.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    modifierProfilUtilisateurGUI.afficherMainPanel(jFrame);
+                }
+            }); //Connexion faite
+            btnGererFlotte.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionFlotteGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnGererTaches.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionTachesGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnGererActivites.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionActivitesGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnGererReseauSocial.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionReseauGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnAchats.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    achatsGUI.afficherMainPanel(jFrame);
+                }
+            }); //Connexion etablie
+            btnVoirNotifications.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionNotifsGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnRequetePublique.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    requetePubliqueUtilisateurGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnSouscrireInteret.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    souscrireInteretGUI.afficherMainPanel(jFrame);
+                }
+            });
+            btnDeconnexion.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    jFrame.dispose();
+                    try {
+                        Menu menu = new Menu();
+                    } catch (IOException | ParseException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+
+        }
+
+        public void afficherMenuUtilisateurPanel(JFrame jFrame) {
+            this.jFrame = jFrame;
+            this.jFrame.setContentPane(menuUtilisateurPanel);
+            this.jFrame.revalidate();
+            this.jFrame.repaint();
+        }
+
+    /*public void inscrireUtilisateur(Scanner scanner) throws ParseException, IOException {
         controlleurUtilisateurs = new ControlleurUtilisateurs();
         boolean PseudoExiste = false;
         boolean EmailValide = false;
@@ -105,8 +250,12 @@ public class MenuUtilisateur {
                 " que vous propose cette application en tant qu'utilisateur ! Si vous désirez toutefois vendre aussi des robots, vous pouvez" +
                 " toujours vous inscrire en tant que fournisseur. \n\nCordialement,\nL'équipe Robotix";
 
-        EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj",courriel,
+        EmailSender emailSender = new EmailSender("robotrobotix4@gmail.com","lkzojmozphkprruj", courriel,
                 "Confirmation d'inscription", body);
+
+        emailSender.sendInBackground();
+
+
         System.out.println("Have fun " + pseudo + " !");
         menu = new Menu();
         menu.menuPrincipale(scanner);
@@ -132,7 +281,6 @@ public class MenuUtilisateur {
         menu = new Menu();
         menu.menuPrincipale(scanner);
     }
-
 
     public void menuUtilisateur(Scanner scanner, String pseudo) throws ParseException, IOException {
         System.out.println("******************** Menu: " + pseudo + " ********************");
@@ -182,7 +330,6 @@ public class MenuUtilisateur {
                 }
                 System.out.println("A quel interet voulez-vous vous souscrire");
                 String decision = scanner.nextLine();
-                /*controlleurUtilisateurs.souscrireAunInteret(decision)*/
                 if (interets.contains(decision.trim())) {
                     System.out.println("Vous etes souscrit a : " + decision);
                 } else {
@@ -274,8 +421,6 @@ public class MenuUtilisateur {
 
             case "4" :
                 menuChercherUtilisateur(scanner, pseudo);
-                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
 
             case "5" :
@@ -290,8 +435,6 @@ public class MenuUtilisateur {
 
             case "7" :
                 menuChercherFournisseur(scanner, pseudo);
-                /*System.out.println("Ce menu est indisponible pour le moment ): \nVeuillez reessayer plus tard.");
-                System.out.println(" ");*/
                 menuUtilisateur(scanner, pseudo);
 
             case "8" :
@@ -512,5 +655,5 @@ public class MenuUtilisateur {
                 menuUtilisateur(scanner, pseudo);
                 break;
         }
-    }
+    }*/
 }

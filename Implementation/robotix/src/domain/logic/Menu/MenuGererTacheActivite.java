@@ -17,7 +17,7 @@ import domain.logic.Robot.Activite;
 import javax.swing.*;
 
 public class MenuGererTacheActivite {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /*private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = DbControleur.getDbControleur();
     private MenuUtilisateur menuUtil;
     public MenuGererTacheActivite() throws IOException, ParseException {
@@ -219,5 +219,5 @@ public class MenuGererTacheActivite {
             System.out.println("Vous ne possedez aucun robot disponible pour rejoindre une activite.");
         }
         System.out.println("Vous avez rejoint l'activite: " + nomActivite + " avec succes.");
-    }
+    }*/
 }

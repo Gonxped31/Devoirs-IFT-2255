@@ -8,6 +8,7 @@ import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.Format;
 import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -125,13 +126,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
     }
 
     public Robot retournerRobot(String numeroSerie){
-       return listRobot.stream()
-                       .flatMap(map -> map.values().stream())
-                       .flatMap(List::stream)
-                       .filter(robot -> robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
-                       .findFirst()
-                       .orElse(null);
-            /*for (Map<String, List<Robot>> map : listRobot) {
+            for (Map<String, List<Robot>> map : listRobot) {
                 for (List<Robot> robotList : map.values()) {
                     for (Robot robot : robotList) {
                         if (robot.getNumeroSerie().toString().trim().equals(numeroSerie.trim())) {
@@ -140,7 +135,7 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                     }
                 }
             }
-            return null;*/
+            return null;
     }
 
     public Composant retournerComposante(String nom){
@@ -159,11 +154,8 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .orElse(null);
     }
 
-    public String recupererLalisteDesFournisseur()
-    {
-        return (String) this.getListObjet().stream()
-                .map(fournisseur ->((Fournisseur)fournisseur).getProfilFournisseur())
-                .collect(Collectors.joining("\n"));
+    public ArrayList<Fournisseur> recupererLalisteDesFournisseur() {
+        return this.getListObjet();
     }
 
     public String rechercherComposantParNomOuTroisSouschaine(String nomOuTroisPremierSousChaine){
@@ -278,7 +270,15 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                 .findFirst()
                 .map(r->((Robot) r).getNumeroSerie())
                 .orElse(null);
+    }
 
+    public Composant achatComposante(String nomFournisseur, String nomComposante){
+         return (Composant) this.getListObjet().stream()
+                 .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                 .flatMap(f -> ((Fournisseur) f).getInventaireComposant().stream())
+                 .filter(c-> ((Composant) c).getNom().equals(nomComposante))
+                 .findFirst()
+                 .orElse(null);
     }
 
 }

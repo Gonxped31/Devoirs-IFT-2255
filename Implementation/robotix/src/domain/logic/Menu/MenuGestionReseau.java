@@ -9,7 +9,7 @@ import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.TypeNotification;
 
 public class MenuGestionReseau {
-    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /*private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
     private MenuUtilisateur menuUtil;
 
@@ -144,7 +144,7 @@ public class MenuGestionReseau {
             }
 
             }
-        }
+        }*/
 
     }
 

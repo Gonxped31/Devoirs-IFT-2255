@@ -120,14 +120,14 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public void modifierProfile(String choix, String nouvelInfo){
         switch (choix.toLowerCase()) {
             case "nom" -> this.setNom(nouvelInfo);
-            case "pseudo" -> this.setPseudo(nouvelInfo);
             case "prenom" -> this.setPrenom(nouvelInfo);
             case "adresse" -> this.setAdresse(nouvelInfo);
+            case "pseudo" -> this.setPseudo(nouvelInfo);
             case "email" -> this.setEmail(nouvelInfo);
             case "numerotelephone" -> this.setTelephone(nouvelInfo);
             case "nomcompagnie" -> this.setNomCompagnie(nouvelInfo);
+            case "mdp" -> this.setMotDePasse(nouvelInfo);
         }
-
     }
 
     public boolean enregistrerRobot(String nomRobot, Robot robot, String type){//, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
@@ -287,8 +287,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void ajouterComposanteRobot(Composant composant, Robot robot) {
         for (int i = 0; i < getListeRobot().size(); i++) {
-            if (getListeRobot().get(i).getNumeroSerie().equals(robot.getNumeroSerie())) {
-                getListeRobot().get(i).ajouterComposante(composant);
+            if (listeRobot.get(i).getNumeroSerie().equals(robot.getNumeroSerie())) {
+                listeRobot.get(i).ajouterComposante(composant);
             }
         }
     }
@@ -322,6 +322,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     public ArrayList<Composant> getComposantesAchetes() {
         return composantesAchetes;
     }
+
+    public void ajouterComposante(Composant composant){
+        composantesAchetes.add(composant);
+    }
+
     @JsonIgnore
     public String getProfilUtilisateur(){
         return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
@@ -486,5 +491,15 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                 iterator.remove(); // Safely remove the element using the iterator
             }
         }
+    }
+
+    public Composant retournerComposante(String nomComposante) {
+        Composant resultat = null;
+        for (Composant c: composantesAchetes) {
+            if (c.getNom().equals(nomComposante.trim())){
+                resultat = c;
+            }
+        }
+        return resultat;
     }
 }

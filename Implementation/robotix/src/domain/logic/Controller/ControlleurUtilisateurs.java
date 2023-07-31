@@ -59,13 +59,12 @@ public class ControlleurUtilisateurs {
 
     /* Actions utilisateur */
 
-    public void modifierProfile(String choix, String info) {
-        this.dataBaseController.supprimerUtilisateur(utilisateurCourant);
-        this.utilisateurCourant.modifierProfile(choix, info);
-        this.dataBaseController.ajouterUtilisateur(utilisateurCourant);
+    public void modifierProfile(String choix, String info, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        this.dataBaseController.supprimerUtilisateur(u);
+        u.modifierProfile(choix, info);
+        this.dataBaseController.ajouterUtilisateur(u);
     }
-
-
 
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie, String pseudo) {
         boolean bool=false;
@@ -92,13 +91,28 @@ public class ControlleurUtilisateurs {
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         this.dataBaseController.supprimerUtilisateur(u);
         Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
-        Composant comp = this.dataBaseController.retournerComposante(composante);
-        if (!(robot == null) && !(comp == null)){
+        Composant comp = u.retournerComposante(composante);
+        if (robot != null && comp != null){
             robot.ajouterComposante(comp);
+            u.ajouterComposanteRobot(comp, robot);
             this.dataBaseController.ajouterUtilisateur(u);
             return true;
         } else {
             this.dataBaseController.ajouterUtilisateur(u);
+            return false;
+        }
+    }
+
+    public boolean acheterComposante(String nomFournisseur, String nomComposante, String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        Composant composant = dataBaseController.achatComposante(nomFournisseur, nomComposante);
+        if (composant != null){
+            u.ajouterComposante(composant);
+            dataBaseController.ajouterUtilisateur(u);
+            return true;
+        } else {
+            dataBaseController.ajouterUtilisateur(u);
             return false;
         }
     }

@@ -14,6 +14,7 @@ import service.BaseDeDonneeUtilisateur;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 
@@ -38,7 +39,7 @@ public class DbControleur {
         return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
     }
 
-     public String recupererListFournisseur(){
+     public ArrayList<Fournisseur> recupererListFournisseur(){
         return this.baseDeDonneeFournisseur.recupererLalisteDesFournisseur();
      }
 
@@ -100,12 +101,15 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.verifierNomFounissseur(nomFourniseur);
     }
 
+    public Composant achatComposante(String nomFournisseur, String nomComposante){
+        return this.baseDeDonneeFournisseur.achatComposante(nomFournisseur, nomComposante);
+    }
+
     public boolean verifierPseudo(String pseudo){
         return this.baseDeDonneeUtilisateur.verifierPseudo(pseudo);
     }
 
     public Robot retournerRobot(String numeroSerie){
-        System.out.println(this.baseDeDonneeFournisseur.getListRobot());
         return this.baseDeDonneeFournisseur.retournerRobot(numeroSerie);
     }
 

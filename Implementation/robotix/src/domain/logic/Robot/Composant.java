@@ -22,7 +22,6 @@ public class Composant implements java.io.Serializable {
 
     }
 
-
     public String getNom() {
         return nom;
     }
@@ -46,6 +45,7 @@ public class Composant implements java.io.Serializable {
     public String getTypeComposant() {
         return typeComposant;
     }
+
     @JsonIgnore
     public String getInfoComposantFormater(){
         return "\n\nComposante " + ++numero + " :" +

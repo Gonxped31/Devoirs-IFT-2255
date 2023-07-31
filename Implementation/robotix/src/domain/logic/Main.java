@@ -13,9 +13,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
-        Scanner scanner = new Scanner(System.in);
-        Menu menu = new Menu();
-        menu.menuPrincipale(scanner);
-        scanner.close();
+        //Scanner scanner = new Scanner(System.in);
+        new Menu();
+        /*menu.menuPrincipale(scanner);
+        scanner.close();*/
     }
 }

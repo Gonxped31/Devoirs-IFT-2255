@@ -2,11 +2,13 @@ package domain.logic.Menu;
 
 import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.DbControleur;
+import domain.logic.GUI.FournisseurGUI.*;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Notification;
 import domain.logic.Outils.EmailSender;
 import domain.logic.Outils.Verifications;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.text.ParseException;
@@ -14,16 +16,114 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class MenusFournisseur {
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class MenusFournisseur extends JFrame {
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
 	private DbControleur dbControlleur = DbControleur.getDbControleur();
 
+
+	private JFrame jFrame = new JFrame();
+	private JPanel menuFournisseurPanel = new JPanel();
+	private JLabel menuFournisseurLabel = new JLabel("Menu Fournisseur", SwingConstants.CENTER);
+	private JButton btnAjouterRobot = new JButton("Ajouter un nouveau robot");
+	private JButton btnRetirerRobot = new JButton("Retirer un robot");
+	private JButton btnEnregistrerComposante = new JButton("Enregistrer une composante");
+	private JButton btnGererComposante = new JButton("Gerer mes composantes");
+	private JButton btnModifierProfil = new JButton("Modifier mon profil");
+	private JButton btnRequetePublique = new JButton("Faire une requete publique");
+	private JButton btnDeconnexion = new JButton("Deconnexion");
+	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
+	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
+	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
+	private GererComposantesGUI gererComposantesGUI = new GererComposantesGUI();
+	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
+	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
+
 	public MenusFournisseur() throws IOException, ParseException {
+		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		menuFournisseurPanel.setLayout(new GridLayout(0, 1));
+		menuFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+		// Ajout des composantes
+		menuFournisseurPanel.add(menuFournisseurLabel);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnAjouterRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnRetirerRobot);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnEnregistrerComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnGererComposante);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnModifierProfil);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnRequetePublique);
+		menuFournisseurPanel.add(Box.createHorizontalStrut(10));
+		menuFournisseurPanel.add(btnDeconnexion);
+
+		btnAjouterRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ajouterRobotGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnRetirerRobot.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				retirerRobotGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnEnregistrerComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				enregistrerComposanteGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnGererComposante.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gererComposantesGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnModifierProfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifierProfilFournisseurGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnRequetePublique.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				requetePubliqueFournisseurGUI.afficherMainPanel(jFrame);
+			}
+		});
+		btnDeconnexion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jFrame.dispose();
+				try {
+					Menu menu = new Menu();
+				} catch (IOException | ParseException ex) {
+					throw new RuntimeException(ex);
+				}
+            }
+		});
 	}
 
-	public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
+	public void afficherMenuFournisseur(JFrame jFrame) {
+		this.jFrame = jFrame;
+		this.jFrame.setContentPane(menuFournisseurPanel);
+		jFrame.revalidate();
+		jFrame.repaint();
+	}
+
+	/*public void menuInscriptionFournisseur(Scanner scanner) throws ParseException, IOException {
 		boolean NomExiste = true;
 		boolean EmailValide = false;
 		boolean TelephoneValide = false;
@@ -89,8 +189,10 @@ public class MenusFournisseur {
 				"\nSi vous avez toutefois besoin de gérer des robots, vous pouvez vous inscrire en tant qu'utilisateur. " +
 				"\n\nCordialement,\nL'équipe Robotix";
 
-		EmailSender.sendEmail("robotrobotix4@gmail.com","lkzojmozphkprruj", inputEmail,
+		EmailSender emailSender = new EmailSender("robotrobotix4@gmail.com","lkzojmozphkprruj", inputEmail,
 				"Confirmation d'inscription", body);
+
+		emailSender.sendInBackground();
 
 		menuFournisseur(scanner, inputNom);
 	}
@@ -410,10 +512,10 @@ public class MenusFournisseur {
 			}
 		} while (continuer);
 		return choix;
-	}
+	}*/
 
 	/* Gestion de composantes */
-	public void menuGererComposantes(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+	/*public void menuGererComposantes(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println(" ");
 		System.out.println("Choisissez une option :");
 		System.out.println("1- Supprimer une composante");
@@ -492,10 +594,10 @@ public class MenusFournisseur {
 		paramettreCoposants.add(description);
 		paramettreCoposants.add(type);
 		return paramettreCoposants;
-	}
+	}*/
 
 	/* Modification du profile */
-	public void menuMotifierProfileFournisseur(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
+	/*public void menuMotifierProfileFournisseur(Scanner scanner, String nomFournisseur) throws ParseException, IOException {
 		System.out.println("Que voulez-vous modifier");
 		System.out.println("1- Nom");
 		System.out.println("2- Adresse");
@@ -560,6 +662,6 @@ public class MenusFournisseur {
 		}
 		System.out.println(" ");
 		menuFournisseur(scanner, nomFournisseur);
-	}
+	}*/
 
 }
