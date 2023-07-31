@@ -23,7 +23,7 @@ public class ModifierProfilFournisseurGUI {
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
     private JButton btnCapaciteProduction = new JButton("Capacite de production");
     private JButton btnMdp = new JButton("Mot de passe");
-    private JButton btnRetour = new JButton("Retour au menu fournisseur");
+    private JButton btnRetour = new JButton("Retour au menu Fournisseur");
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 

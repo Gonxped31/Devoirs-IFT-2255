@@ -70,7 +70,7 @@ public class InscriptionFournisseurGUI {
         inscriptionFournisseurPanel.add(Box.createHorizontalStrut(10));
         inscriptionFournisseurPanel.add(btnRetour);
 
-        btnConfirmerInscription.addActionListener(new ActionListener() {
+        btnConfirmerInscription.addActionListener(new ActionListener() { // Faut ajouter une condition pour que tous les champs soient remplies avant de passer au menu
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {

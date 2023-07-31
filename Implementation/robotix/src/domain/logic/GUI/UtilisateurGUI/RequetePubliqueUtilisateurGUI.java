@@ -38,7 +38,7 @@ public class RequetePubliqueUtilisateurGUI {
     private JButton btnVoirProfil = new JButton("Voir mon profil");
     private JButton btnRechercheUtilisateur = new JButton("Rechercher un utilisateur");
     private JButton btnRecupererListeActivites = new JButton("Recuperer la liste des activites");
-    private JButton btnRecupererListeInterets = new JButton("Recuperer la liste des interets");
+    private JButton btnRechercheInterets = new JButton("Recuperer la liste des interets");
     private JButton btnRechercheFournisseur = new JButton("Rechercher un fournisseur");
     private JButton btnRechercheComposante = new JButton("Rechercher une composante");
     private JButton btnRetour = new JButton("Retour au menu Utilisateur");
@@ -123,7 +123,7 @@ public class RequetePubliqueUtilisateurGUI {
                 mettreAJourFrame();
             }
         });
-        btnRecupererListeInterets.addActionListener(new ActionListener() {
+        btnRechercheInterets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setContentPane(rechercheInteretsPanel);
@@ -187,7 +187,7 @@ public class RequetePubliqueUtilisateurGUI {
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRecupererListeActivites);
         mainPanel.add(Box.createHorizontalStrut(10));
-        mainPanel.add(btnRecupererListeInterets);
+        mainPanel.add(btnRechercheInterets);
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRechercheFournisseur);
         mainPanel.add(Box.createHorizontalStrut(10));
@@ -457,7 +457,7 @@ public class RequetePubliqueUtilisateurGUI {
     }
 
     public void setRechercheInteretsParLettrePanel() {
-        JLabel caracteresLabel = new JLabel("Entrez vos 3 characteres");
+        JLabel caracteresLabel = new JLabel("Entrez vos 3 caracteres");
         JTextField caracteresField = new JTextField();
         JButton btnContinuer = new JButton("Continuer");
         JButton btnRetourFiltre = new JButton("Retour au filtre");
@@ -470,6 +470,15 @@ public class RequetePubliqueUtilisateurGUI {
         rechercheInteretsParLettrePanel.add(btnContinuer, constraints);
         constraints.gridy = 3;
         rechercheInteretsParLettrePanel.add(btnRetourFiltre, constraints);
+
+        btnContinuer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (caracteresField.getText().length() != 3) {
+                    affirmerMessageErreurCaracteres();
+                }
+            };
+        });
 
         onBtnRetourRechercheInteretsAvecFiltreClicked(btnRetourFiltre);
     }
@@ -512,6 +521,15 @@ public class RequetePubliqueUtilisateurGUI {
         rechercheInteretsParLettreEtPseudoPanel.add(btnContinuer, constraints);
         constraints.gridy = 5;
         rechercheInteretsParLettreEtPseudoPanel.add(btnRetourFiltre, constraints);
+
+        btnContinuer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (caracteresField.getText().length() != 3) {
+                    affirmerMessageErreurCaracteres();
+                }
+            };
+        });
 
         onBtnRetourRechercheInteretsAvecFiltreClicked(btnRetourFiltre);
     }
@@ -792,6 +810,14 @@ public class RequetePubliqueUtilisateurGUI {
 
     public void affirmerMessageErreurRadioButton() {
         String message = "Vous devez selectionne Oui ou Non. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void affirmerMessageErreurCaracteres() {
+        String message = "Vous n'avez pas entre 3 caracteres. Veuillez reessayer.";
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
