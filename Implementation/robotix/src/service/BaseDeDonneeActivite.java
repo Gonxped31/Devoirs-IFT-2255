@@ -31,11 +31,11 @@ public BaseDeDonneeActivite() throws IOException, ParseException {
 
     }
 
-    public String recupererLalisteDesActivite()
-    {
-        return (String) this.getListObjet().stream()
+    public ArrayList<Activite> recupererLalisteDesActivite() {
+        return this.getListObjet();
+        /*return (String) this.getListObjet().stream()
                 .map(activite->((Activite) activite).getInfoActiviteFormater())
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"));*/
     }
 
     public Activite retournerActivite(String nomActivite) {

@@ -502,11 +502,17 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return resultat;
     }
 
-    public Robot retrouverRobot(String nomRobot){
+    public Robot retrouverRobotNom(String nomRobot){
         return listeRobot.stream()
                 .filter(robot -> robot.getNom().equals(nomRobot))
                 .findFirst()
                 .orElse(null);
     }
 
+    public Robot retournerRobotNumeroSerie(String numeroSerie) {
+        return listeRobot.stream()
+                .filter(robot -> robot.getNumeroSerie().toString().equals(numeroSerie))
+                .findFirst()
+                .orElse(null);
+    }
 }

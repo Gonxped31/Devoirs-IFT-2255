@@ -6,6 +6,7 @@ import domain.logic.Outils.Verifications;
 import domain.logic.Robot.Action;
 import domain.logic.Robot.Activite;
 import domain.logic.Robot.Composant;
+import domain.logic.Robot.Robot;
 import domain.logic.Robot.Tache;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class GestionActivitesGUI {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -30,6 +32,8 @@ public class GestionActivitesGUI {
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private ArrayList<Tache> listeTaches;
     private ArrayList<Activite> listeActivites;
+    private ArrayList<Robot> listeRobot;
+    private JScrollPane scrollPaneRobot;
     private JScrollPane scrollPaneListeTaches;
     private JScrollPane scrollPaneListeActivites;
     private Container panelPrecedent = new Container();
@@ -124,7 +128,7 @@ public class GestionActivitesGUI {
         creerActivitePanel.add(interetField, constraints);
         constraints.gridy = 10;
         creerActivitePanel.add(btnCreation, constraints);
-        constraints.gridy = 11;
+        constraints.gridy = 10;
         creerActivitePanel.add(btnAnnuler, constraints);
 
         onBtnActiviteCreeeClicked(btnCreation, nomActiviteField, dateDebutField, dateFinField, interetField);
@@ -148,27 +152,70 @@ public class GestionActivitesGUI {
     public void setRejoindreActivitePanel() {
         JLabel rejoindreActiviteLabel = new JLabel("Veuillez selectionner une activite a rejoindre parmi les suivantes");
         recupererListeActivites();
-        JTextField dateActiviteField = new JTextField();
+        JLabel choisirRobotLabel = new JLabel("Veuillez choisir les robots que vous voulez ajouter a cette activite");
+        recupererListeRobot();
         JButton btnRejoindre = new JButton("Rejoindre l'activite");
         JButton btnAnnuler = new JButton("Annuler");
 
-        dateActiviteField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
         rejoindreActivitePanel.add(rejoindreActiviteLabel, constraints);
-        constraints.gridy = 7;
-        rejoindreActivitePanel.add(dateActiviteField, constraints);
-        constraints.gridy = 8;
+        constraints.gridy = 1;
+        rejoindreActivitePanel.add(scrollPaneListeActivites, constraints);
+        constraints.gridy = 2;
+        rejoindreActivitePanel.add(choisirRobotLabel, constraints);
+        constraints.gridy = 3;
+        rejoindreActivitePanel.add(scrollPaneRobot, constraints);
+        constraints.gridy = 4;
         rejoindreActivitePanel.add(btnRejoindre, constraints);
-        constraints.gridy = 9;
+        constraints.gridy = 4;
         rejoindreActivitePanel.add(btnAnnuler, constraints);
 
-        //onBtnRejoindreActiviteClicked(btnRejoindre);
+        onBtnRejoindreActiviteClicked(btnRejoindre);
         onBtnAnnulerClicked(btnAnnuler);
     }
 
     private void recupererListeActivites(){
+        listeActivites = controlleurUtilisateurs.recupererListeActivites();
+
+        JPanel activitePanel = new JPanel();
+        activitePanel.setLayout(new BoxLayout(activitePanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+
+        for (Activite activite: listeActivites) {
+            StringBuilder activiteBuilder = new StringBuilder();
+            activiteBuilder.append(activite.getNom())
+                    .append(" (Du ")
+                    .append(GestionDates.parseDateToString(activite.getDateDebut()))
+                    .append(" au ").append(GestionDates.parseDateToString(activite.getDateFin()))
+                    .append(")");
+            JRadioButton radioButton = new JRadioButton(activiteBuilder.toString());
+            radioButton.setActionCommand(activite.getNom());
+            activitePanel.add(radioButton);
+            buttonGroup.add(radioButton);
+        }
+
+        scrollPaneListeActivites = new JScrollPane(activitePanel);
+        scrollPaneListeActivites.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
+
+    private void recupererListeRobot(){
+        listeRobot = controlleurUtilisateurs.recupererListeRobot(pseudo);
+
+        JPanel robotPanel = new JPanel();
+        robotPanel.setLayout(new BoxLayout(robotPanel, BoxLayout.Y_AXIS));
+
+        for (Robot robot: listeRobot) {
+            JCheckBox checkBox = new JCheckBox(robot.getNom());
+            checkBox.setSelected(false);
+            robotPanel.add(checkBox);
+        }
+
+        scrollPaneRobot = new JScrollPane(robotPanel);
+        scrollPaneRobot.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    }
+
 
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
@@ -243,15 +290,47 @@ public class GestionActivitesGUI {
         });
     }
 
-    public void onBtnRejoindreActiviteClicked(JButton btnCreation, JRadioButton balladeForet, JRadioButton course, JRadioButton netflix,
-                                              JRadioButton gaming, JRadioButton hockey, JTextField dateActiviteField) {
+    public void onBtnRejoindreActiviteClicked(JButton btnCreation) {
         btnCreation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (dateActiviteField.getText().length() == 0)
+                JPanel robotPanel = (JPanel) scrollPaneRobot.getViewport().getView();
+                Component[] robots = robotPanel.getComponents();
+                ArrayList<String> robotChoisie = new ArrayList<>();
+
+                for (Component robot: robots) {
+                    if (robot instanceof JCheckBox cb && cb.isSelected()){
+                        robotChoisie.add(cb.getText());
+                    }
+                }
+
+                JPanel activitePanel = (JPanel) scrollPaneListeActivites.getViewport().getView();
+                Component[] activites = activitePanel.getComponents();
+                String activiteChoisie = "";
+
+                for (Component activiteButton: activites) {
+                    if (activiteButton instanceof JRadioButton rb && rb.isSelected()){
+                        activiteChoisie = rb.getActionCommand();
+                        break;
+                    }
+                }
+
+                if (robotChoisie.isEmpty() || activiteChoisie.isEmpty()){
                     afficherMessageErreurRejoindreActivite();
-                else
-                    confirmerRejoindreActivite();
+                } else {
+                    String result = controlleurUtilisateurs.rejoindreActivite(pseudo, activiteChoisie);
+                    if (result.equals("true")){
+                        for (String nomRobot: robotChoisie) {
+                            ArrayList<String> numerosSeries = new ArrayList<>(Collections.singletonList(controlleurUtilisateurs.retrouverRobotNom(nomRobot, pseudo).getNumeroSerie().toString()));
+                            controlleurUtilisateurs.ajouterRobotActivite(numerosSeries ,activiteChoisie, pseudo);
+                        }
+                        confirmerRejoindreActivite("Vous avez rejoint l'activite avec succes.");
+                    } else if (result.equals("true2")){
+                        confirmerRejoindreActivite("Vous avez deja rejoint l'activitee.");
+                    } else {
+                        afficherMessageErreurRejoindreActivite();
+                    }
+                }
             }
         });
     }
@@ -283,8 +362,7 @@ public class GestionActivitesGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
-    public void confirmerRejoindreActivite() {
-        String message = "Vous avez rejoint l'activite ____";
+    public void confirmerRejoindreActivite(String message) {
         String title = "Joindre activite reussi";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 

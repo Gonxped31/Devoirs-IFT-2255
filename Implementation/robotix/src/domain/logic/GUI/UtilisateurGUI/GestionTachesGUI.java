@@ -247,7 +247,7 @@ public class GestionTachesGUI {
                     afficherMessageErreurTacheAlloue();
                 } else {
                     for (String nomRobot: robotChoisie) {
-                        Robot robot = controlleurUtilisateurs.retrouverRobot(nomRobot, pseudo);
+                        Robot robot = controlleurUtilisateurs.retrouverRobotNom(nomRobot, pseudo);
                         if (robot != null){
                             controlleurUtilisateurs.allouerTacheRobot(pseudo, robot.getNumeroSerie().toString(), tacheChoisie);
                         }

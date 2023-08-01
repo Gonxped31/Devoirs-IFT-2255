@@ -166,7 +166,7 @@ public class ControlleurUtilisateurs {
         return ressult;
     }
 
-    public String recupererListeActivites(){
+    public ArrayList<Activite> recupererListeActivites(){
         return dataBaseController.recupererListeActivite();
     }
 
@@ -192,31 +192,23 @@ public class ControlleurUtilisateurs {
         return result;
     }
 
-    public boolean ajouterRobotActivite(ArrayList<String> numeroSerieRobots, String nomActivite ,String pseudo){
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
+    public void ajouterRobotActivite(ArrayList<String> numeroSerieRobots, String nomActivite ,String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         Activite activite = dataBaseController.retournerActivite(nomActivite);
         dataBaseController.supprimerUtilisateur(u);
         dataBaseController.supprimerActivite(activite);
         ArrayList<Robot> robots = new ArrayList<>();
-        numeroSerieRobots.forEach(num -> robots.add(dataBaseController.retournerRobot(num)));
+        numeroSerieRobots.forEach(num -> robots.add(u.retournerRobotNumeroSerie(num)));
         int iterations = robots.size();
-        int compteur = 0;
         for (int i = 0; i < iterations; i++) {
             Robot robot = robots.get(0);
-            if (robot != null && robot.estDisponible()){
-                robot.setDisponible(false);
+            if (robot != null){
                 activite.getListeRobotsInscrits().add(robot);
-                scheduler.schedule(() -> marquerRobotDisponible(robot), activite.getDureeActivite(), TimeUnit.SECONDS);
-                compteur++;
+                robot.getActivites().add(activite.getNom());
             }
         }
         dataBaseController.ajouterActivite(activite);
         dataBaseController.ajouterUtilisateur(u);
-        return compteur == iterations;
-    }
-    private void marquerRobotDisponible(Robot robot){
-        robot.setDisponible(true);
     }
 
     public String voirListeUtilisateur(String pseudo){
@@ -374,8 +366,13 @@ public class ControlleurUtilisateurs {
         return dataBaseController.existeDansListeSuivi(pseudo, nom);
     }
 
-    public Robot retrouverRobot(String nomRobot, String pseudo) {
+    public Robot retrouverRobotNom(String nomRobot, String pseudo) {
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        return u.retrouverRobot(nomRobot);
+        return u.retrouverRobotNom(nomRobot);
+    }
+
+    public Robot retrouverRobotNumeroSerie(String numeroSerie, String pseudo){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.retournerRobotNumeroSerie(numeroSerie);
     }
 }

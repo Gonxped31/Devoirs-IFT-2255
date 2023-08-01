@@ -94,7 +94,7 @@ public class DbControleur {
     public Activite retournerActivite(String nomActivite){
         return baseDeDonneeActivite.retournerActivite(nomActivite);
     }
-    public String recupererListeActivite(){
+    public ArrayList<Activite> recupererListeActivite(){
         return this.baseDeDonneeActivite.recupererLalisteDesActivite();
     }
     public boolean verifierNomFournissuer(String nomFourniseur){

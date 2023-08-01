@@ -17,13 +17,13 @@ public class Robot implements java.io.Serializable{
     private String type;
     private LinkedList<Action> actions;
     private LinkedList<Tache> taches;
-    private LinkedList<Activite> activites;
+    private LinkedList<String> activites;
     private UUID numeroSerie;
     private boolean disponible;
 
     @JsonCreator
     public Robot(@JsonProperty("nom") String nom,@JsonProperty("X") int X, @JsonProperty("Y")int Y,@JsonProperty("vitesse") int vitesse,@JsonProperty("batterie") int batterie,@JsonProperty("cpu") int cpu,@JsonProperty("memoire") double memoire,@JsonProperty("composantes") LinkedList<Composant> composantes,@JsonProperty("type") String type,
-                 @JsonProperty("action") LinkedList<Action> action,@JsonProperty("taches") LinkedList<Tache> taches,@JsonProperty("activites") LinkedList<Activite> activites){
+                 @JsonProperty("action") LinkedList<Action> action,@JsonProperty("taches") LinkedList<Tache> taches,@JsonProperty("activites") LinkedList<String> activites){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -101,7 +101,7 @@ public class Robot implements java.io.Serializable{
         return taches;
     }
 
-    public LinkedList<Activite> getActivites() {
+    public LinkedList<String> getActivites() {
         return activites;
     }
 
