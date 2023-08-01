@@ -22,12 +22,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private ArrayList<Tache> listeTaches = new ArrayList<>();
     private ArrayList<Action> listeActions = new ArrayList<>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
-    private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
+    private HashSet<String> listeUtilisateursSuivi = new HashSet<>();
     private HashSet<Interet> listeInteret = new HashSet<>();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
     private ArrayList<Activite> listeActivitesCreer = new ArrayList<>();
-    private Set<Utilisateur> listSuiveur = new HashSet<>();
+    private HashSet<String> listSuiveur = new HashSet<>();
     private String pseudo;
     private String prenom;
     private int point;
@@ -47,13 +47,15 @@ public class Utilisateur extends Membre implements java.io.Serializable{
                        @JsonProperty("numeroTelephone") String numeroTelephone,
                        @JsonProperty("nomCompagnie") String nomCompagnie,
                        @JsonProperty("listeInteret") HashSet<Interet> listeInteret,
-                       @JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications) {
+                       @JsonProperty("listeNotifications") ArrayList<Notification> listeNotifications,
+                       @JsonProperty("listSuiveur") HashSet<String> listeSuiveur) {
 
         super(nom, adresse, email, numeroTelephone, nomCompagnie, mdp);
         this.setPseudo(pseudo);
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
         this.setListeNotifications(listeNotifications);
+        setListSuiveur(listeSuiveur);
     }
 
 
@@ -106,11 +108,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public void suivreUtilisateur(Utilisateur suivi){
         taillePrecedenteListeSuiveur = getListeUtilisateursSuivi().size();
-        getListeUtilisateursSuivi().add(suivi);
+        getListeUtilisateursSuivi().add(suivi.getPseudo());
     }
 
     public void etreSuivi(Utilisateur suiveur){
-        getListSuiveur().add(suiveur);
+        getListSuiveur().add(suiveur.getPseudo());
     }
 
     public ArrayList<Notification> voirNotifications(){
@@ -341,11 +343,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return prenom;
     }
 
-    public Set<Utilisateur> getListSuiveur() {
+    public Set<String> getListSuiveur() {
         return listSuiveur;
     }
 
-    public void setListSuiveur(Set<Utilisateur> listSuiveur) {
+    public void setListSuiveur(HashSet<String> listSuiveur) {
         this.listSuiveur = listSuiveur;
     }
 
@@ -397,11 +399,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.listeActions = listeActions;
     }
 
-    public Set<Utilisateur> getListeUtilisateursSuivi() {
+    public HashSet<String> getListeUtilisateursSuivi() {
         return listeUtilisateursSuivi;
     }
 
-    public void setListeUtilisateursSuivi(Set<Utilisateur> listeUtilisateursSuivi) {
+    public void setListeUtilisateursSuivi(HashSet<String> listeUtilisateursSuivi) {
         this.listeUtilisateursSuivi = listeUtilisateursSuivi;
     }
 
@@ -460,15 +462,15 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     public String voirListeUtilisateur() {
         StringBuilder sb = new StringBuilder();
-        for (Utilisateur u : this.listeUtilisateursSuivi) {
-            sb.append(u.getPseudo()).append("\n");
+        for (String u : this.listeUtilisateursSuivi) {
+            sb.append(u).append("\n");
         }
         return sb.toString();
     }
 
     public boolean supprimerUtilisateurDeMaListe(String utilASupprimer) {
-        for (Utilisateur u : this.listeUtilisateursSuivi){
-            if (u.getPseudo().equals(utilASupprimer)){
+        for (String u : this.listeUtilisateursSuivi){
+            if (u.equals(utilASupprimer)){
                 this.listeUtilisateursSuivi.remove(u);
                 return true;
             }

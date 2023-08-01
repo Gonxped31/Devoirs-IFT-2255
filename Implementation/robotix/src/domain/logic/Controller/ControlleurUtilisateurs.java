@@ -8,6 +8,7 @@ import domain.logic.Robot.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +39,7 @@ public class ControlleurUtilisateurs {
     }
 
     public void inscriptionUtilisateur(String nom, String prenom, String adresse, String pseudo,String mdp, String courriel, String telephone, String nomCompagnie, ArrayList<String> listeInteret) {
-        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret), new ArrayList<Notification>());
+        this.utilisateurCourant = new Utilisateur(nom, prenom, adresse, pseudo,mdp, courriel, telephone, nomCompagnie, Utilisateur.produireListeInteret(listeInteret), new ArrayList<Notification>(), new HashSet<String>());
         dataBaseController.ajouterUtilisateur(utilisateurCourant);
     }
 
@@ -256,7 +257,7 @@ public class ControlleurUtilisateurs {
             Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
             Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
             dataBaseController.supprimerUtilisateur(utilCourant);
-            utilCourant.getListeUtilisateursSuivi().add(u);
+            utilCourant.getListeUtilisateursSuivi().add(u.getPseudo());
             dataBaseController.ajouterUtilisateur(utilCourant);
         } catch (NullPointerException e){
             return false;
@@ -269,8 +270,10 @@ public class ControlleurUtilisateurs {
         //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
         try {
             Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
             dataBaseController.supprimerUtilisateur(u);
-            u.getListSuiveur().add(utilisateurCourant);
+            u.getListSuiveur().add(utilCourant.getPseudo());
+            utilCourant.getListeUtilisateursSuivi().add(u.getPseudo());
             dataBaseController.ajouterUtilisateur(u);
         } catch (NullPointerException e){
             return false;

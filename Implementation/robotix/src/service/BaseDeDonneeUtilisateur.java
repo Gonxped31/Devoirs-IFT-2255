@@ -36,25 +36,25 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
                 new Utilisateur("Boubacar", "Kelly", "adresse1", "KellyB",
-                        "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Damov", "Kamen", "adresse2", "KD",
-                        "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "KaMen", "emailkamen@gmail.com", "5142222222", "Kamen Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Gbian", "Samir", "adresse3", "SB",
-                        "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "SaMir", "emailsamir@gmail.com", "5143333333", "Samir Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Doren", "Sky", "adresse4", "SD",
-                        "DoRen", "emaildorensky@gmail.com", "5144444444", "Dorensky Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "DoRen", "emaildorensky@gmail.com", "5144444444", "Dorensky Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Brice", "Mb", "adresse5", "Brice",
-                        "BrIce", "emailbrice@gmail.com", "51455555555", "Brice Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "BrIce", "emailbrice@gmail.com", "51455555555", "Brice Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Francois", "Paris", "adresse6", "FP",
-                        "FrancOis", "emailfrancois@gmail.com", "5146666666", "Francois Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "FrancOis", "emailfrancois@gmail.com", "5146666666", "Francois Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Mehdi", "Til", "adresse7", "MT",
-                        "MeHdi", "emailmehdi@gmail.com", "5147777777", "Mehdi Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "MeHdi", "emailmehdi@gmail.com", "5147777777", "Mehdi Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Monica", "G", "adresse8", "MG",
-                        "MonIca", "emailmonica@gmail.com", "5148888888", "Monica Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "MonIca", "emailmonica@gmail.com", "5148888888", "Monica Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("Stefano", "DiGir", "adresse9", "SDi",
-                        "StefAno", "emailstefano@gmail.com", "5149999999", "Stefano Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
+                        "StefAno", "emailstefano@gmail.com", "5149999999", "Stefano Inc.", new HashSet<Interet>(),new ArrayList<Notification>(), new HashSet<>()),
                 new Utilisateur("James", "Greg", "adresse10", "JG",
-                        "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new HashSet<Interet>(), new ArrayList<Notification>())
+                        "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new HashSet<Interet>(), new ArrayList<Notification>(), new HashSet<>())
         ));
 
         tempList.stream().forEach(utilisateur -> {
@@ -105,7 +105,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                  .map(u-> { return ((Utilisateur)u)
                          .getListSuiveur()
                          .stream()
-                         .map(suiveur -> {return ((Utilisateur) suiveur).getProfilUtilisateur(); })
+                         .map(suiveur -> {return ((String) suiveur); })
                          .collect(Collectors.joining("\n"));
       }).collect(Collectors.joining("\n"));
    }
@@ -198,9 +198,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         List<Utilisateur> utilisateurs = this.getListObjet();
+        System.out.println(utilisateurs);
         for (Utilisateur u : utilisateurs){
-            for (Utilisateur suivi : u.getListeUtilisateursSuivi()){
-                if (suivi.getPseudo().equals(nom)){
+            for (String suivi : u.getListeUtilisateursSuivi()){
+                System.out.println(u.getListeUtilisateursSuivi());
+                if (suivi.equals(nom)){
                     return true;
                 }
             }

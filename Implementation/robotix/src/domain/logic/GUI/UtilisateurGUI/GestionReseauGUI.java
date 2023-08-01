@@ -1,11 +1,17 @@
 package domain.logic.GUI.UtilisateurGUI;
 
+import domain.logic.Controller.ControlleurUtilisateurs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class GestionReseauGUI {
+    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel suivreUtilisateurPanel = new JPanel(new GridBagLayout());
@@ -21,7 +27,8 @@ public class GestionReseauGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GestionReseauGUI() {
+    public GestionReseauGUI(String pseudo) throws IOException, ParseException {
+        this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
@@ -197,10 +204,21 @@ public class GestionReseauGUI {
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (pseudoField.getText().length() == 0)
+                String input = pseudoField.getText();
+                System.out.println(pseudo);
+                System.out.println(input);
+                if (controlleurUtilisateurs.existeDansListeSuivi(pseudo, input)) {
+                    afficherMessageErreurUtilDejaSuivi(input);
+                }
+                else if (input.length() == 0 || !(controlleurUtilisateurs.suivreUtilisateur(pseudo, input))){
+                    //Appeller controlleur pour add dans liste de suiveur et suivi
+
                     afficherMessageErreurSuivreUtilisateur();
-                else
-                    confirmerNouvelAbonne();
+                }
+                else{
+                    confirmerNouvelAbonne(input);
+                }
+
             }
         });
     }
@@ -237,8 +255,8 @@ public class GestionReseauGUI {
         });
     }
 
-    public void confirmerNouvelAbonne() {
-        String message = "Vous suivez maintenant _____";
+    public void confirmerNouvelAbonne(String nom) {
+        String message = "Vous suivez maintenant " + nom;
         String title = "Nouvel abonne";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 
@@ -259,6 +277,14 @@ public class GestionReseauGUI {
 
     public void afficherMessageErreurSuivreUtilisateur() {
         String message = "L'utilisateur que vous voulez suivre n'existe pas. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurUtilDejaSuivi(String nom) {
+        String message = "Vous suivez deja " + nom;
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
