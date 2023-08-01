@@ -78,9 +78,9 @@ public class ControlleurUtilisateurs {
         return bool;
     }
 
-    public String recupererListeRobot(String pseudo){
+    public ArrayList<Robot> recupererListeRobot(String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        return u.listeRobot();
+        return u.getListeRobot();
     }
 
     public ArrayList<Robot> afficherEtatRobot(String pseudo) {
@@ -128,44 +128,30 @@ public class ControlleurUtilisateurs {
         return this.utilisateurCourant.nombreDeRobot();
     }
 
-    public ArrayList<String> creerTache(String nomTache, ArrayList<String> actions, String pseudo){
+    public void creerTache(String nomTache, ArrayList<String> actions, String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        this.dataBaseController.supprimerUtilisateur(u);
-        ArrayList<String> actionsRestantes = u.creerTache(nomTache, actions);
-        this.dataBaseController.ajouterUtilisateur(u);
-        return actionsRestantes;
+        //this.dataBaseController.supprimerUtilisateur(u);
+        u.creerTache(nomTache, actions);
+        //this.dataBaseController.ajouterUtilisateur(u);
     }
 
-    public String recuprerListeAction(String pseudo){
+    public ArrayList<Action> recuprerListeAction(String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        String result = u.listeActions();
-        if (result == null)
-            return "";
-        else
-            return result;
+        return u.getListeActions();
     }
 
-    public String recuprerListeTache(String pseudo){
+    public ArrayList<Tache> recuprerListeTache(String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        String result = u.listeTaches();
-        if (result == null)
-            return "";
-        else
-            return result;
+        return u.getListeTaches();
     }
 
-    public boolean allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
+    public void allouerTacheRobot(String pseudo, String numeroDeSerie, String tache){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
-        boolean bool = false;
         this.dataBaseController.supprimerUtilisateur(u);
         Robot robot = u.getRobot(numeroDeSerie);
         Tache tac = u.getTache(tache);
-        if ((robot != null) && (tac != null)){
-            robot.allouerTache(tac);
-            bool = true;
-        }
+        robot.allouerTache(tac);
         this.dataBaseController.ajouterUtilisateur(u);
-        return bool;
     }
 
     public boolean creerActivites(String pseudo, String nomActivite, String dateDebut, String dateFin,
@@ -386,5 +372,10 @@ public class ControlleurUtilisateurs {
 
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         return dataBaseController.existeDansListeSuivi(pseudo, nom);
+    }
+
+    public Robot retrouverRobot(String nomRobot, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.retrouverRobot(nomRobot);
     }
 }

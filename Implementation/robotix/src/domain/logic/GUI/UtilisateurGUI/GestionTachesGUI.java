@@ -1,11 +1,21 @@
 package domain.logic.GUI.UtilisateurGUI;
 
+import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Robot.Action;
+import domain.logic.Robot.Robot;
+import domain.logic.Robot.Tache;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
 
 public class GestionTachesGUI {
+    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel creerTachePanel = new JPanel(new GridBagLayout());
@@ -15,9 +25,15 @@ public class GestionTachesGUI {
     private JButton btnAllouerTache = new JButton("Allouer une tache a un robot");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
+    private JScrollPane scrollPaneCreerTache;
+    private JScrollPane scrollPaneAllouerTache;
+    private JScrollPane scrollPaneListeTaches;
+    private ArrayList<Robot> listeRobot;
+    private ArrayList<Tache> listeTaches;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GestionTachesGUI() {
+    public GestionTachesGUI(String pseudo) throws IOException, ParseException {
+        this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
@@ -64,18 +80,14 @@ public class GestionTachesGUI {
     public void setCreerTachePanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel tacheCreeeLabel = new JLabel("Inscrivez le nom de la tache a creee");
-        JLabel actionLabel = new JLabel("Parmi vos actions, laquelle/lesquelles voulez-vous associer a cette tache?");
-        JLabel ajouterActionLabel = new JLabel("Voulez-vous rajouter une action a cette tache?");
+        JLabel listActionLabel = new JLabel("Choisissez les actions a ajouter");
+        recupererListeActions();
         JTextField tacheCreeeField = new JTextField();
-        JTextField actionField = new JTextField();
-        JRadioButton radioButtonOui = new JRadioButton("Oui");
-        JRadioButton radioButtonNon = new JRadioButton("Non");
         JButton btnCreation = new JButton("Confirmer la creation de la tache");
         JButton btnAnnuler = new JButton("Annuler");
 
         // Setup la dimension des JTextField
         tacheCreeeField.setPreferredSize(new Dimension(200, 30));
-        actionField.setPreferredSize(new Dimension(200, 30));
 
         // Ajout des composantes
         constraints.gridy = 0;
@@ -83,50 +95,91 @@ public class GestionTachesGUI {
         constraints.gridy = 1;
         creerTachePanel.add(tacheCreeeField, constraints);
         constraints.gridy = 2;
-        creerTachePanel.add(actionLabel, constraints);
+        creerTachePanel.add(listActionLabel, constraints);
         constraints.gridy = 3;
-        creerTachePanel.add(actionField, constraints);
+        creerTachePanel.add(scrollPaneCreerTache, constraints);
         constraints.gridy = 4;
-        creerTachePanel.add(ajouterActionLabel, constraints);
-        constraints.gridy = 5;
-        creerTachePanel.add(radioButtonOui, constraints);
-        constraints.gridy = 6;
-        creerTachePanel.add(radioButtonNon, constraints);
-        constraints.gridy = 7;
         creerTachePanel.add(btnCreation, constraints);
-        constraints.gridy = 8;
+        constraints.gridy = 5;
         creerTachePanel.add(btnAnnuler, constraints);
 
-        onBtnTacheCreeeClicked(btnCreation, tacheCreeeField, actionField, radioButtonOui, radioButtonNon);
+        onBtnTacheCreeeClicked(btnCreation, tacheCreeeField);
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    private void recupererListeActions() {
+        ArrayList<Action> listeAcction = controlleurUtilisateurs.recuprerListeAction(pseudo);
+
+        JPanel actionsPanel = new JPanel();
+        actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.Y_AXIS));
+
+        for (Action action: listeAcction) {
+            JCheckBox checkBox = new JCheckBox(action.getNomAction());
+            checkBox.setSelected(false);
+            actionsPanel.add(checkBox);
+        }
+
+        scrollPaneCreerTache = new JScrollPane(actionsPanel);
+        scrollPaneCreerTache.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
     public void setAllouerTachePanel() {
-        JLabel nomRobotLabel = new JLabel("A quel robot voulez-vous allouer une tache?");
-        JLabel nomTacheLabel = new JLabel("Quel est le nom de la tache a allouer?");
-        JTextField nomRobotField = new JTextField();
-        JTextField nomTacheField = new JTextField();
+        JLabel nomRobotLabel = new JLabel("Choisissez a quel robot la tache sera allouee");
+        recupererListeRobot();
+        JLabel nomTacheLabel = new JLabel("Choisissez la tache a allouer aux robots");
+        recupererListeTache();
         JButton btnAffectation = new JButton("Confirmer l'affectation de la tache");
         JButton btnAnnuler = new JButton("Annuler");
-
-        nomRobotField.setPreferredSize(new Dimension(200, 30));
-        nomTacheField.setPreferredSize(new Dimension(200, 30));
 
         constraints.gridy = 0;
         allouerTachePanel.add(nomRobotLabel, constraints);
         constraints.gridy = 1;
-        allouerTachePanel.add(nomRobotField, constraints);
+        allouerTachePanel.add(scrollPaneAllouerTache, constraints);
         constraints.gridy = 2;
         allouerTachePanel.add(nomTacheLabel, constraints);
         constraints.gridy = 3;
-        allouerTachePanel.add(nomTacheField, constraints);
+        allouerTachePanel.add(scrollPaneListeTaches, constraints);
         constraints.gridy = 4;
         allouerTachePanel.add(btnAffectation, constraints);
         constraints.gridy = 5;
         allouerTachePanel.add(btnAnnuler, constraints);
 
-        onBtnTacheAlloueClicked(btnAffectation, nomRobotField, nomTacheField);
+        onBtnTacheAlloueClicked(btnAffectation);
         onBtnAnnulerClicked(btnAnnuler);
+    }
+
+    private void recupererListeTache() {
+        listeTaches = controlleurUtilisateurs.recuprerListeTache(pseudo);
+        JPanel tachePanel = new JPanel();
+        tachePanel.setLayout(new BoxLayout(tachePanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+
+        for (Tache tache: listeTaches) {
+            String nomTache = tache.getNom();
+            JRadioButton radioButton = new JRadioButton(nomTache);
+            radioButton.setActionCommand(nomTache);
+            tachePanel.add(radioButton);
+            buttonGroup.add(radioButton);
+        }
+        scrollPaneListeTaches = new JScrollPane(tachePanel);
+        scrollPaneListeTaches.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    }
+    private void recupererListeRobot(){
+        listeRobot = controlleurUtilisateurs.recupererListeRobot(pseudo);
+
+        JPanel robotPanel = new JPanel();
+        robotPanel.setLayout(new BoxLayout(robotPanel, BoxLayout.Y_AXIS));
+
+        for (Robot robot: listeRobot) {
+            JCheckBox checkBox = new JCheckBox(robot.getNom());
+            checkBox.setSelected(false);
+            robotPanel.add(checkBox);
+        }
+
+        scrollPaneAllouerTache = new JScrollPane(robotPanel);
+        scrollPaneAllouerTache.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -141,26 +194,66 @@ public class GestionTachesGUI {
         this.jFrame.repaint();
     }
 
-    public void onBtnTacheCreeeClicked(JButton btnCreation, JTextField tacheCreeeField, JTextField actionField, JRadioButton radioButtonOui, JRadioButton radioButtonNon) {
+    public void onBtnTacheCreeeClicked(JButton btnCreation, JTextField tacheCreeeField) {
         btnCreation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (tacheCreeeField.getText().length() == 0 || actionField.getText().length() == 0)
+                JPanel actionsPanel = (JPanel) scrollPaneCreerTache.getViewport().getView();
+                Component[] checkBoxes = actionsPanel.getComponents();
+                ArrayList<String> selectedActions = new ArrayList<>();
+
+                for (Component checkBox: checkBoxes) {
+                    if (checkBox instanceof JCheckBox cb && cb.isSelected()){
+                        selectedActions.add(cb.getText());
+                    }
+                }
+
+                if (tacheCreeeField.getText().isEmpty() || selectedActions.isEmpty())
                     afficherMessageErreurTacheCreee();
-                else
+                else{
+                    controlleurUtilisateurs.creerTache(tacheCreeeField.getText(), selectedActions, pseudo);
                     confirmerTacheCreee();
+                }
             }
         });
     }
 
-    public void onBtnTacheAlloueClicked(JButton btnAffectation, JTextField nomRobotField, JTextField nomTacheField) {
+    public void onBtnTacheAlloueClicked(JButton btnAffectation) {
         btnAffectation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomRobotField.getText().length() == 0 || nomTacheField.getText().length() == 0)
+                JPanel robotPanel = (JPanel) scrollPaneAllouerTache.getViewport().getView();
+                Component[] robots = robotPanel.getComponents();
+                ArrayList<String> robotChoisie = new ArrayList<>();
+
+                for (Component robot: robots) {
+                    if (robot instanceof JCheckBox cb && cb.isSelected()){
+                        robotChoisie.add(cb.getText());
+                    }
+                }
+
+                JPanel tachePanel = (JPanel) scrollPaneListeTaches.getViewport().getView();
+                Component[] taches = tachePanel.getComponents();
+                String tacheChoisie = "";
+
+                for (Component tacheButton: taches) {
+                    if (tacheButton instanceof JRadioButton rb && rb.isSelected()){
+                        tacheChoisie = rb.getActionCommand();
+                        break;
+                    }
+                }
+
+                if (robotChoisie.isEmpty() || tacheChoisie.isEmpty()){
                     afficherMessageErreurTacheAlloue();
-                else
+                } else {
+                    for (String nomRobot: robotChoisie) {
+                        Robot robot = controlleurUtilisateurs.retrouverRobot(nomRobot, pseudo);
+                        if (robot != null){
+                            controlleurUtilisateurs.allouerTacheRobot(pseudo, robot.getNumeroSerie().toString(), tacheChoisie);
+                        }
+                    }
                     confirmerTacheAlloue();
+                }
             }
         });
     }
@@ -176,7 +269,7 @@ public class GestionTachesGUI {
     }
 
     public void confirmerTacheCreee() {
-        String message = "Vous avez creer la tache ____ ";
+        String message = "Vous avez creer la tache avec succes !";
         String title = "Creation terminee";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 
@@ -186,7 +279,7 @@ public class GestionTachesGUI {
     }
 
     public void afficherMessageErreurTacheCreee() {
-        String message = "Veuillez reessayer.";
+        String message = "Une erreur s'est produite. Verifier que vous avez bien rempli les champ.";
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 

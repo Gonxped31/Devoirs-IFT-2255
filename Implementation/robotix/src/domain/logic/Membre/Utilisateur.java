@@ -151,7 +151,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return result;
     }
 
-    public ArrayList<String> creerTache(String nom, ArrayList<String> stringActions){
+    public void creerTache(String nom, ArrayList<String> stringActions){
         Map<String, Action> map = new HashMap<>();
         int dureeTache = 0;
         listeActions.forEach(action -> map.put(action.getNomAction(), action));
@@ -173,7 +173,6 @@ public class Utilisateur extends Membre implements java.io.Serializable{
             tache.setDureeTache(dureeTache);
             listeTaches.add(tache);
         }
-        return stringActions;
     }
 
     public Robot getRobot(String numeroDeSerie){
@@ -502,4 +501,12 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         }
         return resultat;
     }
+
+    public Robot retrouverRobot(String nomRobot){
+        return listeRobot.stream()
+                .filter(robot -> robot.getNom().equals(nomRobot))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

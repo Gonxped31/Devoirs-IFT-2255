@@ -53,8 +53,8 @@ public class MenuUtilisateur extends JFrame {
         private JButton btnDeconnexion = new JButton("Deconnexion");
         private ModifierProfilUtilisateurGUI modifierProfilUtilisateurGUI;
         private GestionFlotteGUI gestionFlotteGUI;
-        private GestionTachesGUI gestionTachesGUI = new GestionTachesGUI();
-        private GestionActivitesGUI gestionActivitesGUI = new GestionActivitesGUI();
+        private GestionTachesGUI gestionTachesGUI;
+        private GestionActivitesGUI gestionActivitesGUI;
         private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
         private AchatsGUI achatsGUI;
         private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
@@ -67,8 +67,8 @@ public class MenuUtilisateur extends JFrame {
 
         public MenuUtilisateur(String pseudo) throws IOException, ParseException {
             this.pseudo = pseudo;
-            gestionFlotteGUI = new GestionFlotteGUI(pseudo);
-            achatsGUI = new AchatsGUI(pseudo);
+            instancierMenus(pseudo);
+
             modifierProfilUtilisateurGUI = new ModifierProfilUtilisateurGUI(pseudo);
             menuUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
             menuUtilisateurPanel.setLayout(new GridLayout(0, 1));
@@ -163,6 +163,13 @@ public class MenuUtilisateur extends JFrame {
                 }
             });
 
+        }
+
+        private void instancierMenus(String pseudo) throws IOException, ParseException {
+            gestionFlotteGUI = new GestionFlotteGUI(pseudo);
+            achatsGUI = new AchatsGUI(pseudo);
+            gestionTachesGUI = new GestionTachesGUI(pseudo);
+            gestionActivitesGUI = new GestionActivitesGUI(pseudo);
         }
 
         public void afficherMenuUtilisateurPanel(JFrame jFrame) {

@@ -1,6 +1,7 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Outils.CheckBoxListRenderer;
 import domain.logic.Outils.ComboBoxRenderer;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.TypesComposants;
@@ -83,7 +84,7 @@ public class GestionFlotteGUI {
                 jFrame.setContentPane(creerActionPanel);
                 mettreAJourFrame();
             }
-        });
+        });//Done
         btnRetour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -210,13 +211,10 @@ public class GestionFlotteGUI {
     }
     public void setCreerActionPanel() {
         JLabel nomActionLabel = new JLabel("Nom de l'action a créer");
-        JLabel nomComposanteLabel = new JLabel("Liste des composantes achetées");
-        JLabel choixComposanteLabel = new JLabel("Veuillez choisir vos composantes (entrer chaque composante voulu séparé par une virgule.)");
+        JLabel nomComposanteLabel = new JLabel("Liste des composantes achetées. Selctionnez celles que vous voulez ajouter à cette action");
         recupererLsitesTypeComposantes();
         JLabel dureeLabel = new JLabel("Veuillez entrer le duree");
         JTextField nomActionField = new JTextField();
-        JTextField nomComposanteField = new JTextField();
-        JTextField choixComposanteField = new JTextField();
         JTextField dureeField = new JTextField();
         JButton btnCreationAction = new JButton("Creation de l'action");
         JButton btnMenuGestionFlotte = new JButton("Retour");
@@ -228,27 +226,23 @@ public class GestionFlotteGUI {
         constraints.gridy = 2;
         creerActionPanel.add(nomComposanteLabel, constraints);
         constraints.gridy = 3;
-        creerActionPanel.add(listeComposantesJList, constraints);
+        creerActionPanel.add(scrollPaneAction, constraints);
         constraints.gridy = 4;
-        creerActionPanel.add(choixComposanteLabel, constraints);
-        constraints.gridy = 5;
-        creerActionPanel.add(choixComposanteField, constraints);
-        constraints.gridy = 6;
         creerActionPanel.add(dureeLabel, constraints);
-        constraints.gridy = 7;
+        constraints.gridy = 5;
         creerActionPanel.add(dureeField, constraints);
-        constraints.gridy = 8;
+        constraints.gridy = 6;
         creerActionPanel.add(btnCreationAction, constraints);
-        constraints.gridy = 9;
+        constraints.gridy = 7;
         creerActionPanel.add(btnMenuGestionFlotte, constraints);
 
 
-        onBtnCreationActionClicked(btnCreationAction, nomActionField, nomComposanteField, dureeField);
+        onBtnCreationActionClicked(btnCreationAction, nomActionField, dureeField);
         onBtnAnnulerClicked(btnMenuGestionFlotte);
     }
 
     private void recupererLsitesTypeComposantes() {
-        listeComposantes =new ArrayList<>();
+        listeComposantes = new ArrayList<>();
         listeComposantes.add(TypesComposants.CPU.name());
         listeComposantes.add(TypesComposants.ROUE.name());
         listeComposantes.add(TypesComposants.HELICE.name());
@@ -257,12 +251,21 @@ public class GestionFlotteGUI {
         listeComposantes.add(TypesComposants.ECRAN.name());
         listeComposantes.add(TypesComposants.MICRO.name());
         listeComposantes.add(TypesComposants.CAMERA.name());
-        listeComposantesJList = new JList<>(listeComposantes.toArray(String[]::new));
-        listeComposantesJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listeComposantesJList.setVisibleRowCount(5);
-        listeComposantesJList.setCellRenderer(new ComboBoxRenderer());
+
+        JPanel composantesPanel = new JPanel();
+        composantesPanel.setLayout(new BoxLayout(composantesPanel, BoxLayout.Y_AXIS));
+
+        for (String composante : listeComposantes) {
+            JCheckBox checkBox = new JCheckBox(composante);
+            checkBox.setSelected(false);
+            composantesPanel.add(checkBox);
+        }
+
+        scrollPaneAction = new JScrollPane(composantesPanel);
+        scrollPaneAction.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
+
 
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
@@ -289,6 +292,7 @@ public class GestionFlotteGUI {
                         afficherMessageErreurEnregistrerRobot();
                     }
                 }
+                mettreAJourFrame();
             }
         });
     }
@@ -306,22 +310,30 @@ public class GestionFlotteGUI {
         });
     }
 
-    public void onBtnCreationActionClicked(JButton btnCreationAction, JTextField nomActionField, JTextField nomComposanteField, JTextField dureeField) {
+    public void onBtnCreationActionClicked(JButton btnCreationAction, JTextField nomActionField, JTextField dureeField) {
         btnCreationAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomActionField.getText().isEmpty() || listeComposantesJList.isSelectionEmpty() || dureeField.getText().isEmpty()) {
+                JPanel composantesPanel = (JPanel) scrollPaneAction.getViewport().getView();
+                Component[] checkBoxes = composantesPanel.getComponents();
+                ArrayList<String> selectedComposantesList = new ArrayList<>();
+
+                for (Component checkBox : checkBoxes) {
+                    if (checkBox instanceof JCheckBox cb && cb.isSelected()) {
+                        selectedComposantesList.add(cb.getText());
+                    }
+                }
+                if (nomActionField.getText().isEmpty() || dureeField.getText().isEmpty() || selectedComposantesList.isEmpty()) {
                     afficherMessageErreurCreationAction();
                 } else {
-                    ArrayList<String> listeComposantes2 = new ArrayList<>(Arrays.asList(nomComposanteField.getText().split(",")));
-
-                    controlleurUtilisateurs.creerAction(nomActionField.getText(), listeComposantes2, dureeField.getText(), pseudo);
+                    controlleurUtilisateurs.creerAction(nomActionField.getText(), selectedComposantesList, dureeField.getText(), pseudo);
                     confirmerCreationAction();
                 }
+                mettreAJourFrame();
             }
+
         });
     }
-
 
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {

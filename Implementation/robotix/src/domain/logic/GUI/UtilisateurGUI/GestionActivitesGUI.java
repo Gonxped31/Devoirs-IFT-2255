@@ -1,11 +1,25 @@
 package domain.logic.GUI.UtilisateurGUI;
 
+import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Outils.GestionDates;
+import domain.logic.Outils.Verifications;
+import domain.logic.Robot.Action;
+import domain.logic.Robot.Activite;
+import domain.logic.Robot.Composant;
+import domain.logic.Robot.Tache;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GestionActivitesGUI {
+    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel creerActivitePanel = new JPanel(new GridBagLayout());
@@ -14,10 +28,15 @@ public class GestionActivitesGUI {
     private JButton btnCreerActivite = new JButton("Creer une activite");
     private JButton btnRejoindreActivite = new JButton("Rejoindre une activite");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+    private ArrayList<Tache> listeTaches;
+    private ArrayList<Activite> listeActivites;
+    private JScrollPane scrollPaneListeTaches;
+    private JScrollPane scrollPaneListeActivites;
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GestionActivitesGUI() {
+    public GestionActivitesGUI(String pseudo) throws IOException, ParseException {
+        this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
@@ -64,14 +83,14 @@ public class GestionActivitesGUI {
     public void setCreerActivitePanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel nomActiviteLabel = new JLabel("Nom de l'activité");
-        JLabel datDebutLabel = new JLabel("Date de debut");
-        JLabel datFinLabel = new JLabel("Date de fin");
-        JLabel tacheLabel = new JLabel("Veuillez entrer une tache");
-        JLabel interetLabel = new JLabel("Veuillez entrer un interet");
+        JLabel datDebutLabel = new JLabel("Date de debut (en format yyyy-MM-dd)");
+        JLabel datFinLabel = new JLabel("Date de fin (en format yyyy-MM-dd)");
+        JLabel tacheLabel = new JLabel("Veuillez selectionner les taches a rajouter a l'activite");
+        recupererListeTache();
+        JLabel interetLabel = new JLabel("Veuillez entrer un les interets a ajouter a cette activte (veuillez les separer par des virgules)");
         JTextField nomActiviteField = new JTextField();
         JTextField dateDebutField = new JTextField();
         JTextField dateFinField = new JTextField();
-        JTextField tacheField = new JTextField();
         JTextField interetField = new JTextField();
         JButton btnCreation = new JButton("Confirmer la creation de l'activite");
         JButton btnAnnuler = new JButton("Annuler");
@@ -80,7 +99,6 @@ public class GestionActivitesGUI {
         nomActiviteField.setPreferredSize(new Dimension(200, 30));
         dateDebutField.setPreferredSize(new Dimension(200, 30));
         dateFinField.setPreferredSize(new Dimension(200, 30));
-        tacheField.setPreferredSize(new Dimension(200, 30));
         interetField.setPreferredSize(new Dimension(200, 30));
 
         // Ajout des composantes
@@ -99,7 +117,7 @@ public class GestionActivitesGUI {
         constraints.gridy = 6;
         creerActivitePanel.add(tacheLabel, constraints);
         constraints.gridy = 7;
-        creerActivitePanel.add(tacheField, constraints);
+        creerActivitePanel.add(scrollPaneListeTaches, constraints);
         constraints.gridy = 8;
         creerActivitePanel.add(interetLabel, constraints);
         constraints.gridy = 9;
@@ -109,18 +127,27 @@ public class GestionActivitesGUI {
         constraints.gridy = 11;
         creerActivitePanel.add(btnAnnuler, constraints);
 
-        onBtnActiviteCreeeClicked(btnCreation, nomActiviteField, dateDebutField, dateFinField, tacheField, interetField);
+        onBtnActiviteCreeeClicked(btnCreation, nomActiviteField, dateDebutField, dateFinField, interetField);
         onBtnAnnulerClicked(btnAnnuler);
+    }
+
+    private void recupererListeTache() {
+        listeTaches = controlleurUtilisateurs.recuprerListeTache(pseudo);
+        JPanel tachePanel = new JPanel();
+        tachePanel.setLayout(new BoxLayout(tachePanel, BoxLayout.Y_AXIS));
+
+        for (Tache tache: listeTaches) {
+            JCheckBox checkBox = new JCheckBox(tache.getNom());
+            checkBox.setSelected(false);
+            tachePanel.add(checkBox);
+        }
+        scrollPaneListeTaches = new JScrollPane(tachePanel);
+        scrollPaneListeTaches.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
     public void setRejoindreActivitePanel() {
         JLabel rejoindreActiviteLabel = new JLabel("Veuillez selectionner une activite a rejoindre parmi les suivantes");
-        JLabel dateActiviteLabel = new JLabel("Entrez une date de debut de l'activite (format dd/MM/yyyy)");
-        JRadioButton balladeForet = new JRadioButton("Ballade en foret (du 02/07/2000 au 02/08/2000)");
-        JRadioButton course = new JRadioButton("Course de rally (du 05/07/2000 au 02/08/2001)");
-        JRadioButton netflix = new JRadioButton("Soiree netflix and chill (du 09/08/2010 au 02/012/2013)");
-        JRadioButton gaming = new JRadioButton("Gaming night (du 02/07/2004 au 02/08/2006)");
-        JRadioButton hockey = new JRadioButton("Hockey sur glace (du 14/10/2023 au 02/08/2026)");
+        recupererListeActivites();
         JTextField dateActiviteField = new JTextField();
         JButton btnRejoindre = new JButton("Rejoindre l'activite");
         JButton btnAnnuler = new JButton("Annuler");
@@ -128,18 +155,6 @@ public class GestionActivitesGUI {
         dateActiviteField.setPreferredSize(new Dimension(200, 30));
         constraints.gridy = 0;
         rejoindreActivitePanel.add(rejoindreActiviteLabel, constraints);
-        constraints.gridy = 1;
-        rejoindreActivitePanel.add(balladeForet, constraints);
-        constraints.gridy = 2;
-        rejoindreActivitePanel.add(course, constraints);
-        constraints.gridy = 3;
-        rejoindreActivitePanel.add(netflix, constraints);
-        constraints.gridy = 4;
-        rejoindreActivitePanel.add(gaming, constraints);
-        constraints.gridy = 5;
-        rejoindreActivitePanel.add(hockey, constraints);
-        constraints.gridy = 6;
-        rejoindreActivitePanel.add(dateActiviteLabel, constraints);
         constraints.gridy = 7;
         rejoindreActivitePanel.add(dateActiviteField, constraints);
         constraints.gridy = 8;
@@ -147,8 +162,12 @@ public class GestionActivitesGUI {
         constraints.gridy = 9;
         rejoindreActivitePanel.add(btnAnnuler, constraints);
 
-        onBtnRejoindreActiviteClicked(btnRejoindre, balladeForet, course, netflix, gaming, hockey, dateActiviteField);
+        //onBtnRejoindreActiviteClicked(btnRejoindre);
         onBtnAnnulerClicked(btnAnnuler);
+    }
+
+    private void recupererListeActivites(){
+
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -164,15 +183,62 @@ public class GestionActivitesGUI {
     }
 
     public void onBtnActiviteCreeeClicked(JButton btnCreation, JTextField nomActiviteField, JTextField dateDebutField,
-                                          JTextField dateFinField, JTextField tacheField, JTextField interetField) {
+                                          JTextField dateFinField, JTextField interetField) {
         btnCreation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomActiviteField.getText().length() == 0 || dateDebutField.getText().length() == 0 || dateFinField.getText().length() == 0
-                        || tacheField.getText().length() == 0 || interetField.getText().length() == 0)
-                    afficherMessageErreurActiviteCreee();
-                else
-                    confirmerActiviteCreee();
+                StringBuilder messageErreurBuilder = new StringBuilder();
+                messageErreurBuilder.append("Erreur:\n");
+                String dateDebut = dateDebutField.getText();
+                String dateFin = dateFinField.getText();
+                ArrayList<String> listeInterets = new ArrayList<>(Arrays.asList(interetField.getText().split(",")));
+                if (!GestionDates.validerDate(dateDebut) || !GestionDates.validerDate(dateFin)){
+                    messageErreurBuilder.append("Reverifier le format des dates entrees.\n");
+                    afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                } else {
+                    if (!GestionDates.veriferSiDateRealiste(dateDebut)){
+                        messageErreurBuilder.append("La date de debut de l'activitee doit commencer au moins au mois aujoud'hui." +
+                                "\nNous ne pouvons malheureusement pas encore voyager dans le temps donc veuillez patienter\n" +
+                                "jusqu'a ce que cette fonctionnalitee soit disponible un jour :)\n");
+                        afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                    } else {
+                        if (!GestionDates.verifierCoherenceDate(dateDebut, dateFin)){
+                            messageErreurBuilder.append("La date de debut doit commencer avant la date de fin.\n");
+                            afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                        } else {
+                            if (listeTaches.isEmpty() || listeInterets.get(0).isEmpty()){
+                                messageErreurBuilder.append("Vous devez rajouter au moins un interet.\n");
+                                afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                            } else {
+                                JPanel tachesPanel = (JPanel) scrollPaneListeTaches.getViewport().getView();
+                                Component[] taches = tachesPanel.getComponents();
+                                ArrayList<String> tachesChoisies = new ArrayList<>();
+
+                                for (Component tache: taches) {
+                                    if (tache instanceof JCheckBox cb && cb.isSelected()){
+                                        tachesChoisies.add(cb.getText());
+                                    }
+                                }
+
+                                try {
+                                    if (controlleurUtilisateurs.creerActivites(pseudo, nomActiviteField.getText(), dateDebut, dateFin, tachesChoisies, listeInterets)){
+                                        confirmerActiviteCreee();
+                                    } else {
+                                        messageErreurBuilder.append("L'activite que vous tentez de creer existe deja.");
+                                        afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                                    }
+                                } catch (ParseException ex) {
+                                    messageErreurBuilder.setLength(0);
+                                    messageErreurBuilder.append("Une erreur s'est produite. Deconnectez-vous puis reconnectez-vous " +
+                                            "et assurez vous que les dates sont bien ecrites.\n");
+                                    afficherMessageErreurActiviteCreee(messageErreurBuilder.toString());
+                                }
+
+                            }
+                        }
+                    }
+                }
+
             }
         });
     }
@@ -210,8 +276,7 @@ public class GestionActivitesGUI {
         mettreAJourFrame();
     }
 
-    public void afficherMessageErreurActiviteCreee() {
-        String message = "Cette activitée existe déjà. Veuillez reessayer un autre.";
+    public void afficherMessageErreurActiviteCreee(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
