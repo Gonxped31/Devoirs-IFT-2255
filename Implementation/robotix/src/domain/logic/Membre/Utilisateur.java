@@ -12,6 +12,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.logic.Robot.*;
 
+/**
+ * Classe représentant un utilisateur de l'application qui gere des robots.
+ * Ce dernier peut acheter et enregistrer des robots auprès de différent fournisseur.
+ */
 public class Utilisateur extends Membre implements java.io.Serializable{
 
     private ArrayList<Robot> listeRobot = new ArrayList<>();
