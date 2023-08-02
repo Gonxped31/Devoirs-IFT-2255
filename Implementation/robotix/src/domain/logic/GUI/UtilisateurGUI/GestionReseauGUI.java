@@ -25,6 +25,7 @@ public class GestionReseauGUI {
     private JButton btnGererInterets = new JButton("Gerer mes interets");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
+    private JScrollPane scrollPaneVoirMesAbonnes;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -34,7 +35,7 @@ public class GestionReseauGUI {
         setMainPanel();
         setSuivreUtilisateurPanel();
         setGererSuiveursPanel();
-        setVoirListeAbonnesPanel();
+        setVoirListeAbonnesPanel(pseudo);
         setSupprimerAbonnePanel();
         setGererInteretsPanel();
 
@@ -145,7 +146,9 @@ public class GestionReseauGUI {
         onBtnAnnulerClicked(btnRetourMenuReseau); // ActionListener Event lorsqu'on clique le bouton btnRetourMenuReseau
     }
 
-    public void setVoirListeAbonnesPanel() {
+    public void setVoirListeAbonnesPanel(String pseudo) {
+        controlleurUtilisateurs.voirListeUtilisateur(pseudo);
+
         JLabel listeAbonnementsLabel = new JLabel("Voici la liste de vos abonnements");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
 
@@ -205,8 +208,6 @@ public class GestionReseauGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String input = pseudoField.getText();
-                System.out.println(pseudo);
-                System.out.println(input);
                 if (controlleurUtilisateurs.existeDansListeSuivi(pseudo, input)) {
                     afficherMessageErreurUtilDejaSuivi(input);
                 }

@@ -212,7 +212,7 @@ public class ControlleurUtilisateurs {
         dataBaseController.ajouterUtilisateur(u);
     }
 
-    public String voirListeUtilisateur(String pseudo){
+    public ArrayList<String> voirListeUtilisateur(String pseudo){
         return dataBaseController.retournerUtilisateur(pseudo).voirListeUtilisateur();
     }
 

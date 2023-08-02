@@ -460,12 +460,22 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.listeInteret.add(i);
     }
 
-    public String voirListeUtilisateur() {
+    public ArrayList<String>  voirListeUtilisateur() {
+        ArrayList<String> liste = new ArrayList<>();
+        for (String u : this.listeUtilisateursSuivi){
+            liste.add(u);
+        }
+        return liste;
+
+        //REFACTORED to return ArrayList
+        /*
         StringBuilder sb = new StringBuilder();
         for (String u : this.listeUtilisateursSuivi) {
             sb.append(u).append("\n");
         }
         return sb.toString();
+        */
+
     }
 
     public boolean supprimerUtilisateurDeMaListe(String utilASupprimer) {
@@ -489,7 +499,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         while (iterator.hasNext()) {
             Interet i = iterator.next();
             if (i.getNom().equals(choix)) {
-                iterator.remove(); // Safely remove the element using the iterator
+                iterator.remove();
             }
         }
     }
