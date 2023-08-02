@@ -1,6 +1,7 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Robot.Action;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class GestionReseauGUI {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
@@ -35,7 +37,7 @@ public class GestionReseauGUI {
         setMainPanel();
         setSuivreUtilisateurPanel();
         setGererSuiveursPanel();
-        setVoirListeAbonnesPanel(pseudo);
+        setVoirListeAbonnesPanel();
         setSupprimerAbonnePanel();
         setGererInteretsPanel();
 
@@ -146,10 +148,9 @@ public class GestionReseauGUI {
         onBtnAnnulerClicked(btnRetourMenuReseau); // ActionListener Event lorsqu'on clique le bouton btnRetourMenuReseau
     }
 
-    public void setVoirListeAbonnesPanel(String pseudo) {
-        controlleurUtilisateurs.voirListeUtilisateur(pseudo);
-
+    public void setVoirListeAbonnesPanel() {
         JLabel listeAbonnementsLabel = new JLabel("Voici la liste de vos abonnements");
+        recupererListeDeMesAbonnes();
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
 
         listeAbonnementsLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -157,9 +158,26 @@ public class GestionReseauGUI {
         constraints.gridy = 0;
         voirListeAbonnesPanel.add(listeAbonnementsLabel, constraints);
         constraints.gridy = 1;
+        voirListeAbonnesPanel.add(scrollPaneVoirMesAbonnes, constraints);
+        constraints.gridy = 2;
         voirListeAbonnesPanel.add(btnRetourMenuReseau, constraints);
 
         onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+    }
+
+    public void recupererListeDeMesAbonnes(){
+        ArrayList<String> listePseudoUtilisateur = controlleurUtilisateurs.voirListeUtilisateur(pseudo);
+
+        JPanel suiveursPanel = new JPanel();
+        suiveursPanel.setLayout(new BoxLayout(suiveursPanel, BoxLayout.Y_AXIS));
+
+        for (String pseudoUtil: listePseudoUtilisateur) {
+            JLabel label = new JLabel(pseudoUtil);
+            suiveursPanel.add(label);
+        }
+
+        scrollPaneVoirMesAbonnes = new JScrollPane(suiveursPanel);
+        scrollPaneVoirMesAbonnes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
     public void setSupprimerAbonnePanel() {
