@@ -249,10 +249,11 @@ public class GestionReseauGUI {
         btnSupprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (supprimerField.getText().length() == 0 || !(controlleurUtilisateurs.suppriemrSuivreUtilisateur(pseudo, supprimerField.getText())))
+                String aSupprimer = supprimerField.getText();
+                if (aSupprimer.length() == 0 || !(controlleurUtilisateurs.suppriemrSuivreUtilisateur(pseudo, aSupprimer)))
                     afficherMessageErreurSupprimerAbonne();
                 else
-                    confirmerSupprimerAbonne();
+                    confirmerSupprimerAbonne(aSupprimer);
             }
         });
     }
@@ -287,9 +288,9 @@ public class GestionReseauGUI {
         mettreAJourFrame();
     }
 
-    public void confirmerSupprimerAbonne() {
+    public void confirmerSupprimerAbonne(String nom) {
 
-        String message = "Vous avez supprime _____ dans vos abonnes";
+        String message = "Vous avez supprime " + nom + " dans vos abonnes";
         String title = "Supprimer abonne";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 

@@ -239,9 +239,10 @@ public class ControlleurUtilisateurs {
     public boolean suppriemrSuivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
         //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
         try {
-            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
+            Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+            Utilisateur utilASupprimer = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
             dataBaseController.supprimerUtilisateur(u);
-            u.getListSuiveur().remove(utilisateurCourant);
+            u.getListeUtilisateursSuivi().remove(utilASupprimer.getPseudo());
             dataBaseController.ajouterUtilisateur(u);
         } catch (NullPointerException e){
             return false;
