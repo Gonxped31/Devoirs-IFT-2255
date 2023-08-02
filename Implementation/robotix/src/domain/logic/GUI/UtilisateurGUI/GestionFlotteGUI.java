@@ -1,6 +1,7 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Outils.CheckBoxListRenderer;
 import domain.logic.Outils.ComboBoxRenderer;
 import domain.logic.Outils.HTMLListCellRenderer;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class GestionFlotteGUI {
@@ -184,8 +186,34 @@ public class GestionFlotteGUI {
         constraints.gridy = 4;
         afficherEtatRobotPanel.add(btnRetour, constraints);
 
+        onBtnContinuerAfficherEtatRobot(btnContinuer, numeroSerieField);
         onBtnAnnulerClicked(btnRetour);
     }
+
+    private void onBtnContinuerAfficherEtatRobot(JButton btnContinuer, JTextField numeroSerieField) {
+        btnContinuer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String numeroSerie = numeroSerieField.getText();
+                if (!numeroSerie.isEmpty()) {
+                    String r = controlleurUtilisateurs.afficherEtatRobot(numeroSerie, pseudo);
+                    if (!r.equals("Robot non trouver, veuiller verifier le numero de serie")) {
+                        r = "<html>" + r.replace("\n", "<br>") + "</html>";
+                        listModelAfficherEtatRobot.clear();
+                        listModelAfficherEtatRobot.addElement(r);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Robot non trouver, veuiller verifier le numero de serie.",
+                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Robot non trouve.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    listModelAfficherEtatRobot.clear();
+                }
+                mettreAJourFrame();
+            }
+        });
+    }
+
     public void setAjouterComposantePanel() {
         JLabel nomComposanteLabel = new JLabel("Nom de la composante a ajouter");
         JLabel numeroSerieLabel = new JLabel("Numero de serie");
@@ -314,7 +342,7 @@ public class GestionFlotteGUI {
                 if (nomRobotField.getText().isEmpty() || typeRobotField.getText().isEmpty() || numeroSerieField.getText().isEmpty())
                     afficherMessageErreurEnregistrerRobot();
                 else{
-                    if (controlleurUtilisateurs.enregistrerRobot(nomRobotField.getText(), typeRobotField.getText(), numeroSerieField.getText(), pseudo)){
+                    if (!controlleurUtilisateurs.enregistrerRobot(nomRobotField.getText(), typeRobotField.getText(), numeroSerieField.getText(), pseudo)){
                         confirmerEnregistrementRobot();
                     } else {
                         afficherMessageErreurEnregistrerRobot();

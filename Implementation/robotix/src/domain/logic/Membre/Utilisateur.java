@@ -130,17 +130,22 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         }
     }
 
-    public boolean enregistrerRobot(String nomRobot, Robot robot, String type){//, String numeroSerie, ArrayList<Fournisseur> listeFournisseur){
-        robot.setNom(nomRobot);
-        robot.setType(type);
-
-       boolean robotExiste= this.listeRobot.stream()
-               .anyMatch(r-> robot.getNumeroSerie().equals(robot.getNumeroSerie()));
-       if (!robotExiste ) {
-           listeRobot.add(robot);
-       }
+    public boolean enregistrerRobot(Robot robot){
+        boolean robotExiste=false;
+        for( Robot r : listeRobot)
+        {
+            if(r.getNumero()==robot.getNumero())
+            {
+                robotExiste=true;
+            }
+        }
+        if (!robotExiste ) {
+            listeRobot.add(robot);
+        }
         return  robotExiste;
     }
+
+
     public String listeRobot(){
         String result = "";
         for (Robot robot: listeRobot) {

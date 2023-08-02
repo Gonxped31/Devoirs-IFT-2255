@@ -125,10 +125,11 @@ public class ControlleurFournisseurs {
      * @param description La description de la composante à ajouter.
      * @param typesComposants Le type de composants de la composante à ajouter.
      */
-    public void ajouterComposante(String nom, String prix, String description, String typesComposants){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        this.fournisseurCourant.ajouterComposante(nom, prix,description,typesComposants);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public void ajouterComposante(String nom, String prix, String description, String typesComposants, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        f.ajouterComposante(nom, prix,description,typesComposants);
+        this.dataBaseController.ajouterFournisseur(f);
     }
 
     /**
@@ -137,10 +138,11 @@ public class ControlleurFournisseurs {
      * @param composante Le nom de la composante à retirer.
      * @return {@code true} si la composante a été retirée avec succès, {@code false} sinon.
      */
-    public boolean retirerComposante(String composante){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean c = this.fournisseurCourant.retirerComopsante(composante);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public boolean retirerComposante(String composante, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        boolean c = f.retirerComopsante(composante);
+        this.dataBaseController.ajouterFournisseur(f);
         return c;
     }
 
@@ -151,10 +153,11 @@ public class ControlleurFournisseurs {
      * @param prix Le nouveau prix de la composante.
      * @return {@code true} si la modification a réussi, {@code false} sinon.
      */
-    public boolean modifierPrixComposante(String nomComposante, String prix){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean bool = this.fournisseurCourant.modifierPrixComposante(nomComposante, prix);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public boolean modifierPrixComposante(String nomComposante, String prix, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        boolean bool = f.modifierPrixComposante(nomComposante, prix);
+        this.dataBaseController.ajouterFournisseur(f);
         return bool;
     }
 
@@ -165,10 +168,11 @@ public class ControlleurFournisseurs {
      * @param description La nouvelle description de la composante.
      * @return {@code true} si la modification a réussi, {@code false} sinon.
      */
-    public boolean modifierDescriptionComposante(String nomComposante, String description){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean bool = this.fournisseurCourant.modifierDescriptionComposante(nomComposante, description);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public boolean modifierDescriptionComposante(String nomComposante, String description, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        boolean bool = f.modifierDescriptionComposante(nomComposante, description);
+        this.dataBaseController.ajouterFournisseur(f);
         return bool;
     }
 

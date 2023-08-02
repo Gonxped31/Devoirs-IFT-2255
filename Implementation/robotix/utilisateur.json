@@ -1,1 +1,2275 @@
-[{"nom":"Boubacar","prenom":"Kelly","adresse":null,"pseudo":"KellyB","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"BoubaCar","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5141111111"},{"nom":"Doren","prenom":"Sky","adresse":null,"pseudo":"SD","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"DoRen","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5144444444"},{"nom":"Brice","prenom":"Mb","adresse":null,"pseudo":"Brice","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"BrIce","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"51455555555"},{"nom":"Francois","prenom":"Paris","adresse":null,"pseudo":"FP","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"FrancOis","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5146666666"},{"nom":"Mehdi","prenom":"Til","adresse":null,"pseudo":"MT","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"MeHdi","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5147777777"},{"nom":"Monica","prenom":"G","adresse":null,"pseudo":"MG","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"MonIca","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5148888888"},{"nom":"Stefano","prenom":"DiGir","adresse":null,"pseudo":"SDi","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"StefAno","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5149999999"},{"nom":"James","prenom":"Greg","adresse":null,"pseudo":"JG","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"JaMes","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5141010101"},{"nom":"Damov","prenom":"Kamen","adresse":null,"pseudo":"KADA","email":null,"nomCompagnie":null,"listeInteret":[{"nom":"Tennis"}],"listeNotifications":[],"motDePasse":"12345","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"1234567891"},{"nom":"Dragon","prenom":"Kamen","adresse":null,"pseudo":"KD","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"KaMen","listeRobot":[{"nom":"Bobby","vitesse":0,"batterie":100,"cpu":120,"memoire":32.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"type":"Type1","taches":[{"nom":"Prendre en l'air","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"dureeTache":65}],"activites":["Cascade aerienne"],"actions":[],"numeroSerie":"781cb5b8-61e7-4bac-949e-5f5d0c10ddab","x":0,"y":0,"numero":7}],"listeTaches":[{"nom":"Prendre en l'air","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"dureeTache":65}],"listeActions":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"composantesAchetes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[{"auteur":"gonxped31","nom":"Cascade aerienne","dateDebut":1690948800000,"dateFin":1691380800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":["gonxped31","KD"],"points":20,"dureeActivite":210,"listeRobotsInscrits":[{"nom":"Bobby","vitesse":0,"batterie":100,"cpu":120,"memoire":32.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"type":"Type1","taches":[{"nom":"Prendre en l'air","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"dureeTache":65}],"activites":["Cascade aerienne"],"actions":[],"numeroSerie":"781cb5b8-61e7-4bac-949e-5f5d0c10ddab","x":0,"y":0,"numero":7}]}],"listeActivitesCreer":[{"auteur":"KD","nom":"Ballade aerienne","dateDebut":1690776000000,"dateFin":1691208000000,"listeDeTache":[{"nom":"Prendre en l'air","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"dureeTache":65}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":[],"points":23,"dureeActivite":65,"listeRobotsInscrits":[]}],"listSuiveur":[{"nom":"Sherwind","prenom":"Arion","adresse":null,"pseudo":"Arion","email":null,"nomCompagnie":null,"listeInteret":[{"nom":"Explorer"}],"listeNotifications":[],"motDePasse":"123","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"1234567891"},{"nom":"Gbian","prenom":"Samir","adresse":null,"pseudo":"gonxped31","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"samir","listeRobot":[{"nom":"Bobby","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"type":"Type1","taches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"activites":[],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}],"listeTaches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"listeActions":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Attraper en l'air","composantes":["CPU","HELICE","BRAS"],"duree":"10"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"composantesAchetes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[{"auteur":"gonxped31","nom":"Cascade aerienne","dateDebut":1690948800000,"dateFin":1691380800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":["gonxped31"],"points":20,"dureeActivite":210,"listeRobotsInscrits":[{"nom":"","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"}],"type":"Abeille","taches":[],"activites":[],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}]},{"auteur":"gonxped31","nom":"Ceuillir en l'air","dateDebut":1690776000000,"dateFin":1690862400000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"listeInteretAssocie":[{"nom":""}],"listeUtilisateurInsccrit":["gonxped31"],"points":29,"dureeActivite":300,"listeRobotsInscrits":[{"nom":"Bobby","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"type":"Type1","taches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"activites":[],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}]}],"listeActivitesCreer":[{"auteur":"gonxped31","nom":"Ceuillir en l'air","dateDebut":1690776000000,"dateFin":1690862400000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"listeInteretAssocie":[{"nom":""}],"listeUtilisateurInsccrit":[],"points":29,"dureeActivite":300,"listeRobotsInscrits":[]},{"auteur":"gonxped31","nom":"Cascade aerienne","dateDebut":1690948800000,"dateFin":1691380800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":[],"points":20,"dureeActivite":210,"listeRobotsInscrits":[]}],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5143333333"}],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5142222222"},{"nom":"Gbian","prenom":"Samir","adresse":null,"pseudo":"gonxped31","email":null,"nomCompagnie":null,"listeInteret":[],"listeNotifications":[],"motDePasse":"samir","listeRobot":[{"nom":"Bobby","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"}],"type":"Type1","taches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90},{"nom":"Aller courir","taches":[{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"dureeTache":720}],"activites":["Ballade aerienne"],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}],"listeTaches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90},{"nom":"Aller courir","taches":[{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"dureeTache":720}],"listeActions":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Attraper en l'air","composantes":["CPU","HELICE","BRAS"],"duree":"10"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"composantesAchetes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"}],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[{"auteur":"gonxped31","nom":"Cascade aerienne","dateDebut":1690948800000,"dateFin":1691380800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":["gonxped31"],"points":20,"dureeActivite":210,"listeRobotsInscrits":[{"nom":"","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"}],"type":"Abeille","taches":[],"activites":[],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}]},{"auteur":"gonxped31","nom":"Ceuillir en l'air","dateDebut":1690776000000,"dateFin":1690862400000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"listeInteretAssocie":[{"nom":""}],"listeUtilisateurInsccrit":["gonxped31"],"points":29,"dureeActivite":300,"listeRobotsInscrits":[{"nom":"Bobby","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}],"type":"Type1","taches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"activites":[],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}]},{"auteur":"KD","nom":"Ballade aerienne","dateDebut":1690776000000,"dateFin":1691208000000,"listeDeTache":[{"nom":"Prendre en l'air","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"15"},{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS"],"duree":"50"}],"dureeTache":65}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":["gonxped31"],"points":23,"dureeActivite":65,"listeRobotsInscrits":[{"nom":"Bobby","vitesse":0,"batterie":98,"cpu":46,"memoire":84.0,"composantes":[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"},{"nom":"roue","prix":"570000","description":"Description roue","typeComposant":"ROUE"},{"nom":"helice","prix":"457000","description":"Description helice","typeComposant":"HELICE"},{"nom":"micro","prix":"365000000","description":"Description micro","typeComposant":"MICRO"},{"nom":"hautparleur","prix":"7540000","description":"Description hautparleur","typeComposant":"HAUTPARLEUR"},{"nom":"ecran","prix":"841000000","description":"Description ecran","typeComposant":"ECRAN"},{"nom":"bras","prix":"800000","description":"Description bras","typeComposant":"BRAS"}],"type":"Type1","taches":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90},{"nom":"Aller courir","taches":[{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"dureeTache":720}],"activites":["Ballade aerienne"],"actions":[],"numeroSerie":"5aa4ffcf-4647-4840-8115-3cc6f5975d7d","x":0,"y":0,"numero":7}]}],"listeActivitesCreer":[{"auteur":"gonxped31","nom":"Ceuillir en l'air","dateDebut":1690776000000,"dateFin":1690862400000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90}],"listeInteretAssocie":[{"nom":""}],"listeUtilisateurInsccrit":[],"points":29,"dureeActivite":300,"listeRobotsInscrits":[]},{"auteur":"gonxped31","nom":"Cascade aerienne","dateDebut":1690948800000,"dateFin":1691380800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210}],"listeInteretAssocie":[{"nom":"Explorer"}],"listeUtilisateurInsccrit":[],"points":20,"dureeActivite":210,"listeRobotsInscrits":[]},{"auteur":"gonxped31","nom":"Ballade aerienne","dateDebut":1690862400000,"dateFin":1690948800000,"listeDeTache":[{"nom":"Survoler","taches":[{"nomAction":"Voler","composantes":["CPU","ROUE","HELICE","BRAS","MICRO"],"duree":"150"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":210},{"nom":"Ceuillette","taches":[{"nomAction":"Prendre","composantes":["CPU","BRAS"],"duree":"30"},{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"}],"dureeTache":90},{"nom":"Aller courir","taches":[{"nomAction":"Avancer","composantes":["CPU","ROUE"],"duree":"60"},{"nomAction":"Afficher","composantes":["CPU","ROUE","ECRAN"],"duree":"600"},{"nomAction":"Parler","composantes":["CPU","HAUTPARLEUR","MICRO"],"duree":"60"}],"dureeTache":720}],"listeInteretAssocie":[{"nom":"Exploration"}],"listeUtilisateurInsccrit":[],"points":47,"dureeActivite":1020,"listeRobotsInscrits":[]}],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5143333333"}]
+[
+  {
+    "nom": "Boubacar",
+    "prenom": "Kelly",
+    "adresse": null,
+    "pseudo": "KellyB",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BoubaCar",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141111111"
+  },
+  {
+    "nom": "Doren",
+    "prenom": "Sky",
+    "adresse": null,
+    "pseudo": "SD",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "DoRen",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5144444444"
+  },
+  {
+    "nom": "Brice",
+    "prenom": "Mb",
+    "adresse": null,
+    "pseudo": "Brice",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BrIce",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "51455555555"
+  },
+  {
+    "nom": "Francois",
+    "prenom": "Paris",
+    "adresse": null,
+    "pseudo": "FP",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "FrancOis",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5146666666"
+  },
+  {
+    "nom": "Mehdi",
+    "prenom": "Til",
+    "adresse": null,
+    "pseudo": "MT",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MeHdi",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5147777777"
+  },
+  {
+    "nom": "Monica",
+    "prenom": "G",
+    "adresse": null,
+    "pseudo": "MG",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MonIca",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5148888888"
+  },
+  {
+    "nom": "Stefano",
+    "prenom": "DiGir",
+    "adresse": null,
+    "pseudo": "SDi",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "StefAno",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5149999999"
+  },
+  {
+    "nom": "James",
+    "prenom": "Greg",
+    "adresse": null,
+    "pseudo": "JG",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "JaMes",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141010101"
+  },
+  {
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "adresse": null,
+    "pseudo": "KADA",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [
+      {
+        "nom": "Tennis"
+      }
+    ],
+    "listeNotifications": [],
+    "motDePasse": "12345",
+    "listeRobot": [],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "1234567891"
+  },
+  {
+    "nom": "Dragon",
+    "prenom": "Kamen",
+    "adresse": null,
+    "pseudo": "KD",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "KaMen",
+    "listeRobot": [
+      {
+        "nom": "Bobby",
+        "vitesse": 0,
+        "batterie": 100,
+        "cpu": 120,
+        "memoire": 32.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
+          },
+          {
+            "nom": "roue",
+            "prix": "570000",
+            "description": "Description roue",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "helice",
+            "prix": "457000",
+            "description": "Description helice",
+            "typeComposant": "HELICE"
+          },
+          {
+            "nom": "micro",
+            "prix": "365000000",
+            "description": "Description micro",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "hautparleur",
+            "prix": "7540000",
+            "description": "Description hautparleur",
+            "typeComposant": "HAUTPARLEUR"
+          },
+          {
+            "nom": "ecran",
+            "prix": "841000000",
+            "description": "Description ecran",
+            "typeComposant": "ECRAN"
+          },
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          }
+        ],
+        "type": "Type1",
+        "taches": [
+          {
+            "nom": "Prendre en l'air",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "15"
+              },
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS"
+                ],
+                "duree": "50"
+              }
+            ],
+            "dureeTache": 65
+          }
+        ],
+        "activites": [
+          "Cascade aerienne"
+        ],
+        "actions": [],
+        "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
+        "x": 0,
+        "y": 0,
+        "numero": 13
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Prendre en l'air",
+        "taches": [
+          {
+            "nomAction": "Prendre",
+            "composantes": [
+              "CPU",
+              "BRAS"
+            ],
+            "duree": "15"
+          },
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "CPU",
+              "ROUE",
+              "HELICE",
+              "BRAS"
+            ],
+            "duree": "50"
+          }
+        ],
+        "dureeTache": 65
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Prendre",
+        "composantes": [
+          "CPU",
+          "BRAS"
+        ],
+        "duree": "15"
+      },
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "CPU",
+          "ROUE",
+          "HELICE",
+          "BRAS"
+        ],
+        "duree": "50"
+      }
+    ],
+    "composantesAchetes": [
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      }
+    ],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "gonxped31",
+        "nom": "Cascade aerienne",
+        "dateDebut": 1690948800000,
+        "dateFin": 1691380800000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeUtilisateurInsccrit": [
+          "gonxped31",
+          "KD"
+        ],
+        "points": 20,
+        "dureeActivite": 210,
+        "listeRobotsInscrits": [
+          {
+            "nom": "Bobby",
+            "vitesse": 0,
+            "batterie": 100,
+            "cpu": 120,
+            "memoire": 32.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              },
+              {
+                "nom": "roue",
+                "prix": "570000",
+                "description": "Description roue",
+                "typeComposant": "ROUE"
+              },
+              {
+                "nom": "helice",
+                "prix": "457000",
+                "description": "Description helice",
+                "typeComposant": "HELICE"
+              },
+              {
+                "nom": "micro",
+                "prix": "365000000",
+                "description": "Description micro",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "hautparleur",
+                "prix": "7540000",
+                "description": "Description hautparleur",
+                "typeComposant": "HAUTPARLEUR"
+              },
+              {
+                "nom": "ecran",
+                "prix": "841000000",
+                "description": "Description ecran",
+                "typeComposant": "ECRAN"
+              },
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              }
+            ],
+            "type": "Type1",
+            "taches": [
+              {
+                "nom": "Prendre en l'air",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "15"
+                  },
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS"
+                    ],
+                    "duree": "50"
+                  }
+                ],
+                "dureeTache": 65
+              }
+            ],
+            "activites": [
+              "Cascade aerienne"
+            ],
+            "actions": [],
+            "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
+            "x": 0,
+            "y": 0,
+            "numero": 13
+          }
+        ]
+      }
+    ],
+    "listeActivitesCreer": [
+      {
+        "auteur": "KD",
+        "nom": "Ballade aerienne",
+        "dateDebut": 1690776000000,
+        "dateFin": 1691208000000,
+        "listeDeTache": [
+          {
+            "nom": "Prendre en l'air",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "15"
+              },
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS"
+                ],
+                "duree": "50"
+              }
+            ],
+            "dureeTache": 65
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 23,
+        "dureeActivite": 65,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listSuiveur": [
+      {
+        "nom": "Gbian",
+        "prenom": "Samir",
+        "adresse": null,
+        "pseudo": "gonxped31",
+        "email": null,
+        "nomCompagnie": null,
+        "listeInteret": [],
+        "listeNotifications": [],
+        "motDePasse": "samir",
+        "listeRobot": [
+          {
+            "nom": "Bobby",
+            "vitesse": 0,
+            "batterie": 98,
+            "cpu": 46,
+            "memoire": 84.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              },
+              {
+                "nom": "roue",
+                "prix": "570000",
+                "description": "Description roue",
+                "typeComposant": "ROUE"
+              },
+              {
+                "nom": "helice",
+                "prix": "457000",
+                "description": "Description helice",
+                "typeComposant": "HELICE"
+              },
+              {
+                "nom": "micro",
+                "prix": "365000000",
+                "description": "Description micro",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "hautparleur",
+                "prix": "7540000",
+                "description": "Description hautparleur",
+                "typeComposant": "HAUTPARLEUR"
+              },
+              {
+                "nom": "ecran",
+                "prix": "841000000",
+                "description": "Description ecran",
+                "typeComposant": "ECRAN"
+              },
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              }
+            ],
+            "type": "Type1",
+            "taches": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              },
+              {
+                "nom": "Ceuillette",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "30"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 90
+              }
+            ],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+            "x": 0,
+            "y": 0,
+            "numero": 13
+          }
+        ],
+        "listeTaches": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          },
+          {
+            "nom": "Ceuillette",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "30"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 90
+          }
+        ],
+        "listeActions": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "CPU",
+              "ROUE",
+              "HELICE",
+              "BRAS",
+              "MICRO"
+            ],
+            "duree": "150"
+          },
+          {
+            "nomAction": "Prendre",
+            "composantes": [
+              "CPU",
+              "BRAS"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Avancer",
+            "composantes": [
+              "CPU",
+              "ROUE"
+            ],
+            "duree": "60"
+          },
+          {
+            "nomAction": "Attraper en l'air",
+            "composantes": [
+              "CPU",
+              "HELICE",
+              "BRAS"
+            ],
+            "duree": "10"
+          },
+          {
+            "nomAction": "Afficher",
+            "composantes": [
+              "CPU",
+              "ROUE",
+              "ECRAN"
+            ],
+            "duree": "600"
+          },
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "CPU",
+              "HAUTPARLEUR",
+              "MICRO"
+            ],
+            "duree": "60"
+          }
+        ],
+        "composantesAchetes": [
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          }
+        ],
+        "listeUtilisateursSuivi": [],
+        "listeActivitesRejoint": [
+          {
+            "auteur": "gonxped31",
+            "nom": "Cascade aerienne",
+            "dateDebut": 1690948800000,
+            "dateFin": 1691380800000,
+            "listeDeTache": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Explorer"
+              }
+            ],
+            "listeUtilisateurInsccrit": [
+              "gonxped31"
+            ],
+            "points": 20,
+            "dureeActivite": 210,
+            "listeRobotsInscrits": [
+              {
+                "nom": "",
+                "vitesse": 0,
+                "batterie": 98,
+                "cpu": 46,
+                "memoire": 84.0,
+                "composantes": [
+                  {
+                    "nom": "cpu",
+                    "prix": "150000",
+                    "description": "Description cpu",
+                    "typeComposant": "CPU"
+                  },
+                  {
+                    "nom": "bras",
+                    "prix": "800000",
+                    "description": "Description bras",
+                    "typeComposant": "BRAS"
+                  },
+                  {
+                    "nom": "roue",
+                    "prix": "570000",
+                    "description": "Description roue",
+                    "typeComposant": "ROUE"
+                  },
+                  {
+                    "nom": "helice",
+                    "prix": "457000",
+                    "description": "Description helice",
+                    "typeComposant": "HELICE"
+                  },
+                  {
+                    "nom": "micro",
+                    "prix": "365000000",
+                    "description": "Description micro",
+                    "typeComposant": "MICRO"
+                  },
+                  {
+                    "nom": "hautparleur",
+                    "prix": "7540000",
+                    "description": "Description hautparleur",
+                    "typeComposant": "HAUTPARLEUR"
+                  },
+                  {
+                    "nom": "ecran",
+                    "prix": "841000000",
+                    "description": "Description ecran",
+                    "typeComposant": "ECRAN"
+                  }
+                ],
+                "type": "Abeille",
+                "taches": [],
+                "activites": [],
+                "actions": [],
+                "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+                "x": 0,
+                "y": 0,
+                "numero": 13
+              }
+            ]
+          },
+          {
+            "auteur": "gonxped31",
+            "nom": "Ceuillir en l'air",
+            "dateDebut": 1690776000000,
+            "dateFin": 1690862400000,
+            "listeDeTache": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              },
+              {
+                "nom": "Ceuillette",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "30"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 90
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": ""
+              }
+            ],
+            "listeUtilisateurInsccrit": [
+              "gonxped31"
+            ],
+            "points": 29,
+            "dureeActivite": 300,
+            "listeRobotsInscrits": [
+              {
+                "nom": "Bobby",
+                "vitesse": 0,
+                "batterie": 98,
+                "cpu": 46,
+                "memoire": 84.0,
+                "composantes": [
+                  {
+                    "nom": "cpu",
+                    "prix": "150000",
+                    "description": "Description cpu",
+                    "typeComposant": "CPU"
+                  },
+                  {
+                    "nom": "bras",
+                    "prix": "800000",
+                    "description": "Description bras",
+                    "typeComposant": "BRAS"
+                  },
+                  {
+                    "nom": "roue",
+                    "prix": "570000",
+                    "description": "Description roue",
+                    "typeComposant": "ROUE"
+                  },
+                  {
+                    "nom": "helice",
+                    "prix": "457000",
+                    "description": "Description helice",
+                    "typeComposant": "HELICE"
+                  },
+                  {
+                    "nom": "micro",
+                    "prix": "365000000",
+                    "description": "Description micro",
+                    "typeComposant": "MICRO"
+                  },
+                  {
+                    "nom": "hautparleur",
+                    "prix": "7540000",
+                    "description": "Description hautparleur",
+                    "typeComposant": "HAUTPARLEUR"
+                  },
+                  {
+                    "nom": "ecran",
+                    "prix": "841000000",
+                    "description": "Description ecran",
+                    "typeComposant": "ECRAN"
+                  },
+                  {
+                    "nom": "cpu",
+                    "prix": "150000",
+                    "description": "Description cpu",
+                    "typeComposant": "CPU"
+                  }
+                ],
+                "type": "Type1",
+                "taches": [
+                  {
+                    "nom": "Survoler",
+                    "taches": [
+                      {
+                        "nomAction": "Voler",
+                        "composantes": [
+                          "CPU",
+                          "ROUE",
+                          "HELICE",
+                          "BRAS",
+                          "MICRO"
+                        ],
+                        "duree": "150"
+                      },
+                      {
+                        "nomAction": "Avancer",
+                        "composantes": [
+                          "CPU",
+                          "ROUE"
+                        ],
+                        "duree": "60"
+                      }
+                    ],
+                    "dureeTache": 210
+                  },
+                  {
+                    "nom": "Ceuillette",
+                    "taches": [
+                      {
+                        "nomAction": "Prendre",
+                        "composantes": [
+                          "CPU",
+                          "BRAS"
+                        ],
+                        "duree": "30"
+                      },
+                      {
+                        "nomAction": "Avancer",
+                        "composantes": [
+                          "CPU",
+                          "ROUE"
+                        ],
+                        "duree": "60"
+                      }
+                    ],
+                    "dureeTache": 90
+                  }
+                ],
+                "activites": [],
+                "actions": [],
+                "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+                "x": 0,
+                "y": 0,
+                "numero": 13
+              }
+            ]
+          }
+        ],
+        "listeActivitesCreer": [
+          {
+            "auteur": "gonxped31",
+            "nom": "Ceuillir en l'air",
+            "dateDebut": 1690776000000,
+            "dateFin": 1690862400000,
+            "listeDeTache": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              },
+              {
+                "nom": "Ceuillette",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "30"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 90
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": ""
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 29,
+            "dureeActivite": 300,
+            "listeRobotsInscrits": []
+          },
+          {
+            "auteur": "gonxped31",
+            "nom": "Cascade aerienne",
+            "dateDebut": 1690948800000,
+            "dateFin": 1691380800000,
+            "listeDeTache": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Explorer"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 20,
+            "dureeActivite": 210,
+            "listeRobotsInscrits": []
+          }
+        ],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "5143333333"
+      },
+      {
+        "nom": "Sherwind",
+        "prenom": "Arion",
+        "adresse": null,
+        "pseudo": "Arion",
+        "email": null,
+        "nomCompagnie": null,
+        "listeInteret": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeNotifications": [],
+        "motDePasse": "123",
+        "listeRobot": [],
+        "listeTaches": [],
+        "listeActions": [],
+        "composantesAchetes": [],
+        "listeUtilisateursSuivi": [],
+        "listeActivitesRejoint": [],
+        "listeActivitesCreer": [],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "1234567891"
+      }
+    ],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5142222222"
+  },
+  {
+    "nom": "Gbian",
+    "prenom": "Samir",
+    "adresse": null,
+    "pseudo": "gonxped31",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "samir",
+    "listeRobot": [
+      {
+        "nom": "Bobby",
+        "vitesse": 0,
+        "batterie": 98,
+        "cpu": 46,
+        "memoire": 84.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
+          },
+          {
+            "nom": "roue",
+            "prix": "570000",
+            "description": "Description roue",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "helice",
+            "prix": "457000",
+            "description": "Description helice",
+            "typeComposant": "HELICE"
+          },
+          {
+            "nom": "micro",
+            "prix": "365000000",
+            "description": "Description micro",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "hautparleur",
+            "prix": "7540000",
+            "description": "Description hautparleur",
+            "typeComposant": "HAUTPARLEUR"
+          },
+          {
+            "nom": "ecran",
+            "prix": "841000000",
+            "description": "Description ecran",
+            "typeComposant": "ECRAN"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Type1",
+        "taches": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          },
+          {
+            "nom": "Ceuillette",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "30"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 90
+          },
+          {
+            "nom": "Aller courir",
+            "taches": [
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              },
+              {
+                "nomAction": "Afficher",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "ECRAN"
+                ],
+                "duree": "600"
+              },
+              {
+                "nomAction": "Parler",
+                "composantes": [
+                  "CPU",
+                  "HAUTPARLEUR",
+                  "MICRO"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 720
+          }
+        ],
+        "activites": [
+          "Ballade aerienne"
+        ],
+        "actions": [],
+        "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+        "x": 0,
+        "y": 0,
+        "numero": 13
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Survoler",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "CPU",
+              "ROUE",
+              "HELICE",
+              "BRAS",
+              "MICRO"
+            ],
+            "duree": "150"
+          },
+          {
+            "nomAction": "Avancer",
+            "composantes": [
+              "CPU",
+              "ROUE"
+            ],
+            "duree": "60"
+          }
+        ],
+        "dureeTache": 210
+      },
+      {
+        "nom": "Ceuillette",
+        "taches": [
+          {
+            "nomAction": "Prendre",
+            "composantes": [
+              "CPU",
+              "BRAS"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Avancer",
+            "composantes": [
+              "CPU",
+              "ROUE"
+            ],
+            "duree": "60"
+          }
+        ],
+        "dureeTache": 90
+      },
+      {
+        "nom": "Aller courir",
+        "taches": [
+          {
+            "nomAction": "Avancer",
+            "composantes": [
+              "CPU",
+              "ROUE"
+            ],
+            "duree": "60"
+          },
+          {
+            "nomAction": "Afficher",
+            "composantes": [
+              "CPU",
+              "ROUE",
+              "ECRAN"
+            ],
+            "duree": "600"
+          },
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "CPU",
+              "HAUTPARLEUR",
+              "MICRO"
+            ],
+            "duree": "60"
+          }
+        ],
+        "dureeTache": 720
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "CPU",
+          "ROUE",
+          "HELICE",
+          "BRAS",
+          "MICRO"
+        ],
+        "duree": "150"
+      },
+      {
+        "nomAction": "Prendre",
+        "composantes": [
+          "CPU",
+          "BRAS"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Avancer",
+        "composantes": [
+          "CPU",
+          "ROUE"
+        ],
+        "duree": "60"
+      },
+      {
+        "nomAction": "Attraper en l'air",
+        "composantes": [
+          "CPU",
+          "HELICE",
+          "BRAS"
+        ],
+        "duree": "10"
+      },
+      {
+        "nomAction": "Afficher",
+        "composantes": [
+          "CPU",
+          "ROUE",
+          "ECRAN"
+        ],
+        "duree": "600"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "CPU",
+          "HAUTPARLEUR",
+          "MICRO"
+        ],
+        "duree": "60"
+      }
+    ],
+    "composantesAchetes": [
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      },
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      },
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      },
+      {
+        "nom": "bras",
+        "prix": "800000",
+        "description": "Description bras",
+        "typeComposant": "BRAS"
+      }
+    ],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "gonxped31",
+        "nom": "Cascade aerienne",
+        "dateDebut": 1690948800000,
+        "dateFin": 1691380800000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeUtilisateurInsccrit": [
+          "gonxped31"
+        ],
+        "points": 20,
+        "dureeActivite": 210,
+        "listeRobotsInscrits": [
+          {
+            "nom": "",
+            "vitesse": 0,
+            "batterie": 98,
+            "cpu": 46,
+            "memoire": 84.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              },
+              {
+                "nom": "roue",
+                "prix": "570000",
+                "description": "Description roue",
+                "typeComposant": "ROUE"
+              },
+              {
+                "nom": "helice",
+                "prix": "457000",
+                "description": "Description helice",
+                "typeComposant": "HELICE"
+              },
+              {
+                "nom": "micro",
+                "prix": "365000000",
+                "description": "Description micro",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "hautparleur",
+                "prix": "7540000",
+                "description": "Description hautparleur",
+                "typeComposant": "HAUTPARLEUR"
+              },
+              {
+                "nom": "ecran",
+                "prix": "841000000",
+                "description": "Description ecran",
+                "typeComposant": "ECRAN"
+              }
+            ],
+            "type": "Abeille",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+            "x": 0,
+            "y": 0,
+            "numero": 13
+          }
+        ]
+      },
+      {
+        "auteur": "gonxped31",
+        "nom": "Ceuillir en l'air",
+        "dateDebut": 1690776000000,
+        "dateFin": 1690862400000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          },
+          {
+            "nom": "Ceuillette",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "30"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 90
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": ""
+          }
+        ],
+        "listeUtilisateurInsccrit": [
+          "gonxped31"
+        ],
+        "points": 29,
+        "dureeActivite": 300,
+        "listeRobotsInscrits": [
+          {
+            "nom": "Bobby",
+            "vitesse": 0,
+            "batterie": 98,
+            "cpu": 46,
+            "memoire": 84.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              },
+              {
+                "nom": "roue",
+                "prix": "570000",
+                "description": "Description roue",
+                "typeComposant": "ROUE"
+              },
+              {
+                "nom": "helice",
+                "prix": "457000",
+                "description": "Description helice",
+                "typeComposant": "HELICE"
+              },
+              {
+                "nom": "micro",
+                "prix": "365000000",
+                "description": "Description micro",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "hautparleur",
+                "prix": "7540000",
+                "description": "Description hautparleur",
+                "typeComposant": "HAUTPARLEUR"
+              },
+              {
+                "nom": "ecran",
+                "prix": "841000000",
+                "description": "Description ecran",
+                "typeComposant": "ECRAN"
+              },
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              }
+            ],
+            "type": "Type1",
+            "taches": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              },
+              {
+                "nom": "Ceuillette",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "30"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 90
+              }
+            ],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+            "x": 0,
+            "y": 0,
+            "numero": 13
+          }
+        ]
+      },
+      {
+        "auteur": "KD",
+        "nom": "Ballade aerienne",
+        "dateDebut": 1690776000000,
+        "dateFin": 1691208000000,
+        "listeDeTache": [
+          {
+            "nom": "Prendre en l'air",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "15"
+              },
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS"
+                ],
+                "duree": "50"
+              }
+            ],
+            "dureeTache": 65
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeUtilisateurInsccrit": [
+          "gonxped31"
+        ],
+        "points": 23,
+        "dureeActivite": 65,
+        "listeRobotsInscrits": [
+          {
+            "nom": "Bobby",
+            "vitesse": 0,
+            "batterie": 98,
+            "cpu": 46,
+            "memoire": 84.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "150000",
+                "description": "Description cpu",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              },
+              {
+                "nom": "roue",
+                "prix": "570000",
+                "description": "Description roue",
+                "typeComposant": "ROUE"
+              },
+              {
+                "nom": "helice",
+                "prix": "457000",
+                "description": "Description helice",
+                "typeComposant": "HELICE"
+              },
+              {
+                "nom": "micro",
+                "prix": "365000000",
+                "description": "Description micro",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "hautparleur",
+                "prix": "7540000",
+                "description": "Description hautparleur",
+                "typeComposant": "HAUTPARLEUR"
+              },
+              {
+                "nom": "ecran",
+                "prix": "841000000",
+                "description": "Description ecran",
+                "typeComposant": "ECRAN"
+              },
+              {
+                "nom": "bras",
+                "prix": "800000",
+                "description": "Description bras",
+                "typeComposant": "BRAS"
+              }
+            ],
+            "type": "Type1",
+            "taches": [
+              {
+                "nom": "Survoler",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "HELICE",
+                      "BRAS",
+                      "MICRO"
+                    ],
+                    "duree": "150"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 210
+              },
+              {
+                "nom": "Ceuillette",
+                "taches": [
+                  {
+                    "nomAction": "Prendre",
+                    "composantes": [
+                      "CPU",
+                      "BRAS"
+                    ],
+                    "duree": "30"
+                  },
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 90
+              },
+              {
+                "nom": "Aller courir",
+                "taches": [
+                  {
+                    "nomAction": "Avancer",
+                    "composantes": [
+                      "CPU",
+                      "ROUE"
+                    ],
+                    "duree": "60"
+                  },
+                  {
+                    "nomAction": "Afficher",
+                    "composantes": [
+                      "CPU",
+                      "ROUE",
+                      "ECRAN"
+                    ],
+                    "duree": "600"
+                  },
+                  {
+                    "nomAction": "Parler",
+                    "composantes": [
+                      "CPU",
+                      "HAUTPARLEUR",
+                      "MICRO"
+                    ],
+                    "duree": "60"
+                  }
+                ],
+                "dureeTache": 720
+              }
+            ],
+            "activites": [
+              "Ballade aerienne"
+            ],
+            "actions": [],
+            "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
+            "x": 0,
+            "y": 0,
+            "numero": 13
+          }
+        ]
+      }
+    ],
+    "listeActivitesCreer": [
+      {
+        "auteur": "gonxped31",
+        "nom": "Ceuillir en l'air",
+        "dateDebut": 1690776000000,
+        "dateFin": 1690862400000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          },
+          {
+            "nom": "Ceuillette",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "30"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 90
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": ""
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 29,
+        "dureeActivite": 300,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "gonxped31",
+        "nom": "Cascade aerienne",
+        "dateDebut": 1690948800000,
+        "dateFin": 1691380800000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 20,
+        "dureeActivite": 210,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "gonxped31",
+        "nom": "Ballade aerienne",
+        "dateDebut": 1690862400000,
+        "dateFin": 1690948800000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "HELICE",
+                  "BRAS",
+                  "MICRO"
+                ],
+                "duree": "150"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 210
+          },
+          {
+            "nom": "Ceuillette",
+            "taches": [
+              {
+                "nomAction": "Prendre",
+                "composantes": [
+                  "CPU",
+                  "BRAS"
+                ],
+                "duree": "30"
+              },
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 90
+          },
+          {
+            "nom": "Aller courir",
+            "taches": [
+              {
+                "nomAction": "Avancer",
+                "composantes": [
+                  "CPU",
+                  "ROUE"
+                ],
+                "duree": "60"
+              },
+              {
+                "nomAction": "Afficher",
+                "composantes": [
+                  "CPU",
+                  "ROUE",
+                  "ECRAN"
+                ],
+                "duree": "600"
+              },
+              {
+                "nomAction": "Parler",
+                "composantes": [
+                  "CPU",
+                  "HAUTPARLEUR",
+                  "MICRO"
+                ],
+                "duree": "60"
+              }
+            ],
+            "dureeTache": 720
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Exploration"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 47,
+        "dureeActivite": 1020,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5143333333"
+  }
+]

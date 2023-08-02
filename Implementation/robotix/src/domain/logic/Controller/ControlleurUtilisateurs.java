@@ -67,12 +67,14 @@ public class ControlleurUtilisateurs {
     }
 
     public boolean enregistrerRobot(String nomRobot, String type, String numeroSerie, String pseudo) {
-        boolean bool=false;
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        boolean bool=false;
         this.dataBaseController.supprimerUtilisateur(u);
-        Robot robot = this.dataBaseController.retournerRobot(numeroSerie);
+        Robot robot = this.dataBaseController.getCurentSoldRobot(numeroSerie);
         if (robot != null){
-            bool = u.enregistrerRobot(nomRobot ,robot, type);
+            robot.setNom(nomRobot);
+            robot.setType(type);
+            bool = u.enregistrerRobot(robot);
         }
         this.dataBaseController.ajouterUtilisateur(u);
         return bool;
@@ -83,8 +85,9 @@ public class ControlleurUtilisateurs {
         return u.getListeRobot();
     }
 
-    public String afficherEtatRobot(String pseudo, String numeroSeri) {
-        return this.utilisateurCourant.afficherEtatRobot(numeroSeri);
+    public String afficherEtatRobot(String numeroSeri, String pseudo) {
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.afficherEtatRobot(numeroSeri);
     }
 
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){

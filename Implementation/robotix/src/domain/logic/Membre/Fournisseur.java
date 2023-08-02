@@ -137,7 +137,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
 
     public void ajouterComposante(String nom, String prix, String description, String typeComposant) {
         taillePrecedenteInventaireComposantes = inventaireComposant.size();
-        inventaireComposant.add(new Composant(nom,prix,description,typeComposant));
+        inventaireComposant.add(new Composant(nom,prix,description,typeComposant.toUpperCase()));
     }
 
     public boolean retirerComopsante(String nom) {

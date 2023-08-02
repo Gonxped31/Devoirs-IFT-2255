@@ -5,10 +5,8 @@ import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Fournisseur;
 import domain.logic.Outils.ComboBoxRenderer;
-import domain.logic.Outils.EmailSender;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import domain.logic.Test;
 
 import javax.swing.*;
 import java.awt.*;

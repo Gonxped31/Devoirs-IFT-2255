@@ -41,8 +41,8 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnDeconnexion = new JButton("Deconnexion");
 	private AjouterRobotGUI ajouterRobotGUI;
 	private RetirerRobotGUI retirerRobotGUI;
-	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
-	private GererComposantesGUI gererComposantesGUI = new GererComposantesGUI();
+	private EnregistrerComposanteGUI enregistrerComposanteGUI;
+	private GererComposantesGUI gererComposantesGUI;
 	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI;
 	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI;
 
@@ -53,6 +53,8 @@ public class MenusFournisseur extends JFrame {
 		modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI(nomFournisseur);
 		ajouterRobotGUI = new AjouterRobotGUI(nomFournisseur);
 		retirerRobotGUI = new RetirerRobotGUI(nomFournisseur);
+		enregistrerComposanteGUI = new EnregistrerComposanteGUI(nomFournisseur);
+		gererComposantesGUI = new GererComposantesGUI(nomFournisseur);
 
 		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		menuFournisseurPanel.setLayout(new GridLayout(0, 1));

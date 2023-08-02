@@ -1,17 +1,24 @@
 package domain.logic.GUI.FournisseurGUI;
 
+import domain.logic.Controller.ControlleurFournisseurs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class EnregistrerComposanteGUI {
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private String nomFournisseur;
     private JFrame jFrame = new JFrame();
     private JPanel enregistrerComposantePanel = new JPanel(new GridBagLayout());
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public EnregistrerComposanteGUI() {
+    public EnregistrerComposanteGUI(String nomFournisseur) throws IOException, ParseException {
+        this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -58,11 +65,16 @@ public class EnregistrerComposanteGUI {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomComposanteField.getText().length() == 0 || prixField.getText().length() == 0 ||
-                        descriptionField.getText().length() == 0 || typeComposanteField.getText().length() == 0 ) {
-                    afficherMessageErreur();
-                } else
+                String nom = nomComposanteField.getText();
+                String prix = prixField.getText();
+                String description = descriptionField.getText();
+                String type = typeComposanteField.getText();
+                if (!nom.isEmpty() && !prix.isEmpty() && !description.isEmpty() && !type.isEmpty()){
+                    controlleurFournisseurs.ajouterComposante(nom, prix, description, type, nomFournisseur);
                     afficherMessageValidation();
+                } else {
+                    afficherMessageErreur();
+                }
             }
         });
         btnRetour.addActionListener(new ActionListener() {

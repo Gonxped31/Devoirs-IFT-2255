@@ -7,10 +7,7 @@ import domain.logic.Membre.Utilisateur;
 import domain.logic.Robot.Activite;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
-import service.BaseDeDonneeActivite;
-import service.BaseDeDonneeFournisseur;
-import service.BaseDeDonneeInteret;
-import service.BaseDeDonneeUtilisateur;
+import service.*;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -20,6 +17,7 @@ import java.util.UUID;
 
 public class DbControleur {
     private static DbControleur dbControleur;
+    private BaseDeDonneeRobotVendus baseDeDonneeRobotVendus;
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
@@ -29,6 +27,7 @@ public class DbControleur {
         this.baseDeDonneeUtilisateur=BaseDeDonneeUtilisateur.getBaseDeUtilisateur();
         this.baseDeDonneeActivite=new BaseDeDonneeActivite();
         this.baseDeDonneeInteret= new BaseDeDonneeInteret();
+        this.baseDeDonneeRobotVendus = new BaseDeDonneeRobotVendus();
     }
 
     public static DbControleur getDbControleur() throws IOException, ParseException {
@@ -211,5 +210,9 @@ public class DbControleur {
 
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         return baseDeDonneeUtilisateur.existeDansListeSuivi(pseudo, nom);
+    }
+
+    public Robot getCurentSoldRobot(String numeroSerie) {
+        return this.baseDeDonneeRobotVendus.getCurrentSoldRobot(numeroSerie);
     }
 }

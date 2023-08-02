@@ -1,11 +1,17 @@
 package domain.logic.GUI.FournisseurGUI;
 
+import domain.logic.Controller.ControlleurFournisseurs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class GererComposantesGUI {
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private String nomFournisseur;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel suppressionComposantePanel = new JPanel(new GridBagLayout());
@@ -19,7 +25,8 @@ public class GererComposantesGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GererComposantesGUI() {
+    public GererComposantesGUI(String nomFournisseur) throws IOException, ParseException {
+        this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -173,10 +180,15 @@ public class GererComposantesGUI {
         btnConfirmerSupprression.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomComposanteField.getText().length() == 0)
-                    afficherMessageErreurSuppresion();
-                else
-                    confirmerSuppresion();
+                if (nomComposanteField.getText().isEmpty())
+                    afficherMessageErreurSuppresion("Veuillez entrer un nom.");
+                else {
+                    if (controlleurFournisseurs.retirerComposante(nomComposanteField.getText(), nomFournisseur)){
+                        confirmerSuppresion();
+                    } else {
+                        afficherMessageErreurSuppresion("Vous ne possedez pas cette composante.");
+                    }
+                }
             }
         });
     }
@@ -185,10 +197,17 @@ public class GererComposantesGUI {
         btnModifierPrix.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomComposanteField.getText().length() == 0 || nouveauPrixField.getText().length() == 0)
-                    afficherMessageErreurModificationPrix();
-                else
-                    confirmerModificationPrix();
+                String nomComposante = nomComposanteField.getText();
+                String nouveauPrix = nouveauPrixField.getText();
+                if (nomComposante.isEmpty() || nouveauPrix.isEmpty())
+                    afficherMessageErreurModificationPrix("Veuillez remplir tous les champ svp.");
+                else{
+                    if (controlleurFournisseurs.modifierPrixComposante(nomComposante, nouveauPrix, nomFournisseur)){
+                        confirmerModificationPrix();
+                    } else {
+                        afficherMessageErreurSuppresion("Vous ne possedez pas cette composante.");
+                    }
+                }
             }
         });
     }
@@ -197,10 +216,18 @@ public class GererComposantesGUI {
         btnModifierDesc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nomComposanteField.getText().length() == 0 || nouveauDescField.getText().length() == 0)
-                    afficherMessageErreurModificationDesc();
-                else
-                    confirmerModificationDesc();
+                String nomComposante = nomComposanteField.getText();
+                String nouvelleDescription = nouveauDescField.getText();
+                if (nomComposante.isEmpty() || nouvelleDescription.isEmpty())
+                    afficherMessageErreurModificationDesc("Veuillez remplir tous les champ.");
+                else{
+                    if (controlleurFournisseurs.modifierDescriptionComposante(nomComposante, nouvelleDescription, nomFournisseur)){
+                        confirmerModificationDesc();
+                    } else {
+                        afficherMessageErreurModificationDesc("Vous ne possedez pas cette composante.");
+                    }
+
+                }
             }
         });
     }
@@ -235,24 +262,21 @@ public class GererComposantesGUI {
         mettreAJourFrame();
     }
 
-    public void afficherMessageErreurSuppresion() {
-        String message = "Vous ne possédez cette composante. Veuillez reessayer";
+    public void afficherMessageErreurSuppresion(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
-    public void afficherMessageErreurModificationPrix() {
-        String message = "Echec de la modification. Verifiez que vous possedez bien cette composante";
+    public void afficherMessageErreurModificationPrix(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
-    public void afficherMessageErreurModificationDesc() {
-        String message = "Echec de la modification. Verifiez que vous possedez bien cette composante";
+    public void afficherMessageErreurModificationDesc(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
