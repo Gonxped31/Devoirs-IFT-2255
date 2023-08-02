@@ -182,6 +182,7 @@ public class GestionReseauGUI {
 
     public void setSupprimerAbonnePanel() {
         JLabel supprimerAbonneLabel = new JLabel("Quel utilisateur voulez vous supprimer de votre liste");
+        recupererListeDeMesAbonnes();
         JTextField supprimerAbonneField = new JTextField();
         JButton btnSupprimer = new JButton("Supprimer cet abonne");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
@@ -190,10 +191,12 @@ public class GestionReseauGUI {
         constraints.gridy = 0;
         supprimerAbonnePanel.add(supprimerAbonneLabel, constraints);
         constraints.gridy = 1;
-        supprimerAbonnePanel.add(supprimerAbonneField, constraints);
+        supprimerAbonnePanel.add(scrollPaneVoirMesAbonnes, constraints);
         constraints.gridy = 2;
-        supprimerAbonnePanel.add(btnSupprimer, constraints);
+        supprimerAbonnePanel.add(supprimerAbonneField, constraints);
         constraints.gridy = 3;
+        supprimerAbonnePanel.add(btnSupprimer, constraints);
+        constraints.gridy = 4;
         supprimerAbonnePanel.add(btnRetourMenuReseau, constraints);
 
         onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
@@ -246,7 +249,7 @@ public class GestionReseauGUI {
         btnSupprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (supprimerField.getText().length() == 0)
+                if (supprimerField.getText().length() == 0 || !(controlleurUtilisateurs.suppriemrSuivreUtilisateur(pseudo, supprimerField.getText())))
                     afficherMessageErreurSupprimerAbonne();
                 else
                     confirmerSupprimerAbonne();
@@ -285,6 +288,7 @@ public class GestionReseauGUI {
     }
 
     public void confirmerSupprimerAbonne() {
+
         String message = "Vous avez supprime _____ dans vos abonnes";
         String title = "Supprimer abonne";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
