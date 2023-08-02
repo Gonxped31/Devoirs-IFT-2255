@@ -1,29 +1,5 @@
 [
   {
-    "nom": "Boubacar",
-    "prenom": "Kelly",
-    "adresse": null,
-    "pseudo": "KellyB",
-    "email": null,
-    "nomCompagnie": null,
-    "listeInteret": [],
-    "listeNotifications": [],
-    "motDePasse": "BoubaCar",
-    "listeRobot": [],
-    "listeTaches": [],
-    "listeActions": [],
-    "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
-    "listeActivitesRejoint": [],
-    "listeActivitesCreer": [],
-    "listSuiveur": [],
-    "point": 0,
-    "tache": null,
-    "notification": null,
-    "notifs": [],
-    "telephone": "5141111111"
-  },
-  {
     "nom": "Doren",
     "prenom": "Sky",
     "adresse": null,
@@ -324,9 +300,9 @@
         ],
         "actions": [],
         "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
-        "x": 0,
         "y": 0,
-        "numero": 13
+        "x": 0,
+        "numero": 7
       }
     ],
     "listeTaches": [
@@ -523,9 +499,9 @@
             ],
             "actions": [],
             "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
-            "x": 0,
             "y": 0,
-            "numero": 13
+            "x": 0,
+            "numero": 7
           }
         ]
       }
@@ -574,6 +550,34 @@
       }
     ],
     "listSuiveur": [
+      {
+        "nom": "Sherwind",
+        "prenom": "Arion",
+        "adresse": null,
+        "pseudo": "Arion",
+        "email": null,
+        "nomCompagnie": null,
+        "listeInteret": [
+          {
+            "nom": "Explorer"
+          }
+        ],
+        "listeNotifications": [],
+        "motDePasse": "123",
+        "listeRobot": [],
+        "listeTaches": [],
+        "listeActions": [],
+        "composantesAchetes": [],
+        "listeUtilisateursSuivi": [],
+        "listeActivitesRejoint": [],
+        "listeActivitesCreer": [],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "1234567891"
+      },
       {
         "nom": "Gbian",
         "prenom": "Samir",
@@ -694,9 +698,9 @@
             "activites": [],
             "actions": [],
             "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-            "x": 0,
             "y": 0,
-            "numero": 13
+            "x": 0,
+            "numero": 7
           }
         ],
         "listeTaches": [
@@ -924,9 +928,9 @@
                 "activites": [],
                 "actions": [],
                 "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-                "x": 0,
                 "y": 0,
-                "numero": 13
+                "x": 0,
+                "numero": 7
               }
             ]
           },
@@ -1104,9 +1108,9 @@
                 "activites": [],
                 "actions": [],
                 "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-                "x": 0,
                 "y": 0,
-                "numero": 13
+                "x": 0,
+                "numero": 7
               }
             ]
           }
@@ -1225,34 +1229,6 @@
         "notification": null,
         "notifs": [],
         "telephone": "5143333333"
-      },
-      {
-        "nom": "Sherwind",
-        "prenom": "Arion",
-        "adresse": null,
-        "pseudo": "Arion",
-        "email": null,
-        "nomCompagnie": null,
-        "listeInteret": [
-          {
-            "nom": "Explorer"
-          }
-        ],
-        "listeNotifications": [],
-        "motDePasse": "123",
-        "listeRobot": [],
-        "listeTaches": [],
-        "listeActions": [],
-        "composantesAchetes": [],
-        "listeUtilisateursSuivi": [],
-        "listeActivitesRejoint": [],
-        "listeActivitesCreer": [],
-        "listSuiveur": [],
-        "point": 0,
-        "tache": null,
-        "notification": null,
-        "notifs": [],
-        "telephone": "1234567891"
       }
     ],
     "point": 0,
@@ -1415,9 +1391,9 @@
         ],
         "actions": [],
         "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-        "x": 0,
         "y": 0,
-        "numero": 13
+        "x": 0,
+        "numero": 7
       }
     ],
     "listeTaches": [
@@ -1683,9 +1659,9 @@
             "activites": [],
             "actions": [],
             "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-            "x": 0,
             "y": 0,
-            "numero": 13
+            "x": 0,
+            "numero": 7
           }
         ]
       },
@@ -1863,9 +1839,9 @@
             "activites": [],
             "actions": [],
             "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-            "x": 0,
             "y": 0,
-            "numero": 13
+            "x": 0,
+            "numero": 7
           }
         ]
       },
@@ -2054,9 +2030,9 @@
             ],
             "actions": [],
             "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
-            "x": 0,
             "y": 0,
-            "numero": 13
+            "x": 0,
+            "numero": 7
           }
         ]
       }
@@ -2271,5 +2247,96 @@
     "notification": null,
     "notifs": [],
     "telephone": "5143333333"
+  },
+  {
+    "nom": "Boubacar",
+    "prenom": "Kelly",
+    "adresse": null,
+    "pseudo": "KellyB",
+    "email": null,
+    "nomCompagnie": null,
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BoubaCar",
+    "listeRobot": [
+      {
+        "nom": "Bouchar's bot",
+        "vitesse": 0,
+        "batterie": 45,
+        "cpu": 75,
+        "memoire": 32.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
+          },
+          {
+            "nom": "roue",
+            "prix": "570000",
+            "description": "Description roue",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "helice",
+            "prix": "457000",
+            "description": "Description helice",
+            "typeComposant": "HELICE"
+          },
+          {
+            "nom": "micro",
+            "prix": "365000000",
+            "description": "Description micro",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "hautparleur",
+            "prix": "7540000",
+            "description": "Description hautparleur",
+            "typeComposant": "HAUTPARLEUR"
+          },
+          {
+            "nom": "ecran",
+            "prix": "841000000",
+            "description": "Description ecran",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Type",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "aef31971-8cda-4eb6-9d1c-44d74a6fa527",
+        "y": 0,
+        "x": 0,
+        "numero": 7
+      }
+    ],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      }
+    ],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141111111"
   }
 ]

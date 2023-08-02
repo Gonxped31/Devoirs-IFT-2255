@@ -281,4 +281,21 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
                  .orElse(null);
     }
 
+    /**
+     * Cette méthode permet d'acheter un composant auprès d'un fournisseur spécifique.
+     * @param nomFournisseur Le nom du fournisseur auprès duquel le composant doit être acheté.
+     * @param numero Le numéro du composant à acheter.
+     * @return Le nom du composant acheté, ou null si aucun composant correspondant n'est trouvé.
+     * @author Boubacar Hama Bague
+     */
+    public String acheterComposant(String nomFournisseur, int numero)
+    {
+        return (String) this.getListObjet().stream()
+                .filter(f -> ((Fournisseur) f).getNom().trim().equals(nomFournisseur.trim()))
+                .flatMap(f -> ((Fournisseur) f).getInventaireComposant().stream())
+                .findFirst()
+                .filter(c->((Composant) c).getNumero()==numero)
+                .map(c->((Composant) c).getNom())
+                .orElse(null);
+    }
 }

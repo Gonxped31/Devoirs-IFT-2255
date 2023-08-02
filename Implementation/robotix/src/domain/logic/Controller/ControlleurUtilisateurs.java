@@ -109,7 +109,7 @@ public class ControlleurUtilisateurs {
     public boolean acheterComposante(String nomFournisseur, String nomComposante, String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         dataBaseController.supprimerUtilisateur(u);
-        Composant composant = dataBaseController.achatComposante(nomFournisseur, nomComposante);
+        Composant composant = dataBaseController.acheterComposant(nomFournisseur, nomComposante);
         if (composant != null){
             u.ajouterComposante(composant);
             dataBaseController.ajouterUtilisateur(u);

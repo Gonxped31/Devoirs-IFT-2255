@@ -54,4 +54,8 @@ public class Composant implements java.io.Serializable {
                 " \ndescription : " + this.description +
                 " \nType : " + this.typeComposant;
     }
+
+    public static int getNumero() {
+        return numero;
+    }
 }

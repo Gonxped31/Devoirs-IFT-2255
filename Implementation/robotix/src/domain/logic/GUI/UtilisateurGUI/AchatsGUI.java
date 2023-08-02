@@ -270,6 +270,7 @@ public class AchatsGUI {
                             }
                         }
                         case "composante" -> {
+
                             if (controlleurUtilisateurs.acheterComposante(nomFournisseurField.getText(), numeroField.getText().toLowerCase(), pseudo)){
                                 confirmerAchatComposante();
                             } else {

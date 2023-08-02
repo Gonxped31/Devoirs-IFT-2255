@@ -17,6 +17,7 @@ import java.util.UUID;
 
 public class DbControleur {
     private static DbControleur dbControleur;
+    private BaseDeDonneeComposantVendus baseDeDonneeComposantVendus = new BaseDeDonneeComposantVendus();
     private BaseDeDonneeRobotVendus baseDeDonneeRobotVendus;
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
@@ -100,8 +101,18 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.verifierNomFounissseur(nomFourniseur);
     }
 
-    public Composant achatComposante(String nomFournisseur, String nomComposante){
-        return this.baseDeDonneeFournisseur.achatComposante(nomFournisseur, nomComposante);
+    public Composant acheterComposant(String nomFournisseur, String nomComposante) {
+
+        Composant composante = this.baseDeDonneeFournisseur.achatComposante(nomFournisseur,nomComposante);
+        if( composante!=null) {
+            Fournisseur f =this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
+            Composant c= this.baseDeDonneeFournisseur.retournerComposante(nomComposante);
+            this.baseDeDonneeComposantVendus.ajouterObjet(c);
+            this.supprimerFournisseur(f);
+            f.retirerComopsante(nomComposante);
+            this.ajouterFournisseur(f);
+        }
+        return composante;
     }
 
     public boolean verifierPseudo(String pseudo){
@@ -175,7 +186,17 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.obtenirListRobotFournisseur(nomFournisseur);
     }
     public UUID acheterRobot(String nomFournisseur, int numero){
-        return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
+
+        UUID uuid =this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
+        if(uuid!=null) {
+            Fournisseur f= this.baseDeDonneeFournisseur.retournerFournisseur(nomFournisseur);
+            Robot r = this.retournerRobot(uuid.toString());
+            this.baseDeDonneeRobotVendus.ajouterObjet(r);
+            this.supprimerFournisseur(f);
+            f.retirerRobot(uuid.toString());
+            this.ajouterFournisseur(f);
+        }
+        return uuid;
     }
 
     /*public String obtenirListeInteret() {
