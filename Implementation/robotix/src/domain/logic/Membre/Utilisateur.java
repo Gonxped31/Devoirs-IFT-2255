@@ -54,6 +54,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         this.setPrenom(prenom);
         this.setListeInteret(listeInteret);
         this.setListeNotifications(listeNotifications);
+        this.point = 0;
     }
 
 
@@ -61,15 +62,15 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return pseudo;
     }
     public int getPoint() {
-        return this.point;
+        return point;
     }
 
     public ArrayList<Robot> getListeRobot() {
-        return this.listeRobot;
+        return listeRobot;
     }
 
     public ArrayList<Notification> getNotifs(){
-        return getListeNotifications();
+        return listeNotifications;
     }
 
     public void setPseudo(String pseudo) {

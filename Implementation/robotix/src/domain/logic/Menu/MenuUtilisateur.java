@@ -58,7 +58,7 @@ public class MenuUtilisateur extends JFrame {
         private GestionReseauGUI gestionReseauGUI = new GestionReseauGUI();
         private AchatsGUI achatsGUI;
         private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
-        private RequetePubliqueUtilisateurGUI requetePubliqueUtilisateurGUI = new RequetePubliqueUtilisateurGUI();
+        private RequetePubliqueUtilisateurGUI requetePubliqueUtilisateurGUI;
         private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
         public MenuUtilisateur() throws IOException, ParseException {
@@ -170,6 +170,7 @@ public class MenuUtilisateur extends JFrame {
             achatsGUI = new AchatsGUI(pseudo);
             gestionTachesGUI = new GestionTachesGUI(pseudo);
             gestionActivitesGUI = new GestionActivitesGUI(pseudo);
+            requetePubliqueUtilisateurGUI = new RequetePubliqueUtilisateurGUI(pseudo);
         }
 
         public void afficherMenuUtilisateurPanel(JFrame jFrame) {

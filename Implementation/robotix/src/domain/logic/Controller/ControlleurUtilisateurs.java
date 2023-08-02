@@ -182,6 +182,7 @@ public class ControlleurUtilisateurs {
             dataBaseController.supprimerActivite(activite);
             if (!utilisateur.rejoindreActivite(activite)){
                 activite.getListeUtilisateurInsccrit().add(utilisateur.getPseudo());
+                utilisateur.setPoint(utilisateur.getPoint() + activite.getPoints());
                 dataBaseController.ajouterActivite(activite);
                 dataBaseController.ajouterUtilisateur(utilisateur);
                 result = "true";
@@ -193,10 +194,6 @@ public class ControlleurUtilisateurs {
         }
 
         return result;
-    }
-    public String afficherEtatRobot(String numSeri) {
-
-        return this.utilisateurCourant.afficherEtatRobot(numSeri);
     }
 
     public void ajouterRobotActivite(ArrayList<String> numeroSerieRobots, String nomActivite ,String pseudo){

@@ -392,6 +392,8 @@ public class RequetePubliqueFournisseurGUI {
         JLabel telephoneLabel = new JLabel("Telephone");
         JLabel typeRobotLabel = new JLabel("Type de robot a fabriquer");
         JLabel typeComposanteLabel = new JLabel("Type de composante a fabriquer");
+        JLabel nbRobotsDisponibleLabel = new JLabel("Nombre de robot disponible");
+        JLabel nbComposantesDisponibleLabel = new JLabel("Nombre de composant disponible");
         JButton btnRetour = new JButton("Retour");
 
         // Il faut remplacer le champ de texte des JTextField par des variables qui recuperent leur informations respectives
@@ -400,6 +402,8 @@ public class RequetePubliqueFournisseurGUI {
         JTextField telephoneField = new JTextField(fournisseur.getTelephone());
         JTextField typeRobotField = new JTextField(fournisseur.getTypeRobotFabriquer());
         JTextField typeComposanteField = new JTextField(fournisseur.getTypeComposantesFabriquer());
+        JTextField nbRobotsDisponibleField = new JTextField(fournisseur.getInventaireDeRobot().size() + "");
+        JTextField nbComposantesDisponibleField = new JTextField(fournisseur.getInventaireComposant().size() + "");
 
         // Setup la dimension des JTextField
         nomField.setPreferredSize(new Dimension(200, 30));
@@ -407,6 +411,8 @@ public class RequetePubliqueFournisseurGUI {
         telephoneField.setPreferredSize(new Dimension(200, 30));
         typeRobotField.setPreferredSize(new Dimension(200, 30));
         typeComposanteField.setPreferredSize(new Dimension(200, 30));
+        nbRobotsDisponibleField.setPreferredSize(new Dimension(200, 30));
+        nbComposantesDisponibleField.setPreferredSize(new Dimension(200, 30));
 
         // Rendre les JTextField en mode lecture seule
         nomField.setEditable(false);
@@ -414,6 +420,8 @@ public class RequetePubliqueFournisseurGUI {
         telephoneField.setEditable(false);
         typeRobotField.setEditable(false);
         typeComposanteField.setEditable(false);
+        nbRobotsDisponibleField.setEditable(false);
+        nbComposantesDisponibleField.setEditable(false);
 
         constraints.gridy = 0;
         voirProfilPanel.add(nomLabel, constraints);
@@ -431,6 +439,12 @@ public class RequetePubliqueFournisseurGUI {
         voirProfilPanel.add(typeComposanteLabel, constraints);
         voirProfilPanel.add(typeComposanteField, constraints);
         constraints.gridy = 5;
+        voirProfilPanel.add(nbRobotsDisponibleLabel, constraints);
+        voirProfilPanel.add(nbRobotsDisponibleField, constraints);
+        constraints.gridy = 6;
+        voirProfilPanel.add(nbComposantesDisponibleLabel, constraints);
+        voirProfilPanel.add(nbComposantesDisponibleField, constraints);
+        constraints.gridy = 7;
         voirProfilPanel.add(btnRetour, constraints);
 
         onBtnRetourClicked(btnRetour);
@@ -512,44 +526,6 @@ public class RequetePubliqueFournisseurGUI {
             }
         });
     }
-
-    /*public void setRechercheUtilisateurParNomPanel() {
-        JLabel nomLabel = new JLabel("Entrez le nom");
-        JTextField nomField = new JTextField();
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetourFiltre = new JButton("Retour au filtre");
-
-        nomField.setPreferredSize(new Dimension(200, 30));
-
-        constraints.gridy = 0;
-        recherheUtilisateurParNomPanel.add(nomLabel, constraints);
-        constraints.gridy = 1;
-        recherheUtilisateurParNomPanel.add(nomField, constraints);
-        constraints.gridy = 2;
-        recherheUtilisateurParNomPanel.add(btnContinuer, constraints);
-        constraints.gridy = 3;
-        recherheUtilisateurParNomPanel.add(btnRetourFiltre, constraints);
-
-        onBtnRetourRechercheUtilisateurClicked(btnRetourFiltre);
-    }
-
-    public void setRechercheUtilisateurParPrenomPanel() {
-        JLabel prenomLabel = new JLabel("Entrez le prenom");
-        JTextField prenomField = new JTextField();
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetourFiltre = new JButton("Retour au filtre");
-
-        constraints.gridy = 0;
-        recherheUtilisateurParPrenomPanel.add(prenomLabel, constraints);
-        constraints.gridy = 1;
-        recherheUtilisateurParPrenomPanel.add(prenomField, constraints);
-        constraints.gridy = 2;
-        recherheUtilisateurParPrenomPanel.add(btnContinuer, constraints);
-        constraints.gridy = 3;
-        recherheUtilisateurParPrenomPanel.add(btnRetourFiltre, constraints);
-
-        onBtnRetourRechercheUtilisateurClicked(btnRetourFiltre);
-    }*/
 
     public void setRechercheUtilisateurParListeSuiveursPanel() {
         JLabel listeUtilisateurLabel = new JLabel("Utilisateur");
@@ -668,51 +644,6 @@ public class RequetePubliqueFournisseurGUI {
 
 
     //Interets
-   /* public void setRechercheInteretsPanel() {
-        // Ajout des interets dans un ButtonGroup
-        buttonGroup.add(ouiLabel);
-        buttonGroup.add(nonLabel);
-
-        // Définition des actionCommand pour chaque JRadioButton
-        //ouiLabel.setActionCommand("Oui");
-        //nonLabel.setActionCommand("Non");
-
-        //JLabel filtreLabel = new JLabel("Voulez vous appliquer un filtre?");
-        //JButton btnRetour = new JButton("Retour");
-
-        constraints.gridy = 0;
-        rechercheInteretsPanel.add(filtreLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsPanel.add(ouiLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsPanel.add(nonLabel, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsPanel.add(btnChoix, constraints);
-        constraints.gridy = 3;
-        rechercheInteretsPanel.add(btnRetour, constraints);
-
-        onBtnRetourClicked(btnRetour);
-    }*/
-
-    /*public void setRechercheInteretsAvecFiltrePanel() {
-        JLabel filtreLabel = new JLabel("Filtrer par");
-        String[] options = {"3 premieres lettres", "Pseudo utilisateur", "Les deux"};
-        JComboBox<String> comboBox = new JComboBox<>(options);
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetour = new JButton("Retour");
-
-        constraints.gridy = 0;
-        rechercheInteretsAvecFiltrePanel.add(filtreLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsAvecFiltrePanel.add(comboBox, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsAvecFiltrePanel.add(btnContinuer, constraints);
-        constraints.gridy = 3;
-        rechercheInteretsAvecFiltrePanel.add(btnRetour, constraints);
-
-        onBtnContinuerInterets(btnContinuer, comboBox);
-        onBtnRetourRechercheInteretsClicked(btnRetour);
-    }*/
 
     public void setRechercheInteretsSansFiltrePanel() {
         JLabel listeinteretLabel = new JLabel("Liste des interets");
@@ -832,7 +763,7 @@ public class RequetePubliqueFournisseurGUI {
     }
      */
 
-    public void onBtnContinuerInterets(JButton btnContinuerInterets, JComboBox<String> comboBox) {
+    /*public void onBtnContinuerInterets(JButton btnContinuerInterets, JComboBox<String> comboBox) {
         btnContinuerInterets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -852,7 +783,7 @@ public class RequetePubliqueFournisseurGUI {
                 }
             }
         });
-    }
+    }*/
 
     public void onBtnRetourRechercheInteretsClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
@@ -863,6 +794,7 @@ public class RequetePubliqueFournisseurGUI {
             }
         });
     }
+
     /*public void onBtnRetourRechercheInteretsAvecFiltreClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
             @Override
@@ -949,7 +881,6 @@ public class RequetePubliqueFournisseurGUI {
     }
 
 
-
     public void setRechercheFournisseurParEmailPanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
         JLabel emailLabel = new JLabel("Entrez l'email du fournisseur");
@@ -1003,7 +934,6 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
     public void setRechercheFournisseurParAdressePanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
         JLabel adresseLabel = new JLabel("Entrez l'adresse du fournisseur");
@@ -1055,7 +985,6 @@ public class RequetePubliqueFournisseurGUI {
             }
         });
     }
-
 
     public void setRecherheFournisseurParTypeComposantePanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");

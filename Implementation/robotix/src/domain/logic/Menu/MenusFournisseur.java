@@ -48,14 +48,7 @@ public class MenusFournisseur extends JFrame {
 
 	public MenusFournisseur(String nomFournisseur) throws IOException, ParseException {
 		this.nomFournisseur = nomFournisseur;
-
-		requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI(nomFournisseur);
-		modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI(nomFournisseur);
-		ajouterRobotGUI = new AjouterRobotGUI(nomFournisseur);
-		retirerRobotGUI = new RetirerRobotGUI(nomFournisseur);
-		enregistrerComposanteGUI = new EnregistrerComposanteGUI(nomFournisseur);
-		gererComposantesGUI = new GererComposantesGUI(nomFournisseur);
-
+		instancierMenus(nomFournisseur);
 		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		menuFournisseurPanel.setLayout(new GridLayout(0, 1));
 		menuFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -124,6 +117,15 @@ public class MenusFournisseur extends JFrame {
 				}
             }
 		});
+	}
+
+	private void instancierMenus(String nomFournisseur) throws IOException, ParseException {
+		requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI(nomFournisseur);
+		modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI(nomFournisseur);
+		ajouterRobotGUI = new AjouterRobotGUI(nomFournisseur);
+		retirerRobotGUI = new RetirerRobotGUI(nomFournisseur);
+		enregistrerComposanteGUI = new EnregistrerComposanteGUI(nomFournisseur);
+		gererComposantesGUI = new GererComposantesGUI(nomFournisseur);
 	}
 
 	public void afficherMenuFournisseur(JFrame jFrame) {
