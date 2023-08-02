@@ -1,7 +1,6 @@
 package domain.logic.GUI.FournisseurGUI;
 
 import domain.logic.Controller.ControlleurFournisseurs;
-import domain.logic.Menu.MenusFournisseur;
 import domain.logic.Outils.EmailSender;
 import domain.logic.Outils.Verifications;
 

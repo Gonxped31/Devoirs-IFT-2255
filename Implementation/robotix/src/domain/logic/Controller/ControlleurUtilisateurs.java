@@ -17,8 +17,6 @@ public class ControlleurUtilisateurs {
 
     private DbControleur dataBaseController = DbControleur.getDbControleur();
     private static ControlleurUtilisateurs controlleurUtilisateurs;
-    //private ArrayList<Utilisateur> listeUtilisateurs = dataBaseController.recupererListeUtilisateur();
-    //private ArrayList<Fournisseur> listeFournisseurs = dataBaseController.getListeFournisseurs();
     private Utilisateur utilisateurCourant;
 
     private ControlleurUtilisateurs(String nom, String prenom, String adresse, String pseudo, String mdp, String email,

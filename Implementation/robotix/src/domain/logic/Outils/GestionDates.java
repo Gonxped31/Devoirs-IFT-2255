@@ -46,6 +46,12 @@ public class GestionDates {
         return (LocalDate.parse(date).isEqual(LocalDate.now()) || LocalDate.parse(date).isAfter(LocalDate.now()));
     }
 
+    /**
+     * Convertit une instance de Date en une représentation sous forme de chaîne de caractères.
+     *
+     * @param date l'objet Date à convertir en chaîne de caractères
+     * @return la date convertie sous forme de chaîne de caractères au format "yyyy-MM-dd"
+     */
     public static String parseDateToString(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         simpleDateFormat.applyPattern("yyyy-MM-dd");

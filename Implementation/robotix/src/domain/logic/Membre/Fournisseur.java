@@ -9,6 +9,10 @@ import java.util.UUID;
 
 import java.util.*;
 
+/**
+ * Cette classe represente un fournisseur de l'applicatiom.
+ * Un fournisseur a la possibilite de vendre des robots ainsi que des composantes a des utilisateurs.
+ */
 public class Fournisseur extends Membre implements java.io.Serializable{
     private String typeRobotFabriquer;
     private String typeComposantesFabriquer;
@@ -19,6 +23,19 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
 
+    /**
+     * Constructeur de la classe Fournisseur.
+     *
+     * @param nom                        Le nom du fournisseur.
+     * @param mdp                        Le mot de passe du fournisseur.
+     * @param adresse                    L'adresse du fournisseur.
+     * @param email                      L'adresse email du fournisseur.
+     * @param numeroTelephone            Le numéro de téléphone du fournisseur.
+     * @param typeDeRobotFabriquer       Le type de robot que le fournisseur fabrique.
+     * @param typeComposantesFabriquer   Le type de composants que le fournisseur fabrique.
+     * @param capacite                   La capacité de production de composants du fournisseur.
+     * @param nomcompagnie               Le nom de la compagnie du fournisseur.
+     */
     @JsonCreator
     public Fournisseur(@JsonProperty("nom") String nom, @JsonProperty("mdp") String mdp,
                        @JsonProperty("adresse") String adresse, @JsonProperty("email") String email,
@@ -34,81 +51,161 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         this.capaciteProductionComposantes =capacite;
     }
 
-
+    /**
+     * Renvoie le nom de la compagnie du fournisseur.
+     *
+     * @return Le nom de la compagnie du fournisseur.
+     */
     public String getNomCompagnie() {
         return this.nomCompagnie;
     }
 
+    /**
+     * Renvoie l'inventaire des robots du fournisseur.
+     *
+     * @return L'inventaire des robots du fournisseur sous forme de LinkedList.
+     */
     public LinkedList<Robot> getInventaireDeRobot() {
         return inventaireDeRobot;
     }
 
-    public void setInventaireDeRobot(LinkedList<Robot> inventaireDeRobot) {
-        this.inventaireDeRobot = inventaireDeRobot;
-    }
-
+    /**
+     * Renvoie l'inventaire des composants du fournisseur.
+     *
+     * @return L'inventaire des composants du fournisseur sous forme de LinkedList.
+     */
     public LinkedList<Composant> getInventaireComposant() {
         return inventaireComposant;
     }
 
-    public void setInventaireComposant(LinkedList<Composant> inventaireComposant) {
-        this.inventaireComposant = inventaireComposant;
-    }
-
+    /**
+     * Renvoie la capacité de production de composants du fournisseur.
+     *
+     * @return La capacité de production de composants du fournisseur.
+     */
     public String getCapaciteProductionComposantes() {
         return this.capaciteProductionComposantes;
     }
 
-
+    /**
+     * Renvoie le type de composants que le fournisseur fabrique.
+     *
+     * @return Le type de composants que le fournisseur fabrique.
+     */
     public String getTypeComposantesFabriquer() {
         return this.typeComposantesFabriquer;
     }
 
+    /**
+     * Renvoie le type de robot que le fournisseur fabrique.
+     *
+     * @return Le type de robot que le fournisseur fabrique.
+     */
     public String getTypeRobotFabriquer() {
         return this.typeRobotFabriquer;
     }
 
+    /**
+     * Renvoie l'adresse email du fournisseur.
+     *
+     * @return L'adresse email du fournisseur.
+     */
     public String getEmail() {
         return this.email;
     }
 
+    /**
+     * Renvoie l'adresse du fournisseur.
+     *
+     * @return L'adresse du fournisseur.
+     */
     public String getAdresse() {
         return this.adresse;
     }
 
+    /**
+     * Renvoie le nom du fournisseur.
+     *
+     * @return Le nom du fournisseur.
+     */
     public String getNom() {
         return super.getNom();
     }
 
-    //public Notification getNotification() { return this.notification; }
-    public ArrayList<Notification> getListeNotifications() { return this.listeNotifications; }
+    /**
+     * Renvoie le numéro de téléphone du fournisseur.
+     *
+     * @return Le numéro de téléphone du fournisseur.
+     */
+    @JsonProperty("telephone")
+    public String getNumeroTelephone() {
+        return this.getTelephone();
+    }
 
+    /**
+     * Renvoie la liste des notifications du fournisseur.
+     *
+     * @return La liste des notifications du fournisseur sous forme de ArrayList.
+     */
+    @JsonProperty("listeNotifications")
+    public ArrayList<Notification> getNotifs(){
+        return this.listeNotifications;
+    }
+
+    /**
+     * Renvoie la liste des notifications du fournisseur.
+     *
+     * @return La liste des notifications du fournisseur sous forme de ArrayList.
+     */
+    public ArrayList<Notification> getListeNotifications() {
+        return this.listeNotifications;
+    }
+
+
+    /**
+     * Met à jour l'inventaire des robots du fournisseur.
+     *
+     * @param inventaireDeRobot Le nouvel inventaire des robots du fournisseur sous forme de LinkedList.
+     */
+    public void setInventaireDeRobot(LinkedList<Robot> inventaireDeRobot) {
+        this.inventaireDeRobot = inventaireDeRobot;
+    }
+
+    /**
+     * Met à jour l'inventaire des composants du fournisseur.
+     *
+     * @param inventaireComposant Le nouvel inventaire des composants du fournisseur sous forme de LinkedList.
+     */
+    public void setInventaireComposant(LinkedList<Composant> inventaireComposant) {
+        this.inventaireComposant = inventaireComposant;
+    }
+
+
+    /**
+     * Met à jour la capacité de production de composants du fournisseur.
+     *
+     * @param capaciteProductionComposantes La nouvelle capacité de production de composants du fournisseur.
+     */
     public void setCapaciteProductionComposantes(String capaciteProductionComposantes) {
         this.capaciteProductionComposantes = capaciteProductionComposantes;
     }
 
-    public static boolean authentification(String nom, ArrayList<Fournisseur> listeFournisseurs) {
-        boolean authentification = false;
-        for (Fournisseur fournisseur : listeFournisseurs) {
-            if (fournisseur.getNom().equals(nom)) {
-                authentification = true;
-                break;
-            }
-        }
-        return authentification;
+    /**
+     * Met à jour la liste des notifications du fournisseur.
+     *
+     * @param listeNotifications La nouvelle liste des notifications du fournisseur sous forme de ArrayList.
+     */
+    public void setListeNotifications(ArrayList<Notification> listeNotifications) {
+        this.listeNotifications = listeNotifications;
     }
 
-    public static boolean verifierNomFournisseur(String inputNom, ArrayList<Fournisseur> listeFournisseurs) {
-        boolean bool = false;
-        for (Fournisseur fournisseur : listeFournisseurs) {
-            if (!fournisseur.getNom().equals(inputNom)) {
-                bool = true;
-                break;
-            }
-        }
-        return bool;
-    }
-
+    /**
+     * Ajoute un nouveau robot à l'inventaire du fournisseur avec les composants spécifiés.
+     *
+     * @param composants La liste des composants du robot à ajouter.
+     * @param typeRobot  Le type du robot à ajouter.
+     * @return L'identifiant unique (UUID) du robot ajouté.
+     */
     public UUID ajouterRobot(ArrayList<Composant> composants, String typeRobot) {
         Robot r= new Robot("", 0, 0, 0, 100, 32, 32, new LinkedList<>(), "", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
         for( Composant c :composants){
@@ -119,6 +216,12 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return   r.getNumeroSerie();
     }
 
+    /**
+     * Retire un robot de l'inventaire du fournisseur en utilisant son numéro de série.
+     *
+     * @param numeroSerie Le numéro de série du robot à retirer.
+     * @return True si le robot a été retiré avec succès, sinon False s'il n'a pas été trouvé.
+     */
     public boolean retirerRobot(String numeroSerie) {
         Robot robot = inventaireDeRobot.stream()
                 .filter(r -> r.getNumeroSerie().toString().trim().equals(numeroSerie.trim()))
@@ -134,12 +237,25 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return robotExiste;
     }
 
-
+    /**
+     * Ajoute une nouvelle composante à l'inventaire du fournisseur.
+     *
+     * @param nom           Le nom de la nouvelle composante.
+     * @param prix          Le prix de la nouvelle composante.
+     * @param description   La description de la nouvelle composante.
+     * @param typeComposant Le type de la nouvelle composante.
+     */
     public void ajouterComposante(String nom, String prix, String description, String typeComposant) {
         taillePrecedenteInventaireComposantes = inventaireComposant.size();
         inventaireComposant.add(new Composant(nom,prix,description,typeComposant.toUpperCase()));
     }
 
+    /**
+     * Retire une composante de l'inventaire du fournisseur en utilisant son nom.
+     *
+     * @param nom Le nom de la composante à retirer.
+     * @return True si la composante a été retirée avec succès, sinon False si elle n'a pas été trouvée.
+     */
     public boolean retirerComopsante(String nom) {
         boolean bool = false;
         int nbComposantes = 0;
@@ -156,6 +272,13 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
+    /**
+     * Modifie le prix d'une composante de l'inventaire du fournisseur en utilisant son nom.
+     *
+     * @param composante   Le nom de la composante à modifier.
+     * @param nouveauPrix  Le nouveau prix de la composante.
+     * @return True si le prix de la composante a été modifié avec succès, sinon False si la composante n'a pas été trouvée.
+     */
     public boolean modifierPrixComposante(String composante, String nouveauPrix){
         boolean bool = false;
         for (Composant composant : inventaireComposant) {
@@ -168,6 +291,13 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
+    /**
+     * Modifie la description d'une composante de l'inventaire du fournisseur en utilisant son nom.
+     *
+     * @param composante          Le nom de la composante à modifier.
+     * @param nouvelleDescription La nouvelle description de la composante.
+     * @return True si la description de la composante a été modifiée avec succès, sinon False si la composante n'a pas été trouvée.
+     */
     public boolean modifierDescriptionComposante(String composante, String nouvelleDescription){
         boolean bool = false;
         for (Composant composant : inventaireComposant) {
@@ -180,6 +310,12 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
+    /**
+     * Modifie les informations du profil du fournisseur.
+     *
+     * @param choix Le champ à modifier (nom, adresse, email, numeroTelephone, nomcompagnie, capaciteproduction, mdp).
+     * @param info  La nouvelle information à définir pour le champ spécifié.
+     */
     public void modifierProfile(String choix, String info){
         switch (choix.toLowerCase()) {
             case "nom" -> this.setNom(info);
@@ -191,26 +327,12 @@ public class Fournisseur extends Membre implements java.io.Serializable{
             case "mdp" -> this.setMotDePasse(info);
         }
     }
-/*
-    public boolean[] notifier() {
-        boolean[] tabBoolean = new boolean[4];
-        boolean NotifierEtatRobot;
-        boolean NotifierBatterieRobot;
-        boolean NotifiercCPURobot;
-        boolean NotifierAchatComposants;
 
-        NotifierEtatRobot = verifierEtatRobot();
-        NotifierBatterieRobot = verifierBatterieRobot();
-        NotifiercCPURobot = verifierCPURobot();
-        NotifierAchatComposants = verifierInventaireComposants();
-
-        tabBoolean[0] = NotifierEtatRobot;
-        tabBoolean[1] = NotifierAchatComposants;
-        tabBoolean[2] = NotifierBatterieRobot;
-        tabBoolean[3] = NotifiercCPURobot;
-
-        return tabBoolean;
-    }*/
+    /**
+     * Renvoie une représentation formatée du profil du fournisseur, incluant ses informations personnelles et l'état de son inventaire.
+     *
+     * @return Une chaîne de caractères représentant le profil du fournisseur.
+     */
     @JsonIgnore
     public String getProfilFournisseur(){
         return "Nom: " + super.getNom() + "\nAdresse courriel: " +
@@ -221,88 +343,32 @@ public class Fournisseur extends Membre implements java.io.Serializable{
                 "\nNombre de composante disponible: " + this.getInventaireComposant().size() +
                 "\nNombre de robot disponible: " + this.getInventaireDeRobot().size() + "\n";
     }
-    /*
-    public boolean verifierEtatRobot() {
-        boolean DoitEtreNotifie = false;
 
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getVitesse() == 0 || robot.getMemoire() == 0) {
-                DoitEtreNotifie = true;
-                Notification nouvelleNotification = new Notification("MAUVAIS FONCTIONNEMENT", "Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.", TypeNotification.PROBLEME_ROBOT);
-                /*notification.setTitre("MAUVAIS FONCTIONNEMENT");
-                notification.setMesssage("Le robot " + robot.getNom() + " éprouve un problème de fonctionnement.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(nouvelleNotification);
-            }
-        }
-        return DoitEtreNotifie;
-    }
-    public boolean verifierBatterieRobot() {
-        boolean DoitEtreNotifie = false;
-
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getBatterie() >= 20) {
-                DoitEtreNotifie = true;
-                Notification nouvelleNotification = new Notification("BATTERIE FAIBLE", "La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.", TypeNotification.PROBLEME_ROBOT);
-                /*notification.setTitre("BATTERIE FAIBLE");
-                notification.setMesssage("La batterie du robot " + robot.getNom() + " est à " + robot.getBatterie() + "%.");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(nouvelleNotification);
-            }
-        }
-        return DoitEtreNotifie;
-    }
-    public boolean verifierCPURobot() {
-        boolean DoitEtreNotifie = false;
-
-        for (Robot robot : inventaireDeRobot) {
-            if (robot.getCpu() >= 100) {
-                DoitEtreNotifie = true;
-                Notification nouvelleNotification = new Notification("SURCHARGE CPU", "Le CPU du robot " + robot.getNom() + " est surchagé", TypeNotification.PROBLEME_ROBOT);
-                /*notification.setTitre("SURCHARGE CPU");
-                notification.setMesssage("Le CPU du robot " + robot.getNom() + " est surchagé");
-                notification.setTypeNotification(TypeNotification.PROBLEME_ROBOT);
-                listeNotifications.add(nouvelleNotification);
-            }
-        }
-        return DoitEtreNotifie;
-    }
-
-    public boolean verifierInventaireComposants() {
-        boolean DoitEtreNotifie = false;
-
-        if (inventaireComposant.size() > taillePrecedenteInventaireComposantes) {
-            DoitEtreNotifie = true;
-            Notification nouvelleNotification = new Notification("ACHAT D'UNE VOS COMPOSANTES", "Un utilisateur a acheté une de vos composantes", TypeNotification.ACHAT_COMPOSANTS);
-            //notification.setTitre("ACHAT D'UNE VOS COMPOSANTES");
-            //notification.setMesssage("Un utilisateur a acheté une de vos composantes");
-            //notification.setTypeNotification(TypeNotification.ACHAT_COMPOSANTS);
-            listeNotifications.add(nouvelleNotification);
-        }
-        return DoitEtreNotifie;
-    }*/
-
+    /**
+     * Produit un composant CPU avec des valeurs par défaut et l'ajoute à l'inventaire du fournisseur.
+     *
+     * @return Le nouveau composant CPU produit.
+     */
     public  Composant produireCPU() {
         return new Composant("cpu", "50000", "", "CPU");
     }
-    @JsonProperty("telephone")
-    public String getNumeroTelephone() {
-        return this.getTelephone();
-    }
 
-    @JsonProperty("listeNotifications")
-    public ArrayList<Notification> getNotifs(){
-        return this.listeNotifications;
-    }
-
+    /**
+     * Ajoute une nouvelle notification à la liste des notifications du fournisseur.
+     *
+     * @param titre             Le titre de la notification.
+     * @param message           Le message de la notification.
+     * @param typeNotification  Le type de la notification.
+     */
     public void addNotifs(String titre,String message, TypeNotification typeNotification){
         this.listeNotifications.add(new Notification(titre, message, typeNotification));
     }
 
-    public void setListeNotifications(ArrayList<Notification> listeNotifications) {
-        this.listeNotifications = listeNotifications;
-    }
-
+    /**
+     * Renvoie la liste des notifications du fournisseur.
+     *
+     * @return La liste des notifications du fournisseur.
+     */
     public ArrayList<Notification> voirNotifications(){
         return getListeNotifications();
     }

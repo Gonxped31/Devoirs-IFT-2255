@@ -1,9 +1,6 @@
 package domain.logic.GUI.FournisseurGUI;
 
 import domain.logic.Controller.ControlleurFournisseurs;
-import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Menu.MenuUtilisateur;
-import domain.logic.Menu.MenusFournisseur;
 
 import javax.swing.*;
 import java.awt.*;

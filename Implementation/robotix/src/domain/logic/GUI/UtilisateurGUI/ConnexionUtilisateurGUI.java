@@ -1,7 +1,6 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Menu.MenuUtilisateur;
 
 import javax.swing.*;
 import java.awt.*;

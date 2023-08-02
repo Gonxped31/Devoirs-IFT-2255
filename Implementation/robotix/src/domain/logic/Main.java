@@ -1,12 +1,9 @@
 package domain.logic;
 
-import domain.logic.Membre.Fournisseur;
-import java.util.Scanner;
-import domain.logic.Menu.Menu;
+import domain.logic.GUI.Menu;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Scanner;
 
 
 public class Main {

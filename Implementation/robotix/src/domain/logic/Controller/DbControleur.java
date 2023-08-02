@@ -22,6 +22,7 @@ public class DbControleur {
     private BaseDeDonneeFournisseur baseDeDonneeFournisseur;
     private BaseDeDonneeUtilisateur baseDeDonneeUtilisateur;
     private BaseDeDonneeActivite baseDeDonneeActivite;
+
    private BaseDeDonneeInteret baseDeDonneeInteret;
     public DbControleur() throws IOException, ParseException {
         this.baseDeDonneeFournisseur=BaseDeDonneeFournisseur.getBaseDeDonneeFournisseur();

@@ -92,7 +92,13 @@ public class ControlleurFournisseurs {
         return dataBaseController.verifierNomFournissuer(inputNom);
     }
 
-
+    /**
+     * Methode pour ajouter un robot a un fournisseur
+     *
+     * @param typeRobot Le type du robot a rajouter
+     * @param nomFournisseur Le nom du fournisseur chez qui le robot sera ajoutee.
+     * @return le numero de serie du robot qui a ete rajoute.
+     */
     public UUID ajouterRobot(String typeRobot, String nomFournisseur){
         Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
         this.dataBaseController.supprimerFournisseur(f);
@@ -104,9 +110,10 @@ public class ControlleurFournisseurs {
     }
 
     /**
-     * Méthode pour retirer un robot du fournisseur actuel.
+     * Méthode pour retirer un robot chez un fournisseur.
      *
      * @param numeroSerie Le numéro de série du robot à retirer.
+     * @param nomFournisseur Le nom du fournisseur chez qui la composante sera ajoutee.
      * @return {@code true} si le robot a été retiré avec succès, {@code false} sinon.
      */
     public boolean retirerRobot(String numeroSerie, String nomFournisseur) {
@@ -124,6 +131,7 @@ public class ControlleurFournisseurs {
      * @param prix Le prix de la composante à ajouter.
      * @param description La description de la composante à ajouter.
      * @param typesComposants Le type de composants de la composante à ajouter.
+     * @param nomFournisseur Le nom du fournisseur chez qui la composante sera ajoutee.
      */
     public void ajouterComposante(String nom, String prix, String description, String typesComposants, String nomFournisseur){
         Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
@@ -136,6 +144,7 @@ public class ControlleurFournisseurs {
      * Méthode pour retirer une composante du fournisseur actuel.
      *
      * @param composante Le nom de la composante à retirer.
+     * @param nomFournisseur Le nom du fournisseur chez qui la composante sera retitiree.
      * @return {@code true} si la composante a été retirée avec succès, {@code false} sinon.
      */
     public boolean retirerComposante(String composante, String nomFournisseur){

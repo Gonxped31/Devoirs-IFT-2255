@@ -1,9 +1,6 @@
 package domain.logic.GUI.UtilisateurGUI;
 
-import domain.logic.Controller.ControlleurFournisseurs;
 import domain.logic.Controller.ControlleurUtilisateurs;
-import domain.logic.Menu.MenuUtilisateur;
-import domain.logic.Menu.MenusFournisseur;
 import domain.logic.Outils.EmailSender;
 import domain.logic.Outils.Verifications;
 
