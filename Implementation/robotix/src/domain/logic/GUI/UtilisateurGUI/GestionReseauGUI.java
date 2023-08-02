@@ -20,7 +20,7 @@ public class GestionReseauGUI {
     private JPanel gererSuiveursPanel = new JPanel(new GridLayout(0, 1));
     private JPanel voirListeAbonnesPanel = new JPanel(new GridBagLayout());
     private JPanel supprimerAbonnePanel = new JPanel(new GridBagLayout());
-    private JPanel gererInteretsPanel = new JPanel(new GridBagLayout());
+    private JPanel gererInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JLabel gestionReseauLabel = new JLabel("Gestion reseau", SwingConstants.CENTER);
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
     private JButton btnGererSuiveurs = new JButton("Gerer mes suiveurs");
@@ -204,10 +204,39 @@ public class GestionReseauGUI {
     }
 
     public void setGererInteretsPanel() {
+        JLabel gererInteretsTitre = new JLabel("Gerer mes interets", SwingConstants.CENTER);
+        JLabel gererInteretsLabel = new JLabel("Que voulez-vous faire?", SwingConstants.CENTER);
+        JButton btnAjouterInteret = new JButton("Ajouter un interet");
+        JButton btnModifierInteret = new JButton("Modifier un interet");
+        JButton btnSupprimerInteret = new JButton("Supprimer un interet");
+        JButton btnAbonnerInteret = new JButton("S'abonner a un interet");
+        JButton btnDesabonnerInteret = new JButton("Se desabonner d'un interet");
         JButton btnRetour = new JButton("Retour");
 
-        constraints.gridy = 0;
-        gererInteretsPanel.add(btnRetour, constraints);
+
+        gererInteretsTitre.setFont(new Font("Arial", Font.BOLD, 24));
+        gererInteretsLabel.setFont(new Font("Arial", Font.BOLD, 18));
+
+
+        gererInteretsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        gererInteretsPanel.add(gererInteretsTitre);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(gererInteretsLabel);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnAjouterInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnModifierInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnSupprimerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnAbonnerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnDesabonnerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnRetour);
+
+
+        //ADD LISTENERS
 
         onBtnAnnulerClicked(btnRetour);
     }
