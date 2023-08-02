@@ -3,6 +3,7 @@ package domain.logic.GUI.UtilisateurGUI;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Outils.CheckBoxListRenderer;
 import domain.logic.Outils.ComboBoxRenderer;
+import domain.logic.Outils.HTMLListCellRenderer;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.TypesComposants;
 
@@ -33,7 +34,14 @@ public class GestionFlotteGUI {
     private JButton btnAfficherMetriques = new JButton("Afficher les metriques de ma flotte");
     private JButton btnCreerAction = new JButton("Creer action");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+
+    private JScrollPane scrollPaneAfficherEtatRobot;
+
     private JList<String> listeComposantesJList;
+    private JList<String> listeAfficherEtatRobotJList;
+
+    DefaultListModel listModelAfficherEtatRobot = new DefaultListModel();
+
     private ArrayList<String> listeComposantes;
     private JScrollPane scrollPaneAction;
     private Container panelPrecedent = new Container();
@@ -151,10 +159,30 @@ public class GestionFlotteGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
     public void setAfficherEtatRobotPanel() {
+        JLabel robotLabel = new JLabel("Robot");
+        JLabel numeroSerieLabel = new JLabel("Entrez le numero de serie du robot");
+        JTextField numeroSerieField = new JTextField();
+        JButton btnContinuer = new JButton("Afficher");
         JButton btnRetour = new JButton("Retour");
 
+        listeAfficherEtatRobotJList = new JList<>(listModelAfficherEtatRobot);
+        listeAfficherEtatRobotJList.setCellRenderer(new HTMLListCellRenderer());
+        scrollPaneAfficherEtatRobot = new JScrollPane(listeAfficherEtatRobotJList);
+        scrollPaneAfficherEtatRobot.setPreferredSize(new Dimension(250, 200));
+        scrollPaneAfficherEtatRobot.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         constraints.gridy = 0;
-        afficherEtatRobotPanel.add(btnRetour);
+        afficherEtatRobotPanel.add(robotLabel, constraints);
+        constraints.gridy = 1;
+        afficherEtatRobotPanel.add(scrollPaneAfficherEtatRobot, constraints);
+        constraints.gridy = 2;
+        afficherEtatRobotPanel.add(numeroSerieLabel, constraints);
+        constraints.gridy = 3;
+        afficherEtatRobotPanel.add(numeroSerieField, constraints);
+        constraints.gridy = 4;
+        afficherEtatRobotPanel.add(btnContinuer, constraints);
+        constraints.gridy = 4;
+        afficherEtatRobotPanel.add(btnRetour, constraints);
 
         onBtnAnnulerClicked(btnRetour);
     }

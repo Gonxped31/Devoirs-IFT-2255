@@ -1,239 +1,5 @@
 [
   {
-    "nom": "Roy",
-    "adresse": "123 rue des Innovations, Montr�al, QC, H1A 0A1",
-    "email": "nom1@robotech.ca",
-    "typeComposantesFabriquer": "CPU",
-    "motDePasse": "123",
-    "nomCompagnie": "RoboTechnologies",
-    "typeRobotFabriquer": "RobotA",
-    "capaciteProductionComposantes": "30",
-    "inventaireDeRobot": [
-      {
-        "nom": "",
-        "vitesse": 0,
-        "batterie": 100,
-        "cpu": 120,
-        "memoire": 32.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "150000",
-            "description": "Description cpu",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "bras",
-            "prix": "800000",
-            "description": "Description bras",
-            "typeComposant": "BRAS"
-          },
-          {
-            "nom": "roue",
-            "prix": "570000",
-            "description": "Description roue",
-            "typeComposant": "ROUE"
-          },
-          {
-            "nom": "helice",
-            "prix": "457000",
-            "description": "Description helice",
-            "typeComposant": "HELICE"
-          },
-          {
-            "nom": "micro",
-            "prix": "365000000",
-            "description": "Description micro",
-            "typeComposant": "MICRO"
-          },
-          {
-            "nom": "hautparleur",
-            "prix": "7540000",
-            "description": "Description hautparleur",
-            "typeComposant": "HAUTPARLEUR"
-          },
-          {
-            "nom": "ecran",
-            "prix": "841000000",
-            "description": "Description ecran",
-            "typeComposant": "ECRAN"
-          }
-        ],
-        "type": "Coureur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
-        "x": 0,
-        "y": 0,
-        "numero": 6
-      }
-    ],
-    "inventaireComposant": [
-      {
-        "nom": "cpu",
-        "prix": "150000",
-        "description": "Description cpu",
-        "typeComposant": "CPU"
-      },
-      {
-        "nom": "bras",
-        "prix": "800000",
-        "description": "Description bras",
-        "typeComposant": "BRAS"
-      },
-      {
-        "nom": "roue",
-        "prix": "570000",
-        "description": "Description roue",
-        "typeComposant": "ROUE"
-      },
-      {
-        "nom": "helice",
-        "prix": "457000",
-        "description": "Description helice",
-        "typeComposant": "HELICE"
-      },
-      {
-        "nom": "micro",
-        "prix": "365000000",
-        "description": "Description micro",
-        "typeComposant": "MICRO"
-      },
-      {
-        "nom": "hautparleur",
-        "prix": "7540000",
-        "description": "Description hautparleur",
-        "typeComposant": "HAUTPARLEUR"
-      },
-      {
-        "nom": "ecran",
-        "prix": "841000000",
-        "description": "Description ecran",
-        "typeComposant": "ECRAN"
-      }
-    ],
-    "listeNotifications": [],
-    "telephone": "5142104555"
-  },
-  {
-    "nom": "Kare",
-    "adresse": "123 rue des Innovations, Montr�al, QC, H1A 0A1",
-    "email": "nom1@robotech.ca",
-    "typeComposantesFabriquer": "CPU",
-    "motDePasse": "456",
-    "nomCompagnie": "RoboTechnologies",
-    "typeRobotFabriquer": "RobotA",
-    "capaciteProductionComposantes": "30",
-    "inventaireDeRobot": [
-      {
-        "nom": "",
-        "vitesse": 0,
-        "batterie": 32,
-        "cpu": 100,
-        "memoire": 64.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "150000",
-            "description": "Description cpu",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "bras",
-            "prix": "800000",
-            "description": "Description bras",
-            "typeComposant": "BRAS"
-          },
-          {
-            "nom": "roue",
-            "prix": "570000",
-            "description": "Description roue",
-            "typeComposant": "ROUE"
-          },
-          {
-            "nom": "helice",
-            "prix": "457000",
-            "description": "Description helice",
-            "typeComposant": "HELICE"
-          },
-          {
-            "nom": "micro",
-            "prix": "365000000",
-            "description": "Description micro",
-            "typeComposant": "MICRO"
-          },
-          {
-            "nom": "hautparleur",
-            "prix": "7540000",
-            "description": "Description hautparleur",
-            "typeComposant": "HAUTPARLEUR"
-          },
-          {
-            "nom": "ecran",
-            "prix": "841000000",
-            "description": "Description ecran",
-            "typeComposant": "ECRAN"
-          }
-        ],
-        "type": "Sauteur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "1a10a367-8673-4b4c-a5a8-e22f7e266846",
-        "x": 0,
-        "y": 0,
-        "numero": 6
-      }
-    ],
-    "inventaireComposant": [
-      {
-        "nom": "cpu",
-        "prix": "150000",
-        "description": "Description cpu",
-        "typeComposant": "CPU"
-      },
-      {
-        "nom": "bras",
-        "prix": "800000",
-        "description": "Description bras",
-        "typeComposant": "BRAS"
-      },
-      {
-        "nom": "roue",
-        "prix": "570000",
-        "description": "Description roue",
-        "typeComposant": "ROUE"
-      },
-      {
-        "nom": "helice",
-        "prix": "457000",
-        "description": "Description helice",
-        "typeComposant": "HELICE"
-      },
-      {
-        "nom": "micro",
-        "prix": "365000000",
-        "description": "Description micro",
-        "typeComposant": "MICRO"
-      },
-      {
-        "nom": "hautparleur",
-        "prix": "7540000",
-        "description": "Description hautparleur",
-        "typeComposant": "HAUTPARLEUR"
-      },
-      {
-        "nom": "ecran",
-        "prix": "841000000",
-        "description": "Description ecran",
-        "typeComposant": "ECRAN"
-      }
-    ],
-    "listeNotifications": [],
-    "telephone": "5142104555"
-  },
-  {
     "nom": "Bouchard",
     "adresse": "456 avenue des Automates, Montr�al, QC, H5M 1N2",
     "email": "contact@automatech.ca",
@@ -300,7 +66,7 @@
         "numeroSerie": "aef31971-8cda-4eb6-9d1c-44d74a6fa527",
         "x": 0,
         "y": 0,
-        "numero": 6
+        "numero": 8
       }
     ],
     "inventaireComposant": [
@@ -352,7 +118,7 @@
   },
   {
     "nom": "Adams",
-    "adresse": "2376 boulevard des G�nies, Qu�bec, QC, G1W 2W5",
+    "adresse": "2376 boulevard des Genies, Quebec, QC, G1W 2W5",
     "email": "service@innovatech.ca",
     "typeComposantesFabriquer": "ECRAN",
     "motDePasse": "159",
@@ -417,7 +183,7 @@
         "numeroSerie": "88ef8532-f982-4d2c-b0eb-336eb399648c",
         "x": 0,
         "y": 0,
-        "numero": 6
+        "numero": 8
       }
     ],
     "inventaireComposant": [
@@ -534,7 +300,7 @@
         "numeroSerie": "7448a7e9-7e05-4b71-8d1f-fbdf911a2c57",
         "x": 0,
         "y": 0,
-        "numero": 6
+        "numero": 8
       }
     ],
     "inventaireComposant": [
@@ -642,6 +408,12 @@
             "prix": "841000000",
             "description": "Description ecran",
             "typeComposant": "ECRAN"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
           }
         ],
         "type": "Abeille",
@@ -651,7 +423,7 @@
         "numeroSerie": "5aa4ffcf-4647-4840-8115-3cc6f5975d7d",
         "x": 0,
         "y": 0,
-        "numero": 6
+        "numero": 8
       }
     ],
     "inventaireComposant": [
@@ -743,7 +515,6 @@
     "listeNotifications": [],
     "telephone": "1234567891"
   },
-
   {
     "nom": "Alan",
     "adresse": "ad",
@@ -771,5 +542,203 @@
     "inventaireComposant": [],
     "listeNotifications": [],
     "telephone": "1234567891"
+  },
+  {
+    "nom": "Roy",
+    "adresse": "123 rue des Innovations, Montr�al, QC, H1A 0A1",
+    "email": "nom1@robotech.ca",
+    "typeComposantesFabriquer": "CPU",
+    "motDePasse": "123",
+    "nomCompagnie": "RoboTechnologies",
+    "typeRobotFabriquer": "RobotA",
+    "capaciteProductionComposantes": "30",
+    "inventaireDeRobot": [
+      {
+        "nom": "",
+        "vitesse": 0,
+        "batterie": 100,
+        "cpu": 120,
+        "memoire": 32.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "150000",
+            "description": "Description cpu",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "bras",
+            "prix": "800000",
+            "description": "Description bras",
+            "typeComposant": "BRAS"
+          },
+          {
+            "nom": "roue",
+            "prix": "570000",
+            "description": "Description roue",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "helice",
+            "prix": "457000",
+            "description": "Description helice",
+            "typeComposant": "HELICE"
+          },
+          {
+            "nom": "micro",
+            "prix": "365000000",
+            "description": "Description micro",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "hautparleur",
+            "prix": "7540000",
+            "description": "Description hautparleur",
+            "typeComposant": "HAUTPARLEUR"
+          },
+          {
+            "nom": "ecran",
+            "prix": "841000000",
+            "description": "Description ecran",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Coureur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "781cb5b8-61e7-4bac-949e-5f5d0c10ddab",
+        "x": 0,
+        "y": 0,
+        "numero": 8
+      }
+    ],
+    "inventaireComposant": [
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      },
+      {
+        "nom": "bras",
+        "prix": "800000",
+        "description": "Description bras",
+        "typeComposant": "BRAS"
+      },
+      {
+        "nom": "roue",
+        "prix": "570000",
+        "description": "Description roue",
+        "typeComposant": "ROUE"
+      },
+      {
+        "nom": "helice",
+        "prix": "457000",
+        "description": "Description helice",
+        "typeComposant": "HELICE"
+      },
+      {
+        "nom": "micro",
+        "prix": "365000000",
+        "description": "Description micro",
+        "typeComposant": "MICRO"
+      },
+      {
+        "nom": "hautparleur",
+        "prix": "7540000",
+        "description": "Description hautparleur",
+        "typeComposant": "HAUTPARLEUR"
+      },
+      {
+        "nom": "ecran",
+        "prix": "841000000",
+        "description": "Description ecran",
+        "typeComposant": "ECRAN"
+      }
+    ],
+    "listeNotifications": [],
+    "telephone": "5142104555"
+  },
+  {
+    "nom": "Kare",
+    "adresse": "123 rue des Innovations, Montreal, QC, H1A 0A1",
+    "email": "nom1@robotech.ca",
+    "typeComposantesFabriquer": "CPU",
+    "motDePasse": "456",
+    "nomCompagnie": "RoboTechnologies",
+    "typeRobotFabriquer": "RobotA",
+    "capaciteProductionComposantes": "30",
+    "inventaireDeRobot": [
+      {
+        "nom": "",
+        "vitesse": 0,
+        "batterie": 100,
+        "cpu": 32,
+        "memoire": 32.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "50000",
+            "description": "",
+            "typeComposant": "CPU"
+          }
+        ],
+        "type": "Nageur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "c0b73ba1-9f93-4aba-ade8-190650711b4c",
+        "x": 0,
+        "y": 0,
+        "numero": 8
+      }
+    ],
+    "inventaireComposant": [
+      {
+        "nom": "cpu",
+        "prix": "150000",
+        "description": "Description cpu",
+        "typeComposant": "CPU"
+      },
+      {
+        "nom": "bras",
+        "prix": "800000",
+        "description": "Description bras",
+        "typeComposant": "BRAS"
+      },
+      {
+        "nom": "roue",
+        "prix": "570000",
+        "description": "Description roue",
+        "typeComposant": "ROUE"
+      },
+      {
+        "nom": "helice",
+        "prix": "457000",
+        "description": "Description helice",
+        "typeComposant": "HELICE"
+      },
+      {
+        "nom": "micro",
+        "prix": "365000000",
+        "description": "Description micro",
+        "typeComposant": "MICRO"
+      },
+      {
+        "nom": "hautparleur",
+        "prix": "7540000",
+        "description": "Description hautparleur",
+        "typeComposant": "HAUTPARLEUR"
+      },
+      {
+        "nom": "ecran",
+        "prix": "841000000",
+        "description": "Description ecran",
+        "typeComposant": "ECRAN"
+      }
+    ],
+    "listeNotifications": [],
+    "telephone": "5142104555"
   }
 ]

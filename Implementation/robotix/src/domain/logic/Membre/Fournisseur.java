@@ -59,6 +59,7 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return this.capaciteProductionComposantes;
     }
 
+
     public String getTypeComposantesFabriquer() {
         return this.typeComposantesFabriquer;
     }
@@ -108,14 +109,14 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return bool;
     }
 
-    public UUID ajouterRobot(ArrayList<Composant> composants) {
-        Robot r= new Robot();
+    public UUID ajouterRobot(ArrayList<Composant> composants, String typeRobot) {
+        Robot r= new Robot("", 0, 0, 0, 100, 32, 32, new LinkedList<>(), "", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
         for( Composant c :composants){
             r.ajouterComposante(c);
+            r.setType(typeRobot);
         }
-
         inventaireDeRobot.add(r);
-      return   r.getNumeroSerie();
+        return   r.getNumeroSerie();
     }
 
     public boolean retirerRobot(String numeroSerie) {
@@ -212,12 +213,13 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     }*/
     @JsonIgnore
     public String getProfilFournisseur(){
-        return "Nom :" + super.getNom() + "\nAdresse courriel : " +
-                this.email + "\nTelephone : " + this.getTelephone() +
-                "\nType de robot fabriquer :" + this.typeRobotFabriquer +
-                "\nType de composant fabriquer :" + this.typeComposantesFabriquer +
-                "\nNombre de composante disponible :" + this.getInventaireComposant().size() +
-                "\nNombre de robot disponible : " + this.getInventaireDeRobot().size() + "\n";
+        return "Nom: " + super.getNom() + "\nAdresse courriel: " +
+                this.email + "\nTelephone: " + this.getTelephone() +
+                "\nAddresse: " + this.getAdresse() +
+                "\nType de robot fabriquer: " + this.typeRobotFabriquer +
+                "\nType de composant fabriquer: " + this.typeComposantesFabriquer +
+                "\nNombre de composante disponible: " + this.getInventaireComposant().size() +
+                "\nNombre de robot disponible: " + this.getInventaireDeRobot().size() + "\n";
     }
     /*
     public boolean verifierEtatRobot() {
@@ -280,16 +282,8 @@ public class Fournisseur extends Membre implements java.io.Serializable{
         return DoitEtreNotifie;
     }*/
 
-    public  ArrayList<Composant> produireComposant(ArrayList<ArrayList<String>> nomsComposant) {
-        ArrayList<Composant> comps = new ArrayList<>();
-        for (ArrayList<String> a : nomsComposant) {
-
-            comps.add(new Composant(
-                    a.get(0), a.get(1), a.get(2), a.get(3)
-            ));
-
-        }
-        return comps;
+    public  Composant produireCPU() {
+        return new Composant("cpu", "50000", "", "CPU");
     }
     @JsonProperty("telephone")
     public String getNumeroTelephone() {

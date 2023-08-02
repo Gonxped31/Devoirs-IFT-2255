@@ -1,11 +1,17 @@
 package domain.logic.GUI.FournisseurGUI;
 
+import domain.logic.Controller.ControlleurFournisseurs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class ModifierProfilFournisseurGUI {
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private String nomFournisseur;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel modifierNomPanel = new JPanel(new GridBagLayout());
@@ -27,7 +33,8 @@ public class ModifierProfilFournisseurGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public ModifierProfilFournisseurGUI() {
+    public ModifierProfilFournisseurGUI(String nomFournisseur) throws IOException, ParseException {
+        this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
@@ -138,7 +145,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierNomPanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouveauNomField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauNomField, "nom");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -158,7 +165,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierAdressePanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouvelleAdresseField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouvelleAdresseField, "addresse");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -178,7 +185,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierEmailPanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouveauEmailField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauEmailField, "email");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -198,7 +205,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierTelephonePanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouveauTelephoneField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauTelephoneField, "telephone");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -218,7 +225,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierCompagniePanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouvelleCompagnieField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouvelleCompagnieField, "nomcompagnie");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -238,7 +245,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierCapaciteProductionPanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouvelleCapaciteProductionField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouvelleCapaciteProductionField, "capaciteproduction");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -258,7 +265,7 @@ public class ModifierProfilFournisseurGUI {
         constraints.gridy = 3;
         modifierMdpPanel.add(btnAnnuler, constraints);
 
-        onBtnEnregistrerClicked(btnEnregistrer, nouveauMdpField);
+        onBtnEnregistrerClicked(btnEnregistrer, nouveauMdpField, "mdp");
         onBtnAnnulerClicked(btnAnnuler);
     }
 
@@ -273,14 +280,26 @@ public class ModifierProfilFournisseurGUI {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
-    public void onBtnEnregistrerClicked(JButton btnEnregistrer, JTextField response) {
+    public void onBtnEnregistrerClicked(JButton btnEnregistrer, JTextField response, String modif) {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (response.getText().length() == 0)
+                String reponse = response.getText();
+                if (reponse.isEmpty()) {
                     afficherMessageErreur();
-                else
+                } else {
+                    switch (modif.toLowerCase().trim()) {
+                        case "nom" -> controlleurFournisseurs.modifierProfile("nom", reponse, nomFournisseur);
+                        case "capaciteproduction" -> controlleurFournisseurs.modifierProfile("capaciteproduction", reponse, nomFournisseur);
+                        case "adresse" -> controlleurFournisseurs.modifierProfile("adresse", reponse, nomFournisseur);
+                        case "pseudo" -> controlleurFournisseurs.modifierProfile("pseudo", reponse, nomFournisseur);
+                        case "email" ->  controlleurFournisseurs.modifierProfile("email", reponse, nomFournisseur);
+                        case "telephone" -> controlleurFournisseurs.modifierProfile("numerotelephone", reponse, nomFournisseur);
+                        case "nomcompagnie" -> controlleurFournisseurs.modifierProfile("nomcompagnie", reponse, nomFournisseur);
+                        case "mdp" -> controlleurFournisseurs.modifierProfile("mdp", reponse, nomFournisseur);
+                    }
                     afficherMessageConfirmation();
+                }
             }
         });
     }
@@ -295,7 +314,7 @@ public class ModifierProfilFournisseurGUI {
     }
 
     public void afficherMessageConfirmation() {
-        String message = "Votre ___ a ete change avec succes!";
+        String message = "Modification effectuee avec succes!";
         String title = "Modification terminee";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 

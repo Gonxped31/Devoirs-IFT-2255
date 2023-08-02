@@ -92,17 +92,14 @@ public class ControlleurFournisseurs {
         return dataBaseController.verifierNomFournissuer(inputNom);
     }
 
-    /**
-     * Méthode pour ajouter un nouveau robot fabriqué par le fournisseur actuel.
-     *
-     * @param nomsCoposantAajouter La liste des noms des composants à ajouter au robot.
-     * @return L'identifiant unique du robot ajouté.
-     */
-    public UUID ajouterRobot(ArrayList<ArrayList<String>> nomsCoposantAajouter){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        ArrayList<Composant> composants =this.fournisseurCourant.produireComposant(nomsCoposantAajouter);
-       UUID uuid= this.fournisseurCourant.ajouterRobot(composants);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+
+    public UUID ajouterRobot(String typeRobot, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        ArrayList<Composant> listComp = new ArrayList<>();
+        listComp.add(f.produireCPU());
+        UUID uuid = f.ajouterRobot(listComp, typeRobot);
+        this.dataBaseController.ajouterFournisseur(f);
         return uuid;
     }
 
@@ -112,10 +109,11 @@ public class ControlleurFournisseurs {
      * @param numeroSerie Le numéro de série du robot à retirer.
      * @return {@code true} si le robot a été retiré avec succès, {@code false} sinon.
      */
-    public boolean retirerRobot(String numeroSerie) {
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        boolean b = this.fournisseurCourant.retirerRobot(numeroSerie);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public boolean retirerRobot(String numeroSerie, String nomFournisseur) {
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        boolean b = f.retirerRobot(numeroSerie);
+        this.dataBaseController.ajouterFournisseur(f);
         return b;
     }
 
@@ -179,11 +177,13 @@ public class ControlleurFournisseurs {
      *
      * @param choix Le choix de modification à effectuer (par exemple, "nom", "mdp", "adresse", etc.).
      * @param info Les informations à mettre à jour pour le choix spécifié.
+     * @param nomFournisseur Le nom du fournisseur chez qui la modification sera effectuee.
      */
-    public void modifierProfile(String choix, String info){
-        this.dataBaseController.supprimerFournisseur(fournisseurCourant);
-        this.fournisseurCourant.modifierProfile(choix, info);
-        this.dataBaseController.ajouterFournisseur(fournisseurCourant);
+    public void modifierProfile(String choix, String info, String nomFournisseur){
+        Fournisseur f = dataBaseController.retournerFournisseur(nomFournisseur);
+        this.dataBaseController.supprimerFournisseur(f);
+        f.modifierProfile(choix, info);
+        this.dataBaseController.ajouterFournisseur(f);
     }
 
     /**

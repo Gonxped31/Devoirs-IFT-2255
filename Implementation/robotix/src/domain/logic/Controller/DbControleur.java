@@ -35,7 +35,7 @@ public class DbControleur {
         return dbControleur == null ? dbControleur = new DbControleur() : dbControleur;
     }
 
-    public String recupererListeUtilisateur(){
+    public ArrayList<Utilisateur> recupererListeUtilisateur(){
         return this.baseDeDonneeUtilisateur.recupererLalisteDesUtilisateur();
     }
 
@@ -139,7 +139,7 @@ public class DbControleur {
     }
 
 
-    public String recupererListeInteret(){
+    public ArrayList<Interet> recupererListeInteret(){
        return baseDeDonneeInteret.recupererListeInteret();
     }
 
@@ -179,10 +179,9 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
     }
 
-    public String obtenirListeInteret()
-    {
+    /*public String obtenirListeInteret() {
         return this.baseDeDonneeInteret.recupererListeInteret();
-    }
+    }*/
     public Interet souscrireAunInteret(String nomInteret)
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);

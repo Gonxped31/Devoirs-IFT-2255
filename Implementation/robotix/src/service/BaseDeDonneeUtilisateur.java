@@ -61,11 +61,8 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
             this.ajouterObjet(utilisateur);
         });
     }
-    public String recupererLalisteDesUtilisateur()
-    {
-        return (String) this.getListObjet().stream()
-                .map(user ->((Utilisateur) user).getProfilUtilisateur())
-                .collect(Collectors.joining("\n"));
+    public ArrayList<Utilisateur> recupererLalisteDesUtilisateur() {
+        return this.getListObjet();
     }
 
     public String rechercherUtilisateurParPseudo(String pseudo){
@@ -106,7 +103,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                          .getListSuiveur()
                          .stream()
                          .map(suiveur -> {return ((Utilisateur) suiveur).getProfilUtilisateur(); })
-                         .collect(Collectors.joining("\n"));
+                         .collect(Collectors.joining("\n\n"));
       }).collect(Collectors.joining("\n"));
    }
 
@@ -142,11 +139,11 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     public String recupererListeInteretParFiltrageSurTroisPremierSousChaine( String troislettre)
     {
-        return (String) this.listInteret.stream()
+        return this.listInteret.stream()
                 .filter(interet-> interet.getNom().substring(0,3).toUpperCase().equals(troislettre.toUpperCase()))
                 .map(i->i.getNom())
                 .distinct()
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining("\n"));
     }
 
     public boolean verifierPseudo(String pseudo){

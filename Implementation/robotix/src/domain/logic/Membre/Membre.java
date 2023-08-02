@@ -29,6 +29,18 @@ public abstract class Membre implements java.io.Serializable {
         return Telephone;
     }
 
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNomCompagnie() {
+        return nomCompagnie;
+    }
+
     public void setTelephone(String telephone) {
         Telephone = telephone;
     }

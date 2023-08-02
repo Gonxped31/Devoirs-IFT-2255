@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 public class Menu {
     private TypesComposants typesComposants;
     private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
-    private MenusFournisseur menusFournisseur = new MenusFournisseur();
     private InscriptionUtilisateurGUI inscriptionUtilisateurGUI = new InscriptionUtilisateurGUI();
     private ConnexionUtilisateurGUI connexionUtilisateurGUI = new ConnexionUtilisateurGUI();
     private InscriptionFournisseurGUI inscriptionFournisseurGUI = new InscriptionFournisseurGUI();

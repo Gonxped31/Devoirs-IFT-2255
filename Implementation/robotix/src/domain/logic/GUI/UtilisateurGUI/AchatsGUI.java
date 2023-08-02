@@ -272,7 +272,7 @@ public class AchatsGUI {
                             }
                         }
                         case "composante" -> {
-                            if (controlleurUtilisateurs.acheterComposante(nomFournisseurField.getText(), numeroField.getText(), pseudo)){
+                            if (controlleurUtilisateurs.acheterComposante(nomFournisseurField.getText(), numeroField.getText().toLowerCase(), pseudo)){
                                 confirmerAchatComposante();
                             } else {
                                 afficherMessageErreurAchat();
@@ -284,7 +284,6 @@ public class AchatsGUI {
             }
         });
     }
-
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -294,7 +293,6 @@ public class AchatsGUI {
             }
         });
     }
-
     public void confirmerAchatRobot(UUID uuid) {
         String message = "L'achat a ete bien reussi ! Voici le numero de série de votre robot :\n\n" + uuid +
                 "\n\nVEUILLEZ LE NOTER CAR IL EST INDISPENSABLE POUR CERTAINES OPTION.";

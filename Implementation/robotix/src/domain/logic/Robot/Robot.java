@@ -22,8 +22,18 @@ public class Robot implements java.io.Serializable{
     private boolean disponible;
 
     @JsonCreator
-    public Robot(@JsonProperty("nom") String nom,@JsonProperty("X") int X, @JsonProperty("Y")int Y,@JsonProperty("vitesse") int vitesse,@JsonProperty("batterie") int batterie,@JsonProperty("cpu") int cpu,@JsonProperty("memoire") double memoire,@JsonProperty("composantes") LinkedList<Composant> composantes,@JsonProperty("type") String type,
-                 @JsonProperty("action") LinkedList<Action> action,@JsonProperty("taches") LinkedList<Tache> taches,@JsonProperty("activites") LinkedList<String> activites){
+    public Robot(@JsonProperty("nom") String nom,
+                 @JsonProperty("X") int X,
+                 @JsonProperty("Y")int Y,
+                 @JsonProperty("vitesse") int vitesse,
+                 @JsonProperty("batterie") int batterie,
+                 @JsonProperty("cpu") int cpu,
+                 @JsonProperty("memoire") double memoire,
+                 @JsonProperty("composantes") LinkedList<Composant> composantes,
+                 @JsonProperty("type") String type,
+                 @JsonProperty("action") LinkedList<Action> action,
+                 @JsonProperty("taches") LinkedList<Tache> taches,
+                 @JsonProperty("activites") LinkedList<String> activites){
         this.nom = nom;
         this.X = X;
         this.Y = Y;
@@ -125,6 +135,24 @@ public class Robot implements java.io.Serializable{
     }
     public void allouerTache(Tache tache){
         taches.add(tache);
+    }
+
+    public String afficherEtatRobot(){
+        StringBuilder etat = new StringBuilder();
+
+        etat.append("Nom du robot: " + nom + "\n");
+        etat.append("Position X, Y: " + X + ", " + Y + "\n");
+        etat.append("Vitesse: " + vitesse + "\n");
+        etat.append("Batterie: " + batterie + "\n");
+        etat.append("CPU: " + cpu + "\n");
+        etat.append("Memoire: " + memoire + " GB\n");
+        etat.append("Type: " + type + "\n");
+        etat.append("Numéro de série: " + numeroSerie + "\n");
+        etat.append("Nombre de composantes: " + composantes.size() + "\n");
+        etat.append("Nombre d'actions: " + actions.size() + "\n");
+        etat.append("Nombre de tâches: " + taches.size() + "\n");
+
+        return etat.toString();
     }
 
     @JsonIgnore

@@ -114,7 +114,7 @@ public class InscriptionFournisseurGUI {
 
                         JOptionPane.showMessageDialog(null, message, title, messageType);
                     } else {
-                        menusFournisseur = new MenusFournisseur();
+                        menusFournisseur = new MenusFournisseur(inputNom);
                         inscrireEnvoyerConfirmation(inputNom,mdp,inputAdresse,inputEmail,
                                 inputTelephone,inputTypeRobot,inputTypeComposantes,inputCapacite,inputCompagnie);
                         menusFournisseur.afficherMenuFournisseur(jFrame);

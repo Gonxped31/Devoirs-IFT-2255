@@ -36,11 +36,8 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
         });
     }
 
-    public String recupererListeInteret(){
-        return (String) this.getListObjet().stream()
-                .map( i-> ((Interet) i).getNom())
-                .distinct()
-                .collect(Collectors.joining("\n"));
+    public ArrayList<Interet> recupererListeInteret(){
+        return this.getListObjet();
     }
     public Interet retournerInteret(String nomInteret){
         return (Interet) this.getListObjet().stream()

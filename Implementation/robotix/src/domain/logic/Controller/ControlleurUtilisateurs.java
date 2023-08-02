@@ -83,8 +83,8 @@ public class ControlleurUtilisateurs {
         return u.getListeRobot();
     }
 
-    public ArrayList<Robot> afficherEtatRobot(String pseudo) {
-        return this.utilisateurCourant.afficherEtatRobot();
+    public String afficherEtatRobot(String pseudo, String numeroSeri) {
+        return this.utilisateurCourant.afficherEtatRobot(numeroSeri);
     }
 
     public boolean ajouterComposanteRobot(String composante, String numeroSerie, String pseudo){
@@ -190,6 +190,10 @@ public class ControlleurUtilisateurs {
         }
 
         return result;
+    }
+    public String afficherEtatRobot(String numSeri) {
+
+        return this.utilisateurCourant.afficherEtatRobot(numSeri);
     }
 
     public void ajouterRobotActivite(ArrayList<String> numeroSerieRobots, String nomActivite ,String pseudo){

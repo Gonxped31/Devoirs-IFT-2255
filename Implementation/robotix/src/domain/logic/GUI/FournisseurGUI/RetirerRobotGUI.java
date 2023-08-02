@@ -1,17 +1,24 @@
 package domain.logic.GUI.FournisseurGUI;
 
+import domain.logic.Controller.ControlleurFournisseurs;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class RetirerRobotGUI {
+    private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    private String nomFournisseur;
     private JFrame jFrame = new JFrame();
     private JPanel retirerRobotPanel = new JPanel(new GridBagLayout());
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public RetirerRobotGUI() {
+    public RetirerRobotGUI(String nomFournisseur) throws IOException, ParseException {
+        this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -37,10 +44,19 @@ public class RetirerRobotGUI {
         btnRetirerRobot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (numeroRobotField.getText().length() == 0) {
-                    afficherMessageErreur();
-                } else
-                    afficherMessageValidation();
+                String numeroSerie = numeroRobotField.getText();
+                if (!numeroSerie.isEmpty()){
+                    if (controlleurFournisseurs.retirerRobot(numeroSerie, nomFournisseur)){
+                        JOptionPane.showMessageDialog(null, "Robot retire avec succes",
+                                "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Vous ne possedez pas ce robot",
+                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Veuillez entrer un numeroDeSerie",
+                            "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         btnRetour.addActionListener(new ActionListener() {

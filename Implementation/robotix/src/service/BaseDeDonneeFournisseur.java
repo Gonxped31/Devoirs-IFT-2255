@@ -212,11 +212,11 @@ public class BaseDeDonneeFournisseur  extends BaseDeDonneeCommun{
 
     public String rechercherFournisseurParTypeDeComposant(String typeDeComposant){
         String founisseurs= (String) this.getListObjet().stream()
-                .filter( fournisseur ->( (Fournisseur) fournisseur).getTypeRobotFabriquer().equals(typeDeComposant))
+                .filter( fournisseur ->( (Fournisseur) fournisseur).getTypeComposantesFabriquer().toUpperCase().equals(typeDeComposant.toUpperCase()))
                 .map(f-> {
                     return ((Fournisseur) f).getProfilFournisseur();
                 })
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n\n"));
         return founisseurs.isEmpty() ? "Fournisseur non trouver, veuillez verifier le type" : founisseurs;
     }
 

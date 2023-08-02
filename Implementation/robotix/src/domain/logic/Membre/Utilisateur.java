@@ -220,8 +220,11 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         return robot;
     }
 
-    public ArrayList<Robot> afficherEtatRobot(){
-        return this.getListeRobot();
+    public String afficherEtatRobot(String numSeri){
+        return  this.listeRobot.stream().filter(r-> r.getNumeroSerie().toString().trim().equals(numSeri.trim()))
+                .findFirst()
+                .map(Robot::afficherEtatRobot)
+                .orElse("Robot non trouver, veuiller verifier le numero de serie");
     }
 
     public boolean creerActivite(String nomActivite, String dateDebut, String dateFin, ArrayList<Tache> listeTache, HashSet<Interet> listeInterets) throws ParseException {
@@ -328,13 +331,13 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
     @JsonIgnore
     public String getProfilUtilisateur(){
-        return "Nom :" + this.getNom() + "\n Prenom :" + this.getPrenom() +
-                "\n pseudo :" + getPseudo() + "\n adresse courriel : " +
-                this.email + "\nTelephone : " + this.getTelephone() +
-                "\nInteret : " + this.getListeInteret().stream()
+        return "Nom: " + this.getNom() + "\nPrenom: " + this.getPrenom() +
+                "\npseudo: " + getPseudo() + "\nadresse courriel: " +
+                this.email + "\nTelephone: " + this.getTelephone() +
+                "\nInteret: " + this.getListeInteret().stream()
                 .map(i -> i.getNom()).collect(Collectors.joining(","))+
-                "\nNombre de point :" + this.getPoint() +
-                "\nNombre de suiveur : " + this.getListSuiveur().size();
+                "\nNombre de point  " + this.getPoint() +
+                "\nNombre de suiveur: " + this.getListSuiveur().size();
     }
 
     public String getPrenom() {

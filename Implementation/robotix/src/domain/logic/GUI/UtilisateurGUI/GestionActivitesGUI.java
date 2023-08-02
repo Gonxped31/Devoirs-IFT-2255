@@ -216,7 +216,6 @@ public class GestionActivitesGUI {
         scrollPaneRobot.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
-
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;

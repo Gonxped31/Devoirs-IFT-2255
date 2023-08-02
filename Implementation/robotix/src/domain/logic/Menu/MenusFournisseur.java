@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 
 
 public class MenusFournisseur extends JFrame {
+	private String nomFournisseur;
 
 	private Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
@@ -38,14 +39,21 @@ public class MenusFournisseur extends JFrame {
 	private JButton btnModifierProfil = new JButton("Modifier mon profil");
 	private JButton btnRequetePublique = new JButton("Faire une requete publique");
 	private JButton btnDeconnexion = new JButton("Deconnexion");
-	private AjouterRobotGUI ajouterRobotGUI = new AjouterRobotGUI();
-	private RetirerRobotGUI retirerRobotGUI = new RetirerRobotGUI();
+	private AjouterRobotGUI ajouterRobotGUI;
+	private RetirerRobotGUI retirerRobotGUI;
 	private EnregistrerComposanteGUI enregistrerComposanteGUI = new EnregistrerComposanteGUI();
 	private GererComposantesGUI gererComposantesGUI = new GererComposantesGUI();
-	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI();
-	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI();
+	private ModifierProfilFournisseurGUI modifierProfilFournisseurGUI;
+	private RequetePubliqueFournisseurGUI requetePubliqueFournisseurGUI;
 
-	public MenusFournisseur() throws IOException, ParseException {
+	public MenusFournisseur(String nomFournisseur) throws IOException, ParseException {
+		this.nomFournisseur = nomFournisseur;
+
+		requetePubliqueFournisseurGUI = new RequetePubliqueFournisseurGUI(nomFournisseur);
+		modifierProfilFournisseurGUI = new ModifierProfilFournisseurGUI(nomFournisseur);
+		ajouterRobotGUI = new AjouterRobotGUI(nomFournisseur);
+		retirerRobotGUI = new RetirerRobotGUI(nomFournisseur);
+
 		menuFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		menuFournisseurPanel.setLayout(new GridLayout(0, 1));
 		menuFournisseurPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -72,13 +80,13 @@ public class MenusFournisseur extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ajouterRobotGUI.afficherMainPanel(jFrame);
 			}
-		});
+		});//Done
 		btnRetirerRobot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				retirerRobotGUI.afficherMainPanel(jFrame);
 			}
-		});
+		});//Done
 		btnEnregistrerComposante.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -96,13 +104,13 @@ public class MenusFournisseur extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				modifierProfilFournisseurGUI.afficherMainPanel(jFrame);
 			}
-		});
+		});//Done
 		btnRequetePublique.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				requetePubliqueFournisseurGUI.afficherMainPanel(jFrame);
 			}
-		});
+		});//Done
 		btnDeconnexion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

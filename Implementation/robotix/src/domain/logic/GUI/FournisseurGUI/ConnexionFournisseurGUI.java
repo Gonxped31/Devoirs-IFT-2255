@@ -61,7 +61,7 @@ public class ConnexionFournisseurGUI {
                     String nom = nomField.getText();
                     String mdp = new String(mdpField.getPassword());
                     if (controlleurFournisseurs.authentificationFournisseur(nom, mdp)){
-                        menusFournisseur = new MenusFournisseur();
+                        menusFournisseur = new MenusFournisseur(nom);
                         menusFournisseur.afficherMenuFournisseur(jFrame);
                     } else {
                         String message = "Le fournisseur \"" + nom + "\" n'existe pas ou le mot de passe est incorrecte.";
