@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,11 +37,16 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
         });
     }
 
-    public String recupererListeInteret(){
-        return (String) this.getListObjet().stream()
-                .map( i-> ((Interet) i).getNom())
-                .distinct()
-                .collect(Collectors.joining("\n"));
+    public HashSet<Interet> recupererListeInteret() {
+        HashSet<Interet> interets = new HashSet<>();
+
+        for (Object i : getListObjet()) {
+            if (i instanceof Interet) {
+                interets.add((Interet) i);
+            }
+        }
+
+        return interets;
     }
     public Interet retournerInteret(String nomInteret){
         return (Interet) this.getListObjet().stream()

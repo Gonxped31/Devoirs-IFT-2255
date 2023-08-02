@@ -121,13 +121,23 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
 
 
-    public String recupererListeInteretUtilisateur(String pseudo){
-        return (String) this.getListObjet().stream()
-                .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
-                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
-                .map( i-> ((Interet) i).getNom())
-                .distinct()
-                .collect(Collectors.joining(", "));
+    public HashSet<Interet> recupererListeInteretUtilisateur(String pseudo) {
+        HashSet<Interet> interets = new HashSet<>();
+
+        for (Object u : getListObjet()) {
+            if (u instanceof Utilisateur) {
+                Utilisateur utilisateur = (Utilisateur) u;
+                if (utilisateur.getPseudo().equals(pseudo)) {
+                    for (Object i : utilisateur.getListeInteret()) {
+                        if (i instanceof Interet) {
+                            interets.add((Interet) i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return interets;
     }
     public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
     {
@@ -170,7 +180,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     }
 
     public boolean extractInterests(String interet) {
-        List<Utilisateur> utilisateurs = this.getListObjet(); // Assuming getListObjet() returns List<Utilisateur>
+        List<Utilisateur> utilisateurs = this.getListObjet(); //
         for (Utilisateur u : utilisateurs) {
             for (Interet i : u.getListeInteret()) {
                 if (interet.equals(i.getNom())){

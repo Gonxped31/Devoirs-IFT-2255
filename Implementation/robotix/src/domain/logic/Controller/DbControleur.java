@@ -15,6 +15,7 @@ import service.BaseDeDonneeUtilisateur;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.UUID;
 
 
@@ -139,11 +140,11 @@ public class DbControleur {
     }
 
 
-    public String recupererListeInteret(){
+    public HashSet<Interet> recupererListeInteret(){
        return baseDeDonneeInteret.recupererListeInteret();
     }
 
-    public String recupererListeInteretUtilisateur(String pseudo){
+    public HashSet<Interet> recupererListeInteretUtilisateur(String pseudo){
          return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateur(pseudo);
     }
     public String recupererListeInteretUtilisateurParFiltrageSurTroisPremierSousChaine(String pseudo, String troislettre)
@@ -179,10 +180,10 @@ public class DbControleur {
         return this.baseDeDonneeFournisseur.acheterRobot(nomFournisseur,numero);
     }
 
-    public String obtenirListeInteret()
+   /* public String obtenirListeInteret()
     {
         return this.baseDeDonneeInteret.recupererListeInteret();
-    }
+    }*/
     public Interet souscrireAunInteret(String nomInteret)
     {
         return this.baseDeDonneeInteret.retournerInteret(nomInteret);
