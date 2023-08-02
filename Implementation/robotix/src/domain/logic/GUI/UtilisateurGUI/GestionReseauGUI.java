@@ -1,6 +1,7 @@
 package domain.logic.GUI.UtilisateurGUI;
 
 import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
 import domain.logic.Robot.Action;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 public class GestionReseauGUI {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = new DbControleur();
     String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
@@ -20,6 +22,7 @@ public class GestionReseauGUI {
     private JPanel gererSuiveursPanel = new JPanel(new GridLayout(0, 1));
     private JPanel voirListeAbonnesPanel = new JPanel(new GridBagLayout());
     private JPanel supprimerAbonnePanel = new JPanel(new GridBagLayout());
+    private JPanel ajouterInteretsPanel = new JPanel(new GridBagLayout());
     private JPanel gererInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JLabel gestionReseauLabel = new JLabel("Gestion reseau", SwingConstants.CENTER);
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
@@ -28,6 +31,7 @@ public class GestionReseauGUI {
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
     private JScrollPane scrollPaneVoirMesAbonnes;
+    private JScrollPane scrollPaneAjouterInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -40,6 +44,7 @@ public class GestionReseauGUI {
         setVoirListeAbonnesPanel();
         setSupprimerAbonnePanel();
         setGererInteretsPanel();
+        setAjouterInteretPanel();
 
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
@@ -152,7 +157,6 @@ public class GestionReseauGUI {
         JLabel listeAbonnementsLabel = new JLabel("Voici la liste de vos abonnements");
         recupererListeDeMesAbonnes();
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
-
         listeAbonnementsLabel.setFont(new Font("Arial", Font.BOLD, 24));
 
         constraints.gridy = 0;
@@ -179,6 +183,7 @@ public class GestionReseauGUI {
         scrollPaneVoirMesAbonnes = new JScrollPane(suiveursPanel);
         scrollPaneVoirMesAbonnes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
+
 
     public void setSupprimerAbonnePanel() {
         JLabel supprimerAbonneLabel = new JLabel("Quel utilisateur voulez vous supprimer de votre liste");
@@ -213,10 +218,8 @@ public class GestionReseauGUI {
         JButton btnDesabonnerInteret = new JButton("Se desabonner d'un interet");
         JButton btnRetour = new JButton("Retour");
 
-
         gererInteretsTitre.setFont(new Font("Arial", Font.BOLD, 24));
         gererInteretsLabel.setFont(new Font("Arial", Font.BOLD, 18));
-
 
         gererInteretsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         gererInteretsPanel.add(gererInteretsTitre);
@@ -235,10 +238,55 @@ public class GestionReseauGUI {
         gererInteretsPanel.add(Box.createHorizontalStrut(10));
         gererInteretsPanel.add(btnRetour);
 
-
         //ADD LISTENERS
-
+        btnAjouterInteret.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        jFrame.setContentPane(ajouterInteretsPanel);
+                        mettreAJourFrame();
+                    }
+                });
         onBtnAnnulerClicked(btnRetour);
+    }
+
+    public void setAjouterInteretPanel(){
+        JLabel ajouterInteretLabel = new JLabel("Quel interet voulez ajouter au systeme Robotix?");
+        JTextField ajouterInteretField = new JTextField();
+        JButton btnAjouter = new JButton("Ajouter interet");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        ajouterInteretField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        ajouterInteretsPanel.add(ajouterInteretLabel, constraints);
+        constraints.gridy = 1;
+        ajouterInteretsPanel.add(ajouterInteretField, constraints);
+        //constraints.gridy = 2;
+        //supprimerAbonnePanel.add(supprimerAbonneField, constraints);
+        constraints.gridy = 2;
+        ajouterInteretsPanel.add(btnAjouter, constraints);
+        constraints.gridy = 3;
+        ajouterInteretsPanel.add(btnRetourMenuReseau, constraints);
+
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+        //onBtnSupprimerAbonneClicked(btnAjouter, ajouterInteretField);
+        onBtnAjouterInteretClicked(btnAjouter, ajouterInteretField);
+    }
+
+    private void onBtnAjouterInteretClicked(JButton btnAjouter, JTextField ajouterInteretField) {
+        btnAjouter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String interet = ajouterInteretField.getText();
+                if (dbControlleur.souscrireAunInteret(interet) == null) {
+                    afficherMessageSuccesAjoutInteret(interet);
+                    dbControlleur.ajouterInteret(interet);
+                } else {
+                    afficherMessageErreurAjouterInteretExiste();
+                    //System.out.println("Cette interet interet existe deja dans le systeme");
+                }
+            }
+        });
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -351,4 +399,21 @@ public class GestionReseauGUI {
 
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
+
+    public void afficherMessageErreurAjouterInteretExiste() {
+        String message = "Cet interet existe deja dans le systeme. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageSuccesAjoutInteret(String interet){
+        String message =  interet + " a ete ajoute dans le systeme!";
+        String title = "Interet ajoute avecgit com succes";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
 }
