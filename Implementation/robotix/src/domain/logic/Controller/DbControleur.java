@@ -12,6 +12,7 @@ import service.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.UUID;
 
 /**
@@ -339,8 +340,8 @@ public class DbControleur {
      *
      * @return La liste des intérêts stockés dans la base de données.
      */
-    public ArrayList<Interet> recupererListeInteret(){
-       return baseDeDonneeInteret.recupererListeInteret();
+    public HashSet<Interet> recupererListeInteret(){
+        return baseDeDonneeInteret.recupererListeInteret();
     }
 
     /**
@@ -349,8 +350,8 @@ public class DbControleur {
      * @param pseudo Le pseudo de l'utilisateur pour lequel récupérer la liste des intérêts.
      * @return La liste des intérêts de l'utilisateur ou une chaîne vide s'il n'a aucun intérêt.
      */
-    public String recupererListeInteretUtilisateur(String pseudo){
-         return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateur(pseudo);
+    public HashSet<Interet> recupererListeInteretUtilisateur(String pseudo){
+        return this.baseDeDonneeUtilisateur.recupererListeInteretUtilisateur(pseudo);
     }
 
     /**
@@ -527,5 +528,26 @@ public class DbControleur {
      */
     public Robot getCurentSoldRobot(String numeroSerie) {
         return this.baseDeDonneeRobotVendus.getCurrentSoldRobot(numeroSerie);
+    }
+
+    /**
+     * Vérifie si l'utilisateur associé au pseudo donné a l'intérêt spécifié.
+     *
+     * @param interetChoisi Le nom de l'intérêt à vérifier.
+     * @param pseudo Le pseudo de l'utilisateur dont on veut vérifier l'intérêt.
+     * @return {@code true} si l'utilisateur a l'intérêt spécifié, {@code false} sinon.
+     */
+    public boolean retournerInteret(String interetChoisi, String pseudo) {
+        return baseDeDonneeUtilisateur.retournerInteret(interetChoisi, pseudo);
+    }
+
+    /**
+     * Vérifie si un nouvel intérêt existe déjà dans la base de données des intérêts.
+     *
+     * @param nouvelInteret Le nom du nouvel intérêt à vérifier.
+     * @return {@code true} si l'intérêt existe déjà dans la base de données des intérêts, {@code false} sinon.
+     */
+    public boolean existeDansDbInteret(String nouvelInteret) {
+        return baseDeDonneeInteret.retournerInteret(nouvelInteret) != null;
     }
 }

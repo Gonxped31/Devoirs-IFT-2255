@@ -190,13 +190,23 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
      * @param pseudo Le pseudo de l'utilisateur dont on veut récupérer les intérêts.
      * @return Les noms des intérêts de l'utilisateur, séparés par des virgules.
      */
-    public String recupererListeInteretUtilisateur(String pseudo){
-        return (String) this.getListObjet().stream()
-                .filter(u -> ((Utilisateur) u).getPseudo().equals(pseudo))
-                .flatMap(u -> ((Utilisateur)u).getListeInteret().stream())
-                .map( i-> ((Interet) i).getNom())
-                .distinct()
-                .collect(Collectors.joining(", "));
+    public HashSet<Interet> recupererListeInteretUtilisateur(String pseudo) {
+        HashSet<Interet> interets = new HashSet<>();
+
+        for (Object u : getListObjet()) {
+            if (u instanceof Utilisateur) {
+                Utilisateur utilisateur = (Utilisateur) u;
+                if (utilisateur.getPseudo().equals(pseudo)) {
+                    for (Object i : utilisateur.getListeInteret()) {
+                        if (i instanceof Interet) {
+                            interets.add((Interet) i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return interets;
     }
 
     /**
@@ -317,12 +327,28 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         List<Utilisateur> utilisateurs = this.getListObjet();
         for (Utilisateur u : utilisateurs){
-            for (Utilisateur suivi : u.getListeUtilisateursSuivi()){
-                if (suivi.getPseudo().equals(nom)){
+            for (String suivi : u.getListeUtilisateursSuivi()){
+                if (suivi.equals(nom)){
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public boolean retournerInteret(String interetChoisi, String pseudo) {
+        List<Utilisateur> utilisateurs = this.getListObjet();
+        for (Utilisateur u : utilisateurs){
+            if (pseudo.equals(u.getPseudo())){
+                for (Interet interet : u.getListeInteret()){
+                    if (interet.getNom().equals(interetChoisi)){
+                        return  true;
+                    }
+                }
+            }
+
+        }
+        return false;
+
     }
 }

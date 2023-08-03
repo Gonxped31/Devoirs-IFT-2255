@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,8 +60,16 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
      *
      * @return Une ArrayList contenant tous les objets Interet présents dans la base de données.
      */
-    public ArrayList<Interet> recupererListeInteret(){
-        return this.getListObjet();
+    public HashSet<Interet> recupererListeInteret() {
+        HashSet<Interet> interets = new HashSet<>();
+
+        for (Object i : getListObjet()) {
+            if (i instanceof Interet) {
+                interets.add((Interet) i);
+            }
+        }
+
+        return interets;
     }
 
     /**

@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
@@ -74,7 +75,7 @@ public class RequetePubliqueFournisseurGUI {
     private ArrayList<Utilisateur> listeUtilisateur;
     private ArrayList<Fournisseur> listeFournisseur;
     private ArrayList<Activite> listeActivites;
-    private ArrayList<Interet> listeInterets;
+    private HashSet<Interet> listeInterets;
 
     private JScrollPane scrollPaneListeUtilisateur, scrollPaneListeUtilisateurParPseudo, scrollPaneListeUtilisateurParSuiveur,
             scrollPaneListeFournisseur, scrollPaneListeFournisseurParNom, scrollPaneListeFournisseurParEmail,

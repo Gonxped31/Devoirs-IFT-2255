@@ -22,7 +22,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private ArrayList<Tache> listeTaches = new ArrayList<>();
     private ArrayList<Action> listeActions = new ArrayList<>();
     private ArrayList<Composant> composantesAchetes = new ArrayList<>();
-    private Set<Utilisateur> listeUtilisateursSuivi = new HashSet<>();
+    private HashSet<String> listeUtilisateursSuivi = new HashSet<>();
     private HashSet<Interet> listeInteret = new HashSet<>();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private ArrayList<Activite> listeActivitesRejoint = new ArrayList<>();
@@ -34,6 +34,8 @@ public class Utilisateur extends Membre implements java.io.Serializable{
     private Tache tache;
     private Notification notification;
     private int taillePrecedenteListeSuiveur;
+
+
 
     /**
      * Constructeur pour la classe Utilisateur.
@@ -182,7 +184,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
      *
      * @return Un ensemble (Set) contenant les utilisateurs suivis par l'utilisateur actuel.
      */
-    public Set<Utilisateur> getListeUtilisateursSuivi() {
+    public HashSet<String> getListeUtilisateursSuivi() {
         return listeUtilisateursSuivi;
     }
 
@@ -276,7 +278,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
      */
     public void suivreUtilisateur(Utilisateur suivi){
         taillePrecedenteListeSuiveur = getListeUtilisateursSuivi().size();
-        getListeUtilisateursSuivi().add(suivi);
+        getListeUtilisateursSuivi().add(suivi.getPseudo());
     }
 
     /**
@@ -329,7 +331,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
      *
      * @param listeUtilisateursSuivi La nouvelle liste des utilisateurs suivis par l'utilisateur actuel.
      */
-    public void setListeUtilisateursSuivi(Set<Utilisateur> listeUtilisateursSuivi) {
+    public void setListeUtilisateursSuivi(HashSet<String> listeUtilisateursSuivi) {
         this.listeUtilisateursSuivi = listeUtilisateursSuivi;
     }
 
@@ -844,12 +846,10 @@ public class Utilisateur extends Membre implements java.io.Serializable{
      *
      * @return Une chaîne de caractères contenant la liste des pseudonymes des utilisateurs suivis.
      */
-    public String voirListeUtilisateur() {
-        StringBuilder sb = new StringBuilder();
-        for (Utilisateur u : this.listeUtilisateursSuivi) {
-            sb.append(u.getPseudo()).append("\n");
-        }
-        return sb.toString();
+    public ArrayList<String>  voirListeUtilisateur() {
+        ArrayList<String> liste = new ArrayList<>();
+        liste.addAll(this.listeUtilisateursSuivi);
+        return liste;
     }
 
     /**
@@ -858,20 +858,20 @@ public class Utilisateur extends Membre implements java.io.Serializable{
      * @param utilASupprimer Le pseudonyme de l'utilisateur à supprimer de la liste des suivis.
      * @return true si l'utilisateur a été supprimé avec succès, false s'il n'a pas été trouvé dans la liste.
      */
-    public boolean supprimerUtilisateurDeMaListe(String utilASupprimer) {
-        for (Utilisateur u : this.listeUtilisateursSuivi){
-            if (u.getPseudo().equals(utilASupprimer)){
-                this.listeUtilisateursSuivi.remove(u);
-                return true;
+        public boolean supprimerUtilisateurDeMaListe(String utilASupprimer) {
+            for (String u : this.listeUtilisateursSuivi){
+                if (u.equals(utilASupprimer)){
+                    this.listeUtilisateursSuivi.remove(u);
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
-    }
 
     /**
      * Ajoute un robot à la liste des robots de l'utilisateur.
      *
-     * @param robot Le robot à ajouter à la liste.
+     * @param robot Le robot a ajouter à la liste.
      */
     public void ajouterRobot(Robot robot) {
         System.out.println(listeRobot);
@@ -889,7 +889,7 @@ public class Utilisateur extends Membre implements java.io.Serializable{
         while (iterator.hasNext()) {
             Interet i = iterator.next();
             if (i.getNom().equals(choix)) {
-                iterator.remove(); // Safely remove the element using the iterator
+                iterator.remove();
             }
         }
     }

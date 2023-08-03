@@ -401,23 +401,10 @@ public class ControlleurUtilisateurs {
      * @param pseudo Le pseudo de l'utilisateur pour lequel afficher la liste des utilisateurs suivis.
      * @return La liste des utilisateurs suivis sous forme de chaîne de caractères.
      */
-    public String voirListeUtilisateur(String pseudo){
+    public ArrayList<String> voirListeUtilisateur(String pseudo){
         return dataBaseController.retournerUtilisateur(pseudo).voirListeUtilisateur();
     }
 
-    /**
-     * Supprime un utilisateur de la liste de suivi d'un autre utilisateur spécifié par son pseudo.
-     *
-     * @param pseudo         Le pseudo de l'utilisateur qui souhaite supprimer l'utilisateur de sa liste de suivi.
-     * @param utilASupprimer Le pseudo de l'utilisateur à supprimer de la liste de suivi.
-     * @return "true" si l'utilisateur a été supprimé de la liste de suivi avec succès, "false" sinon.
-     */
-    public boolean supprimerUtilisateurDeListeSuivi(String pseudo, String utilASupprimer){
-        if (dataBaseController.retournerUtilisateur(pseudo).supprimerUtilisateurDeMaListe(utilASupprimer) == false){
-            return false;
-        }
-        return true;
-    }
 
     /**
      * Supprime la relation de suivi entre deux utilisateurs spécifiés par leur pseudo.
@@ -440,23 +427,20 @@ public class ControlleurUtilisateurs {
     }
 
     /**
-     * Supprime la relation de suivi entre deux utilisateurs spécifiés par leur pseudo.
+     * Arrête de suivre un utilisateur spécifié pour l'utilisateur donné.
+     * <p>
+     * Cette méthode supprime l'utilisateur spécifié (utilASupprimer) de la liste des utilisateurs
+     * suivis par l'utilisateur associé au pseudo donné. Après la suppression, la liste des utilisateurs
+     * suivis est mise à jour dans la base de données.
      *
-     * @param pseudo                Le pseudo de l'utilisateur qui souhaite arrêter de suivre l'autre utilisateur.
-     * @param pseudoUtilisateurASuivre Le pseudo de l'utilisateur à ne plus suivre.
-     * @return "true" si la relation de suivi a été supprimée avec succès, "false" sinon.
+     * @param pseudo Le pseudo de l'utilisateur qui souhaite arrêter de suivre un autre utilisateur.
+     * @param utilASupprimer Le pseudo de l'utilisateur à ne plus suivre.
      */
-    public boolean suppriemrSuivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
-        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
-        try {
-            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
-            dataBaseController.supprimerUtilisateur(u);
-            u.getListSuiveur().remove(utilisateurCourant);
-            dataBaseController.ajouterUtilisateur(u);
-        } catch (NullPointerException e){
-            return false;
-        }
-        return true;
+    public void arreterSuivreUtilisateur(String pseudo, String utilASupprimer){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        dataBaseController.supprimerUtilisateur(u);
+        u.getListeUtilisateursSuivi().remove(utilASupprimer);
+        dataBaseController.ajouterUtilisateur(u);
     }
 
     /**
@@ -472,7 +456,7 @@ public class ControlleurUtilisateurs {
             Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
             Utilisateur utilCourant = dataBaseController.retournerUtilisateur(pseudo);
             dataBaseController.supprimerUtilisateur(utilCourant);
-            utilCourant.getListeUtilisateursSuivi().add(u);
+            utilCourant.getListeUtilisateursSuivi().add(u.getPseudo());
             dataBaseController.ajouterUtilisateur(utilCourant);
         } catch (NullPointerException e){
             return false;
@@ -486,19 +470,10 @@ public class ControlleurUtilisateurs {
      *
      * @param pseudo                Le pseudo de l'utilisateur qui souhaite commencer à suivre l'autre utilisateur.
      * @param pseudoUtilisateurASuivre Le pseudo de l'utilisateur à suivre.
-     * @return "true" si la relation de suivi a été créée avec succès, "false" sinon.
      */
-    public boolean suivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
-        //Aller chercher utilisateur suivi et APPEND utilisateurCOurant
-        try {
-            Utilisateur u = dataBaseController.retournerUtilisateur(pseudoUtilisateurASuivre);
-            dataBaseController.supprimerUtilisateur(u);
-            u.getListSuiveur().add(utilisateurCourant);
-            dataBaseController.ajouterUtilisateur(u);
-        } catch (NullPointerException e){
-            return false;
-        }
-        return true;
+    public void suivreUtilisateur(String pseudo, String pseudoUtilisateurASuivre){
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        u.getListeUtilisateursSuivi().add(pseudoUtilisateurASuivre);
     }
 
     /**
@@ -634,7 +609,8 @@ public class ControlleurUtilisateurs {
      * @return "true" si l'utilisateur suit l'autre utilisateur, "false" sinon.
      */
     public boolean existeDansListeSuivi(String pseudo, String nom) {
-        return dataBaseController.existeDansListeSuivi(pseudo, nom);
+        Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
+        return u.getListeUtilisateursSuivi().contains(nom);
     }
 
     /**
@@ -659,5 +635,16 @@ public class ControlleurUtilisateurs {
     public Robot retrouverRobotNumeroSerie(String numeroSerie, String pseudo){
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         return u.retournerRobotNumeroSerie(numeroSerie);
+    }
+
+    /**
+     * Vérifie si l'utilisateur associé au pseudo donné possède l'intérêt spécifié.
+     *
+     * @param interetChoisi Le nom de l'intérêt à vérifier.
+     * @param pseudo Le pseudo de l'utilisateur dont on veut vérifier la possession de l'intérêt.
+     * @return {@code true} si l'utilisateur possède l'intérêt spécifié, {@code false} sinon.
+     */
+    public boolean possedeInteret(String interetChoisi, String pseudo) {
+        return dataBaseController.retournerInteret(interetChoisi, pseudo);
     }
 }

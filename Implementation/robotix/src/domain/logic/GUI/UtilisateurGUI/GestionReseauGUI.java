@@ -1,27 +1,55 @@
 package domain.logic.GUI.UtilisateurGUI;
 
+import domain.logic.Controller.ControlleurUtilisateurs;
+import domain.logic.Controller.DbControleur;
+import domain.logic.Membre.Interet;
+import domain.logic.Membre.TypeNotification;
+import domain.logic.Robot.Action;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class GestionReseauGUI {
+    private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    private DbControleur dbControlleur = DbControleur.getDbControleur();
+
+    String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
     private JPanel suivreUtilisateurPanel = new JPanel(new GridBagLayout());
     private JPanel gererSuiveursPanel = new JPanel(new GridLayout(0, 1));
     private JPanel voirListeAbonnesPanel = new JPanel(new GridBagLayout());
     private JPanel supprimerAbonnePanel = new JPanel(new GridBagLayout());
-    private JPanel gererInteretsPanel = new JPanel(new GridBagLayout());
+    private JPanel ajouterInteretsPanel = new JPanel(new GridBagLayout());
+    private JPanel modifierInteretsPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel abonnerInteretPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel desabonnerInteretPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel getSupprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel supprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel gererInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JLabel gestionReseauLabel = new JLabel("Gestion reseau", SwingConstants.CENTER);
     private JButton btnSuivreUtilisateur = new JButton("Suivre un utilisateur");
     private JButton btnGererSuiveurs = new JButton("Gerer mes suiveurs");
     private JButton btnGererInterets = new JButton("Gerer mes interets");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
+    private HashSet<Interet> listeInteret;
+    private JScrollPane scrollPaneVoirMesAbonnes;
+    private JScrollPane scrollPaneAjouterInteret;
+    private JScrollPane scrollPaneModifierInteret;
+    private JScrollPane scrollPaneSupprimerInteret;
+    private  JScrollPane scrollPaneAbonnerInteret;
+    private JScrollPane scrollPaneDesabonnerInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GestionReseauGUI() {
+    public GestionReseauGUI(String pseudo) throws IOException, ParseException {
+        this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         setMainPanel();
@@ -30,6 +58,11 @@ public class GestionReseauGUI {
         setVoirListeAbonnesPanel();
         setSupprimerAbonnePanel();
         setGererInteretsPanel();
+        setAjouterInteretPanel();
+        setModifierInteretsPanel();
+        setSupprimerInteretPanel();
+        setAbonneInteret();
+        setDesabonneInteret();
 
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
@@ -104,7 +137,7 @@ public class GestionReseauGUI {
         JLabel gererSuiveursTitre = new JLabel("Gerer mes suiveurs", SwingConstants.CENTER);
         JLabel gererSuiveursLabel = new JLabel("Que voulez-vous faire?", SwingConstants.CENTER);
         JButton btnVoirAbonnes = new JButton("Voir a qui je suis abonne");
-        JButton btnSupprimerAbonne = new JButton("Supprimer un utilisateur de ma liste d'abonne");
+        JButton btnSupprimerAbonne = new JButton("Arêter de suivre un utilisateur.");
         JButton btnRetourMenuReseau = new JButton("Retour au menu gestion reseau");
 
         gererSuiveursTitre.setFont(new Font("Arial", Font.BOLD, 24));
@@ -140,20 +173,39 @@ public class GestionReseauGUI {
 
     public void setVoirListeAbonnesPanel() {
         JLabel listeAbonnementsLabel = new JLabel("Voici la liste de vos abonnements");
+        recupererListeDeMesAbonnes();
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
-
         listeAbonnementsLabel.setFont(new Font("Arial", Font.BOLD, 24));
 
         constraints.gridy = 0;
         voirListeAbonnesPanel.add(listeAbonnementsLabel, constraints);
         constraints.gridy = 1;
+        voirListeAbonnesPanel.add(scrollPaneVoirMesAbonnes, constraints);
+        constraints.gridy = 2;
         voirListeAbonnesPanel.add(btnRetourMenuReseau, constraints);
 
-        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+        onBtnRetourAbonnees(btnRetourMenuReseau);
     }
 
-    public void setSupprimerAbonnePanel() {
+    public void recupererListeDeMesAbonnes(){
+        ArrayList<String> listePseudoUtilisateur = controlleurUtilisateurs.voirListeUtilisateur(pseudo);
+
+        JPanel suiveursPanel = new JPanel();
+        suiveursPanel.setLayout(new BoxLayout(suiveursPanel, BoxLayout.Y_AXIS));
+
+        for (String pseudoUtil: listePseudoUtilisateur) {
+            JLabel label = new JLabel(pseudoUtil);
+            suiveursPanel.add(label);
+        }
+
+        scrollPaneVoirMesAbonnes = new JScrollPane(suiveursPanel);
+        scrollPaneVoirMesAbonnes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    }
+
+
+    private void setSupprimerAbonnePanel() {
         JLabel supprimerAbonneLabel = new JLabel("Quel utilisateur voulez vous supprimer de votre liste");
+        recupererListeDeMesAbonnes();
         JTextField supprimerAbonneField = new JTextField();
         JButton btnSupprimer = new JButton("Supprimer cet abonne");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
@@ -162,23 +214,425 @@ public class GestionReseauGUI {
         constraints.gridy = 0;
         supprimerAbonnePanel.add(supprimerAbonneLabel, constraints);
         constraints.gridy = 1;
-        supprimerAbonnePanel.add(supprimerAbonneField, constraints);
+        supprimerAbonnePanel.add(scrollPaneVoirMesAbonnes, constraints);
         constraints.gridy = 2;
-        supprimerAbonnePanel.add(btnSupprimer, constraints);
+        supprimerAbonnePanel.add(supprimerAbonneField, constraints);
         constraints.gridy = 3;
+        supprimerAbonnePanel.add(btnSupprimer, constraints);
+        constraints.gridy = 4;
         supprimerAbonnePanel.add(btnRetourMenuReseau, constraints);
 
-        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+        onBtnRetourAbonnees(btnRetourMenuReseau);
         onBtnSupprimerAbonneClicked(btnSupprimer, supprimerAbonneField);
     }
 
-    public void setGererInteretsPanel() {
+    private void onBtnRetourAbonnees(JButton btnRetourMenuReseau) {
+        btnRetourMenuReseau.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(gererSuiveursPanel);
+                mettreAJourFrame();
+            }
+        });
+    }
+
+    private void setGererInteretsPanel() {
+        JLabel gererInteretsTitre = new JLabel("Gerer mes interets", SwingConstants.CENTER);
+        JLabel gererInteretsLabel = new JLabel("Que voulez-vous faire?", SwingConstants.CENTER);
+        JButton btnAjouterInteret = new JButton("Ajouter un interet");
+        JButton btnModifierInteret = new JButton("Modifier un interet");
+        JButton btnSupprimerInteret = new JButton("Supprimer un interet");
+        JButton btnAbonnerInteret = new JButton("S'abonner a un interet");
+        JButton btnDesabonnerInteret = new JButton("Se desabonner d'un interet");
         JButton btnRetour = new JButton("Retour");
 
-        constraints.gridy = 0;
-        gererInteretsPanel.add(btnRetour, constraints);
+        gererInteretsTitre.setFont(new Font("Arial", Font.BOLD, 24));
+        gererInteretsLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
+        gererInteretsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        gererInteretsPanel.add(gererInteretsTitre);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(gererInteretsLabel);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnAjouterInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnModifierInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnSupprimerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnAbonnerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnDesabonnerInteret);
+        gererInteretsPanel.add(Box.createHorizontalStrut(10));
+        gererInteretsPanel.add(btnRetour);
+
+        //ADD LISTENERS
+        btnAjouterInteret.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        jFrame.setContentPane(ajouterInteretsPanel);
+                        mettreAJourFrame();
+                    }
+                });
+        btnModifierInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(modifierInteretsPanel);
+                mettreAJourFrame();
+            }
+        });
+
+        btnSupprimerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(supprimerInteretsPanel);
+                mettreAJourFrame();
+            }
+        });
+
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(abonnerInteretPanel);
+                mettreAJourFrame();
+            }
+        });
+
+        btnDesabonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(desabonnerInteretPanel);
+                mettreAJourFrame();
+            }
+        });
         onBtnAnnulerClicked(btnRetour);
+    }
+
+    private void setAjouterInteretPanel(){
+        JLabel ajouterInteretLabel = new JLabel("Quel interet voulez ajouter au systeme Robotix?");
+        JTextField ajouterInteretField = new JTextField();
+        JButton btnAjouter = new JButton("Ajouter interet");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        ajouterInteretField.setPreferredSize(new Dimension(200, 30));
+        constraints.gridy = 0;
+        ajouterInteretsPanel.add(ajouterInteretLabel, constraints);
+        constraints.gridy = 1;
+        ajouterInteretsPanel.add(ajouterInteretField, constraints);
+        //constraints.gridy = 2;
+        //supprimerAbonnePanel.add(supprimerAbonneField, constraints);
+        constraints.gridy = 2;
+        ajouterInteretsPanel.add(btnAjouter, constraints);
+        constraints.gridy = 3;
+        ajouterInteretsPanel.add(btnRetourMenuReseau, constraints);
+
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+        //onBtnSupprimerAbonneClicked(btnAjouter, ajouterInteretField);
+        onBtnAjouterInteretClicked(btnAjouter, ajouterInteretField);
+    }
+
+    private void setModifierInteretsPanel(){
+        JLabel modifierInteretLabel = new JLabel("Quel interet voulez modifier?");
+        recupererListeInteretsModifier();
+        JLabel ajouterNouvelInteretLabel = new JLabel("Par quel interet voulez-vous le remplacer?");
+        JTextField ajouterNouvelInteretField = new JTextField();
+        //ajouterNouvelInteretField.setPreferredSize(new Dimension(200, 30));
+        JButton btnAjouterNouvelInteret = new JButton("Modifier");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        modifierInteretLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        ajouterNouvelInteretLabel.setFont(new Font("Arial", Font.BOLD, 18));
+
+        constraints.gridy = 0;
+        modifierInteretsPanel.add(ajouterNouvelInteretLabel, constraints);
+        constraints.gridy = 1;
+        modifierInteretsPanel.add(scrollPaneModifierInteret, constraints);
+        constraints.gridy = 2;
+        modifierInteretsPanel.add(ajouterNouvelInteretField, constraints);
+        constraints.gridy = 3;
+        modifierInteretsPanel.add(btnAjouterNouvelInteret, constraints);
+        constraints.gridy = 4;
+        modifierInteretsPanel.add(btnRetourMenuReseau , constraints);
+
+        //FIX VISUAL
+        onBtnModifierInteretClicked(btnAjouterNouvelInteret, ajouterNouvelInteretField);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+
+    }
+
+    private void setSupprimerInteretPanel(){
+        JLabel supprimerInteretLabel = new JLabel("Quel interet voulez-vous supprimer?");
+        recupererListeInteretsSupprimer();
+        JButton btnSupprimerInteret = new JButton("Supprimer");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        supprimerInteretLabel.setFont(new Font("Arial", Font.BOLD, 24));
+
+        constraints.gridy = 0;
+        supprimerInteretsPanel.add(supprimerInteretLabel, constraints);
+        constraints.gridy =1;
+        supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
+        constraints.gridy = 2;
+        supprimerInteretsPanel.add(btnSupprimerInteret, constraints);
+        constraints.gridy = 3;
+        supprimerInteretsPanel.add(btnRetourMenuReseau, constraints);
+
+        onBtnSupprimerInteretClicked(btnSupprimerInteret);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+
+    }
+
+    private void setAbonneInteret(){
+        JLabel abonnerInteretLabel = new JLabel("A quel interet souhaitez-vous vous abonner?");
+        recupererListeInteretAbonne();
+        JButton btnAbonnerInteret = new JButton("S'abonner");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        constraints.gridy = 0;
+        abonnerInteretPanel.add(abonnerInteretLabel, constraints);
+        constraints.gridy =1;
+        abonnerInteretPanel.add(scrollPaneAbonnerInteret, constraints);
+        constraints.gridy = 2;
+        abonnerInteretPanel.add(btnAbonnerInteret, constraints);
+        constraints.gridy = 3;
+        abonnerInteretPanel.add(btnRetourMenuReseau, constraints);
+
+
+        //Add methode abonnement
+        onBtnAbonnerInteretClicked(btnAbonnerInteret);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+    }
+
+    private void setDesabonneInteret(){
+        JLabel desabonnerInteretLabel = new JLabel("A quel interet souhaitez-vous vous desabonner?");
+        recupererListeInteretDesabonne();
+        JButton btnDesabonnerInteret = new JButton("Se desabonner");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        constraints.gridy = 0;
+        desabonnerInteretPanel.add(desabonnerInteretLabel, constraints);
+        constraints.gridy =1;
+        desabonnerInteretPanel.add(scrollPaneDesabonnerInteret, constraints);
+        constraints.gridy = 2;
+        desabonnerInteretPanel.add(btnDesabonnerInteret, constraints);
+        constraints.gridy = 3;
+        desabonnerInteretPanel.add(btnRetourMenuReseau, constraints);
+
+        //Add methode abonnement
+        onBtnDesabonnerInteretClicked(btnDesabonnerInteret);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+    }
+
+    private void recupererListeInteretsModifier(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneModifierInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneModifierInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretsSupprimer(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneSupprimerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneSupprimerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretAbonne(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneAbonnerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneAbonnerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretDesabonne(){
+        listeInteret = dbControlleur.recupererListeInteretUtilisateur(pseudo);
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneDesabonnerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneDesabonnerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void onBtnModifierInteretClicked(JButton btnAjouterNouvelInteret, JTextField ajouterNouvelInteretField) {
+        btnAjouterNouvelInteret.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneModifierInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                String nouvelInteret = ajouterNouvelInteretField.getText();
+
+                //Verifier si interet existe deja existe deja
+                if (dbControlleur.extraireInterets(interetChoisi) && !dbControlleur.existeDansDbInteret(nouvelInteret) && nouvelInteret.length() != 0){
+                    confirmerModificationInteret(interetChoisi,nouvelInteret);
+                    dbControlleur.modifierInteret(interetChoisi, nouvelInteret);
+                }else{
+                    afficherMessageErreurModificationInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
+    private void onBtnSupprimerInteretClicked(JButton btnSupprimerInteret) {
+        btnSupprimerInteret.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneSupprimerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                //Verifier si interet existe deja existe deja
+                if (dbControlleur.extraireInterets(interetChoisi)){
+                    confirmerSupprimerInteret(interetChoisi);
+                    dbControlleur.supprimerInteret(interetChoisi);
+                }else{
+                    afficherMessageErreurSuppressionInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
+    private void onBtnAbonnerInteretClicked(JButton btnAbonnerInteret){
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneAbonnerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                if (!controlleurUtilisateurs.possedeInteret(interetChoisi, pseudo)) {
+                    controlleurUtilisateurs.abonnerInteret(interetChoisi, pseudo);
+                    confirmerAbonnementInteret(interetChoisi);
+
+                } else {
+                    afficherMessageErreurAbonnerInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
+    private void onBtnDesabonnerInteretClicked(JButton btnAbonnerInteret){
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneDesabonnerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            System.out.println("HERE");
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                if (controlleurUtilisateurs.possedeInteret(interetChoisi, pseudo)) {
+                    controlleurUtilisateurs.desabonnerInteret(interetChoisi, pseudo);
+                    confirmerDesabonnementInteret(interetChoisi);
+                } else {
+                    afficherMessageErreurDesabonnerInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
+    private void onBtnAjouterInteretClicked(JButton btnAjouter, JTextField ajouterInteretField) {
+        btnAjouter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String interet = ajouterInteretField.getText();
+                if (dbControlleur.souscrireAunInteret(interet) == null) {
+                    afficherMessageSuccesAjoutInteret(interet);
+                    dbControlleur.ajouterInteret(interet);
+                } else {
+                    afficherMessageErreurAjouterInteretExiste();
+                }
+            }
+        });
     }
 
     public void afficherMainPanel(JFrame jFrame) {
@@ -197,10 +651,19 @@ public class GestionReseauGUI {
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (pseudoField.getText().length() == 0)
-                    afficherMessageErreurSuivreUtilisateur();
-                else
-                    confirmerNouvelAbonne();
+                String input = pseudoField.getText();
+
+                if (input.isEmpty()){
+                    afficherMessageErreurSuivreUtilisateur("Veuillez entrer un pseudo");
+                } else {
+                    if (controlleurUtilisateurs.existeDansListeSuivi(pseudo, input)){
+                        afficherMessageErreurSuivreUtilisateur("Vous suivez déjà cet utilisateur");
+                    } else {
+                        controlleurUtilisateurs.ajouterNotifs(input, "Nouvel abonne",pseudo + " vous a suivi", TypeNotification.NOUVEAU_ABONNE);
+                        controlleurUtilisateurs.suivreUtilisateur(pseudo, input);
+                        confirmerNouvelAbonne(input);
+                    }
+                }
             }
         });
     }
@@ -209,10 +672,18 @@ public class GestionReseauGUI {
         btnSupprimer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (supprimerField.getText().length() == 0)
-                    afficherMessageErreurSupprimerAbonne();
-                else
-                    confirmerSupprimerAbonne();
+                String aSupprimer = supprimerField.getText();
+                if (aSupprimer.isEmpty())
+                    afficherMessageErreurSupprimerAbonne("Veuillez entrer un pseudo.");
+                else{
+                    if (!controlleurUtilisateurs.existeDansListeSuivi(pseudo, aSupprimer)){
+                        afficherMessageErreurSupprimerAbonne("Vous ne suivez pas cet utilisateur.");
+                    } else {
+                        controlleurUtilisateurs.arreterSuivreUtilisateur(pseudo, aSupprimer);
+                        confirmerSupprimerAbonne(aSupprimer);
+                    }
+                }
+
             }
         });
     }
@@ -221,7 +692,7 @@ public class GestionReseauGUI {
         btnRetourMenuReseau.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.setContentPane(gererSuiveursPanel);
+                jFrame.setContentPane(gererInteretsPanel);
                 mettreAJourFrame();
             }
         });
@@ -237,8 +708,8 @@ public class GestionReseauGUI {
         });
     }
 
-    public void confirmerNouvelAbonne() {
-        String message = "Vous suivez maintenant _____";
+    public void confirmerNouvelAbonne(String nom) {
+        String message = "Vous suivez maintenant " + nom;
         String title = "Nouvel abonne";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 
@@ -247,8 +718,9 @@ public class GestionReseauGUI {
         mettreAJourFrame();
     }
 
-    public void confirmerSupprimerAbonne() {
-        String message = "Vous avez supprime _____ dans vos abonnes";
+    public void confirmerSupprimerAbonne(String nom) {
+
+        String message = "Vous avez supprime " + nom + " dans vos abonnes";
         String title = "Supprimer abonne";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
 
@@ -257,19 +729,109 @@ public class GestionReseauGUI {
         mettreAJourFrame();
     }
 
-    public void afficherMessageErreurSuivreUtilisateur() {
-        String message = "L'utilisateur que vous voulez suivre n'existe pas. Veuillez reessayer.";
+    public void confirmerModificationInteret(String ancienInteret, String nouvelInteret) {
+
+        String message = "Vous avez modifie " + ancienInteret + " pour " + nouvelInteret;
+        String title = "Modification interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void confirmerSupprimerInteret(String ancienInteret) {
+
+        String message = "Vous avez supprime " +  ancienInteret;
+        String title = "Suppression interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void confirmerAbonnementInteret(String nouvelInteret) {
+
+        String message = "Vous etes abonne a " +  nouvelInteret;
+        String title = "Abonnement d'interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void confirmerDesabonnementInteret(String nouvelInteret) {
+
+        String message = "Vous etes desabonne a " +  nouvelInteret;
+        String title = "Desabonnement d'interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void afficherMessageErreurSuivreUtilisateur(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
-    public void afficherMessageErreurSupprimerAbonne() {
-        String message = "Nous avons pas trouve cet utilisateur dans vos liste d'abonnnes. Veuillez reessayer.";
+    public void afficherMessageErreurSupprimerAbonne(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
+
+    public void afficherMessageErreurModificationInteret(String ancienInteret) {
+        String message = ancienInteret + " n'a pas pu etre modifie";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurSuppressionInteret(String ancienInteret) {
+        String message = ancienInteret + " n'a pas pu etre supprime car quelqu'un y est abonne";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurAjouterInteretExiste() {
+        String message = "Cet interet existe deja dans le systeme. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurAbonnerInteret(String interet) {
+        String message = "Vous etes deja abonnes a " + interet;
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurDesabonnerInteret(String interet) {
+        String message = "Vous n'etes pas abonne a " + interet;
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageSuccesAjoutInteret(String interet){
+        String message =  interet + " a ete ajoute dans le systeme!";
+        String title = "Interet ajoute avecgit com succes";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
 }
