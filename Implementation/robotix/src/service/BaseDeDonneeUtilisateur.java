@@ -208,15 +208,29 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         List<Utilisateur> utilisateurs = this.getListObjet();
-        System.out.println(utilisateurs);
         for (Utilisateur u : utilisateurs){
             for (String suivi : u.getListeUtilisateursSuivi()){
-                System.out.println(u.getListeUtilisateursSuivi());
                 if (suivi.equals(nom)){
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public boolean retournerInteret(String interetChoisi, String pseudo) {
+        List<Utilisateur> utilisateurs = this.getListObjet();
+        for (Utilisateur u : utilisateurs){
+            if (pseudo.equals(u.getPseudo())){
+                for (Interet interet : u.getListeInteret()){
+                    if (interet.getNom().equals(interetChoisi)){
+                        return  true;
+                    }
+                }
+            }
+
+        }
+        return false;
+
     }
 }

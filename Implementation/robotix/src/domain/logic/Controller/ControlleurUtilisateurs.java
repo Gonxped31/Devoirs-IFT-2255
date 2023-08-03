@@ -379,4 +379,8 @@ public class ControlleurUtilisateurs {
         Utilisateur u = dataBaseController.retournerUtilisateur(pseudo);
         return u.retournerRobotNumeroSerie(numeroSerie);
     }
+
+    public boolean possedeInteret(String interetChoisi, String pseudo) {
+            return dataBaseController.retournerInteret(interetChoisi, pseudo);
+    }
 }

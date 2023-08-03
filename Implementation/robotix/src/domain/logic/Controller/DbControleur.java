@@ -218,4 +218,8 @@ public class DbControleur {
     public boolean existeDansDbInteret(String nouvelInteret) {
         return baseDeDonneeInteret.retournerInteret(nouvelInteret) != null;
     }
+
+    public boolean retournerInteret(String interetChoisi, String pseudo) {
+        return baseDeDonneeUtilisateur.retournerInteret(interetChoisi, pseudo);
+    }
 }

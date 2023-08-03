@@ -58,6 +58,7 @@ public class GestionReseauGUI {
         setAjouterInteretPanel();
         setModifierInteretsPanel();
         setSupprimerInteretPanel();
+        setAbonneInteret();
 
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
@@ -356,13 +357,29 @@ public class GestionReseauGUI {
         supprimerInteretsPanel.add(btnRetourMenuReseau, constraints);
 
         onBtnSupprimerInteretClicked(btnSupprimerInteret);
-
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
 
     }
 
     private void setAbonneInteret(){
-        JLabel abonnerInteret = new JLabel("A quel interet souhaitez-vous vous abonner?");
+        JLabel abonnerInteretLabel = new JLabel("A quel interet souhaitez-vous vous abonner?");
         recupererListeInteretAbonne();
+        JButton btnAbonnerInteret = new JButton("S'abonner");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        constraints.gridy = 0;
+        abonnerInteretPanel.add(abonnerInteretLabel, constraints);
+        constraints.gridy =1;
+        abonnerInteretPanel.add(scrollPaneAbonnerInteret, constraints);
+        constraints.gridy = 2;
+        abonnerInteretPanel.add(btnAbonnerInteret, constraints);
+        constraints.gridy = 3;
+        abonnerInteretPanel.add(btnRetourMenuReseau, constraints);
+
+
+        //Add methode abonnement
+        onBtnAbonnerInteretClicked(btnAbonnerInteret);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
     }
 
     private void recupererListeInteretsModifier(){
@@ -479,6 +496,35 @@ public class GestionReseauGUI {
                     dbControlleur.supprimerInteret(interetChoisi);
                 }else{
                     afficherMessageErreurSuppressionInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
+    private void onBtnAbonnerInteretClicked(JButton btnAbonnerInteret){
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneAbonnerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                if (!controlleurUtilisateurs.possedeInteret(interetChoisi, pseudo)) {
+                    controlleurUtilisateurs.abonnerInteret(interetChoisi, pseudo);
+                    confirmerAbonnementInteret(interetChoisi);
+
+                } else {
+                    afficherMessageErreurAbonnerInteret(interetChoisi);
                 }
             }
         });
@@ -607,6 +653,17 @@ public class GestionReseauGUI {
         mettreAJourFrame();
     }
 
+    public void confirmerAbonnementInteret(String nouvelInteret) {
+
+        String message = "Vous etes abonne a " +  nouvelInteret;
+        String title = "Abonnement d'interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
     public void afficherMessageErreurSuivreUtilisateur() {
         String message = "L'utilisateur que vous voulez suivre n'existe pas. Veuillez reessayer.";
         String title = "Erreur";
@@ -648,6 +705,14 @@ public class GestionReseauGUI {
 
     public void afficherMessageErreurAjouterInteretExiste() {
         String message = "Cet interet existe deja dans le systeme. Veuillez reessayer.";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurAbonnerInteret(String interet) {
+        String message = "Vous etes deja abonnes a " + interet;
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
