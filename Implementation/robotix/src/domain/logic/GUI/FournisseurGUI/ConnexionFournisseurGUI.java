@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
-
+/**
+ * Cette classe gère l'interface graphique de connexion pour les fournisseurs.
+ */
 public class ConnexionFournisseurGUI {
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private JFrame jFrame = new JFrame();
@@ -25,6 +27,11 @@ public class ConnexionFournisseurGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints();
 
+    /**
+     * Constructeur de la classe ConnexionFournisseurGUI.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     * @throws ParseException Si une erreur de parsing se produit.
+     */
     public ConnexionFournisseurGUI() throws IOException, ParseException {
         // Setup de quelques composantes
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -79,6 +86,10 @@ public class ConnexionFournisseurGUI {
         });
     }
 
+    /**
+     * Affiche le panel de connexion fournisseur sur une fenêtre JFrame.
+     * @param jFrame La fenêtre JFrame sur laquelle afficher le panel.
+     */
     public void afficherPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
@@ -86,6 +97,9 @@ public class ConnexionFournisseurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour la fenêtre après avoir effectué des modifications sur les composants graphiques.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();

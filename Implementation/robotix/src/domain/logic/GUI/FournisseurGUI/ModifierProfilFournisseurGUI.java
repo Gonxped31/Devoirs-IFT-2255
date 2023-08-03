@@ -9,6 +9,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Cette classe représente l'interface graphique permettant au fournisseur de modifier son profil.
+ * Elle affiche différents panels pour permettre au fournisseur de modifier son nom, adresse, email,
+ * numéro de téléphone, nom de compagnie, capacité de production, ou mot de passe.
+ */
 public class ModifierProfilFournisseurGUI {
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private String nomFournisseur;
@@ -33,6 +38,15 @@ public class ModifierProfilFournisseurGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Constructeur de la classe ModifierProfilFournisseurGUI.
+     * Il configure les composants graphiques pour chaque type de modification et définit les action listeners
+     * pour les boutons de sauvegarde et d'annulation.
+     *
+     * @param nomFournisseur Le nom du fournisseur dont le profil doit être modifié.
+     * @throws IOException    En cas d'erreur lors de la lecture ou de l'écriture de fichiers.
+     * @throws ParseException En cas d'erreur lors de l'analyse de dates ou d'heures.
+     */
     public ModifierProfilFournisseurGUI(String nomFournisseur) throws IOException, ParseException {
         this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -104,6 +118,11 @@ public class ModifierProfilFournisseurGUI {
         });
     }
 
+    /**
+     * Configure le panel principal de l'interface graphique.
+     * Ajoute les composants tels que le label du fournisseur, les boutons pour chaque type de modification (nom, adresse, email, etc.),
+     * et associe les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setMainPanel() {
         profilFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -128,6 +147,12 @@ public class ModifierProfilFournisseurGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Configure le panel de modification du nom du fournisseur.
+     * Déclare les composants tels que le label pour entrer le nouveau nom, le champ de texte pour saisir le nom,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierNomPanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
@@ -149,6 +174,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification de l'adresse du fournisseur.
+     * Déclare les composants tels que le label pour entrer la nouvelle adresse, le champ de texte pour saisir l'adresse,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierAdressePanel() {
         JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
         JTextField nouvelleAdresseField = new JTextField();
@@ -169,6 +200,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification de l'email du fournisseur.
+     * Déclare les composants tels que le label pour entrer le nouvel email, le champ de texte pour saisir l'email,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierEmailPanel() {
         JLabel emailLabel = new JLabel("Entrez votre nouveau email");
         JTextField nouveauEmailField = new JTextField();
@@ -189,6 +226,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification du numéro de téléphone du fournisseur.
+     * Déclare les composants tels que le label pour entrer le nouveau numéro de téléphone, le champ de texte pour saisir le numéro,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierTelephonePanel() {
         JLabel telephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
         JTextField nouveauTelephoneField = new JTextField();
@@ -209,6 +252,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification du nom de la compagnie du fournisseur.
+     * Déclare les composants tels que le label pour entrer le nouveau nom de la compagnie, le champ de texte pour saisir le nom,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierCompagniePanel() {
         JLabel compagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
         JTextField nouvelleCompagnieField = new JTextField();
@@ -229,6 +278,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification de la capacité de production du fournisseur.
+     * Déclare les composants tels que le label pour entrer la nouvelle capacité de production, le champ de texte pour saisir la capacité,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierCapaciteProductionPanel() {
         JLabel capaciteProductionLabel = new JLabel("Entrez votre nouvelle capacite de production");
         JTextField nouvelleCapaciteProductionField = new JTextField();
@@ -249,6 +304,12 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel de modification du mot de passe du fournisseur.
+     * Déclare les composants tels que le label pour entrer le nouveau mot de passe, le champ de texte pour saisir le mot de passe,
+     * et les boutons pour enregistrer ou annuler les modifications.
+     * Associe également les actions aux boutons pour gérer les interactions utilisateur.
+     */
     public void setModifierMdpPanel() {
         JLabel mdpLabel = new JLabel("Entrez votre nouveau mot de passe");
         JPasswordField nouveauMdpField = new JPasswordField();
@@ -269,6 +330,13 @@ public class ModifierProfilFournisseurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Affiche le panel principal dans la fenêtre JFrame fournie en paramètre.
+     * Enregistre également le panel précédent pour permettre le retour en arrière.
+     * Met à jour la JFrame pour afficher le panel principal.
+     *
+     * @param jFrame La fenêtre JFrame dans laquelle afficher le panel principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
@@ -276,10 +344,24 @@ public class ModifierProfilFournisseurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour la fenêtre JFrame pour refléter les changements effectués dans les panels de modification.
+     * Cette méthode permet de rafraîchir l'interface graphique après chaque changement de panel.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
+
+    /**
+     * Méthode appelée lorsque le bouton d'enregistrement est cliqué.
+     * Elle récupère la valeur saisie par l'utilisateur dans le champ de saisie correspondant
+     * et appelle la méthode pour modifier le profil du fournisseur avec la nouvelle valeur.
+     *
+     * @param btnEnregistrer Le bouton d'enregistrement associé à ce panel de modification.
+     * @param response      Le champ de saisie où l'utilisateur entre la nouvelle valeur.
+     * @param modif         Le type de modification à effectuer (nom, adresse, email, etc.).
+     */
     public void onBtnEnregistrerClicked(JButton btnEnregistrer, JTextField response, String modif) {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
@@ -303,6 +385,13 @@ public class ModifierProfilFournisseurGUI {
             }
         });
     }
+
+    /**
+     * Méthode appelée lorsque le bouton d'annulation est cliqué.
+     * Elle revient au panel principal affichant tous les choix de modification disponibles.
+     *
+     * @param btnAnnuler Le bouton d'annulation associé à ce panel de modification.
+     */
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -313,6 +402,10 @@ public class ModifierProfilFournisseurGUI {
         });
     }
 
+    /**
+     * Affiche un message de confirmation après la sauvegarde des modifications.
+     * Ce message indique que la modification a été effectuée avec succès.
+     */
     public void afficherMessageConfirmation() {
         String message = "Modification effectuee avec succes!";
         String title = "Modification terminee";
@@ -323,6 +416,10 @@ public class ModifierProfilFournisseurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message d'erreur en cas de problème lors de la sauvegarde des modifications.
+     * Ce message informe l'utilisateur qu'une erreur s'est produite et l'invite à réessayer.
+     */
     public void afficherMessageErreur() {
         String message = "Une erreur s'est produite ! Veuillez reessayer.";
         String title = "Erreur";

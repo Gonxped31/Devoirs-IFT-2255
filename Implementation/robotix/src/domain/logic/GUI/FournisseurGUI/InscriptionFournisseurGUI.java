@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Cette classe représente l'interface graphique pour l'inscription en tant que nouveau fournisseur.
+ * Elle permet à un nouveau fournisseur de saisir ses informations, de les valider et de s'inscrire.
+ */
 public class InscriptionFournisseurGUI {
     private ControlleurFournisseurs controlleurFournisseurs;
-
     private JFrame jFrame = new JFrame();
     private JPanel inscriptionFournisseurPanel = new JPanel();
     private JLabel inscriptionFournisseurLabel = new JLabel("Inscription en tant que nouveau fournisseur", SwingConstants.CENTER);
@@ -45,6 +48,13 @@ public class InscriptionFournisseurGUI {
     private MenusFournisseur menusFournisseur;
     private Container panelPrecedent = new Container();
 
+    /**
+     * Constructeur de la classe InscriptionFournisseurGUI.
+     * Il configure les composants graphiques et définit les action listeners pour les boutons.
+     *
+     * @throws IOException    En cas d'erreur lors de la lecture ou de l'écriture de fichiers.
+     * @throws ParseException En cas d'erreur lors de l'analyse de dates ou d'heures.
+     */
     public InscriptionFournisseurGUI() throws IOException, ParseException {
         inscriptionFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         inscriptionFournisseurPanel.setLayout(new GridLayout(0, 1));
@@ -135,6 +145,11 @@ public class InscriptionFournisseurGUI {
         });
     }
 
+    /**
+     * Affiche le panel d'inscription en tant que nouveau fournisseur sur une fenêtre JFrame.
+     *
+     * @param jFrame La fenêtre JFrame où afficher le panel d'inscription.
+     */
     public void afficherPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
@@ -143,6 +158,17 @@ public class InscriptionFournisseurGUI {
         this.jFrame.repaint();
     }
 
+    /**
+     * Valide les informations saisies par le fournisseur lors de l'inscription.
+     * Vérifie si les champs sont remplis, si le nom de fournisseur existe déjà,
+     * si l'adresse email est valide et si le numéro de téléphone est valide.
+     *
+     * @param nomExiste       Indique si le nom de fournisseur existe déjà dans la base de données.
+     * @param emailValide     Indique si l'adresse email saisie est valide.
+     * @param telephoneValide Indique si le numéro de téléphone saisie est valide.
+     * @param inputs          Une liste contenant les informations saisies par le fournisseur.
+     * @return Une liste de messages d'erreur en cas de validation échouée, sinon une liste vide.
+     */
     private List<String> validerInput(boolean nomExiste, boolean emailValide, boolean telephoneValide,
                                       List<String> inputs){
         List<String> messageErreur = new ArrayList<>();
@@ -173,6 +199,21 @@ public class InscriptionFournisseurGUI {
         return messageErreur;
     }
 
+    /**
+     * Effectue l'inscription du nouveau fournisseur et envoie un courriel de confirmation.
+     *
+     * @param inputNom                Le nom du nouveau fournisseur.
+     * @param mdp                     Le mot de passe du nouveau fournisseur.
+     * @param inputAdresse            L'adresse du nouveau fournisseur.
+     * @param inputEmail              L'adresse email du nouveau fournisseur.
+     * @param inputTelephone          Le numéro de téléphone du nouveau fournisseur.
+     * @param inputTypeRobot          Le type de robots fabriqués par le nouveau fournisseur.
+     * @param inputTypeComposantes    Le type de composantes fabriquées par le nouveau fournisseur.
+     * @param inputCapacite           La capacité de fabrication du nouveau fournisseur.
+     * @param inputCompagnie          Le nom de la compagnie du nouveau fournisseur.
+     * @throws IOException    En cas d'erreur lors de la lecture ou de l'écriture de fichiers.
+     * @throws ParseException En cas d'erreur lors de l'analyse de dates ou d'heures.
+     */
     private void inscrireEnvoyerConfirmation(String inputNom, String mdp, String inputAdresse, String inputEmail,
                                              String inputTelephone, String inputTypeRobot, String inputTypeComposantes,
                                              String inputCapacite, String inputCompagnie) throws IOException, ParseException {

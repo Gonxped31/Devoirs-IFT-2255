@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Cette classe gère l'interface graphique pour la gestion des composantes par un fournisseur.
+ */
 public class GererComposantesGUI {
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private String nomFournisseur;
@@ -25,6 +28,13 @@ public class GererComposantesGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Constructeur de la classe GererComposantesGUI.
+     *
+     * @param nomFournisseur Le nom du fournisseur qui gère les composantes.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     * @throws ParseException Si une erreur de parsing se produit.
+     */
     public GererComposantesGUI(String nomFournisseur) throws IOException, ParseException {
         this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -67,6 +77,11 @@ public class GererComposantesGUI {
         });
     }
 
+    /**
+     * Configure le panel principal de gestion des composantes.
+     * Il ajoute les composantes nécessaires au panel, tels que des étiquettes et des boutons,
+     * et définit les action listeners pour les interactions avec les boutons.
+     */
     public void setMainPanel() {
         gererComposantesLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -83,6 +98,11 @@ public class GererComposantesGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Configure le panel pour la suppression d'une composante.
+     * Il ajoute les composants nécessaires tels que des étiquettes, des champs de texte et des boutons,
+     * et définit les action listeners pour les interactions avec les boutons.
+     */
     public void setSuppressionComposantePanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel nomComposanteLabel = new JLabel("Nom de la composante a supprimer");
@@ -108,6 +128,11 @@ public class GererComposantesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel pour la modification du prix d'une composante.
+     * Il ajoute les composants nécessaires tels que des étiquettes, des champs de texte et des boutons,
+     * et définit les action listeners pour les interactions avec les boutons.
+     */
     public void setModificationPrixPanel() {
         JLabel nomComposanteLabel = new JLabel("Nom de la composante a modifier");
         JLabel nouveauPrixLabel = new JLabel("Nouveau prix");
@@ -136,6 +161,11 @@ public class GererComposantesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Configure le panel pour la modification de la description d'une composante.
+     * Il ajoute les composants nécessaires tels que des étiquettes, des champs de texte et des boutons,
+     * et définit les action listeners pour les interactions avec les boutons.
+     */
     public void setModificationDescPanel() {
         JLabel nomComposanteLabel = new JLabel("Nom de la composante a modifier");
         JLabel nouveauDescLabel = new JLabel("Nouvelle description");
@@ -164,6 +194,12 @@ public class GererComposantesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Affiche le panel principal sur une fenêtre JFrame.
+     * Il sauvegarde également le panel précédent pour permettre le retour au menu Fournisseur.
+     *
+     * @param jFrame La fenêtre JFrame où afficher le panel principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
@@ -171,11 +207,21 @@ public class GererComposantesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour la fenêtre JFrame après avoir effectué des modifications sur les composants graphiques.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
+    /**
+     * Action listener pour le bouton "Supprimer la composante".
+     * Il gère la suppression de la composante en fonction des informations saisies dans le champ de texte.
+     *
+     * @param btnConfirmerSupprression Le bouton "Supprimer la composante".
+     * @param nomComposanteField      Le champ de texte contenant le nom de la composante à supprimer.
+     */
     public void onBtnSuppressionClicked(JButton btnConfirmerSupprression, JTextField nomComposanteField) {
         btnConfirmerSupprression.addActionListener(new ActionListener() {
             @Override
@@ -193,6 +239,14 @@ public class GererComposantesGUI {
         });
     }
 
+    /**
+     * Action listener pour le bouton "Modifier le prix".
+     * Il gère la modification du prix de la composante en fonction des informations saisies dans les champs de texte.
+     *
+     * @param btnModifierPrix      Le bouton "Modifier le prix".
+     * @param nomComposanteField  Le champ de texte contenant le nom de la composante à modifier.
+     * @param nouveauPrixField    Le champ de texte contenant le nouveau prix de la composante.
+     */
     public void onBtnModifierPrixClicked(JButton btnModifierPrix, JTextField nomComposanteField, JTextField nouveauPrixField) {
         btnModifierPrix.addActionListener(new ActionListener() {
             @Override
@@ -212,6 +266,14 @@ public class GererComposantesGUI {
         });
     }
 
+    /**
+     * Action listener pour le bouton "Modifier la description".
+     * Il gère la modification de la description de la composante en fonction des informations saisies dans les champs de texte.
+     *
+     * @param btnModifierDesc       Le bouton "Modifier la description".
+     * @param nomComposanteField    Le champ de texte contenant le nom de la composante à modifier.
+     * @param nouveauDescField      Le champ de texte contenant la nouvelle description de la composante.
+     */
     public void onBtnModifierDescClicked(JButton btnModifierDesc, JTextField nomComposanteField, JTextField nouveauDescField) {
         btnModifierDesc.addActionListener(new ActionListener() {
             @Override
@@ -232,6 +294,9 @@ public class GererComposantesGUI {
         });
     }
 
+    /**
+     * Affiche un message de confirmation après une suppression réussie de la composante.
+     */
     public void confirmerSuppresion() {
         String message = "La composante a ete retiree avec succes! ";
         String title = "Suppression reussie";
@@ -242,6 +307,9 @@ public class GererComposantesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message de confirmation après une modification réussie du prix de la composante.
+     */
     public void confirmerModificationPrix() {
         String message = "Le prix de la composante a ete modifiee avec succes! ";
         String title = "Modification reussie";
@@ -252,6 +320,9 @@ public class GererComposantesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message de confirmation après une modification réussie de la description de la composante.
+     */
     public void confirmerModificationDesc() {
         String message = "La description de la composante a ete modifieee avec succes! ";
         String title = "Modification reussie";
@@ -262,6 +333,11 @@ public class GererComposantesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message d'erreur en cas d'erreur lors de la suppression d'une composante.
+     *
+     * @param message Le message d'erreur à afficher.
+     */
     public void afficherMessageErreurSuppresion(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
@@ -269,6 +345,11 @@ public class GererComposantesGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Affiche un message d'erreur en cas d'erreur lors de la modification du prix d'une composante.
+     *
+     * @param message Le message d'erreur à afficher.
+     */
     public void afficherMessageErreurModificationPrix(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
@@ -276,6 +357,11 @@ public class GererComposantesGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Affiche un message d'erreur en cas d'erreur lors de la modification de la description d'une composante.
+     *
+     * @param message Le message d'erreur à afficher.
+     */
     public void afficherMessageErreurModificationDesc(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
@@ -283,6 +369,12 @@ public class GererComposantesGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Action listener pour le bouton "Annuler".
+     * Il permet de retourner au panel principal après avoir cliqué sur le bouton "Annuler".
+     *
+     * @param btnAnnuler Le bouton "Annuler".
+     */
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override

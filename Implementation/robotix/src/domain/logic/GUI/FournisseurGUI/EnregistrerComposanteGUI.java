@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Cette classe gère l'interface graphique pour enregistrer une composante par un fournisseur.
+ */
 public class EnregistrerComposanteGUI {
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private String nomFournisseur;
@@ -17,6 +20,13 @@ public class EnregistrerComposanteGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Constructeur de la classe EnregistrerComposanteGUI.
+     *
+     * @param nomFournisseur Le nom du fournisseur qui enregistre la composante.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     * @throws ParseException Si une erreur de parsing se produit.
+     */
     public EnregistrerComposanteGUI(String nomFournisseur) throws IOException, ParseException {
         this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -86,6 +96,11 @@ public class EnregistrerComposanteGUI {
         });
     }
 
+    /**
+     * Affiche le panel d'enregistrement de composante sur une fenêtre JFrame.
+     *
+     * @param jFrame La fenêtre JFrame sur laquelle afficher le panel.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
@@ -93,11 +108,17 @@ public class EnregistrerComposanteGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour la fenêtre après avoir effectué des modifications sur les composants graphiques.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
+    /**
+     * Affiche une boîte de dialogue pour signaler la réussite de l'enregistrement de la composante.
+     */
     public void afficherMessageValidation() {
         String message = "La composante a ete rajoutée avec succes";
         String title = "Operation reussie";
@@ -106,6 +127,9 @@ public class EnregistrerComposanteGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Affiche une boîte de dialogue pour signaler une erreur lors de l'enregistrement de la composante.
+     */
     public void afficherMessageErreur() {
         String message = "Veuillez bien remplir tous les champs necessaires afin d'enregistrer votre composante.";
         String title = "Erreur";

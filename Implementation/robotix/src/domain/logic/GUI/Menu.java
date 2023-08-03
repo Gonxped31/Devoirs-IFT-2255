@@ -15,6 +15,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La classe Menu gère l'interface graphique pour le système Robotix.
+ * Elle permet aux utilisateurs et aux fournisseurs de s'inscrire, de se connecter
+ * et offre des options pour quitter l'application.
+ */
 public class Menu {
     private TypesComposants typesComposants;
     private MenuUtilisateur menuUtilisateur = new MenuUtilisateur();
@@ -32,6 +37,12 @@ public class Menu {
     private JButton btnConnecterFournisseur = new JButton("Se connecter comme fournisseur");
     private JButton btnQuitter = new JButton("Quitter");
 
+    /**
+     * Constructeur de la classe Menu. Initialise et affiche le menu principal de l'application Robotix.
+     *
+     * @throws IOException    S'il y a une erreur lors de l'accès à un fichier.
+     * @throws ParseException S'il y a une erreur lors de l'analyse des dates.
+     */
     public Menu() throws IOException, ParseException {
         setPanel();
         jFrame.setContentPane(menuPrincipalPanel);
@@ -71,6 +82,9 @@ public class Menu {
         });
     }
 
+    /**
+     * Initialise le panneau du menu principal avec ses composants et sa mise en forme.
+     */
     public void setPanel() {
         bienvenueLabel.setFont(new Font("Arial", Font.BOLD, 18));
         optionsLabel.setFont(new Font("Arial", Font.BOLD, 18));

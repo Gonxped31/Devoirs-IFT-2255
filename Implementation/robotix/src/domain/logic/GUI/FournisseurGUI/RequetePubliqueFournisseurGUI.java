@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
+/**
+ * Cette classe s'occupe de l'affichage des requeêtes publiques chez les fournisseurs.
+ */
 public class RequetePubliqueFournisseurGUI {
     private DbControleur dbControleur = DbControleur.getDbControleur();
     private String nomFournisseur;
@@ -100,6 +103,13 @@ public class RequetePubliqueFournisseurGUI {
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Constructeur de la classe RequetePubliqueFournisseurGUI.
+     *
+     * @param nomFournisseur Le nom du fournisseur pour lequel afficher les requêtes publiques.
+     * @throws IOException   S'il y a une erreur lors de la lecture de fichiers.
+     * @throws ParseException S'il y a une erreur lors de l'analyse de la date dans un format spécifique.
+     */
     public RequetePubliqueFournisseurGUI(String nomFournisseur) throws IOException, ParseException {
         this.nomFournisseur = nomFournisseur;
 
@@ -223,6 +233,11 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Initialise le panneau principal (mainPanel) de l'interface graphique RequetePubliqueFournisseurGUI.
+     * Ajoute les composants nécessaires au panneau principal tels que des étiquettes, des boutons et des espaces horizontaux.
+     * Les actions des boutons sont associées pour afficher les panneaux correspondants en cas de clic.
+     */
     public void setMainPanel() {
         requetePubliqueFournisseurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -249,6 +264,12 @@ public class RequetePubliqueFournisseurGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Initialise le panneau de visualisation de la liste des utilisateurs (voirListeUtilisateursPanel) de l'interface graphique RequetePubliqueFournisseurGUI.
+     * Ajoute les composants nécessaires au panneau tels que des étiquettes, une liste déroulante, et un bouton de retour.
+     * Les actions des boutons sont associées pour afficher les détails de l'utilisateur sélectionné en cas de clic sur la liste déroulante.
+     * La méthode `recupererListeUtilisateur()` est appelée pour récupérer la liste des utilisateurs depuis le contrôleur de base de données et les afficher dans la liste déroulante.
+     */
     public void setVoirListeUtilisateursPanel() {
         JLabel listeUtilisateursLabel = new JLabel("Liste des utilisateurs");
         JLabel infoClique = new JLabel("Cliquez sur un utilisateur pour voir son profile.");
@@ -268,6 +289,11 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourClicked(btnRetour);
     }//Done
 
+    /**
+     * Récupère la liste des utilisateurs depuis le contrôleur de base de données,
+     * les affiche dans une liste déroulante (JList) et permet d'afficher les détails
+     * d'un utilisateur sélectionné dans une boîte de dialogue.
+     */
     private void recupererListeUtilisateur() {
         listeUtilisateur = dbControleur.recupererListeUtilisateur();
         listeUtilisateurJList = new JList<>(listeUtilisateur.stream()
@@ -292,6 +318,11 @@ public class RequetePubliqueFournisseurGUI {
         scrollPaneListeUtilisateur.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
+    /**
+     * Affiche les détails d'un utilisateur dans une boîte de dialogue JOptionPane.
+     *
+     * @param utilisateur L'utilisateur dont les détails doivent être affichés.
+     */
     private void detailsUtilisateur(Utilisateur utilisateur) {
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append("Nom: ").append(utilisateur.getNom()).append("\n");
@@ -304,6 +335,12 @@ public class RequetePubliqueFournisseurGUI {
         JOptionPane.showMessageDialog(null, message, "Details de l'utilisateur", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Initialise le panneau de visualisation de la liste des fournisseurs.
+     * Récupère la liste des fournisseurs depuis le contrôleur de base de données,
+     * les affiche dans une liste déroulante (JList) et permet d'afficher les détails
+     * d'un fournisseur sélectionné dans une boîte de dialogue.
+     */
     public void setVoirListeFournisseursPanel() {
         JLabel listeFournisseursLabel = new JLabel("Liiste des fournisseurs");
         JLabel infoClique = new JLabel("Cliquez sur un utilisateur pour voir son profile.");
@@ -322,8 +359,13 @@ public class RequetePubliqueFournisseurGUI {
 
         onBtnRetourClicked(btnRetour);
 
-    }//Done
+    }
 
+    /**
+     * Récupère la liste des fournisseurs depuis le contrôleur de base de données,
+     * les affiche dans une liste déroulante (JList) et permet d'afficher les détails
+     * d'un fournisseur sélectionné dans une boîte de dialogue.
+     */
     private void recupererListeFournisseur() {
         listeFournisseur = dbControleur.recupererListFournisseur();
         listeFournisseurJList = new JList<>(listeFournisseur.stream()
@@ -349,6 +391,12 @@ public class RequetePubliqueFournisseurGUI {
 
     }
 
+
+    /**
+     * Affiche les détails d'un fournisseur dans une boîte de dialogue JOptionPane.
+     *
+     * @param fournisseur Le fournisseur dont les détails doivent être affichés.
+     */
     private void detailsFournisseur(Fournisseur fournisseur) {
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append("Nom: ").append(fournisseur.getNom()).append("\n");
@@ -384,6 +432,13 @@ public class RequetePubliqueFournisseurGUI {
         String message = messageBuilder.toString();
         JOptionPane.showMessageDialog(null, message, "Details du fournisseur", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /**
+     * Initialise le panneau de visualisation du profil du fournisseur.
+     * Récupère les informations du fournisseur depuis le contrôleur de base de données,
+     * les affiche dans des champs de texte (JTextField) en mode lecture seule.
+     * Permet à l'utilisateur de revenir au panneau précédent en cliquant sur le bouton "Retour".
+     */
     public void setVoirProfilPanel() {
         Fournisseur fournisseur = dbControleur.retournerFournisseur(nomFournisseur);
 
@@ -448,10 +503,17 @@ public class RequetePubliqueFournisseurGUI {
         voirProfilPanel.add(btnRetour, constraints);
 
         onBtnRetourClicked(btnRetour);
-    }//Done
+    }
 
 
     //  Recherche utilisateur
+    /**
+     * Initialise le panneau de recherche d'utilisateurs en affichant un filtre avec des options.
+     * Le filtre permet de choisir entre la recherche par pseudo ou la recherche des suiveurs d'un utilisateur (par pseudo).
+     * Les résultats de la recherche seront affichés dans une liste déroulante (JList).
+     * L'utilisateur peut cliquer sur le bouton "Continuer" pour effectuer la recherche et afficher les résultats,
+     * ou cliquer sur le bouton "Retour" pour revenir à l'écran précédent.
+     */
     public void setRechercheUtilisateurPanel() {
         JLabel filtreLabel = new JLabel("Filtrer par");
         String[] options = {"Pseudo", "Obtenir liste des suiveurs de ? (pseudo voulu)"};
@@ -472,6 +534,13 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourClicked(btnRetour);
     }
 
+    /**
+     * Initialise le panneau de recherche d'utilisateurs par pseudo.
+     * Affiche une liste des utilisateurs trouvés après la recherche par pseudo dans une liste déroulante (JList).
+     * L'utilisateur doit entrer un pseudo dans un champ de texte (JTextField) pour effectuer la recherche.
+     * L'utilisateur peut cliquer sur le bouton "Continuer" pour effectuer la recherche et afficher les résultats,
+     * ou cliquer sur le bouton "Retour au filtre" pour revenir au panneau de filtre.
+     */
     public void setRechercheUtilisateurParPseudoPanel() {
         JLabel listeUtilisateurLabel = new JLabel("Utilisateur");
         JLabel pseudoLabel = new JLabel("Entrez le pseudo");
@@ -504,6 +573,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheUtilisateurClicked(btnRetourFiltre);
     }
 
+    /**
+     * Traite l'action lors du clic sur le bouton "Continuer" pour effectuer la recherche d'utilisateur par pseudo.
+     * Récupère le pseudo entré par l'utilisateur dans le champ de texte, effectue la recherche dans la base de données,
+     * et affiche les résultats dans une liste déroulante (JList) à l'aide d'un modèle de liste (ListModel).
+     * Si aucun utilisateur n'est trouvé, une boîte de dialogue d'erreur sera affichée.
+     *
+     * @param btnContinuer Le bouton "Continuer" qui déclenche la recherche.
+     * @param pseudoField Le champ de texte pour entrer le pseudo de l'utilisateur recherché.
+     */
     private void onBtnContinuerRechercheUtilisateurParPseudo(JButton btnContinuer, JTextField pseudoField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -527,6 +605,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Initialise le panneau de recherche d'utilisateurs par liste de suiveurs.
+     * Affiche une liste des utilisateurs trouvés après la recherche par liste de suiveurs dans une liste déroulante (JList).
+     * L'utilisateur doit entrer un pseudo dans un champ de texte (JTextField) pour effectuer la recherche.
+     * L'utilisateur peut cliquer sur le bouton "Continuer" pour effectuer la recherche et afficher les résultats,
+     * ou cliquer sur le bouton "Retour au filtre" pour revenir au panneau de filtre.
+     */
     public void setRechercheUtilisateurParListeSuiveursPanel() {
         JLabel listeUtilisateurLabel = new JLabel("Utilisateur");
         JLabel pseudoLabel = new JLabel("Entrez le pseudo");
@@ -557,6 +642,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheUtilisateurClicked(btnRetourFiltre);
     }
 
+    /**
+     * Traite l'action lors du clic sur le bouton "Continuer" pour effectuer la recherche d'utilisateurs par liste de suiveurs.
+     * Récupère le pseudo entré par l'utilisateur dans le champ de texte, effectue la recherche dans la base de données,
+     * et affiche les résultats dans une liste déroulante (JList) à l'aide d'un modèle de liste (ListModel).
+     * Si aucun utilisateur n'est trouvé ou si aucun utilisateur n'est suivi, une boîte de dialogue d'erreur sera affichée.
+     *
+     * @param btnContinuer Le bouton "Continuer" qui déclenche la recherche.
+     * @param pseudoField Le champ de texte pour entrer le pseudo de l'utilisateur recherché.
+     */
     private void onBtnContinuerRechercheUtilisateurParSuiveur(JButton btnContinuer, JTextField pseudoField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -581,7 +675,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
+    /**
+     * Initialise le panneau pour afficher la liste des activités.
+     * Affiche une liste des activités disponibles dans une liste déroulante (JList).
+     * Lorsqu'un utilisateur sélectionne une activité dans la liste, il peut cliquer sur le bouton "Détails"
+     * pour afficher les informations détaillées de l'activité sélectionnée.
+     * L'utilisateur peut également cliquer sur le bouton "Retour" pour revenir à l'écran précédent.
+     */
     public void setRecupererListeActivitesPanel() {
         JLabel listeActivitesLabel = new JLabel("Voici la liste des activites");
         JLabel infoClique = new JLabel("Cliquez sur un utilisateur pour voir son profile.");
@@ -602,6 +702,12 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourClicked(btnRetour);
     }
 
+    /**
+     * Récupère la liste des activités depuis la base de données et les affiche dans une liste déroulante (JList).
+     * Chaque élément de la liste affiche le nom de l'activité.
+     * Lorsqu'un utilisateur sélectionne une activité dans la liste, l'événement de sélection déclenchera
+     * l'affichage des détails de l'activité sélectionnée en appelant la méthode detailsActivites().
+     */
     private void recupererListeActivites(){
         listeActivites = dbControleur.recupererListeActivite();
 
@@ -628,6 +734,15 @@ public class RequetePubliqueFournisseurGUI {
 
     }
 
+    /**
+     * Affiche les détails de l'activité sélectionnée dans une boîte de dialogue (JOptionPane).
+     * Les détails affichés incluent le nom de l'activité, la date de début et la date de fin au format lisible,
+     * ainsi que la liste des tâches associées à l'activité.
+     * Si l'activité n'a pas de tâches associées, "Taches de l'activite: Aucune tache" sera affiché.
+     * Les détails sont récupérés à partir de l'objet Activite fourni en paramètre.
+     *
+     * @param activite L'objet Activite contenant les détails à afficher.
+     */
     private void detailsActivites(Activite activite){
         StringBuilder messageBuilder = new StringBuilder("Nom: ");
         messageBuilder.append(activite.getNom()).append("\n").
@@ -644,7 +759,12 @@ public class RequetePubliqueFournisseurGUI {
 
 
     //Interets
-
+    /**
+     * Initialise le panneau pour afficher la liste des intérêts sans filtre.
+     * Affiche une liste des intérêts disponibles dans une liste déroulante (JList) sans filtre.
+     * Lorsqu'un utilisateur sélectionne un intérêt dans la liste, il peut cliquer sur le bouton "Retour"
+     * pour revenir à l'écran précédent.
+     */
     public void setRechercheInteretsSansFiltrePanel() {
         JLabel listeinteretLabel = new JLabel("Liste des interets");
         recupererListeInteretsSansFiltre();
@@ -661,6 +781,13 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheInteretsClicked(btnRetour);
     }
 
+    /**
+     * Récupère la liste des intérêts depuis la base de données et les affiche dans une liste déroulante (JList)
+     * sans appliquer de filtre.
+     * Chaque élément de la liste affiche le nom de l'intérêt.
+     * Lorsqu'un utilisateur sélectionne un intérêt dans la liste, il peut cliquer sur le bouton "Retour"
+     * pour revenir à l'écran précédent.
+     */
     private void recupererListeInteretsSansFiltre() {
         listeInterets = dbControleur.recupererListeInteret();
 
@@ -676,115 +803,12 @@ public class RequetePubliqueFournisseurGUI {
         scrollPaneListeInteretsSansFiltre.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
-    /*public void setRechercheInteretsParLettrePanel() {
-        JLabel listeInteretLabel = new JLabel("Liste interets");
-        JLabel caracteresLabel = new JLabel("Entrez vos 3 caracteres");
-        JTextField caracteresField = new JTextField();
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetourFiltre = new JButton("Retour au filtre");
-
-        constraints.gridy = 0;
-        rechercheInteretsParLettreEtPseudoPanel.add(listeInteretLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsParLettreEtPseudoPanel.add(scrollPaneListeInteretsParLettre, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsParLettrePanel.add(caracteresLabel, constraints);
-        constraints.gridy = 3;
-        rechercheInteretsParLettrePanel.add(caracteresField, constraints);
-        constraints.gridy = 4;
-        rechercheInteretsParLettrePanel.add(btnContinuer, constraints);
-        constraints.gridy = 4;
-        rechercheInteretsParLettrePanel.add(btnRetourFiltre, constraints);
-
-        btnContinuer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (caracteresField.getText().length() != 3) {
-                    affirmerMessageErreurCaracteres();
-                }
-            };
-        });
-
-        onBtnRetourRechercheInteretsAvecFiltreClicked(btnRetourFiltre);
-    }*/
-    /*
-    public void setRechercheInteretsParPseudoPanel() {
-        JLabel pseudoLabel = new JLabel("Entrez le pseudo de l'utilisateur");
-        JTextField pseudoField = new JTextField();
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetourFiltre = new JButton("Retour au filtre");
-
-        constraints.gridy = 0;
-        rechercheInteretsParPseudoPanel.add(pseudoLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsParPseudoPanel.add(pseudoField, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsParPseudoPanel.add(btnContinuer, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsParPseudoPanel.add(btnRetourFiltre, constraints);
-
-        onBtnRetourRechercheInteretsAvecFiltreClicked(btnRetourFiltre);
-    }
-
-    public void setRechercheInteretsParLettreEtPseudoPanel() {
-        JLabel listeInteretLabel = new JLabel("Liste interets");
-        JLabel caracteresLabel = new JLabel("Entrez vos 3 characteres");
-        JLabel pseudoLabel = new JLabel("Entrez le pseudo de l'utilisateur");
-        JTextField caracteresField = new JTextField();
-        JTextField pseudoField = new JTextField();
-        JButton btnContinuer = new JButton("Continuer");
-        JButton btnRetourFiltre = new JButton("Retour au filtre");
-
-        constraints.gridy = 0;
-        rechercheInteretsParLettreEtPseudoPanel.add(listeInteretLabel, constraints);
-        constraints.gridy = 1;
-        rechercheInteretsParLettreEtPseudoPanel.add(listeInteretsJList, constraints);
-        constraints.gridy = 2;
-        rechercheInteretsParLettreEtPseudoPanel.add(caracteresLabel, constraints);
-        constraints.gridy = 3;
-        rechercheInteretsParLettreEtPseudoPanel.add(pseudoLabel, constraints);
-        constraints.gridy = 4;
-        rechercheInteretsParLettreEtPseudoPanel.add(pseudoField, constraints);
-        constraints.gridy = 5;
-        rechercheInteretsParLettreEtPseudoPanel.add(btnContinuer, constraints);
-        constraints.gridy = 5;
-        rechercheInteretsParLettreEtPseudoPanel.add(btnRetourFiltre, constraints);
-
-        btnContinuer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (caracteresField.getText().length() != 3) {
-                    affirmerMessageErreurCaracteres();
-                }
-            };
-        });
-
-        onBtnRetourRechercheInteretsAvecFiltreClicked(btnRetourFiltre);
-    }
+    /**
+     * Associe un événement de clic sur le bouton "Retour" à une action pour revenir à l'écran principal (mainPanel).
+     * Cela met à jour le contenu de la fenêtre JFrame pour afficher le panneau principal.
+     *
+     * @param btnRetourFiltre Le bouton "Retour" pour lequel l'événement de clic est associé.
      */
-
-    /*public void onBtnContinuerInterets(JButton btnContinuerInterets, JComboBox<String> comboBox) {
-        btnContinuerInterets.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (comboBox.getSelectedItem().toString()) {
-                    case "3 premieres lettres" -> {
-                        jFrame.setContentPane(rechercheInteretsParLettrePanel);
-                        mettreAJourFrame();
-                    }
-                    case "Pseudo utilisateur" -> {
-                        jFrame.setContentPane(rechercheInteretsParPseudoPanel);
-                        mettreAJourFrame();
-                    }
-                    case "Les deux" -> {
-                        jFrame.setContentPane(rechercheInteretsParLettreEtPseudoPanel);
-                        mettreAJourFrame();
-                    }
-                }
-            }
-        });
-    }*/
-
     public void onBtnRetourRechercheInteretsClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
             @Override
@@ -795,18 +819,15 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-    /*public void onBtnRetourRechercheInteretsAvecFiltreClicked(JButton btnRetourFiltre) {
-        btnRetourFiltre.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jFrame.setContentPane(rechercheInteretsAvecFiltrePanel);
-                mettreAJourFrame();
-            }
-        });
-    }*/
-
 
     //Recherche fournisseur
+    /**
+     * Initialise le panneau de recherche de fournisseurs.
+     * Permet de filtrer les fournisseurs par nom, email, adresse ou type de composante.
+     * Lorsque l'utilisateur sélectionne un critère de filtrage et clique sur le bouton "Continuer",
+     * le panneau de recherche fournisseur par nom sera affiché.
+     * L'utilisateur peut également cliquer sur le bouton "Retour" pour revenir à l'écran principal (mainPanel).
+     */
     public void setRechercheFournisseurPanel() {
         JLabel filtreLabel = new JLabel("Filtrer par");
         String[] options = {"Nom", "Email", "Adresse", "Type de composante"};
@@ -827,6 +848,13 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourClicked(btnRetour);
     }
 
+    /**
+     * Initialise le panneau de recherche de fournisseurs par nom.
+     * Affiche une liste de fournisseurs dans une liste déroulante (JList) filtrée par nom.
+     * L'utilisateur peut entrer un nom de fournisseur dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les fournisseurs correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de fournisseurs (setRechercheFournisseurPanel).
+     */
     public void setRechercheFournisseurParNomPanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
         JLabel nomLabel = new JLabel("Entrez le nom du fournisseur");
@@ -857,6 +885,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheFournisseurClicked(btnRetourFiltre);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de fournisseurs par nom
+     * à une action pour effectuer la recherche en fonction du nom saisi.
+     * Si un fournisseur correspondant au nom est trouvé, il est affiché dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param nomField     Le champ de texte où l'utilisateur entre le nom du fournisseur.
+     */
     private void onBtnContinuerRechercheFournisseurParNom(JButton btnContinuer, JTextField nomField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -880,6 +917,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Initialise le panneau de recherche de fournisseurs par email.
+     * Affiche une liste de fournisseurs dans une liste déroulante (JList) filtrée par email.
+     * L'utilisateur peut entrer un email de fournisseur dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les fournisseurs correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de fournisseurs (setRechercheFournisseurPanel).
+     */
 
     public void setRechercheFournisseurParEmailPanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
@@ -911,6 +955,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheFournisseurClicked(btnRetourFiltre);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de fournisseurs par email
+     * à une action pour effectuer la recherche en fonction de l'email saisi.
+     * Si un fournisseur correspondant à l'email est trouvé, il est affiché dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param emailField   Le champ de texte où l'utilisateur entre l'email du fournisseur.
+     */
     private void onBtnContinuerRechercheFournisseurParEmail(JButton btnContinuer, JTextField emailField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -934,6 +987,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Initialise le panneau de recherche de fournisseurs par adresse.
+     * Affiche une liste de fournisseurs dans une liste déroulante (JList) filtrée par adresse.
+     * L'utilisateur peut entrer une adresse de fournisseur dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les fournisseurs correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de fournisseurs (setRechercheFournisseurPanel).
+     */
     public void setRechercheFournisseurParAdressePanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
         JLabel adresseLabel = new JLabel("Entrez l'adresse du fournisseur");
@@ -963,6 +1023,16 @@ public class RequetePubliqueFournisseurGUI {
         onBtnContinuerRechercheFournisseurParAddresse(btnContinuer, adresseField);
         onBtnRetourRechercheFournisseurClicked(btnRetourFiltre);
     }
+
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de fournisseurs par adresse
+     * à une action pour effectuer la recherche en fonction de l'adresse saisie.
+     * Si un fournisseur correspondant à l'adresse est trouvé, il est affiché dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param addresseField Le champ de texte où l'utilisateur entre l'adresse du fournisseur.
+     */
     private void onBtnContinuerRechercheFournisseurParAddresse(JButton btnContinuer, JTextField addresseField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -986,6 +1056,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Initialise le panneau de recherche de fournisseurs par type de composante.
+     * Affiche une liste de fournisseurs dans une liste déroulante (JList) filtrée par type de composante.
+     * L'utilisateur peut entrer un type de composante dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les fournisseurs correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de fournisseurs (setRechercheFournisseurPanel).
+     */
     public void setRecherheFournisseurParTypeComposantePanel() {
         JLabel fournisseurLabel = new JLabel("Fournisseur");
         JLabel typeComposanteLabel = new JLabel("Entrez le type de composante");
@@ -1016,6 +1093,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheFournisseurClicked(btnRetourFiltre);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de fournisseurs par type de composante
+     * à une action pour effectuer la recherche en fonction du type de composante saisi.
+     * Si un fournisseur correspondant au type de composante est trouvé, il est affiché dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer         Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param typeComposanteField Le champ de texte où l'utilisateur entre le type de composante du fournisseur.
+     */
     private void onBtnContinuerRechercheFournisseurParTypeComposante(JButton btnContinuer, JTextField typeComposanteField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -1042,6 +1128,13 @@ public class RequetePubliqueFournisseurGUI {
 
 
     //Recherche Composantes
+    /**
+     * Initialise le panneau de recherche de composants.
+     * Affiche un menu de filtre (JComboBox) avec des options pour filtrer les composants par type de composant,
+     * nom du fournisseur ou nom du composant.
+     * Les boutons "Continuer" et "Retour" permettent respectivement de procéder à des recherches spécifiques de composants
+     * en fonction des critères choisis ou de revenir au panneau précédent.
+     */
     public void setRechercheComposantePanel() {
         JLabel filtreLabel = new JLabel("Filtrer par");
         String[] options = {"Type de la composante", "Nom du fournisseur", "Nom de la composante"};
@@ -1062,6 +1155,13 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourClicked(btnRetour);
     }
 
+    /**
+     * Initialise le panneau de recherche de composants par type de composant.
+     * Affiche une liste de composants dans une liste déroulante (JList) filtrée par type de composant.
+     * L'utilisateur peut entrer un type de composant dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les composants correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de composants (setRechercheComposantePanel).
+     */
     public void setRechercheComposanteParTypePanel() {
         JLabel composanteLabel = new JLabel("Composante");
         JLabel typeComposanteLabel = new JLabel("Entrez le type de composante");
@@ -1091,6 +1191,16 @@ public class RequetePubliqueFournisseurGUI {
         onBtnContinuerRechercheComposanteParType(btnContinuer, typeComposanteField);
         onBtnRetourRechercheComposanteClicked(btnRetourFiltre);
     }
+
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de composants par type de composant
+     * à une action qui effectue la recherche en fonction du type de composant saisi.
+     * Si des composants correspondant au type de composant sont trouvés, ils sont affichés dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer           Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param typeComposanteField    Le champ de texte où l'utilisateur saisit le type de composant.
+     */
     private void onBtnContinuerRechercheComposanteParType(JButton btnContinuer, JTextField typeComposanteField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -1114,7 +1224,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
+    /**
+     * Initialise le panneau de recherche de composants par nom du fournisseur.
+     * Affiche une liste de composants dans une liste déroulante (JList) filtrée par nom du fournisseur.
+     * L'utilisateur peut entrer un nom du fournisseur dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les composants correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de composants (setRechercheComposantePanel).
+     */
     public void setRechercheComposanteParNomFournisseurPanel() {
         JLabel composanteLabel = new JLabel("Composante");
         JLabel nomFournisseurLabel = new JLabel("Entrez le nom du fournisseur");
@@ -1145,6 +1261,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheComposanteClicked(btnRetourFiltre);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de composants par nom du fournisseur
+     * à une action qui effectue la recherche en fonction du nom du fournisseur saisi.
+     * Si des composants correspondant au nom du fournisseur sont trouvés, ils sont affichés dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer               Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param nomFournisseurField   Le champ de texte où l'utilisateur saisit le nom du fournisseur.
+     */
     private void onBtnContinuerRechercheComposanteParNomFournisseur(JButton btnContinuer, JTextField nomFournisseurField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -1168,7 +1293,13 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
+    /**
+     * Initialise le panneau de recherche de composants par nom de composant.
+     * Affiche une liste de composants dans une liste déroulante (JList) filtrée par nom de composant.
+     * L'utilisateur peut entrer un nom de composant dans le champ de texte et cliquer sur le bouton "Continuer"
+     * pour rechercher les composants correspondants.
+     * Le bouton "Retour au filtre" permet de revenir au panneau de recherche de composants (setRechercheComposantePanel).
+     */
     public void setRechercheComposanteParNomPanel() {
         JLabel composanteLabel = new JLabel("Composante");
         JLabel nomComposanteLabel = new JLabel("Entrez le nom de composante");
@@ -1199,6 +1330,15 @@ public class RequetePubliqueFournisseurGUI {
         onBtnRetourRechercheComposanteClicked(btnRetourFiltre);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de composants par nom de composant
+     * à une action qui effectue la recherche en fonction du nom de composant saisi.
+     * Si des composants correspondant au nom de composant sont trouvés, ils sont affichés dans la liste déroulante (JList).
+     * Sinon, une boîte de dialogue d'erreur est affichée.
+     *
+     * @param btnContinuer             Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param nomComposanteField Le champ de texte où l'utilisateur saisit le nom de composant.
+     */
     private void onBtnContinuerRechercheComposanteParNom(JButton btnContinuer, JTextField nomComposanteField) {
         btnContinuer.addActionListener(new ActionListener() {
             @Override
@@ -1222,8 +1362,11 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
-
+    /**
+     * Affiche le panneau principal (mainPanel) dans le JFrame passé en paramètre.
+     * Le panneau précédent est enregistré pour pouvoir y revenir plus tard.
+     * La méthode met à jour le contenu du JFrame pour afficher le panneau principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
@@ -1231,11 +1374,23 @@ public class RequetePubliqueFournisseurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour le contenu du JFrame en le revalidant et en le repeignant.
+     * Cette méthode est utile lorsque le contenu du JFrame est modifié.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche d'utilisateurs
+     * avec une action pour basculer vers le panneau de recherche d'utilisateurs spécifique
+     * en fonction de l'option sélectionnée dans le JComboBox.
+     *
+     * @param btnContinuerUtilisateur Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param comboBox               Le JComboBox contenant les options de recherche d'utilisateurs.
+     */
     public void onBtnContinuerUtilisateur(JButton btnContinuerUtilisateur, JComboBox<String> comboBox) {
         btnContinuerUtilisateur.addActionListener(new ActionListener() {
             @Override
@@ -1254,7 +1409,14 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de fournisseurs
+     * avec une action pour basculer vers le panneau de recherche de fournisseurs spécifique
+     * en fonction de l'option sélectionnée dans le JComboBox.
+     *
+     * @param btnContinuerFournisseur Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param comboBox               Le JComboBox contenant les options de recherche de fournisseurs.
+     */
     public void onBtnContinuerFournisseur(JButton btnContinuerFournisseur, JComboBox<String> comboBox) {
         btnContinuerFournisseur.addActionListener(new ActionListener() {
             @Override
@@ -1281,6 +1443,14 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Continuer" du panneau de recherche de composants
+     * avec une action pour basculer vers le panneau de recherche de composants spécifique
+     * en fonction de l'option sélectionnée dans le JComboBox.
+     *
+     * @param btnContinuerComposante Le bouton "Continuer" pour lequel l'événement de clic est associé.
+     * @param comboBox              Le JComboBox contenant les options de recherche de composants.
+     */
     public void onBtnContinuerComposante(JButton btnContinuerComposante, JComboBox<String> comboBox) {
         btnContinuerComposante.addActionListener(new ActionListener() {
             @Override
@@ -1303,6 +1473,10 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+
+    /**
+     * Affiche une boîte de dialogue d'erreur indiquant que l'utilisateur doit sélectionner "Oui" ou "Non".
+     */
     public void affirmerMessageErreurRadioButton() {
         String message = "Vous devez selectionne Oui ou Non. Veuillez reessayer.";
         String title = "Erreur";
@@ -1311,6 +1485,11 @@ public class RequetePubliqueFournisseurGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Retour" à une action pour revenir au panneau principal (mainPanel).
+     *
+     * @param btnAnnuler Le bouton "Retour" pour lequel l'événement de clic est associé.
+     */
     public void onBtnRetourClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -1321,6 +1500,12 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Retour au filtre" du panneau de recherche d'utilisateurs
+     * à une action pour revenir au panneau de recherche d'utilisateurs principal (rechercheUtilisateurPanel).
+     *
+     * @param btnRetourFiltre Le bouton "Retour au filtre" pour lequel l'événement de clic est associé.
+     */
     public void onBtnRetourRechercheUtilisateurClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
             @Override
@@ -1331,7 +1516,12 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
-
+    /**
+     * Associe un événement de clic sur le bouton "Retour au filtre" du panneau de recherche de fournisseurs
+     * à une action pour revenir au panneau de recherche de fournisseurs principal (rechercheFournisseurPanel).
+     *
+     * @param btnRetourFiltre Le bouton "Retour au filtre" pour lequel l'événement de clic est associé.
+     */
     public void onBtnRetourRechercheFournisseurClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
             @Override
@@ -1342,6 +1532,12 @@ public class RequetePubliqueFournisseurGUI {
         });
     }
 
+    /**
+     * Associe un événement de clic sur le bouton "Retour au filtre" du panneau de recherche de composants
+     * à une action pour revenir au panneau de recherche de composants principal (rechercheComposantePanel).
+     *
+     * @param btnRetourFiltre Le bouton "Retour au filtre" pour lequel l'événement de clic est associé.
+     */
     public void onBtnRetourRechercheComposanteClicked(JButton btnRetourFiltre) {
         btnRetourFiltre.addActionListener(new ActionListener() {
             @Override

@@ -10,14 +10,41 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.UUID;
 
+/**
+ * Cette classe gère l'interface graphique pour ajouter un nouveau robot pour un fournisseur donné.
+ */
 public class AjouterRobotGUI {
+    /**
+     * Le contrôleur pour gérer les fournisseurs et leurs robots.
+     */
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    /**
+     * Le nom du fournisseur associé à ce GUI.
+     */
     private String nomFournisseur;
+    /**
+     * Le JFrame principal utilisé pour afficher cette GUI.
+     */
     private JFrame jFrame = new JFrame();
+    /**
+     * Le JPanel qui contient les composants pour ajouter un robot.
+     */
     private JPanel ajouterRobotPanel = new JPanel(new GridBagLayout());
+    /**
+     * Le conteneur pour stocker le panel précédent lors du retour au menu du fournisseur.
+     */
     private Container panelPrecedent = new Container();
+    /**
+     * Les contraintes utilisées pour agencer les composants au sein du panel.
+     */
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Constructeur de la classe AjouterRobotGUI.
+     * @param nomFournisseur Le nom du fournisseur pour lequel ajouter le robot.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     * @throws ParseException Si une erreur de parsing se produit.
+     */
     public AjouterRobotGUI(String nomFournisseur) throws IOException, ParseException {
         this.nomFournisseur = nomFournisseur;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -63,6 +90,12 @@ public class AjouterRobotGUI {
         });
 
     }
+
+
+    /**
+     * Affiche le panel d'ajout de robot sur une fenêtre JFrame.
+     * @param jFrame La fenêtre JFrame sur laquelle afficher le panel.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Fournisseur
         this.jFrame = jFrame;
@@ -70,6 +103,9 @@ public class AjouterRobotGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour la fenêtre après avoir effectué des modifications sur les composants graphiques.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
