@@ -17,6 +17,7 @@ import java.util.HashSet;
 public class GestionReseauGUI {
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private DbControleur dbControlleur = new DbControleur();
+
     String pseudo;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
@@ -35,9 +36,10 @@ public class GestionReseauGUI {
     private JButton btnGererInterets = new JButton("Gerer mes interets");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
+    private HashSet<Interet> listeInteret;
     private JScrollPane scrollPaneVoirMesAbonnes;
     private JScrollPane scrollPaneAjouterInteret;
-    private JScrollPane scrollPaneModifierInteret;
+    private JScrollPane scrollPaneInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -298,11 +300,10 @@ public class GestionReseauGUI {
 
     public void setModifierInteretsPanel(){
         JLabel modifierInteretLabel = new JLabel("Quel interet voulez modifier?");
-        ButtonGroup radioGroup = new ButtonGroup();
-        HashSet<Interet> interets = dbControlleur.recupererListeInteret();
+        recupererListeInterets();
         JLabel ajouterNouvelInteretLabel = new JLabel("Par quel interet voulez-vous le remplacer?");
         JTextField ajouterNouvelInteretField = new JTextField();
-        ajouterNouvelInteretField.setPreferredSize(new Dimension(200, 30));
+        //ajouterNouvelInteretField.setPreferredSize(new Dimension(200, 30));
         JButton btnAjouterNouvelInteret = new JButton("Modifier");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
 
@@ -310,41 +311,25 @@ public class GestionReseauGUI {
         ajouterNouvelInteretLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
         constraints.gridy = 0;
-        modifierInteretsPanel.add(modifierInteretLabel, constraints);
-        int gri = 1;
-        for (Interet interet : interets) {
-            JRadioButton radioButton = new JRadioButton(interet.getNom());
-            radioGroup.add(radioButton);
-            radioButton.setActionCommand(interet.getNom());
-            constraints.gridy = gri;
-            modifierInteretsPanel.add(radioButton, constraints);
-            gri++;
-        }
-
-        constraints.gridy = gri+1;
         modifierInteretsPanel.add(ajouterNouvelInteretLabel, constraints);
-        constraints.gridy = gri+2;
+        constraints.gridy = 1;
+        modifierInteretsPanel.add(scrollPaneInteret, constraints);
+        constraints.gridy = 2;
         modifierInteretsPanel.add(ajouterNouvelInteretField, constraints);
-        constraints.gridy = gri+3;
+        constraints.gridy = 3;
         modifierInteretsPanel.add(btnAjouterNouvelInteret, constraints);
-        constraints.gridy = gri+4;
+        constraints.gridy = 4;
         modifierInteretsPanel.add(btnRetourMenuReseau , constraints);
-        modifierInteretsPanel.add(Box.createHorizontalStrut(10));
 
         //FIX VISUAL
+        onBtnModifierInteretClicked(btnAjouterNouvelInteret, ajouterNouvelInteretField);
         onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
-        ButtonModel selectedButton = radioGroup.getSelection();
-        String selectedActionCommand = null;
-        if (selectedButton != null) {
-            selectedActionCommand = selectedButton.getActionCommand();
-        }
-        onBtnModifierInteretClicked(btnAjouterNouvelInteret, ajouterNouvelInteretField, selectedActionCommand);
+
     }
 
     public void setSupprimerInteretPanel(){
         JLabel supprimerInteretLabel = new JLabel("Quel interet voulez-vous supprimer?");
-        ButtonGroup radioGroup = new ButtonGroup();
-        HashSet<Interet> interets = dbControlleur.recupererListeInteret();
+        recupererListeInterets();
         JButton btnSupprimerInteret = new JButton("Supprimer");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
 
@@ -352,28 +337,62 @@ public class GestionReseauGUI {
 
         constraints.gridy = 0;
         supprimerInteretsPanel.add(supprimerInteretLabel, constraints);
-        int gri = 1;
-        for (Interet interet : interets) {
-            JRadioButton radioButton = new JRadioButton(interet.getNom());
-            radioGroup.add(radioButton);
-            radioButton.setActionCommand(interet.getNom());
-            constraints.gridy = gri;
-            supprimerInteretsPanel.add(radioButton, constraints);
-            gri++;
-        }
-        constraints.gridy = gri+1;
+constraints.gridy =1;
+supprimerAbonnePanel.add(scrollPaneInteret, constraints);
+        constraints.gridy = 2;
         supprimerInteretsPanel.add(btnSupprimerInteret, constraints);
+        constraints.gridy = 3;
         supprimerInteretsPanel.add(btnRetourMenuReseau, constraints);
 
     }
 
-    private void onBtnModifierInteretClicked(JButton btnAjouterNouvelInteret, JTextField ajouterNouvelInteretField, String actionCommand) {
+    private void recupererListeInterets(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void onBtnModifierInteretClicked(JButton btnAjouterNouvelInteret, JTextField ajouterNouvelInteretField) {
         btnAjouterNouvelInteret.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    System.out.println("Component: " + interetsButton);
+
+                    if (interetsButton instanceof JRadioButton rb) {
+                        System.out.println("Radio Button Found");
+                        System.out.println("Selected: " + rb.isSelected());
+                        System.out.println("Action Command: " + rb.getActionCommand());
+                        if (rb.isSelected()) {
+                            System.out.println("Radio Button Selected");
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
                 String nouvelInteret = ajouterNouvelInteretField.getText();
                 if (controlleurUtilisateurs.extraireInteretsUtilisateurs(nouvelInteret)){
-                    System.out.println(actionCommand + " " + nouvelInteret);
-                    dbControlleur.modifierInteret(actionCommand, nouvelInteret);
+                    System.out.println(interetChoisi + " " + nouvelInteret);
+                    dbControlleur.modifierInteret(interetChoisi, nouvelInteret);
                 }else{
                     System.out.println("Peut pas modifier l'interet car quelqu'un le possede");
                 }
