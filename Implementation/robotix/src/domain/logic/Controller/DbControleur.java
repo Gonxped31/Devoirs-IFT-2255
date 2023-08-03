@@ -214,4 +214,8 @@ public class DbControleur {
     public boolean existeDansListeSuivi(String pseudo, String nom) {
         return baseDeDonneeUtilisateur.existeDansListeSuivi(pseudo, nom);
     }
+
+    public boolean existeDansDbInteret(String nouvelInteret) {
+        return baseDeDonneeInteret.retournerInteret(nouvelInteret) != null;
+    }
 }

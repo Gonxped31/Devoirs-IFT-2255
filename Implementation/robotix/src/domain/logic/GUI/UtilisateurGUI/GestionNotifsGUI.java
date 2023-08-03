@@ -10,6 +10,7 @@ public class GestionNotifsGUI {
     private JPanel mainPanel = new JPanel(new BorderLayout());
     private JPanel notifsPanel = new JPanel(new GridBagLayout());
     private JLabel gestionNotifsLabel = new JLabel("Vos notifications", SwingConstants.CENTER);
+    private JButton btnSupprimerNotifs = new JButton("Supprimer vos notifications");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
     private Container panelPrecedent = new Container();
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
@@ -18,7 +19,7 @@ public class GestionNotifsGUI {
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         gestionNotifsLabel.setFont(new Font("Arial", Font.BOLD, 18));
-
+        recupererListeDeNotifs();
         // Ajout des composantes
         constraints.gridy = 0;
         notifsPanel.add(btnRetour, constraints);
@@ -32,6 +33,10 @@ public class GestionNotifsGUI {
                 mettreAJourFrame();
             }
         });
+    }
+
+    private void recupererListeDeNotifs() {
+
     }
 
     public void afficherMainPanel(JFrame jFrame) {

@@ -39,7 +39,8 @@ public class GestionReseauGUI {
     private HashSet<Interet> listeInteret;
     private JScrollPane scrollPaneVoirMesAbonnes;
     private JScrollPane scrollPaneAjouterInteret;
-    private JScrollPane scrollPaneInteret;
+    private JScrollPane scrollPaneModifierInteret;
+    private JScrollPane scrollPaneSupprimerInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -300,7 +301,7 @@ public class GestionReseauGUI {
 
     public void setModifierInteretsPanel(){
         JLabel modifierInteretLabel = new JLabel("Quel interet voulez modifier?");
-        recupererListeInterets();
+        recupererListeInteretsModifier();
         JLabel ajouterNouvelInteretLabel = new JLabel("Par quel interet voulez-vous le remplacer?");
         JTextField ajouterNouvelInteretField = new JTextField();
         //ajouterNouvelInteretField.setPreferredSize(new Dimension(200, 30));
@@ -313,7 +314,7 @@ public class GestionReseauGUI {
         constraints.gridy = 0;
         modifierInteretsPanel.add(ajouterNouvelInteretLabel, constraints);
         constraints.gridy = 1;
-        modifierInteretsPanel.add(scrollPaneInteret, constraints);
+        modifierInteretsPanel.add(scrollPaneModifierInteret, constraints);
         constraints.gridy = 2;
         modifierInteretsPanel.add(ajouterNouvelInteretField, constraints);
         constraints.gridy = 3;
@@ -329,7 +330,7 @@ public class GestionReseauGUI {
 
     public void setSupprimerInteretPanel(){
         JLabel supprimerInteretLabel = new JLabel("Quel interet voulez-vous supprimer?");
-        recupererListeInterets();
+        recupererListeInteretsSupprimer();
         JButton btnSupprimerInteret = new JButton("Supprimer");
         JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
 
@@ -338,7 +339,7 @@ public class GestionReseauGUI {
         constraints.gridy = 0;
         supprimerInteretsPanel.add(supprimerInteretLabel, constraints);
 constraints.gridy =1;
-supprimerAbonnePanel.add(scrollPaneInteret, constraints);
+supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         constraints.gridy = 2;
         supprimerInteretsPanel.add(btnSupprimerInteret, constraints);
         constraints.gridy = 3;
@@ -346,7 +347,7 @@ supprimerAbonnePanel.add(scrollPaneInteret, constraints);
 
     }
 
-    private void recupererListeInterets(){
+    private void recupererListeInteretsModifier(){
         listeInteret = dbControlleur.recupererListeInteret();
         JPanel listeInteretsPanel = new JPanel();
         listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
@@ -361,28 +362,43 @@ supprimerAbonnePanel.add(scrollPaneInteret, constraints);
             radioButtonsGroupInterets.add(radioButton);
         }
 
-        scrollPaneInteret = new JScrollPane(listeInteretsPanel);
-        scrollPaneInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPaneModifierInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneModifierInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretsSupprimer(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneSupprimerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneSupprimerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
 
     private void onBtnModifierInteretClicked(JButton btnAjouterNouvelInteret, JTextField ajouterNouvelInteretField) {
+        System.out.println("Here");
         btnAjouterNouvelInteret.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                JPanel listeInteretPanel = (JPanel) scrollPaneInteret.getViewport().getView();
+                JPanel listeInteretPanel = (JPanel) scrollPaneModifierInteret.getViewport().getView();
                 Component[] listeInterets = listeInteretPanel.getComponents();
                 String interetChoisi = "";
 
                 for (Component interetsButton: listeInterets) {
-                    System.out.println("Component: " + interetsButton);
-
                     if (interetsButton instanceof JRadioButton rb) {
-                        System.out.println("Radio Button Found");
-                        System.out.println("Selected: " + rb.isSelected());
-                        System.out.println("Action Command: " + rb.getActionCommand());
                         if (rb.isSelected()) {
-                            System.out.println("Radio Button Selected");
                             interetChoisi = rb.getActionCommand();
                             break;
                         }
@@ -390,8 +406,9 @@ supprimerAbonnePanel.add(scrollPaneInteret, constraints);
                 }
 
                 String nouvelInteret = ajouterNouvelInteretField.getText();
-                if (controlleurUtilisateurs.extraireInteretsUtilisateurs(nouvelInteret)){
-                    System.out.println(interetChoisi + " " + nouvelInteret);
+
+                //Verifier si interet existe deja existe deja
+                if (dbControlleur.extraireInterets(nouvelInteret) && !dbControlleur.existeDansDbInteret(nouvelInteret)){
                     dbControlleur.modifierInteret(interetChoisi, nouvelInteret);
                 }else{
                     System.out.println("Peut pas modifier l'interet car quelqu'un le possede");
