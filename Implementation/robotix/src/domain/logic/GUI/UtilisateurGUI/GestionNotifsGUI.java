@@ -36,7 +36,7 @@ public class GestionNotifsGUI {
 
         // Ajout des composantes
         constraints.gridy = 0;
-        notifsPanel.add(listeNotifsPanel, constraints);
+        notifsPanel.add(scrollPaneNotifs, constraints);
         constraints.gridy = 1;
         notifsPanel.add(btnSupprimerNotifs,constraints );
         constraints.gridy = 2;
