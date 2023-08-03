@@ -65,7 +65,16 @@ public class GestionNotifsGUI {
     private void recupererListeDeNotifs() {
 
         ArrayList<Notification> listeNotification = controlleurUtilisateur.voirNotifications(pseudo);
+        JPanel notifPanel = new JPanel();
+        notifPanel.setLayout(new BoxLayout(notifPanel, BoxLayout.Y_AXIS));
 
+        for (Notification n :listeNotification) {
+            JLabel label = new JLabel(n.getTitre() + " : " + n.getMesssage() + " " + n.getDate());
+            notifPanel.add(label);
+        }
+
+        scrollPaneNotifs = new JScrollPane(notifPanel);
+        scrollPaneNotifs.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
 
