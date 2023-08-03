@@ -192,11 +192,7 @@
     "nom": "Damov",
     "prenom": "Kamen",
     "pseudo": "KD",
-    "listeInteret": [
-      {
-        "nom": "Foot"
-      }
-    ],
+    "listeInteret": [],
     "listeNotifications": [],
     "listSuiveur": [],
     "motDePasse": "KaMen",

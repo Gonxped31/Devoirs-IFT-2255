@@ -28,6 +28,7 @@ public class GestionReseauGUI {
     private JPanel ajouterInteretsPanel = new JPanel(new GridBagLayout());
     private JPanel modifierInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JPanel abonnerInteretPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel desabonnerInteretPanel = new JPanel(new GridLayout(0, 1));
     private JPanel getSupprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JPanel supprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JPanel gererInteretsPanel = new JPanel(new GridLayout(0, 1));
@@ -43,6 +44,7 @@ public class GestionReseauGUI {
     private JScrollPane scrollPaneModifierInteret;
     private JScrollPane scrollPaneSupprimerInteret;
     private  JScrollPane scrollPaneAbonnerInteret;
+    private JScrollPane scrollPaneDesabonnerInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -59,6 +61,7 @@ public class GestionReseauGUI {
         setModifierInteretsPanel();
         setSupprimerInteretPanel();
         setAbonneInteret();
+        setDesabonneInteret();
 
         btnSuivreUtilisateur.addActionListener(new ActionListener() {
             @Override
@@ -284,6 +287,14 @@ public class GestionReseauGUI {
                 mettreAJourFrame();
             }
         });
+
+        btnDesabonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(desabonnerInteretPanel);
+                mettreAJourFrame();
+            }
+        });
         onBtnAnnulerClicked(btnRetour);
     }
 
@@ -382,6 +393,26 @@ public class GestionReseauGUI {
         onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
     }
 
+    private void setDesabonneInteret(){
+        JLabel desabonnerInteretLabel = new JLabel("A quel interet souhaitez-vous vous desabonner?");
+        recupererListeInteretDesabonne();
+        JButton btnDesabonnerInteret = new JButton("Se desabonner");
+        JButton btnRetourMenuReseau = new JButton("Retour au menu precedent");
+
+        constraints.gridy = 0;
+        desabonnerInteretPanel.add(desabonnerInteretLabel, constraints);
+        constraints.gridy =1;
+        desabonnerInteretPanel.add(scrollPaneDesabonnerInteret, constraints);
+        constraints.gridy = 2;
+        desabonnerInteretPanel.add(btnDesabonnerInteret, constraints);
+        constraints.gridy = 3;
+        desabonnerInteretPanel.add(btnRetourMenuReseau, constraints);
+
+        //Add methode abonnement
+        onBtnDesabonnerInteretClicked(btnDesabonnerInteret);
+        onBtnRetourMenuReseauClicked(btnRetourMenuReseau);
+    }
+
     private void recupererListeInteretsModifier(){
         listeInteret = dbControlleur.recupererListeInteret();
         JPanel listeInteretsPanel = new JPanel();
@@ -439,6 +470,26 @@ public class GestionReseauGUI {
 
         scrollPaneAbonnerInteret = new JScrollPane(listeInteretsPanel);
         scrollPaneAbonnerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretDesabonne(){
+        listeInteret =         dbControlleur.recupererListeInteretUtilisateur(pseudo);
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneDesabonnerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneDesabonnerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
 
@@ -529,6 +580,36 @@ public class GestionReseauGUI {
             }
         });
     }
+
+    private void onBtnDesabonnerInteretClicked(JButton btnAbonnerInteret){
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneDesabonnerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            System.out.println("HERE");
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                if (controlleurUtilisateurs.possedeInteret(interetChoisi, pseudo)) {
+                    controlleurUtilisateurs.desabonnerInteret(interetChoisi, pseudo);
+                    confirmerDesabonnementInteret(interetChoisi);
+                } else {
+                    afficherMessageErreurDesabonnerInteret(interetChoisi);
+                }
+            }
+        });
+    }
+
 
     private void onBtnAjouterInteretClicked(JButton btnAjouter, JTextField ajouterInteretField) {
         btnAjouter.addActionListener(new ActionListener() {
@@ -664,6 +745,17 @@ public class GestionReseauGUI {
         mettreAJourFrame();
     }
 
+    public void confirmerDesabonnementInteret(String nouvelInteret) {
+
+        String message = "Vous etes desabonne a " +  nouvelInteret;
+        String title = "Desabonnement d'interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
     public void afficherMessageErreurSuivreUtilisateur() {
         String message = "L'utilisateur que vous voulez suivre n'existe pas. Veuillez reessayer.";
         String title = "Erreur";
@@ -713,6 +805,14 @@ public class GestionReseauGUI {
 
     public void afficherMessageErreurAbonnerInteret(String interet) {
         String message = "Vous etes deja abonnes a " + interet;
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurDesabonnerInteret(String interet) {
+        String message = "Vous n'etes pas abonne a " + interet;
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
