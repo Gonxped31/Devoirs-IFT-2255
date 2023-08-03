@@ -22,6 +22,7 @@ import java.util.UUID;
 
 public class AchatsGUI {
     private String pseudo;
+    private EmailSender emailSender;
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
     private DbControleur dbControleur = DbControleur.getDbControleur();
@@ -258,6 +259,7 @@ public class AchatsGUI {
         btnConfirmerAchat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                                Fournisseur  fournisseur = dbControleur.retournerFournisseur(nomFournisseurField.getText());
                 if (nomFournisseurField.getText().isEmpty() || numeroField.getText().isEmpty())
                     afficherMessageErreurAchat();
                 else{
@@ -267,6 +269,10 @@ public class AchatsGUI {
                             UUID uuid = dbControleur.acheterRobot(nomFournisseurField.getText(), Integer.parseInt(numeroField.getText()));
                             if (uuid != null){
                                 confirmerAchatRobot(uuid);
+                                String body = "Cher " + nomFournisseurField.getText() + ",\n\n"+ pseudo +" a acheté un nouveau robot!\n\nL'équipe robotix";
+                                emailSender = new EmailSender("robotrobotix4@gmail.com","lkzojmozphkprruj", fournisseur.getEmail(),
+                                        "Achat de robot", body);
+                                emailSender.sendInBackground();
                             } else {
                                 afficherMessageErreurAchat();
                             }
@@ -274,6 +280,10 @@ public class AchatsGUI {
                         case "composante" -> {
                             if (controlleurUtilisateurs.acheterComposante(nomFournisseurField.getText(), numeroField.getText().toLowerCase(), pseudo)){
                                 confirmerAchatComposante();
+                                String body = "Cher " + nomFournisseurField.getText() + ",\n\n"+ pseudo +" a acheté une nouvelle composante!\n\nL'équipe robotix";
+                                emailSender = new EmailSender("robotrobotix4@gmail.com","lkzojmozphkprruj", fournisseur.getEmail(),
+                                        "Achat de composant", body);
+                                emailSender.sendInBackground();
                             } else {
                                 afficherMessageErreurAchat();
                             }
