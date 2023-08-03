@@ -57,7 +57,7 @@ public class MenuUtilisateur extends JFrame {
         private GestionActivitesGUI gestionActivitesGUI;
         private GestionReseauGUI gestionReseauGUI;
         private AchatsGUI achatsGUI;
-        private GestionNotifsGUI gestionNotifsGUI = new GestionNotifsGUI();
+        private GestionNotifsGUI gestionNotifsGUI;
         private RequetePubliqueUtilisateurGUI requetePubliqueUtilisateurGUI = new RequetePubliqueUtilisateurGUI();
         private SouscrireInteretGUI souscrireInteretGUI = new SouscrireInteretGUI();
 
@@ -171,6 +171,7 @@ public class MenuUtilisateur extends JFrame {
             gestionTachesGUI = new GestionTachesGUI(pseudo);
             gestionActivitesGUI = new GestionActivitesGUI(pseudo);
             gestionReseauGUI = new GestionReseauGUI(pseudo);
+            gestionNotifsGUI = new GestionNotifsGUI(pseudo);
         }
 
         public void afficherMenuUtilisateurPanel(JFrame jFrame) {

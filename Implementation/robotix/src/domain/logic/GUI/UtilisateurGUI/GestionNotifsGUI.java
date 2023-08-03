@@ -19,7 +19,6 @@ public class GestionNotifsGUI {
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new BorderLayout());
     private JPanel notifsPanel = new JPanel(new GridBagLayout());
-    private JPanel listeNotifsPanel = new JPanel();
     private JLabel gestionNotifsLabel = new JLabel("Vos notifications", SwingConstants.CENTER);
     private JButton btnSupprimerNotifs = new JButton("Supprimer vos notifications");
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
@@ -27,7 +26,7 @@ public class GestionNotifsGUI {
     private JScrollPane scrollPaneNotifs;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
-    public GestionNotifsGUI() throws IOException, ParseException {
+    public GestionNotifsGUI(String pseudo) throws IOException, ParseException {
         this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -46,11 +45,16 @@ public class GestionNotifsGUI {
         constraints.gridy = 4;
         mainPanel.add(notifsPanel, BorderLayout.CENTER);
 
-            btnSupprimerNotifs.addActionListener(new ActionListener() {
+        btnSupprimerNotifs.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    jFrame.setContentPane(notifsPanel); // Mettre a jour le contentPane avec le panel precedent
+                    jFrame.setContentPane(mainPanel); // Mettre a jour le contentPane avec le panel precedent
                     mettreAJourFrame();
+                    JPanel viewportView = (JPanel) scrollPaneNotifs.getViewport().getView();
+                    controlleurUtilisateur.supprimerNotifs(pseudo);
+                    viewportView.removeAll();
+                    viewportView.revalidate();
+                    viewportView.repaint();
                 }
             });
         btnRetour.addActionListener(new ActionListener() {
