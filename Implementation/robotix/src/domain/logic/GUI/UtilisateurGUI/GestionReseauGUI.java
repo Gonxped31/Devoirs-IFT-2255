@@ -27,6 +27,7 @@ public class GestionReseauGUI {
     private JPanel supprimerAbonnePanel = new JPanel(new GridBagLayout());
     private JPanel ajouterInteretsPanel = new JPanel(new GridBagLayout());
     private JPanel modifierInteretsPanel = new JPanel(new GridLayout(0, 1));
+    private JPanel abonnerInteretPanel = new JPanel(new GridLayout(0, 1));
     private JPanel getSupprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JPanel supprimerInteretsPanel = new JPanel(new GridLayout(0, 1));
     private JPanel gererInteretsPanel = new JPanel(new GridLayout(0, 1));
@@ -41,6 +42,7 @@ public class GestionReseauGUI {
     private JScrollPane scrollPaneAjouterInteret;
     private JScrollPane scrollPaneModifierInteret;
     private JScrollPane scrollPaneSupprimerInteret;
+    private  JScrollPane scrollPaneAbonnerInteret;
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
     public GestionReseauGUI(String pseudo) throws IOException, ParseException {
@@ -196,7 +198,7 @@ public class GestionReseauGUI {
     }
 
 
-    public void setSupprimerAbonnePanel() {
+    private void setSupprimerAbonnePanel() {
         JLabel supprimerAbonneLabel = new JLabel("Quel utilisateur voulez vous supprimer de votre liste");
         recupererListeDeMesAbonnes();
         JTextField supprimerAbonneField = new JTextField();
@@ -219,7 +221,7 @@ public class GestionReseauGUI {
         onBtnSupprimerAbonneClicked(btnSupprimer, supprimerAbonneField);
     }
 
-    public void setGererInteretsPanel() {
+    private void setGererInteretsPanel() {
         JLabel gererInteretsTitre = new JLabel("Gerer mes interets", SwingConstants.CENTER);
         JLabel gererInteretsLabel = new JLabel("Que voulez-vous faire?", SwingConstants.CENTER);
         JButton btnAjouterInteret = new JButton("Ajouter un interet");
@@ -273,10 +275,18 @@ public class GestionReseauGUI {
                 mettreAJourFrame();
             }
         });
+
+        btnAbonnerInteret.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setContentPane(abonnerInteretPanel);
+                mettreAJourFrame();
+            }
+        });
         onBtnAnnulerClicked(btnRetour);
     }
 
-    public void setAjouterInteretPanel(){
+    private void setAjouterInteretPanel(){
         JLabel ajouterInteretLabel = new JLabel("Quel interet voulez ajouter au systeme Robotix?");
         JTextField ajouterInteretField = new JTextField();
         JButton btnAjouter = new JButton("Ajouter interet");
@@ -299,7 +309,7 @@ public class GestionReseauGUI {
         onBtnAjouterInteretClicked(btnAjouter, ajouterInteretField);
     }
 
-    public void setModifierInteretsPanel(){
+    private void setModifierInteretsPanel(){
         JLabel modifierInteretLabel = new JLabel("Quel interet voulez modifier?");
         recupererListeInteretsModifier();
         JLabel ajouterNouvelInteretLabel = new JLabel("Par quel interet voulez-vous le remplacer?");
@@ -328,7 +338,7 @@ public class GestionReseauGUI {
 
     }
 
-    public void setSupprimerInteretPanel(){
+    private void setSupprimerInteretPanel(){
         JLabel supprimerInteretLabel = new JLabel("Quel interet voulez-vous supprimer?");
         recupererListeInteretsSupprimer();
         JButton btnSupprimerInteret = new JButton("Supprimer");
@@ -338,8 +348,8 @@ public class GestionReseauGUI {
 
         constraints.gridy = 0;
         supprimerInteretsPanel.add(supprimerInteretLabel, constraints);
-constraints.gridy =1;
-supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
+        constraints.gridy =1;
+        supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         constraints.gridy = 2;
         supprimerInteretsPanel.add(btnSupprimerInteret, constraints);
         constraints.gridy = 3;
@@ -348,6 +358,11 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         onBtnSupprimerInteretClicked(btnSupprimerInteret);
 
 
+    }
+
+    private void setAbonneInteret(){
+        JLabel abonnerInteret = new JLabel("A quel interet souhaitez-vous vous abonner?");
+        recupererListeInteretAbonne();
     }
 
     private void recupererListeInteretsModifier(){
@@ -387,6 +402,26 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
 
         scrollPaneSupprimerInteret = new JScrollPane(listeInteretsPanel);
         scrollPaneSupprimerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+    }
+
+    private void recupererListeInteretAbonne(){
+        listeInteret = dbControlleur.recupererListeInteret();
+        JPanel listeInteretsPanel = new JPanel();
+        listeInteretsPanel.setLayout(new BoxLayout(listeInteretsPanel, BoxLayout.Y_AXIS));
+
+        ButtonGroup radioButtonsGroupInterets = new ButtonGroup();
+
+        for (Interet interet : listeInteret) {
+            String nom = interet.getNom();
+            JRadioButton radioButton = new JRadioButton(nom);
+            radioButton.setActionCommand(nom);
+            listeInteretsPanel.add(radioButton);
+            radioButtonsGroupInterets.add(radioButton);
+        }
+
+        scrollPaneAbonnerInteret = new JScrollPane(listeInteretsPanel);
+        scrollPaneAbonnerInteret.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
 
