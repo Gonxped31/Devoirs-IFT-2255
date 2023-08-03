@@ -345,6 +345,9 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         constraints.gridy = 3;
         supprimerInteretsPanel.add(btnRetourMenuReseau, constraints);
 
+        onBtnSupprimerInteretClicked(btnSupprimerInteret);
+
+
     }
 
     private void recupererListeInteretsModifier(){
@@ -388,7 +391,6 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
     }
 
     private void onBtnModifierInteretClicked(JButton btnAjouterNouvelInteret, JTextField ajouterNouvelInteretField) {
-        System.out.println("Here");
         btnAjouterNouvelInteret.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -408,15 +410,44 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
                 String nouvelInteret = ajouterNouvelInteretField.getText();
 
                 //Verifier si interet existe deja existe deja
-                if (dbControlleur.extraireInterets(nouvelInteret) && !dbControlleur.existeDansDbInteret(nouvelInteret)){
+                if (dbControlleur.extraireInterets(interetChoisi) && !dbControlleur.existeDansDbInteret(nouvelInteret) && nouvelInteret.length() != 0){
+                    confirmerModificationInteret(interetChoisi,nouvelInteret);
                     dbControlleur.modifierInteret(interetChoisi, nouvelInteret);
                 }else{
-                    System.out.println("Peut pas modifier l'interet car quelqu'un le possede");
+                    afficherMessageErreurModificationInteret(interetChoisi);
                 }
             }
         });
     }
 
+
+    private void onBtnSupprimerInteretClicked(JButton btnSupprimerInteret) {
+        btnSupprimerInteret.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                JPanel listeInteretPanel = (JPanel) scrollPaneSupprimerInteret.getViewport().getView();
+                Component[] listeInterets = listeInteretPanel.getComponents();
+                String interetChoisi = "";
+
+                for (Component interetsButton: listeInterets) {
+                    if (interetsButton instanceof JRadioButton rb) {
+                        if (rb.isSelected()) {
+                            interetChoisi = rb.getActionCommand();
+                            break;
+                        }
+                    }
+                }
+
+                //Verifier si interet existe deja existe deja
+                if (dbControlleur.extraireInterets(interetChoisi)){
+                    confirmerSupprimerInteret(interetChoisi);
+                    dbControlleur.supprimerInteret(interetChoisi);
+                }else{
+                    afficherMessageErreurSuppressionInteret(interetChoisi);
+                }
+            }
+        });
+    }
 
     private void onBtnAjouterInteretClicked(JButton btnAjouter, JTextField ajouterInteretField) {
         btnAjouter.addActionListener(new ActionListener() {
@@ -519,6 +550,28 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         mettreAJourFrame();
     }
 
+    public void confirmerModificationInteret(String ancienInteret, String nouvelInteret) {
+
+        String message = "Vous avez modifie " + ancienInteret + " pour " + nouvelInteret;
+        String title = "Modification interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
+    public void confirmerSupprimerInteret(String ancienInteret) {
+
+        String message = "Vous avez supprime " +  ancienInteret;
+        String title = "Suppression interet";
+        int messageType = JOptionPane.INFORMATION_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+        jFrame.setContentPane(mainPanel);
+        mettreAJourFrame();
+    }
+
     public void afficherMessageErreurSuivreUtilisateur() {
         String message = "L'utilisateur que vous voulez suivre n'existe pas. Veuillez reessayer.";
         String title = "Erreur";
@@ -540,6 +593,21 @@ supprimerInteretsPanel.add(scrollPaneSupprimerInteret, constraints);
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
 
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurModificationInteret(String ancienInteret) {
+        String message = ancienInteret + " n'a pas pu etre modifie";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        JOptionPane.showMessageDialog(null, message, title, messageType);
+    }
+
+    public void afficherMessageErreurSuppressionInteret(String ancienInteret) {
+        String message = ancienInteret + " n'a pas pu etre supprime car quelqu'un y est abonne";
+        String title = "Erreur";
+        int messageType = JOptionPane.ERROR_MESSAGE;
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
