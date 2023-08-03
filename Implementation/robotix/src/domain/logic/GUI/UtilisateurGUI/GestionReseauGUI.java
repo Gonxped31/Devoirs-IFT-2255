@@ -3,6 +3,7 @@ package domain.logic.GUI.UtilisateurGUI;
 import domain.logic.Controller.ControlleurUtilisateurs;
 import domain.logic.Controller.DbControleur;
 import domain.logic.Membre.Interet;
+import domain.logic.Membre.TypeNotification;
 import domain.logic.Robot.Action;
 
 import javax.swing.*;
@@ -652,6 +653,7 @@ public class GestionReseauGUI {
                     afficherMessageErreurSuivreUtilisateur();
                 }
                 else{
+                    controlleurUtilisateurs.ajouterNotifs(input, "Nouvel abonne",pseudo + " vous a suivi", TypeNotification.NOUVEAU_ABONNE);
                     confirmerNouvelAbonne(input);
                 }
             }

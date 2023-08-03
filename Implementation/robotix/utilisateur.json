@@ -21,25 +21,27 @@
     "telephone": "5141111111"
   },
   {
-    "nom": "Gbian",
-    "prenom": "Samir",
-    "pseudo": "SB",
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "pseudo": "KD",
     "listeInteret": [],
     "listeNotifications": [],
     "listSuiveur": [],
-    "motDePasse": "SaMir",
+    "motDePasse": "KaMen",
     "listeRobot": [],
     "listeTaches": [],
     "listeActions": [],
     "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
+    "listeUtilisateursSuivi": [
+      "SB"
+    ],
     "listeActivitesRejoint": [],
     "listeActivitesCreer": [],
     "point": 0,
     "tache": null,
     "notification": null,
     "notifs": [],
-    "telephone": "5143333333"
+    "telephone": "5142222222"
   },
   {
     "nom": "Doren",
@@ -189,13 +191,22 @@
     "telephone": "5141010101"
   },
   {
-    "nom": "Damov",
-    "prenom": "Kamen",
-    "pseudo": "KD",
+    "nom": "Gbian",
+    "prenom": "Samir",
+    "pseudo": "SB",
     "listeInteret": [],
-    "listeNotifications": [],
-    "listSuiveur": [],
-    "motDePasse": "KaMen",
+    "listeNotifications": [
+      {
+        "titre": "Nouvel abonne",
+        "date": "Thu Aug 03 01:57:48 EDT 2023",
+        "typeNotification": "NOUVEAU_ABONNE",
+        "messsage": "KD vous a suivi"
+      }
+    ],
+    "listSuiveur": [
+      "KD"
+    ],
+    "motDePasse": "SaMir",
     "listeRobot": [],
     "listeTaches": [],
     "listeActions": [],
@@ -206,7 +217,14 @@
     "point": 0,
     "tache": null,
     "notification": null,
-    "notifs": [],
-    "telephone": "5142222222"
+    "notifs": [
+      {
+        "titre": "Nouvel abonne",
+        "date": "Thu Aug 03 01:57:48 EDT 2023",
+        "typeNotification": "NOUVEAU_ABONNE",
+        "messsage": "KD vous a suivi"
+      }
+    ],
+    "telephone": "5143333333"
   }
 ]
