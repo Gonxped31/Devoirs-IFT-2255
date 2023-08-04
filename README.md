@@ -123,5 +123,11 @@ Liste de fonctionnalités:<br>
   <li>
     Gérer les composantes (qui inclus modifier le prix, la description et supprimer une composante)
   </li>
+  <li>
+    Modifier son profil
+  </li>
+  <li>
+    Faire une requête publique (même fonctionalité que pour l'utilisateur)
+  </li>
 </ul>
     
