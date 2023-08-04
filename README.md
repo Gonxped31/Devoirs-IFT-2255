@@ -150,7 +150,7 @@ Mot de passe: 123<br><br>
 
 <h3><b>Point d'entrée de l'application</b></h3>
 <p>
-  Ouvrir le fichier robotix.jar
+  Ouvrir le fichier robotix.jar, s'inscrire ou se connecter avec les identifiants mentionnés plus haut.
 </p>
 
 
