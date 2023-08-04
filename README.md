@@ -138,4 +138,8 @@
     Faire une requête publique (même fonctionalité que pour l'utilisateur)
   </li>
 </ul>
-    
+
+<h3><b>Point d'entrée de l'application</b></h3>
+<p>
+  Ouvrir le fichier robotix.jar
+</p>
