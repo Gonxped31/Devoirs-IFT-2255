@@ -2,14 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/domain/logic/GUI/InscriptionUtilisateur.form" />
-      <file url="file://$PROJECT_DIR$/src/domain/logic/GUI/LoginUtilisateur.form" />
-      <file url="file://$PROJECT_DIR$/src/domain/logic/GUI/MenuUtilisateurGUI.form" />
+      <file url="file://$PROJECT_DIR$/src/main/java/domain/logic/GUI/InscriptionUtilisateur.form" />
+      <file url="file://$PROJECT_DIR$/src/main/java/domain/logic/GUI/LoginUtilisateur.form" />
+      <file url="file://$PROJECT_DIR$/src/main/java/domain/logic/GUI/MenuUtilisateurGUI.form" />
     </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="robotix" />
+      </profile>
+    </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="robotix" options="--add-exports java.base/javax=ALL-UNNAMED" />
+      <module name="robotix" options="" />
     </option>
   </component>
 </project>
