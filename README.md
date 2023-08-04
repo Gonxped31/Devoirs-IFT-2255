@@ -35,11 +35,41 @@ Fournisseur:
       <li>
          - Créer une action
       </li>
-      
-     
    </ul>
  </li>
-   
+  <li>
+    - Gérer les tâches:
+    <ul>
+      <li>
+        - Créer une tâches (assignée à un robot)
+      </li>
+      <li>
+        - Allouer un tâche à un robot
+      </li>
+    </ul>
+  </li>
+  <li>
+    - Gérer les activités:
+    <ul>
+      <li>
+        - Créer une activité 
+      </li>
+      <li>
+        - Rejoindre une activité
+      </li>
+    </ul>
+  </li>
+  <li>
+    -Gérer son réseau social:
+    <ul>
+      <li>
+        - Suivre un utilisateur
+      </li>
+      <li>
+        - Gérer ses suiveurs (qui inclus voir qui on suit, et se désabonner d'un utilisateur
+      </li>
+    </ul>
+  </li>
       
 </ul>
   
