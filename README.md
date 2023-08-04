@@ -138,8 +138,20 @@
     Faire une requête publique (même fonctionalité que pour l'utilisateur)
   </li>
 </ul>
-
+<h3><b>Informations de connexion initiale en tant qu'utilisateur: </b></h3>
+Pseudo: JG<br>
+Mot de passe: JaMes<br><br>
+<h3><b>Description des données initiales</b></h3>>
+<p>Au lancement, l'application contient initialement 10 utilisateurs qui possèdent tous au moins deux robots, 5 fournisseurs possédant 5 composantes chacun (dont au moins un par type). Elle contient aussi 20 actions, 10 tâches, 10 intérêts. En plus, chaque utilisateur possède 5 activité avaec différents status de complétion (terminées, en cours, pas encore commencée).</p>
+<p>
+<b>Informations de connexion initiale en tant que fournisseur: </b><br>
+Nom: Roy<br>
+Mot de passe: 123<br><br>
+</p>
 <h3><b>Point d'entrée de l'application</b></h3>
 <p>
   Ouvrir le fichier robotix.jar
 </p>
+
+
+
