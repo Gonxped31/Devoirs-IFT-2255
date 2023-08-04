@@ -56,6 +56,13 @@ public class Activite implements java.io.Serializable{
     }
 
     /**
+     * Constructeur par défaut de la classe Activité.
+     */
+    public Activite(){
+
+    }
+
+    /**
      * Renvoie l'auteur de l'activité.
      *
      * @return l'auteur de l'activité
