@@ -17,28 +17,96 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.UUID;
-
+/**
+ * Cette classe représente une interface graphique pour effectuer des achats, que ce soit de robots ou de composantes.
+ * Elle permet d'afficher les fournisseurs disponibles, leurs détails, ainsi que de confirmer les achats et afficher
+ * des messages de confirmation ou d'erreur.
+ */
 public class AchatsGUI {
+    /**
+     * Représente le pseudonyme d'un utilisateur.
+     */
     private String pseudo;
+    /**
+     * Contrôleur pour les opérations liées aux utilisateurs.
+     */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /**
+     * Contrôleur pour les opérations liées aux fournisseurs.
+     */
     private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
+    /**
+     * Contrôleur de base de données pour les opérations sur la base de données.
+     */
     private DbControleur dbControleur = DbControleur.getDbControleur();
+    /**
+     * Cadre principal (JFrame) de l'application.
+     */
     private JFrame jFrame = new JFrame();
+    /**
+     * Panneau principal de l'application avec GridLayout.
+     */
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
+    /**
+     * Panneau pour l'achat de robots avec GridBagLayout.
+     */
     private JPanel achatRobotPanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneau pour l'achat de composantes avec GridBagLayout.
+     */
     private JPanel achatComposantePanel = new JPanel(new GridBagLayout());
+    /**
+     * Étiquette pour les options d'achat.
+     */
     private JLabel achatsLabel = new JLabel("Que voulez-vous acheter?", SwingConstants.CENTER);
+    /**
+     * Bouton pour lancer l'achat de robots.
+     */
     private JButton btnAchatRobot = new JButton("Robot");
+    /**
+     * Bouton pour lancer l'achat de composantes.
+     */
     private JButton btnAchatComposante = new JButton("Composante");
+    /**
+     * Bouton pour retourner au menu utilisateur.
+     */
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+    /**
+     * Liste des fournisseurs.
+     */
     private ArrayList<Fournisseur> listeFournisseur;
+    /**
+     * JList pour afficher les fournisseurs pour l'achat de robots.
+     */
     private JList<String> listeFournisseurJlistRobot;
+    /**
+     * JList pour afficher les fournisseurs pour l'achat de composantes.
+     */
     private JList<String> listeFournisseurJlistComposante;
+    /**
+     * JScrollPane pour afficher les fournisseurs pour l'achat de robots.
+     */
     private JScrollPane scrollPaneRobot;
+    /**
+     * JScrollPane pour afficher les fournisseurs pour l'achat de composantes.
+     */
     private JScrollPane scrollPaneComposante;
+    /**
+     * Conserve une référence au panneau précédemment affiché.
+     */
     private Container panelPrecedent = new Container();
+    /**
+     * GridBagConstraints pour définir le placement des composants dans un panneau.
+     */
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Interface graphique pour les achats.
+     *
+     * @param pseudo Le pseudonyme de l'utilisateur.
+     * @throws IOException En cas d'erreur d'entrée/sortie.
+     * @throws ParseException En cas d'erreur lors de l'analyse.
+     */
     public AchatsGUI(String pseudo) throws IOException, ParseException {
         this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -70,6 +138,9 @@ public class AchatsGUI {
         });
     }
 
+    /**
+     * Met en place le panneau principal.
+     */
     public void setMainPanel() {
         achatsLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -84,6 +155,9 @@ public class AchatsGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Met en place le panneau d'achat de robots.
+     */
     public void setAchatRobotPanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel listeFournisseursLabel = new JLabel("Voici la liste des fournisseurs. Cliquez sur un fournisseur pour voir ses détails.");
@@ -122,6 +196,11 @@ public class AchatsGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Récupère la liste des fournisseurs en fonction du choix spécifié.
+     *
+     * @param choix Le choix spécifié (peut être "robot" ou "composante").
+     */
     private void recupererListeFournisseur(String choix) {
         listeFournisseur = dbControleur.recupererListFournisseur();
         switch (choix.toLowerCase()) {
@@ -166,6 +245,13 @@ public class AchatsGUI {
             }
         }
     }
+
+    /**
+     * Affiche les détails d'un fournisseur en fonction du choix spécifié.
+     *
+     * @param fournisseur Le fournisseur dont les détails doivent être affichés.
+     * @param choix Le choix spécifié (peut être "robot" ou "composante").
+     */
     private void detailsFournisseur(Fournisseur fournisseur, String choix) {
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append("Nom: ").append(fournisseur.getNom()).append("\n");
@@ -207,6 +293,10 @@ public class AchatsGUI {
         String message = messageBuilder.toString();
         JOptionPane.showMessageDialog(null, message, "Details du fournisseur", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /**
+     * Configure le panneau d'achat de composantes.
+     */
     public void setAchatComposantePanel() {
         JLabel listeFournisseursLabel = new JLabel("Voici la liste des fournisseurs. Cliquez sur un fournisseur pour voir ses détails.");
         recupererListeFournisseur("composante");
@@ -241,6 +331,11 @@ public class AchatsGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Affiche le panneau principal dans la fenêtre JFrame spécifiée.
+     *
+     * @param jFrame La fenêtre JFrame dans laquelle afficher le panneau principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
@@ -248,10 +343,22 @@ public class AchatsGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour le contenu de la fenêtre JFrame.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
+
+    /**
+     * Gère l'événement lors du clic sur le bouton de confirmation d'achat.
+     *
+     * @param btnConfirmerAchat Le bouton de confirmation d'achat.
+     * @param nomFournisseurField Le champ de texte contenant le nom du fournisseur.
+     * @param numeroField Le champ de texte contenant le numéro de l'élément à acheter.
+     * @param choix Le choix spécifié (peut être "robot" ou "composante").
+     */
     public void onBtnConfirmerAchatClicked(JButton btnConfirmerAchat, JTextField nomFournisseurField, JTextField numeroField, String choix) {
         btnConfirmerAchat.addActionListener(new ActionListener() {
             @Override
@@ -261,7 +368,6 @@ public class AchatsGUI {
                 else{
                     switch (choix.toLowerCase()){
                         case "robot" -> {
-                            //TODO: Mettre les notifs
                             UUID uuid = dbControleur.acheterRobot(nomFournisseurField.getText(), Integer.parseInt(numeroField.getText()));
                             if (uuid != null){
                                 confirmerAchatRobot(uuid);
@@ -283,6 +389,12 @@ public class AchatsGUI {
             }
         });
     }
+
+    /**
+     * Gère l'événement lors du clic sur le bouton d'annulation.
+     *
+     * @param btnAnnuler Le bouton d'annulation.
+     */
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -292,6 +404,12 @@ public class AchatsGUI {
             }
         });
     }
+
+    /**
+     * Affiche un message de confirmation d'achat de robot avec le numéro de série.
+     *
+     * @param uuid Le numéro de série du robot acheté.
+     */
     public void confirmerAchatRobot(UUID uuid) {
         String message = "L'achat a ete bien reussi ! Voici le numero de série de votre robot :\n\n" + uuid +
                 "\n\nVEUILLEZ LE NOTER CAR IL EST INDISPENSABLE POUR CERTAINES OPTION.";
@@ -302,6 +420,9 @@ public class AchatsGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message de confirmation d'achat de composante.
+     */
     public void confirmerAchatComposante(){
         String message = "L'achat a ete bien reussi !";
         String title = "Transaction terminee";
@@ -311,6 +432,9 @@ public class AchatsGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message d'erreur en cas d'échec de l'achat.
+     */
     public void afficherMessageErreurAchat() {
         String message = "L'achat n'a pas ete bien completee. Veuillez reessayer.";
         String title = "Erreur";

@@ -9,22 +9,74 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Cette classe représente une interface graphique pour la connexion d'un utilisateur.
+ * Elle permet de saisir un pseudo et un mot de passe pour l'authentification,
+ * ainsi que de se connecter et afficher le menu utilisateur en cas de succès.
+ */
 public class ConnexionUtilisateurGUI {
+    /**
+     * Contrôleur des utilisateurs pour gérer les opérations liées aux utilisateurs.
+     */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /**
+     * Fenêtre JFrame pour l'interface utilisateur.
+     */
     private JFrame jFrame = new JFrame();
+    /**
+     * Panneau principal de l'interface utilisateur avec une disposition en BorderLayout.
+     */
     private JPanel mainPanel = new JPanel(new BorderLayout());
+    /**
+     * Panneau contenant le formulaire de connexion avec une disposition en GridBagLayout.
+     */
     private JPanel formulairePanel = new JPanel(new GridBagLayout());
+    /**
+     * Étiquette pour indiquer la connexion en tant qu'utilisateur.
+     */
     private JLabel connexionUtilisateurLabel = new JLabel("Connexion en tant qu'utilisateur", SwingConstants.CENTER);
+    /**
+     * Étiquette pour le champ de saisie du pseudo.
+     */
     private JLabel pseudoLabel = new JLabel("Pseudo");
+    /**
+     * Étiquette pour le champ de saisie du mot de passe.
+     */
     private JLabel mdpLabel = new JLabel("Mot de passe");
+    /**
+     * Champ de texte pour saisir le pseudo.
+     */
     private JTextField pseudoField = new JTextField();
+    /**
+     * Champ de mot de passe pour saisir le mot de passe.
+     */
     private JPasswordField mdpField = new JPasswordField();
+    /**
+     * Bouton pour se connecter.
+     */
     private JButton btnSeConnecter = new JButton("Se Connecter");
+    /**
+     * Bouton pour revenir en arrière.
+     */
     private JButton btnRetour = new JButton("Retour");
+    /**
+     * Instance du menu utilisateur associée à l'interface.
+     */
     private MenuUtilisateur menuUtilisateur;
+    /**
+     * Conteneur pour stocker le panneau précédent.
+     */
     private Container panelPrecedent = new Container();
+    /**
+     * Contraintes pour la disposition des composants dans le formulaire.
+     */
     private GridBagConstraints constraints = new GridBagConstraints();
 
+    /**
+     * Crée une interface graphique pour la connexion d'un utilisateur.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     * @throws ParseException Si une erreur se produit lors de l'analyse.
+     */
     public ConnexionUtilisateurGUI() throws IOException, ParseException {
         // Setup de quelques composantes
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -79,6 +131,11 @@ public class ConnexionUtilisateurGUI {
         });
     }
 
+    /**
+     * Affiche le panneau de connexion dans la fenêtre JFrame spécifiée.
+     *
+     * @param jFrame La fenêtre JFrame dans laquelle afficher le panneau de connexion.
+     */
     public void afficherPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Principal
         this.jFrame = jFrame;
@@ -86,6 +143,9 @@ public class ConnexionUtilisateurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour le contenu de la fenêtre JFrame en révalidant et en repeignant la fenêtre.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();

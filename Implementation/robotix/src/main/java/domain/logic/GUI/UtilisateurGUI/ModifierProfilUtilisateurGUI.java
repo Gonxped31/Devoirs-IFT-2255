@@ -9,32 +9,116 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Cette classe représente l'interface utilisateur pour la modification du profil utilisateur.
+ * Elle permet de modifier différents aspects du profil utilisateur.
+ */
 public class ModifierProfilUtilisateurGUI {
+    /**
+     * Le pseudo de l'utilisateur actuel.
+     */
     String pseudo;
+    /**
+     * Le contrôleur pour les opérations liées aux utilisateurs.
+     */
     ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /**
+     * Fenêtre principale de l'interface utilisateur.
+     */
     private JFrame jFrame = new JFrame();
+    /**
+     * Panneau principal contenant les options de modification.
+     */
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier le nom.
+     */
     private JPanel modifierNomPanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier le prénom.
+     */
     private JPanel modifierPrenomPanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier l'adresse.
+     */
     private JPanel modifierAdressePanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier le pseudo.
+     */
     private JPanel modifierPseudoPanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier l'email.
+     */
     private JPanel modifierEmailPanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier le téléphone.
+     */
     private JPanel modifierTelephonePanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier la compagnie.
+     */
     private JPanel modifierCompagniePanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneaux spécifiques pour chaque modification - Modifier le mot de passe.
+     */
     private JPanel modifierMdpPanel = new JPanel(new GridBagLayout());
+    /**
+     * Étiquette indiquant le but de l'interface.
+     */
     private JLabel profilUtilisateurLabel = new JLabel("Que voulez-vous modifier?", SwingConstants.CENTER);
+    /**
+     * Bouton pour déclencher la modification du nom.
+     */
     private JButton btnNom = new JButton("Nom");
+    /**
+     * Bouton pour déclencher la modification du prénom.
+     */
     private JButton btnPrenom = new JButton("Prenom");
+    /**
+     * Bouton pour déclencher la modification de l'adresse.
+     */
     private JButton btnAdresse = new JButton("Adresse");
+    /**
+     * Bouton pour déclencher la modification du pseudo.
+     */
     private JButton btnPseudo = new JButton("Pseudo");
+    /**
+     * Bouton pour déclencher la modification de l'email.
+     */
     private JButton btnEmail = new JButton("Email");
+    /**
+     * Bouton pour déclencher la modification du numéro de téléphone.
+     */
     private JButton btnNumeroTelephone = new JButton("Numero de telephone");
+    /**
+     * Bouton pour déclencher la modification du nom de la compagnie.
+     */
     private JButton btnNomCompagnie = new JButton("Nom de la compagnie");
+    /**
+     * Bouton pour déclencher la modification du mot de passe.
+     */
     private JButton btnMdp = new JButton("Mot de passe");
+    /**
+     * Bouton pour retourner au menu utilisateur.
+     */
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+    /**
+     * Conteneur précédent pour sauvegarder le contenu précédent du panneau.
+     */
     private Container panelPrecedent = new Container();
+    /**
+     * Contraintes pour la disposition des composants dans un panneau.
+     */
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Cette classe représente l'interface utilisateur pour la modification du profil utilisateur.
+     * Elle permet à l'utilisateur de modifier différentes informations de son profil.
+     *
+     * @param pseudo Le pseudo de l'utilisateur actuel.
+     * @throws IOException En cas d'erreur d'entrée/sortie lors de l'accès aux données.
+     * @throws ParseException En cas d'erreur lors de l'analyse des données.
+     */
     public ModifierProfilUtilisateurGUI(String pseudo) throws IOException, ParseException {
         this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -114,6 +198,11 @@ public class ModifierProfilUtilisateurGUI {
         });
     }
 
+    /**
+     * Définit le panneau principal de modification du profil utilisateur.
+     * Ce panneau affiche les boutons permettant à l'utilisateur de choisir
+     * quelle information du profil il souhaite modifier.
+     */
     public void setMainPanel() {
         profilUtilisateurLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -140,6 +229,11 @@ public class ModifierProfilUtilisateurGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Définit le panneau de modification du nom de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau nom d'utilisateur.
+     */
     public void setModifierNomPanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel nomLabel = new JLabel("Entrez votre nouveau nom");
@@ -160,6 +254,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification du prénom de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau prénom d'utilisateur.
+     */
     public void setModifierPrenomPanel() {
         JLabel prenomLabel = new JLabel("Entrez votre nouveau prenom");
         JTextField nouveauPrenomField = new JTextField();
@@ -179,7 +278,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnEnregistrerClicked(btnEnregistrerPrenom, nouveauPrenomField, "prenom");
         onBtnAnnulerClicked(btnAnnuler);
     }
-
+    /**
+     * Définit le panneau de modification de l'adresse de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * une nouvelle adresse d'utilisateur.
+     */
     public void setModifierAdressePanel() {
         JLabel adresseLabel = new JLabel("Entrez votre nouvelle adresse");
         JTextField nouvelleAdresseField = new JTextField();
@@ -200,6 +303,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification du pseudo de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau pseudo d'utilisateur.
+     */
     public void setModifierPseudoPanel() {
         JLabel pseudoLabel = new JLabel("Entrez votre nouveau pseudo");
         JTextField nouveauPseudoField = new JTextField();
@@ -220,6 +328,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification de l'email de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau email d'utilisateur.
+     */
     public void setModifierEmailPanel() {
         JLabel emailLabel = new JLabel("Entrez votre nouveau email");
         JTextField nouveauEmailField = new JTextField();
@@ -240,6 +353,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification du numéro de téléphone de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau numéro de téléphone d'utilisateur.
+     */
     public void setModifierTelephonePanel() {
         JLabel telephoneLabel = new JLabel("Entrez votre nouveau numero de telephone");
         JTextField nouveauTelephoneField = new JTextField();
@@ -260,6 +378,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification de la compagnie de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * une nouvelle compagnie d'utilisateur.
+     */
     public void setModifierCompagniePanel() {
         JLabel compagnieLabel = new JLabel("Entrez votre nouvelle compagnie");
         JTextField nouvelleCompagnieField = new JTextField();
@@ -280,6 +403,11 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Définit le panneau de modification du mot de passe de l'utilisateur.
+     * Ce panneau contient les éléments nécessaires pour entrer et enregistrer
+     * un nouveau mot de passe d'utilisateur.
+     */
     public void setModifierMdpPanel() {
         JLabel mdpLabel = new JLabel("Entrez votre nouveau mot de passe");
         JPasswordField nouveauMdpField = new JPasswordField();
@@ -300,6 +428,10 @@ public class ModifierProfilUtilisateurGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Affiche le panneau principal dans la fenêtre JFrame donnée.
+     * @param jFrame La fenêtre JFrame dans laquelle afficher le panneau principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
@@ -307,11 +439,23 @@ public class ModifierProfilUtilisateurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour le contenu de la fenêtre JFrame.
+     * Cette méthode permet de rafraîchir l'affichage après des modifications.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
+    /**
+     * Associe l'action de cliquer sur le bouton "Enregistrer les modifications"
+     * à la modification du profil de l'utilisateur en fonction du champ de modification.
+     * Affiche un message de confirmation en cas de succès ou un message d'erreur en cas d'échec.
+     * @param btnEnregistrer Le bouton "Enregistrer les modifications" sur lequel l'action est associée.
+     * @param response Le champ de réponse contenant la nouvelle valeur de la modification.
+     * @param modif Le type de modification à effectuer (nom, prénom, adresse, etc.).
+     */
     public void onBtnEnregistrerClicked(JButton btnEnregistrer, JTextField response, String modif) {
         btnEnregistrer.addActionListener(new ActionListener() {
             @Override
@@ -336,6 +480,12 @@ public class ModifierProfilUtilisateurGUI {
         });
     }
 
+
+    /**
+     * Associe l'action de cliquer sur le bouton "Annuler les modifications"
+     * au retour à l'écran principal de modification du profil.
+     * @param btnAnnuler Le bouton "Annuler les modifications" sur lequel l'action est associée.
+     */
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -346,6 +496,9 @@ public class ModifierProfilUtilisateurGUI {
         });
     }
 
+    /**
+     * Affiche un message de confirmation en cas de succès de la modification du profil.
+     */
     public void afficherMessageConfirmation() {
         String message = "Changement effectué avec succès !";
         String title = "Modification terminee";
@@ -356,6 +509,9 @@ public class ModifierProfilUtilisateurGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche un message d'erreur en cas d'échec de la modification du profil.
+     */
     public void afficherMessageErreur() {
         String message = "Une erreur s'est produite ! Veuillez reessayer.";
         String title = "Erreur";

@@ -13,24 +13,43 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+
 public class GestionTachesGUI {
+
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+
     private String pseudo;
+
     private JFrame jFrame = new JFrame();
+
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
+
     private JPanel creerTachePanel = new JPanel(new GridBagLayout());
+
     private JPanel allouerTachePanel = new JPanel(new GridBagLayout());
+
     private JLabel gestionTachesLabel = new JLabel("Gestion de mes taches", SwingConstants.CENTER);
+
     private JButton btnCreerTache = new JButton("Creer une tache");
+
     private JButton btnAllouerTache = new JButton("Allouer une tache a un robot");
+
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+
     private Container panelPrecedent = new Container();
+
     private JScrollPane scrollPaneCreerTache;
+
     private JScrollPane scrollPaneAllouerTache;
+
     private JScrollPane scrollPaneListeTaches;
+
     private ArrayList<Robot> listeRobot;
+
     private ArrayList<Tache> listeTaches;
+
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
+
 
     public GestionTachesGUI(String pseudo) throws IOException, ParseException {
         this.pseudo = pseudo;
@@ -63,6 +82,7 @@ public class GestionTachesGUI {
         });
     }
 
+
     public void setMainPanel() {
         gestionTachesLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -76,6 +96,7 @@ public class GestionTachesGUI {
         mainPanel.add(Box.createHorizontalStrut(10));
         mainPanel.add(btnRetour);
     }
+
 
     public void setCreerTachePanel() {
         // Déclaration des composantes implementees dans le panel
@@ -107,6 +128,7 @@ public class GestionTachesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+
     private void recupererListeActions() {
         ArrayList<Action> listeAcction = controlleurUtilisateurs.recuprerListeAction(pseudo);
 
@@ -123,6 +145,7 @@ public class GestionTachesGUI {
         scrollPaneCreerTache.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
     }
+
 
     public void setAllouerTachePanel() {
         JLabel nomRobotLabel = new JLabel("Choisissez a quel robot la tache sera allouee");
@@ -149,6 +172,7 @@ public class GestionTachesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+
     private void recupererListeTache() {
         listeTaches = controlleurUtilisateurs.recuprerListeTache(pseudo);
         JPanel tachePanel = new JPanel();
@@ -166,6 +190,8 @@ public class GestionTachesGUI {
         scrollPaneListeTaches = new JScrollPane(tachePanel);
         scrollPaneListeTaches.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
+
+
     private void recupererListeRobot(){
         listeRobot = controlleurUtilisateurs.recupererListeRobot(pseudo);
 
@@ -182,6 +208,8 @@ public class GestionTachesGUI {
         scrollPaneAllouerTache.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
+
+
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
@@ -189,10 +217,12 @@ public class GestionTachesGUI {
         mettreAJourFrame();
     }
 
+
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
+
 
     public void onBtnTacheCreeeClicked(JButton btnCreation, JTextField tacheCreeeField) {
         btnCreation.addActionListener(new ActionListener() {

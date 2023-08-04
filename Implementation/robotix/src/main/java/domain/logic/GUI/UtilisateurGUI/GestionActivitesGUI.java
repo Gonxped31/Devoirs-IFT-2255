@@ -20,25 +20,87 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class GestionActivitesGUI {
+    /**
+     * Contrôleur des utilisateurs pour gérer les opérations liées aux utilisateurs.
+     */
     private ControlleurUtilisateurs controlleurUtilisateurs = new ControlleurUtilisateurs();
+    /**
+     * Pseudo de l'utilisateur associé à l'interface.
+     */
     private String pseudo;
+    /**
+     * Fenêtre JFrame pour l'interface utilisateur.
+     */
     private JFrame jFrame = new JFrame();
+    /**
+     * Panneau principal de l'interface utilisateur avec une disposition en GridLayout.
+     */
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));
+    /**
+     * Panneau pour la création d'une activité avec une disposition en GridBagLayout.
+     */
     private JPanel creerActivitePanel = new JPanel(new GridBagLayout());
+    /**
+     * Panneau pour rejoindre une activité avec une disposition en GridBagLayout.
+     */
     private JPanel rejoindreActivitePanel = new JPanel(new GridBagLayout());
+    /**
+     * Étiquette pour indiquer la gestion des activités.
+     */
     private JLabel gestionActivitesLabel = new JLabel("Gestion de mes activites", SwingConstants.CENTER);
+    /**
+     * Bouton pour créer une activité.
+     */
     private JButton btnCreerActivite = new JButton("Creer une activite");
+    /**
+     * Bouton pour rejoindre une activité.
+     */
     private JButton btnRejoindreActivite = new JButton("Rejoindre une activite");
+    /**
+     * Bouton pour retourner au menu utilisateur.
+     */
     private JButton btnRetour = new JButton("Retour au menu utilisateur");
+    /**
+     * Liste des tâches associées à l'utilisateur.
+     */
     private ArrayList<Tache> listeTaches;
+    /**
+     * Liste des activités associées à l'utilisateur.
+     */
     private ArrayList<Activite> listeActivites;
+    /**
+     * Liste des robots associés à l'utilisateur.
+     */
     private ArrayList<Robot> listeRobot;
+
+    /**
+     * Composant JScrollPane pour afficher la liste des robots.
+     */
     private JScrollPane scrollPaneRobot;
+    /**
+     * Composant JScrollPane pour afficher la liste des tâches.
+     */
     private JScrollPane scrollPaneListeTaches;
+    /**
+     * Composant JScrollPane pour afficher la liste des activités.
+     */
     private JScrollPane scrollPaneListeActivites;
+    /**
+     * Conteneur pour stocker le panneau précédent.
+     */
     private Container panelPrecedent = new Container();
+    /**
+     * Contraintes pour la disposition des composants dans les panneaux.
+     */
     private GridBagConstraints constraints = new GridBagConstraints(); // Classe qui definit la maniere dont les composants seront places dans un panel
 
+    /**
+     * Interface graphique pour la gestion des activités, liée à un utilisateur identifié par son pseudo.
+     *
+     * @param pseudo Le pseudo de l'utilisateur.
+     * @throws IOException En cas d'erreur d'entrée/sortie lors de la création de l'interface.
+     * @throws ParseException En cas d'erreur lors de l'analyse de la date.
+     */
     public GestionActivitesGUI(String pseudo) throws IOException, ParseException {
         this.pseudo = pseudo;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -70,6 +132,11 @@ public class GestionActivitesGUI {
         });
     }
 
+
+    /**
+     * Définit et configure le panneau principal de l'interface graphique de gestion des activités.
+     * Ce panneau contient des composants tels que des étiquettes et des boutons.
+     */
     public void setMainPanel() {
         gestionActivitesLabel.setFont(new Font("Arial", Font.BOLD, 18));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -84,6 +151,10 @@ public class GestionActivitesGUI {
         mainPanel.add(btnRetour);
     }
 
+    /**
+     * Configure le panneau de création d'activité avec les composants nécessaires tels que des étiquettes, des champs de texte,
+     * des boutons, et des éléments interactifs pour la sélection de tâches et d'intérêts.
+     */
     public void setCreerActivitePanel() {
         // Déclaration des composantes implementees dans le panel
         JLabel nomActiviteLabel = new JLabel("Nom de l'activité");
@@ -135,6 +206,10 @@ public class GestionActivitesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Récupère la liste des tâches associées à l'utilisateur actuel (identifié par son pseudo)
+     * à partir du contrôleur d'utilisateurs et configure l'interface correspondante.
+     */
     private void recupererListeTache() {
         listeTaches = controlleurUtilisateurs.recuprerListeTache(pseudo);
         JPanel tachePanel = new JPanel();
@@ -149,6 +224,10 @@ public class GestionActivitesGUI {
         scrollPaneListeTaches.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
+    /**
+     * Configure le panneau de rejoindre une activité avec les composants nécessaires tels que des étiquettes, des boutons,
+     * et des éléments interactifs pour la sélection d'une activité à rejoindre et de robots à ajouter.
+     */
     public void setRejoindreActivitePanel() {
         JLabel rejoindreActiviteLabel = new JLabel("Veuillez selectionner une activite a rejoindre parmi les suivantes");
         recupererListeActivites();
@@ -174,6 +253,10 @@ public class GestionActivitesGUI {
         onBtnAnnulerClicked(btnAnnuler);
     }
 
+    /**
+     * Récupère la liste des activités à partir du contrôleur d'utilisateurs et configure l'interface
+     * pour afficher les activités sous forme de boutons radio permettant la sélection.
+     */
     private void recupererListeActivites(){
         listeActivites = controlleurUtilisateurs.recupererListeActivites();
 
@@ -200,6 +283,11 @@ public class GestionActivitesGUI {
 
     }
 
+    /**
+     * Récupère la liste des robots associés à l'utilisateur actuel (identifié par son pseudo)
+     * à partir du contrôleur d'utilisateurs et configure l'interface pour afficher les robots
+     * sous forme de cases à cocher permettant la sélection.
+     */
     private void recupererListeRobot(){
         listeRobot = controlleurUtilisateurs.recupererListeRobot(pseudo);
 
@@ -216,6 +304,11 @@ public class GestionActivitesGUI {
         scrollPaneRobot.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
+    /**
+     * Affiche le panneau principal de l'interface graphique dans la fenêtre spécifiée.
+     *
+     * @param jFrame La fenêtre dans laquelle afficher le panneau principal.
+     */
     public void afficherMainPanel(JFrame jFrame) {
         panelPrecedent = jFrame.getContentPane(); // Recuperer le contentPane du Menu Utilisateur
         this.jFrame = jFrame;
@@ -223,11 +316,25 @@ public class GestionActivitesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Met à jour le contenu de la fenêtre en révalidant et en redessinant ses composants.
+     * Cela permet d'assurer que les modifications apportées à la fenêtre sont correctement affichées.
+     */
     public void mettreAJourFrame() {
         this.jFrame.revalidate();
         this.jFrame.repaint();
     }
 
+    /**
+     * Réagit au clic sur le bouton de création d'activité en vérifiant les données saisies,
+     * en effectuant des vérifications et en exécutant la création de l'activité si les conditions sont remplies.
+     *
+     * @param btnCreation Le bouton de création d'activité.
+     * @param nomActiviteField Le champ de texte contenant le nom de l'activité.
+     * @param dateDebutField Le champ de texte contenant la date de début de l'activité.
+     * @param dateFinField Le champ de texte contenant la date de fin de l'activité.
+     * @param interetField Le champ de texte contenant les intérêts liés à l'activité (séparés par des virgules).
+     */
     public void onBtnActiviteCreeeClicked(JButton btnCreation, JTextField nomActiviteField, JTextField dateDebutField,
                                           JTextField dateFinField, JTextField interetField) {
         btnCreation.addActionListener(new ActionListener() {
@@ -289,6 +396,12 @@ public class GestionActivitesGUI {
         });
     }
 
+    /**
+     * Réagit au clic sur le bouton de rejoindre une activité en vérifiant les robots sélectionnés
+     * et l'activité choisie, puis effectue les actions correspondantes.
+     *
+     * @param btnCreation Le bouton de rejoindre une activité.
+     */
     public void onBtnRejoindreActiviteClicked(JButton btnCreation) {
         btnCreation.addActionListener(new ActionListener() {
             @Override
@@ -334,6 +447,12 @@ public class GestionActivitesGUI {
         });
     }
 
+    /**
+     * Réagit au clic sur le bouton "Annuler" en ramenant le contenu de la fenêtre
+     * au panneau principal, puis en mettant à jour la fenêtre.
+     *
+     * @param btnAnnuler Le bouton "Annuler" sur lequel l'action est déclenchée.
+     */
     public void onBtnAnnulerClicked(JButton btnAnnuler) {
         btnAnnuler.addActionListener(new ActionListener() {
             @Override
@@ -344,6 +463,11 @@ public class GestionActivitesGUI {
         });
     }
 
+    /**
+     * Affiche une fenêtre de confirmation indiquant que l'activité a été créée avec succès.
+     * Cette méthode change également le contenu de la fenêtre vers le panneau principal et
+     * met à jour la fenêtre.
+     */
     public void confirmerActiviteCreee() {
         String message = "L'activitée a été bien créée";
         String title = "Activite creee";
@@ -354,6 +478,11 @@ public class GestionActivitesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche une fenêtre d'erreur avec le message spécifié lorsqu'il y a une erreur lors de la création d'une activité.
+     *
+     * @param message Le message d'erreur à afficher.
+     */
     public void afficherMessageErreurActiviteCreee(String message) {
         String title = "Erreur";
         int messageType = JOptionPane.ERROR_MESSAGE;
@@ -361,6 +490,12 @@ public class GestionActivitesGUI {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
+    /**
+     * Affiche une fenêtre de confirmation indiquant que l'utilisateur a rejoint une activité avec succès.
+     * Cette méthode change également le contenu de la fenêtre vers le panneau principal et met à jour la fenêtre.
+     *
+     * @param message Le message de confirmation à afficher.
+     */
     public void confirmerRejoindreActivite(String message) {
         String title = "Joindre activite reussi";
         int messageType = JOptionPane.INFORMATION_MESSAGE;
@@ -370,6 +505,10 @@ public class GestionActivitesGUI {
         mettreAJourFrame();
     }
 
+    /**
+     * Affiche une fenêtre d'erreur indiquant que l'opération de rejoindre une activité a échoué
+     * et suggérant de réessayer.
+     */
     public void afficherMessageErreurRejoindreActivite() {
         String message = "Veuillez reessayer.";
         String title = "Erreur";

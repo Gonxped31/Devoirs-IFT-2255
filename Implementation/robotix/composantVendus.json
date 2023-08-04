@@ -1,1 +1,8 @@
-[{"nom":"cpu","prix":"150000","description":"Description cpu","typeComposant":"CPU"}]
+[
+  {
+    "nom": "cpu",
+    "prix": "150000",
+    "description": "Description cpu",
+    "typeComposant": "CPU"
+  }
+]
