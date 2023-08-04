@@ -15,78 +15,78 @@ Nom des auteurs : Bio Samir Gbian, Dorensky Hérard, Boubacar Hama Bague, Brice 
 Description: Sachant le grand essor de la robotique et que la possession de robots devient monnaie courante, la demande pour un système de gestion de robots a naturellement augmentée. Robotix est une plateforme interactive dans laquelle les membres peuvent acheter, modifier, et personnaliser leur flotte de robots. De plus, les utilisateurs peuvent se suivre entre eux et participer à des activités ensemble! L'application supporte également des fournisseurs qui peuvent vendre des composantes et robots aux utilisateurs afin que ceux-ci puissent améliorer et personnaliser leur flotte.
 Version Java requise: Java 20 (20.0.02)
 Liste de fonctionnalités:<br>
-Fournisseur: 
+<b>Uilisateur:</b< 
 <ul>
   <li>
-     - Modifier son profil
+     Modifier son profil
   </li>
  <li>
-    - Gérer sa flotte: 
+     Gérer sa flotte: 
    <ul>
      <li>
-       - Enregistrer un robot
+        Enregistrer un robot
      </li>
      <li>
-       - Afficher état d'un robot
+        Afficher état d'un robot
      </li>
       <li>
-        - Afficher les métriques de sa flotte
+         Afficher les métriques de sa flotte
       </li>
       <li>
-         - Créer une action
+          Créer une action
       </li>
    </ul>
  </li>
   <li>
-    - Gérer les tâches:
+     Gérer les tâches:
     <ul>
       <li>
-        - Créer une tâches (assignée à un robot)
+         Créer une tâches (assignée à un robot)
       </li>
       <li>
-        - Allouer un tâche à un robot
+         Allouer un tâche à un robot
       </li>
     </ul>
   </li>
   <li>
-    - Gérer les activités:
+     Gérer les activités:
     <ul>
       <li>
-        - Créer une activité 
+         Créer une activité 
       </li>
       <li>
-        - Rejoindre une activité
+         Rejoindre une activité
       </li>
     </ul>
   </li>
   <li>
-    -Gérer son réseau social:
+    Gérer son réseau social:
     <ul>
       <li>
-        - Suivre un utilisateur
+         Suivre un utilisateur
       </li>
       <li>
-        - Gérer ses suiveurs (qui inclus voir qui on suit, et se désabonner d'un utilisateur)
+         Gérer ses suiveurs (qui inclus voir qui on suit, et se désabonner d'un utilisateur)
       </li>
       <li>
-        - Gérer ses intérêts (qui inclus ajouter, modifier, supprimer, s'abonner, et se désabonner d'un intérêt)
+         Gérer ses intérêts (qui inclus ajouter, modifier, supprimer, s'abonner, et se désabonner d'un intérêt)
       </li>
     </ul>
   </li>
   <li>
-    - Acheter des robots au composantes auprès d'un fournisseur
+     Acheter des robots au composantes auprès d'un fournisseur
   </li>
   <li>
-    - Visualiser ses notifications
+     Visualiser ses notifications
   </li>
   <li> 
-   -  Faire une requête publique:
+     Faire une requête publique:
     <ul>
       <li>
-        - Voir la liste d'utilisateurs
+         Voir la liste d'utilisateurs
       </li>
       <li>
-        - Voir la liste des fournisseurs
+         Voir la liste des fournisseurs
       </li>
       <li>
         Voir son profil 
@@ -109,5 +109,19 @@ Fournisseur:
     </ul>  
   </li>    
 </ul>
-  
+<b>Fournisseur :</b>
+<ul>
+  <li>
+    Ajouter un nouveau robot 
+  </li>
+  <li>
+    Retirer nouveau robot 
+  </li>
+  <li>
+    Enregistrer une composante
+  </li>
+  <li>
+    Gérer les composantes (qui inclus modifier le prix, la description et supprimer une composante)
+  </li>
+</ul>
     
