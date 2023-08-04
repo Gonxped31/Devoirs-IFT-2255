@@ -66,11 +66,48 @@ Fournisseur:
         - Suivre un utilisateur
       </li>
       <li>
-        - Gérer ses suiveurs (qui inclus voir qui on suit, et se désabonner d'un utilisateur
+        - Gérer ses suiveurs (qui inclus voir qui on suit, et se désabonner d'un utilisateur)
+      </li>
+      <li>
+        - Gérer ses intérêts (qui inclus ajouter, modifier, supprimer, s'abonner, et se désabonner d'un intérêt)
       </li>
     </ul>
   </li>
-      
+  <li>
+    - Acheter des robots au composantes auprès d'un fournisseur
+  </li>
+  <li>
+    - Visualiser ses notifications
+  </li>
+  <li> 
+   -  Faire une requête publique:
+    <ul>
+      <li>
+        - Voir la liste d'utilisateurs
+      </li>
+      <li>
+        - Voir la liste des fournisseurs
+      </li>
+      <li>
+        Voir son profil 
+      </li>
+      <li>
+        Rechercher un utilisateur
+      </li>
+      <li>
+        Récurpérer la liste des activités
+      </li>
+      <li>
+        Récurpérer la liste d'intérêts
+      </li>
+      <li>
+        Rechercher un fournisseur
+      </li>
+      <li>
+        Rechercher une composante
+      </li>
+    </ul>  
+  </li>    
 </ul>
   
     
