@@ -15,11 +15,32 @@ Nom des auteurs : Bio Samir Gbian, Dorensky Hérard, Boubacar Hama Bague, Brice 
 Description: Sachant le grand essor de la robotique et que la possession de robots devient monnaie courante, la demande pour un système de gestion de robots a naturellement augmentée. Robotix est une plateforme interactive dans laquelle les membres peuvent acheter, modifier, et personnaliser leur flotte de robots. De plus, les utilisateurs peuvent se suivre entre eux et participer à des activités ensemble! L'application supporte également des fournisseurs qui peuvent vendre des composantes et robots aux utilisateurs afin que ceux-ci puissent améliorer et personnaliser leur flotte.
 Version Java requise: Java 20 (20.0.02)
 Liste de fonctionnalités:
-  Fournisseur: 
-    - Modifier son profil
+Fournisseur: 
+<ul>
+  <li>
+     - Modifier son profil
+  </li>
+ <li>
     - Gérer sa flotte: 
-      - Enregistrer un robot
-      - Afficher état d'un robot
-      - Afficher les métriques de sa flotte
-      - Créer une action
-    -
+   <ul>
+     <li>
+       - Enregistrer un robot
+     </li>
+     <li>
+       - Afficher état d'un robot
+     </li>
+      <li>
+        - Afficher les métriques de sa flotte
+      </li>
+      <li>
+         - Créer une action
+      </li>
+      
+     
+   </ul>
+ </li>
+   
+      
+</ul>
+  
+    
