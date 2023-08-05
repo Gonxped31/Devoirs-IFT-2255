@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -65,7 +66,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
      */
     @Override
     protected void init() {
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         List<Utilisateur> tempList= new ArrayList<>(Arrays.asList(
                 new Utilisateur("Boubacar", "Kelly", "adresse1", "KellyB",
                         "BoubaCar", "emailboubacar@gmail.com", "5141111111", "Kelly Inc.", new HashSet<Interet>(),new ArrayList<Notification>()),
@@ -88,6 +89,9 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 new Utilisateur("James", "Greg", "adresse10", "JG",
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new HashSet<Interet>(), new ArrayList<Notification>())
         ));
+
+        //Liste pour garder ArrayList d'activite
+        ArrayList<Activite> acts = new ArrayList<>();
 
         //Ajouter un suiveur
         for (int i = 0; i < 10; i++) {
@@ -122,8 +126,19 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                     ArrayList<Action> tache = new ArrayList<>();
                     tache.add(a);
                     Tache t = new Tache("Voler a 5 metres de hauteur", tache);
+                    ArrayList<Tache> taches = new ArrayList<>();
+                    taches.add(t);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+                    HashSet<Interet> interet = new HashSet<>();
+                    interet.add(new Interet("Course"));
+                    Activite act = null;
+                    try {
+                        act = new Activite(tempList.get(i).getPseudo(), "Course de vol entre robots", dateFormat.parse("2023-08-04"), dateFormat.parse("2023-08-10"), taches, interet);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    acts.add(act);
                 } else if (i == 2) {
                     Action a = new Action("Flotter", composantesNom, "30");
                     ArrayList<Action> tache = new ArrayList<>();
@@ -340,7 +355,9 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 tempList.get(i).getListeRobot().add(r2);
 
             }
+
         }
+
 
 
         tempList.stream().forEach(utilisateur -> {

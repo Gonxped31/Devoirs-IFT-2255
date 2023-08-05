@@ -1,1 +1,1418 @@
-[{"nom":"Boubacar","prenom":"Kelly","adresse":"adresse1","pseudo":"KellyB","email":"emailboubacar@gmail.com","nomCompagnie":"Kelly Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"BoubaCar","listeRobot":[{"nom":"Bobby0","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"e59e77b1-d8c1-4535-bd4c-1bc11284972a","x":0,"y":0,"numero":26},{"nom":"Charly0","vitesse":50,"batterie":80,"cpu":20,"memoire":10.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"roue","prix":"30","description":"Roues pour se deplacer","typeComposant":"ROUE"},{"nom":"bras","prix":"10","description":"Bras pour prendre","typeComposant":"BRAS"}],"type":"Rouleur","taches":[],"activites":[],"actions":[],"numeroSerie":"d4c39729-3c1d-44b0-a1a1-87d994073d8b","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Voler a 5 metres de hauteur","taches":[{"nomAction":"Voler","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Attraper un objet rond","taches":[{"nomAction":"Attraper","composantes":["cpu","roue","bras"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Voler","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Attraper","composantes":["cpu","roue","bras"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5141111111"},{"nom":"Damov","prenom":"Kamen","adresse":"adresse2","pseudo":"KD","email":"emailkamen@gmail.com","nomCompagnie":"Kamen Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"KaMen","listeRobot":[{"nom":"Bobby1","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"1b822eb7-6a81-4dc6-9954-3c4c94fb6242","x":0,"y":0,"numero":26},{"nom":"Michael1","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"1fc96704-c701-4af0-be17-771bdc2da421","x":0,"y":0,"numero":26}],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":["SB"],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5142222222"},{"nom":"Gbian","prenom":"Samir","adresse":"adresse3","pseudo":"SB","email":"emailsamir@gmail.com","nomCompagnie":"Samir Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"SaMir","listeRobot":[{"nom":"Bobby2","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"25918794-3655-4da3-8b4c-3a3d993f5984","x":0,"y":0,"numero":26},{"nom":"Charly2","vitesse":50,"batterie":80,"cpu":20,"memoire":10.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"roue","prix":"30","description":"Roues pour se deplacer","typeComposant":"ROUE"},{"nom":"bras","prix":"10","description":"Bras pour prendre","typeComposant":"BRAS"}],"type":"Rouleur","taches":[],"activites":[],"actions":[],"numeroSerie":"d03e11e8-4d6c-42d2-8481-9e029194f333","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Flotter a 2 puis 5 metre","taches":[{"nomAction":"Flotter","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Rouler vers une porte","taches":[{"nomAction":"Rouler","composantes":["cpu","roue","bras"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Flotter","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Rouler","composantes":["cpu","roue","bras"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[{"nom":"Damov","prenom":"Kamen","adresse":"adresse2","pseudo":"KD","email":"emailkamen@gmail.com","nomCompagnie":"Kamen Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"KaMen","listeRobot":[{"nom":"Bobby1","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"1b822eb7-6a81-4dc6-9954-3c4c94fb6242","x":0,"y":0,"numero":26},{"nom":"Michael1","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"1fc96704-c701-4af0-be17-771bdc2da421","x":0,"y":0,"numero":26}],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":["SB"],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5142222222"}],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5143333333"},{"nom":"Doren","prenom":"Sky","adresse":"adresse4","pseudo":"SD","email":"emaildorensky@gmail.com","nomCompagnie":"Dorensky Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"DoRen","listeRobot":[{"nom":"George3","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"ecran","prix":"10","description":"Ecran pour montrer des images ou videos","typeComposant":"ECRAN"}],"type":"Multimediateur","taches":[],"activites":[],"actions":[],"numeroSerie":"14a73011-9d53-45b8-bbd3-43381549f0fd","x":0,"y":0,"numero":26},{"nom":"Michael3","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"fa690d1a-c044-4a8c-a8ab-f2b823c7fc5b","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Montrer rafales d'images","taches":[{"nomAction":"Diffuser images","composantes":["cpu","ecran"],"duree":"30"}],"dureeTache":0},{"nom":"Ecouter des paroles humaines","taches":[{"nomAction":"Ecouter","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Diffuser images","composantes":["cpu","ecran"],"duree":"30"},{"nomAction":"Ecouter","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5144444444"},{"nom":"Brice","prenom":"Mb","adresse":"adresse5","pseudo":"Brice","email":"emailbrice@gmail.com","nomCompagnie":"Brice Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"BrIce","listeRobot":[{"nom":"Bobby4","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"bc1f817f-4a99-4b85-8832-4834b5af8203","x":0,"y":0,"numero":26},{"nom":"Charly4","vitesse":50,"batterie":80,"cpu":20,"memoire":10.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"roue","prix":"30","description":"Roues pour se deplacer","typeComposant":"ROUE"},{"nom":"bras","prix":"10","description":"Bras pour prendre","typeComposant":"BRAS"}],"type":"Rouleur","taches":[],"activites":[],"actions":[],"numeroSerie":"7b680ab5-e560-4f88-9894-e25e452b6da8","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Survoler un objet","taches":[{"nomAction":"Survoler","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"S'accrocher a une boite","taches":[{"nomAction":"Accrocher","composantes":["cpu","roue","bras"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Survoler","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Accrocher","composantes":["cpu","roue","bras"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"51455555555"},{"nom":"Francois","prenom":"Paris","adresse":"adresse6","pseudo":"FP","email":"emailfrancois@gmail.com","nomCompagnie":"Francois Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"FrancOis","listeRobot":[{"nom":"Bobby5","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"2724c795-fd0e-491d-b23d-7fbc357d3bb4","x":0,"y":0,"numero":26},{"nom":"Michael5","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"f04728bd-1046-4ef6-a0fb-7d7a6ed54406","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Voler a 5 metres de hauteur","taches":[{"nomAction":"Voler","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Ecouter des paroles humaines","taches":[{"nomAction":"Ecouter","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Voler","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Ecouter","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5146666666"},{"nom":"Mehdi","prenom":"Til","adresse":"adresse7","pseudo":"MT","email":"emailmehdi@gmail.com","nomCompagnie":"Mehdi Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"MeHdi","listeRobot":[{"nom":"Bobby6","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"d332a129-ce2a-4b4c-8bcc-de655509287c","x":0,"y":0,"numero":26},{"nom":"Charly6","vitesse":50,"batterie":80,"cpu":20,"memoire":10.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"roue","prix":"30","description":"Roues pour se deplacer","typeComposant":"ROUE"},{"nom":"bras","prix":"10","description":"Bras pour prendre","typeComposant":"BRAS"}],"type":"Rouleur","taches":[],"activites":[],"actions":[],"numeroSerie":"66917ba5-352b-4b39-9f8d-76a2942b979b","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Filer tout droit puis a gauche","taches":[{"nomAction":"Filer","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Faire une course contre un autre robot","taches":[{"nomAction":"Courser","composantes":["cpu","roue","bras"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Filer","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Courser","composantes":["cpu","roue","bras"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5147777777"},{"nom":"Monica","prenom":"G","adresse":"adresse8","pseudo":"MG","email":"emailmonica@gmail.com","nomCompagnie":"Monica Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"MonIca","listeRobot":[{"nom":"Bobby7","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"8cfc933e-9fd2-4070-a303-07e5dc0b135a","x":0,"y":0,"numero":26},{"nom":"Michael7","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"f7adedd6-ca21-4db4-bea3-d94f4ac698e6","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Flotter a 2 puis 5 metre","taches":[{"nomAction":"Flotter","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Parler en francais","taches":[{"nomAction":"Parler","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Flotter","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Parler","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5148888888"},{"nom":"Stefano","prenom":"DiGir","adresse":"adresse9","pseudo":"SDi","email":"emailstefano@gmail.com","nomCompagnie":"Stefano Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"StefAno","listeRobot":[{"nom":"Bobby8","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"helice","prix":"10","description":"Helice pour voler","typeComposant":"HELICE"}],"type":"Voleur","taches":[],"activites":[],"actions":[],"numeroSerie":"23f63efe-b6d1-4aaa-bda1-327cb1f33275","x":0,"y":0,"numero":26},{"nom":"Charly8","vitesse":50,"batterie":80,"cpu":20,"memoire":10.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"roue","prix":"30","description":"Roues pour se deplacer","typeComposant":"ROUE"},{"nom":"bras","prix":"10","description":"Bras pour prendre","typeComposant":"BRAS"}],"type":"Rouleur","taches":[],"activites":[],"actions":[],"numeroSerie":"e9789998-91e7-4ff7-aff6-4090a3ca723a","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Planer par dessus un autre robot","taches":[{"nomAction":"Planer","composantes":["cpu","helice"],"duree":"30"}],"dureeTache":0},{"nom":"Match de boxe contre un autre robot","taches":[{"nomAction":"Frapper","composantes":["cpu","roue","bras"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Planer","composantes":["cpu","helice"],"duree":"30"},{"nomAction":"Frapper","composantes":["cpu","roue","bras"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5149999999"},{"nom":"James","prenom":"Greg","adresse":"adresse10","pseudo":"JG","email":"emailjames@gmail.com","nomCompagnie":"James Inc.","listeInteret":[],"listeNotifications":[],"motDePasse":"JaMes","listeRobot":[{"nom":"George9","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"ecran","prix":"10","description":"Ecran pour montrer des images ou videos","typeComposant":"ECRAN"}],"type":"Multimediateur","taches":[],"activites":[],"actions":[],"numeroSerie":"8f87cb99-ae65-4d01-9b95-de591e30e66d","x":0,"y":0,"numero":26},{"nom":"Michael9","vitesse":20,"batterie":100,"cpu":30,"memoire":20.0,"composantes":[{"nom":"cpu","prix":"20","description":"Unité Centrale de Traitement","typeComposant":"CPU"},{"nom":"micro","prix":"5","description":"Capter des ondes sonores","typeComposant":"MICRO"},{"nom":"haut-parleur","prix":"5","description":"Emettre du son","typeComposant":"HAUTPARLEUR"}],"type":"Communicateur","taches":[],"activites":[],"actions":[],"numeroSerie":"5fd032fe-3d65-4c47-9386-57677a244fd7","x":0,"y":0,"numero":26}],"listeTaches":[{"nom":"Montrer une video de 5 minutes","taches":[{"nomAction":"Diffuser videos","composantes":["cpu","ecran"],"duree":"30"}],"dureeTache":0},{"nom":"Parler en francais","taches":[{"nomAction":"Parler","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"dureeTache":0}],"listeActions":[{"nomAction":"Diffuser videos","composantes":["cpu","ecran"],"duree":"30"},{"nomAction":"Parler","composantes":["cpu","micro","haut-parleur"],"duree":"30"}],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":null,"notifs":[],"telephone":"5141010101"}]
+[
+  {
+    "nom": "Boubacar",
+    "prenom": "Kelly",
+    "adresse": "adresse1",
+    "pseudo": "KellyB",
+    "email": "emailboubacar@gmail.com",
+    "nomCompagnie": "Kelly Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BoubaCar",
+    "listeRobot": [
+      {
+        "nom": "Bobby0",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "e59e77b1-d8c1-4535-bd4c-1bc11284972a",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly0",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "d4c39729-3c1d-44b0-a1a1-87d994073d8b",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Attraper un objet rond",
+        "taches": [
+          {
+            "nomAction": "Attraper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Attraper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141111111"
+  },
+  {
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "adresse": "adresse2",
+    "pseudo": "KD",
+    "email": "emailkamen@gmail.com",
+    "nomCompagnie": "Kamen Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "KaMen",
+    "listeRobot": [
+      {
+        "nom": "Bobby1",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "1b822eb7-6a81-4dc6-9954-3c4c94fb6242",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael1",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "1fc96704-c701-4af0-be17-771bdc2da421",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [
+      "SB"
+    ],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5142222222"
+  },
+  {
+    "nom": "Gbian",
+    "prenom": "Samir",
+    "adresse": "adresse3",
+    "pseudo": "SB",
+    "email": "emailsamir@gmail.com",
+    "nomCompagnie": "Samir Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "SaMir",
+    "listeRobot": [
+      {
+        "nom": "Bobby2",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "25918794-3655-4da3-8b4c-3a3d993f5984",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly2",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "d03e11e8-4d6c-42d2-8481-9e029194f333",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Rouler vers une porte",
+        "taches": [
+          {
+            "nomAction": "Rouler",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Rouler",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [
+      {
+        "nom": "Damov",
+        "prenom": "Kamen",
+        "adresse": "adresse2",
+        "pseudo": "KD",
+        "email": "emailkamen@gmail.com",
+        "nomCompagnie": "Kamen Inc.",
+        "listeInteret": [],
+        "listeNotifications": [],
+        "motDePasse": "KaMen",
+        "listeRobot": [
+          {
+            "nom": "Bobby1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "helice",
+                "prix": "10",
+                "description": "Helice pour voler",
+                "typeComposant": "HELICE"
+              }
+            ],
+            "type": "Voleur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "1b822eb7-6a81-4dc6-9954-3c4c94fb6242",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          },
+          {
+            "nom": "Michael1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "micro",
+                "prix": "5",
+                "description": "Capter des ondes sonores",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "haut-parleur",
+                "prix": "5",
+                "description": "Emettre du son",
+                "typeComposant": "HAUTPARLEUR"
+              }
+            ],
+            "type": "Communicateur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "1fc96704-c701-4af0-be17-771bdc2da421",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          }
+        ],
+        "listeTaches": [],
+        "listeActions": [],
+        "composantesAchetes": [],
+        "listeUtilisateursSuivi": [
+          "SB"
+        ],
+        "listeActivitesRejoint": [],
+        "listeActivitesCreer": [],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "5142222222"
+      }
+    ],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5143333333"
+  },
+  {
+    "nom": "Doren",
+    "prenom": "Sky",
+    "adresse": "adresse4",
+    "pseudo": "SD",
+    "email": "emaildorensky@gmail.com",
+    "nomCompagnie": "Dorensky Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "DoRen",
+    "listeRobot": [
+      {
+        "nom": "George3",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "ecran",
+            "prix": "10",
+            "description": "Ecran pour montrer des images ou videos",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Multimediateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "14a73011-9d53-45b8-bbd3-43381549f0fd",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael3",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "fa690d1a-c044-4a8c-a8ab-f2b823c7fc5b",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Montrer rafales d'images",
+        "taches": [
+          {
+            "nomAction": "Diffuser images",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser images",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5144444444"
+  },
+  {
+    "nom": "Brice",
+    "prenom": "Mb",
+    "adresse": "adresse5",
+    "pseudo": "Brice",
+    "email": "emailbrice@gmail.com",
+    "nomCompagnie": "Brice Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BrIce",
+    "listeRobot": [
+      {
+        "nom": "Bobby4",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "bc1f817f-4a99-4b85-8832-4834b5af8203",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly4",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "7b680ab5-e560-4f88-9894-e25e452b6da8",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Survoler un objet",
+        "taches": [
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "S'accrocher a une boite",
+        "taches": [
+          {
+            "nomAction": "Accrocher",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Survoler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Accrocher",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "51455555555"
+  },
+  {
+    "nom": "Francois",
+    "prenom": "Paris",
+    "adresse": "adresse6",
+    "pseudo": "FP",
+    "email": "emailfrancois@gmail.com",
+    "nomCompagnie": "Francois Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "FrancOis",
+    "listeRobot": [
+      {
+        "nom": "Bobby5",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "2724c795-fd0e-491d-b23d-7fbc357d3bb4",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael5",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "f04728bd-1046-4ef6-a0fb-7d7a6ed54406",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5146666666"
+  },
+  {
+    "nom": "Mehdi",
+    "prenom": "Til",
+    "adresse": "adresse7",
+    "pseudo": "MT",
+    "email": "emailmehdi@gmail.com",
+    "nomCompagnie": "Mehdi Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MeHdi",
+    "listeRobot": [
+      {
+        "nom": "Bobby6",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "d332a129-ce2a-4b4c-8bcc-de655509287c",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly6",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "66917ba5-352b-4b39-9f8d-76a2942b979b",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Filer tout droit puis a gauche",
+        "taches": [
+          {
+            "nomAction": "Filer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Faire une course contre un autre robot",
+        "taches": [
+          {
+            "nomAction": "Courser",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Filer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Courser",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5147777777"
+  },
+  {
+    "nom": "Monica",
+    "prenom": "G",
+    "adresse": "adresse8",
+    "pseudo": "MG",
+    "email": "emailmonica@gmail.com",
+    "nomCompagnie": "Monica Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MonIca",
+    "listeRobot": [
+      {
+        "nom": "Bobby7",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "8cfc933e-9fd2-4070-a303-07e5dc0b135a",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael7",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "f7adedd6-ca21-4db4-bea3-d94f4ac698e6",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5148888888"
+  },
+  {
+    "nom": "Stefano",
+    "prenom": "DiGir",
+    "adresse": "adresse9",
+    "pseudo": "SDi",
+    "email": "emailstefano@gmail.com",
+    "nomCompagnie": "Stefano Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "StefAno",
+    "listeRobot": [
+      {
+        "nom": "Bobby8",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "23f63efe-b6d1-4aaa-bda1-327cb1f33275",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly8",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "e9789998-91e7-4ff7-aff6-4090a3ca723a",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Planer par dessus un autre robot",
+        "taches": [
+          {
+            "nomAction": "Planer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Match de boxe contre un autre robot",
+        "taches": [
+          {
+            "nomAction": "Frapper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Planer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Frapper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5149999999"
+  },
+  {
+    "nom": "James",
+    "prenom": "Greg",
+    "adresse": "adresse10",
+    "pseudo": "JG",
+    "email": "emailjames@gmail.com",
+    "nomCompagnie": "James Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "JaMes",
+    "listeRobot": [
+      {
+        "nom": "George9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "ecran",
+            "prix": "10",
+            "description": "Ecran pour montrer des images ou videos",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Multimediateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "8f87cb99-ae65-4d01-9b95-de591e30e66d",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "5fd032fe-3d65-4c47-9386-57677a244fd7",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Montrer une video de 5 minutes",
+        "taches": [
+          {
+            "nomAction": "Diffuser videos",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser videos",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141010101"
+  }
+]
