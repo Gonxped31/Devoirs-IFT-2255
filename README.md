@@ -153,6 +153,8 @@ Mot de passe: 123<br><br>
 
 <h3><b>Point d'entrée de l'application</b></h3>
 <p>
-  Ouvrir le fichier robotix.jar, s'inscrire ou se connecter avec les identifiants mentionnés plus haut.
+  Vous pouvez directement ouvrir le fichier robotix-1.0-SNAPSHOT.jar<br>
+  Vous pouvez aussi exécuter le jar sur la ligne avec la commande avec java -jar robotix-1.0-SNAPSHOT.jar.<br>
+  Voici le path pour trouver le main : \Implementation\robotix\src\Main.java
 </p>
 
