@@ -26,7 +26,15 @@
  <li> Rejoindre une activité</li>
  <li> Faire un achat (composante ou robot) </li>
  <li> Gérer ses intérêts (ajouter, modifier, supprimer, s'abonner, se désabonner d'un intérets)</li>
-
+ <li> Voir ses notifications</li>
+ <li> Faire une requete publique</li>
+</ul>
+<p>Fournisseur</p>
+<ul>
+ <li>Ajouter des robots</li>
+ <li>AJouter des composantes</li>
+ <li>Gérer ses composantes</li>
+ <li>Faire une requete publique</li>
 </ul>
 
 
