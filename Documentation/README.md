@@ -155,6 +155,6 @@ Mot de passe: 123<br><br>
 <p>
   Vous pouvez directement ouvrir le fichier robotix-1.0-SNAPSHOT.jar<br>
   Vous pouvez aussi exécuter le jar sur la ligne avec la commande avec java -jar robotix-1.0-SNAPSHOT.jar.<br>
-  Voici le path pour trouver le main : \Implementation\robotix\src\Main.java
+  Voici le path pour trouver le main : Implementation\robotix\src\main\java\domain\logic\Main.java
 </p>
 
