@@ -19,7 +19,11 @@
 <h2>Fonctionnalités</h2>
 <p>Utilisateur</p>
 <ul>
-
+ <li> Modifier son profil (nom, pseudo, adresse etc...)</li>
+ <li> Gérer sa flotte (Enregistrer robot, créer action, etc...)</li>
+ <li> Gérer ses actions (Créer une action ou l'allouer à un robot) </li>
+ <li> Gérer ses tâches (Créer une tâche ou l'assigner à un robot)  </li>
+ 
 </ul>
 
 
