@@ -23,7 +23,10 @@
  <li> Gérer sa flotte (Enregistrer robot, créer action, etc...)</li>
  <li> Gérer ses actions (Créer une action ou l'allouer à un robot) </li>
  <li> Gérer ses tâches (Créer une tâche ou l'assigner à un robot)  </li>
- 
+ <li> Rejoindre une activité</li>
+ <li> Faire un achat (composante ou robot) </li>
+ <li> Gérer ses intérêts (ajouter, modifier, supprimer, s'abonner, se désabonner d'un intérets)</li>
+
 </ul>
 
 
