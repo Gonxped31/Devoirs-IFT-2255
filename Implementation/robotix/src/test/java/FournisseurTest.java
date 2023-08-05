@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Classe pour les tests unitaires des méthodes de la classe fournisseur.
  */
 public class FournisseurTest {
-
     /**
      * Vérifie que la méthode {@code getNomCompagnie()} retourne correctement
      * le nom de la compagnie du fournisseur.
