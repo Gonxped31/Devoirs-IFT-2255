@@ -20,8 +20,11 @@
 </ul>
 <h3><b>Description : </b></h3>
 <p>Sachant le grand essor de la robotique et que la possession de robots devient monnaie courante, la demande pour un système de gestion de robots a naturellement augmentée. Robotix est une plateforme interactive dans laquelle les membres peuvent acheter, modifier, et personnaliser leur flotte de robots. De plus, les utilisateurs peuvent se suivre entre eux et participer à des activités ensemble! L'application supporte également des fournisseurs qui peuvent vendre des composantes et robots aux utilisateurs afin que ceux-ci puissent améliorer et personnaliser leur flotte.</p>
+
 <h3><b>Version Java requise:</b></h3> 
-<p>Java 20 (20.0.02)</p>
+<p>Java 20 (20.0.02)<br>
+Pour exécuter le code dans intellij, il faudra s'assurer que tous les modules ont été bien ajoutés dans la structure du projet dans intellij (l'option "Project structure").
+</p>
 <h3><b>Liste de fonctionnalités:</b></h3>
 <b>Uilisateur:</b>
 <ul>
@@ -150,6 +153,8 @@ Mot de passe: 123<br><br>
 
 <h3><b>Point d'entrée de l'application</b></h3>
 <p>
-  Ouvrir le fichier robotix.jar, s'inscrire ou se connecter avec les identifiants mentionnés plus haut.
+  Vous pouvez directement ouvrir le fichier robotix-1.0-SNAPSHOT.jar<br>
+  Vous pouvez aussi exécuter le jar sur la ligne avec la commande avec java -jar robotix-1.0-SNAPSHOT.jar.<br>
+  Voici le path pour trouver le main : \Implementation\robotix\src\Main.java
 </p>
 
