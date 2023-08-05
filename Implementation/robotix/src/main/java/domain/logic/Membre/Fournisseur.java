@@ -19,7 +19,6 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private String capaciteProductionComposantes;
     private LinkedList<Robot> inventaireDeRobot = new LinkedList<>();
     private LinkedList<Composant> inventaireComposant = new LinkedList<>();
-    //private Notification notification = new Notification();
     private ArrayList<Notification> listeNotifications = new ArrayList<>();
     private int taillePrecedenteInventaireComposantes;
 

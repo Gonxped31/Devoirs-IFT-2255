@@ -52,16 +52,16 @@
     ],
     "listeInteretAssocie": [
       {
+        "nom": "Cinematographie"
+      },
+      {
+        "nom": "Cinematographie"
+      },
+      {
         "nom": "Aviation"
       },
       {
-        "nom": "Cinematographie"
-      },
-      {
         "nom": "Course"
-      },
-      {
-        "nom": "Cinematographie"
       }
     ],
     "listeUtilisateurInsccrit": [
@@ -76,7 +76,7 @@
       "JG",
       "SDi"
     ],
-    "points": 10,
+    "points": 18,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   },
@@ -122,7 +122,7 @@
       "JG",
       "SDi"
     ],
-    "points": 31,
+    "points": 24,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   },
@@ -172,7 +172,7 @@
       "JG",
       "SDi"
     ],
-    "points": 20,
+    "points": 31,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   },
@@ -195,7 +195,7 @@
       "JG",
       "SDi"
     ],
-    "points": 36,
+    "points": 32,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   },
@@ -241,7 +241,7 @@
       "JG",
       "SDi"
     ],
-    "points": 34,
+    "points": 47,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   }

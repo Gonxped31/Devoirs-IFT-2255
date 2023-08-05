@@ -41,7 +41,12 @@
 <h2>
 Information de connexions initiales
 </h2>
+<p>Pour fournisseur : </p>
+<p>Nom : Roy</p>
+<p>Mot de passe : 123</p>
 <p>Pour utilisateur : </p>
+<p>Pseudo : JG</p>
+<p>Mot de passe : JaMes</p>
 <h2>Comment exécuter l'application</h2>
 <p>Rouler le fichier Robotix.jar</p>
 

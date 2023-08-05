@@ -1,5 +1,8 @@
 package domain.logic.Membre;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -20,7 +23,10 @@ public class Notification implements java.io.Serializable{
      * @param message           Le message de la notification.
      * @param typeNotification  Le type de la notification (e.g., TypeNotification.NOUVEAU_ABONNE).
      */
-    public Notification(String titre, String message, TypeNotification typeNotification){
+    @JsonCreator
+    public Notification(@JsonProperty("titre") String titre,
+                        @JsonProperty("message") String message,
+                        @JsonProperty("typeNotification") TypeNotification typeNotification){
         this.titre = titre;
         this.message = message;
         this.date = (new Date()).toString();

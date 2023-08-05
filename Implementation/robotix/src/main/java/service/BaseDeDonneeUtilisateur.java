@@ -102,7 +102,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                         u.getListSuiveur().add(tempList.get(i));
                     }
                 }
-
             }
             //Instancier des actions
 
