@@ -151,8 +151,20 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                     ArrayList<Action> tache = new ArrayList<>();
                     tache.add(a);
                     Tache t = new Tache("Survoler un objet", tache);
+                    ArrayList<Tache> taches = new ArrayList<>();
+                    taches.add(t);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+                    HashSet<Interet> interet = new HashSet<>();
+                    interet.add(new Interet("Aviation"));
+                    Activite act = null;
+                    try {
+                        act = new Activite(tempList.get(i).getPseudo(), "Survoler un autre robot", dateFormat.parse("2023-08-01"), dateFormat.parse("2023-08-3"), taches, interet);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    acts.add(act);
+
                 } else if (i == 6){
                     Action a = new Action("Filer", composantesNom, "30");
                     ArrayList<Action> tache = new ArrayList<>();
@@ -167,6 +179,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                     Tache t = new Tache("Planer par dessus un autre robot", tache);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+
                 }
 
 
