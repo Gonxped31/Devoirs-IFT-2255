@@ -28,7 +28,7 @@
         "dureeTache": 0
       },
       {
-        "nom": "Survoler un objet",
+        "nom": "Montrer rafales d'images",
         "taches": [
           {
             "nomAction": "Voler",
@@ -52,14 +52,31 @@
     ],
     "listeInteretAssocie": [
       {
+        "nom": "Course"
+      },
+      {
+        "nom": "Cinematographie"
+      },
+      {
         "nom": "Aviation"
       },
       {
-        "nom": "Course"
+        "nom": "Cinematographie"
       }
     ],
-    "listeUtilisateurInsccrit": [],
-    "points": 39,
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 38,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   },
@@ -68,10 +85,163 @@
     "nom": "Survoler un autre robot",
     "dateDebut": 1690862400000,
     "dateFin": 1691035200000,
+    "listeDeTache": [
+      {
+        "nom": "Survoler un objet",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 21,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "MG",
+    "nom": "Match de boxe contre un autre robot",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [
+      {
+        "nom": "Bagarre"
+      }
+    ],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 21,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "SD",
+    "nom": "Montrer images des autres robots",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
     "listeDeTache": [],
     "listeInteretAssocie": [],
-    "listeUtilisateurInsccrit": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
     "points": 16,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "JG",
+    "nom": "Montrer des videos des autres competitions de robots",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [
+      {
+        "nom": "Montrer une video de 5 minutes",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 44,
     "dureeActivite": 0,
     "listeRobotsInscrits": []
   }

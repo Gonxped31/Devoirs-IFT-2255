@@ -182,8 +182,6 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
                 }
 
-
-
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC1, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r1);
 
@@ -268,15 +266,37 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                     ArrayList<Action> tache = new ArrayList<>();
                     tache.add(a);
                     Tache t = new Tache("Montrer rafales d'images", tache);
+                    ArrayList<Tache> taches = new ArrayList<>();
+                    taches.add(t);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+                    HashSet<Interet> interet = new HashSet<>();
+                    interet.add(new Interet("Cinematographie"));
+                    Activite act = null;
+                    try {
+                        act = new Activite(tempList.get(i).getPseudo(), "Montrer images des autres robots", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches, interet);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    acts.add(act);
                 } else {
                     Action a = new Action("Diffuser videos", composantesNom, "30");
                     ArrayList<Action> tache = new ArrayList<>();
                     tache.add(a);
                     Tache t = new Tache("Montrer une video de 5 minutes", tache);
+                    ArrayList<Tache> taches = new ArrayList<>();
+                    taches.add(t);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+                    HashSet<Interet> interet = new HashSet<>();
+                    interet.add(new Interet("Cinematographie"));
+                    Activite act = null;
+                    try {
+                        act = new Activite(tempList.get(i).getPseudo(), "Montrer des videos des autres competitions de robots", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches, interet);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    acts.add(act);
                 }
 
 
@@ -381,6 +401,18 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
             }
 
         }
+
+        for (Utilisateur u : tempList){
+            for (Activite a: acts){
+                u.getListeActivitesRejoint().add(a);
+            }
+        }
+
+        /*for (Activite a: acts){
+            for (Utilisateur u: tempList){
+                a.getListeUtilisateurInsccrit().add(u.getPseudo());
+            }
+        }*/
 
 
 

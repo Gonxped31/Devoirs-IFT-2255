@@ -107,7 +107,7 @@ private static final String FILE_NAME= "activite.json";
         ArrayList<Tache> taches3 = new ArrayList<>();
         taches3.add(t);
         HashSet<Interet> interet3 = new HashSet<>();
-        interet.add(new Interet("Bagarre"));
+        interet3.add(new Interet("Bagarre"));
         Activite act3 = null;
         try {
             act3 = new Activite("MG", "Match de boxe contre un autre robot", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches3, interet3);
@@ -117,9 +117,69 @@ private static final String FILE_NAME= "activite.json";
         acts.add(act3);
 
         //Activite 4
+        Composant c6 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
+        Composant c7 = new Composant("ecran", "10", "Ecran pour montrer des images ou videos", TypesComposants.ECRAN.name());
+        LinkedList<Composant> listeC3 = new LinkedList<>();
+        listeC1.add(c6);
+        listeC1.add(c7);
 
+        ArrayList<String> composantesNom3 = new ArrayList<>();
+        for (Composant c : listeC3){
+            composantesNom3.add(c.getNom());
+        }
+
+        Action a4 = new Action("Diffuser images", composantesNom, "30");
+        ArrayList<Action> tache4 = new ArrayList<>();
+        tache4.add(a4);
+        Tache t4 = new Tache("Montrer rafales d'images", tache);
+        ArrayList<Tache> taches4 = new ArrayList<>();
+        taches.add(t4);
+        HashSet<Interet> interet4 = new HashSet<>();
+        interet.add(new Interet("Cinematographie"));
+        Activite act4 = null;
+        try {
+            act4 = new Activite("SD", "Montrer images des autres robots", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches4, interet4);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        acts.add(act4);
 
         //Activite 5
+        Action a5 = new Action("Diffuser videos", composantesNom, "30");
+        ArrayList<Action> tache5 = new ArrayList<>();
+        tache5.add(a5);
+        Tache t5 = new Tache("Montrer une video de 5 minutes", tache);
+        ArrayList<Tache> taches5 = new ArrayList<>();
+        taches5.add(t5);
+        HashSet<Interet> interet5 = new HashSet<>();
+        interet.add(new Interet("Cinematographie"));
+        Activite act5 = null;
+        try {
+            act = new Activite("JG", "Montrer des videos des autres competitions de robots", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches5, interet5);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        acts.add(act);
+
+
+        ArrayList<String> p = new ArrayList<>();
+        p.add("KD");
+        p.add("SB");
+        p.add("MG");
+        p.add("KellyB");
+        p.add("SD");
+        p.add("FT");
+        p.add("Brice");
+        p.add("MP");
+        p.add("JG");
+        p.add("SDi");
+
+        for (Activite activite: acts){
+            for (String pse: p){
+                activite.getListeUtilisateurInsccrit().add(pse);
+            }
+
+        }
 
         acts.stream().forEach(activite -> {
             this.ajouterObjet(activite);
