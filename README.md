@@ -9,9 +9,14 @@
     Bio Samir Gbian
     </li>
     <li>
-    Bio Samir Gbian
+    Boubacar Hamague 
+    </li>
+    <li>
     </li>
 </ul>
+<h2>Description</h2>
+<p>Robotix est une application de gestion de robot. Au dela de Plusieurs </p>
+
 
 
 1- Faire un clique droit sur le .jar (Implementation/out/artifacts/IFT_2255_jar/ProtoRobotix.jar), sélectionner l'option "ouvrir avec" puis l'option choisir une autre application, <br>
