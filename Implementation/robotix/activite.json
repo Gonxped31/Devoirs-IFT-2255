@@ -1,0 +1,248 @@
+[
+  {
+    "auteur": "KellyB",
+    "nom": "Course de vol entre robots",
+    "dateDebut": 1691121600000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Montrer rafales d'images",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [
+      {
+        "nom": "Aviation"
+      },
+      {
+        "nom": "Cinematographie"
+      },
+      {
+        "nom": "Course"
+      },
+      {
+        "nom": "Cinematographie"
+      }
+    ],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 10,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "SD",
+    "nom": "Survoler un autre robot",
+    "dateDebut": 1690862400000,
+    "dateFin": 1691035200000,
+    "listeDeTache": [
+      {
+        "nom": "Survoler un objet",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 31,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "MG",
+    "nom": "Match de boxe contre un autre robot",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [
+      {
+        "nom": "Bagarre"
+      }
+    ],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 20,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "SD",
+    "nom": "Montrer images des autres robots",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [],
+    "listeInteretAssocie": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 36,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  },
+  {
+    "auteur": "JG",
+    "nom": "Montrer des videos des autres competitions de robots",
+    "dateDebut": 1691208000000,
+    "dateFin": 1691640000000,
+    "listeDeTache": [
+      {
+        "nom": "Montrer une video de 5 minutes",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          },
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeInteretAssocie": [],
+    "listeUtilisateurInsccrit": [
+      "KD",
+      "SB",
+      "MG",
+      "KellyB",
+      "SD",
+      "FT",
+      "Brice",
+      "MP",
+      "JG",
+      "SDi"
+    ],
+    "points": 34,
+    "dureeActivite": 0,
+    "listeRobotsInscrits": []
+  }
+]
