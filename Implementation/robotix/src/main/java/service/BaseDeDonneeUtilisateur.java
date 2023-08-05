@@ -90,12 +90,21 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                         "JaMes", "emailjames@gmail.com", "5141010101", "James Inc.", new HashSet<Interet>(), new ArrayList<Notification>())
         ));
 
-        //Instancier composantes qui vont dans robot
+        //Ajouter un suiveur
         TypesComposants[] types = TypesComposants.values();
         for (int i = 0; i < 10; i++) {
-            TypesComposants type = types[i % types.length];
+            if (tempList.get(i).getPseudo().equals("KD")){
+                tempList.get(i).getListeUtilisateursSuivi().add("SB");
+                for (Utilisateur u : tempList){
+                    if (u.getPseudo().equals("SB")){
+                        tempList.get(i).getListSuiveur().add(u);
+                    }
+                }
+
+            }
             //Ajouter 3 composantes par robot
             if (i % 3 == 0){
+                //Produire
                 //Instancier un certain type de composantes et robot
                 Composant c1 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
                 Composant c2 = new Composant("helice", "10", "Helice pour voler", TypesComposants.HELICE.name());
