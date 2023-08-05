@@ -34,7 +34,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "1e08ab3b-d06e-404c-a8a4-7036255bd472",
+        "numeroSerie": "45dc3f83-40a7-407a-99c8-f4990cfbe6f6",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -69,14 +69,32 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "f2def619-882d-4668-a7ba-55929b3c7e33",
+        "numeroSerie": "76c6286c-8bc9-49de-95ff-6b4195c15114",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Attraper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
@@ -123,7 +141,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "6e390e86-2017-4816-a97f-0cf9ac752f90",
+        "numeroSerie": "c39d5d80-c7bc-40f4-85e0-31ebfd379f5f",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -158,7 +176,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "2fb79494-2af1-425c-9a4a-5bf397f99e26",
+        "numeroSerie": "2969c0c3-73a8-4bcf-aa1a-3311c67febdd",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -167,7 +185,9 @@
     "listeTaches": [],
     "listeActions": [],
     "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
+    "listeUtilisateursSuivi": [
+      "SB"
+    ],
     "listeActivitesRejoint": [],
     "listeActivitesCreer": [],
     "listSuiveur": [],
@@ -189,96 +209,7 @@
     "motDePasse": "SaMir",
     "listeRobot": [
       {
-        "nom": "George2",
-        "vitesse": 20,
-        "batterie": 100,
-        "cpu": 30,
-        "memoire": 20.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "20",
-            "description": "Unité Centrale de Traitement",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "ecran",
-            "prix": "10",
-            "description": "Ecran pour montrer des images ou videos",
-            "typeComposant": "ECRAN"
-          }
-        ],
-        "type": "Multimediateur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "3eaf8988-bfa3-4e03-98ef-27d83603c4cb",
-        "x": 0,
-        "y": 0,
-        "numero": 26
-      },
-      {
-        "nom": "Michael2",
-        "vitesse": 20,
-        "batterie": 100,
-        "cpu": 30,
-        "memoire": 20.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "20",
-            "description": "Unité Centrale de Traitement",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "micro",
-            "prix": "5",
-            "description": "Capter des ondes sonores",
-            "typeComposant": "MICRO"
-          },
-          {
-            "nom": "haut-parleur",
-            "prix": "5",
-            "description": "Emettre du son",
-            "typeComposant": "HAUTPARLEUR"
-          }
-        ],
-        "type": "Communicateur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "497732de-7989-412f-ade1-ada71db51073",
-        "x": 0,
-        "y": 0,
-        "numero": 26
-      }
-    ],
-    "listeTaches": [],
-    "listeActions": [],
-    "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
-    "listeActivitesRejoint": [],
-    "listeActivitesCreer": [],
-    "listSuiveur": [],
-    "point": 0,
-    "tache": null,
-    "notification": null,
-    "notifs": [],
-    "telephone": "5143333333"
-  },
-  {
-    "nom": "Doren",
-    "prenom": "Sky",
-    "adresse": "adresse4",
-    "pseudo": "SD",
-    "email": "emaildorensky@gmail.com",
-    "nomCompagnie": "Dorensky Inc.",
-    "listeInteret": [],
-    "listeNotifications": [],
-    "motDePasse": "DoRen",
-    "listeRobot": [
-      {
-        "nom": "Bobby3",
+        "nom": "Bobby2",
         "vitesse": 20,
         "batterie": 100,
         "cpu": 30,
@@ -301,13 +232,13 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "14939e03-0586-4b8b-b88c-9c8c2ae63edb",
+        "numeroSerie": "c67b3aa7-121f-4f09-8b70-068b38ff9a2d",
         "x": 0,
         "y": 0,
         "numero": 26
       },
       {
-        "nom": "Charly3",
+        "nom": "Charly2",
         "vitesse": 50,
         "batterie": 80,
         "cpu": 20,
@@ -336,38 +267,148 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "bc93cea7-d9c9-4336-a6f4-e2e6a0ef1cb2",
+        "numeroSerie": "eb4d12a7-6ae5-453a-806d-74de5c448491",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Rouler",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
     "listeActivitesCreer": [],
-    "listSuiveur": [],
+    "listSuiveur": [
+      {
+        "nom": "Damov",
+        "prenom": "Kamen",
+        "adresse": "adresse2",
+        "pseudo": "KD",
+        "email": "emailkamen@gmail.com",
+        "nomCompagnie": "Kamen Inc.",
+        "listeInteret": [],
+        "listeNotifications": [],
+        "motDePasse": "KaMen",
+        "listeRobot": [
+          {
+            "nom": "Bobby1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "helice",
+                "prix": "10",
+                "description": "Helice pour voler",
+                "typeComposant": "HELICE"
+              }
+            ],
+            "type": "Voleur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "c39d5d80-c7bc-40f4-85e0-31ebfd379f5f",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          },
+          {
+            "nom": "Michael1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "micro",
+                "prix": "5",
+                "description": "Capter des ondes sonores",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "haut-parleur",
+                "prix": "5",
+                "description": "Emettre du son",
+                "typeComposant": "HAUTPARLEUR"
+              }
+            ],
+            "type": "Communicateur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "2969c0c3-73a8-4bcf-aa1a-3311c67febdd",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          }
+        ],
+        "listeTaches": [],
+        "listeActions": [],
+        "composantesAchetes": [],
+        "listeUtilisateursSuivi": [
+          "SB"
+        ],
+        "listeActivitesRejoint": [],
+        "listeActivitesCreer": [],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "5142222222"
+      }
+    ],
     "point": 0,
     "tache": null,
     "notification": null,
     "notifs": [],
-    "telephone": "5144444444"
+    "telephone": "5143333333"
   },
   {
-    "nom": "Brice",
-    "prenom": "Mb",
-    "adresse": "adresse5",
-    "pseudo": "Brice",
-    "email": "emailbrice@gmail.com",
-    "nomCompagnie": "Brice Inc.",
+    "nom": "Doren",
+    "prenom": "Sky",
+    "adresse": "adresse4",
+    "pseudo": "SD",
+    "email": "emaildorensky@gmail.com",
+    "nomCompagnie": "Dorensky Inc.",
     "listeInteret": [],
     "listeNotifications": [],
-    "motDePasse": "BrIce",
+    "motDePasse": "DoRen",
     "listeRobot": [
       {
-        "nom": "George4",
+        "nom": "George3",
         "vitesse": 20,
         "batterie": 100,
         "cpu": 30,
@@ -390,13 +431,13 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "5af5b91c-b8b3-4574-8317-212329e304a1",
+        "numeroSerie": "7db2342c-78d4-4e86-ac6d-5d66e228950e",
         "x": 0,
         "y": 0,
         "numero": 26
       },
       {
-        "nom": "Michael4",
+        "nom": "Michael3",
         "vitesse": 20,
         "batterie": 100,
         "cpu": 30,
@@ -425,14 +466,139 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "a770b296-4665-4d91-9072-ed6b1bdff6d0",
+        "numeroSerie": "7c1c67c8-7c9c-4a5e-ba0f-bfd75ae7ce03",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser images",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5144444444"
+  },
+  {
+    "nom": "Brice",
+    "prenom": "Mb",
+    "adresse": "adresse5",
+    "pseudo": "Brice",
+    "email": "emailbrice@gmail.com",
+    "nomCompagnie": "Brice Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BrIce",
+    "listeRobot": [
+      {
+        "nom": "Bobby4",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "fda5bd57-2456-49b0-9369-a3e78efb7f7c",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly4",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "a40abd21-d932-44a9-99ad-bf43ff738abb",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [],
+    "listeActions": [
+      {
+        "nomAction": "Survoler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Accrocher",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
@@ -479,7 +645,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "022a9d46-6a92-4a17-9c50-66fbdf59e747",
+        "numeroSerie": "83aef300-d04a-4f9f-ae4a-b8d4b260a5c6",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -514,14 +680,32 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "7009ae22-925a-4223-9c61-a56d4e21db96",
+        "numeroSerie": "9c3ec13d-0236-4278-9bbd-a498ab048b48",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
@@ -568,7 +752,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "2ef70d01-dee0-4997-832d-fd64524c0209",
+        "numeroSerie": "433293ff-c7c4-46bd-ada0-fbd4f128834e",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -603,14 +787,32 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "717ad367-0fef-4910-b0ff-9b4065d858a3",
+        "numeroSerie": "ba78811e-cdc3-4309-88af-05e314e028a1",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Filer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Courser",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
@@ -657,7 +859,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "e1cb208d-ee6a-4c0a-9b4a-a27f9fce0a18",
+        "numeroSerie": "aa03678e-a5ee-432e-882a-8761ab3d6c9f",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -692,14 +894,32 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "38e3e63a-fbd7-40da-8038-176b6f70573b",
+        "numeroSerie": "fd39fefd-3972-48d0-a3b9-cd0ae08d42ed",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],
@@ -723,96 +943,7 @@
     "motDePasse": "StefAno",
     "listeRobot": [
       {
-        "nom": "George8",
-        "vitesse": 20,
-        "batterie": 100,
-        "cpu": 30,
-        "memoire": 20.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "20",
-            "description": "Unité Centrale de Traitement",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "ecran",
-            "prix": "10",
-            "description": "Ecran pour montrer des images ou videos",
-            "typeComposant": "ECRAN"
-          }
-        ],
-        "type": "Multimediateur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "61b1e5eb-a4e2-4c3e-9179-e5a79225e861",
-        "x": 0,
-        "y": 0,
-        "numero": 26
-      },
-      {
-        "nom": "Michael8",
-        "vitesse": 20,
-        "batterie": 100,
-        "cpu": 30,
-        "memoire": 20.0,
-        "composantes": [
-          {
-            "nom": "cpu",
-            "prix": "20",
-            "description": "Unité Centrale de Traitement",
-            "typeComposant": "CPU"
-          },
-          {
-            "nom": "micro",
-            "prix": "5",
-            "description": "Capter des ondes sonores",
-            "typeComposant": "MICRO"
-          },
-          {
-            "nom": "haut-parleur",
-            "prix": "5",
-            "description": "Emettre du son",
-            "typeComposant": "HAUTPARLEUR"
-          }
-        ],
-        "type": "Communicateur",
-        "taches": [],
-        "activites": [],
-        "actions": [],
-        "numeroSerie": "86fb2a23-f26b-440b-a7a4-0bd655ed56ba",
-        "x": 0,
-        "y": 0,
-        "numero": 26
-      }
-    ],
-    "listeTaches": [],
-    "listeActions": [],
-    "composantesAchetes": [],
-    "listeUtilisateursSuivi": [],
-    "listeActivitesRejoint": [],
-    "listeActivitesCreer": [],
-    "listSuiveur": [],
-    "point": 0,
-    "tache": null,
-    "notification": null,
-    "notifs": [],
-    "telephone": "5149999999"
-  },
-  {
-    "nom": "James",
-    "prenom": "Greg",
-    "adresse": "adresse10",
-    "pseudo": "JG",
-    "email": "emailjames@gmail.com",
-    "nomCompagnie": "James Inc.",
-    "listeInteret": [],
-    "listeNotifications": [],
-    "motDePasse": "JaMes",
-    "listeRobot": [
-      {
-        "nom": "Bobby9",
+        "nom": "Bobby8",
         "vitesse": 20,
         "batterie": 100,
         "cpu": 30,
@@ -835,13 +966,13 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "cc80c024-6c1b-41c1-82ac-f46a83958081",
+        "numeroSerie": "51f9e145-cb49-40ad-bc8f-3abb5747fb57",
         "x": 0,
         "y": 0,
         "numero": 26
       },
       {
-        "nom": "Charly9",
+        "nom": "Charly8",
         "vitesse": 50,
         "batterie": 80,
         "cpu": 20,
@@ -870,14 +1001,139 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "bab97b05-f776-4d41-a6c7-bc8ef789a69c",
+        "numeroSerie": "75c816a2-dfe8-4391-bf79-c2e091da6172",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
     "listeTaches": [],
-    "listeActions": [],
+    "listeActions": [
+      {
+        "nomAction": "Planer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Frapper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5149999999"
+  },
+  {
+    "nom": "James",
+    "prenom": "Greg",
+    "adresse": "adresse10",
+    "pseudo": "JG",
+    "email": "emailjames@gmail.com",
+    "nomCompagnie": "James Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "JaMes",
+    "listeRobot": [
+      {
+        "nom": "George9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "ecran",
+            "prix": "10",
+            "description": "Ecran pour montrer des images ou videos",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Multimediateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "d0c454ce-cea4-4ee7-a5ae-3145a7f8af5c",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "fe27c105-ef21-4b7a-bad6-7a6ff1399a4c",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser videos",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
     "composantesAchetes": [],
     "listeUtilisateursSuivi": [],
     "listeActivitesRejoint": [],

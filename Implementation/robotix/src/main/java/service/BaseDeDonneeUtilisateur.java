@@ -6,12 +6,14 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
+import domain.logic.Robot.Action;
 import domain.logic.Robot.Composant;
 import domain.logic.Robot.Robot;
 import domain.logic.Robot.TypesComposants;
 import service.BaseDeDonneeFournisseur;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.*;
@@ -91,26 +93,50 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
         ));
 
         //Ajouter un suiveur
-        TypesComposants[] types = TypesComposants.values();
         for (int i = 0; i < 10; i++) {
             if (tempList.get(i).getPseudo().equals("KD")){
                 tempList.get(i).getListeUtilisateursSuivi().add("SB");
                 for (Utilisateur u : tempList){
                     if (u.getPseudo().equals("SB")){
-                        tempList.get(i).getListSuiveur().add(u);
+                        u.getListSuiveur().add(tempList.get(i));
                     }
                 }
 
             }
+            //Instancier des actions
+
             //Ajouter 3 composantes par robot
-            if (i % 3 == 0){
+            if (i % 2 == 0){
                 //Produire
                 //Instancier un certain type de composantes et robot
                 Composant c1 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
                 Composant c2 = new Composant("helice", "10", "Helice pour voler", TypesComposants.HELICE.name());
+
                 LinkedList<Composant> listeC1 = new LinkedList<>();
                 listeC1.add(c1);
                 listeC1.add(c2);
+
+                ArrayList<String> composantesNom = new ArrayList<>();
+                for (Composant c : listeC1){
+                    composantesNom.add(c.getNom());
+                }
+                if (i == 0){
+                    Action a = new Action("Voler", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 2) {
+                    Action a = new Action("Flotter", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 4){
+                    Action a = new Action("Survoler", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 6){
+                    Action a = new Action("Filer", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else {
+                    Action a = new Action("Planer", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC1, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r1);
 
@@ -121,16 +147,53 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC2.add(c3);
                 listeC2.add(c4);
                 listeC2.add(c5);
+
+                ArrayList<String> composantesNom1 = new ArrayList<>();
+                for (Composant c : listeC2){
+                    composantesNom1.add(c.getNom());
+                }
+                if (i == 0){
+                    Action a = new Action("Attraper", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 2) {
+                    Action a = new Action("Rouler", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 4){
+                    Action a = new Action("Accrocher", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 6) {
+                    Action a = new Action("Courser", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 8){
+                    Action a = new Action("Frapper", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
                 Robot r2 = new Robot("Charly" + i, 0, 0, 50, 80, 20, 10, listeC2, "Rouleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r2);
 
-            } else if (i % 2 == 0){
+            } else if (i % 3 == 0){
                 //Instancier un certain type de composantes et robot
                 Composant c1 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
                 Composant c2 = new Composant("ecran", "10", "Ecran pour montrer des images ou videos", TypesComposants.ECRAN.name());
                 LinkedList<Composant> listeC1 = new LinkedList<>();
                 listeC1.add(c1);
                 listeC1.add(c2);
+
+                ArrayList<String> composantesNom = new ArrayList<>();
+                for (Composant c : listeC1){
+                    composantesNom.add(c.getNom());
+                }
+
+                if (i == 3){
+                    Action a = new Action("Diffuser images", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else {
+                    Action a = new Action("Diffuser videos", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
+
                 Robot r1 = new Robot("George" + i, 0, 0, 20, 100, 30, 20, listeC1, "Multimediateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r1);
 
@@ -141,11 +204,22 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC2.add(c4);
                 listeC2.add(c5);
                 listeC2.add(c6);
+
+                ArrayList<String> composantesNom1 = new ArrayList<>();
+                for (Composant c : listeC2){
+                    composantesNom1.add(c.getNom());
+                }
+
+                if (i == 3){
+                    Action a = new Action("Ecouter", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else {
+                    Action a = new Action("Parler", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
                 Robot r2 = new Robot("Michael" + i, 0, 0, 20, 100, 30, 20, listeC2, "Communicateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r2);
-                //Instancier Robot 2
-
-                //Ajouter robot aa l'util
 
             }else {
 
@@ -154,6 +228,19 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 LinkedList<Composant> listeC = new LinkedList<>();
                 listeC.add(c1);
                 listeC.add(c2);
+
+                ArrayList<String> composantesNom = new ArrayList<>();
+                for (Composant c : listeC){
+                    composantesNom.add(c.getNom());
+                }
+                if (i == 5){
+                    Action a = new Action("Voler", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 7) {
+                    Action a = new Action("Flotter", composantesNom, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r1);
 
@@ -164,6 +251,20 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC2.add(c4);
                 listeC2.add(c5);
                 listeC2.add(c6);
+
+                ArrayList<String> composantesNom1 = new ArrayList<>();
+                for (Composant c : listeC2){
+                    composantesNom1.add(c.getNom());
+                }
+
+                if (i == 5){
+                    Action a = new Action("Ecouter", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                } else if (i == 7){
+                    Action a = new Action("Parler", composantesNom1, "30");
+                    tempList.get(i).getListeActions().add(a);
+                }
+
                 Robot r2 = new Robot("Michael" + i, 0, 0, 20, 100, 30, 20, listeC2, "Communicateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r2);
 
