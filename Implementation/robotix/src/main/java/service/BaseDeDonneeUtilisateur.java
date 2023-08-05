@@ -6,10 +6,7 @@ import domain.logic.Membre.Fournisseur;
 import domain.logic.Membre.Interet;
 import domain.logic.Membre.Notification;
 import domain.logic.Membre.Utilisateur;
-import domain.logic.Robot.Action;
-import domain.logic.Robot.Composant;
-import domain.logic.Robot.Robot;
-import domain.logic.Robot.TypesComposants;
+import domain.logic.Robot.*;
 import service.BaseDeDonneeFournisseur;
 
 import java.io.IOException;
@@ -122,20 +119,42 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 }
                 if (i == 0){
                     Action a = new Action("Voler", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Voler a 5 metres de hauteur", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 2) {
                     Action a = new Action("Flotter", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Flotter a 2 puis 5 metre", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 4){
                     Action a = new Action("Survoler", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Survoler un objet", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 6){
                     Action a = new Action("Filer", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Filer tout droit puis a gauche", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else {
                     Action a = new Action("Planer", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Planer par dessus un autre robot", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
+
+
 
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC1, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
                 tempList.get(i).getListeRobot().add(r1);
@@ -154,18 +173,38 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 }
                 if (i == 0){
                     Action a = new Action("Attraper", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Attraper un objet rond", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 2) {
                     Action a = new Action("Rouler", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Rouler vers une porte", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 4){
                     Action a = new Action("Accrocher", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("S'accrocher a une boite", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 6) {
                     Action a = new Action("Courser", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Faire une course contre un autre robot", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 8){
                     Action a = new Action("Frapper", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Match de boxe contre un autre robot", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
 
@@ -187,9 +226,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
                 if (i == 3){
                     Action a = new Action("Diffuser images", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Montrer rafales d'images", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else {
                     Action a = new Action("Diffuser videos", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Montrer une video de 5 minutes", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
 
@@ -212,9 +259,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
                 if (i == 3){
                     Action a = new Action("Ecouter", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Ecouter des paroles humaines", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else {
                     Action a = new Action("Parler", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Parler en francais", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
 
@@ -235,9 +290,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 }
                 if (i == 5){
                     Action a = new Action("Voler", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Voler a 5 metres de hauteur", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 7) {
                     Action a = new Action("Flotter", composantesNom, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Flotter a 2 puis 5 metre", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
 
@@ -259,9 +322,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
 
                 if (i == 5){
                     Action a = new Action("Ecouter", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Ecouter des paroles humaines", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 } else if (i == 7){
                     Action a = new Action("Parler", composantesNom1, "30");
+                    ArrayList<Action> tache = new ArrayList<>();
+                    tache.add(a);
+                    Tache t = new Tache("Parler en francais", tache);
+                    tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
                 }
 

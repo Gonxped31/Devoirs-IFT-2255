@@ -34,7 +34,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "45dc3f83-40a7-407a-99c8-f4990cfbe6f6",
+        "numeroSerie": "487413e8-155a-4ecc-9338-043d98993db6",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -69,13 +69,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "76c6286c-8bc9-49de-95ff-6b4195c15114",
+        "numeroSerie": "b0a1c8bf-01de-4be6-874b-ee3f8c92e674",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Attraper un objet rond",
+        "taches": [
+          {
+            "nomAction": "Attraper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Voler",
@@ -141,7 +171,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "c39d5d80-c7bc-40f4-85e0-31ebfd379f5f",
+        "numeroSerie": "381ff470-b24c-4f84-b364-4247a64033a5",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -176,7 +206,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "2969c0c3-73a8-4bcf-aa1a-3311c67febdd",
+        "numeroSerie": "ad87a52a-bc8b-4efc-9fe1-de25a91b00d0",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -232,7 +262,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "c67b3aa7-121f-4f09-8b70-068b38ff9a2d",
+        "numeroSerie": "31223b81-f70c-4847-95f6-93e65f65118e",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -267,13 +297,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "eb4d12a7-6ae5-453a-806d-74de5c448491",
+        "numeroSerie": "19b20347-2c6c-4d4a-bbab-85fe0217597b",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Rouler vers une porte",
+        "taches": [
+          {
+            "nomAction": "Rouler",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Flotter",
@@ -333,7 +393,7 @@
             "taches": [],
             "activites": [],
             "actions": [],
-            "numeroSerie": "c39d5d80-c7bc-40f4-85e0-31ebfd379f5f",
+            "numeroSerie": "381ff470-b24c-4f84-b364-4247a64033a5",
             "x": 0,
             "y": 0,
             "numero": 26
@@ -368,7 +428,7 @@
             "taches": [],
             "activites": [],
             "actions": [],
-            "numeroSerie": "2969c0c3-73a8-4bcf-aa1a-3311c67febdd",
+            "numeroSerie": "ad87a52a-bc8b-4efc-9fe1-de25a91b00d0",
             "x": 0,
             "y": 0,
             "numero": 26
@@ -431,7 +491,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "7db2342c-78d4-4e86-ac6d-5d66e228950e",
+        "numeroSerie": "7d1973ca-14f2-4a4a-b72e-dd801297e08b",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -466,13 +526,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "7c1c67c8-7c9c-4a5e-ba0f-bfd75ae7ce03",
+        "numeroSerie": "e7c2803b-c458-40ef-8fde-429059e08cd2",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Montrer rafales d'images",
+        "taches": [
+          {
+            "nomAction": "Diffuser images",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Diffuser images",
@@ -538,7 +628,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "fda5bd57-2456-49b0-9369-a3e78efb7f7c",
+        "numeroSerie": "52a24ce4-ff03-429b-bf60-7e14ff31862e",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -573,13 +663,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "a40abd21-d932-44a9-99ad-bf43ff738abb",
+        "numeroSerie": "4fb52a58-bd3e-442a-88af-6be80651c438",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Survoler un objet",
+        "taches": [
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "S'accrocher a une boite",
+        "taches": [
+          {
+            "nomAction": "Accrocher",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Survoler",
@@ -645,7 +765,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "83aef300-d04a-4f9f-ae4a-b8d4b260a5c6",
+        "numeroSerie": "f860c882-c95e-48f7-902c-dcc100589883",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -680,13 +800,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "9c3ec13d-0236-4278-9bbd-a498ab048b48",
+        "numeroSerie": "0f05dbfa-19b3-478b-9c08-c5abc546341c",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Voler",
@@ -752,7 +902,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "433293ff-c7c4-46bd-ada0-fbd4f128834e",
+        "numeroSerie": "215fb14c-baa3-4d61-8d6c-c206208ae2c4",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -787,13 +937,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "ba78811e-cdc3-4309-88af-05e314e028a1",
+        "numeroSerie": "5a20af8f-e083-4c4b-a987-c46832189a08",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Filer tout droit puis a gauche",
+        "taches": [
+          {
+            "nomAction": "Filer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Faire une course contre un autre robot",
+        "taches": [
+          {
+            "nomAction": "Courser",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Filer",
@@ -859,7 +1039,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "aa03678e-a5ee-432e-882a-8761ab3d6c9f",
+        "numeroSerie": "9e088fe7-cc1e-4fd7-a244-c86d884cc98d",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -894,13 +1074,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "fd39fefd-3972-48d0-a3b9-cd0ae08d42ed",
+        "numeroSerie": "88570696-ce4a-4cda-b1f3-af4e53dce0cd",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Flotter",
@@ -966,7 +1176,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "51f9e145-cb49-40ad-bc8f-3abb5747fb57",
+        "numeroSerie": "e98de2c8-3021-48c8-9517-6eea59c8767c",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -1001,13 +1211,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "75c816a2-dfe8-4391-bf79-c2e091da6172",
+        "numeroSerie": "6027d337-182b-4324-b7b7-ccfa038b3d7c",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Planer par dessus un autre robot",
+        "taches": [
+          {
+            "nomAction": "Planer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Match de boxe contre un autre robot",
+        "taches": [
+          {
+            "nomAction": "Frapper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Planer",
@@ -1073,7 +1313,7 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "d0c454ce-cea4-4ee7-a5ae-3145a7f8af5c",
+        "numeroSerie": "d71f72d7-636a-4b08-9c05-0b3faf887506",
         "x": 0,
         "y": 0,
         "numero": 26
@@ -1108,13 +1348,43 @@
         "taches": [],
         "activites": [],
         "actions": [],
-        "numeroSerie": "fe27c105-ef21-4b7a-bad6-7a6ff1399a4c",
+        "numeroSerie": "3d813123-ceda-43ce-b11a-e871651ed4c6",
         "x": 0,
         "y": 0,
         "numero": 26
       }
     ],
-    "listeTaches": [],
+    "listeTaches": [
+      {
+        "nom": "Montrer une video de 5 minutes",
+        "taches": [
+          {
+            "nomAction": "Diffuser videos",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
     "listeActions": [
       {
         "nomAction": "Diffuser videos",
