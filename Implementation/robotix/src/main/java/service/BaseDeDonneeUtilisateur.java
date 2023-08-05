@@ -103,7 +103,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC1.add(c1);
                 listeC1.add(c2);
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC1, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-                tempList.get(i).ajouterRobot(r1);
+                tempList.get(i).getListeRobot().add(r1);
 
                 Composant c3 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
                 Composant c4 = new Composant("roue", "30", "Roues pour se deplacer", TypesComposants.ROUE.name());
@@ -113,7 +113,7 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC2.add(c4);
                 listeC2.add(c5);
                 Robot r2 = new Robot("Charly" + i, 0, 0, 50, 80, 20, 10, listeC2, "Rouleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-                tempList.get(i).ajouterRobot(r2);
+                tempList.get(i).getListeRobot().add(r2);
 
             } else if (i % 2 == 0){
                 //Instancier un certain type de composantes et robot
@@ -123,11 +123,17 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC1.add(c1);
                 listeC1.add(c2);
                 Robot r1 = new Robot("George" + i, 0, 0, 20, 100, 30, 20, listeC1, "Multimediateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-                tempList.get(i).ajouterRobot(r1);
+                tempList.get(i).getListeRobot().add(r1);
 
                 Composant c4 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
                 Composant c5 = new Composant("micro", "5", "Capter des ondes sonores", TypesComposants.MICRO.name());
-                Composant c6 = new Composant("haut-parleur", "5", "Emettre du son", TypesComposants.MICRO.name());
+                Composant c6 = new Composant("haut-parleur", "5", "Emettre du son", TypesComposants.HAUTPARLEUR.name());
+                LinkedList<Composant> listeC2 = new LinkedList<>();
+                listeC2.add(c4);
+                listeC2.add(c5);
+                listeC2.add(c6);
+                Robot r2 = new Robot("Michael" + i, 0, 0, 20, 100, 30, 20, listeC2, "Communicateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                tempList.get(i).getListeRobot().add(r2);
                 //Instancier Robot 2
 
                 //Ajouter robot aa l'util
@@ -140,16 +146,19 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                 listeC.add(c1);
                 listeC.add(c2);
                 Robot r1 = new Robot("Bobby" + i, 0, 0, 20, 100, 30, 20, listeC, "Voleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
-                tempList.get(i).ajouterRobot(r1);
-
+                tempList.get(i).getListeRobot().add(r1);
 
                 Composant c4 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
-                Composant c10 = new Composant("Composant " + i, "Prix " + i, "Description " + i, type.name());
-                Composant c11 = new Composant("Composant " + i, "Prix " + i, "Description " + i, type.name());
-            }
-            //Instancier Actions (2 par util)
+                Composant c5 = new Composant("micro", "5", "Capter des ondes sonores", TypesComposants.MICRO.name());
+                Composant c6 = new Composant("haut-parleur", "5", "Emettre du son", TypesComposants.HAUTPARLEUR.name());
+                LinkedList<Composant> listeC2 = new LinkedList<>();
+                listeC2.add(c4);
+                listeC2.add(c5);
+                listeC2.add(c6);
+                Robot r2 = new Robot("Michael" + i, 0, 0, 20, 100, 30, 20, listeC2, "Communicateur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+                tempList.get(i).getListeRobot().add(r2);
 
-            //Instacier une tache par util
+            }
         }
 
 
