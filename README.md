@@ -15,7 +15,13 @@
     </li>
 </ul>
 <h2>Description</h2>
-<p>Robotix est une application de gestion de robot. Au dela de Plusieurs </p>
+<p>Les robots sont un outil très puissants qui peuvent optimiser et accélérer les tâches des humains. Sachant que le milieu de la robotique est en pleine expansion, il y a une nouvelle demande dans le milieu de la gestion de robots. Robotix vient pallier à ce manque. Robotix permet à l'utilisateur de personaliser et gérer ses tâches ou activités quotidiennes, tout en le connectant avec d'autres utilisateur avec les mêmes intérets!</p>
+<h2>Fonctionnalités</h2>
+<p>Utilisateur</p>
+<ul>
+
+</ul>
+
 
 
 
