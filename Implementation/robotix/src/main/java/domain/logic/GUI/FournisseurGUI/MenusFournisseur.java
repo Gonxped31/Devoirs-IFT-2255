@@ -23,7 +23,7 @@ public class MenusFournisseur extends JFrame {
 	private String nomFournisseur;
 	private domain.logic.GUI.Menu menu;
 	private ControlleurFournisseurs controlleurFournisseurs = new ControlleurFournisseurs();
-	private DbControleur dbControlleur = DbControleur.getDbControleur();
+	private DbControleur dbControlleur = domain.logic.Controller.DbControleur.getDbControleur();
 
 
 	private JFrame jFrame = new JFrame();

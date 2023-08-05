@@ -38,19 +38,18 @@ public class Utilisateur extends Membre implements java.io.Serializable{
 
 
     /**
-     * Constructeur pour la classe Utilisateur.
-     *
-     * @param nom                Le nom de l'utilisateur.
-     * @param prenom             Le prénom de l'utilisateur.
-     * @param adresse            L'adresse de l'utilisateur.
-     * @param pseudo             Le pseudo de l'utilisateur.
-     * @param mdp                Le mot de passe de l'utilisateur.
-     * @param email              L'adresse email de l'utilisateur.
-     * @param numeroTelephone    Le numéro de téléphone de l'utilisateur.
-     * @param nomCompagnie       Le nom de la compagnie de l'utilisateur.
-     * @param listeInteret       Une collection de centres d'intérêt de l'utilisateur, représentée par un HashSet d'objets Interet.
-     * @param listeNotifications Une liste des notifications de l'utilisateur, représentée par un ArrayList d'objets Notification.
-     */
+	 * Constructeur pour la classe Utilisateur.
+	 * @param nom Le nom de l'utilisateur.
+	 * @param prenom Le prénom de l'utilisateur.
+	 * @param adresse L'adresse de l'utilisateur.
+	 * @param pseudo Le pseudo de l'utilisateur.
+	 * @param mdp Le mot de passe de l'utilisateur.
+	 * @param email L'adresse email de l'utilisateur.
+	 * @param numeroTelephone Le numéro de téléphone de l'utilisateur.
+	 * @param nomCompagnie Le nom de la compagnie de l'utilisateur.
+	 * @param listeInteret Une collection de centres d'intérêt de l'utilisateur, représentée par un HashSet d'objets Interet.
+	 * @param listeNotifications Une liste des notifications de l'utilisateur, représentée par un ArrayList d'objets Notification.
+	 */
     @JsonCreator
     public Utilisateur(@JsonProperty("nom") String nom,
                        @JsonProperty("prenom") String prenom,

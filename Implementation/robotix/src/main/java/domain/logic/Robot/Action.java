@@ -17,12 +17,11 @@ public class Action implements java.io.Serializable {
     private String duree;
 
     /**
-     * Constructeur de la classe Action.
-     *
-     * @param nomAction   le nom de l'action
-     * @param composantes la liste des composants nécessaires pour l'action
-     * @param duree       la durée de l'action
-     */
+	 * Constructeur de la classe Action.
+	 * @param nomAction le nom de l'action
+	 * @param composantes la liste des composants nécessaires pour l'action
+	 * @param duree la durée de l'action
+	 */
     @JsonCreator
     public Action(@JsonProperty("nomAction") String nomAction,
                   @JsonProperty("composantes") ArrayList<String> composantes,

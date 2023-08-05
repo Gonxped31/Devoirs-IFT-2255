@@ -24,18 +24,17 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     private int taillePrecedenteInventaireComposantes;
 
     /**
-     * Constructeur de la classe Fournisseur.
-     *
-     * @param nom                        Le nom du fournisseur.
-     * @param mdp                        Le mot de passe du fournisseur.
-     * @param adresse                    L'adresse du fournisseur.
-     * @param email                      L'adresse email du fournisseur.
-     * @param numeroTelephone            Le numéro de téléphone du fournisseur.
-     * @param typeDeRobotFabriquer       Le type de robot que le fournisseur fabrique.
-     * @param typeComposantesFabriquer   Le type de composants que le fournisseur fabrique.
-     * @param capacite                   La capacité de production de composants du fournisseur.
-     * @param nomcompagnie               Le nom de la compagnie du fournisseur.
-     */
+	 * Constructeur de la classe Fournisseur.
+	 * @param nom Le nom du fournisseur.
+	 * @param mdp Le mot de passe du fournisseur.
+	 * @param adresse L'adresse du fournisseur.
+	 * @param email L'adresse email du fournisseur.
+	 * @param numeroTelephone Le numéro de téléphone du fournisseur.
+	 * @param typeDeRobotFabriquer Le type de robot que le fournisseur fabrique.
+	 * @param typeComposantesFabriquer Le type de composants que le fournisseur fabrique.
+	 * @param capacite La capacité de production de composants du fournisseur.
+	 * @param nomcompagnie Le nom de la compagnie du fournisseur.
+	 */
     @JsonCreator
     public Fournisseur(@JsonProperty("nom") String nom, @JsonProperty("mdp") String mdp,
                        @JsonProperty("adresse") String adresse, @JsonProperty("email") String email,
@@ -133,20 +132,18 @@ public class Fournisseur extends Membre implements java.io.Serializable{
     }
 
     /**
-     * Renvoie le numéro de téléphone du fournisseur.
-     *
-     * @return Le numéro de téléphone du fournisseur.
-     */
+	 * Renvoie le numéro de téléphone du fournisseur.
+	 * @return Le numéro de téléphone du fournisseur.
+	 */
     @JsonProperty("telephone")
     public String getNumeroTelephone() {
         return this.getTelephone();
     }
 
     /**
-     * Renvoie la liste des notifications du fournisseur.
-     *
-     * @return La liste des notifications du fournisseur sous forme de ArrayList.
-     */
+	 * Renvoie la liste des notifications du fournisseur.
+	 * @return La liste des notifications du fournisseur sous forme de ArrayList.
+	 */
     @JsonProperty("listeNotifications")
     public ArrayList<Notification> getNotifs(){
         return this.listeNotifications;

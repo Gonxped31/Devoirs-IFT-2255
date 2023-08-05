@@ -18,7 +18,7 @@ import java.util.HashSet;
  */
 public class ControlleurUtilisateurs {
 
-    private DbControleur dataBaseController = DbControleur.getDbControleur();
+    private DbControleur dataBaseController = domain.logic.Controller.DbControleur.getDbControleur();
     private static ControlleurUtilisateurs controlleurUtilisateurs;
     private Utilisateur utilisateurCourant;
 

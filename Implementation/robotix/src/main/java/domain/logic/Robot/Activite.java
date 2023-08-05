@@ -30,15 +30,14 @@ public class Activite implements java.io.Serializable{
     private final Random random = new Random();
 
     /**
-     * Constructeur de la classe Activite.
-     *
-     * @param auteur             l'auteur de l'activité
-     * @param nom                le nom de l'activité
-     * @param dateDebut          la date de début de l'activité
-     * @param dateFin            la date de fin de l'activité
-     * @param listeDeTache       la liste des tâches associées à l'activité
-     * @param listeInteretAssocie la liste des intérêts associés à l'activité
-     */
+	 * Constructeur de la classe Activite.
+	 * @param auteur l'auteur de l'activité
+	 * @param nom le nom de l'activité
+	 * @param dateDebut la date de début de l'activité
+	 * @param dateFin la date de fin de l'activité
+	 * @param listeDeTache la liste des tâches associées à l'activité
+	 * @param listeInteretAssocie la liste des intérêts associés à l'activité
+	 */
     @JsonCreator
     public Activite(@JsonProperty("auteur") String auteur,
                     @JsonProperty("nom") String nom,

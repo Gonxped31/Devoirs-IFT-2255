@@ -34,7 +34,7 @@ public class RequetePubliqueUtilisateurGUI {
     /**
      * Le contrôleur de base de données utilisé pour gérer les opérations de base de données.
      */
-    private DbControleur dbControleur = DbControleur.getDbControleur();
+    private DbControleur dbControleur = domain.logic.Controller.DbControleur.getDbControleur();
     /**
      * La fenêtre principale de l'application.
      */

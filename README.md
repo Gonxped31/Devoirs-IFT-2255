@@ -5,6 +5,6 @@
 3- Choisir "une autre application dans ce PC", <br>
 4- Naviguer dans à l'emplacement et sélectionner le fichier ProtoRobotix.bat, <br>
 5- Sélectionner l'option "toujours", <br>
-6- Rouler le jar avec un double clique. <br>
+6- Rouler le jar avec un double clique. <br>   
 
 Note : Il est possible que le jar affiche un méssage indiquant le fichier n'a pas été trouvé. Il faudra cliquer de nouveau. <br>

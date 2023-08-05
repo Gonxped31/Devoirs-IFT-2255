@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * Cette classe s'occupe de l'affichage des requeêtes publiques chez les fournisseurs.
  */
 public class RequetePubliqueFournisseurGUI {
-    private DbControleur dbControleur = DbControleur.getDbControleur();
+    private DbControleur dbControleur = domain.logic.Controller.DbControleur.getDbControleur();
     private String nomFournisseur;
     private JFrame jFrame = new JFrame();
     private JPanel mainPanel = new JPanel(new GridLayout(0, 1));

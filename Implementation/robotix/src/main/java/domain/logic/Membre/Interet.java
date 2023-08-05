@@ -10,11 +10,10 @@ public class Interet implements java.io.Serializable{
     private String nom;
 
     /**
-     * Constructeur de la classe.
-     * Crée un nouvel objet Interet avec le nom spécifié.
-     *
-     * @param nom Le nom de l'intérêt.
-     */
+	 * Constructeur de la classe.
+	 * Crée un nouvel objet Interet avec le nom spécifié.
+	 * @param nom Le nom de l'intérêt.
+	 */
     @JsonCreator
     public Interet(@JsonProperty("nom") String nom){
         this.nom = nom;

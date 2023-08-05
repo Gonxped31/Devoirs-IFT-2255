@@ -17,11 +17,10 @@ public class Tache implements java.io.Serializable{
     private int dureeTache;
 
     /**
-     * Constructeur de la classe Tache.
-     *
-     * @param nom    Le nom de la tâche.
-     * @param taches La liste d'actions composant la tâche.
-     */
+	 * Constructeur de la classe Tache.
+	 * @param nom Le nom de la tâche.
+	 * @param taches La liste d'actions composant la tâche.
+	 */
     @JsonCreator
     public Tache(
             @JsonProperty("nom") String nom,

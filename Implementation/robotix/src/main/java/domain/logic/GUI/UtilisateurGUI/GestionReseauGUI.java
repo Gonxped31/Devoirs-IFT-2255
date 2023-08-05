@@ -26,7 +26,7 @@ public class GestionReseauGUI {
     /**
      * Le contrôleur pour accéder à une base de données.
      */
-    private DbControleur dbControlleur = DbControleur.getDbControleur();
+    private DbControleur dbControlleur = domain.logic.Controller.DbControleur.getDbControleur();
     /**
      * Le pseudo de l'utilisateur.
      */

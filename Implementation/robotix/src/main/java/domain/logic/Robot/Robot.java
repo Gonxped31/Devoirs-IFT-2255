@@ -26,21 +26,20 @@ public class Robot implements java.io.Serializable{
     private boolean disponible;
 
     /**
-     * Constructeur de la classe Robot.
-     *
-     * @param nom            le nom du robot
-     * @param X              la coordonnée X du robot
-     * @param Y              la coordonnée Y du robot
-     * @param vitesse        la vitesse du robot
-     * @param batterie       la capacité de la batterie du robot
-     * @param cpu            la capacité de calcul du robot (CPU)
-     * @param memoire        la capacité mémoire du robot en GB
-     * @param composantes    la liste des composants du robot
-     * @param type           le type de robot
-     * @param action        la liste des actions du robot
-     * @param taches         la liste des tâches du robot
-     * @param activites      la liste des activités du robot
-     */
+	 * Constructeur de la classe Robot.
+	 * @param nom le nom du robot
+	 * @param X la coordonnée X du robot
+	 * @param Y la coordonnée Y du robot
+	 * @param vitesse la vitesse du robot
+	 * @param batterie la capacité de la batterie du robot
+	 * @param cpu la capacité de calcul du robot (CPU)
+	 * @param memoire la capacité mémoire du robot en GB
+	 * @param composantes la liste des composants du robot
+	 * @param type le type de robot
+	 * @param action la liste des actions du robot
+	 * @param taches la liste des tâches du robot
+	 * @param activites la liste des activités du robot
+	 */
     @JsonCreator
     public Robot(@JsonProperty("nom") String nom,
                  @JsonProperty("X") int X,

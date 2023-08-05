@@ -38,7 +38,7 @@ public class AchatsGUI {
     /**
      * Contrôleur de base de données pour les opérations sur la base de données.
      */
-    private DbControleur dbControleur = DbControleur.getDbControleur();
+    private DbControleur dbControleur = domain.logic.Controller.DbControleur.getDbControleur();
     /**
      * Cadre principal (JFrame) de l'application.
      */

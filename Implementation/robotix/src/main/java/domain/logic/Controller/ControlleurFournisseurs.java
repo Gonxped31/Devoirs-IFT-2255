@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public class ControlleurFournisseurs {
     // Référence au contrôleur de la base de données
-    private final DbControleur dataBaseController = DbControleur.getDbControleur();
+    private final DbControleur dataBaseController = domain.logic.Controller.DbControleur.getDbControleur();
 
     // Fournisseur actuellement connecté
     private Fournisseur fournisseurCourant;
