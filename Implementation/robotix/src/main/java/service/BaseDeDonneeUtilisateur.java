@@ -231,9 +231,20 @@ public class BaseDeDonneeUtilisateur extends BaseDeDonneeCommun {
                     Action a = new Action("Frapper", composantesNom1, "30");
                     ArrayList<Action> tache = new ArrayList<>();
                     tache.add(a);
-                    Tache t = new Tache("Match de boxe contre un autre robot", tache);
+                    Tache t = new Tache("Frapper un autre robot", tache);
+                    ArrayList<Tache> taches = new ArrayList<>();
+                    taches.add(t);
                     tempList.get(i).getListeTaches().add(t);
                     tempList.get(i).getListeActions().add(a);
+                    HashSet<Interet> interet = new HashSet<>();
+                    interet.add(new Interet("Bagarre"));
+                    Activite act = null;
+                    try {
+                        act = new Activite(tempList.get(i).getPseudo(), "Match de boxe contre un autre robot", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches, interet);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    acts.add(act);
                 }
 
                 Robot r2 = new Robot("Charly" + i, 0, 0, 50, 80, 20, 10, listeC2, "Rouleur", new LinkedList<>(), new LinkedList<>(), new LinkedList<>());

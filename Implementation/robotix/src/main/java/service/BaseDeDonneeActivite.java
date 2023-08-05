@@ -79,7 +79,7 @@ private static final String FILE_NAME= "activite.json";
         tache.add(a1);
         Tache t1 = new Tache("Survoler un objet", tache);
         ArrayList<Tache> taches1 = new ArrayList<>();
-        taches.add(t1);
+        taches1.add(t1);
         HashSet<Interet> interet1 = new HashSet<>();
         interet.add(new Interet("Aviation"));
         Activite act1 = null;
@@ -92,7 +92,32 @@ private static final String FILE_NAME= "activite.json";
 
         //Activite 3
 
+        Composant c3 = new Composant("cpu", "20", "Unité Centrale de Traitement", TypesComposants.CPU.name());
+        Composant c4 = new Composant("roue", "30", "Roues pour se deplacer", TypesComposants.ROUE.name());
+        Composant c5 = new Composant("bras", "10", "Bras pour prendre", TypesComposants.BRAS.name());
+        LinkedList<Composant> listeC2 = new LinkedList<>();
+        listeC2.add(c3);
+        listeC2.add(c4);
+        listeC2.add(c5);
+
+        ArrayList<String> composantesNom1 = new ArrayList<>();
+        for (Composant c : listeC2){
+            composantesNom1.add(c.getNom());
+        }
+        ArrayList<Tache> taches3 = new ArrayList<>();
+        taches3.add(t);
+        HashSet<Interet> interet3 = new HashSet<>();
+        interet.add(new Interet("Bagarre"));
+        Activite act3 = null;
+        try {
+            act3 = new Activite("MG", "Match de boxe contre un autre robot", dateFormat.parse("2023-08-05"), dateFormat.parse("2023-08-10"), taches3, interet3);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        acts.add(act3);
+
         //Activite 4
+
 
         //Activite 5
 
