@@ -36,6 +36,14 @@
  <li>Gérer ses composantes</li>
  <li>Faire une requete publique</li>
 </ul>
+<h2>Version Java</h2>
+<p>20.0.02</p>
+<h2>
+Information de connexions initiales
+</h2>
+<p>Pour utilisateur : </p>
+<h2>Comment exécuter l'application</h2>
+<p>Rouler le fichier Robotix.jar</p>
 
 
 
