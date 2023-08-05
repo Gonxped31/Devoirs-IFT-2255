@@ -46,7 +46,12 @@ public class BaseDeDonneeInteret extends BaseDeDonnee{
                 new Interet("Foot"),
                 new Interet("Soccer"),
                 new Interet("Danse"),
-                new Interet("Break")
+                new Interet("Break"),
+                new Interet("Programmation"),
+                new Interet("Apprentissage Machine"),
+                new Interet("Cinematographie"),
+                new Interet("Bagarre"),
+                new Interet("Course")
 
 
         ));
