@@ -153,5 +153,3 @@ Mot de passe: 123<br><br>
   Ouvrir le fichier robotix.jar, s'inscrire ou se connecter avec les identifiants mentionnés plus haut.
 </p>
 
-
-

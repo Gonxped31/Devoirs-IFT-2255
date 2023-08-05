@@ -1,1 +1,3145 @@
-[{"nom":"Boubacar","prenom":"Kelly","pseudo":"KellyB","listeInteret":[],"motDePasse":"BoubaCar","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5141111111","notifs":[]},{"nom":"Damov","prenom":"Kamen","pseudo":"KD","listeInteret":[],"motDePasse":"KaMen","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5142222222","notifs":[]},{"nom":"Gbian","prenom":"Samir","pseudo":"SB","listeInteret":[],"motDePasse":"SaMir","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5143333333","notifs":[]},{"nom":"Doren","prenom":"Sky","pseudo":"SD","listeInteret":[],"motDePasse":"DoRen","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5144444444","notifs":[]},{"nom":"Brice","prenom":"Mb","pseudo":"Brice","listeInteret":[],"motDePasse":"BrIce","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"51455555555","notifs":[]},{"nom":"Francois","prenom":"Paris","pseudo":"FP","listeInteret":[],"motDePasse":"FrancOis","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5146666666","notifs":[]},{"nom":"Mehdi","prenom":"Til","pseudo":"MT","listeInteret":[],"motDePasse":"MeHdi","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5147777777","notifs":[]},{"nom":"Monica","prenom":"G","pseudo":"MG","listeInteret":[],"motDePasse":"MonIca","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5148888888","notifs":[]},{"nom":"Stefano","prenom":"DiGir","pseudo":"SDi","listeInteret":[],"motDePasse":"StefAno","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5149999999","notifs":[]},{"nom":"James","prenom":"Greg","pseudo":"JG","listeInteret":[],"motDePasse":"JaMes","listeRobot":[],"listeTaches":[],"listeActions":[],"composantesAchetes":[],"listeUtilisateursSuivi":[],"listeNotifications":[],"listeActivitesRejoint":[],"listeActivitesCreer":[],"listSuiveur":[],"point":0,"tache":null,"notification":{"titre":null,"messsage":null,"date":"01/02/1223","typeNotification":null},"telephone":"5141010101","notifs":[]}]
+[
+  {
+    "nom": "Boubacar",
+    "prenom": "Kelly",
+    "adresse": "adresse1",
+    "pseudo": "KellyB",
+    "email": "emailboubacar@gmail.com",
+    "nomCompagnie": "Kelly Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BoubaCar",
+    "listeRobot": [
+      {
+        "nom": "Bobby0",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "da6c753a-802d-40da-9fa5-91fc92424e24",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly0",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "bc645c2e-a344-412e-b4a3-9a4f7237ccb9",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Attraper un objet rond",
+        "taches": [
+          {
+            "nomAction": "Attraper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Attraper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141111111"
+  },
+  {
+    "nom": "Damov",
+    "prenom": "Kamen",
+    "adresse": "adresse2",
+    "pseudo": "KD",
+    "email": "emailkamen@gmail.com",
+    "nomCompagnie": "Kamen Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "KaMen",
+    "listeRobot": [
+      {
+        "nom": "Bobby1",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "039e6343-ac61-43cc-a196-490e68e98b75",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael1",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "16214b44-f00e-456e-a316-3cfcd075af3b",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [],
+    "listeActions": [],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [
+      "SB"
+    ],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5142222222"
+  },
+  {
+    "nom": "Gbian",
+    "prenom": "Samir",
+    "adresse": "adresse3",
+    "pseudo": "SB",
+    "email": "emailsamir@gmail.com",
+    "nomCompagnie": "Samir Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "SaMir",
+    "listeRobot": [
+      {
+        "nom": "Bobby2",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "dc28c1de-84db-4356-9709-aba8fbcb910d",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly2",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "1b7645b2-a311-43bf-914c-74984516262a",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Rouler vers une porte",
+        "taches": [
+          {
+            "nomAction": "Rouler",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Rouler",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [
+      {
+        "nom": "Damov",
+        "prenom": "Kamen",
+        "adresse": "adresse2",
+        "pseudo": "KD",
+        "email": "emailkamen@gmail.com",
+        "nomCompagnie": "Kamen Inc.",
+        "listeInteret": [],
+        "listeNotifications": [],
+        "motDePasse": "KaMen",
+        "listeRobot": [
+          {
+            "nom": "Bobby1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "helice",
+                "prix": "10",
+                "description": "Helice pour voler",
+                "typeComposant": "HELICE"
+              }
+            ],
+            "type": "Voleur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "039e6343-ac61-43cc-a196-490e68e98b75",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          },
+          {
+            "nom": "Michael1",
+            "vitesse": 20,
+            "batterie": 100,
+            "cpu": 30,
+            "memoire": 20.0,
+            "composantes": [
+              {
+                "nom": "cpu",
+                "prix": "20",
+                "description": "Unité Centrale de Traitement",
+                "typeComposant": "CPU"
+              },
+              {
+                "nom": "micro",
+                "prix": "5",
+                "description": "Capter des ondes sonores",
+                "typeComposant": "MICRO"
+              },
+              {
+                "nom": "haut-parleur",
+                "prix": "5",
+                "description": "Emettre du son",
+                "typeComposant": "HAUTPARLEUR"
+              }
+            ],
+            "type": "Communicateur",
+            "taches": [],
+            "activites": [],
+            "actions": [],
+            "numeroSerie": "16214b44-f00e-456e-a316-3cfcd075af3b",
+            "x": 0,
+            "y": 0,
+            "numero": 26
+          }
+        ],
+        "listeTaches": [],
+        "listeActions": [],
+        "composantesAchetes": [],
+        "listeUtilisateursSuivi": [
+          "SB"
+        ],
+        "listeActivitesRejoint": [
+          {
+            "auteur": "KellyB",
+            "nom": "Course de vol entre robots",
+            "dateDebut": 1691121600000,
+            "dateFin": 1691640000000,
+            "listeDeTache": [
+              {
+                "nom": "Voler a 5 metres de hauteur",
+                "taches": [
+                  {
+                    "nomAction": "Voler",
+                    "composantes": [
+                      "cpu",
+                      "helice"
+                    ],
+                    "duree": "30"
+                  }
+                ],
+                "dureeTache": 0
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Course"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 49,
+            "dureeActivite": 0,
+            "listeRobotsInscrits": []
+          },
+          {
+            "auteur": "SD",
+            "nom": "Montrer images des autres robots",
+            "dateDebut": 1691208000000,
+            "dateFin": 1691640000000,
+            "listeDeTache": [
+              {
+                "nom": "Montrer rafales d'images",
+                "taches": [
+                  {
+                    "nomAction": "Diffuser images",
+                    "composantes": [
+                      "cpu",
+                      "ecran"
+                    ],
+                    "duree": "30"
+                  }
+                ],
+                "dureeTache": 0
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Cinematographie"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 32,
+            "dureeActivite": 0,
+            "listeRobotsInscrits": []
+          },
+          {
+            "auteur": "Brice",
+            "nom": "Survoler un autre robot",
+            "dateDebut": 1690862400000,
+            "dateFin": 1691035200000,
+            "listeDeTache": [
+              {
+                "nom": "Survoler un objet",
+                "taches": [
+                  {
+                    "nomAction": "Survoler",
+                    "composantes": [
+                      "cpu",
+                      "helice"
+                    ],
+                    "duree": "30"
+                  }
+                ],
+                "dureeTache": 0
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Aviation"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 44,
+            "dureeActivite": 0,
+            "listeRobotsInscrits": []
+          },
+          {
+            "auteur": "SDi",
+            "nom": "Match de boxe contre un autre robot",
+            "dateDebut": 1691208000000,
+            "dateFin": 1691640000000,
+            "listeDeTache": [
+              {
+                "nom": "Frapper un autre robot",
+                "taches": [
+                  {
+                    "nomAction": "Frapper",
+                    "composantes": [
+                      "cpu",
+                      "roue",
+                      "bras"
+                    ],
+                    "duree": "30"
+                  }
+                ],
+                "dureeTache": 0
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Bagarre"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 44,
+            "dureeActivite": 0,
+            "listeRobotsInscrits": []
+          },
+          {
+            "auteur": "JG",
+            "nom": "Montrer des videos des autres competitions de robots",
+            "dateDebut": 1691208000000,
+            "dateFin": 1691640000000,
+            "listeDeTache": [
+              {
+                "nom": "Montrer une video de 5 minutes",
+                "taches": [
+                  {
+                    "nomAction": "Diffuser videos",
+                    "composantes": [
+                      "cpu",
+                      "ecran"
+                    ],
+                    "duree": "30"
+                  }
+                ],
+                "dureeTache": 0
+              }
+            ],
+            "listeInteretAssocie": [
+              {
+                "nom": "Cinematographie"
+              }
+            ],
+            "listeUtilisateurInsccrit": [],
+            "points": 28,
+            "dureeActivite": 0,
+            "listeRobotsInscrits": []
+          }
+        ],
+        "listeActivitesCreer": [],
+        "listSuiveur": [],
+        "point": 0,
+        "tache": null,
+        "notification": null,
+        "notifs": [],
+        "telephone": "5142222222"
+      }
+    ],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5143333333"
+  },
+  {
+    "nom": "Doren",
+    "prenom": "Sky",
+    "adresse": "adresse4",
+    "pseudo": "SD",
+    "email": "emaildorensky@gmail.com",
+    "nomCompagnie": "Dorensky Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "DoRen",
+    "listeRobot": [
+      {
+        "nom": "George3",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "ecran",
+            "prix": "10",
+            "description": "Ecran pour montrer des images ou videos",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Multimediateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "7ec56d37-2a25-4e81-b3c9-1acbead9d4f7",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael3",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "7635e723-c584-4b1a-b70a-fbbb113d70ed",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Montrer rafales d'images",
+        "taches": [
+          {
+            "nomAction": "Diffuser images",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser images",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5144444444"
+  },
+  {
+    "nom": "Brice",
+    "prenom": "Mb",
+    "adresse": "adresse5",
+    "pseudo": "Brice",
+    "email": "emailbrice@gmail.com",
+    "nomCompagnie": "Brice Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "BrIce",
+    "listeRobot": [
+      {
+        "nom": "Bobby4",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "fd6e160c-5699-441b-b867-fe51b4f0c6c3",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly4",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "5b66782f-5daa-469f-97a3-3ab7c1c3e99d",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Survoler un objet",
+        "taches": [
+          {
+            "nomAction": "Survoler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "S'accrocher a une boite",
+        "taches": [
+          {
+            "nomAction": "Accrocher",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Survoler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Accrocher",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "51455555555"
+  },
+  {
+    "nom": "Francois",
+    "prenom": "Paris",
+    "adresse": "adresse6",
+    "pseudo": "FP",
+    "email": "emailfrancois@gmail.com",
+    "nomCompagnie": "Francois Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "FrancOis",
+    "listeRobot": [
+      {
+        "nom": "Bobby5",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "9010e0f2-be1a-4728-9c53-0985e1bbdf32",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael5",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "60a9395a-4582-46f7-834e-6e85753a54f9",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Voler a 5 metres de hauteur",
+        "taches": [
+          {
+            "nomAction": "Voler",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Ecouter des paroles humaines",
+        "taches": [
+          {
+            "nomAction": "Ecouter",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Voler",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Ecouter",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5146666666"
+  },
+  {
+    "nom": "Mehdi",
+    "prenom": "Til",
+    "adresse": "adresse7",
+    "pseudo": "MT",
+    "email": "emailmehdi@gmail.com",
+    "nomCompagnie": "Mehdi Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MeHdi",
+    "listeRobot": [
+      {
+        "nom": "Bobby6",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "3897f9c4-0642-4a65-9094-8524f52c16f0",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly6",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "87e0daca-d448-4fd5-89d3-f5eda48da94e",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Filer tout droit puis a gauche",
+        "taches": [
+          {
+            "nomAction": "Filer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Faire une course contre un autre robot",
+        "taches": [
+          {
+            "nomAction": "Courser",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Filer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Courser",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5147777777"
+  },
+  {
+    "nom": "Monica",
+    "prenom": "G",
+    "adresse": "adresse8",
+    "pseudo": "MG",
+    "email": "emailmonica@gmail.com",
+    "nomCompagnie": "Monica Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "MonIca",
+    "listeRobot": [
+      {
+        "nom": "Bobby7",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "6472eed3-4843-40d3-90db-5df183408d17",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael7",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "9d9845a0-e49d-48d4-84d4-fa8b94a49d74",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Flotter a 2 puis 5 metre",
+        "taches": [
+          {
+            "nomAction": "Flotter",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Flotter",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5148888888"
+  },
+  {
+    "nom": "Stefano",
+    "prenom": "DiGir",
+    "adresse": "adresse9",
+    "pseudo": "SDi",
+    "email": "emailstefano@gmail.com",
+    "nomCompagnie": "Stefano Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "StefAno",
+    "listeRobot": [
+      {
+        "nom": "Bobby8",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "helice",
+            "prix": "10",
+            "description": "Helice pour voler",
+            "typeComposant": "HELICE"
+          }
+        ],
+        "type": "Voleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "e78f580e-8fb4-4bff-a745-bbdd77639017",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Charly8",
+        "vitesse": 50,
+        "batterie": 80,
+        "cpu": 20,
+        "memoire": 10.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "roue",
+            "prix": "30",
+            "description": "Roues pour se deplacer",
+            "typeComposant": "ROUE"
+          },
+          {
+            "nom": "bras",
+            "prix": "10",
+            "description": "Bras pour prendre",
+            "typeComposant": "BRAS"
+          }
+        ],
+        "type": "Rouleur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "a3ba6819-2f71-4a7f-b0bf-ddd143feee37",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Planer par dessus un autre robot",
+        "taches": [
+          {
+            "nomAction": "Planer",
+            "composantes": [
+              "cpu",
+              "helice"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Frapper un autre robot",
+        "taches": [
+          {
+            "nomAction": "Frapper",
+            "composantes": [
+              "cpu",
+              "roue",
+              "bras"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Planer",
+        "composantes": [
+          "cpu",
+          "helice"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Frapper",
+        "composantes": [
+          "cpu",
+          "roue",
+          "bras"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5149999999"
+  },
+  {
+    "nom": "James",
+    "prenom": "Greg",
+    "adresse": "adresse10",
+    "pseudo": "JG",
+    "email": "emailjames@gmail.com",
+    "nomCompagnie": "James Inc.",
+    "listeInteret": [],
+    "listeNotifications": [],
+    "motDePasse": "JaMes",
+    "listeRobot": [
+      {
+        "nom": "George9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "ecran",
+            "prix": "10",
+            "description": "Ecran pour montrer des images ou videos",
+            "typeComposant": "ECRAN"
+          }
+        ],
+        "type": "Multimediateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "18f97b70-bb8d-4166-aef6-b29e3d2875cf",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      },
+      {
+        "nom": "Michael9",
+        "vitesse": 20,
+        "batterie": 100,
+        "cpu": 30,
+        "memoire": 20.0,
+        "composantes": [
+          {
+            "nom": "cpu",
+            "prix": "20",
+            "description": "Unité Centrale de Traitement",
+            "typeComposant": "CPU"
+          },
+          {
+            "nom": "micro",
+            "prix": "5",
+            "description": "Capter des ondes sonores",
+            "typeComposant": "MICRO"
+          },
+          {
+            "nom": "haut-parleur",
+            "prix": "5",
+            "description": "Emettre du son",
+            "typeComposant": "HAUTPARLEUR"
+          }
+        ],
+        "type": "Communicateur",
+        "taches": [],
+        "activites": [],
+        "actions": [],
+        "numeroSerie": "5f8309fd-2c4d-402c-89b9-b42fd11c7f52",
+        "x": 0,
+        "y": 0,
+        "numero": 26
+      }
+    ],
+    "listeTaches": [
+      {
+        "nom": "Montrer une video de 5 minutes",
+        "taches": [
+          {
+            "nomAction": "Diffuser videos",
+            "composantes": [
+              "cpu",
+              "ecran"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      },
+      {
+        "nom": "Parler en francais",
+        "taches": [
+          {
+            "nomAction": "Parler",
+            "composantes": [
+              "cpu",
+              "micro",
+              "haut-parleur"
+            ],
+            "duree": "30"
+          }
+        ],
+        "dureeTache": 0
+      }
+    ],
+    "listeActions": [
+      {
+        "nomAction": "Diffuser videos",
+        "composantes": [
+          "cpu",
+          "ecran"
+        ],
+        "duree": "30"
+      },
+      {
+        "nomAction": "Parler",
+        "composantes": [
+          "cpu",
+          "micro",
+          "haut-parleur"
+        ],
+        "duree": "30"
+      }
+    ],
+    "composantesAchetes": [],
+    "listeUtilisateursSuivi": [],
+    "listeActivitesRejoint": [
+      {
+        "auteur": "KellyB",
+        "nom": "Course de vol entre robots",
+        "dateDebut": 1691121600000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Voler a 5 metres de hauteur",
+            "taches": [
+              {
+                "nomAction": "Voler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Course"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 49,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SD",
+        "nom": "Montrer images des autres robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer rafales d'images",
+            "taches": [
+              {
+                "nomAction": "Diffuser images",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 32,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "Brice",
+        "nom": "Survoler un autre robot",
+        "dateDebut": 1690862400000,
+        "dateFin": 1691035200000,
+        "listeDeTache": [
+          {
+            "nom": "Survoler un objet",
+            "taches": [
+              {
+                "nomAction": "Survoler",
+                "composantes": [
+                  "cpu",
+                  "helice"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Aviation"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "SDi",
+        "nom": "Match de boxe contre un autre robot",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Frapper un autre robot",
+            "taches": [
+              {
+                "nomAction": "Frapper",
+                "composantes": [
+                  "cpu",
+                  "roue",
+                  "bras"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Bagarre"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 44,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      },
+      {
+        "auteur": "JG",
+        "nom": "Montrer des videos des autres competitions de robots",
+        "dateDebut": 1691208000000,
+        "dateFin": 1691640000000,
+        "listeDeTache": [
+          {
+            "nom": "Montrer une video de 5 minutes",
+            "taches": [
+              {
+                "nomAction": "Diffuser videos",
+                "composantes": [
+                  "cpu",
+                  "ecran"
+                ],
+                "duree": "30"
+              }
+            ],
+            "dureeTache": 0
+          }
+        ],
+        "listeInteretAssocie": [
+          {
+            "nom": "Cinematographie"
+          }
+        ],
+        "listeUtilisateurInsccrit": [],
+        "points": 28,
+        "dureeActivite": 0,
+        "listeRobotsInscrits": []
+      }
+    ],
+    "listeActivitesCreer": [],
+    "listSuiveur": [],
+    "point": 0,
+    "tache": null,
+    "notification": null,
+    "notifs": [],
+    "telephone": "5141010101"
+  }
+]
